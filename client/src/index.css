@@ -131,7 +131,7 @@
     @apply cursor-pointer;
   }
 
-  /* Typography - Sans-serif for all text */
+  /* Typography - Outfit font (Gotham Rounded alternative) for all text */
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-bold;
   }
