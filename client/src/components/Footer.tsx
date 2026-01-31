@@ -76,11 +76,9 @@ export default function Footer() {
             <ul className="space-y-3">
               {["Home", "Destinations", "Packages", "Experiences", "About"].map((item) => (
                 <li key={item}>
-                  <Link href={item === "Home" ? "/" : `#${item.toLowerCase()}`}>
-                    <a className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center gap-2 group">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:bg-primary transition-colors duration-300" />
-                      {item}
-                    </a>
+                  <Link href={item === "Home" ? "/" : `#${item.toLowerCase()}`} className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center gap-2 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:bg-primary transition-colors duration-300" />
+                    {item}
                   </Link>
                 </li>
               ))}
