@@ -38,7 +38,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/hero-maldives.jpg')",
+            backgroundImage: "url('/images/dSNI52ZQPtA9.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/30 to-background" />
@@ -203,19 +203,19 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                image: "/images/dSNI52ZQPtA9.jpg",
+                image: "/images/2HotXIyREgcc.jpg",
                 title: "Luxury Water Villas",
                 location: "North Malé Atoll",
                 description: "Overwater bungalows with private infinity pools",
               },
               {
-                image: "/images/xFyoDbw75qPl.jpg",
+                image: "/images/GrTu06kOyGsW.jpg",
                 title: "Private Island Resorts",
                 location: "South Ari Atoll",
                 description: "Exclusive island experiences with pristine beaches",
               },
               {
-                image: "/images/2HotXIyREgcc.jpg",
+                image: "/images/qjapGQ7gVlNW.jpg",
                 title: "Romantic Getaways",
                 location: "Baa Atoll",
                 description: "Perfect honeymoon destinations in paradise",
@@ -288,7 +288,7 @@ export default function Home() {
                 name: "Romantic Escape",
                 price: "$2,999",
                 duration: "5 Days / 4 Nights",
-                image: "/images/beach-couple.jpg",
+                image: "/images/lnIvrZgcYPLM.jpg",
                 features: [
                   "Luxury water villa accommodation",
                   "Private candlelit beach dinner",
@@ -302,7 +302,7 @@ export default function Home() {
                 name: "Ultimate Paradise",
                 price: "$4,999",
                 duration: "7 Days / 6 Nights",
-                image: "/images/luxury-villa.jpg",
+                image: "/images/dSNI52ZQPtA9.jpg",
                 features: [
                   "Premium overwater villa with pool",
                   "All-inclusive dining & drinks",
@@ -317,7 +317,7 @@ export default function Home() {
                 name: "Island Explorer",
                 price: "$3,499",
                 duration: "6 Days / 5 Nights",
-                image: "/images/underwater-scene.jpg",
+                image: "/images/qjapGQ7gVlNW.jpg",
                 features: [
                   "Beach villa accommodation",
                   "Daily breakfast included",
@@ -489,8 +489,8 @@ export default function Home() {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/island-dining.jpg"
-                  alt="Romantic dining in Maldives"
+                  src="/images/2HotXIyREgcc.jpg"
+                  alt="Luxury island resort in Maldives"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -545,7 +545,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/ondlfaVeyRHO.jpg')",
+            backgroundImage: "url('/images/GrTu06kOyGsW.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-accent/80 to-primary/90" />
