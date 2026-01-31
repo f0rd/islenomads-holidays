@@ -1,6 +1,6 @@
 /**
  * Navigation Component
- * Design: Mason's Travel inspired - Dark navy header with lime green accents
+ * Design: islenomads.com inspired - Dark teal header with bright cyan accents
  */
 
 import { Menu, X } from "lucide-react";
@@ -23,11 +23,11 @@ export default function Navigation() {
       <div className="container flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center font-display font-bold text-primary group-hover:scale-110 transition-transform duration-300">
+          <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform duration-300">
             IN
           </div>
           <div className="hidden sm:flex flex-col">
-            <span className="font-display font-bold text-lg leading-tight">
+            <span className="font-bold text-lg leading-tight">
               Isle Nomads
             </span>
             <span className="text-xs text-accent leading-tight font-semibold">

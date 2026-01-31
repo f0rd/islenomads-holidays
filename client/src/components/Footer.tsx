@@ -1,6 +1,6 @@
 /**
  * Footer Component
- * Design: Mason's Travel inspired - Professional DMC footer
+ * Design: islenomads.com inspired - Teal background with cyan accents
  */
 
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from "lucide-react";
@@ -17,10 +17,10 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center shadow-lg">
-                <span className="text-primary font-display font-bold text-xl">IN</span>
+                <span className="text-primary font-bold text-xl">IN</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-lg leading-tight">
+                <span className="font-bold text-lg leading-tight">
                   Isle Nomads
                 </span>
                 <span className="text-xs text-accent leading-tight font-semibold">
@@ -61,7 +61,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4 text-accent">Quick Links</h3>
+            <h3 className="font-semibold text-lg mb-4 text-accent">Quick Links</h3>
             <ul className="space-y-3">
               {["Home", "Destinations", "Packages", "Services", "About"].map((item) => (
                 <li key={item}>
@@ -76,7 +76,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4 text-accent">Our Services</h3>
+            <h3 className="font-semibold text-lg mb-4 text-accent">Our Services</h3>
             <ul className="space-y-3">
               {[
                 "Luxury Resorts",
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4 text-accent">Get in Touch</h3>
+            <h3 className="font-semibold text-lg mb-4 text-accent">Get in Touch</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
