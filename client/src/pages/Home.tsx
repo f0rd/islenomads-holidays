@@ -3,6 +3,7 @@
  * Design: islenomads.com inspired - Dark teal + Bright cyan, modern travel booking style
  */
 
+import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -19,9 +20,11 @@ import {
   Waves,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     setIsVisible(true);
@@ -440,6 +443,23 @@ export default function Home() {
                 Learn More About Us
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact" className="py-24 bg-primary text-primary-foreground">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-bold text-4xl md:text-5xl mb-4">
+                Get in Touch
+              </h2>
+              <p className="text-lg text-primary-foreground/90 leading-relaxed">
+                Have questions about our packages? Want to customize your trip? Fill out the form below and our team will respond within 24 hours.
+              </p>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
