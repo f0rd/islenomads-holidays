@@ -8,6 +8,13 @@
       "when": 1769843444894,
       "tag": "0000_damp_albert_cleary",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1770104719265,
+      "tag": "0001_pale_naoko",
+      "breakpoints": true
     }
   ]
 }

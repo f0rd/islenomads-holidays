@@ -1,9 +1,10 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -46,6 +47,89 @@ export const appRouter = router({
           console.error("[Contact Form] Error:", error);
           throw new Error("Failed to submit contact form. Please try again.");
         }
+      }),
+  }),
+
+  blog: router({
+    list: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getAllBlogPosts(input.limit);
+      }),
+    
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getBlogPostBySlug(input.slug);
+      }),
+    
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getBlogPostById(input.id);
+      }),
+    
+    create: protectedProcedure
+      .input(
+        z.object({
+          title: z.string().min(1),
+          slug: z.string().min(1),
+          content: z.string().min(1),
+          excerpt: z.string().optional(),
+          featuredImage: z.string().optional(),
+          author: z.string().min(1),
+          category: z.string().optional(),
+          tags: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createBlogPost(input);
+      }),
+    
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          title: z.string().optional(),
+          slug: z.string().optional(),
+          content: z.string().optional(),
+          excerpt: z.string().optional(),
+          featuredImage: z.string().optional(),
+          author: z.string().optional(),
+          category: z.string().optional(),
+          tags: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...updates } = input;
+        return updateBlogPost(id, updates);
+      }),
+    
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteBlogPost(input.id);
+      }),
+    
+    getComments: publicProcedure
+      .input(z.object({ postId: z.number() }))
+      .query(async ({ input }) => {
+        return getBlogComments(input.postId);
+      }),
+    
+    addComment: publicProcedure
+      .input(
+        z.object({
+          postId: z.number(),
+          name: z.string().min(1),
+          email: z.string().email(),
+          content: z.string().min(1),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createBlogComment({ ...input, approved: 0 });
       }),
   }),
 });

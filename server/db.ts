@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,66 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Blog query helpers
+export async function getAllBlogPosts(limit?: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  let query = db.select().from(blogPosts).where(eq(blogPosts.published, 1)).orderBy(desc(blogPosts.createdAt));
+  if (limit) {
+    query = query.limit(limit) as any;
+  }
+  return query;
+}
+
+export async function getBlogPostBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getBlogPostById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createBlogPost(post: InsertBlogPost) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(blogPosts).values(post);
+  return result;
+}
+
+export async function updateBlogPost(id: number, updates: Partial<BlogPost>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.update(blogPosts).set(updates).where(eq(blogPosts.id, id));
+}
+
+export async function deleteBlogPost(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.delete(blogPosts).where(eq(blogPosts.id, id));
+}
+
+export async function getBlogComments(postId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(blogComments).where(and(eq(blogComments.postId, postId), eq(blogComments.approved, 1))).orderBy(desc(blogComments.createdAt));
+}
+
+export async function createBlogComment(comment: InsertBlogComment) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.insert(blogComments).values(comment);
+}
