@@ -87,7 +87,7 @@ export default function Home() {
         </div>
 
         {/* Statistics Overlay */}
-        <div className="absolute bottom-12 left-0 right-0 z-20">
+        <div className="absolute -bottom-24 left-0 right-0 z-20">
           <div className="container">
             <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
               {[
@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white pt-32">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
