@@ -12,10 +12,9 @@ export default function Navigation() {
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "Blog", href: "/blog" },
     { label: "Destinations", href: "#destinations" },
     { label: "Packages", href: "#packages" },
-    { label: "Services", href: "#services" },
+    { label: "Experiences", href: "#experiences" },
     { label: "About", href: "#about" },
   ];
 
@@ -32,7 +31,7 @@ export default function Navigation() {
               Isle Nomads
             </span>
             <span className="text-xs text-accent leading-tight font-semibold">
-              EXPERIENCES
+              HOLIDAYS
             </span>
           </div>
         </Link>
