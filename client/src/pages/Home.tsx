@@ -1,5 +1,5 @@
 /**
- * Home Page - Isle Nomads Experiences
+ * Home Page - Isle Nomads Holidays
  * Design: islenomads.com inspired - Dark teal + Bright cyan, modern travel booking style
  */
 
@@ -128,7 +128,7 @@ export default function Home() {
               },
               {
                 icon: Heart,
-                title: "Memorable Experiences",
+                title: "Memorable Holidays",
                 description: "Browse and book tours and activities so incredible.",
               },
               {
@@ -412,10 +412,10 @@ export default function Home() {
 
             <div className="space-y-6">
               <h2 className="font-bold text-4xl md:text-5xl text-foreground">
-                About Isle Nomads Experiences
+                About Isle Nomads Holidays
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                For over 15 years, Isle Nomads Experiences has been crafting extraordinary Maldives experiences for travelers seeking paradise. Based in DMCC, Dubai, we specialize in creating personalized island getaways that blend luxury, adventure, and authentic cultural immersion.
+                For over 15 years, Isle Nomads Holidays has been crafting extraordinary Maldives experiences for travelers seeking paradise. Based in DMCC, Dubai, we specialize in creating personalized island getaways that blend luxury, adventure, and authentic cultural immersion.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Our team of Maldives experts has personally visited every resort we recommend, ensuring that your vacation exceeds expectations. From intimate honeymoon escapes to family adventures, we handle every detail so you can focus on creating memories that last a lifetime.

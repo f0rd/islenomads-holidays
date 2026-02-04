@@ -1,4 +1,4 @@
-# Isle Nomads Experiences - Project TODO
+# Isle Nomads Holidays - Project TODO
 
 ## Core Website Features
 - [x] Basic homepage layout with hero section
@@ -25,6 +25,12 @@
 - [x] Add blog comments section
 - [x] Test CMS and blog functionality
 - [x] Deploy with CMS and blogs
+
+## Branding Update
+- [x] Update all "Experiences" references to "Holidays"
+- [x] Update meta tags and page titles
+- [x] Update footer company name
+- [x] Update About section text
 
 ## Future Enhancements
 - [ ] Integrate Stripe payment processing

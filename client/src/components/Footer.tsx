@@ -134,7 +134,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/80 text-center md:text-left">
-              © {currentYear} Isle Nomads Experiences. All rights reserved.
+              © {currentYear} Isle Nomads Holidays. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a
