@@ -24,7 +24,7 @@ export default function Footer() {
                   Isle Nomads
                 </span>
                 <span className="text-xs text-accent leading-tight font-semibold">
-                  EXPERIENCES
+                  Holidays
                 </span>
               </div>
             </div>
