@@ -15,9 +15,8 @@ export default function Navigation() {
     { label: "Map", href: "/map" },
     { label: "Boat Routes", href: "/boat-routes" },
     { label: "Trip Planner", href: "/trip-planner" },
-    { label: "Destinations", href: "#destinations" },
-    { label: "Packages", href: "#packages" },
-    { label: "Experiences", href: "#experiences" },
+    { label: "Packages", href: "/packages" },
+    { label: "Blog", href: "/blog" },
     { label: "About", href: "#about" },
   ];
 

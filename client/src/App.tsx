@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import AdminBlog from "./pages/AdminBlog";
 import AdminPackages from "./pages/AdminPackages";
+import Packages from "./pages/Packages";
 import MaldivesMap from "./pages/MaldivesMap";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogDetail} />
+      <Route path={"/packages"} component={Packages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
       <Route path={"/map"} component={MaldivesMap} />
