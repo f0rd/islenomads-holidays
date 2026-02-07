@@ -11,6 +11,7 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminPackages from "./pages/AdminPackages";
 import MaldivesMap from "./pages/MaldivesMap";
 import BoatRoutes from "./pages/BoatRoutes";
+import TripPlanner from "./pages/TripPlanner";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -22,6 +23,7 @@ function Router() {
       <Route path={"/admin/packages"} component={AdminPackages} />
       <Route path={"/map"} component={MaldivesMap} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
+      <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

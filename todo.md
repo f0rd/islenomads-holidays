@@ -102,3 +102,12 @@
 - [x] Create boat/route filtering and search
 - [x] Add transportation information panels
 - [x] Test boat routes and transportation functionality
+
+## Multi-Destination Trip Planner
+- [x] Design trip planner data structure and routing algorithm
+- [x] Create trip planner backend logic and route optimization
+- [x] Build interactive destination selection UI
+- [x] Implement itinerary display with route details
+- [x] Add trip summary and cost calculation
+- [x] Create booking integration
+- [x] Write trip planner tests
