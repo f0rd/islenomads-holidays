@@ -33,28 +33,13 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://facebook.com"
+                href="https://www.islenomads.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-accent/20 hover:bg-accent hover:text-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="text-sm text-primary-foreground/80 hover:text-accent transition-colors duration-300 flex items-center gap-2 group"
               >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-accent/20 hover:bg-accent hover:text-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-accent/20 hover:bg-accent hover:text-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
-              >
-                <Twitter className="w-5 h-5" />
+                <span className="w-1.5 h-1.5 rounded-full bg-accent group-hover:scale-150 transition-transform duration-300" />
+                www.islenomads.com
               </a>
             </div>
           </div>
@@ -105,25 +90,25 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-primary-foreground/80 leading-relaxed">
-                  DMCC Business Centre, Dubai, UAE
+                  Ma. Faseri, Ameenee Magu, Malé City, Maldives
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
                 <a
-                  href="tel:+971123456789"
+                  href="tel:+960799063600"
                   className="text-sm text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
-                  +971 12 345 6789
+                  (+960) 799 0636
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
                 <a
-                  href="mailto:info@islenomads.com"
+                  href="mailto:hello@islenomads.com"
                   className="text-sm text-primary-foreground/80 hover:text-accent transition-colors duration-300"
                 >
-                  info@islenomads.com
+                  hello@islenomads.com
                 </a>
               </li>
             </ul>

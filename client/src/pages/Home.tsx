@@ -417,7 +417,7 @@ export default function Home() {
                 About Isle Nomads Holidays
               </h2>
               <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                For over 15 years, Isle Nomads Holidays has been crafting extraordinary Maldives experiences for travelers seeking paradise. Based in DMCC, Dubai, we specialize in creating personalized island getaways that blend luxury, adventure, and authentic cultural immersion.
+                For over 15 years, Isle Nomads Holidays has been crafting extraordinary Maldives experiences for travelers seeking paradise. Based in Malé, Maldives, we specialize in creating personalized island getaways that blend luxury, adventure, and authentic cultural immersion.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Our team of Maldives experts has personally visited every resort we recommend, ensuring that your vacation exceeds expectations. From intimate honeymoon escapes to family adventures, we handle every detail so you can focus on creating memories that last a lifetime.
