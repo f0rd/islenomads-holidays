@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev" # Adjust this if your development command is different
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[build.environment]
+  NODE_ENV = "production"
+  DATABASE_URL = "your-database-url" # Replace with your actual MySQL connection string
+
+[functions]
+  directory = "functions" # Directory for serverless functions
