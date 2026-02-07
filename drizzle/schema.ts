@@ -38,12 +38,15 @@ export const blogPosts = mysqlTable("blog_posts", {
   tags: varchar("tags", { length: 500 }),
   published: int("published").default(0).notNull(),
   viewCount: int("viewCount").default(0).notNull(),
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  metaKeywords: varchar("metaKeywords", { length: 500 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = typeof blogPosts.$inferInsert;
+export type InsertBlogPost = typeof blogPosts.$inferInsert & { metaTitle?: string; metaDescription?: string; metaKeywords?: string };
 
 // Blog comments table
 export const blogComments = mysqlTable("blog_comments", {
@@ -58,3 +61,27 @@ export const blogComments = mysqlTable("blog_comments", {
 
 export type BlogComment = typeof blogComments.$inferSelect;
 export type InsertBlogComment = typeof blogComments.$inferInsert;
+
+// Packages table
+export const packages = mysqlTable("packages", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  description: text("description").notNull(),
+  price: int("price").notNull(), // Price in cents
+  duration: varchar("duration", { length: 100 }).notNull(), // e.g., "5 days"
+  destination: varchar("destination", { length: 255 }).notNull(),
+  highlights: text("highlights"), // JSON array of highlights
+  amenities: text("amenities"), // JSON array of amenities
+  image: varchar("image", { length: 500 }),
+  featured: int("featured").default(0).notNull(),
+  published: int("published").default(0).notNull(),
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  metaKeywords: varchar("metaKeywords", { length: 500 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Package = typeof packages.$inferSelect;
+export type InsertPackage = typeof packages.$inferInsert;

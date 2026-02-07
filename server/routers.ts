@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment } from "./db";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -131,6 +131,90 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         return createBlogComment({ ...input, approved: 0 });
       }),
+  }),
+
+  packages: router({
+    list: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getAllPackages(input.limit);
+      }),
+    
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getPackageById(input.id);
+      }),
+    
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getPackageBySlug(input.slug);
+      }),
+    
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string().min(1),
+          slug: z.string().min(1),
+          description: z.string().min(1),
+          price: z.number().min(0),
+          duration: z.string().min(1),
+          destination: z.string().min(1),
+          highlights: z.string().optional(),
+          amenities: z.string().optional(),
+          image: z.string().optional(),
+          featured: z.number().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createPackage(input);
+      }),
+    
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          description: z.string().optional(),
+          price: z.number().optional(),
+          duration: z.string().optional(),
+          destination: z.string().optional(),
+          highlights: z.string().optional(),
+          amenities: z.string().optional(),
+          image: z.string().optional(),
+          featured: z.number().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...updates } = input;
+        return updatePackage(id, updates);
+      }),
+    
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deletePackage(input.id);
+      }),
+  }),
+
+  admin: router({
+    blog: router({
+      listAll: protectedProcedure
+        .query(async () => {
+          return getAllBlogPostsAdmin();
+        }),
+    }),
+    
+    packages: router({
+      listAll: protectedProcedure
+        .query(async () => {
+          return getAllPackagesAdmin();
+        }),
+    }),
   }),
 });
 

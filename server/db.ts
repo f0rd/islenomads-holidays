@@ -1,6 +1,6 @@
 import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -151,4 +151,68 @@ export async function createBlogComment(comment: InsertBlogComment) {
   if (!db) throw new Error("Database not available");
   
   return db.insert(blogComments).values(comment);
+}
+
+// Packages query helpers
+export async function getAllPackages(limit?: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  let query = db.select().from(packages).where(eq(packages.published, 1)).orderBy(desc(packages.createdAt));
+  if (limit) {
+    query = query.limit(limit) as any;
+  }
+  return query;
+}
+
+export async function getPackageById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(packages).where(eq(packages.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getPackageBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(packages).where(eq(packages.slug, slug)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function createPackage(pkg: InsertPackage) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(packages).values(pkg);
+  return result;
+}
+
+export async function updatePackage(id: number, updates: Partial<Package>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.update(packages).set(updates).where(eq(packages.id, id));
+}
+
+export async function deletePackage(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.delete(packages).where(eq(packages.id, id));
+}
+
+export async function getAllPackagesAdmin() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(packages).orderBy(desc(packages.createdAt));
+}
+
+export async function getAllBlogPostsAdmin() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
 }

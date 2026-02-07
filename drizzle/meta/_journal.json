@@ -15,6 +15,13 @@
       "when": 1770104719265,
       "tag": "0001_pale_naoko",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1770473004761,
+      "tag": "0002_silent_junta",
+      "breakpoints": true
     }
   ]
 }
