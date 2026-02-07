@@ -25,7 +25,7 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// Blog posts table
+// Blog posts table with comprehensive SEO fields
 export const blogPosts = mysqlTable("blog_posts", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
@@ -38,15 +38,37 @@ export const blogPosts = mysqlTable("blog_posts", {
   tags: varchar("tags", { length: 500 }),
   published: int("published").default(0).notNull(),
   viewCount: int("viewCount").default(0).notNull(),
+  // SEO Meta Tags
   metaTitle: varchar("metaTitle", { length: 255 }),
   metaDescription: varchar("metaDescription", { length: 500 }),
   metaKeywords: varchar("metaKeywords", { length: 500 }),
+  // Open Graph & Social Media
+  ogTitle: varchar("ogTitle", { length: 255 }),
+  ogDescription: varchar("ogDescription", { length: 500 }),
+  ogImage: varchar("ogImage", { length: 500 }),
+  twitterCard: varchar("twitterCard", { length: 50 }),
+  // SEO Optimization
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  keywordDensity: varchar("keywordDensity", { length: 50 }),
+  readabilityScore: int("readabilityScore"),
+  seoScore: int("seoScore"),
+  // Structured Data
+  schemaType: varchar("schemaType", { length: 100 }).default("BlogPosting"),
+  // Canonical URL
+  canonicalUrl: varchar("canonicalUrl", { length: 500 }),
+  // Robots Meta
+  robotsIndex: varchar("robotsIndex", { length: 20 }).default("index"),
+  robotsFollow: varchar("robotsFollow", { length: 20 }).default("follow"),
+  // Internal Links
+  internalLinks: text("internalLinks"),
+  // Last Modified for sitemap
+  lastModified: timestamp("lastModified").defaultNow().onUpdateNow(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = typeof blogPosts.$inferInsert & { metaTitle?: string; metaDescription?: string; metaKeywords?: string };
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
 
 // Blog comments table
 export const blogComments = mysqlTable("blog_comments", {
@@ -62,7 +84,7 @@ export const blogComments = mysqlTable("blog_comments", {
 export type BlogComment = typeof blogComments.$inferSelect;
 export type InsertBlogComment = typeof blogComments.$inferInsert;
 
-// Packages table
+// Packages table with SEO fields
 export const packages = mysqlTable("packages", {
   id: int("id").autoincrement().primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
@@ -76,9 +98,24 @@ export const packages = mysqlTable("packages", {
   image: varchar("image", { length: 500 }),
   featured: int("featured").default(0).notNull(),
   published: int("published").default(0).notNull(),
+  // SEO Meta Tags
   metaTitle: varchar("metaTitle", { length: 255 }),
   metaDescription: varchar("metaDescription", { length: 500 }),
   metaKeywords: varchar("metaKeywords", { length: 500 }),
+  // Open Graph
+  ogTitle: varchar("ogTitle", { length: 255 }),
+  ogDescription: varchar("ogDescription", { length: 500 }),
+  ogImage: varchar("ogImage", { length: 500 }),
+  // SEO Optimization
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  seoScore: int("seoScore"),
+  // Canonical URL
+  canonicalUrl: varchar("canonicalUrl", { length: 500 }),
+  // Robots Meta
+  robotsIndex: varchar("robotsIndex", { length: 20 }).default("index"),
+  robotsFollow: varchar("robotsFollow", { length: 20 }).default("follow"),
+  // Structured Data
+  schemaType: varchar("schemaType", { length: 100 }).default("Product"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
