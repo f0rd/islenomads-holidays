@@ -24,6 +24,8 @@ import {
   validateItinerary,
   TripItinerary,
 } from "@/utils/tripPlanner";
+import WeatherForecast from "@/components/WeatherForecast";
+import WeatherRecommendations from "@/components/WeatherRecommendations";
 
 export default function TripPlanner() {
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>([
@@ -40,6 +42,9 @@ export default function TripPlanner() {
   const [preferences, setPreferences] = useState<"speed" | "cost" | "comfort" | "balanced">(
     "balanced"
   );
+  const [showWeather, setShowWeather] = useState(false);
+  const [weatherDestination, setWeatherDestination] = useState<string | null>(null);
+  const [weatherCoords, setWeatherCoords] = useState<{ lat: number; lng: number } | null>(null);
 
   const filteredDestinations = AVAILABLE_DESTINATIONS.filter(
     (dest) =>
@@ -468,6 +473,39 @@ export default function TripPlanner() {
                           ))}
                         </CardContent>
                       </Card>
+
+                      {/* Weather Forecast */}
+                      {selectedItinerary && (
+                        <Card>
+                          <CardHeader>
+                            <CardTitle className="flex items-center justify-between">
+                              <span>Weather Forecast</span>
+                              <button
+                                onClick={() => {
+                                  const firstDest = selectedItinerary.destinations[0];
+                                  setWeatherDestination(firstDest.name);
+                                  setWeatherCoords({ lat: firstDest.lat, lng: firstDest.lng });
+                                  setShowWeather(!showWeather);
+                                }}
+                                className="text-xs px-3 py-1 bg-secondary hover:bg-secondary/80 rounded transition-colors"
+                              >
+                                {showWeather ? "Hide" : "View"} Weather
+                              </button>
+                            </CardTitle>
+                          </CardHeader>
+                          {showWeather && weatherCoords && weatherDestination && (
+                            <CardContent>
+                              <WeatherForecast
+                                lat={weatherCoords.lat}
+                                lng={weatherCoords.lng}
+                                destination={weatherDestination}
+                                startDate={selectedItinerary.startDate}
+                                endDate={selectedItinerary.endDate}
+                              />
+                            </CardContent>
+                          )}
+                        </Card>
+                      )}
 
                       {/* Book Now Button */}
                       <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3">

@@ -111,3 +111,14 @@
 - [x] Add trip summary and cost calculation
 - [x] Create booking integration
 - [x] Write trip planner tests
+
+## Weather Forecast Integration
+- [x] Set up weather API integration (Open-Meteo or similar)
+- [x] Create weather data service and utilities
+- [x] Build weather forecast component
+- [x] Add weather display to destination cards
+- [x] Add weather display to trip itinerary
+- [x] Implement weather-based travel recommendations
+- [x] Add weather alerts for extreme conditions
+- [x] Create weather comparison between destinations
+- [x] Test weather feature functionality
