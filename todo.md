@@ -155,3 +155,14 @@
 - [x] Create package detail view/modal
 - [x] Add "Book Now" button integration
 - [x] Test packages listing functionality
+
+## Boat Routes & Maps CMS Management
+- [ ] Update database schema for boat routes
+- [ ] Update database schema for map locations
+- [ ] Create boat routes API endpoints (CRUD)
+- [ ] Create map locations API endpoints (CRUD)
+- [ ] Build admin boat routes management UI
+- [ ] Build admin map locations management UI
+- [ ] Add boat routes listing and editor
+- [ ] Add map locations listing and editor
+- [ ] Test boat routes and maps CMS functionality
