@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Edit2, Trash2, Plus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEOEditor from "@/components/SEOEditor";
 
 export default function AdminBlog() {
   const { user } = useAuth();
@@ -21,6 +22,20 @@ export default function AdminBlog() {
     category: "",
     tags: "",
     published: 0,
+    metaTitle: "",
+    metaDescription: "",
+    focusKeyword: "",
+    ogTitle: "",
+    ogDescription: "",
+    ogImage: "",
+  });
+  const [seoData, setSeoData] = useState({
+    metaTitle: "",
+    metaDescription: "",
+    focusKeyword: "",
+    ogTitle: "",
+    ogDescription: "",
+    ogImage: "",
   });
 
   const { data: posts, refetch } = trpc.blog.list.useQuery({ limit: 100 });
@@ -66,6 +81,20 @@ export default function AdminBlog() {
         category: "",
         tags: "",
         published: 0,
+        metaTitle: "",
+        metaDescription: "",
+        focusKeyword: "",
+        ogTitle: "",
+        ogDescription: "",
+        ogImage: "",
+      });
+      setSeoData({
+        metaTitle: "",
+        metaDescription: "",
+        focusKeyword: "",
+        ogTitle: "",
+        ogDescription: "",
+        ogImage: "",
       });
       setEditingId(null);
       setShowForm(false);
@@ -86,6 +115,20 @@ export default function AdminBlog() {
       category: post.category || "",
       tags: post.tags || "",
       published: post.published,
+      metaTitle: post.metaTitle || "",
+      metaDescription: post.metaDescription || "",
+      focusKeyword: post.focusKeyword || "",
+      ogTitle: post.ogTitle || "",
+      ogDescription: post.ogDescription || "",
+      ogImage: post.ogImage || "",
+    });
+    setSeoData({
+      metaTitle: post.metaTitle || "",
+      metaDescription: post.metaDescription || "",
+      focusKeyword: post.focusKeyword || "",
+      ogTitle: post.ogTitle || "",
+      ogDescription: post.ogDescription || "",
+      ogImage: post.ogImage || "",
     });
     setEditingId(post.id);
     setShowForm(true);
@@ -124,6 +167,20 @@ export default function AdminBlog() {
                   category: "",
                   tags: "",
                   published: 0,
+                  metaTitle: "",
+                  metaDescription: "",
+                  focusKeyword: "",
+                  ogTitle: "",
+                  ogDescription: "",
+                  ogImage: "",
+                });
+                setSeoData({
+                  metaTitle: "",
+                  metaDescription: "",
+                  focusKeyword: "",
+                  ogTitle: "",
+                  ogDescription: "",
+                  ogImage: "",
                 });
                 setShowForm(!showForm);
               }}
@@ -239,6 +296,35 @@ export default function AdminBlog() {
                     />
                   </div>
 
+                  {/* SEO Editor Section */}
+                  <div className="border-t pt-6 mt-6">
+                    <h3 className="text-lg font-semibold mb-4">SEO Optimization</h3>
+                    <SEOEditor
+                      title={formData.title}
+                      content={formData.content}
+                      initialData={{
+                        metaTitle: seoData.metaTitle,
+                        metaDescription: seoData.metaDescription,
+                        focusKeyword: seoData.focusKeyword,
+                        slug: formData.slug,
+                        ogTitle: seoData.ogTitle,
+                        ogDescription: seoData.ogDescription,
+                      }}
+                      onSEOChange={(updatedSeo: any) => {
+                        setSeoData(updatedSeo);
+                        setFormData({
+                          ...formData,
+                          metaTitle: updatedSeo.metaTitle,
+                          metaDescription: updatedSeo.metaDescription,
+                          focusKeyword: updatedSeo.focusKeyword,
+                          ogTitle: updatedSeo.ogTitle || "",
+                          ogDescription: updatedSeo.ogDescription || "",
+                          ogImage: updatedSeo.ogImage || "",
+                        });
+                      }}
+                    />
+                  </div>
+
                   <div className="flex items-center gap-4">
                     <label className="flex items-center gap-2">
                       <input
@@ -250,20 +336,22 @@ export default function AdminBlog() {
                             published: e.target.checked ? 1 : 0,
                           })
                         }
-                        className="w-4 h-4"
                       />
-                      <span className="text-sm font-medium">Publish immediately</span>
+                      <span className="text-sm font-medium">Published</span>
                     </label>
                   </div>
 
-                  <div className="flex gap-4">
-                    <Button type="submit" disabled={createMutation.isPending || updateMutation.isPending}>
+                  <div className="flex gap-2 pt-4">
+                    <Button type="submit" className="bg-accent text-primary hover:bg-accent/90">
                       {editingId ? "Update Post" : "Create Post"}
                     </Button>
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => setShowForm(false)}
+                      onClick={() => {
+                        setShowForm(false);
+                        setEditingId(null);
+                      }}
                     >
                       Cancel
                     </Button>
@@ -275,59 +363,50 @@ export default function AdminBlog() {
 
           {/* Posts List */}
           <div className="space-y-4">
-            <h2 className="text-xl font-bold text-foreground">All Posts</h2>
             {posts && posts.length > 0 ? (
-              <div className="space-y-4">
-                {posts.map((post) => (
-                  <Card key={post.id}>
-                    <CardContent className="pt-6">
-                      <div className="flex justify-between items-start gap-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-foreground mb-1">
-                            {post.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground mb-2">
-                            By {post.author} • {new Date(post.createdAt).toLocaleDateString()}
-                          </p>
-                          <div className="flex gap-2">
-                            <span className="inline-block px-2 py-1 bg-muted text-muted-foreground rounded text-xs">
-                              {post.category || "Uncategorized"}
-                            </span>
-                            <span
-                              className={`inline-block px-2 py-1 rounded text-xs font-medium ${
-                                post.published
-                                  ? "bg-green-100 text-green-700"
-                                  : "bg-yellow-100 text-yellow-700"
-                              }`}
-                            >
-                              {post.published ? "Published" : "Draft"}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleEdit(post)}
-                          >
-                            <Edit2 className="w-4 h-4" />
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="text-destructive"
-                            onClick={() => handleDelete(post.id)}
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
+              posts.map((post: any) => (
+                <Card key={post.id}>
+                  <CardContent className="pt-6">
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-foreground">{post.title}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">{post.excerpt}</p>
+                        <div className="flex gap-4 mt-2 text-xs text-muted-foreground">
+                          <span>By {post.author}</span>
+                          {post.category && <span>Category: {post.category}</span>}
+                          <span>{post.published === 1 ? "Published" : "Draft"}</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleEdit(post)}
+                          className="flex items-center gap-1"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                          Edit
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => handleDelete(post.id)}
+                          className="flex items-center gap-1"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          Delete
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
             ) : (
-              <p className="text-muted-foreground">No blog posts yet. Create your first post!</p>
+              <Card>
+                <CardContent className="pt-6 text-center text-muted-foreground">
+                  No blog posts yet. Create your first post!
+                </CardContent>
+              </Card>
             )}
           </div>
         </div>
