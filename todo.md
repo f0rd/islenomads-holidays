@@ -85,3 +85,11 @@
 - [x] Create activity-specific popups
 - [x] Add difficulty levels and ratings
 - [x] Test activity markers functionality
+
+## Islands & Resorts Integration
+- [x] Add popular islands data with coordinates
+- [x] Add luxury resorts data with details
+- [x] Implement island and resort markers on map
+- [x] Create filtering by resort category/price
+- [x] Add resort detail cards with amenities
+- [x] Test islands and resorts functionality

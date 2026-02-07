@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MapPin, Info, Waves, Anchor } from "lucide-react";
+import { MapPin, Info, Waves, Anchor, Building2, Palmtree } from "lucide-react";
 
 // Maldives popular locations data
 const MALDIVES_LOCATIONS = [
@@ -106,6 +106,178 @@ const MALDIVES_LOCATIONS = [
     description: "Northernmost atoll with untouched beauty",
     highlights: ["Untouched Beaches", "Rare Marine Life", "Adventure"],
     image: "/images/haa-alifu-atoll.jpg",
+  },
+];
+
+// Popular Islands Data
+const POPULAR_ISLANDS = [
+  {
+    id: "island-1",
+    name: "Maafushi Island",
+    type: "Island",
+    lat: 4.25,
+    lng: 73.42,
+    category: "Local Island",
+    description: "Popular local island with budget-friendly guesthouses and vibrant culture",
+    highlights: ["Local Atmosphere", "Budget Friendly", "Beach Bars", "Water Sports"],
+    population: "~2000",
+    rating: 4.4,
+  },
+  {
+    id: "island-2",
+    name: "Thoddoo Island",
+    type: "Island",
+    lat: 5.3,
+    lng: 73.4,
+    category: "Local Island",
+    description: "Authentic local island known for agriculture and traditional culture",
+    highlights: ["Watermelon Farms", "Local Markets", "Fishing Village", "Authentic Experience"],
+    population: "~1500",
+    rating: 4.3,
+  },
+  {
+    id: "island-3",
+    name: "Guraidhoo Island",
+    type: "Island",
+    lat: 3.95,
+    lng: 73.52,
+    category: "Local Island",
+    description: "Charming local island with excellent house reefs and friendly locals",
+    highlights: ["House Reef Diving", "Local Restaurants", "Fishing Culture", "Peaceful"],
+    population: "~800",
+    rating: 4.5,
+  },
+  {
+    id: "island-4",
+    name: "Thulusdhoo Island",
+    type: "Island",
+    lat: 4.35,
+    lng: 73.55,
+    category: "Local Island",
+    description: "Laid-back island famous for surfing and relaxed beach culture",
+    highlights: ["Surf Breaks", "Beach Vibes", "Local Cafes", "Yoga Retreats"],
+    population: "~1200",
+    rating: 4.6,
+  },
+  {
+    id: "island-5",
+    name: "Kandooma Island",
+    type: "Island",
+    lat: 3.88,
+    lng: 73.52,
+    category: "Local Island",
+    description: "Scenic island with beautiful beaches and excellent diving spots",
+    highlights: ["Scenic Beaches", "Dive Sites", "Snorkeling", "Island Hopping"],
+    population: "~600",
+    rating: 4.4,
+  },
+];
+
+// Luxury Resorts Data
+const LUXURY_RESORTS = [
+  {
+    id: "resort-1",
+    name: "Soneva Jani",
+    type: "Resort",
+    lat: 4.25,
+    lng: 73.35,
+    category: "Ultra-Luxury",
+    price: "$$$$$",
+    description: "Iconic ultra-luxury resort with glass villas and private pools",
+    amenities: ["Glass Villas", "Underwater Spa", "Private Pool", "Michelin-starred Dining"],
+    rating: 4.9,
+    pricePerNight: "$1500+",
+  },
+  {
+    id: "resort-2",
+    name: "The Muraka",
+    type: "Resort",
+    lat: 4.28,
+    lng: 73.38,
+    category: "Ultra-Luxury",
+    price: "$$$$$",
+    description: "Exclusive underwater villa experience with panoramic ocean views",
+    amenities: ["Underwater Bedroom", "Private Yacht", "Infinity Pool", "Fine Dining"],
+    rating: 4.9,
+    pricePerNight: "$1800+",
+  },
+  {
+    id: "resort-3",
+    name: "Baros Maldives",
+    type: "Resort",
+    lat: 4.32,
+    lng: 73.48,
+    category: "Luxury",
+    price: "$$$$",
+    description: "Elegant luxury resort with pristine beaches and world-class diving",
+    amenities: ["Overwater Villas", "Spa", "Fine Dining", "Diving Center"],
+    rating: 4.8,
+    pricePerNight: "$800-1200",
+  },
+  {
+    id: "resort-4",
+    name: "Angsana Ihuru",
+    type: "Resort",
+    lat: 4.35,
+    lng: 73.52,
+    category: "Mid-Range",
+    price: "$$$",
+    description: "Comfortable mid-range resort with excellent value and friendly service",
+    amenities: ["Beach Villas", "Restaurant", "Snorkeling", "Water Sports"],
+    rating: 4.5,
+    pricePerNight: "$400-600",
+  },
+  {
+    id: "resort-5",
+    name: "Adaaran Select Meedhupparu",
+    type: "Resort",
+    lat: 5.15,
+    lng: 73.28,
+    category: "Luxury",
+    price: "$$$$",
+    description: "All-inclusive luxury resort in Baa Atoll with exceptional diving",
+    amenities: ["All-Inclusive", "House Reef", "Spa", "Diving Packages"],
+    rating: 4.7,
+    pricePerNight: "$600-900",
+  },
+  {
+    id: "resort-6",
+    name: "Vakaaru Island Resort",
+    type: "Resort",
+    lat: 3.92,
+    lng: 73.45,
+    category: "Mid-Range",
+    price: "$$$",
+    description: "Boutique resort with personalized service and intimate atmosphere",
+    amenities: ["Beach Villas", "Spa", "Restaurant", "Water Activities"],
+    rating: 4.6,
+    pricePerNight: "$500-700",
+  },
+  {
+    id: "resort-7",
+    name: "Kurumba Maldives",
+    type: "Resort",
+    lat: 4.38,
+    lng: 73.52,
+    category: "Luxury",
+    price: "$$$$",
+    description: "Iconic resort close to Malé with excellent facilities and service",
+    amenities: ["Overwater Villas", "Spa", "Multiple Restaurants", "Watersports"],
+    rating: 4.7,
+    pricePerNight: "$700-1000",
+  },
+  {
+    id: "resort-8",
+    name: "Coco Bodu Hithi",
+    type: "Resort",
+    lat: 4.42,
+    lng: 73.55,
+    category: "Luxury",
+    price: "$$$$",
+    description: "Stylish luxury resort with contemporary design and excellent dining",
+    amenities: ["Modern Villas", "Spa", "Fine Dining", "Diving"],
+    rating: 4.8,
+    pricePerNight: "$900-1300",
   },
 ];
 
@@ -291,10 +463,15 @@ export default function MaldivesMap() {
   const [selectedLocation, setSelectedLocation] = useState<(typeof MALDIVES_LOCATIONS)[0] | null>(null);
   const [selectedDive, setSelectedDive] = useState<(typeof DIVE_POINTS)[0] | null>(null);
   const [selectedSurf, setSelectedSurf] = useState<(typeof SURF_SPOTS)[0] | null>(null);
+  const [selectedIsland, setSelectedIsland] = useState<(typeof POPULAR_ISLANDS)[0] | null>(null);
+  const [selectedResort, setSelectedResort] = useState<(typeof LUXURY_RESORTS)[0] | null>(null);
   const [filteredLocations, setFilteredLocations] = useState(MALDIVES_LOCATIONS);
   const [filteredDives, setFilteredDives] = useState(DIVE_POINTS);
   const [filteredSurfs, setFilteredSurfs] = useState(SURF_SPOTS);
-  const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs">("all");
+  const [filteredIslands, setFilteredIslands] = useState(POPULAR_ISLANDS);
+  const [filteredResorts, setFilteredResorts] = useState(LUXURY_RESORTS);
+  const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts">("all");
+  const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
 
   // Filter locations based on search and activity type
   useEffect(() => {
@@ -318,38 +495,34 @@ export default function MaldivesMap() {
         surf.description.toLowerCase().includes(searchLower)
     );
 
+    const islands = POPULAR_ISLANDS.filter(
+      (island) =>
+        island.name.toLowerCase().includes(searchLower) ||
+        island.description.toLowerCase().includes(searchLower)
+    );
+
+    let resorts = LUXURY_RESORTS.filter(
+      (resort) =>
+        resort.name.toLowerCase().includes(searchLower) ||
+        resort.description.toLowerCase().includes(searchLower)
+    );
+
+    // Apply price filter to resorts
+    if (priceFilter !== "all") {
+      resorts = resorts.filter((resort) => {
+        if (priceFilter === "budget") return resort.category === "Mid-Range";
+        if (priceFilter === "mid") return resort.category === "Luxury";
+        if (priceFilter === "luxury") return resort.category === "Ultra-Luxury";
+        return true;
+      });
+    }
+
     setFilteredLocations(locations);
     setFilteredDives(dives);
     setFilteredSurfs(surfs);
-  }, [searchTerm]);
-
-  const allMarkers = [
-    ...filteredLocations.map(loc => ({ ...loc, markerType: 'atoll' as const })),
-    ...filteredDives.map(dive => ({ ...dive, markerType: 'dive' as const })),
-    ...filteredSurfs.map(surf => ({ ...surf, markerType: 'surf' as const })),
-  ];
-
-  const getMarkerColor = (markerType: string) => {
-    switch (markerType) {
-      case 'dive':
-        return '#0891b2'; // cyan
-      case 'surf':
-        return '#f59e0b'; // amber
-      default:
-        return '#0d9488'; // teal
-    }
-  };
-
-  const getMarkerIcon = (markerType: string) => {
-    switch (markerType) {
-      case 'dive':
-        return '⚓';
-      case 'surf':
-        return '🌊';
-      default:
-        return '📍';
-    }
-  };
+    setFilteredIslands(islands);
+    setFilteredResorts(resorts);
+  }, [searchTerm, priceFilter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -363,7 +536,7 @@ export default function MaldivesMap() {
               Explore the Maldives
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover atolls, dive points, and surf spots across the Maldives. 
+              Discover atolls, islands, resorts, dive points, and surf spots across the Maldives. 
               Explore pristine beaches, vibrant coral reefs, and thrilling water sports.
             </p>
           </div>
@@ -371,7 +544,7 @@ export default function MaldivesMap() {
           {/* Search and Filter */}
           <div className="mb-8 space-y-4">
             <Input
-              placeholder="Search locations, dive sites, or surf spots..."
+              placeholder="Search locations, islands, resorts, dive sites, or surf spots..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full h-12 text-base"
@@ -387,7 +560,7 @@ export default function MaldivesMap() {
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
-                All Activities
+                All
               </button>
               <button
                 onClick={() => setActivityFilter("atolls")}
@@ -398,7 +571,29 @@ export default function MaldivesMap() {
                 }`}
               >
                 <MapPin className="w-4 h-4" />
-                Atolls ({filteredLocations.length})
+                Atolls
+              </button>
+              <button
+                onClick={() => setActivityFilter("islands")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "islands"
+                    ? "bg-green-600 text-white"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <Palmtree className="w-4 h-4" />
+                Islands
+              </button>
+              <button
+                onClick={() => setActivityFilter("resorts")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "resorts"
+                    ? "bg-purple-600 text-white"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <Building2 className="w-4 h-4" />
+                Resorts
               </button>
               <button
                 onClick={() => setActivityFilter("dives")}
@@ -409,7 +604,7 @@ export default function MaldivesMap() {
                 }`}
               >
                 <Anchor className="w-4 h-4" />
-                Dive Points ({filteredDives.length})
+                Dives
               </button>
               <button
                 onClick={() => setActivityFilter("surfs")}
@@ -420,9 +615,56 @@ export default function MaldivesMap() {
                 }`}
               >
                 <Waves className="w-4 h-4" />
-                Surf Spots ({filteredSurfs.length})
+                Surfs
               </button>
             </div>
+
+            {/* Price Filter for Resorts */}
+            {(activityFilter === "all" || activityFilter === "resorts") && (
+              <div className="flex flex-wrap gap-2">
+                <span className="text-sm font-medium text-muted-foreground self-center">Resort Price:</span>
+                <button
+                  onClick={() => setPriceFilter("all")}
+                  className={`px-3 py-1 rounded-lg text-sm transition-all ${
+                    priceFilter === "all"
+                      ? "bg-purple-600 text-white"
+                      : "bg-secondary text-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  All Prices
+                </button>
+                <button
+                  onClick={() => setPriceFilter("budget")}
+                  className={`px-3 py-1 rounded-lg text-sm transition-all ${
+                    priceFilter === "budget"
+                      ? "bg-green-600 text-white"
+                      : "bg-secondary text-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  Budget ($400-700)
+                </button>
+                <button
+                  onClick={() => setPriceFilter("mid")}
+                  className={`px-3 py-1 rounded-lg text-sm transition-all ${
+                    priceFilter === "mid"
+                      ? "bg-blue-600 text-white"
+                      : "bg-secondary text-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  Luxury ($700-1300)
+                </button>
+                <button
+                  onClick={() => setPriceFilter("luxury")}
+                  className={`px-3 py-1 rounded-lg text-sm transition-all ${
+                    priceFilter === "luxury"
+                      ? "bg-amber-600 text-white"
+                      : "bg-secondary text-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  Ultra-Luxury ($1500+)
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Main Content Grid */}
@@ -457,7 +699,7 @@ export default function MaldivesMap() {
                       {/* Ocean background */}
                       <rect width="400" height="600" fill="#87CEEB" opacity="0.3" />
 
-                      {/* Render markers based on filter */}
+                      {/* Render Atolls */}
                       {(activityFilter === "all" || activityFilter === "atolls") && filteredLocations.map((location) => {
                         const x = ((location.lng - 72) / 2) * 350 + 25;
                         const y = ((7 - location.lat) / 7) * 550 + 25;
@@ -471,7 +713,7 @@ export default function MaldivesMap() {
                               fill="#0d9488"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all hover:r-12"
+                              className="cursor-pointer transition-all"
                               onClick={() => setSelectedLocation(location)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -490,7 +732,73 @@ export default function MaldivesMap() {
                         );
                       })}
 
-                      {/* Dive Points */}
+                      {/* Render Islands */}
+                      {(activityFilter === "all" || activityFilter === "islands") && filteredIslands.map((island) => {
+                        const x = ((island.lng - 72) / 2) * 350 + 25;
+                        const y = ((7 - island.lat) / 7) * 550 + 25;
+
+                        return (
+                          <g key={island.id} filter="url(#shadow)">
+                            <circle
+                              cx={x}
+                              cy={y}
+                              r={selectedIsland?.id === island.id ? 10 : 7}
+                              fill="#22c55e"
+                              stroke="white"
+                              strokeWidth="2"
+                              className="cursor-pointer transition-all"
+                              onClick={() => setSelectedIsland(island)}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                            />
+                            <text
+                              x={x}
+                              y={y + 2}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="white"
+                              className="pointer-events-none"
+                            >
+                              🏝️
+                            </text>
+                          </g>
+                        );
+                      })}
+
+                      {/* Render Resorts */}
+                      {(activityFilter === "all" || activityFilter === "resorts") && filteredResorts.map((resort) => {
+                        const x = ((resort.lng - 72) / 2) * 350 + 25;
+                        const y = ((7 - resort.lat) / 7) * 550 + 25;
+
+                        return (
+                          <g key={resort.id} filter="url(#shadow)">
+                            <circle
+                              cx={x}
+                              cy={y}
+                              r={selectedResort?.id === resort.id ? 10 : 7}
+                              fill="#a855f7"
+                              stroke="white"
+                              strokeWidth="2"
+                              className="cursor-pointer transition-all"
+                              onClick={() => setSelectedResort(resort)}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                            />
+                            <text
+                              x={x}
+                              y={y + 2}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="white"
+                              className="pointer-events-none"
+                            >
+                              🏨
+                            </text>
+                          </g>
+                        );
+                      })}
+
+                      {/* Render Dive Points */}
                       {(activityFilter === "all" || activityFilter === "dives") && filteredDives.map((dive) => {
                         const x = ((dive.lng - 72) / 2) * 350 + 25;
                         const y = ((7 - dive.lat) / 7) * 550 + 25;
@@ -523,7 +831,7 @@ export default function MaldivesMap() {
                         );
                       })}
 
-                      {/* Surf Spots */}
+                      {/* Render Surf Spots */}
                       {(activityFilter === "all" || activityFilter === "surfs") && filteredSurfs.map((surf) => {
                         const x = ((surf.lng - 72) / 2) * 350 + 25;
                         const y = ((7 - surf.lat) / 7) * 550 + 25;
@@ -558,21 +866,29 @@ export default function MaldivesMap() {
 
                       {/* Legend */}
                       <g>
-                        <rect x="10" y="10" width="140" height="90" fill="white" opacity="0.95" rx="4" />
+                        <rect x="10" y="10" width="140" height="130" fill="white" opacity="0.95" rx="4" />
                         <circle cx="25" cy="25" r="4" fill="#0d9488" />
-                        <text x="35" y="30" fontSize="11" fill="#333" fontWeight="bold">
+                        <text x="35" y="30" fontSize="10" fill="#333" fontWeight="bold">
                           Atolls
                         </text>
-                        <circle cx="25" cy="45" r="4" fill="#0891b2" />
-                        <text x="35" y="50" fontSize="11" fill="#333" fontWeight="bold">
-                          Dive Points
+                        <circle cx="25" cy="45" r="4" fill="#22c55e" />
+                        <text x="35" y="50" fontSize="10" fill="#333" fontWeight="bold">
+                          Islands
                         </text>
-                        <circle cx="25" cy="65" r="4" fill="#f59e0b" />
-                        <text x="35" y="70" fontSize="11" fill="#333" fontWeight="bold">
-                          Surf Spots
+                        <circle cx="25" cy="65" r="4" fill="#a855f7" />
+                        <text x="35" y="70" fontSize="10" fill="#333" fontWeight="bold">
+                          Resorts
                         </text>
-                        <circle cx="25" cy="85" r="4" fill="#06b6d4" />
-                        <text x="35" y="90" fontSize="11" fill="#333" fontWeight="bold">
+                        <circle cx="25" cy="85" r="4" fill="#0891b2" />
+                        <text x="35" y="90" fontSize="10" fill="#333" fontWeight="bold">
+                          Dives
+                        </text>
+                        <circle cx="25" cy="105" r="4" fill="#f59e0b" />
+                        <text x="35" y="110" fontSize="10" fill="#333" fontWeight="bold">
+                          Surfs
+                        </text>
+                        <circle cx="25" cy="125" r="4" fill="#06b6d4" />
+                        <text x="35" y="130" fontSize="10" fill="#333" fontWeight="bold">
                           Selected
                         </text>
                       </g>
@@ -582,36 +898,70 @@ export default function MaldivesMap() {
               </Card>
             </div>
 
-            {/* Sidebar - Locations List */}
-            <div className="lg:col-span-1 space-y-4">
-              {/* Atolls List */}
-              {(activityFilter === "all" || activityFilter === "atolls") && (
+            {/* Sidebar - Lists */}
+            <div className="lg:col-span-1 space-y-4 max-h-[600px] overflow-y-auto">
+              {/* Islands List */}
+              {(activityFilter === "all" || activityFilter === "islands") && (
                 <Card className="h-auto overflow-hidden flex flex-col">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      Atolls ({filteredLocations.length})
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Palmtree className="w-4 h-4 text-green-600" />
+                    Islands ({filteredIslands.length})
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
-                    {filteredLocations.length > 0 ? (
-                      filteredLocations.map((location) => (
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-40">
+                    {filteredIslands.length > 0 ? (
+                      filteredIslands.map((island) => (
                         <div
-                          key={location.id}
-                          onClick={() => setSelectedLocation(location)}
+                          key={island.id}
+                          onClick={() => setSelectedIsland(island)}
                           className={`p-2 rounded-lg cursor-pointer transition-all text-sm ${
-                            selectedLocation?.id === location.id
-                              ? "bg-accent text-white shadow-lg"
+                            selectedIsland?.id === island.id
+                              ? "bg-green-600 text-white shadow-lg"
                               : "bg-secondary hover:bg-secondary/80"
                           }`}
                         >
-                          <div className="font-semibold">{location.name}</div>
-                          <div className="text-xs opacity-75">{location.type}</div>
+                          <div className="font-semibold">{island.name}</div>
+                          <div className="text-xs opacity-75">{island.category}</div>
                         </div>
                       ))
                     ) : (
                       <div className="text-center text-muted-foreground py-4 text-sm">
-                        No atolls found
+                        No islands found
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Resorts List */}
+              {(activityFilter === "all" || activityFilter === "resorts") && (
+                <Card className="h-auto overflow-hidden flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Building2 className="w-4 h-4 text-purple-600" />
+                      Resorts ({filteredResorts.length})
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-40">
+                    {filteredResorts.length > 0 ? (
+                      filteredResorts.map((resort) => (
+                        <div
+                          key={resort.id}
+                          onClick={() => setSelectedResort(resort)}
+                          className={`p-2 rounded-lg cursor-pointer transition-all text-sm ${
+                            selectedResort?.id === resort.id
+                              ? "bg-purple-600 text-white shadow-lg"
+                              : "bg-secondary hover:bg-secondary/80"
+                          }`}
+                        >
+                          <div className="font-semibold">{resort.name}</div>
+                          <div className="text-xs opacity-75">{resort.category} • {resort.pricePerNight}</div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center text-muted-foreground py-4 text-sm">
+                        No resorts found
                       </div>
                     )}
                   </CardContent>
@@ -624,10 +974,10 @@ export default function MaldivesMap() {
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
                       <Anchor className="w-4 h-4 text-cyan-600" />
-                      Dive Points ({filteredDives.length})
+                      Dives ({filteredDives.length})
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-40">
                     {filteredDives.length > 0 ? (
                       filteredDives.map((dive) => (
                         <div
@@ -658,10 +1008,10 @@ export default function MaldivesMap() {
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
                       <Waves className="w-4 h-4 text-amber-500" />
-                      Surf Spots ({filteredSurfs.length})
+                      Surfs ({filteredSurfs.length})
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-40">
                     {filteredSurfs.length > 0 ? (
                       filteredSurfs.map((surf) => (
                         <div
@@ -689,6 +1039,112 @@ export default function MaldivesMap() {
           </div>
 
           {/* Details Sections */}
+          {selectedIsland && (
+            <Card className="mt-8 border-green-600">
+              <CardHeader className="bg-green-50">
+                <CardTitle className="flex items-center gap-2 text-green-900">
+                  <Palmtree className="w-5 h-5" />
+                  {selectedIsland.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="w-full h-48 bg-gradient-to-br from-green-300 to-emerald-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
+                      🏝️
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                      <p className="text-muted-foreground">{selectedIsland.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedIsland.highlights.map((highlight, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium"
+                          >
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                      <div>
+                        <div className="text-xs text-muted-foreground">Category</div>
+                        <div className="font-semibold text-foreground">{selectedIsland.category}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Population</div>
+                        <div className="font-semibold text-foreground">{selectedIsland.population}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Rating</div>
+                        <div className="font-semibold text-foreground">⭐ {selectedIsland.rating}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedResort && (
+            <Card className="mt-8 border-purple-600">
+              <CardHeader className="bg-purple-50">
+                <CardTitle className="flex items-center gap-2 text-purple-900">
+                  <Building2 className="w-5 h-5" />
+                  {selectedResort.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="w-full h-48 bg-gradient-to-br from-purple-300 to-violet-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
+                      🏨
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                      <p className="text-muted-foreground">{selectedResort.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Amenities</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedResort.amenities.map((amenity, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium"
+                          >
+                            {amenity}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                      <div>
+                        <div className="text-xs text-muted-foreground">Category</div>
+                        <div className="font-semibold text-foreground">{selectedResort.category}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Price/Night</div>
+                        <div className="font-semibold text-foreground">{selectedResort.pricePerNight}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Rating</div>
+                        <div className="font-semibold text-foreground">⭐ {selectedResort.rating}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {selectedLocation && (
             <Card className="mt-8">
               <CardHeader>
