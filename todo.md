@@ -93,3 +93,12 @@
 - [x] Create filtering by resort category/price
 - [x] Add resort detail cards with amenities
 - [x] Test islands and resorts functionality
+
+## Boat Routes & Transportation
+- [x] Create speedboat routes data with schedules
+- [x] Create public ferry routes data with schedules
+- [x] Add boat information (capacity, speed, amenities)
+- [x] Implement route visualization on map
+- [x] Create boat/route filtering and search
+- [x] Add transportation information panels
+- [x] Test boat routes and transportation functionality
