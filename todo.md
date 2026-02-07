@@ -77,3 +77,11 @@
 - [x] Add location filtering and search
 - [x] Integrate map page into navigation
 - [x] Test map functionality
+
+## Activity Markers (Dive Points & Surf Spots)
+- [x] Add dive points data with coordinates
+- [x] Add surf spots data with coordinates
+- [x] Implement marker filtering by activity type
+- [x] Create activity-specific popups
+- [x] Add difficulty levels and ratings
+- [x] Test activity markers functionality

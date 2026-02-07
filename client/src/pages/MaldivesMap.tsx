@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MapPin, Info } from "lucide-react";
+import { MapPin, Info, Waves, Anchor } from "lucide-react";
 
 // Maldives popular locations data
 const MALDIVES_LOCATIONS = [
@@ -109,21 +109,247 @@ const MALDIVES_LOCATIONS = [
   },
 ];
 
+// Dive Points Data
+const DIVE_POINTS = [
+  {
+    id: "dive-1",
+    name: "Banana Reef",
+    type: "Dive Point",
+    lat: 4.25,
+    lng: 73.52,
+    difficulty: "Intermediate",
+    depth: "5-30m",
+    description: "Iconic reef with excellent coral formations and tropical fish",
+    highlights: ["Coral Gardens", "Reef Sharks", "Groupers"],
+    rating: 4.8,
+  },
+  {
+    id: "dive-2",
+    name: "Maaya Thila",
+    type: "Dive Point",
+    lat: 4.28,
+    lng: 73.48,
+    difficulty: "Advanced",
+    depth: "10-40m",
+    description: "Dramatic underwater mountain with strong currents and large pelagics",
+    highlights: ["Pelagic Fish", "Sharks", "Eagle Rays"],
+    rating: 4.9,
+  },
+  {
+    id: "dive-3",
+    name: "Miyaru Kandu",
+    type: "Dive Point",
+    lat: 4.35,
+    lng: 73.45,
+    difficulty: "Advanced",
+    depth: "15-40m",
+    description: "Channel dive with strong currents and abundant marine life",
+    highlights: ["Manta Rays", "Snappers", "Trevally"],
+    rating: 4.7,
+  },
+  {
+    id: "dive-4",
+    name: "Hanifaru Bay",
+    type: "Dive Point",
+    lat: 5.25,
+    lng: 73.32,
+    difficulty: "Beginner",
+    depth: "3-20m",
+    description: "UNESCO site famous for manta ray aggregations",
+    highlights: ["Manta Rays", "Whale Sharks", "Snorkeling"],
+    rating: 4.9,
+  },
+  {
+    id: "dive-5",
+    name: "Fotteyo Kandu",
+    type: "Dive Point",
+    lat: 4.18,
+    lng: 73.52,
+    difficulty: "Intermediate",
+    depth: "8-35m",
+    description: "Channel with excellent visibility and diverse marine life",
+    highlights: ["Reef Fish", "Rays", "Octopus"],
+    rating: 4.6,
+  },
+  {
+    id: "dive-6",
+    name: "Okobe Thila",
+    type: "Dive Point",
+    lat: 3.95,
+    lng: 73.48,
+    difficulty: "Intermediate",
+    depth: "12-30m",
+    description: "Beautiful thila with colorful corals and schooling fish",
+    highlights: ["Coral Formations", "Schooling Fish", "Turtles"],
+    rating: 4.5,
+  },
+  {
+    id: "dive-7",
+    name: "Vaavu Wreck",
+    type: "Dive Point",
+    lat: 3.6,
+    lng: 73.0,
+    difficulty: "Advanced",
+    depth: "20-40m",
+    description: "Wreck dive with historical significance and marine life",
+    highlights: ["Wreck Exploration", "Groupers", "Snappers"],
+    rating: 4.4,
+  },
+  {
+    id: "dive-8",
+    name: "Kandooma Thila",
+    type: "Dive Point",
+    lat: 3.88,
+    lng: 73.52,
+    difficulty: "Intermediate",
+    depth: "10-35m",
+    description: "Popular thila with excellent coral and abundant fish",
+    highlights: ["Coral Reefs", "Reef Sharks", "Jacks"],
+    rating: 4.7,
+  },
+];
+
+// Surf Spots Data
+const SURF_SPOTS = [
+  {
+    id: "surf-1",
+    name: "Pasta Point",
+    type: "Surf Spot",
+    lat: 4.15,
+    lng: 73.45,
+    difficulty: "Intermediate",
+    waveHeight: "2-6ft",
+    description: "Consistent reef break with long rides and friendly atmosphere",
+    highlights: ["Consistent Waves", "Right Hander", "Reef Break"],
+    rating: 4.6,
+  },
+  {
+    id: "surf-2",
+    name: "Chickens",
+    type: "Surf Spot",
+    lat: 4.12,
+    lng: 73.42,
+    difficulty: "Beginner",
+    waveHeight: "1-4ft",
+    description: "Mellow beach break perfect for beginners and learning",
+    highlights: ["Beach Break", "Beginner Friendly", "Sandy Bottom"],
+    rating: 4.3,
+  },
+  {
+    id: "surf-3",
+    name: "Riptide",
+    type: "Surf Spot",
+    lat: 4.18,
+    lng: 73.48,
+    difficulty: "Advanced",
+    waveHeight: "3-8ft",
+    description: "Powerful reef break with challenging conditions",
+    highlights: ["Powerful Waves", "Reef Break", "Left Hander"],
+    rating: 4.5,
+  },
+  {
+    id: "surf-4",
+    name: "Thalapathi",
+    type: "Surf Spot",
+    lat: 4.22,
+    lng: 73.55,
+    difficulty: "Intermediate",
+    waveHeight: "2-5ft",
+    description: "Consistent point break with smooth waves",
+    highlights: ["Point Break", "Long Rides", "Scenic"],
+    rating: 4.4,
+  },
+  {
+    id: "surf-5",
+    name: "Jailbreaks",
+    type: "Surf Spot",
+    lat: 4.08,
+    lng: 73.38,
+    difficulty: "Advanced",
+    waveHeight: "3-7ft",
+    description: "Challenging reef break with fast walls",
+    highlights: ["Reef Break", "Fast Walls", "Barrels"],
+    rating: 4.7,
+  },
+  {
+    id: "surf-6",
+    name: "Honky's",
+    type: "Surf Spot",
+    lat: 4.05,
+    lng: 73.35,
+    difficulty: "Intermediate",
+    waveHeight: "2-6ft",
+    description: "Fun reef break with multiple peaks",
+    highlights: ["Multiple Peaks", "Reef Break", "Fun Waves"],
+    rating: 4.5,
+  },
+];
+
 export default function MaldivesMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState<(typeof MALDIVES_LOCATIONS)[0] | null>(null);
+  const [selectedDive, setSelectedDive] = useState<(typeof DIVE_POINTS)[0] | null>(null);
+  const [selectedSurf, setSelectedSurf] = useState<(typeof SURF_SPOTS)[0] | null>(null);
   const [filteredLocations, setFilteredLocations] = useState(MALDIVES_LOCATIONS);
+  const [filteredDives, setFilteredDives] = useState(DIVE_POINTS);
+  const [filteredSurfs, setFilteredSurfs] = useState(SURF_SPOTS);
+  const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs">("all");
 
-  // Filter locations based on search
+  // Filter locations based on search and activity type
   useEffect(() => {
-    const filtered = MALDIVES_LOCATIONS.filter(
+    const searchLower = searchTerm.toLowerCase();
+    
+    const locations = MALDIVES_LOCATIONS.filter(
       (location) =>
-        location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        location.description.toLowerCase().includes(searchTerm.toLowerCase())
+        location.name.toLowerCase().includes(searchLower) ||
+        location.description.toLowerCase().includes(searchLower)
     );
-    setFilteredLocations(filtered);
+    
+    const dives = DIVE_POINTS.filter(
+      (dive) =>
+        dive.name.toLowerCase().includes(searchLower) ||
+        dive.description.toLowerCase().includes(searchLower)
+    );
+    
+    const surfs = SURF_SPOTS.filter(
+      (surf) =>
+        surf.name.toLowerCase().includes(searchLower) ||
+        surf.description.toLowerCase().includes(searchLower)
+    );
+
+    setFilteredLocations(locations);
+    setFilteredDives(dives);
+    setFilteredSurfs(surfs);
   }, [searchTerm]);
+
+  const allMarkers = [
+    ...filteredLocations.map(loc => ({ ...loc, markerType: 'atoll' as const })),
+    ...filteredDives.map(dive => ({ ...dive, markerType: 'dive' as const })),
+    ...filteredSurfs.map(surf => ({ ...surf, markerType: 'surf' as const })),
+  ];
+
+  const getMarkerColor = (markerType: string) => {
+    switch (markerType) {
+      case 'dive':
+        return '#0891b2'; // cyan
+      case 'surf':
+        return '#f59e0b'; // amber
+      default:
+        return '#0d9488'; // teal
+    }
+  };
+
+  const getMarkerIcon = (markerType: string) => {
+    switch (markerType) {
+      case 'dive':
+        return '⚓';
+      case 'surf':
+        return '🌊';
+      default:
+        return '📍';
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -137,19 +363,66 @@ export default function MaldivesMap() {
               Explore the Maldives
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover the most beautiful atolls, islands, and destinations in the Maldives. 
-              Explore pristine beaches, vibrant coral reefs, and luxury resorts across our interactive map.
+              Discover atolls, dive points, and surf spots across the Maldives. 
+              Explore pristine beaches, vibrant coral reefs, and thrilling water sports.
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="mb-8">
+          {/* Search and Filter */}
+          <div className="mb-8 space-y-4">
             <Input
-              placeholder="Search locations, atolls, or activities..."
+              placeholder="Search locations, dive sites, or surf spots..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full h-12 text-base"
             />
+            
+            {/* Activity Filter Buttons */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setActivityFilter("all")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  activityFilter === "all"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                All Activities
+              </button>
+              <button
+                onClick={() => setActivityFilter("atolls")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "atolls"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <MapPin className="w-4 h-4" />
+                Atolls ({filteredLocations.length})
+              </button>
+              <button
+                onClick={() => setActivityFilter("dives")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "dives"
+                    ? "bg-cyan-600 text-white"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <Anchor className="w-4 h-4" />
+                Dive Points ({filteredDives.length})
+              </button>
+              <button
+                onClick={() => setActivityFilter("surfs")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "surfs"
+                    ? "bg-amber-500 text-white"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <Waves className="w-4 h-4" />
+                Surf Spots ({filteredSurfs.length})
+              </button>
+            </div>
           </div>
 
           {/* Main Content Grid */}
@@ -169,13 +442,12 @@ export default function MaldivesMap() {
                     className="w-full bg-gradient-to-br from-cyan-100 to-blue-100 rounded-lg overflow-hidden"
                     style={{ height: "600px" }}
                   >
-                    {/* Simple SVG Map Visualization */}
+                    {/* SVG Map Visualization */}
                     <svg
                       viewBox="0 0 400 600"
                       className="w-full h-full"
                       style={{ background: "linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%)" }}
                     >
-                      {/* Maldives outline - simplified */}
                       <defs>
                         <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
                           <feDropShadow dx="2" dy="2" stdDeviation="3" floodOpacity="0.3" />
@@ -185,36 +457,29 @@ export default function MaldivesMap() {
                       {/* Ocean background */}
                       <rect width="400" height="600" fill="#87CEEB" opacity="0.3" />
 
-                      {/* Atoll circles */}
-                      {filteredLocations.map((location) => {
-                        // Normalize coordinates to SVG viewBox
+                      {/* Render markers based on filter */}
+                      {(activityFilter === "all" || activityFilter === "atolls") && filteredLocations.map((location) => {
                         const x = ((location.lng - 72) / 2) * 350 + 25;
                         const y = ((7 - location.lat) / 7) * 550 + 25;
-                        const isSelected = selectedLocation?.id === location.id;
 
                         return (
                           <g key={location.id} filter="url(#shadow)">
-                            {/* Location circle */}
                             <circle
                               cx={x}
                               cy={y}
-                              r={isSelected ? 12 : 8}
-                              fill={isSelected ? "#06b6d4" : "#0d9488"}
+                              r={selectedLocation?.id === location.id ? 12 : 8}
+                              fill="#0d9488"
                               stroke="white"
                               strokeWidth="2"
                               className="cursor-pointer transition-all hover:r-12"
                               onClick={() => setSelectedLocation(location)}
-                              style={{
-                                cursor: "pointer",
-                                transition: "all 0.3s ease",
-                              }}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
-                            {/* Label */}
                             <text
                               x={x}
                               y={y - 18}
                               textAnchor="middle"
-                              fontSize="11"
+                              fontSize="10"
                               fontWeight="bold"
                               fill="#0d9488"
                               className="pointer-events-none"
@@ -225,16 +490,90 @@ export default function MaldivesMap() {
                         );
                       })}
 
+                      {/* Dive Points */}
+                      {(activityFilter === "all" || activityFilter === "dives") && filteredDives.map((dive) => {
+                        const x = ((dive.lng - 72) / 2) * 350 + 25;
+                        const y = ((7 - dive.lat) / 7) * 550 + 25;
+
+                        return (
+                          <g key={dive.id} filter="url(#shadow)">
+                            <circle
+                              cx={x}
+                              cy={y}
+                              r={selectedDive?.id === dive.id ? 10 : 6}
+                              fill="#0891b2"
+                              stroke="white"
+                              strokeWidth="2"
+                              className="cursor-pointer transition-all"
+                              onClick={() => setSelectedDive(dive)}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                            />
+                            <text
+                              x={x}
+                              y={y + 2}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="white"
+                              className="pointer-events-none"
+                            >
+                              ⚓
+                            </text>
+                          </g>
+                        );
+                      })}
+
+                      {/* Surf Spots */}
+                      {(activityFilter === "all" || activityFilter === "surfs") && filteredSurfs.map((surf) => {
+                        const x = ((surf.lng - 72) / 2) * 350 + 25;
+                        const y = ((7 - surf.lat) / 7) * 550 + 25;
+
+                        return (
+                          <g key={surf.id} filter="url(#shadow)">
+                            <circle
+                              cx={x}
+                              cy={y}
+                              r={selectedSurf?.id === surf.id ? 10 : 6}
+                              fill="#f59e0b"
+                              stroke="white"
+                              strokeWidth="2"
+                              className="cursor-pointer transition-all"
+                              onClick={() => setSelectedSurf(surf)}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                            />
+                            <text
+                              x={x}
+                              y={y + 2}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="white"
+                              className="pointer-events-none"
+                            >
+                              🌊
+                            </text>
+                          </g>
+                        );
+                      })}
+
                       {/* Legend */}
                       <g>
-                        <rect x="10" y="10" width="150" height="60" fill="white" opacity="0.9" rx="4" />
+                        <rect x="10" y="10" width="140" height="90" fill="white" opacity="0.95" rx="4" />
                         <circle cx="25" cy="25" r="4" fill="#0d9488" />
-                        <text x="35" y="30" fontSize="12" fill="#333">
-                          Atolls & Islands
+                        <text x="35" y="30" fontSize="11" fill="#333" fontWeight="bold">
+                          Atolls
                         </text>
-                        <circle cx="25" cy="45" r="4" fill="#06b6d4" />
-                        <text x="35" y="50" fontSize="12" fill="#333">
-                          Selected Location
+                        <circle cx="25" cy="45" r="4" fill="#0891b2" />
+                        <text x="35" y="50" fontSize="11" fill="#333" fontWeight="bold">
+                          Dive Points
+                        </text>
+                        <circle cx="25" cy="65" r="4" fill="#f59e0b" />
+                        <text x="35" y="70" fontSize="11" fill="#333" fontWeight="bold">
+                          Surf Spots
+                        </text>
+                        <circle cx="25" cy="85" r="4" fill="#06b6d4" />
+                        <text x="35" y="90" fontSize="11" fill="#333" fontWeight="bold">
+                          Selected
                         </text>
                       </g>
                     </svg>
@@ -243,52 +582,123 @@ export default function MaldivesMap() {
               </Card>
             </div>
 
-            {/* Locations List */}
-            <div className="lg:col-span-1">
-              <Card className="h-full overflow-hidden flex flex-col">
-                <CardHeader>
-                  <CardTitle className="text-lg">
-                    Popular Locations ({filteredLocations.length})
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 overflow-y-auto space-y-3">
-                  {filteredLocations.length > 0 ? (
-                    filteredLocations.map((location) => (
-                      <div
-                        key={location.id}
-                        onClick={() => setSelectedLocation(location)}
-                        className={`p-3 rounded-lg cursor-pointer transition-all ${
-                          selectedLocation?.id === location.id
-                            ? "bg-accent text-white shadow-lg"
-                            : "bg-secondary hover:bg-secondary/80"
-                        }`}
-                      >
-                        <div className="font-semibold text-sm">{location.name}</div>
-                        <div className="text-xs opacity-75">{location.type}</div>
+            {/* Sidebar - Locations List */}
+            <div className="lg:col-span-1 space-y-4">
+              {/* Atolls List */}
+              {(activityFilter === "all" || activityFilter === "atolls") && (
+                <Card className="h-auto overflow-hidden flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      Atolls ({filteredLocations.length})
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
+                    {filteredLocations.length > 0 ? (
+                      filteredLocations.map((location) => (
+                        <div
+                          key={location.id}
+                          onClick={() => setSelectedLocation(location)}
+                          className={`p-2 rounded-lg cursor-pointer transition-all text-sm ${
+                            selectedLocation?.id === location.id
+                              ? "bg-accent text-white shadow-lg"
+                              : "bg-secondary hover:bg-secondary/80"
+                          }`}
+                        >
+                          <div className="font-semibold">{location.name}</div>
+                          <div className="text-xs opacity-75">{location.type}</div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center text-muted-foreground py-4 text-sm">
+                        No atolls found
                       </div>
-                    ))
-                  ) : (
-                    <div className="text-center text-muted-foreground py-8">
-                      No locations found
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Dive Points List */}
+              {(activityFilter === "all" || activityFilter === "dives") && (
+                <Card className="h-auto overflow-hidden flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Anchor className="w-4 h-4 text-cyan-600" />
+                      Dive Points ({filteredDives.length})
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
+                    {filteredDives.length > 0 ? (
+                      filteredDives.map((dive) => (
+                        <div
+                          key={dive.id}
+                          onClick={() => setSelectedDive(dive)}
+                          className={`p-2 rounded-lg cursor-pointer transition-all text-sm ${
+                            selectedDive?.id === dive.id
+                              ? "bg-cyan-600 text-white shadow-lg"
+                              : "bg-secondary hover:bg-secondary/80"
+                          }`}
+                        >
+                          <div className="font-semibold">{dive.name}</div>
+                          <div className="text-xs opacity-75">{dive.difficulty} • {dive.depth}</div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center text-muted-foreground py-4 text-sm">
+                        No dive points found
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Surf Spots List */}
+              {(activityFilter === "all" || activityFilter === "surfs") && (
+                <Card className="h-auto overflow-hidden flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Waves className="w-4 h-4 text-amber-500" />
+                      Surf Spots ({filteredSurfs.length})
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-48">
+                    {filteredSurfs.length > 0 ? (
+                      filteredSurfs.map((surf) => (
+                        <div
+                          key={surf.id}
+                          onClick={() => setSelectedSurf(surf)}
+                          className={`p-2 rounded-lg cursor-pointer transition-all text-sm ${
+                            selectedSurf?.id === surf.id
+                              ? "bg-amber-500 text-white shadow-lg"
+                              : "bg-secondary hover:bg-secondary/80"
+                          }`}
+                        >
+                          <div className="font-semibold">{surf.name}</div>
+                          <div className="text-xs opacity-75">{surf.difficulty} • {surf.waveHeight}</div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-center text-muted-foreground py-4 text-sm">
+                        No surf spots found
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </div>
 
-          {/* Location Details */}
+          {/* Details Sections */}
           {selectedLocation && (
             <Card className="mt-8">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Info className="w-5 h-5 text-accent" />
+                  <MapPin className="w-5 h-5 text-accent" />
                   {selectedLocation.name}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Image */}
                   <div className="md:col-span-1">
                     <div
                       className="w-full h-48 bg-gradient-to-br from-cyan-300 to-teal-400 rounded-lg flex items-center justify-center text-white font-semibold"
@@ -301,14 +711,11 @@ export default function MaldivesMap() {
                       {selectedLocation.name}
                     </div>
                   </div>
-
-                  {/* Details */}
                   <div className="md:col-span-2 space-y-4">
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Description</h3>
                       <p className="text-muted-foreground">{selectedLocation.description}</p>
                     </div>
-
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
                       <div className="flex flex-wrap gap-2">
@@ -322,7 +729,6 @@ export default function MaldivesMap() {
                         ))}
                       </div>
                     </div>
-
                     <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
                       <div>
                         <div className="text-xs text-muted-foreground">Latitude</div>
@@ -343,44 +749,111 @@ export default function MaldivesMap() {
             </Card>
           )}
 
-          {/* All Locations Grid */}
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-foreground mb-6">All Destinations</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredLocations.map((location) => (
-                <Card
-                  key={location.id}
-                  className="cursor-pointer hover:shadow-lg transition-all hover:border-accent"
-                  onClick={() => setSelectedLocation(location)}
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg flex items-center justify-between">
-                      <span>{location.name}</span>
-                      <span className="text-xs bg-accent/20 text-accent px-2 py-1 rounded">
-                        {location.type}
-                      </span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <p className="text-sm text-muted-foreground">{location.description}</p>
+          {selectedDive && (
+            <Card className="mt-8 border-cyan-600">
+              <CardHeader className="bg-cyan-50">
+                <CardTitle className="flex items-center gap-2 text-cyan-900">
+                  <Anchor className="w-5 h-5" />
+                  {selectedDive.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="w-full h-48 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-lg flex items-center justify-center text-white font-semibold text-2xl">
+                      ⚓
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
                     <div>
-                      <p className="text-xs font-semibold text-foreground mb-2">Key Features:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {location.highlights.slice(0, 2).map((highlight, idx) => (
+                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                      <p className="text-muted-foreground">{selectedDive.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedDive.highlights.map((highlight, idx) => (
                           <span
                             key={idx}
-                            className="text-xs bg-secondary px-2 py-1 rounded text-muted-foreground"
+                            className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium"
                           >
                             {highlight}
                           </span>
                         ))}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                      <div>
+                        <div className="text-xs text-muted-foreground">Difficulty</div>
+                        <div className="font-semibold text-foreground">{selectedDive.difficulty}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Depth</div>
+                        <div className="font-semibold text-foreground">{selectedDive.depth}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Rating</div>
+                        <div className="font-semibold text-foreground">⭐ {selectedDive.rating}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedSurf && (
+            <Card className="mt-8 border-amber-500">
+              <CardHeader className="bg-amber-50">
+                <CardTitle className="flex items-center gap-2 text-amber-900">
+                  <Waves className="w-5 h-5" />
+                  {selectedSurf.name}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="w-full h-48 bg-gradient-to-br from-amber-300 to-orange-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
+                      🌊
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                      <p className="text-muted-foreground">{selectedSurf.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedSurf.highlights.map((highlight, idx) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium"
+                          >
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+                      <div>
+                        <div className="text-xs text-muted-foreground">Difficulty</div>
+                        <div className="font-semibold text-foreground">{selectedSurf.difficulty}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Wave Height</div>
+                        <div className="font-semibold text-foreground">{selectedSurf.waveHeight}</div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Rating</div>
+                        <div className="font-semibold text-foreground">⭐ {selectedSurf.rating}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </section>
 
