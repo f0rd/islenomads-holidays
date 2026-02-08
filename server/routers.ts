@@ -4,7 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin } from "./db";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -231,6 +231,69 @@ export const appRouter = router({
       listAll: protectedProcedure
         .query(async () => {
           return getAllIslandGuidesAdmin();
+        }),
+      create: protectedProcedure
+        .input(z.object({
+          name: z.string().min(1),
+          slug: z.string().min(1),
+          overview: z.string().optional(),
+          quickFacts: z.string().optional(),
+          flightInfo: z.string().optional(),
+          speedboatInfo: z.string().optional(),
+          ferryInfo: z.string().optional(),
+          topThingsToDo: z.string().optional(),
+          snorkelingGuide: z.string().optional(),
+          divingGuide: z.string().optional(),
+          surfWatersports: z.string().optional(),
+          sandBankDolphinTrips: z.string().optional(),
+          beachesLocalRules: z.string().optional(),
+          foodCafes: z.string().optional(),
+          practicalInfo: z.string().optional(),
+          itinerary3Day: z.string().optional(),
+          itinerary5Day: z.string().optional(),
+          faqs: z.string().optional(),
+          published: z.number().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          return createIslandGuide(input);
+        }),
+      update: protectedProcedure
+        .input(z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          overview: z.string().optional(),
+          quickFacts: z.string().optional(),
+          flightInfo: z.string().optional(),
+          speedboatInfo: z.string().optional(),
+          ferryInfo: z.string().optional(),
+          topThingsToDo: z.string().optional(),
+          snorkelingGuide: z.string().optional(),
+          divingGuide: z.string().optional(),
+          surfWatersports: z.string().optional(),
+          sandBankDolphinTrips: z.string().optional(),
+          beachesLocalRules: z.string().optional(),
+          foodCafes: z.string().optional(),
+          practicalInfo: z.string().optional(),
+          itinerary3Day: z.string().optional(),
+          itinerary5Day: z.string().optional(),
+          faqs: z.string().optional(),
+          published: z.number().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          return updateIslandGuide(input.id, input);
+        }),
+      delete: protectedProcedure
+        .input(z.object({ id: z.number() }))
+        .mutation(async ({ input }) => {
+          return deleteIslandGuide(input.id);
+        }),
+      togglePublish: protectedProcedure
+        .input(z.object({ id: z.number() }))
+        .mutation(async ({ input }) => {
+          const guide = await getIslandGuideById(input.id);
+          if (!guide) throw new Error("Island guide not found");
+          return updateIslandGuide(input.id, { published: guide.published ? 0 : 1 });
         }),
     }),
   }),
