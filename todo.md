@@ -342,3 +342,9 @@
 - [x] Create 8 sample vacation packages in database
 
 - [x] Add images to all 8 vacation packages
+
+
+## Island Guides Creation
+- [x] Create island guides for popular Maldives islands
+- [x] Add images to island guides
+- [x] Integrate island guides into public website
