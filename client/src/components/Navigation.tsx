@@ -59,9 +59,11 @@ export default function Navigation() {
               Staff Login
             </button>
           </Link>
-          <button className="px-6 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 hover:scale-105">
-            Contact Us
-          </button>
+          <Link href="#contact">
+            <button className="px-6 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 hover:scale-105">
+              Contact Us
+            </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -96,9 +98,11 @@ export default function Navigation() {
                 Staff Login
               </button>
             </Link>
-            <button className="w-full px-4 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 mt-2">
-              Contact Us
-            </button>
+            <Link href="#contact">
+              <button className="w-full px-4 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 mt-2" onClick={() => setIsOpen(false)}>
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       )}

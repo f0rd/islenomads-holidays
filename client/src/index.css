@@ -180,3 +180,50 @@
     }
   }
 }
+
+
+/* Z-index management for overlays and modals */
+@layer utilities {
+  /* Navigation should be above most content */
+  nav {
+    @apply z-50;
+  }
+
+  /* Modals and dialogs */
+  [role="dialog"],
+  .modal,
+  .dialog {
+    @apply z-50;
+  }
+
+  /* Dropdown menus */
+  [role="menu"],
+  [role="listbox"],
+  .dropdown {
+    @apply z-40;
+  }
+
+  /* Tooltips and popovers */
+  [role="tooltip"],
+  .tooltip,
+  .popover {
+    @apply z-40;
+  }
+
+  /* Fixed headers and sticky elements */
+  .sticky,
+  [role="banner"] {
+    @apply z-30;
+  }
+
+  /* Ensure content is above background overlays */
+  .content {
+    @apply z-10;
+  }
+
+  /* Background overlays */
+  .overlay,
+  .backdrop {
+    @apply z-20;
+  }
+}

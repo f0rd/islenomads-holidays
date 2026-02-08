@@ -398,3 +398,10 @@
 - [x] Create airport markers on map
 - [x] Add airport filter button
 - [x] Add airport labels and information
+
+
+## Button & Overlay Fixes
+- [x] Fix non-functional buttons across all pages
+- [x] Fix overlay and z-index issues with navigation
+- [x] Fix modal and dialog overlay issues
+- [x] Test all interactive elements

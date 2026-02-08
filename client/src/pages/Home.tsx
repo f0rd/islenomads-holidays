@@ -87,19 +87,23 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button
-                size="lg"
-                className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                Plan Your Trip
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full px-8 py-6 text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
-              >
-                Contact Us
-              </Button>
+              <Link href="/packages">
+                <Button
+                  size="lg"
+                  className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
+                >
+                  Plan Your Trip
+                </Button>
+              </Link>
+              <Link href="#contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-8 py-6 text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+                >
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -239,12 +243,14 @@ export default function Home() {
                     {destination.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{destination.description}</p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"
-                  >
-                    Explore More
-                  </Button>
+                  <Link href="/island-guide/male-guide">
+                    <Button
+                      variant="outline"
+                      className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"
+                    >
+                      Explore More
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
