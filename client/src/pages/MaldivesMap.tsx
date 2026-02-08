@@ -1277,6 +1277,13 @@ export default function MaldivesMap() {
                         <div className="font-semibold text-foreground">⭐ {selectedIsland.rating}</div>
                       </div>
                     </div>
+                    <div className="pt-4">
+                      <Link href={`/island/${selectedIsland.slug}`}>
+                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                          View Full Island Guide
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </CardContent>

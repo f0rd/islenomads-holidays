@@ -425,3 +425,10 @@
 - [x] Fix zoom in/out button functionality
 - [x] Test zoom controls work properly
 - [x] Ensure smooth zoom transitions
+
+
+## Island Pop-up Feature
+- [x] Add click handlers to island markers
+- [x] Create pop-up component with island description
+- [x] Add link to island detail page in pop-up
+- [x] Style pop-up with island information
