@@ -1,6 +1,6 @@
 import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -400,4 +400,66 @@ export async function searchIslandGuides(query: string): Promise<IslandGuide[]> 
       // Search in name, slug, atoll, or overview
       // Note: This is a simplified search - you may want to use full-text search for production
     )) as any;
+}
+
+
+// Staff helpers
+export async function getStaffByUserId(userId: number): Promise<Staff | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(staff).where(eq(staff.userId, userId)).limit(1);
+  return result[0];
+}
+
+export async function getStaffRole(roleId: number): Promise<StaffRole | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db.select().from(staffRoles).where(eq(staffRoles.id, roleId)).limit(1);
+  return result[0];
+}
+
+export async function createStaff(data: InsertStaff): Promise<Staff | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db.insert(staff).values(data);
+  const id = (result as any).insertId;
+  const staffRecord = await db.select().from(staff).where(eq(staff.id, id)).limit(1);
+  return staffRecord[0] || null;
+}
+
+export async function getAllStaff(): Promise<Staff[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(staff).orderBy(desc(staff.createdAt)) as any;
+}
+
+export async function createStaffRole(data: InsertStaffRole): Promise<StaffRole | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db.insert(staffRoles).values(data);
+  const id = (result as any).insertId;
+  const role = await db.select().from(staffRoles).where(eq(staffRoles.id, id)).limit(1);
+  return role[0] || null;
+}
+
+export async function getAllStaffRoles(): Promise<StaffRole[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(staffRoles).orderBy(desc(staffRoles.createdAt)) as any;
+}
+
+export async function logActivity(data: InsertActivityLog): Promise<ActivityLog | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db.insert(activityLog).values(data);
+  const id = (result as any).insertId;
+  const log = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
+  return log[0] || null;
 }

@@ -16,6 +16,9 @@ import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
 import AdminIslandGuides from "./pages/AdminIslandGuides";
 import IslandGuide from "./pages/IslandGuide";
+import StaffLogin from "./pages/StaffLogin";
+import CMSDashboard from "./pages/CMSDashboard";
+
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -31,7 +34,9 @@ function Router() {
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
-      <Route path={"/island-guide/:islandId"} component={IslandGuide} />
+      <Route path={"\island-guide/:islandId"} component={IslandGuide} />
+      <Route path={"/staff-login"} component={StaffLogin} />
+      <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

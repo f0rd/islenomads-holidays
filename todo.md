@@ -210,3 +210,30 @@
 - [ ] Implement create and edit functionality with API integration
 - [ ] Add delete and publish/unpublish features
 - [ ] Write tests and save checkpoint
+
+
+## Staff Login & Role-Based Access Control
+- [ ] Update database schema for staff roles and permissions
+- [ ] Create staff authentication endpoints
+- [ ] Implement role-based access control (RBAC)
+- [ ] Build staff login page
+- [ ] Create staff profile management
+- [ ] Add permission checks to all CMS endpoints
+
+## CMS Dashboard & Navigation
+- [ ] Build comprehensive CMS dashboard
+- [ ] Create CMS navigation sidebar
+- [ ] Add dashboard widgets and statistics
+- [ ] Implement breadcrumb navigation
+- [ ] Add quick access shortcuts
+- [ ] Create CMS header with user profile
+
+## CMS Content Management Refinement
+- [ ] Refine blog management page layout
+- [ ] Refine packages management page layout
+- [ ] Refine boat routes management page layout
+- [ ] Refine map locations management page layout
+- [ ] Refine island guides management page layout
+- [ ] Add consistent styling across all CMS pages
+- [ ] Implement proper form layouts and validation
+- [ ] Add bulk actions and filters to listings

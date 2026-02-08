@@ -43,6 +43,13 @@
       "when": 1770532039323,
       "tag": "0005_green_gabe_jones",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1770535482937,
+      "tag": "0006_strange_thena",
+      "breakpoints": true
     }
   ]
 }

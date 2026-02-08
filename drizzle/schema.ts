@@ -239,3 +239,49 @@ export const islandGuides = mysqlTable("island_guides", {
 
 export type IslandGuide = typeof islandGuides.$inferSelect;
 export type InsertIslandGuide = typeof islandGuides.$inferInsert;
+
+
+// Staff Roles table
+export const staffRoles = mysqlTable("staff_roles", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 100 }).notNull().unique(), // e.g., "Editor", "Manager", "Admin"
+  description: text("description"),
+  permissions: text("permissions").notNull(), // JSON array of permission strings
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type StaffRole = typeof staffRoles.$inferSelect;
+export type InsertStaffRole = typeof staffRoles.$inferInsert;
+
+// Staff table
+export const staff = mysqlTable("staff", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  roleId: int("roleId").notNull().references(() => staffRoles.id, { onDelete: "cascade" }),
+  department: varchar("department", { length: 100 }),
+  position: varchar("position", { length: 100 }),
+  isActive: int("isActive").default(1).notNull(),
+  lastLogin: timestamp("lastLogin"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Staff = typeof staff.$inferSelect;
+export type InsertStaff = typeof staff.$inferInsert;
+
+// Activity Log table for tracking CMS changes
+export const activityLog = mysqlTable("activity_log", {
+  id: int("id").autoincrement().primaryKey(),
+  staffId: int("staffId").notNull().references(() => staff.id, { onDelete: "cascade" }),
+  action: varchar("action", { length: 100 }).notNull(), // e.g., "create", "update", "delete"
+  entityType: varchar("entityType", { length: 100 }).notNull(), // e.g., "blog_post", "package"
+  entityId: int("entityId"),
+  changes: text("changes"), // JSON object with before/after values
+  ipAddress: varchar("ipAddress", { length: 45 }),
+  userAgent: text("userAgent"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ActivityLog = typeof activityLog.$inferSelect;
+export type InsertActivityLog = typeof activityLog.$inferInsert;
