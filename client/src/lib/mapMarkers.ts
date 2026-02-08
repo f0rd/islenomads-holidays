@@ -31,16 +31,20 @@ export const createMarkerElement = (type: string, color?: string): HTMLElement =
   el.style.filter = "drop-shadow(0 2px 6px rgba(0,0,0,0.4))";
   el.style.transition = "transform 0.2s ease";
   el.style.userSelect = "none";
+  el.style.transformOrigin = "center center";
+  el.style.position = "relative";
   
   el.innerHTML = getMarkerIcon(type);
   
   // Add hover effect
   el.addEventListener("mouseenter", () => {
     el.style.transform = "scale(1.2)";
+    el.style.zIndex = "1000";
   });
   
   el.addEventListener("mouseleave", () => {
     el.style.transform = "scale(1)";
+    el.style.zIndex = "auto";
   });
   
   return el;

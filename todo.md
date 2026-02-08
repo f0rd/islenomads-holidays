@@ -82,6 +82,8 @@
 - [x] Update all TypeScript errors and type mismatches
 - [x] Replace black dot markers with emoji icons
 - [x] Add hover effects and drop shadows to markers
+- [x] Fix marker hover positioning (no corner jumping)
+- [x] Correct geographic coordinates for all locations
 
 ## Activity Markers (Dive Points & Surf Spots)
 - [x] Add dive points data with coordinates
