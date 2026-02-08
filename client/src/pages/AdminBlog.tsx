@@ -38,7 +38,7 @@ export default function AdminBlog() {
     ogImage: "",
   });
 
-  const { data: posts, refetch } = trpc.blog.list.useQuery({ limit: 100 });
+  const { data: posts, refetch } = trpc.blog.list.useQuery();
   const createMutation = trpc.blog.create.useMutation();
   const updateMutation = trpc.blog.update.useMutation();
   const deleteMutation = trpc.blog.delete.useMutation();

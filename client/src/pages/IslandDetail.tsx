@@ -34,14 +34,14 @@ export default function IslandDetail() {
   const [, params] = useRoute('/island/:slug');
   const slug = params?.slug as string;
   
-  const [island, setIsland] = useState<IslandGuide | null>(null);
+  const [island, setIsland] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showBooking, setShowBooking] = useState(false);
-  const [relatedPackages, setRelatedPackages] = useState([]);
+  const [relatedPackages, setRelatedPackages] = useState<any[]>([]);
 
   // Fetch island guide
-  const { data: guides = [] } = trpc.public.islandGuides.list.useQuery();
-  const { data: packages = [] } = trpc.public.packages.list.useQuery();
+  const { data: guides = [] } = trpc.islandGuides.list.useQuery();
+  const { data: packages = [] } = trpc.packages.list.useQuery();
 
   useEffect(() => {
     if (guides.length > 0 && slug) {
@@ -247,7 +247,7 @@ export default function IslandDetail() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {island.itinerary?.split('Day ').map((day, idx) => {
+                      {island.itinerary?.split('Day ').map((day: string, idx: number) => {
                         if (!day.trim()) return null;
                         const [dayNum, ...content] = day.split(':');
                         return (
@@ -279,7 +279,7 @@ export default function IslandDetail() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {island.faqContent?.split('Q:').map((qa, idx) => {
+                      {island.faq?.split('Q:').map((qa: string, idx: number) => {
                     if (!qa.trim()) return null;
                     const [question, answer] = qa.split('A:');
                     return (

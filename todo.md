@@ -71,12 +71,15 @@
 
 ## Maldives Map Integration
 - [x] Set up Mapbox API integration
-- [x] Create Maldives map page component
+- [x] Create Maldives map page component (Mapbox-based)
 - [x] Add popular location markers and data
 - [x] Implement interactive popups for locations
 - [x] Add location filtering and search
 - [x] Integrate map page into navigation
 - [x] Test map functionality
+- [x] Replace SVG map with Mapbox GL JS implementation
+- [x] Fix database schema for latitude/longitude (decimal type)
+- [x] Update all TypeScript errors and type mismatches
 
 ## Activity Markers (Dive Points & Surf Spots)
 - [x] Add dive points data with coordinates
@@ -432,3 +435,16 @@
 - [x] Create pop-up component with island description
 - [x] Add link to island detail page in pop-up
 - [x] Style pop-up with island information
+
+
+## Mapbox API Integration
+- [ ] Set up Mapbox API key and authentication
+- [ ] Install mapbox-gl library
+- [ ] Create Mapbox map component
+- [ ] Add island markers with popups
+- [ ] Add resort markers with popups
+- [ ] Add dive site markers with popups
+- [ ] Add airport markers with popups
+- [ ] Implement filtering by location type
+- [ ] Add zoom and pan controls
+- [ ] Test Mapbox integration

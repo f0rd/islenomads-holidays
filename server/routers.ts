@@ -245,7 +245,11 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        return createBoatRoute(input);
+        const { distance, ...rest } = input;
+        return createBoatRoute({
+          ...rest,
+          distance: distance ? distance.toString() : undefined,
+        } as any);
       }),
 
     update: protectedProcedure
@@ -269,8 +273,10 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        const { id, ...data } = input;
-        return updateBoatRoute(id, data);
+        const { id, distance, ...rest } = input;
+        const updateData: any = { ...rest };
+        if (distance !== undefined) updateData.distance = distance.toString();
+        return updateBoatRoute(id, updateData);
       }),
 
     delete: protectedProcedure
@@ -311,7 +317,12 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        return createMapLocation(input);
+        const { latitude, longitude, ...rest } = input;
+        return createMapLocation({
+          ...rest,
+          latitude: latitude.toString(),
+          longitude: longitude.toString(),
+        } as any);
       }),
 
     update: protectedProcedure
@@ -329,8 +340,11 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        const { id, ...data } = input;
-        return updateMapLocation(id, data);
+        const { id, latitude, longitude, ...rest } = input;
+        const updateData: any = { ...rest };
+        if (latitude !== undefined) updateData.latitude = latitude.toString();
+        if (longitude !== undefined) updateData.longitude = longitude.toString();
+        return updateMapLocation(id, updateData);
       }),
 
     delete: protectedProcedure

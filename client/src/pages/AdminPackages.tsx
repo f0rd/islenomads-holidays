@@ -47,7 +47,7 @@ export default function AdminPackages() {
     ogImage: "",
   });
 
-  const { data: packages = [], isLoading, refetch } = trpc.admin.packages.listAll.useQuery();
+  const { data: packages = [], isLoading, refetch } = trpc.packages.list.useQuery();
   const createMutation = trpc.packages.create.useMutation();
   const updateMutation = trpc.packages.update.useMutation();
   const deleteMutation = trpc.packages.delete.useMutation();

@@ -17,7 +17,7 @@ export default function BlogDetail() {
     { enabled: !!slug }
   );
 
-  const { data: comments } = trpc.blog.getComments.useQuery(
+  const { data: comments } = trpc.blog.comments.list.useQuery(
     { postId: post?.id || 0 },
     { enabled: !!post?.id }
   );
@@ -28,7 +28,7 @@ export default function BlogDetail() {
     content: "",
   });
 
-  const addCommentMutation = trpc.blog.addComment.useMutation();
+  const addCommentMutation = trpc.blog.comments.create.useMutation();
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 
-interface IslandGuideFormData {
+export interface IslandGuideFormData {
   name: string;
   slug: string;
   overview: string;

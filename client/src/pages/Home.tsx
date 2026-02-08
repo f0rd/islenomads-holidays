@@ -30,7 +30,7 @@ export default function Home() {
   const { user } = useAuth();
 
   // Fetch featured packages from database
-  const { data: allPackages = [], isLoading: packagesLoading } = trpc.packages.list.useQuery({ limit: 100 });
+  const { data: allPackages = [], isLoading: packagesLoading } = trpc.packages.list.useQuery();
 
   // Get featured packages (limit to 3 for display)
   const featuredPackages = useMemo(() => {

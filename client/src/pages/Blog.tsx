@@ -7,7 +7,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export default function Blog() {
-  const { data: posts, isLoading } = trpc.blog.list.useQuery({ limit: 12 });
+  const { data: posts, isLoading } = trpc.blog.list.useQuery();
 
   return (
     <div className="min-h-screen">

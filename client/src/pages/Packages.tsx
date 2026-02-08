@@ -33,7 +33,7 @@ export default function Packages() {
   const itemsPerPage = 12;
 
   // Fetch all packages
-  const { data: packages = [], isLoading } = trpc.packages.list.useQuery({ limit: 1000 });
+  const { data: packages = [], isLoading } = trpc.packages.list.useQuery();
 
   // Extract unique destinations and durations
   const destinations = useMemo(() => {

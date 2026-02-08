@@ -3,7 +3,7 @@ import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { IslandGuideForm } from '@/components/IslandGuideForm';
+import { IslandGuideForm, type IslandGuideFormData } from '@/components/IslandGuideForm';
 import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 
@@ -20,17 +20,17 @@ interface IslandGuideItem {
 export default function AdminIslandGuides() {
   const { user, loading: authLoading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedGuide, setSelectedGuide] = useState<IslandGuideItem | null>(null);
+  const [selectedGuide, setSelectedGuide] = useState<IslandGuideFormData | undefined>(undefined);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Fetch all island guides
-  const { data: guides = [], isLoading, refetch } = trpc.admin.islandGuides.listAdmin.useQuery();
+  const { data: guides = [], isLoading, refetch } = trpc.islandGuides.listAdmin.useQuery();
 
   // Filter guides based on search term
   const filteredGuides = useMemo(() => {
-    return guides.filter(guide =>
+    return guides.filter((guide: any) =>
       guide.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       guide.slug.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -55,13 +55,13 @@ export default function AdminIslandGuides() {
   }
 
   const handleCreate = () => {
-    setSelectedGuide(null);
+    setSelectedGuide(undefined);
     setIsCreating(true);
     setIsEditing(false);
   };
 
   const handleEdit = (guide: IslandGuideItem) => {
-    setSelectedGuide(guide);
+    setSelectedGuide(guide as any);
     setIsEditing(true);
     setIsCreating(false);
   };
@@ -69,7 +69,7 @@ export default function AdminIslandGuides() {
   const handleCancel = () => {
     setIsCreating(false);
     setIsEditing(false);
-    setSelectedGuide(null);
+    setSelectedGuide(undefined);
   };
 
   const handleSave = async () => {
@@ -112,9 +112,9 @@ export default function AdminIslandGuides() {
           </Button>
         </div>
         <IslandGuideForm 
-          guide={selectedGuide} 
-          onSave={handleSave}
-          isSubmitting={isSubmitting}
+          initialData={selectedGuide} 
+          onSubmit={handleSave}
+          isLoading={isSubmitting}
         />
       </div>
     );
@@ -157,7 +157,7 @@ export default function AdminIslandGuides() {
         </Card>
       ) : (
         <div className="grid gap-4">
-          {filteredGuides.map((guide) => (
+          {filteredGuides.map((guide: any) => (
             <Card key={guide.id} className="hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
                 <div className="flex justify-between items-start">

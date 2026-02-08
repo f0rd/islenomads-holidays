@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, text, timestamp, mysqlEnum } from "drizzle-orm/mysql-core";
+import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -158,8 +158,8 @@ export const mapLocations = mysqlTable("map_locations", {
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   type: mysqlEnum("type", ["island", "resort", "dive_site", "surf_spot", "atoll", "city"]).notNull(),
-  latitude: varchar("latitude", { length: 50 }).notNull(),
-  longitude: varchar("longitude", { length: 50 }).notNull(),
+  latitude: decimal("latitude", { precision: 10, scale: 6 }).notNull(),
+  longitude: decimal("longitude", { precision: 10, scale: 6 }).notNull(),
   description: text("description"),
   highlights: text("highlights"), // JSON array
   amenities: text("amenities"), // JSON array

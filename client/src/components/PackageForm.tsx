@@ -21,6 +21,7 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
   const [formData, setFormData] = useState({
     name: initialPackage?.name || "",
     description: initialPackage?.description || "",
+    destination: initialPackage?.destination || "",
     price: initialPackage?.price || 0,
     duration: initialPackage?.duration || "",
     highlights: Array.isArray(initialPackage?.highlights)
@@ -49,8 +50,8 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
           duration: formData.duration,
           highlights: formData.highlights
             .split(",")
-            .map((h) => h.trim())
-            .filter((h) => h),
+            .map((h: string) => h.trim())
+            .filter((h: string) => h),
           featured: formData.featured ? 1 : 0,
           published: formData.published ? 1 : 0,
         });
@@ -58,13 +59,15 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
         // Create new package
         await createMutation.mutateAsync({
           name: formData.name,
+          slug: formData.name.toLowerCase().replace(/\s+/g, '-'),
           description: formData.description,
+          destination: formData.destination || '',
           price: formData.price,
           duration: formData.duration,
           highlights: formData.highlights
             .split(",")
-            .map((h) => h.trim())
-            .filter((h) => h),
+            .map((h: string) => h.trim())
+            .filter((h: string) => h),
           featured: formData.featured ? 1 : 0,
           published: formData.published ? 1 : 0,
         });
