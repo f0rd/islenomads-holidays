@@ -383,3 +383,11 @@
 - [x] Add legend/key for map markers
 - [x] Enhance map responsiveness
 - [x] Add map styling improvements
+
+
+## Map Location Filtering
+- [x] Add filter buttons for each location type (islands, resorts, dive sites, surf spots, atolls)
+- [x] Implement toggle functionality to show/hide locations
+- [x] Add "Show All" and "Hide All" quick actions
+- [ ] Persist filter preferences in local storage
+- [x] Add filter count badges

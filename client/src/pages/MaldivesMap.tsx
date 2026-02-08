@@ -557,13 +557,16 @@ export default function MaldivesMap() {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setActivityFilter("all")}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
                   activityFilter === "all"
                     ? "bg-primary text-primary-foreground"
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
                 All
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">
+                  {filteredLocations.length + filteredIslands.length + filteredResorts.length + filteredDives.length + filteredSurfs.length}
+                </span>
               </button>
               <button
                 onClick={() => setActivityFilter("atolls")}
@@ -575,6 +578,7 @@ export default function MaldivesMap() {
               >
                 <MapPin className="w-4 h-4" />
                 Atolls
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredLocations.length}</span>
               </button>
               <button
                 onClick={() => setActivityFilter("islands")}
@@ -586,6 +590,7 @@ export default function MaldivesMap() {
               >
                 <Palmtree className="w-4 h-4" />
                 Islands
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredIslands.length}</span>
               </button>
               <button
                 onClick={() => setActivityFilter("resorts")}
@@ -597,6 +602,7 @@ export default function MaldivesMap() {
               >
                 <Building2 className="w-4 h-4" />
                 Resorts
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredResorts.length}</span>
               </button>
               <button
                 onClick={() => setActivityFilter("dives")}
@@ -608,6 +614,7 @@ export default function MaldivesMap() {
               >
                 <Anchor className="w-4 h-4" />
                 Dives
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredDives.length}</span>
               </button>
               <button
                 onClick={() => setActivityFilter("surfs")}
@@ -619,6 +626,7 @@ export default function MaldivesMap() {
               >
                 <Waves className="w-4 h-4" />
                 Surfs
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredSurfs.length}</span>
               </button>
             </div>
 
