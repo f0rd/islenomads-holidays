@@ -5,7 +5,8 @@ import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer } from "./db";
+import { TRPCError } from "@trpc/server";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer, getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff, logActivity } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -621,6 +622,94 @@ export const appRouter = router({
             ...data,
             newsletter: data.newsletter !== undefined ? (data.newsletter ? 1 : 0) : undefined,
           });
+        }),
+    }),
+  }),
+  
+  // Staff and RBAC management
+  staff: router({
+    me: protectedProcedure.query(async ({ ctx }) => {
+      if (!ctx.user) return null;
+      return getStaffByUserId(ctx.user.id);
+    }),
+    
+    list: protectedProcedure.query(async () => {
+      return getAllStaff();
+    }),
+    
+    getById: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getStaffById(input.id);
+      }),
+    
+    updateProfile: protectedProcedure
+      .input(z.object({
+        department: z.string().optional(),
+        position: z.string().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });
+        const staffMember = await getStaffByUserId(ctx.user.id);
+        if (!staffMember) throw new TRPCError({ code: 'NOT_FOUND' });
+        
+        await updateStaff(staffMember.id, input);
+        
+        // Log activity
+        await logActivity({
+          staffId: staffMember.id,
+          action: 'update_profile',
+          entityType: 'staff',
+          entityId: staffMember.id,
+          changes: JSON.stringify(input),
+        });
+        
+        return getStaffById(staffMember.id);
+      }),
+    
+    roles: router({
+      list: protectedProcedure.query(async () => {
+        // This would need a getAllStaffRoles function
+        return [];
+      }),
+      
+      getByName: protectedProcedure
+        .input(z.object({ name: z.string() }))
+        .query(async ({ input }) => {
+          return getStaffRoleByName(input.name);
+        }),
+      
+      create: protectedProcedure
+        .input(z.object({
+          name: z.string().min(1),
+          description: z.string().optional(),
+          permissions: z.array(z.string()),
+        }))
+        .mutation(async ({ input, ctx }) => {
+          if (!ctx.user) throw new TRPCError({ code: 'UNAUTHORIZED' });
+          const staffMember = await getStaffByUserId(ctx.user.id);
+          if (!staffMember || staffMember.role.name !== 'admin') {
+            throw new TRPCError({ code: 'FORBIDDEN' });
+          }
+          
+          const role = await createStaffRole({
+            name: input.name,
+            description: input.description,
+            permissions: JSON.stringify(input.permissions),
+          });
+          
+          // Log activity
+          if (staffMember) {
+            await logActivity({
+              staffId: staffMember.id,
+              action: 'create_role',
+              entityType: 'staff_role',
+              entityId: role?.id || 0,
+              changes: JSON.stringify(input),
+            });
+          }
+          
+          return role;
         }),
     }),
   }),

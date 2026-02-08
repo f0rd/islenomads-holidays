@@ -218,12 +218,12 @@
 
 
 ## Staff Login & Role-Based Access Control
-- [ ] Update database schema for staff roles and permissions
-- [ ] Create staff authentication endpoints
-- [ ] Implement role-based access control (RBAC)
-- [ ] Build staff login page
-- [ ] Create staff profile management
-- [ ] Add permission checks to all CMS endpoints
+- [x] Update database schema for staff roles and permissions
+- [x] Create staff authentication endpoints
+- [x] Implement role-based access control (RBAC)
+- [x] Build staff login page
+- [x] Create staff profile management page
+- [x] Add RBAC helper utilities for permission checking
 
 ## CMS Dashboard & Navigation
 - [ ] Build comprehensive CMS dashboard

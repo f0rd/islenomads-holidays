@@ -26,6 +26,7 @@ import AdminRoles from "./pages/AdminRoles";
 import AdminCRM from "./pages/AdminCRM";
 import AdminCRMDetail from "./pages/AdminCRMDetail";
 import IslandDetail from "./pages/IslandDetail";
+import StaffProfile from "./pages/StaffProfile";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -45,6 +46,7 @@ function Router() {
       <Route path={"\island-guide/:islandId"} component={IslandGuide} />
       <Route path={"/island/:slug"} component={IslandDetail} />
       <Route path={"/staff-login"} component={StaffLogin} />
+      <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/admin/seo-optimizer"} component={AdminSEOOptimizer} />
       <Route path={"/admin/dashboard"} component={StaffDashboard} />

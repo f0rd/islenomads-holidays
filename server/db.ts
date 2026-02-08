@@ -664,3 +664,75 @@ export async function updateCrmCustomer(id: number, data: Partial<InsertCrmCusto
   const customer = await db.select().from(crmCustomers).where(eq(crmCustomers.id, id)).limit(1);
   return customer[0] || null;
 }
+
+
+// Staff and RBAC helpers
+export async function getStaffByUserId(userId: number): Promise<(Staff & { role: StaffRole }) | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db
+    .select()
+    .from(staff)
+    .innerJoin(staffRoles, eq(staff.roleId, staffRoles.id))
+    .where(eq(staff.userId, userId))
+    .limit(1);
+  
+  if (!result[0]) return null;
+  
+  return {
+    ...result[0].staff,
+    role: result[0].staff_roles,
+  } as any;
+}
+
+export async function getStaffRole(roleId: number): Promise<StaffRole | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(staffRoles).where(eq(staffRoles.id, roleId)).limit(1);
+  return result[0] || null;
+}
+
+export async function getStaffRoleByName(roleName: string): Promise<StaffRole | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(staffRoles).where(eq(staffRoles.name, roleName)).limit(1);
+  return result[0] || null;
+}
+
+export async function createStaffRole(data: InsertStaffRole): Promise<StaffRole | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(staffRoles).values(data);
+  const id = (result as any).insertId;
+  const role = await db.select().from(staffRoles).where(eq(staffRoles.id, id)).limit(1);
+  return role[0] || null;
+}
+
+export async function getAllStaff(): Promise<(Staff & { role: StaffRole })[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const results = await db
+    .select()
+    .from(staff)
+    .innerJoin(staffRoles, eq(staff.roleId, staffRoles.id));
+  
+  return results.map(r => ({
+    ...r.staff,
+    role: r.staff_roles,
+  })) as any;
+}
+
+export async function logActivity(data: InsertActivityLog): Promise<ActivityLog | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(activityLog).values(data);
+  const id = (result as any).insertId;
+  const log = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
+  return log[0] || null;
+}
