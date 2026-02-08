@@ -361,3 +361,7 @@
 - [ ] Implement island comparison feature
 - [ ] Add customer reviews section
 - [x] Create breadcrumb navigation
+
+
+## Bug Fixes - Package Images
+- [x] Fix package images display on home page vacation packages section

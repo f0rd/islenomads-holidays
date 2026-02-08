@@ -278,13 +278,22 @@ export default function Home() {
                 {displayPackages.map((pkg: any, index: number) => (
                   <Card
                     key={pkg.id || index}
-                    className={`border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
+                    className={`border-2 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden ${
                       pkg.featured ? "border-teal-500 relative" : "border-gray-200"
                     }`}
                   >
                     {pkg.featured && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold z-10">
                         Featured
+                      </div>
+                    )}
+                    {pkg.image && (
+                      <div className="w-full h-48 overflow-hidden bg-gray-200">
+                        <img
+                          src={pkg.image}
+                          alt={pkg.name}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
                     )}
                     <CardContent className="p-8">
