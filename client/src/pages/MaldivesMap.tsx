@@ -1557,6 +1557,16 @@ export default function MaldivesMap() {
                     <div className="pt-4 border-t border-border">
                       <div className="text-sm text-muted-foreground">Rating: {selectedAirport.rating}/5 ⭐</div>
                     </div>
+                    <div className="pt-4 flex gap-3 flex-wrap">
+                      <Link href="/packages">
+                        <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium">
+                          Book a Package
+                        </button>
+                      </Link>
+                      <button onClick={() => setSelectedAirport(null)} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors text-sm font-medium">
+                        Close
+                      </button>
+                    </div>
                   </div>
                 </div>
               </CardContent>
