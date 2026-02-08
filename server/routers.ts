@@ -1,11 +1,11 @@
-import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
+import { COOKIE_NAME } from "../shared/const";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags } from "./db";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -52,33 +52,35 @@ export const appRouter = router({
   }),
 
   blog: router({
-    list: publicProcedure
-      .input(z.object({ limit: z.number().optional() }))
-      .query(async ({ input }) => {
-        return getAllBlogPosts(input.limit);
-      }),
-    
+    list: publicProcedure.query(async () => {
+      return getAllBlogPosts();
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllBlogPostsAdmin();
+    }),
+
     getBySlug: publicProcedure
       .input(z.object({ slug: z.string() }))
       .query(async ({ input }) => {
         return getBlogPostBySlug(input.slug);
       }),
-    
+
     getById: publicProcedure
       .input(z.object({ id: z.number() }))
       .query(async ({ input }) => {
         return getBlogPostById(input.id);
       }),
-    
+
     create: protectedProcedure
       .input(
         z.object({
-          title: z.string().min(1),
-          slug: z.string().min(1),
-          content: z.string().min(1),
+          title: z.string(),
+          slug: z.string(),
+          content: z.string(),
           excerpt: z.string().optional(),
           featuredImage: z.string().optional(),
-          author: z.string().min(1),
+          author: z.string(),
           category: z.string().optional(),
           tags: z.string().optional(),
           published: z.number().optional(),
@@ -87,7 +89,7 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         return createBlogPost(input);
       }),
-    
+
     update: protectedProcedure
       .input(
         z.object({
@@ -104,64 +106,68 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        const { id, ...updates } = input;
-        return updateBlogPost(id, updates);
+        const { id, ...data } = input;
+        return updateBlogPost(id, data);
       }),
-    
+
     delete: protectedProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteBlogPost(input.id);
       }),
-    
-    getComments: publicProcedure
-      .input(z.object({ postId: z.number() }))
-      .query(async ({ input }) => {
-        return getBlogComments(input.postId);
-      }),
-    
-    addComment: publicProcedure
-      .input(
-        z.object({
-          postId: z.number(),
-          name: z.string().min(1),
-          email: z.string().email(),
-          content: z.string().min(1),
-        })
-      )
-      .mutation(async ({ input }) => {
-        return createBlogComment({ ...input, approved: 0 });
-      }),
+
+    comments: router({
+      list: publicProcedure
+        .input(z.object({ postId: z.number() }))
+        .query(async ({ input }) => {
+          return getBlogComments(input.postId);
+        }),
+
+      create: publicProcedure
+        .input(
+          z.object({
+            postId: z.number(),
+            name: z.string(),
+            email: z.string().email(),
+            content: z.string(),
+          })
+        )
+        .mutation(async ({ input }) => {
+          return createBlogComment(input);
+        }),
+    }),
   }),
 
   packages: router({
-    list: publicProcedure
-      .input(z.object({ limit: z.number().optional() }))
-      .query(async ({ input }) => {
-        return getAllPackages(input.limit);
-      }),
-    
-    getById: publicProcedure
-      .input(z.object({ id: z.number() }))
-      .query(async ({ input }) => {
-        return getPackageById(input.id);
-      }),
-    
+    list: publicProcedure.query(async () => {
+      return getAllPackages();
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllPackagesAdmin();
+    }),
+
     getBySlug: publicProcedure
       .input(z.object({ slug: z.string() }))
       .query(async ({ input }) => {
         return getPackageBySlug(input.slug);
       }),
-    
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getPackageById(input.id);
+      }),
+
     create: protectedProcedure
       .input(
         z.object({
-          name: z.string().min(1),
-          slug: z.string().min(1),
-          description: z.string().min(1),
-          price: z.number().min(0),
-          duration: z.string().min(1),
-          destination: z.string().min(1),
+          name: z.string(),
+          slug: z.string(),
+          description: z.string(),
+          price: z.number(),
+          duration: z.string(),
+          destination: z.string(),
           highlights: z.string().optional(),
           amenities: z.string().optional(),
           image: z.string().optional(),
@@ -172,7 +178,7 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         return createPackage(input);
       }),
-    
+
     update: protectedProcedure
       .input(
         z.object({
@@ -191,10 +197,10 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
-        const { id, ...updates } = input;
-        return updatePackage(id, updates);
+        const { id, ...data } = input;
+        return updatePackage(id, data);
       }),
-    
+
     delete: protectedProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
@@ -204,103 +210,203 @@ export const appRouter = router({
 
   boatRoutes: router({
     list: publicProcedure.query(async () => {
-      return getBoatRoutes(true);
+      return getBoatRoutes();
     }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getBoatRouteBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getBoatRouteById(input.id);
+      }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string(),
+          slug: z.string(),
+          description: z.string(),
+          startPoint: z.string(),
+          endPoint: z.string(),
+          distance: z.number().optional(),
+          duration: z.string(),
+          boatType: z.string(),
+          capacity: z.number(),
+          speed: z.number().optional(),
+          price: z.number(),
+          schedule: z.string().optional(),
+          amenities: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createBoatRoute(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          description: z.string().optional(),
+          startPoint: z.string().optional(),
+          endPoint: z.string().optional(),
+          distance: z.number().optional(),
+          duration: z.string().optional(),
+          boatType: z.string().optional(),
+          capacity: z.number().optional(),
+          speed: z.number().optional(),
+          price: z.number().optional(),
+          schedule: z.string().optional(),
+          amenities: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateBoatRoute(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteBoatRoute(input.id);
+      }),
   }),
 
   mapLocations: router({
     list: publicProcedure.query(async () => {
-      return getMapLocations(true);
+      return getMapLocations();
     }),
-  }),
 
-  admin: router({
-    blog: router({
-      listAll: protectedProcedure
-        .query(async () => {
-          return getAllBlogPostsAdmin();
-        }),
-    }),
-    
-    packages: router({
-      listAll: protectedProcedure
-        .query(async () => {
-          return getAllPackagesAdmin();
-        }),
-    }),
-    islandGuides: router({
-      listAll: protectedProcedure
-        .query(async () => {
-          return getAllIslandGuidesAdmin();
-        }),
-      create: protectedProcedure
-        .input(z.object({
-          name: z.string().min(1),
-          slug: z.string().min(1),
-          overview: z.string().optional(),
-          quickFacts: z.string().optional(),
-          flightInfo: z.string().optional(),
-          speedboatInfo: z.string().optional(),
-          ferryInfo: z.string().optional(),
-          topThingsToDo: z.string().optional(),
-          snorkelingGuide: z.string().optional(),
-          divingGuide: z.string().optional(),
-          surfWatersports: z.string().optional(),
-          sandBankDolphinTrips: z.string().optional(),
-          beachesLocalRules: z.string().optional(),
-          foodCafes: z.string().optional(),
-          practicalInfo: z.string().optional(),
-          itinerary3Day: z.string().optional(),
-          itinerary5Day: z.string().optional(),
-          faqs: z.string().optional(),
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getMapLocationBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getMapLocationById(input.id);
+      }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string(),
+          slug: z.string(),
+          description: z.string(),
+          latitude: z.number(),
+          longitude: z.number(),
+          locationType: z.string(),
+          image: z.string().optional(),
           published: z.number().optional(),
-        }))
-        .mutation(async ({ input }) => {
-          return createIslandGuide(input);
-        }),
-      update: protectedProcedure
-        .input(z.object({
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createMapLocation(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
           id: z.number(),
           name: z.string().optional(),
           slug: z.string().optional(),
-          overview: z.string().optional(),
-          quickFacts: z.string().optional(),
-          flightInfo: z.string().optional(),
-          speedboatInfo: z.string().optional(),
-          ferryInfo: z.string().optional(),
-          topThingsToDo: z.string().optional(),
-          snorkelingGuide: z.string().optional(),
-          divingGuide: z.string().optional(),
-          surfWatersports: z.string().optional(),
-          sandBankDolphinTrips: z.string().optional(),
-          beachesLocalRules: z.string().optional(),
-          foodCafes: z.string().optional(),
-          practicalInfo: z.string().optional(),
-          itinerary3Day: z.string().optional(),
-          itinerary5Day: z.string().optional(),
-          faqs: z.string().optional(),
+          description: z.string().optional(),
+          latitude: z.number().optional(),
+          longitude: z.number().optional(),
+          locationType: z.string().optional(),
+          image: z.string().optional(),
           published: z.number().optional(),
-        }))
-        .mutation(async ({ input }) => {
-          return updateIslandGuide(input.id, input);
-        }),
-      delete: protectedProcedure
-        .input(z.object({ id: z.number() }))
-        .mutation(async ({ input }) => {
-          return deleteIslandGuide(input.id);
-        }),
-      togglePublish: protectedProcedure
-        .input(z.object({ id: z.number() }))
-        .mutation(async ({ input }) => {
-          const guide = await getIslandGuideById(input.id);
-          if (!guide) throw new Error("Island guide not found");
-          return updateIslandGuide(input.id, { published: guide.published ? 0 : 1 });
-        }),
-    }),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateMapLocation(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteMapLocation(input.id);
+      }),
   }),
-  
+
+  islandGuides: router({
+    list: publicProcedure.query(async () => {
+      return getIslandGuides();
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllIslandGuidesAdmin();
+    }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getIslandGuideBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getIslandGuideById(input.id);
+      }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string(),
+          slug: z.string(),
+          description: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createIslandGuide(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          description: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateIslandGuide(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteIslandGuide(input.id);
+      }),
+  }),
+
   seo: router({
-    getTags: publicProcedure
+    get: protectedProcedure
+      .input(z.object({
+        contentType: z.string(),
+        contentId: z.number(),
+      }))
+      .query(async ({ input }) => {
+        return getSeoMetaTags(input.contentType, input.contentId);
+      }),
+
+    getApproved: publicProcedure
       .input(z.object({
         contentType: z.string(),
         contentId: z.number(),
@@ -308,19 +414,35 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return getApprovedSeoMetaTags(input.contentType, input.contentId);
       }),
-    
-    getPending: protectedProcedure
-      .query(async () => {
-        return getPendingSeoMetaTags(100);
+
+    create: protectedProcedure
+      .input(z.object({
+        contentType: z.string(),
+        contentId: z.number(),
+        title: z.string(),
+        description: z.string(),
+        keywords: z.array(z.string()).optional(),
+        ogTitle: z.string().optional(),
+        ogDescription: z.string().optional(),
+        ogImage: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const data: any = { ...input };
+        if (data.keywords) {
+          data.keywords = JSON.stringify(data.keywords);
+        }
+        return createSeoMetaTags(data);
       }),
-    
+
     approve: protectedProcedure
-      .input(z.object({ id: z.number() }))
+      .input(z.object({
+        id: z.number(),
+      }))
       .mutation(async ({ input, ctx }) => {
         const staffId = ctx.user?.id || 1;
         return approveSeoMetaTags(input.id, staffId);
       }),
-    
+
     reject: protectedProcedure
       .input(z.object({
         id: z.number(),
@@ -329,7 +451,7 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         return rejectSeoMetaTags(input.id, input.reason);
       }),
-    
+
     update: protectedProcedure
       .input(z.object({
         id: z.number(),
@@ -347,13 +469,13 @@ export const appRouter = router({
         }
         return updateSeoMetaTags(id, updateData);
       }),
-    
+
     delete: protectedProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteSeoMetaTags(input.id);
       }),
-    
+
     getByContentType: protectedProcedure
       .input(z.object({
         contentType: z.string(),
@@ -362,6 +484,131 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return getSeoMetaTagsByContentType(input.contentType, input.status);
       }),
+  }),
+
+  crm: router({
+    queries: router({
+      list: protectedProcedure
+        .input(z.object({
+          status: z.string().optional(),
+        }))
+        .query(async ({ input }) => {
+          return getCrmQueries(input.status);
+        }),
+
+      get: protectedProcedure
+        .input(z.object({ id: z.number() }))
+        .query(async ({ input }) => {
+          return getCrmQueryById(input.id);
+        }),
+
+      create: protectedProcedure
+        .input(z.object({
+          customerName: z.string(),
+          customerEmail: z.string().email(),
+          customerPhone: z.string().optional(),
+          customerCountry: z.string().optional(),
+          subject: z.string(),
+          message: z.string(),
+          queryType: z.enum(["booking", "general", "complaint", "feedback", "support", "other"]).optional(),
+          priority: z.enum(["low", "medium", "high", "urgent"]).optional(),
+          packageId: z.number().optional(),
+          islandGuideId: z.number().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          return createCrmQuery(input);
+        }),
+
+      update: protectedProcedure
+        .input(z.object({
+          id: z.number(),
+          status: z.enum(["new", "in_progress", "waiting_customer", "resolved", "closed"]).optional(),
+          priority: z.enum(["low", "medium", "high", "urgent"]).optional(),
+          assignedTo: z.number().optional(),
+          firstResponseAt: z.date().optional(),
+          resolvedAt: z.date().optional(),
+          closedAt: z.date().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          const { id, ...data } = input;
+          return updateCrmQuery(id, data);
+        }),
+
+      delete: protectedProcedure
+        .input(z.object({ id: z.number() }))
+        .mutation(async ({ input }) => {
+          return deleteCrmQuery(input.id);
+        }),
+    }),
+
+    interactions: router({
+      list: protectedProcedure
+        .input(z.object({ queryId: z.number() }))
+        .query(async ({ input }) => {
+          return getCrmInteractions(input.queryId);
+        }),
+
+      create: protectedProcedure
+        .input(z.object({
+          queryId: z.number(),
+          type: z.enum(["note", "email", "call", "meeting", "sms"]),
+          subject: z.string().optional(),
+          content: z.string(),
+          isInternal: z.boolean().optional(),
+          attachments: z.array(z.string()).optional(),
+        }))
+        .mutation(async ({ input, ctx }) => {
+          const staffId = ctx.user?.id || 1;
+          return createCrmInteraction({
+            ...input,
+            staffId,
+            isInternal: input.isInternal ? 1 : 0,
+            attachments: input.attachments ? JSON.stringify(input.attachments) : undefined,
+          });
+        }),
+    }),
+
+    customers: router({
+      getByEmail: protectedProcedure
+        .input(z.object({ email: z.string().email() }))
+        .query(async ({ input }) => {
+          return getCrmCustomerByEmail(input.email);
+        }),
+
+      create: protectedProcedure
+        .input(z.object({
+          email: z.string().email(),
+          name: z.string(),
+          phone: z.string().optional(),
+          country: z.string().optional(),
+          preferredContact: z.enum(["email", "phone", "sms"]).optional(),
+          newsletter: z.boolean().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          return createCrmCustomer({
+            ...input,
+            newsletter: input.newsletter ? 1 : 0,
+          });
+        }),
+
+      update: protectedProcedure
+        .input(z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          phone: z.string().optional(),
+          country: z.string().optional(),
+          preferredContact: z.enum(["email", "phone", "sms"]).optional(),
+          newsletter: z.boolean().optional(),
+          lastContactedAt: z.date().optional(),
+        }))
+        .mutation(async ({ input }) => {
+          const { id, ...data } = input;
+          return updateCrmCustomer(id, {
+            ...data,
+            newsletter: data.newsletter !== undefined ? (data.newsletter ? 1 : 0) : undefined,
+          });
+        }),
+    }),
   }),
 });
 
