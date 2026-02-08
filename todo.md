@@ -194,8 +194,8 @@
 - [x] Write Island Guide tests
 
 ## Island Guides CMS Management System
-- [ ] Update database schema for island guides with editable fields
-- [ ] Create island guide API endpoints (CRUD operations)
+- [x] Update database schema for island guides with editable fields
+- [x] Create island guide API endpoints (CRUD operations)
 - [ ] Build admin CMS for island guide management
 - [ ] Create enhanced island guide page with search and map integration
 - [ ] Add island guides for all popular local islands
@@ -203,3 +203,10 @@
 - [ ] Add "how to reach" transportation information
 - [ ] Create island guide detail view with all sections
 - [ ] Write island guides CMS tests
+
+## Admin Island Guides Management
+- [x] Create island guide form component with all 14 sections
+- [x] Build AdminIslandGuides page with listing and management
+- [ ] Implement create and edit functionality with API integration
+- [ ] Add delete and publish/unpublish features
+- [ ] Write tests and save checkpoint

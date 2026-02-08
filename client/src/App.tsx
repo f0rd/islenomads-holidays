@@ -14,6 +14,7 @@ import MaldivesMap from "./pages/MaldivesMap";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
+import AdminIslandGuides from "./pages/AdminIslandGuides";
 import IslandGuide from "./pages/IslandGuide";
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -29,6 +30,7 @@ function Router() {
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
+      <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"/island-guide/:islandId"} component={IslandGuide} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
