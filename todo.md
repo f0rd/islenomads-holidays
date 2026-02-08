@@ -372,3 +372,14 @@
 - [x] Implement zoom in/out controls
 - [x] Add island markers with popups
 - [x] Enable interactive island selection
+
+
+## Map Page Refinement
+- [x] Add labels to all resorts on map
+- [x] Add labels to all dive sites on map
+- [x] Add labels to all surf spots on map
+- [x] Add labels to all atolls on map
+- [x] Improve map layout and spacing
+- [x] Add legend/key for map markers
+- [x] Enhance map responsiveness
+- [x] Add map styling improvements

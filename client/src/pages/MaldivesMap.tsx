@@ -750,12 +750,12 @@ export default function MaldivesMap() {
                               x={x}
                               y={y - 18}
                               textAnchor="middle"
-                              fontSize="10"
+                              fontSize="9"
                               fontWeight="bold"
                               fill="#0d9488"
                               className="pointer-events-none"
                             >
-                              {location.name.split(" ")[0]}
+                              {location.name}
                             </text>
                           </g>
                         );
@@ -825,6 +825,17 @@ export default function MaldivesMap() {
                             />
                             <text
                               x={x}
+                              y={y - 15}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="#a855f7"
+                              className="pointer-events-none"
+                            >
+                              {resort.name.substring(0, 12)}
+                            </text>
+                            <text
+                              x={x}
                               y={y + 2}
                               textAnchor="middle"
                               fontSize="8"
@@ -858,6 +869,17 @@ export default function MaldivesMap() {
                             />
                             <text
                               x={x}
+                              y={y - 12}
+                              textAnchor="middle"
+                              fontSize="7"
+                              fontWeight="bold"
+                              fill="#0891b2"
+                              className="pointer-events-none"
+                            >
+                              {dive.name.substring(0, 10)}
+                            </text>
+                            <text
+                              x={x}
                               y={y + 2}
                               textAnchor="middle"
                               fontSize="8"
@@ -889,6 +911,17 @@ export default function MaldivesMap() {
                               onClick={() => setSelectedSurf(surf)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
+                            <text
+                              x={x}
+                              y={y - 12}
+                              textAnchor="middle"
+                              fontSize="7"
+                              fontWeight="bold"
+                              fill="#f59e0b"
+                              className="pointer-events-none"
+                            >
+                              {surf.name.substring(0, 10)}
+                            </text>
                             <text
                               x={x}
                               y={y + 2}
