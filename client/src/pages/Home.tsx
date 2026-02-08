@@ -19,13 +19,30 @@ import {
   Users,
   Waves,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "wouter";
 import ContactForm from "@/components/ContactForm";
+import { trpc } from "@/lib/trpc";
+import { Loader2 } from "lucide-react";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const { user } = useAuth();
+
+  // Fetch featured packages from database
+  const { data: allPackages = [], isLoading: packagesLoading } = trpc.packages.list.useQuery({ limit: 100 });
+
+  // Get featured packages (limit to 3 for display)
+  const featuredPackages = useMemo(() => {
+    return allPackages
+      .filter((pkg: any) => pkg.featured)
+      .slice(0, 3);
+  }, [allPackages]);
+
+  // Fallback to first 3 packages if no featured packages
+  const displayPackages = useMemo(() => {
+    return featuredPackages.length > 0 ? featuredPackages : allPackages.slice(0, 3);
+  }, [featuredPackages, allPackages]);
 
   useEffect(() => {
     setIsVisible(true);
@@ -235,7 +252,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Vacation Packages */}
+      {/* Vacation Packages - Dynamic from Database */}
       <section className="py-20 bg-white">
         <div className="container">
           <div className="text-center mb-16">
@@ -247,108 +264,85 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Romantic Escape",
-                price: 2999,
-                duration: "5 Days / 4 Nights",
-                features: [
-                  "Luxury water villa accommodation",
-                  "Private candlelit beach dinner",
-                  "Couples spa treatment",
-                  "Sunset dolphin cruise",
-                  "Airport transfers included",
-                ],
-                popular: false,
-              },
-              {
-                title: "Ultimate Paradise",
-                price: 4999,
-                duration: "7 Days / 6 Nights",
-                features: [
-                  "Premium overwater villa with pool",
-                  "All-inclusive dining & drinks",
-                  "Snorkeling & diving excursions",
-                  "Island hopping adventure",
-                  "Spa & wellness package",
-                  "Personal concierge service",
-                ],
-                popular: true,
-              },
-              {
-                title: "Island Explorer",
-                price: 3499,
-                duration: "6 Days / 5 Nights",
-                features: [
-                  "Beach villa accommodation",
-                  "Daily breakfast included",
-                  "Water sports activities",
-                  "Guided snorkeling tours",
-                  "Cultural island visit",
-                ],
-                popular: false,
-              },
-            ].map((pkg, index) => (
-              <Card
-                key={index}
-                className={`border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
-                  pkg.popular ? "border-teal-500 relative" : "border-gray-200"
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                )}
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {pkg.title}
-                  </h3>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-teal-500">
-                      ${pkg.price}
-                    </span>
-                    <span className="text-gray-600 ml-2">per person</span>
-                  </div>
-                  <p className="text-gray-600 mb-6">{pkg.duration}</p>
+          {packagesLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="w-8 h-8 text-teal-500 animate-spin" />
+            </div>
+          ) : displayPackages.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-gray-600 text-lg">No packages available at the moment.</p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {displayPackages.map((pkg: any, index: number) => (
+                  <Card
+                    key={pkg.id || index}
+                    className={`border-2 shadow-sm hover:shadow-lg transition-all duration-300 ${
+                      pkg.featured ? "border-teal-500 relative" : "border-gray-200"
+                    }`}
+                  >
+                    {pkg.featured && (
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        Featured
+                      </div>
+                    )}
+                    <CardContent className="p-8">
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        {pkg.name}
+                      </h3>
+                      <div className="mb-4">
+                        <span className="text-4xl font-bold text-teal-500">
+                          ${pkg.price}
+                        </span>
+                        <span className="text-gray-600 ml-2">per person</span>
+                      </div>
+                      <p className="text-gray-600 mb-6">{pkg.duration}</p>
 
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-teal-500 mt-1">✓</span>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                      <div className="mb-8">
+                        <p className="text-gray-700 text-sm line-clamp-3">{pkg.description}</p>
+                      </div>
 
-                  <Link href="/packages">
-                    <Button
-                      className={`w-full rounded-full py-6 text-lg font-semibold transition-all duration-300 ${
-                        pkg.popular
-                          ? "bg-teal-500 text-white hover:bg-teal-600"
-                          : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                      }`}
-                    >
-                      Book Now
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                      {pkg.highlights && (
+                        <ul className="space-y-3 mb-8">
+                          {(Array.isArray(pkg.highlights) ? pkg.highlights : []).slice(0, 3).map((highlight: any, i: number) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <span className="text-teal-500 mt-1">✓</span>
+                              <span className="text-gray-700 text-sm">{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
-          {/* View All Packages Button */}
-          <div className="text-center mt-12">
-            <Link href="/packages">
-              <Button
-                size="lg"
-                className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                View All Packages
-              </Button>
-            </Link>
-          </div>
+                      <Link href="/packages">
+                        <Button
+                          className={`w-full rounded-full py-6 text-lg font-semibold transition-all duration-300 ${
+                            pkg.featured
+                              ? "bg-teal-500 text-white hover:bg-teal-600"
+                              : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                          }`}
+                        >
+                          Book Now
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* View All Packages Button */}
+              <div className="text-center mt-12">
+                <Link href="/packages">
+                  <Button
+                    size="lg"
+                    className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
+                  >
+                    View All Packages
+                  </Button>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
@@ -369,32 +363,32 @@ export default function Home() {
               {
                 icon: Waves,
                 title: "Water Sports",
-                description: "Surfing, jet skiing, parasailing, and more thrilling activities",
+                description: "Snorkeling, diving, surfing, and jet skiing in crystal-clear waters",
               },
               {
                 icon: Ship,
-                title: "Diving & Snorkeling",
-                description: "Explore vibrant coral reefs and swim with marine life",
-              },
-              {
-                icon: MapPin,
                 title: "Island Hopping",
-                description: "Discover multiple islands and experience local culture",
-              },
-              {
-                icon: Heart,
-                title: "Spa & Wellness",
-                description: "Rejuvenate with traditional treatments and modern therapies",
+                description: "Explore multiple islands and discover hidden gems",
               },
               {
                 icon: Palmtree,
-                title: "Sunset Cruises",
-                description: "Romantic sailing experiences with dolphin watching",
+                title: "Beach Relaxation",
+                description: "Unwind on pristine white sand beaches with turquoise waters",
               },
               {
-                icon: Sparkles,
-                title: "Fine Dining",
-                description: "Gourmet cuisine with ocean views and private beach setups",
+                icon: Users,
+                title: "Cultural Tours",
+                description: "Experience local Maldivian culture and traditions",
+              },
+              {
+                icon: Heart,
+                title: "Wellness Retreats",
+                description: "Spa treatments and yoga sessions in paradise",
+              },
+              {
+                icon: MapPin,
+                title: "Adventure Activities",
+                description: "Fishing, dolphin watching, and sunset cruises",
               },
             ].map((experience, index) => {
               const IconComponent = experience.icon;
@@ -403,18 +397,16 @@ export default function Home() {
                   key={index}
                   className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white"
                 >
-                  <CardContent className="p-8">
+                  <CardContent className="p-8 text-center">
                     <div className="flex justify-center mb-4">
                       <div className="p-3 bg-teal-100 rounded-full">
                         <IconComponent size={32} className="text-teal-500" />
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {experience.title}
                     </h3>
-                    <p className="text-gray-600 text-center">
-                      {experience.description}
-                    </p>
+                    <p className="text-gray-600">{experience.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -423,86 +415,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Contact Section */}
       <section className="py-20 bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                About Isle Nomads Holidays
-              </h2>
-              <p className="text-lg text-gray-600 mb-4 leading-relaxed">
-                For over 15 years, Isle Nomads Holidays has been crafting extraordinary Maldives experiences for travelers seeking paradise. Based in Malé, Maldives, we specialize in creating personalized island getaways that blend luxury, adventure, and authentic cultural immersion.
-              </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Our team of Maldives experts has personally visited every resort we recommend, ensuring that your vacation exceeds expectations. From intimate honeymoon escapes to family adventures, we handle every detail so you can focus on creating memories that last a lifetime.
-              </p>
-              <Button className="bg-teal-500 text-white hover:bg-teal-600 rounded-full px-8 py-6 text-lg">
-                Learn More About Us
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { number: "500+", label: "Happy Clients" },
-                { number: "50+", label: "Partner Resorts" },
-                { number: "15+", label: "Years Experience" },
-                { number: "98%", label: "Satisfaction Rate" },
-              ].map((stat, index) => (
-                <Card
-                  key={index}
-                  className="border border-gray-200 shadow-sm bg-white text-center"
-                >
-                  <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-teal-500 mb-2">
-                      {stat.number}
-                    </div>
-                    <p className="text-gray-600 font-medium">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Get in Touch
+              Ready to Plan Your Dream Vacation?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have questions about our packages? Want to customize your trip? Fill out the form below and our team will respond within 24 hours.
+              Get in touch with our travel experts to create your perfect Maldives experience.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
             <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-teal-500 to-teal-600 text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Let us create your perfect Maldives escape. Contact our travel experts today and turn your island dreams into reality.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-teal-600 hover:bg-gray-100 rounded-full px-8 py-6 text-lg font-semibold">
-              Call Us Now
-            </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white/20 rounded-full px-8 py-6 text-lg font-semibold"
-            >
-              Request a Quote
-            </Button>
           </div>
         </div>
       </section>
