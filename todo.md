@@ -293,3 +293,7 @@
 - [ ] Create staff profile/settings page
 - [x] Build staff dashboard navigation sidebar
 - [x] Add dashboard widgets (content stats, pending approvals, recent activity)
+
+
+## Bug Fixes
+- [x] Fix /admin route 404 error - add redirect or main admin page

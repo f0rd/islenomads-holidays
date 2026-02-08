@@ -47,6 +47,7 @@ function Router() {
       <Route path={"/admin/staff"} component={AdminStaff} />
       <Route path={"/admin/activity"} component={AdminActivity} />
       <Route path={"/admin/roles"} component={AdminRoles} />
+      <Route path={"/admin"} component={StaffDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
