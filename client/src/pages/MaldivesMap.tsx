@@ -775,18 +775,22 @@ export default function MaldivesMap() {
                 <CardContent className="p-0 relative">
                   <div
                     ref={mapContainer}
-                    className="w-full bg-gradient-to-br from-cyan-100 to-blue-100 rounded-lg overflow-auto"
+                    className="w-full bg-gradient-to-br from-cyan-100 to-blue-100 rounded-lg overflow-auto flex items-center justify-center"
                     style={{ height: "600px" }}
                   >
                     {/* SVG Map Visualization */}
                     <svg
                       viewBox="0 0 400 600"
-                      className="w-full h-full"
+                      className="cursor-grab active:cursor-grabbing"
                       style={{
                         background: "linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%)",
                         transform: `scale(${zoom})`,
-                        transformOrigin: "0 0",
-                        transition: "transform 0.3s ease"
+                        transformOrigin: "center",
+                        transition: "transform 0.3s ease",
+                        width: "100%",
+                        height: "100%",
+                        maxWidth: "800px",
+                        maxHeight: "600px"
                       }}
                     >
                       <defs>
