@@ -20,6 +20,7 @@ import {
   Waves,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
@@ -321,18 +322,32 @@ export default function Home() {
                     ))}
                   </ul>
 
-                  <Button
-                    className={`w-full rounded-full py-6 text-lg font-semibold transition-all duration-300 ${
-                      pkg.popular
-                        ? "bg-teal-500 text-white hover:bg-teal-600"
-                        : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                    }`}
-                  >
-                    Book Now
-                  </Button>
+                  <Link href="/packages">
+                    <Button
+                      className={`w-full rounded-full py-6 text-lg font-semibold transition-all duration-300 ${
+                        pkg.popular
+                          ? "bg-teal-500 text-white hover:bg-teal-600"
+                          : "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                      }`}
+                    >
+                      Book Now
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* View All Packages Button */}
+          <div className="text-center mt-12">
+            <Link href="/packages">
+              <Button
+                size="lg"
+                className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                View All Packages
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

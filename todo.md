@@ -310,3 +310,12 @@
 - [x] Add note/comment system for internal communication
 - [x] Implement query assignment to staff
 - [ ] Add email notification system for new queries
+
+
+## Packages Public Pages & Linking
+- [x] Create public packages listing page with filtering and search
+- [x] Link packages section on home page to packages listing
+- [ ] Create package detail page with booking integration
+- [x] Add "View All Packages" button to home page
+- [x] Implement package search and filtering
+- [ ] Add package reviews and ratings
