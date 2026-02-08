@@ -360,7 +360,7 @@
 
 ## Island Detail Pages & Public Features
 - [x] Create island detail page component (/island/:slug)
-- [ ] Integrate interactive maps with island locations
+- [x] Integrate interactive maps with island locations
 - [ ] Add transportation routes visualization on maps
 - [x] Create booking form on island pages
 - [x] Link packages to specific islands
@@ -368,6 +368,8 @@
 - [ ] Implement island comparison feature
 - [ ] Add customer reviews section
 - [x] Create breadcrumb navigation
+- [x] Add enhanced popup with island details on map
+- [x] Enable navigation to full island detail page from map popup
 
 
 ## Bug Fixes - Package Images

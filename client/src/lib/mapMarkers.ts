@@ -8,15 +8,18 @@ export const getMarkerIcon = (type: string): string => {
     atoll: "🏝️",
     resort: "🏨",
     dive: "🤿",
+    "dive_point": "🤿",
     surf: "🏄",
-    city: "🏛️",
-    island: "🏝️",
-    "dive_site": "🤿",
     "surf_spot": "🏄",
+    city: "🏛️",
+    capital: "🏛️",
+    island: "🏝️",
+    airport: "✈️",
+    "dive_site": "🤿",
     default: "📍",
   };
   
-  return iconMap[type] || iconMap.default;
+  return iconMap[type.toLowerCase()] || iconMap.default;
 };
 
 export const createMarkerElement = (type: string, color?: string): HTMLElement => {

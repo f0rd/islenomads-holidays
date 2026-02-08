@@ -568,18 +568,57 @@ export default function MaldivesMapNew() {
         el.addEventListener("click", () => {
           setSelectedLocation(location);
           
-          // Create popup
+          // Create enhanced popup with details
           const popupContent = document.createElement("div");
-          popupContent.className = "p-4 max-w-xs";
+          popupContent.className = "p-4 max-w-sm bg-white rounded-lg";
+          
+          // Build highlights list
+          const highlights = (location as any).highlights || [];
+          const highlightsHtml = highlights.length > 0 
+            ? `<ul class="text-xs text-gray-600 mb-3 space-y-1">${highlights.map((h: string) => `<li>• ${h}</li>`).join('')}</ul>`
+            : '';
+          
+          // Build additional info based on location type
+          let additionalInfo = '';
+          const loc = location as any;
+          if (loc.rating) {
+            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Rating:</span> ⭐ ${loc.rating}</p>`;
+          }
+          if (loc.pricePerNight) {
+            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Price:</span> ${loc.pricePerNight}</p>`;
+          }
+          if (loc.difficulty) {
+            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Difficulty:</span> ${loc.difficulty}</p>`;
+          }
+          if (loc.waveHeight) {
+            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Wave Height:</span> ${loc.waveHeight}</p>`;
+          }
+          if (loc.code) {
+            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Code:</span> ${loc.code}</p>`;
+          }
+          
           popupContent.innerHTML = `
-            <h3 class="font-bold text-lg mb-2">${location.name}</h3>
-            <p class="text-sm text-gray-600 mb-3">${location.description}</p>
-            <button class="w-full bg-blue-600 text-white px-3 py-2 rounded text-sm font-medium hover:bg-blue-700">
-              View Details
+            <h3 class="font-bold text-lg mb-1">${location.name}</h3>
+            <p class="text-xs text-gray-500 mb-2">${location.type}</p>
+            <p class="text-sm text-gray-700 mb-3">${location.description}</p>
+            ${highlightsHtml}
+            ${additionalInfo}
+            <button class="w-full bg-blue-600 text-white px-3 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
+              View Full Details
             </button>
           `;
+          
+          // Add click handler to the button
+          const button = popupContent.querySelector('button');
+          if (button && (location as any).slug) {
+            button.addEventListener('click', (e) => {
+              e.stopPropagation();
+              // Navigate to island detail page
+              window.location.href = `/island/${(location as any).slug}`;
+            });
+          }
 
-          popupRef.current = new mapboxgl.Popup({ offset: 25 })
+          popupRef.current = new mapboxgl.Popup({ offset: 25, maxWidth: '300px' })
             .setDOMContent(popupContent)
             .setLngLat([location.lng, location.lat])
             .addTo(map.current!);
@@ -600,10 +639,10 @@ export default function MaldivesMapNew() {
       addMarkersForLocations(LUXURY_RESORTS, "%23f59e0b", "resort");
     }
     if (activityFilter === "all" || activityFilter === "dives") {
-      addMarkersForLocations(DIVE_POINTS, "%2306b6d4", "dive");
+      addMarkersForLocations(DIVE_POINTS, "%2306b6d4", "dive_point");
     }
     if (activityFilter === "all" || activityFilter === "surfs") {
-      addMarkersForLocations(SURF_SPOTS, "%23eab308", "surf");
+      addMarkersForLocations(SURF_SPOTS, "%23eab308", "surf_spot");
     }
     if (activityFilter === "all" || activityFilter === "airports") {
       addMarkersForLocations(AIRPORTS, "%23ec4899", "airport");
