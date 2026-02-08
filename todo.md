@@ -166,3 +166,21 @@
 - [ ] Add boat routes listing and editor
 - [ ] Add map locations listing and editor
 - [ ] Test boat routes and maps CMS functionality
+
+## Trip Planner Enhancements
+- [x] Add ideal trip generation algorithm
+- [x] Implement AI-powered itinerary suggestions
+- [x] Add custom pricing request feature
+- [x] Create pricing request form and submission
+- [x] Add email notifications for pricing requests
+- [x] Build pricing request management dashboard
+- [x] Test trip generation and pricing features
+
+## Ferry Information & Schedules
+- [x] Add detailed ferry schedule data to database
+- [x] Add departure times and frequency information
+- [x] Create ferry schedule display component
+- [x] Add ferry timing information to boat routes page
+- [x] Implement schedule filtering by time
+- [x] Add real-time availability indicators
+- [x] Test ferry schedule functionality
