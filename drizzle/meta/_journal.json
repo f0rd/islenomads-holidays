@@ -50,6 +50,13 @@
       "when": 1770535482937,
       "tag": "0006_strange_thena",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1770539034968,
+      "tag": "0007_rare_namorita",
+      "breakpoints": true
     }
   ]
 }

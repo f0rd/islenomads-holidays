@@ -4,7 +4,8 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide } from "./db";
+import { invokeLLM } from "./_core/llm";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -296,6 +297,71 @@ export const appRouter = router({
           return updateIslandGuide(input.id, { published: guide.published ? 0 : 1 });
         }),
     }),
+  }),
+  
+  seo: router({
+    getTags: publicProcedure
+      .input(z.object({
+        contentType: z.string(),
+        contentId: z.number(),
+      }))
+      .query(async ({ input }) => {
+        return getApprovedSeoMetaTags(input.contentType, input.contentId);
+      }),
+    
+    getPending: protectedProcedure
+      .query(async () => {
+        return getPendingSeoMetaTags(100);
+      }),
+    
+    approve: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input, ctx }) => {
+        const staffId = ctx.user?.id || 1;
+        return approveSeoMetaTags(input.id, staffId);
+      }),
+    
+    reject: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        reason: z.string(),
+      }))
+      .mutation(async ({ input }) => {
+        return rejectSeoMetaTags(input.id, input.reason);
+      }),
+    
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        keywords: z.array(z.string()).optional(),
+        ogTitle: z.string().optional(),
+        ogDescription: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        const updateData: any = { ...data };
+        if (data.keywords) {
+          updateData.keywords = JSON.stringify(data.keywords);
+        }
+        return updateSeoMetaTags(id, updateData);
+      }),
+    
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteSeoMetaTags(input.id);
+      }),
+    
+    getByContentType: protectedProcedure
+      .input(z.object({
+        contentType: z.string(),
+        status: z.string().optional(),
+      }))
+      .query(async ({ input }) => {
+        return getSeoMetaTagsByContentType(input.contentType, input.status);
+      }),
   }),
 });
 

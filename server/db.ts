@@ -1,6 +1,6 @@
-import { eq, desc, and } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -16,6 +16,122 @@ export async function getDb() {
     }
   }
   return _db;
+}
+
+// SEO Meta Tags helpers
+export async function getSeoMetaTags(contentType: string, contentId: number): Promise<SeoMetaTags | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(seoMetaTags).where(
+    and(
+      eq(seoMetaTags.contentType, contentType as any),
+      eq(seoMetaTags.contentId, contentId)
+    )
+  ).limit(1);
+  return result[0];
+}
+
+export async function getApprovedSeoMetaTags(contentType: string, contentId: number): Promise<SeoMetaTags | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(seoMetaTags).where(
+    and(
+      eq(seoMetaTags.contentType, contentType as any),
+      eq(seoMetaTags.contentId, contentId),
+      eq(seoMetaTags.status, "approved")
+    )
+  ).limit(1);
+  return result[0];
+}
+
+export async function createSeoMetaTags(data: InsertSeoMetaTags): Promise<SeoMetaTags | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(seoMetaTags).values(data);
+  const id = (result as any).insertId;
+  const tags = await getSeoMetaTagsById(id);
+  return tags || null;
+}
+
+export async function getSeoMetaTagsById(id: number): Promise<SeoMetaTags | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(seoMetaTags).where(eq(seoMetaTags.id, id)).limit(1);
+  return result[0];
+}
+
+export async function updateSeoMetaTags(id: number, data: Partial<InsertSeoMetaTags>): Promise<SeoMetaTags | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(seoMetaTags).set(data).where(eq(seoMetaTags.id, id));
+  const tags = await getSeoMetaTagsById(id);
+  return tags || null;
+}
+
+export async function approveSeoMetaTags(id: number, approvedBy: number): Promise<SeoMetaTags | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(seoMetaTags).set({
+    status: "approved",
+    approvedBy,
+    approvedAt: new Date(),
+  }).where(eq(seoMetaTags.id, id));
+  const tags = await getSeoMetaTagsById(id);
+  return tags || null;
+}
+
+export async function rejectSeoMetaTags(id: number, rejectionReason: string): Promise<SeoMetaTags | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(seoMetaTags).set({
+    status: "rejected",
+    rejectionReason,
+  }).where(eq(seoMetaTags.id, id));
+  const tags = await getSeoMetaTagsById(id);
+  return tags || null;
+}
+
+export async function getPendingSeoMetaTags(limit: number = 50): Promise<SeoMetaTags[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(seoMetaTags)
+    .where(eq(seoMetaTags.status, "pending"))
+    .orderBy(desc(seoMetaTags.createdAt))
+    .limit(limit) as any;
+}
+
+export async function getSeoMetaTagsByContentType(contentType: string, status?: string): Promise<SeoMetaTags[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  if (status) {
+    return db.select().from(seoMetaTags)
+      .where(and(
+        eq(seoMetaTags.contentType, contentType as any),
+        eq(seoMetaTags.status, status as any)
+      ))
+      .orderBy(desc(seoMetaTags.createdAt)) as any;
+  }
+  
+  return db.select().from(seoMetaTags)
+    .where(eq(seoMetaTags.contentType, contentType as any))
+    .orderBy(desc(seoMetaTags.createdAt)) as any;
+}
+
+export async function deleteSeoMetaTags(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(seoMetaTags).where(eq(seoMetaTags.id, id));
+  return true;
 }
 
 // Boat Routes helpers
@@ -128,206 +244,6 @@ export async function deleteMapLocation(id: number): Promise<boolean> {
   return true;
 }
 
-export async function upsertUser(user: InsertUser): Promise<void> {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
-  }
-
-  const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot upsert user: database not available");
-    return;
-  }
-
-  try {
-    const values: InsertUser = {
-      openId: user.openId,
-    };
-    const updateSet: Record<string, unknown> = {};
-
-    const textFields = ["name", "email", "loginMethod"] as const;
-    type TextField = (typeof textFields)[number];
-
-    const assignNullable = (field: TextField) => {
-      const value = user[field];
-      if (value === undefined) return;
-      const normalized = value ?? null;
-      values[field] = normalized;
-      updateSet[field] = normalized;
-    };
-
-    textFields.forEach(assignNullable);
-
-    if (user.lastSignedIn !== undefined) {
-      values.lastSignedIn = user.lastSignedIn;
-      updateSet.lastSignedIn = user.lastSignedIn;
-    }
-    if (user.role !== undefined) {
-      values.role = user.role;
-      updateSet.role = user.role;
-    } else if (user.openId === ENV.ownerOpenId) {
-      values.role = 'admin';
-      updateSet.role = 'admin';
-    }
-
-    if (!values.lastSignedIn) {
-      values.lastSignedIn = new Date();
-    }
-
-    if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = new Date();
-    }
-
-    await db.insert(users).values(values).onDuplicateKeyUpdate({
-      set: updateSet,
-    });
-  } catch (error) {
-    console.error("[Database] Failed to upsert user:", error);
-    throw error;
-  }
-}
-
-export async function getUserByOpenId(openId: string) {
-  const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get user: database not available");
-    return undefined;
-  }
-
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
-
-  return result.length > 0 ? result[0] : undefined;
-}
-
-// Blog query helpers
-export async function getAllBlogPosts(limit?: number) {
-  const db = await getDb();
-  if (!db) return [];
-  
-  let query = db.select().from(blogPosts).where(eq(blogPosts.published, 1)).orderBy(desc(blogPosts.createdAt));
-  if (limit) {
-    query = query.limit(limit) as any;
-  }
-  return query;
-}
-
-export async function getBlogPostBySlug(slug: string) {
-  const db = await getDb();
-  if (!db) return undefined;
-  
-  const result = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
-  return result.length > 0 ? result[0] : undefined;
-}
-
-export async function getBlogPostById(id: number) {
-  const db = await getDb();
-  if (!db) return undefined;
-  
-  const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
-  return result.length > 0 ? result[0] : undefined;
-}
-
-export async function createBlogPost(post: InsertBlogPost) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  const result = await db.insert(blogPosts).values(post);
-  return result;
-}
-
-export async function updateBlogPost(id: number, updates: Partial<BlogPost>) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.update(blogPosts).set(updates).where(eq(blogPosts.id, id));
-}
-
-export async function deleteBlogPost(id: number) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.delete(blogPosts).where(eq(blogPosts.id, id));
-}
-
-export async function getBlogComments(postId: number) {
-  const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(blogComments).where(and(eq(blogComments.postId, postId), eq(blogComments.approved, 1))).orderBy(desc(blogComments.createdAt));
-}
-
-export async function createBlogComment(comment: InsertBlogComment) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.insert(blogComments).values(comment);
-}
-
-// Packages query helpers
-export async function getAllPackages(limit?: number) {
-  const db = await getDb();
-  if (!db) return [];
-  
-  let query = db.select().from(packages).where(eq(packages.published, 1)).orderBy(desc(packages.createdAt));
-  if (limit) {
-    query = query.limit(limit) as any;
-  }
-  return query;
-}
-
-export async function getPackageById(id: number) {
-  const db = await getDb();
-  if (!db) return undefined;
-  
-  const result = await db.select().from(packages).where(eq(packages.id, id)).limit(1);
-  return result.length > 0 ? result[0] : undefined;
-}
-
-export async function getPackageBySlug(slug: string) {
-  const db = await getDb();
-  if (!db) return undefined;
-  
-  const result = await db.select().from(packages).where(eq(packages.slug, slug)).limit(1);
-  return result.length > 0 ? result[0] : undefined;
-}
-
-export async function createPackage(pkg: InsertPackage) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  const result = await db.insert(packages).values(pkg);
-  return result;
-}
-
-export async function updatePackage(id: number, updates: Partial<Package>) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.update(packages).set(updates).where(eq(packages.id, id));
-}
-
-export async function deletePackage(id: number) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.delete(packages).where(eq(packages.id, id));
-}
-
-export async function getAllPackagesAdmin() {
-  const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(packages).orderBy(desc(packages.createdAt));
-}
-
-export async function getAllBlogPostsAdmin() {
-  const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
-}
-
-
 // Island Guides helpers
 export async function getIslandGuides(published?: boolean): Promise<IslandGuide[]> {
   const db = await getDb();
@@ -348,14 +264,6 @@ export async function getIslandGuideBySlug(slug: string): Promise<IslandGuide | 
   return result[0];
 }
 
-export async function getIslandGuideById(id: number): Promise<IslandGuide | undefined> {
-  const db = await getDb();
-  if (!db) return undefined;
-
-  const result = await db.select().from(islandGuides).where(eq(islandGuides.id, id)).limit(1);
-  return result[0];
-}
-
 export async function createIslandGuide(data: InsertIslandGuide): Promise<IslandGuide | null> {
   const db = await getDb();
   if (!db) return null;
@@ -364,6 +272,14 @@ export async function createIslandGuide(data: InsertIslandGuide): Promise<Island
   const id = (result as any).insertId;
   const guide = await getIslandGuideById(id);
   return guide || null;
+}
+
+export async function getIslandGuideById(id: number): Promise<IslandGuide | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(islandGuides).where(eq(islandGuides.id, id)).limit(1);
+  return result[0];
 }
 
 export async function updateIslandGuide(id: number, data: Partial<InsertIslandGuide>): Promise<IslandGuide | null> {
@@ -375,91 +291,282 @@ export async function updateIslandGuide(id: number, data: Partial<InsertIslandGu
   return guide || null;
 }
 
-export async function deleteIslandGuide(id: number) {
+export async function deleteIslandGuide(id: number): Promise<boolean> {
   const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  
-  return db.delete(islandGuides).where(eq(islandGuides.id, id));
+  if (!db) return false;
+
+  await db.delete(islandGuides).where(eq(islandGuides.id, id));
+  return true;
 }
 
-export async function getAllIslandGuidesAdmin() {
-  const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(islandGuides).orderBy(desc(islandGuides.createdAt));
-}
-
-export async function searchIslandGuides(query: string): Promise<IslandGuide[]> {
+// Blog Posts helpers
+export async function getBlogPosts(published?: boolean): Promise<BlogPost[]> {
   const db = await getDb();
   if (!db) return [];
 
-  const searchTerm = `%${query}%`;
-  return db.select().from(islandGuides)
-    .where(and(
-      eq(islandGuides.published, 1),
-      // Search in name, slug, atoll, or overview
-      // Note: This is a simplified search - you may want to use full-text search for production
-    )) as any;
+  const query = db.select().from(blogPosts);
+  if (published !== undefined) {
+    return query.where(eq(blogPosts.published, published ? 1 : 0)) as any;
+  }
+  return query as any;
 }
 
-
-// Staff helpers
-export async function getStaffByUserId(userId: number): Promise<Staff | undefined> {
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
   const db = await getDb();
   if (!db) return undefined;
-  
-  const result = await db.select().from(staff).where(eq(staff.userId, userId)).limit(1);
+
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
   return result[0];
 }
 
-export async function getStaffRole(roleId: number): Promise<StaffRole | undefined> {
+export async function createBlogPost(data: InsertBlogPost): Promise<BlogPost | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(blogPosts).values(data);
+  const id = (result as any).insertId;
+  const post = await getBlogPostById(id);
+  return post || null;
+}
+
+export async function getBlogPostById(id: number): Promise<BlogPost | undefined> {
   const db = await getDb();
   if (!db) return undefined;
-  
-  const result = await db.select().from(staffRoles).where(eq(staffRoles.id, roleId)).limit(1);
+
+  const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+  return result[0];
+}
+
+export async function updateBlogPost(id: number, data: Partial<InsertBlogPost>): Promise<BlogPost | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(blogPosts).set(data).where(eq(blogPosts.id, id));
+  const post = await getBlogPostById(id);
+  return post || null;
+}
+
+export async function deleteBlogPost(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(blogPosts).where(eq(blogPosts.id, id));
+  return true;
+}
+
+// Packages helpers
+export async function getPackages(published?: boolean): Promise<Package[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const query = db.select().from(packages);
+  if (published !== undefined) {
+    return query.where(eq(packages.published, published ? 1 : 0)) as any;
+  }
+  return query as any;
+}
+
+export async function getPackageBySlug(slug: string): Promise<Package | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(packages).where(eq(packages.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function createPackage(data: InsertPackage): Promise<Package | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(packages).values(data);
+  const id = (result as any).insertId;
+  const pkg = await getPackageById(id);
+  return pkg || null;
+}
+
+export async function getPackageById(id: number): Promise<Package | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(packages).where(eq(packages.id, id)).limit(1);
+  return result[0];
+}
+
+export async function updatePackage(id: number, data: Partial<InsertPackage>): Promise<Package | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(packages).set(data).where(eq(packages.id, id));
+  const pkg = await getPackageById(id);
+  return pkg || null;
+}
+
+export async function deletePackage(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(packages).where(eq(packages.id, id));
+  return true;
+}
+
+// Staff helpers
+export async function getStaff(): Promise<Staff[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(staff) as any;
+}
+
+export async function getStaffById(id: number): Promise<Staff | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(staff).where(eq(staff.id, id)).limit(1);
   return result[0];
 }
 
 export async function createStaff(data: InsertStaff): Promise<Staff | null> {
   const db = await getDb();
   if (!db) return null;
-  
+
   const result = await db.insert(staff).values(data);
   const id = (result as any).insertId;
-  const staffRecord = await db.select().from(staff).where(eq(staff.id, id)).limit(1);
-  return staffRecord[0] || null;
+  const staffMember = await getStaffById(id);
+  return staffMember || null;
 }
 
-export async function getAllStaff(): Promise<Staff[]> {
-  const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(staff).orderBy(desc(staff.createdAt)) as any;
-}
-
-export async function createStaffRole(data: InsertStaffRole): Promise<StaffRole | null> {
+export async function updateStaff(id: number, data: Partial<InsertStaff>): Promise<Staff | null> {
   const db = await getDb();
   if (!db) return null;
-  
-  const result = await db.insert(staffRoles).values(data);
-  const id = (result as any).insertId;
-  const role = await db.select().from(staffRoles).where(eq(staffRoles.id, id)).limit(1);
-  return role[0] || null;
+
+  await db.update(staff).set(data).where(eq(staff.id, id));
+  const staffMember = await getStaffById(id);
+  return staffMember || null;
 }
 
-export async function getAllStaffRoles(): Promise<StaffRole[]> {
+export async function deleteStaff(id: number): Promise<boolean> {
   const db = await getDb();
-  if (!db) return [];
-  
-  return db.select().from(staffRoles).orderBy(desc(staffRoles.createdAt)) as any;
+  if (!db) return false;
+
+  await db.delete(staff).where(eq(staff.id, id));
+  return true;
 }
 
-export async function logActivity(data: InsertActivityLog): Promise<ActivityLog | null> {
+// Activity Log helpers
+export async function createActivityLog(data: InsertActivityLog): Promise<ActivityLog | null> {
   const db = await getDb();
   if (!db) return null;
-  
+
   const result = await db.insert(activityLog).values(data);
   const id = (result as any).insertId;
-  const log = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
-  return log[0] || null;
+  const log = await getActivityLogById(id);
+  return log || null;
+}
+
+export async function getActivityLogById(id: number): Promise<ActivityLog | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
+  return result[0];
+}
+
+export async function getActivityLogs(limit: number = 50): Promise<ActivityLog[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(activityLog).orderBy(desc(activityLog.createdAt)).limit(limit) as any;
+}
+
+
+// Additional helpers for admin and public views
+export async function getAllBlogPosts(limit?: number): Promise<BlogPost[]> {
+  const db = await getDb();
+  if (!db) return [];
+  let query = db.select().from(blogPosts).where(eq(blogPosts.published, 1));
+  if (limit) {
+    query = query.limit(limit) as any;
+  }
+  return query as any;
+}
+
+export async function getAllBlogPostsAdmin(): Promise<BlogPost[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt)) as any;
+}
+
+export async function getAllPackages(limit?: number): Promise<Package[]> {
+  const db = await getDb();
+  if (!db) return [];
+  let query = db.select().from(packages).where(eq(packages.published, 1));
+  if (limit) {
+    query = query.limit(limit) as any;
+  }
+  return query as any;
+}
+
+export async function getAllPackagesAdmin(): Promise<Package[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(packages).orderBy(desc(packages.createdAt)) as any;
+}
+
+export async function getAllIslandGuidesAdmin(): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(islandGuides).orderBy(desc(islandGuides.createdAt)) as any;
+}
+
+export async function getBlogComments(postId: number): Promise<BlogComment[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(blogComments).where(eq(blogComments.postId, postId)) as any;
+}
+
+export async function createBlogComment(data: InsertBlogComment): Promise<BlogComment | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(blogComments).values(data);
+  const id = (result as any).insertId;
+  const comment = await db.select().from(blogComments).where(eq(blogComments.id, id)).limit(1);
+  return comment[0] || null;
+}
+
+
+// User management helpers
+export async function getUserByOpenId(openId: string): Promise<User | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+  return result[0];
+}
+
+export async function upsertUser(data: Partial<InsertUser> & { openId: string }): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const existing = await getUserByOpenId(data.openId);
+  if (existing) {
+    await db.update(users).set({
+      ...data,
+      lastSignedIn: new Date(),
+    }).where(eq(users.openId, data.openId));
+    const updated = await getUserByOpenId(data.openId);
+    return updated || null;
+  } else {
+    const result = await db.insert(users).values(data as InsertUser);
+    const id = (result as any).insertId;
+    const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
+    return user[0] || null;
+  }
+}
+
+export async function getUserById(id: number): Promise<User | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result[0];
 }

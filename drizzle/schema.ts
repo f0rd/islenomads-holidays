@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { mysqlTable, int, varchar, text, timestamp, mysqlEnum } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -240,6 +240,40 @@ export const islandGuides = mysqlTable("island_guides", {
 export type IslandGuide = typeof islandGuides.$inferSelect;
 export type InsertIslandGuide = typeof islandGuides.$inferInsert;
 
+// SEO Meta Tags Management table - stores AI-generated and approved meta tags
+export const seoMetaTags = mysqlTable("seo_meta_tags", {
+  id: int("id").autoincrement().primaryKey(),
+  contentType: mysqlEnum("contentType", ["blog", "package", "island_guide", "boat_route", "map_location", "home", "about", "contact"]).notNull(),
+  contentId: int("contentId").notNull(), // Reference to the content item
+  title: varchar("title", { length: 255 }).notNull(),
+  description: varchar("description", { length: 500 }).notNull(),
+  keywords: text("keywords"), // JSON array of keywords
+  ogTitle: varchar("ogTitle", { length: 255 }),
+  ogDescription: varchar("ogDescription", { length: 500 }),
+  ogImage: varchar("ogImage", { length: 500 }),
+  twitterCard: varchar("twitterCard", { length: 50 }),
+  canonicalUrl: varchar("canonicalUrl", { length: 500 }),
+  robotsIndex: varchar("robotsIndex", { length: 20 }).default("index"),
+  robotsFollow: varchar("robotsFollow", { length: 20 }).default("follow"),
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  // AI Generation & Approval Workflow
+  status: mysqlEnum("status", ["pending", "approved", "rejected", "modified"]).default("pending").notNull(),
+  confidence: int("confidence").default(0), // 0-100 confidence score
+  seoScore: int("seoScore").default(0), // 0-100 SEO score
+  generatedBy: varchar("generatedBy", { length: 100 }), // "ai" or "manual"
+  approvedBy: int("approvedBy"), // Reference to staff.id
+  rejectionReason: text("rejectionReason"),
+  generatedAt: timestamp("generatedAt").defaultNow(),
+  approvedAt: timestamp("approvedAt"),
+  // Version tracking
+  version: int("version").default(1),
+  previousVersionId: int("previousVersionId"), // For rollback capability
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SeoMetaTags = typeof seoMetaTags.$inferSelect;
+export type InsertSeoMetaTags = typeof seoMetaTags.$inferInsert;
 
 // Staff Roles table
 export const staffRoles = mysqlTable("staff_roles", {
