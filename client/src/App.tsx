@@ -19,6 +19,10 @@ import IslandGuide from "./pages/IslandGuide";
 import StaffLogin from "./pages/StaffLogin";
 import CMSDashboard from "./pages/CMSDashboard";
 import AdminSEOOptimizer from "./pages/AdminSEOOptimizer";
+import StaffDashboard from "./pages/StaffDashboard";
+import AdminStaff from "./pages/AdminStaff";
+import AdminActivity from "./pages/AdminActivity";
+import AdminRoles from "./pages/AdminRoles";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -39,6 +43,10 @@ function Router() {
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/admin/seo-optimizer"} component={AdminSEOOptimizer} />
+      <Route path={"/admin/dashboard"} component={StaffDashboard} />
+      <Route path={"/admin/staff"} component={AdminStaff} />
+      <Route path={"/admin/activity"} component={AdminActivity} />
+      <Route path={"/admin/roles"} component={AdminRoles} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

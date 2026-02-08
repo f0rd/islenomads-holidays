@@ -280,3 +280,16 @@
 - [x] Create staff login page with authentication
 - [ ] Implement staff role-based access control
 - [ ] Add staff dashboard navigation
+
+
+## Staff Dashboard & Management
+- [x] Create main staff dashboard page with overview widgets
+- [x] Build staff management page (list, create, edit, delete staff)
+- [x] Create role management page (create, edit, delete roles)
+- [x] Build activity log viewer page
+- [ ] Create analytics and reporting page
+- [ ] Implement role-based access control (RBAC) middleware
+- [ ] Add permission checks to all admin pages
+- [ ] Create staff profile/settings page
+- [x] Build staff dashboard navigation sidebar
+- [x] Add dashboard widgets (content stats, pending approvals, recent activity)
