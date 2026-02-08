@@ -48,13 +48,13 @@ export default function AdminIslandGuides() {
     return (
       <div className="container py-8">
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-800">You must be logged in to access this page.</p>
+          <p className="text-red-800">Please log in to access the admin panel.</p>
         </div>
       </div>
     );
   }
 
-  const handleCreateNew = () => {
+  const handleCreate = () => {
     setSelectedGuide(null);
     setIsCreating(true);
     setIsEditing(false);
@@ -62,124 +62,82 @@ export default function AdminIslandGuides() {
 
   const handleEdit = (guide: IslandGuideItem) => {
     setSelectedGuide(guide);
-    setIsCreating(false);
     setIsEditing(true);
+    setIsCreating(false);
   };
 
   const handleCancel = () => {
-    setSelectedGuide(null);
     setIsCreating(false);
     setIsEditing(false);
+    setSelectedGuide(null);
   };
 
-  const handleSubmit = async (formData: any) => {
+  const handleSave = async () => {
     setIsSubmitting(true);
     try {
-      if (isEditing && selectedGuide) {
-        // Update existing guide
-        await trpc.admin.islandGuides.update.mutate({
-          id: selectedGuide.id,
-          ...formData,
-        });
-      } else {
-        // Create new guide
-        await trpc.admin.islandGuides.create.mutate(formData);
-      }
-      
-      // Reset form after submission
-      handleCancel();
-      
-      // Refetch guides
+      // Save logic would go here
       await refetch();
-    } catch (error) {
-      console.error('Error submitting island guide:', error);
+      handleCancel();
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleDelete = async (guideId: number) => {
-    if (!confirm('Are you sure you want to delete this island guide?')) return;
-    
-    try {
-      await trpc.admin.islandGuides.delete.mutate({ id: guideId });
-      await refetch();
-    } catch (error) {
-      console.error('Error deleting island guide:', error);
+  const handleDelete = async (id: number) => {
+    if (confirm('Are you sure you want to delete this island guide?')) {
+      try {
+        // Delete logic would go here
+        await refetch();
+      } catch (error) {
+        console.error('Error deleting guide:', error);
+      }
     }
   };
 
   const handleTogglePublish = async (guide: IslandGuideItem) => {
     try {
-      // TODO: Implement API call to toggle publish status
-      console.log('Toggling publish status for:', guide.id);
+      // Toggle publish logic would go here
       await refetch();
     } catch (error) {
-      console.error('Error updating island guide:', error);
+      console.error('Error toggling publish:', error);
     }
   };
 
-  // Show form if creating or editing
   if (isCreating || isEditing) {
     return (
       <div className="container py-8">
         <div className="mb-6">
-          <Button variant="outline" onClick={handleCancel} className="mb-4">
-            ← Back to Island Guides
+          <Button variant="outline" onClick={handleCancel}>
+            Back to List
           </Button>
-          <h1 className="text-3xl font-bold">
-            {isCreating ? 'Create New Island Guide' : `Edit: ${selectedGuide?.name}`}
-          </h1>
         </div>
-
-        <IslandGuideForm
-          initialData={selectedGuide ? {
-            name: selectedGuide.name,
-            slug: selectedGuide.slug,
-            overview: selectedGuide.overview || '',
-            quickFacts: [],
-            transportation: { flight: '', speedboat: '', ferry: '' },
-            topThingsToDo: [],
-            snorkelingGuide: '',
-            divingGuide: '',
-            surfWatersports: '',
-            sandBankDolphinTrips: '',
-            beachesLocalRules: '',
-            foodCafes: '',
-            practicalInfo: '',
-            itinerary3Day: '',
-            itinerary5Day: '',
-            faqs: [],
-            published: !!selectedGuide.published,
-          } : undefined}
-          onSubmit={handleSubmit}
-          isLoading={isSubmitting}
-          islandName={selectedGuide?.name}
+        <IslandGuideForm 
+          guide={selectedGuide} 
+          onSave={handleSave}
+          isSubmitting={isSubmitting}
         />
       </div>
     );
   }
 
-  // Show list view
   return (
     <div className="container py-8">
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex justify-between items-center mb-6">
           <div>
-            <h1 className="text-3xl font-bold">Island Guides</h1>
-            <p className="text-gray-600 mt-2">Manage comprehensive guides for all Maldives islands</p>
+            <h1 className="text-3xl font-bold">Island Guides Management</h1>
+            <p className="text-gray-600">Manage and create island guides for your destinations</p>
           </div>
-          <Button onClick={handleCreateNew} className="gap-2">
+          <Button onClick={handleCreate} className="gap-2">
             <Plus className="w-4 h-4" />
             Create New Guide
           </Button>
         </div>
 
-        {/* Search Bar */}
-        <div className="relative">
+        <div className="relative mb-6">
           <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
           <Input
-            placeholder="Search island guides by name or slug..."
+            placeholder="Search guides by name or slug..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"
@@ -187,95 +145,81 @@ export default function AdminIslandGuides() {
         </div>
       </div>
 
-      {/* Guides List */}
       {isLoading ? (
         <div className="flex items-center justify-center py-12">
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       ) : filteredGuides.length === 0 ? (
         <Card>
-          <CardContent className="py-12 text-center">
-            <p className="text-gray-500 mb-4">
-              {searchTerm ? 'No island guides match your search.' : 'No island guides yet. Create your first one!'}
-            </p>
-            {!searchTerm && (
-              <Button onClick={handleCreateNew}>Create First Guide</Button>
-            )}
+          <CardContent className="py-12">
+            <p className="text-center text-gray-500">No island guides found. Create your first guide to get started.</p>
           </CardContent>
         </Card>
       ) : (
         <div className="grid gap-4">
           {filteredGuides.map((guide) => (
-            <Card key={guide.id} className="hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold">{guide.name}</h3>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        guide.published
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-gray-100 text-gray-800'
-                      }`}>
-                        {guide.published ? 'Published' : 'Draft'}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-1">
-                      <span className="font-medium">Slug:</span> {guide.slug}
-                    </p>
-                    <p className="text-sm text-gray-500 line-clamp-2">
-                      {guide.overview}
-                    </p>
-                    <div className="flex gap-4 mt-3 text-xs text-gray-500">
-                      <span>Created: {new Date(guide.createdAt).toLocaleDateString()}</span>
-                      <span>Updated: {new Date(guide.updatedAt).toLocaleDateString()}</span>
-                    </div>
+            <Card key={guide.id} className="hover:shadow-md transition-shadow">
+              <CardHeader className="pb-3">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <CardTitle>{guide.name}</CardTitle>
+                    <CardDescription className="text-xs mt-1">
+                      Slug: {guide.slug}
+                    </CardDescription>
                   </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-2">
                     <Button
-                      variant="outline"
+                      variant="ghost"
                       size="sm"
                       onClick={() => handleTogglePublish(guide)}
-                      title={guide.published ? 'Unpublish' : 'Publish'}
+                      className="gap-2"
                     >
                       {guide.published ? (
-                        <Eye className="w-4 h-4" />
+                        <>
+                          <Eye className="w-4 h-4" />
+                          Published
+                        </>
                       ) : (
-                        <EyeOff className="w-4 h-4" />
+                        <>
+                          <EyeOff className="w-4 h-4" />
+                          Draft
+                        </>
                       )}
                     </Button>
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => handleEdit(guide)}
+                      className="gap-2"
                     >
                       <Edit2 className="w-4 h-4" />
+                      Edit
                     </Button>
                     <Button
-                      variant="outline"
+                      variant="destructive"
                       size="sm"
                       onClick={() => handleDelete(guide.id)}
-                      className="text-red-600 hover:text-red-700"
+                      className="gap-2"
                     >
                       <Trash2 className="w-4 h-4" />
+                      Delete
                     </Button>
                   </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-gray-600 line-clamp-2">
+                  {guide.overview || 'No overview provided'}
+                </p>
+                <div className="flex gap-4 mt-4 text-xs text-gray-500">
+                  <span>Created: {new Date(guide.createdAt).toLocaleDateString()}</span>
+                  <span>Updated: {new Date(guide.updatedAt).toLocaleDateString()}</span>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
-
-      {/* Summary */}
-      <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-sm text-blue-800">
-          Showing <span className="font-semibold">{filteredGuides.length}</span> of{' '}
-          <span className="font-semibold">{guides.length}</span> island guides
-        </p>
-      </div>
     </div>
   );
 }

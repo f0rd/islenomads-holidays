@@ -349,3 +349,15 @@
 - [x] Add images to island guides
 - [x] Integrate island guides into public website
 - [x] Add comprehensive content to all island guides (activities, dining, packing, FAQs, itineraries)
+
+
+## Island Detail Pages & Public Features
+- [x] Create island detail page component (/island/:slug)
+- [ ] Integrate interactive maps with island locations
+- [ ] Add transportation routes visualization on maps
+- [x] Create booking form on island pages
+- [x] Link packages to specific islands
+- [ ] Add related islands section
+- [ ] Implement island comparison feature
+- [ ] Add customer reviews section
+- [x] Create breadcrumb navigation

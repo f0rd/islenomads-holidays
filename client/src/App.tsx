@@ -25,6 +25,7 @@ import AdminActivity from "./pages/AdminActivity";
 import AdminRoles from "./pages/AdminRoles";
 import AdminCRM from "./pages/AdminCRM";
 import AdminCRMDetail from "./pages/AdminCRMDetail";
+import IslandDetail from "./pages/IslandDetail";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -42,6 +43,7 @@ function Router() {
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"\island-guide/:islandId"} component={IslandGuide} />
+      <Route path={"/island/:slug"} component={IslandDetail} />
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/admin/seo-optimizer"} component={AdminSEOOptimizer} />
