@@ -52,8 +52,13 @@ export default function Navigation() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:block">
+        {/* CTA Buttons */}
+        <div className="hidden lg:flex items-center gap-3">
+          <Link href="/staff-login">
+            <button className="px-4 py-2 text-sm font-medium text-primary-foreground hover:text-accent transition-colors duration-300 border border-primary-foreground/30 rounded-md hover:border-accent">
+              Staff Login
+            </button>
+          </Link>
           <button className="px-6 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 hover:scale-105">
             Contact Us
           </button>
@@ -86,7 +91,12 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <button className="w-full px-4 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 mt-4">
+            <Link href="/staff-login">
+              <button className="w-full px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary-foreground/10 rounded-md transition-colors duration-300 border border-primary-foreground/30">
+                Staff Login
+              </button>
+            </Link>
+            <button className="w-full px-4 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 mt-2">
               Contact Us
             </button>
           </div>
