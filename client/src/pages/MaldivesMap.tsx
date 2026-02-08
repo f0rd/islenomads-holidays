@@ -581,7 +581,7 @@ export default function MaldivesMap() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="flex-1 py-12 bg-gradient-to-b from-background to-secondary/20">
+      <section className="flex-1 py-12 bg-gradient-to-b from-background to-secondary/20 pt-24">
         <div className="container max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">

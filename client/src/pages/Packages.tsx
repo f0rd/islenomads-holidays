@@ -145,7 +145,7 @@ export default function Packages() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="flex-1 py-12 bg-gradient-to-b from-primary/5 to-background">
+      <section className="flex-1 py-12 bg-gradient-to-b from-primary/5 to-background pt-24">
         <div className="container max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="mb-12">

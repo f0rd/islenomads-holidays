@@ -405,3 +405,9 @@
 - [x] Fix overlay and z-index issues with navigation
 - [x] Fix modal and dialog overlay issues
 - [x] Test all interactive elements
+
+
+## Overlay Issues - All Pages
+- [x] Fix overlaying issues affecting h1 and content elements
+- [x] Review and fix z-index stacking across all pages
+- [x] Ensure proper spacing and positioning of elements
