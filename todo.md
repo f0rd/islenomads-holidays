@@ -80,6 +80,8 @@
 - [x] Replace SVG map with Mapbox GL JS implementation
 - [x] Fix database schema for latitude/longitude (decimal type)
 - [x] Update all TypeScript errors and type mismatches
+- [x] Replace black dot markers with emoji icons
+- [x] Add hover effects and drop shadows to markers
 
 ## Activity Markers (Dive Points & Surf Spots)
 - [x] Add dive points data with coordinates

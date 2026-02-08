@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { createMarkerElement, getMarkerIcon } from "@/lib/mapMarkers";
 
 // Set Mapbox token
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -558,15 +559,9 @@ export default function MaldivesMapNew() {
 
     const addMarkersForLocations = (locations: LocationType[], color: string, icon: string) => {
       locations.forEach((location) => {
-        const el = document.createElement("div");
-        el.className = `marker marker-${icon}`;
-        el.style.width = "32px";
-        el.style.height = "32px";
-        el.style.backgroundImage = `url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${encodeURIComponent(color)}"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>')`;
-        el.style.backgroundSize = "100%";
-        el.style.cursor = "pointer";
+        const el = createMarkerElement(icon, color);
 
-        const marker = new mapboxgl.Marker(el)
+        const marker = new mapboxgl.Marker({ element: el })
           .setLngLat([location.lng, location.lat])
           .addTo(map.current!);
 
