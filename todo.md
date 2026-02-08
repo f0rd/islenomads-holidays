@@ -391,3 +391,10 @@
 - [x] Add "Show All" and "Hide All" quick actions
 - [ ] Persist filter preferences in local storage
 - [x] Add filter count badges
+
+
+## Map Airports Feature
+- [x] Add airport data to map
+- [x] Create airport markers on map
+- [x] Add airport filter button
+- [x] Add airport labels and information

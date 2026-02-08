@@ -459,6 +459,46 @@ const SURF_SPOTS = [
   },
 ];
 
+// Airports Data
+const AIRPORTS = [
+  {
+    id: "airport-1",
+    name: "Malé International Airport",
+    type: "Airport",
+    lat: 4.1924,
+    lng: 73.2285,
+    code: "MLE",
+    description: "Main international airport serving the Maldives",
+    highlights: ["International Flights", "Seaplane Hub", "Customs & Immigration"],
+    airlines: "Emirates, Qatar Airways, Singapore Airlines, Turkish Airlines",
+    rating: 4.4,
+  },
+  {
+    id: "airport-2",
+    name: "Gan International Airport",
+    type: "Airport",
+    lat: 0.3842,
+    lng: 73.1577,
+    code: "GAN",
+    description: "Secondary airport serving southern atolls",
+    highlights: ["Southern Atolls Access", "Domestic Flights", "Regional Hub"],
+    airlines: "FlyMe, Maldivian Airlines",
+    rating: 4.2,
+  },
+  {
+    id: "airport-3",
+    name: "Hanimaadhoo Airport",
+    type: "Airport",
+    lat: 6.3833,
+    lng: 73.1833,
+    code: "HAQ",
+    description: "Northern airport serving Haa Alifu and Haa Dhaalu atolls",
+    highlights: ["Northern Atolls Access", "Regional Flights", "Scenic Location"],
+    airlines: "Maldivian Airlines, FlyMe",
+    rating: 4.1,
+  },
+];
+
 export default function MaldivesMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -467,12 +507,14 @@ export default function MaldivesMap() {
   const [selectedSurf, setSelectedSurf] = useState<(typeof SURF_SPOTS)[0] | null>(null);
   const [selectedIsland, setSelectedIsland] = useState<(typeof POPULAR_ISLANDS)[0] | null>(null);
   const [selectedResort, setSelectedResort] = useState<(typeof LUXURY_RESORTS)[0] | null>(null);
+  const [selectedAirport, setSelectedAirport] = useState<(typeof AIRPORTS)[0] | null>(null);
   const [filteredLocations, setFilteredLocations] = useState(MALDIVES_LOCATIONS);
   const [filteredDives, setFilteredDives] = useState(DIVE_POINTS);
   const [filteredSurfs, setFilteredSurfs] = useState(SURF_SPOTS);
   const [filteredIslands, setFilteredIslands] = useState(POPULAR_ISLANDS);
   const [filteredResorts, setFilteredResorts] = useState(LUXURY_RESORTS);
-  const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts">("all");
+  const [filteredAirports, setFilteredAirports] = useState(AIRPORTS);
+  const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts" | "airports">("all");
   const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
   const [zoom, setZoom] = useState(1);
 
@@ -520,11 +562,19 @@ export default function MaldivesMap() {
       });
     }
 
+    const airports = AIRPORTS.filter(
+      (airport) =>
+        airport.name.toLowerCase().includes(searchLower) ||
+        airport.code.toLowerCase().includes(searchLower) ||
+        airport.description.toLowerCase().includes(searchLower)
+    );
+
     setFilteredLocations(locations);
     setFilteredDives(dives);
     setFilteredSurfs(surfs);
     setFilteredIslands(islands);
     setFilteredResorts(resorts);
+    setFilteredAirports(airports);
   }, [searchTerm, priceFilter]);
 
   return (
@@ -627,6 +677,18 @@ export default function MaldivesMap() {
                 <Waves className="w-4 h-4" />
                 Surfs
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredSurfs.length}</span>
+              </button>
+              <button
+                onClick={() => setActivityFilter("airports")}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  activityFilter === "airports"
+                    ? "bg-indigo-600 text-white"
+                    : "bg-secondary text-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <MapPin className="w-4 h-4" />
+                Airports
+                <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{filteredAirports.length}</span>
               </button>
             </div>
 
@@ -945,6 +1007,50 @@ export default function MaldivesMap() {
                         );
                       })}
 
+                      {/* Render Airports */}
+                      {(activityFilter === "all" || activityFilter === "airports") && filteredAirports.map((airport) => {
+                        const x = ((airport.lng - 72) / 2) * 350 + 25;
+                        const y = ((7 - airport.lat) / 7) * 550 + 25;
+
+                        return (
+                          <g key={airport.id} filter="url(#shadow)">
+                            <circle
+                              cx={x}
+                              cy={y}
+                              r={selectedAirport?.id === airport.id ? 11 : 7}
+                              fill="#4f46e5"
+                              stroke="white"
+                              strokeWidth="2"
+                              className="cursor-pointer transition-all"
+                              onClick={() => setSelectedAirport(airport)}
+                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                            />
+                            <text
+                              x={x}
+                              y={y - 14}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="#4f46e5"
+                              className="pointer-events-none"
+                            >
+                              {airport.code}
+                            </text>
+                            <text
+                              x={x}
+                              y={y + 2}
+                              textAnchor="middle"
+                              fontSize="8"
+                              fontWeight="bold"
+                              fill="white"
+                              className="pointer-events-none"
+                            >
+                              Plane
+                            </text>
+                          </g>
+                        );
+                      })}
+
                       {/* Legend */}
                       <g>
                         <rect x="10" y="10" width="140" height="130" fill="white" opacity="0.95" rx="4" />
@@ -968,9 +1074,9 @@ export default function MaldivesMap() {
                         <text x="35" y="110" fontSize="10" fill="#333" fontWeight="bold">
                           Surfs
                         </text>
-                        <circle cx="25" cy="125" r="4" fill="#06b6d4" />
+                        <circle cx="25" cy="125" r="4" fill="#4f46e5" />
                         <text x="35" y="130" fontSize="10" fill="#333" fontWeight="bold">
-                          Selected
+                          Airports
                         </text>
                       </g>
                     </svg>
@@ -1393,6 +1499,63 @@ export default function MaldivesMap() {
                         <div className="text-xs text-muted-foreground">Rating</div>
                         <div className="font-semibold text-foreground">⭐ {selectedSurf.rating}</div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {selectedAirport && (
+            <Card className="mt-8 border-indigo-600">
+              <CardHeader className="bg-indigo-50">
+                <CardTitle className="flex items-center gap-2 text-indigo-900">
+                  <MapPin className="w-5 h-5" />
+                  {selectedAirport.name} ({selectedAirport.code})
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-1">
+                    <div className="w-full h-48 bg-gradient-to-br from-indigo-300 to-blue-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
+                      ✈️
+                    </div>
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
+                      <p className="text-muted-foreground">{selectedAirport.description}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Airlines</h3>
+                      <p className="text-muted-foreground">{selectedAirport.airlines}</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedAirport.highlights.map((highlight, idx) => (
+                          <span key={idx} className="px-3 py-1 bg-indigo-100 text-indigo-900 rounded-full text-sm font-medium">
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
+                      <div>
+                        <div className="text-xs text-muted-foreground">Latitude</div>
+                        <div className="font-semibold text-foreground">
+                          {selectedAirport.lat.toFixed(4)}°N
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-xs text-muted-foreground">Longitude</div>
+                        <div className="font-semibold text-foreground">
+                          {selectedAirport.lng.toFixed(4)}°E
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pt-4 border-t border-border">
+                      <div className="text-sm text-muted-foreground">Rating: {selectedAirport.rating}/5 ⭐</div>
                     </div>
                   </div>
                 </div>
