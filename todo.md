@@ -336,3 +336,7 @@
 - [x] Add package search and filtering in CMS
 - [x] Create tRPC endpoints for package CRUD
 - [x] Integrate packages CMS into staff dashboard
+
+
+## Sample Data Creation
+- [x] Create 8 sample vacation packages in database
