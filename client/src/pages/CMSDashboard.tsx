@@ -14,6 +14,7 @@ import {
   LogOut,
   Menu,
   X,
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -52,6 +53,12 @@ const menuItems = [
     title: "Boat Routes",
     icon: Anchor,
     href: "/admin/boat-routes",
+    badge: null,
+  },
+  {
+    title: "SEO Optimizer",
+    icon: Zap,
+    href: "/admin/seo-optimizer",
     badge: null,
   },
   {
