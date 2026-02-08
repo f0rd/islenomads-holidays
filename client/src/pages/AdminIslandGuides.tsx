@@ -26,7 +26,7 @@ export default function AdminIslandGuides() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Fetch all island guides
-  const { data: guides = [], isLoading, refetch } = trpc.admin.islandGuides.listAll.useQuery();
+  const { data: guides = [], isLoading, refetch } = trpc.admin.islandGuides.listAdmin.useQuery();
 
   // Filter guides based on search term
   const filteredGuides = useMemo(() => {
@@ -75,9 +75,16 @@ export default function AdminIslandGuides() {
   const handleSubmit = async (formData: any) => {
     setIsSubmitting(true);
     try {
-      // TODO: Implement API call to create/update island guide
-      // For now, just show success message
-      console.log('Submitting island guide:', formData);
+      if (isEditing && selectedGuide) {
+        // Update existing guide
+        await trpc.admin.islandGuides.update.mutate({
+          id: selectedGuide.id,
+          ...formData,
+        });
+      } else {
+        // Create new guide
+        await trpc.admin.islandGuides.create.mutate(formData);
+      }
       
       // Reset form after submission
       handleCancel();
@@ -95,8 +102,7 @@ export default function AdminIslandGuides() {
     if (!confirm('Are you sure you want to delete this island guide?')) return;
     
     try {
-      // TODO: Implement API call to delete island guide
-      console.log('Deleting island guide:', guideId);
+      await trpc.admin.islandGuides.delete.mutate({ id: guideId });
       await refetch();
     } catch (error) {
       console.error('Error deleting island guide:', error);
