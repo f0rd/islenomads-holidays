@@ -340,3 +340,5 @@
 
 ## Sample Data Creation
 - [x] Create 8 sample vacation packages in database
+
+- [x] Add images to all 8 vacation packages
