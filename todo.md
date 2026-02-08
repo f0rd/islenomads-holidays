@@ -365,3 +365,10 @@
 
 ## Bug Fixes - Package Images
 - [x] Fix package images display on home page vacation packages section
+
+
+## Mapbox Enhancements
+- [x] Add island name labels to Mapbox
+- [x] Implement zoom in/out controls
+- [x] Add island markers with popups
+- [x] Enable interactive island selection

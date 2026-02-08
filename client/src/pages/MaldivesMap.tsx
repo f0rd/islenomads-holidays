@@ -474,6 +474,7 @@ export default function MaldivesMap() {
   const [filteredResorts, setFilteredResorts] = useState(LUXURY_RESORTS);
   const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts">("all");
   const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
+  const [zoom, setZoom] = useState(1);
 
   // Filter locations based on search and activity type
   useEffect(() => {
@@ -674,23 +675,49 @@ export default function MaldivesMap() {
             {/* Map Container */}
             <div className="lg:col-span-2">
               <Card className="h-full overflow-hidden">
-                <CardHeader>
+                <CardHeader className="flex justify-between items-center">
                   <CardTitle className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-accent" />
                     Maldives Interactive Map
                   </CardTitle>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setZoom(Math.min(zoom + 0.2, 2))}
+                      className="px-3"
+                    >
+                      +
+                    </Button>
+                    <span className="text-sm font-medium px-2 py-1 bg-gray-100 rounded">
+                      {Math.round(zoom * 100)}%
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setZoom(Math.max(zoom - 0.2, 0.6))}
+                      className="px-3"
+                    >
+                      −
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="p-0">
+                <CardContent className="p-0 relative">
                   <div
                     ref={mapContainer}
-                    className="w-full bg-gradient-to-br from-cyan-100 to-blue-100 rounded-lg overflow-hidden"
+                    className="w-full bg-gradient-to-br from-cyan-100 to-blue-100 rounded-lg overflow-auto"
                     style={{ height: "600px" }}
                   >
                     {/* SVG Map Visualization */}
                     <svg
                       viewBox="0 0 400 600"
                       className="w-full h-full"
-                      style={{ background: "linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%)" }}
+                      style={{
+                        background: "linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%)",
+                        transform: `scale(${zoom})`,
+                        transformOrigin: "0 0",
+                        transition: "transform 0.3s ease"
+                      }}
                     >
                       <defs>
                         <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
@@ -752,6 +779,17 @@ export default function MaldivesMap() {
                               onClick={() => setSelectedIsland(island)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
+                            <text
+                              x={x}
+                              y={y - 15}
+                              textAnchor="middle"
+                              fontSize="9"
+                              fontWeight="bold"
+                              fill="#15803d"
+                              className="pointer-events-none"
+                            >
+                              {island.name}
+                            </text>
                             <text
                               x={x}
                               y={y + 2}
