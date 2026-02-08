@@ -319,3 +319,79 @@ export const activityLog = mysqlTable("activity_log", {
 
 export type ActivityLog = typeof activityLog.$inferSelect;
 export type InsertActivityLog = typeof activityLog.$inferInsert;
+
+
+// CRM - Customer Queries table
+export const crmQueries = mysqlTable("crm_queries", {
+  id: int("id").autoincrement().primaryKey(),
+  // Customer Information
+  customerName: varchar("customerName", { length: 255 }).notNull(),
+  customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
+  customerPhone: varchar("customerPhone", { length: 20 }),
+  customerCountry: varchar("customerCountry", { length: 100 }),
+  // Query Details
+  subject: varchar("subject", { length: 255 }).notNull(),
+  message: text("message").notNull(),
+  queryType: mysqlEnum("queryType", ["booking", "general", "complaint", "feedback", "support", "other"]).default("general").notNull(),
+  // Status & Priority
+  status: mysqlEnum("status", ["new", "in_progress", "waiting_customer", "resolved", "closed"]).default("new").notNull(),
+  priority: mysqlEnum("priority", ["low", "medium", "high", "urgent"]).default("medium").notNull(),
+  // Assignment
+  assignedTo: int("assignedTo").references(() => staff.id, { onDelete: "set null" }), // Staff member assigned
+  // Related Information
+  packageId: int("packageId").references(() => packages.id, { onDelete: "set null" }), // If related to a package
+  islandGuideId: int("islandGuideId").references(() => islandGuides.id, { onDelete: "set null" }), // If related to an island
+  // Tracking
+  firstResponseAt: timestamp("firstResponseAt"),
+  resolvedAt: timestamp("resolvedAt"),
+  closedAt: timestamp("closedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type CrmQuery = typeof crmQueries.$inferSelect;
+export type InsertCrmQuery = typeof crmQueries.$inferInsert;
+
+// CRM - Query Interactions (notes, emails, calls, etc.)
+export const crmInteractions = mysqlTable("crm_interactions", {
+  id: int("id").autoincrement().primaryKey(),
+  queryId: int("queryId").notNull().references(() => crmQueries.id, { onDelete: "cascade" }),
+  staffId: int("staffId").notNull().references(() => staff.id, { onDelete: "cascade" }),
+  // Interaction Details
+  type: mysqlEnum("type", ["note", "email", "call", "meeting", "sms"]).default("note").notNull(),
+  subject: varchar("subject", { length: 255 }),
+  content: text("content").notNull(),
+  // Status
+  isInternal: int("isInternal").default(1).notNull(), // 1 = internal only, 0 = shared with customer
+  // Attachments
+  attachments: text("attachments"), // JSON array of file URLs
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type CrmInteraction = typeof crmInteractions.$inferSelect;
+export type InsertCrmInteraction = typeof crmInteractions.$inferInsert;
+
+// CRM - Customer Profiles (aggregate customer data)
+export const crmCustomers = mysqlTable("crm_customers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: varchar("name", { length: 255 }).notNull(),
+  phone: varchar("phone", { length: 20 }),
+  country: varchar("country", { length: 100 }),
+  // Customer Metrics
+  totalQueries: int("totalQueries").default(0),
+  totalBookings: int("totalBookings").default(0),
+  totalSpent: int("totalSpent").default(0), // In cents
+  // Preferences
+  preferredContact: mysqlEnum("preferredContact", ["email", "phone", "sms"]).default("email"),
+  newsletter: int("newsletter").default(0),
+  // Status
+  isActive: int("isActive").default(1),
+  lastContactedAt: timestamp("lastContactedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type CrmCustomer = typeof crmCustomers.$inferSelect;
+export type InsertCrmCustomer = typeof crmCustomers.$inferInsert;

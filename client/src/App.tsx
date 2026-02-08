@@ -23,6 +23,8 @@ import StaffDashboard from "./pages/StaffDashboard";
 import AdminStaff from "./pages/AdminStaff";
 import AdminActivity from "./pages/AdminActivity";
 import AdminRoles from "./pages/AdminRoles";
+import AdminCRM from "./pages/AdminCRM";
+import AdminCRMDetail from "./pages/AdminCRMDetail";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -47,6 +49,8 @@ function Router() {
       <Route path={"/admin/staff"} component={AdminStaff} />
       <Route path={"/admin/activity"} component={AdminActivity} />
       <Route path={"/admin/roles"} component={AdminRoles} />
+      <Route path={"/admin/crm/:id"} component={AdminCRMDetail} />
+      <Route path={"/admin/crm"} component={AdminCRM} />
       <Route path={"/admin"} component={StaffDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

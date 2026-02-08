@@ -297,3 +297,16 @@
 
 ## Bug Fixes
 - [x] Fix /admin route 404 error - add redirect or main admin page
+
+
+## CRM System for Query Management
+- [x] Create database schema for queries, interactions, and customer info
+- [ ] Add tRPC endpoints for CRUD operations on queries
+- [x] Build CRM dashboard with query overview and statistics
+- [x] Create query list page with search, filter, and sorting
+- [x] Build query detail page with interaction history
+- [x] Add query status management (new, in-progress, resolved, closed)
+- [ ] Create customer profile view
+- [x] Add note/comment system for internal communication
+- [ ] Implement query assignment to staff
+- [ ] Add email notification system for new queries

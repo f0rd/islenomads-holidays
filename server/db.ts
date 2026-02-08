@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -569,4 +569,98 @@ export async function getUserById(id: number): Promise<User | undefined> {
 
   const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
   return result[0];
+}
+
+
+// CRM Query helpers
+export async function getCrmQueries(status?: string): Promise<CrmQuery[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const query = db.select().from(crmQueries).orderBy(desc(crmQueries.createdAt));
+  if (status) {
+    return query.where(eq(crmQueries.status, status as any)) as any;
+  }
+  return query as any;
+}
+
+export async function getCrmQueryById(id: number): Promise<CrmQuery | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(crmQueries).where(eq(crmQueries.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createCrmQuery(data: InsertCrmQuery): Promise<CrmQuery | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(crmQueries).values(data);
+  const id = (result as any).insertId;
+  const query = await getCrmQueryById(id);
+  return query || null;
+}
+
+export async function updateCrmQuery(id: number, data: Partial<InsertCrmQuery>): Promise<CrmQuery | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(crmQueries).set(data).where(eq(crmQueries.id, id));
+  const query = await getCrmQueryById(id);
+  return query || null;
+}
+
+export async function deleteCrmQuery(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  await db.delete(crmQueries).where(eq(crmQueries.id, id));
+  return true;
+}
+
+// CRM Interaction helpers
+export async function getCrmInteractions(queryId: number): Promise<CrmInteraction[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(crmInteractions).where(eq(crmInteractions.queryId, queryId)).orderBy(desc(crmInteractions.createdAt)) as any;
+}
+
+export async function createCrmInteraction(data: InsertCrmInteraction): Promise<CrmInteraction | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(crmInteractions).values(data);
+  const id = (result as any).insertId;
+  const interaction = await db.select().from(crmInteractions).where(eq(crmInteractions.id, id)).limit(1);
+  return interaction[0] || null;
+}
+
+// CRM Customer helpers
+export async function getCrmCustomerByEmail(email: string): Promise<CrmCustomer | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(crmCustomers).where(eq(crmCustomers.email, email)).limit(1);
+  return result[0];
+}
+
+export async function createCrmCustomer(data: InsertCrmCustomer): Promise<CrmCustomer | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(crmCustomers).values(data);
+  const id = (result as any).insertId;
+  const customer = await db.select().from(crmCustomers).where(eq(crmCustomers.id, id)).limit(1);
+  return customer[0] || null;
+}
+
+export async function updateCrmCustomer(id: number, data: Partial<InsertCrmCustomer>): Promise<CrmCustomer | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(crmCustomers).set(data).where(eq(crmCustomers.id, id));
+  const customer = await db.select().from(crmCustomers).where(eq(crmCustomers.id, id)).limit(1);
+  return customer[0] || null;
 }

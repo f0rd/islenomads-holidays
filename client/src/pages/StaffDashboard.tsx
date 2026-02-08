@@ -61,6 +61,7 @@ export default function StaffDashboard() {
     { icon: Package, label: "Packages", href: "/admin/packages", badge: "2" },
     { icon: MapPin, label: "Island Guides", href: "/admin/island-guides", badge: null },
     { icon: BarChart3, label: "SEO Optimizer", href: "/admin/seo-optimizer", badge: "5" },
+    { icon: Activity, label: "CRM - Queries", href: "/admin/crm", badge: "5" },
     { icon: Users, label: "Staff Management", href: "/admin/staff", badge: null },
     { icon: Activity, label: "Activity Log", href: "/admin/activity", badge: null },
     { icon: Settings, label: "Settings", href: "/admin/settings", badge: null },
