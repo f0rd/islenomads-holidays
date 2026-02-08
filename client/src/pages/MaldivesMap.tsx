@@ -3,7 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { MapPin, Info, Waves, Anchor, Building2, Palmtree } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MapPin, Info, Waves, Anchor, Building2, Palmtree, BookOpen } from "lucide-react";
+import { Link } from "wouter";
 
 // Maldives popular locations data
 const MALDIVES_LOCATIONS = [
@@ -1198,6 +1200,14 @@ export default function MaldivesMap() {
                           {selectedLocation.lng.toFixed(4)}°E
                         </div>
                       </div>
+                    </div>
+                    <div className="pt-4 border-t border-border">
+                      <Link href="/island-guide/male-guide">
+                        <Button className="w-full gap-2">
+                          <BookOpen className="w-4 h-4" />
+                          Read Full Island Guide
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

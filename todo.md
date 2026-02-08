@@ -184,3 +184,11 @@
 - [x] Implement schedule filtering by time
 - [x] Add real-time availability indicators
 - [x] Test ferry schedule functionality
+
+## Island Guide Pages
+- [x] Create island guide data structure
+- [x] Build Island Guide page component with all 14 sections
+- [x] Add Island Guide to CMS management
+- [x] Integrate Island Guide into maps page
+- [x] Add Island Guide routing and navigation
+- [x] Write Island Guide tests
