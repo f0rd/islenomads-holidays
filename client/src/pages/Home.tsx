@@ -289,7 +289,7 @@ export default function Home() {
                     }`}
                   >
                     {pkg.featured && (
-                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold z-10">
+                      <div className="absolute top-4 left-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-20">
                         Featured
                       </div>
                     )}
