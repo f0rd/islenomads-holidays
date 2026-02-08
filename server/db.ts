@@ -1,6 +1,6 @@
 import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation } from "../drizzle/schema";
+import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -325,4 +325,79 @@ export async function getAllBlogPostsAdmin() {
   if (!db) return [];
   
   return db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
+}
+
+
+// Island Guides helpers
+export async function getIslandGuides(published?: boolean): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const query = db.select().from(islandGuides);
+  if (published !== undefined) {
+    return query.where(eq(islandGuides.published, published ? 1 : 0)) as any;
+  }
+  return query as any;
+}
+
+export async function getIslandGuideBySlug(slug: string): Promise<IslandGuide | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(islandGuides).where(eq(islandGuides.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function getIslandGuideById(id: number): Promise<IslandGuide | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(islandGuides).where(eq(islandGuides.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createIslandGuide(data: InsertIslandGuide): Promise<IslandGuide | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.insert(islandGuides).values(data);
+  const id = (result as any).insertId;
+  const guide = await getIslandGuideById(id);
+  return guide || null;
+}
+
+export async function updateIslandGuide(id: number, data: Partial<InsertIslandGuide>): Promise<IslandGuide | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(islandGuides).set(data).where(eq(islandGuides.id, id));
+  const guide = await getIslandGuideById(id);
+  return guide || null;
+}
+
+export async function deleteIslandGuide(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  return db.delete(islandGuides).where(eq(islandGuides.id, id));
+}
+
+export async function getAllIslandGuidesAdmin() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return db.select().from(islandGuides).orderBy(desc(islandGuides.createdAt));
+}
+
+export async function searchIslandGuides(query: string): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const searchTerm = `%${query}%`;
+  return db.select().from(islandGuides)
+    .where(and(
+      eq(islandGuides.published, 1),
+      // Search in name, slug, atoll, or overview
+      // Note: This is a simplified search - you may want to use full-text search for production
+    )) as any;
 }

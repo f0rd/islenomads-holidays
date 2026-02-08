@@ -181,3 +181,61 @@ export const mapLocations = mysqlTable("map_locations", {
 
 export type MapLocation = typeof mapLocations.$inferSelect;
 export type InsertMapLocation = typeof mapLocations.$inferInsert;
+
+// Island Guides table - comprehensive guides for islands with editable content
+export const islandGuides = mysqlTable("island_guides", {
+  id: int("id").autoincrement().primaryKey(),
+  locationId: int("locationId"), // Reference to mapLocations
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  atoll: varchar("atoll", { length: 255 }),
+  overview: text("overview"), // 80-200 words description
+  quickFacts: text("quickFacts"), // JSON array of 8 facts
+  // Transportation
+  flightInfo: text("flightInfo"),
+  speedboatInfo: text("speedboatInfo"),
+  ferryInfo: text("ferryInfo"),
+  // Activities
+  topThingsToDo: text("topThingsToDo"), // JSON array of activities
+  // Water Sports
+  snorkelingGuide: text("snorkelingGuide"), // JSON object with spots, difficulty, tips
+  divingGuide: text("divingGuide"), // JSON object with sites, difficulty, tips
+  surfWatersports: text("surfWatersports"), // JSON object
+  sandbankDolphinTrips: text("sandbankDolphinTrips"), // JSON object
+  // Beaches & Local Rules
+  beachesLocalRules: text("beachesLocalRules"), // JSON object with beaches and rules
+  // Food & Cafés
+  foodCafes: text("foodCafes"), // JSON array of restaurants/cafes
+  // Practical Info
+  currency: varchar("currency", { length: 100 }),
+  language: varchar("language", { length: 100 }),
+  bestTimeToVisit: varchar("bestTimeToVisit", { length: 255 }),
+  whatToPack: text("whatToPack"), // JSON array
+  healthTips: text("healthTips"), // JSON array
+  emergencyContacts: text("emergencyContacts"), // JSON array
+  // Itineraries
+  threeDayItinerary: text("threeDayItinerary"), // JSON array
+  fiveDayItinerary: text("fiveDayItinerary"), // JSON array
+  // FAQ
+  faq: text("faq"), // JSON array of Q&A
+  // Media
+  images: text("images"), // JSON array of image URLs
+  // Coordinates
+  latitude: varchar("latitude", { length: 50 }),
+  longitude: varchar("longitude", { length: 50 }),
+  // SEO Fields
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  metaKeywords: varchar("metaKeywords", { length: 500 }),
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  seoScore: int("seoScore"),
+  // Status
+  published: int("published").default(0).notNull(),
+  featured: int("featured").default(0).notNull(),
+  viewCount: int("viewCount").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type IslandGuide = typeof islandGuides.$inferSelect;
+export type InsertIslandGuide = typeof islandGuides.$inferInsert;
