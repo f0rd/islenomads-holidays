@@ -793,9 +793,6 @@ export default function MaldivesMap() {
                       className="cursor-grab active:cursor-grabbing"
                       style={{
                         background: "linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%)",
-                        transform: `scale(${zoom})`,
-                        transformOrigin: "center",
-                        transition: "transform 0.3s ease",
                         width: "100%",
                         height: "100%",
                         maxWidth: "800px",
@@ -825,7 +822,7 @@ export default function MaldivesMap() {
                               fill="#0d9488"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedLocation(location)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -858,7 +855,7 @@ export default function MaldivesMap() {
                               fill="#22c55e"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedIsland(island)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -902,7 +899,7 @@ export default function MaldivesMap() {
                               fill="#a855f7"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedResort(resort)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -946,7 +943,7 @@ export default function MaldivesMap() {
                               fill="#0891b2"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedDive(dive)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -990,7 +987,7 @@ export default function MaldivesMap() {
                               fill="#f59e0b"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedSurf(surf)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
@@ -1034,7 +1031,7 @@ export default function MaldivesMap() {
                               fill="#4f46e5"
                               stroke="white"
                               strokeWidth="2"
-                              className="cursor-pointer transition-all"
+                              className="cursor-pointer hover:opacity-80 transition-all"
                               onClick={() => setSelectedAirport(airport)}
                               style={{ cursor: "pointer", transition: "all 0.3s ease" }}
                             />
