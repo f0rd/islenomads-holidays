@@ -67,6 +67,82 @@ export default function Home() {
       document.head.appendChild(metaKeywords);
     }
     metaKeywords.setAttribute('content', 'Maldives vacations, luxury travel, island resorts, Maldives holidays, travel specialist, Maldives packages');
+    
+    // Add Product/Service schema for vacation packages
+    const productSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Maldives Vacation Packages",
+      "description": "Premium vacation packages for Maldives island experiences",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Romantic Escape",
+          "item": {
+            "@type": "Product",
+            "name": "Romantic Escape - 5 Days Maldives Vacation",
+            "description": "Perfect for couples seeking an intimate getaway with luxury accommodations and private experiences",
+            "price": "2999",
+            "priceCurrency": "USD",
+            "duration": "P5D",
+            "image": "https://islenomads.com/images/romantic-escape.jpg",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "120"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ultimate Paradise",
+          "item": {
+            "@type": "Product",
+            "name": "Ultimate Paradise - 7 Days Maldives Vacation",
+            "description": "The ultimate all-inclusive Maldives experience with premium amenities and exclusive island hopping adventures",
+            "price": "4999",
+            "priceCurrency": "USD",
+            "duration": "P7D",
+            "image": "https://islenomads.com/images/ultimate-paradise.jpg",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "250"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Island Explorer",
+          "item": {
+            "@type": "Product",
+            "name": "Island Explorer - 6 Days Maldives Vacation",
+            "description": "Discover the hidden gems of the Maldives with guided tours and authentic cultural experiences",
+            "price": "3499",
+            "priceCurrency": "USD",
+            "duration": "P6D",
+            "image": "https://islenomads.com/images/island-explorer.jpg",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "reviewCount": "180"
+            }
+          }
+        }
+      ]
+    };
+    
+    let productSchemaScript = document.querySelector('script[data-schema="products"]') as HTMLScriptElement | null;
+    if (!productSchemaScript) {
+      productSchemaScript = document.createElement('script');
+      productSchemaScript.type = 'application/ld+json';
+      productSchemaScript.setAttribute('data-schema', 'products');
+      productSchemaScript.textContent = JSON.stringify(productSchema);
+      document.head.appendChild(productSchemaScript);
+    }
   }, []);
 
   return (
