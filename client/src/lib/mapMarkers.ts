@@ -24,30 +24,33 @@ export const getMarkerIcon = (type: string): string => {
 
 export const createMarkerElement = (type: string, color?: string): HTMLElement => {
   const el = document.createElement("div");
-  el.style.width = "44px";
-  el.style.height = "44px";
+  el.style.width = "64px";
+  el.style.height = "64px";
   el.style.cursor = "pointer";
   el.style.display = "flex";
   el.style.alignItems = "center";
   el.style.justifyContent = "center";
-  el.style.fontSize = "28px";
-  el.style.filter = "drop-shadow(0 2px 6px rgba(0,0,0,0.4))";
-  el.style.transition = "transform 0.2s ease";
+  el.style.fontSize = "40px";
+  el.style.filter = "drop-shadow(0 4px 8px rgba(0,0,0,0.5))";
+  el.style.transition = "transform 0.2s ease, filter 0.2s ease";
   el.style.userSelect = "none";
   el.style.transformOrigin = "center center";
   el.style.position = "relative";
+  el.style.zIndex = "10";
   
   el.innerHTML = getMarkerIcon(type);
   
   // Add hover effect
   el.addEventListener("mouseenter", () => {
-    el.style.transform = "scale(1.2)";
+    el.style.transform = "scale(1.3)";
+    el.style.filter = "drop-shadow(0 6px 12px rgba(0,0,0,0.7))";
     el.style.zIndex = "1000";
   });
   
   el.addEventListener("mouseleave", () => {
     el.style.transform = "scale(1)";
-    el.style.zIndex = "auto";
+    el.style.filter = "drop-shadow(0 4px 8px rgba(0,0,0,0.5))";
+    el.style.zIndex = "10";
   });
   
   return el;

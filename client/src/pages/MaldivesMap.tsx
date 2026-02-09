@@ -815,26 +815,39 @@ export default function MaldivesMap() {
                         const y = ((7 - location.lat) / 7) * 550 + 25;
 
                         return (
-                          <g key={location.id} filter="url(#shadow)">
+                          <g key={location.id} filter="url(#shadow)" onClick={() => setSelectedLocation(location)} style={{ cursor: "pointer" }}>
                             <circle
                               cx={x}
                               cy={y}
-                              r={selectedLocation?.id === location.id ? 12 : 8}
+                              r={selectedLocation?.id === location.id ? 16 : 12}
                               fill="#0d9488"
                               stroke="white"
-                              strokeWidth="2"
-                              className="cursor-pointer hover:opacity-80 transition-all"
-                              onClick={() => setSelectedLocation(location)}
-                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                              strokeWidth="3"
+                              className="transition-all duration-300 hover:r-16"
+                              style={{ 
+                                cursor: "pointer",
+                                filter: selectedLocation?.id === location.id ? "drop-shadow(0 0 8px rgba(13, 148, 136, 0.6))" : "drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
+                                transition: "all 0.3s ease"
+                              }}
                             />
                             <text
                               x={x}
-                              y={y - 18}
+                              y={y + 5}
                               textAnchor="middle"
-                              fontSize="9"
+                              fontSize="16"
+                              className="pointer-events-none select-none"
+                            >
+                              🏝️
+                            </text>
+                            <text
+                              x={x}
+                              y={y - 22}
+                              textAnchor="middle"
+                              fontSize="10"
                               fontWeight="bold"
                               fill="#0d9488"
-                              className="pointer-events-none"
+                              className="pointer-events-none bg-white px-1"
+                              style={{ background: "white", padding: "2px 4px", borderRadius: "3px" }}
                             >
                               {location.name}
                             </text>
@@ -848,39 +861,40 @@ export default function MaldivesMap() {
                         const y = ((7 - island.lat) / 7) * 550 + 25;
 
                         return (
-                          <g key={island.id} filter="url(#shadow)">
+                          <g key={island.id} filter="url(#shadow)" onClick={() => setSelectedIsland(island)} style={{ cursor: "pointer" }}>
                             <circle
                               cx={x}
                               cy={y}
-                              r={selectedIsland?.id === island.id ? 10 : 7}
+                              r={selectedIsland?.id === island.id ? 14 : 10}
                               fill="#22c55e"
                               stroke="white"
-                              strokeWidth="2"
-                              className="cursor-pointer hover:opacity-80 transition-all"
-                              onClick={() => setSelectedIsland(island)}
-                              style={{ cursor: "pointer", transition: "all 0.3s ease" }}
+                              strokeWidth="3"
+                              style={{ 
+                                cursor: "pointer",
+                                filter: selectedIsland?.id === island.id ? "drop-shadow(0 0 8px rgba(34, 197, 94, 0.6))" : "drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
+                                transition: "all 0.3s ease"
+                              }}
                             />
                             <text
                               x={x}
-                              y={y - 15}
+                              y={y + 5}
+                              textAnchor="middle"
+                              fontSize="16"
+                              className="pointer-events-none select-none"
+                            >
+                              🏝️
+                            </text>
+                            <text
+                              x={x}
+                              y={y - 20}
                               textAnchor="middle"
                               fontSize="9"
                               fontWeight="bold"
                               fill="#15803d"
                               className="pointer-events-none"
+                              style={{ background: "white", padding: "2px 4px", borderRadius: "3px" }}
                             >
                               {island.name}
-                            </text>
-                            <text
-                              x={x}
-                              y={y + 2}
-                              textAnchor="middle"
-                              fontSize="8"
-                              fontWeight="bold"
-                              fill="white"
-                              className="pointer-events-none"
-                            >
-                              🏝️
                             </text>
                           </g>
                         );
