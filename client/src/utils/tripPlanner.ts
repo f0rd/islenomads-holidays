@@ -350,12 +350,14 @@ export function findDirectRoutes(
   to: string
 ): RouteSegment[] {
   const routes: RouteSegment[] = [];
+  const normalizedFrom = from.toLowerCase();
+  const normalizedTo = to.toLowerCase();
 
-  // Check speedboat routes
+  // Check speedboat routes for direct connection
   SPEEDBOAT_ROUTES.forEach((route) => {
     if (
-      route.startPoint.toLowerCase().includes(from.toLowerCase()) &&
-      route.endPoint.toLowerCase().includes(to.toLowerCase())
+      route.startPoint.toLowerCase().includes(normalizedFrom) &&
+      route.endPoint.toLowerCase().includes(normalizedTo)
     ) {
       routes.push({
         id: route.id,
@@ -377,11 +379,11 @@ export function findDirectRoutes(
     }
   });
 
-  // Check ferry routes
+  // Check ferry routes for direct connection
   PUBLIC_FERRY_ROUTES.forEach((route) => {
     if (
-      route.startPoint.toLowerCase().includes(from.toLowerCase()) &&
-      route.endPoint.toLowerCase().includes(to.toLowerCase())
+      route.startPoint.toLowerCase().includes(normalizedFrom) &&
+      route.endPoint.toLowerCase().includes(normalizedTo)
     ) {
       routes.push({
         id: route.id,
@@ -402,6 +404,80 @@ export function findDirectRoutes(
       });
     }
   });
+
+  // If no direct routes found, try hub-based routing through Male City
+  if (routes.length === 0 && normalizedFrom !== "male" && normalizedTo !== "male") {
+    let fromToMaleRoute: RouteSegment | null = null;
+    let maleToToRoute: RouteSegment | null = null;
+
+    // Find route from source to Male
+    PUBLIC_FERRY_ROUTES.forEach((route) => {
+      if (!fromToMaleRoute && route.startPoint.toLowerCase().includes(normalizedFrom) && route.endPoint.toLowerCase().includes("male")) {
+        fromToMaleRoute = {
+          id: route.id,
+          routeName: route.name,
+          routeType: "ferry",
+          from: route.startPoint,
+          to: route.endPoint,
+          duration: route.duration,
+          durationMinutes: parseDuration(route.duration),
+          distance: route.distance,
+          price: route.price,
+          priceAmount: parsePrice(route.price),
+          departureTime: route.schedule[0] || "06:00",
+          capacity: route.capacity,
+          speed: route.speed,
+          amenities: route.amenities,
+          operator: route.operator,
+        };
+      }
+    });
+
+    // Find route from Male to destination
+    PUBLIC_FERRY_ROUTES.forEach((route) => {
+      if (!maleToToRoute && route.startPoint.toLowerCase().includes("male") && route.endPoint.toLowerCase().includes(normalizedTo)) {
+        maleToToRoute = {
+          id: route.id,
+          routeName: route.name,
+          routeType: "ferry",
+          from: route.startPoint,
+          to: route.endPoint,
+          duration: route.duration,
+          durationMinutes: parseDuration(route.duration),
+          distance: route.distance,
+          price: route.price,
+          priceAmount: parsePrice(route.price),
+          departureTime: route.schedule[0] || "06:00",
+          capacity: route.capacity,
+          speed: route.speed,
+          amenities: route.amenities,
+          operator: route.operator,
+        };
+      }
+    });
+
+    // Combine hub routes if both legs exist
+    if (fromToMaleRoute && maleToToRoute) {
+      const totalMinutes = fromToMaleRoute.durationMinutes + maleToToRoute.durationMinutes + 120;
+      routes.push({
+        id: `hub-${fromToMaleRoute.id}-${maleToToRoute.id}`,
+        routeName: `${fromToMaleRoute.from} → Male → ${maleToToRoute.to}`,
+        routeType: "ferry",
+        from: fromToMaleRoute.from,
+        to: maleToToRoute.to,
+        duration: `${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}m`,
+        durationMinutes: totalMinutes,
+        distance: "Multi-leg",
+        price: `$${fromToMaleRoute.priceAmount + maleToToRoute.priceAmount}`,
+        priceAmount: fromToMaleRoute.priceAmount + maleToToRoute.priceAmount,
+        departureTime: fromToMaleRoute.departureTime,
+        capacity: Math.min(fromToMaleRoute.capacity, maleToToRoute.capacity),
+        speed: "Variable",
+        amenities: [],
+        operator: "Multi-leg Ferry (via Male)",
+      });
+    }
+  }
 
   return routes;
 }
