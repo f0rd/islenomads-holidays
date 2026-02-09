@@ -120,6 +120,62 @@ export const AVAILABLE_DESTINATIONS: Destination[] = [
     lat: 4.18,
     lng: 73.45,
   },
+  {
+    id: "veligandu-island",
+    name: "Veligandu Island",
+    type: "island",
+    lat: 4.2419,
+    lng: 73.6486,
+  },
+  {
+    id: "maafushi-island",
+    name: "Maafushi Island",
+    type: "island",
+    lat: 3.82,
+    lng: 73.35,
+  },
+  {
+    id: "dhigurah-island",
+    name: "Dhigurah Island",
+    type: "island",
+    lat: 3.7833,
+    lng: 73.1833,
+  },
+  {
+    id: "ukulhas-island",
+    name: "Ukulhas Island",
+    type: "island",
+    lat: 3.9,
+    lng: 73.25,
+  },
+  {
+    id: "kandooma-island",
+    name: "Kandooma Island",
+    type: "island",
+    lat: 4.05,
+    lng: 73.52,
+  },
+  {
+    id: "thulusdhoo-island",
+    name: "Thulusdhoo Island",
+    type: "island",
+    lat: 4.0833,
+    lng: 73.6167,
+  },
+  {
+    id: "fihalhohi-island",
+    name: "Fihalhohi Island",
+    type: "island",
+    lat: 3.95,
+    lng: 73.3,
+  },
+  {
+    id: "biyadhoo-island",
+    name: "Biyadhoo Island",
+    type: "island",
+    lat: 3.8167,
+    lng: 73.1667,
+  },
 ];
 
 // Parse duration string to minutes
