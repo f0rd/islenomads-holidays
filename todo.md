@@ -498,3 +498,13 @@
 - [x] Verify search filtering works
 - [x] Test activity filter buttons
 - [x] Confirm all location types display (atolls, islands, resorts, dive sites, surf spots, airports)
+
+## Featured Destinations Fix
+- [x] Fix Featured Destinations section to use Island Guides data
+- [x] Update data source mapping to Island Guides
+- [x] Correct the selection logic for featured destinations
+- [x] Create tRPC endpoint for featured island guides
+- [x] Update Home page to fetch featured island guides
+- [x] Test Featured Destinations display on home page
+- [ ] Mark island guides as featured in database (requires manual update via CMS)
+- [ ] Verify links navigate to correct island guide pages

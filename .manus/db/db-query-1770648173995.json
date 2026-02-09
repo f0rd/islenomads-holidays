@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, slug, featured FROM island_guides ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, featured FROM island_guides ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male - The Capital City",
+      "slug": "male-capital-city",
+      "featured": "1"
+    },
+    {
+      "id": "2",
+      "name": "Maafushi Island",
+      "slug": "maafushi-island",
+      "featured": "1"
+    },
+    {
+      "id": "3",
+      "name": "Thulusdhoo Island",
+      "slug": "thulusdhoo-island",
+      "featured": "1"
+    },
+    {
+      "id": "4",
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "featured": "0"
+    },
+    {
+      "id": "5",
+      "name": "Dhigurah Island",
+      "slug": "dhigurah-island",
+      "featured": "0"
+    },
+    {
+      "id": "6",
+      "name": "Ukulhas Island",
+      "slug": "ukulhas-island",
+      "featured": "0"
+    },
+    {
+      "id": "7",
+      "name": "Veligandu Island",
+      "slug": "veligandu-island",
+      "featured": "0"
+    },
+    {
+      "id": "8",
+      "name": "Kandooma Island",
+      "slug": "kandooma-island",
+      "featured": "0"
+    },
+    {
+      "id": "9",
+      "name": "Fulidhoo Island",
+      "slug": "fulidhoo-island",
+      "featured": "0"
+    },
+    {
+      "id": "10",
+      "name": "Haa Alifu Atoll",
+      "slug": "haa-alifu-atoll",
+      "featured": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tfeatured\n1\tMale - The Capital City\tmale-capital-city\t1\n2\tMaafushi Island\tmaafushi-island\t1\n3\tThulusdhoo Island\tthulusdhoo-island\t1\n4\tBanana Reef\tbanana-reef\t0\n5\tDhigurah Island\tdhigurah-island\t0\n6\tUkulhas Island\tukulhas-island\t0\n7\tVeligandu Island\tveligandu-island\t0\n8\tKandooma Island\tkandooma-island\t0\n9\tFulidhoo Island\tfulidhoo-island\t0\n10\tHaa Alifu Atoll\thaa-alifu-atoll\t0\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

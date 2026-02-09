@@ -33,6 +33,9 @@ export default function Home() {
   // Fetch featured packages from database
   const { data: allPackages = [], isLoading: packagesLoading } = trpc.packages.list.useQuery();
 
+  // Fetch featured island guides from database
+  const { data: featuredIslandGuides = [], isLoading: guidesLoading } = trpc.islandGuides.featured.useQuery({ limit: 3 });
+
   // Get featured packages (limit to 3 for display)
   const featuredPackages = useMemo(() => {
     return allPackages
@@ -301,56 +304,54 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                image: "/images/2HotXIyREgcc.jpg",
-                title: "Luxury Water Villas",
-                location: "North Malé Atoll",
-                description: "Overwater bungalows with private infinity pools",
-              },
-              {
-                image: "/images/GrTu06kOyGsW.jpg",
-                title: "Private Island Resorts",
-                location: "South Ari Atoll",
-                description: "Exclusive island experiences with pristine beaches",
-              },
-              {
-                image: "/images/qjapGQ7gVlNW.jpg",
-                title: "Romantic Getaways",
-                location: "Baa Atoll",
-                description: "Perfect honeymoon destinations in paradise",
-              },
-            ].map((destination, index) => (
-              <Card
-                key={index}
-                className="overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src={destination.image}
-                    alt={destination.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <p className="text-sm text-teal-500 font-semibold mb-2">
-                    {destination.location}
-                  </p>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {destination.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{destination.description}</p>
-                  <Link href="/island-guide/male-guide">
-                    <Button
-                      variant="outline"
-                      className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"
-                    >
-                      Explore More
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+            {guidesLoading ? (
+              <div className="col-span-3 flex justify-center items-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin text-teal-500" />
+              </div>
+            ) : featuredIslandGuides.length > 0 ? (
+              featuredIslandGuides.map((guide: any) => {
+                const images = typeof guide.images === 'string' ? JSON.parse(guide.images || '[]') : (guide.images || []);
+                const firstImage = images.length > 0 ? images[0] : '/images/default-island.jpg';
+                
+                return (
+                  <Card
+                    key={guide.id}
+                    className="overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300"
+                  >
+                    <div className="h-64 overflow-hidden">
+                      <img
+                        src={firstImage}
+                        alt={guide.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <CardContent className="p-6">
+                      <p className="text-sm text-teal-500 font-semibold mb-2">
+                        {guide.atoll || 'Maldives'}
+                      </p>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        {guide.name}
+                      </h3>
+                      <p className="text-gray-600 mb-4 line-clamp-2">
+                        {guide.overview || 'Discover the beauty of this island paradise'}
+                      </p>
+                      <Link href={`/island-guide/${guide.slug}`}>
+                        <Button
+                          variant="outline"
+                          className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"
+                        >
+                          Explore More
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                );
+              })
+            ) : (
+              <div className="col-span-3 text-center py-12">
+                <p className="text-gray-600">No featured destinations available</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

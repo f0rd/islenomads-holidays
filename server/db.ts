@@ -300,6 +300,18 @@ export async function getIslandGuides(published?: boolean): Promise<IslandGuide[
   return query as any;
 }
 
+export async function getFeaturedIslandGuides(limit: number = 3): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const result = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.featured, 1))
+    .limit(limit);
+  return result;
+}
+
 export async function getIslandGuideBySlug(slug: string): Promise<IslandGuide | undefined> {
   const db = await getDb();
   if (!db) return undefined;

@@ -6,7 +6,21 @@ import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
 import { TRPCError } from "@trpc/server";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer, getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff, logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport, deleteTransport } from "./db";
+import {
+  getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost,
+  getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage,
+  updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
+  getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug,
+  getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides,
+  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
+  deleteIslandGuide, getAllIslandGuidesAdmin, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
+  updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
+  deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
+  getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer,
+  getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
+  logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
+  deleteTransport
+} from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -462,6 +476,12 @@ export const appRouter = router({
     list: publicProcedure.query(async () => {
       return getIslandGuides();
     }),
+
+    featured: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getFeaturedIslandGuides(input.limit || 3);
+      }),
 
     listAdmin: protectedProcedure.query(async () => {
       return getAllIslandGuidesAdmin();
