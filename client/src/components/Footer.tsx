@@ -19,7 +19,7 @@ export default function Footer() {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/vSjAAzmhFbZMRswg.png"
                 alt="Isle Nomads Logo"
-                className="h-20 w-auto drop-shadow-lg"
+                className="h-28 w-auto drop-shadow-xl brightness-110"
               />
             </div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">

@@ -28,7 +28,7 @@ export default function Navigation() {
           <img
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/vSjAAzmhFbZMRswg.png"
             alt="Isle Nomads Logo"
-            className="h-14 w-auto group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+            className="h-20 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-xl brightness-110"
           />
         </Link>
 
