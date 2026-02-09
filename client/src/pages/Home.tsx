@@ -171,7 +171,7 @@ export default function Home() {
               return (
                 <Card
                   key={index}
-                  className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white"
+                  className="border border-teal-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-teal-50 hover:border-teal-400"
                 >
                   <CardContent className="p-8 text-center">
                     <div className="flex justify-center mb-4">
@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* Vacation Packages - Dynamic from Database */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-teal-50 via-cyan-50 to-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -362,7 +362,7 @@ export default function Home() {
       </section>
 
       {/* Unique Experiences */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-white via-teal-50 to-cyan-50">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -410,7 +410,7 @@ export default function Home() {
               return (
                 <Card
                   key={index}
-                  className="border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white"
+                  className="border border-teal-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-teal-50 hover:border-teal-400"
                 >
                   <CardContent className="p-8 text-center">
                     <div className="flex justify-center mb-4">
@@ -431,18 +431,18 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-cyan-50 via-teal-50 to-teal-100">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Ready to Plan Your Dream Vacation?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Get in touch with our travel experts to create your perfect Maldives experience.
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
             <ContactForm />
           </div>
         </div>
