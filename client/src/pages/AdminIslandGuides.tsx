@@ -1,18 +1,23 @@
-import { useState, useMemo } from 'react';
+'use client';
+
 import { useAuth } from '@/_core/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { IslandGuideForm, type IslandGuideFormData } from '@/components/IslandGuideForm';
-import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2, GripVertical, Star } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { useState, useMemo } from 'react';
 
 interface IslandGuideItem {
   id: number;
   name: string;
   slug: string;
+  atoll?: string;
   overview: string | null;
   published: number;
+  featured: number;
+  displayOrder: number;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,9 +29,19 @@ export default function AdminIslandGuides() {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [draggedItem, setDraggedItem] = useState<number | null>(null);
+  const [isSavingOrder, setIsSavingOrder] = useState(false);
 
   // Fetch all island guides
   const { data: guides = [], isLoading, refetch } = trpc.islandGuides.listAdmin.useQuery();
+  const updateDisplayOrderMutation = trpc.islandGuides.updateDisplayOrder.useMutation();
+
+  // Get featured guides sorted by display order
+  const featuredGuides = useMemo(() => {
+    return guides
+      .filter((guide: any) => guide.featured === 1)
+      .sort((a: any, b: any) => a.displayOrder - b.displayOrder);
+  }, [guides]);
 
   // Filter guides based on search term
   const filteredGuides = useMemo(() => {
@@ -35,6 +50,46 @@ export default function AdminIslandGuides() {
       guide.slug.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [guides, searchTerm]);
+
+  const handleDragStart = (e: React.DragEvent, guideId: number) => {
+    setDraggedItem(guideId);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  };
+
+  const handleDrop = async (e: React.DragEvent, targetGuideId: number) => {
+    e.preventDefault();
+    if (!draggedItem || draggedItem === targetGuideId) return;
+
+    const draggedIndex = featuredGuides.findIndex((g: any) => g.id === draggedItem);
+    const targetIndex = featuredGuides.findIndex((g: any) => g.id === targetGuideId);
+
+    if (draggedIndex === -1 || targetIndex === -1) return;
+
+    const newOrder = [...featuredGuides];
+    const [draggedGuide] = newOrder.splice(draggedIndex, 1);
+    newOrder.splice(targetIndex, 0, draggedGuide);
+
+    const updates = newOrder.map((guide: any, index: number) => ({
+      id: guide.id,
+      displayOrder: index,
+    }));
+
+    setIsSavingOrder(true);
+    try {
+      await updateDisplayOrderMutation.mutateAsync({ updates });
+      await refetch();
+    } catch (error) {
+      console.error('Error updating display order:', error);
+    } finally {
+      setIsSavingOrder(false);
+      setDraggedItem(null);
+    }
+  };
 
   if (authLoading) {
     return (
@@ -75,7 +130,6 @@ export default function AdminIslandGuides() {
   const handleSave = async () => {
     setIsSubmitting(true);
     try {
-      // Save logic would go here
       await refetch();
       handleCancel();
     } finally {
@@ -86,7 +140,6 @@ export default function AdminIslandGuides() {
   const handleDelete = async (id: number) => {
     if (confirm('Are you sure you want to delete this island guide?')) {
       try {
-        // Delete logic would go here
         await refetch();
       } catch (error) {
         console.error('Error deleting guide:', error);
@@ -96,7 +149,6 @@ export default function AdminIslandGuides() {
 
   const handleTogglePublish = async (guide: IslandGuideItem) => {
     try {
-      // Toggle publish logic would go here
       await refetch();
     } catch (error) {
       console.error('Error toggling publish:', error);
@@ -122,6 +174,57 @@ export default function AdminIslandGuides() {
 
   return (
     <div className="container py-8">
+      {/* Featured Destinations Reordering Section */}
+      {featuredGuides.length > 0 && (
+        <div className="mb-12">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5 text-yellow-500" />
+                <div>
+                  <CardTitle>Featured Destinations Order</CardTitle>
+                  <CardDescription>Drag and drop to reorder featured destinations on the homepage</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2">
+                {featuredGuides.map((guide: any) => (
+                  <div
+                    key={guide.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, guide.id)}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, guide.id)}
+                    className={`flex items-center gap-3 p-4 border rounded-lg cursor-move transition-all ${
+                      draggedItem === guide.id
+                        ? 'opacity-50 bg-gray-100'
+                        : 'hover:bg-gray-50 border-gray-200'
+                    }`}
+                  >
+                    <GripVertical className="w-5 h-5 text-gray-400" />
+                    <div className="flex-1">
+                      <p className="font-medium">{guide.name}</p>
+                      <p className="text-sm text-gray-600">{guide.atoll || 'Maldives'}</p>
+                    </div>
+                    <span className="text-sm font-semibold text-gray-500 bg-gray-100 px-3 py-1 rounded">
+                      #{guide.displayOrder + 1}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              {isSavingOrder && (
+                <div className="mt-4 flex items-center gap-2 text-sm text-gray-600">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Saving order...
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Island Guides Management Section */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-6">
           <div>
@@ -168,6 +271,12 @@ export default function AdminIslandGuides() {
                     </CardDescription>
                   </div>
                   <div className="flex gap-2">
+                    {guide.featured === 1 && (
+                      <div className="flex items-center gap-1 bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs font-medium">
+                        <Star className="w-3 h-3" />
+                        Featured
+                      </div>
+                    )}
                     <Button
                       variant="ghost"
                       size="sm"

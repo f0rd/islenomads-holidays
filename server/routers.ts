@@ -13,7 +13,7 @@ import {
   getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug,
   getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides,
   getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
-  deleteIslandGuide, getAllIslandGuidesAdmin, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
+  deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
   deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
   getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer,
@@ -531,6 +531,17 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteIslandGuide(input.id);
+      }),
+
+    updateDisplayOrder: protectedProcedure
+      .input(z.object({
+        updates: z.array(z.object({
+          id: z.number(),
+          displayOrder: z.number(),
+        }))
+      }))
+      .mutation(async ({ input }) => {
+        return updateDisplayOrder(input.updates);
       }),
   }),
 

@@ -310,9 +310,14 @@ export default function Home() {
               </div>
             ) : featuredIslandGuides.length > 0 ? (
               featuredIslandGuides.map((guide: any) => {
-                const images = typeof guide.images === 'string' ? JSON.parse(guide.images || '[]') : (guide.images || []);
+                let images = [];
+                try {
+                  images = typeof guide.images === 'string' ? JSON.parse(guide.images || '[]') : (guide.images || []);
+                } catch (e) {
+                  images = [];
+                }
                 const firstImage = images.length > 0 ? images[0] : '/images/default-island.jpg';
-                
+
                 return (
                   <Card
                     key={guide.id}

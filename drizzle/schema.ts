@@ -257,6 +257,7 @@ export const islandGuides = mysqlTable("island_guides", {
   // Status
   published: int("published").default(0).notNull(),
   featured: int("featured").default(0).notNull(),
+  displayOrder: int("displayOrder").default(0).notNull(), // For ordering featured destinations
   viewCount: int("viewCount").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

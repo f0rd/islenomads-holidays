@@ -308,6 +308,7 @@ export async function getFeaturedIslandGuides(limit: number = 3): Promise<Island
     .select()
     .from(islandGuides)
     .where(eq(islandGuides.featured, 1))
+    .orderBy(islandGuides.displayOrder)
     .limit(limit);
   return result;
 }
@@ -345,6 +346,21 @@ export async function updateIslandGuide(id: number, data: Partial<InsertIslandGu
   await db.update(islandGuides).set(data).where(eq(islandGuides.id, id));
   const guide = await getIslandGuideById(id);
   return guide || null;
+}
+
+export async function updateDisplayOrder(updates: Array<{ id: number; displayOrder: number }>): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  try {
+    for (const update of updates) {
+      await db.update(islandGuides).set({ displayOrder: update.displayOrder }).where(eq(islandGuides.id, update.id));
+    }
+    return true;
+  } catch (error) {
+    console.error('Error updating display order:', error);
+    return false;
+  }
 }
 
 export async function deleteIslandGuide(id: number): Promise<boolean> {

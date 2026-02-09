@@ -508,3 +508,13 @@
 - [x] Test Featured Destinations display on home page
 - [ ] Mark island guides as featured in database (requires manual update via CMS)
 - [ ] Verify links navigate to correct island guide pages
+
+## Featured Destinations Reordering
+- [x] Add displayOrder field to island guides schema
+- [x] Create database migration for displayOrder field
+- [x] Create tRPC endpoint for updating display order
+- [x] Build featured destinations reordering UI in AdminIslandGuides
+- [x] Implement drag-and-drop functionality
+- [x] Update home page to sort featured destinations by displayOrder
+- [ ] Test reordering functionality
+- [ ] Verify order persists across page reloads
