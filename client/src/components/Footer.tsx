@@ -58,14 +58,14 @@ export default function Footer() {
             <h3 className="font-semibold text-lg mb-4 text-accent">Our Services</h3>
             <ul className="space-y-3">
               {[
-                "Trip Planning & Itineraries",
-                "Luxury Resorts",
-                "Island Hopping",
-                "Boat Routes",
-                "Water Sports",
-                "Diving & Snorkeling",
-                "Spa & Wellness",
-                "Vacation Packages",
+                "Custom Trip Planning",
+                "Personalized Itineraries",
+                "Luxury Resort Selection",
+                "Island Hopping Design",
+                "Water Sports Coordination",
+                "Diving Expeditions",
+                "Wellness Experiences",
+                "Vacation Package Customization",
               ].map((item) => (
                 <li key={item}>
                   <a
