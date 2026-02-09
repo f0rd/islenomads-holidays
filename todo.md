@@ -468,11 +468,20 @@
 - [ ] Test Mapbox integration
 
 ## Package Categorization by Journey Type
-- [ ] Update packages database schema with category field
-- [ ] Add journey type categories (Family Adventures, Solo Travel, Water Sports, Relaxation, Luxury, Adventure)
-- [ ] Create tRPC procedures for filtering packages by category
-- [ ] Redesign Packages page with category filter tabs
-- [ ] Add category icons and visual indicators
-- [ ] Populate existing packages with appropriate categories
-- [ ] Implement category-based package recommendations
-- [ ] Test package filtering and categorization
+- [x] Update packages database schema with category field
+- [x] Add journey type categories (Family Adventures, Solo Travel, Water Sports, Relaxation, Luxury, Adventure)
+- [x] Create tRPC procedures for filtering packages by category
+- [x] Redesign Packages page with category filter tabs
+- [x] Add category icons and visual indicators
+- [x] Populate existing packages with appropriate categories
+- [x] Implement category-based package recommendations
+- [x] Test package filtering and categorization
+
+## Map Marker Zoom Animation
+- [x] Add smooth zoom-in animation when clicking map markers
+- [x] Implement flyTo() method with 1.5 second duration
+- [x] Configure zoom level 12 for close-up view
+- [x] Create popup with location details
+- [x] Test zoom animation across different marker types
+- [x] Verify popup displays correctly after zoom
+- [x] Test animation consistency across multiple clicks

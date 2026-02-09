@@ -606,6 +606,16 @@ export default function MaldivesMapNew() {
         el.addEventListener("click", () => {
           setSelectedLocation(location);
           
+          // Smooth zoom animation to the clicked location
+          if (map.current) {
+            map.current.flyTo({
+              center: [location.lng, location.lat],
+              zoom: 12,
+              duration: 1500, // 1.5 second animation
+              essential: true
+            });
+          }
+          
           // Create enhanced popup with details
           const popupContent = document.createElement("div");
           popupContent.className = "p-4 max-w-sm bg-white rounded-lg";
