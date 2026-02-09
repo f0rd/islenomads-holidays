@@ -476,28 +476,42 @@ export async function generateItineraryOptionsAsync(
   startDate: string
 ): Promise<TripItinerary[]> {
   const options: TripItinerary[] = [];
+  const baseId = Date.now();
+  let optionIndex = 0;
 
   // Speed-optimized option
   const speedOption = await findOptimalItineraryAsync(transports, destinationIds, startDate, {
     preferSpeed: true,
   });
-  if (speedOption) options.push(speedOption);
+  if (speedOption) {
+    speedOption.id = `itinerary-${baseId}-${optionIndex++}`;
+    options.push(speedOption);
+  }
 
   // Cost-optimized option
   const costOption = await findOptimalItineraryAsync(transports, destinationIds, startDate, {
     preferCost: true,
   });
-  if (costOption) options.push(costOption);
+  if (costOption) {
+    costOption.id = `itinerary-${baseId}-${optionIndex++}`;
+    options.push(costOption);
+  }
 
   // Comfort-optimized option
   const comfortOption = await findOptimalItineraryAsync(transports, destinationIds, startDate, {
     preferComfort: true,
   });
-  if (comfortOption) options.push(comfortOption);
+  if (comfortOption) {
+    comfortOption.id = `itinerary-${baseId}-${optionIndex++}`;
+    options.push(comfortOption);
+  }
 
   // Balanced option
   const balancedOption = await findOptimalItineraryAsync(transports, destinationIds, startDate);
-  if (balancedOption) options.push(balancedOption);
+  if (balancedOption) {
+    balancedOption.id = `itinerary-${baseId}-${optionIndex++}`;
+    options.push(balancedOption);
+  }
 
   return options;
 }
