@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -821,4 +821,62 @@ export async function logActivity(data: InsertActivityLog): Promise<ActivityLog 
   const id = (result as any).insertId;
   const log = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
   return log[0] || null;
+}
+
+
+// Atoll helpers
+export async function getAllAtolls(): Promise<Atoll[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(atolls).where(eq(atolls.published, 1)).orderBy(atolls.name);
+}
+
+export async function getAllAtollsAdmin(): Promise<Atoll[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(atolls).orderBy(atolls.name);
+}
+
+export async function getAtollBySlug(slug: string): Promise<Atoll | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(atolls).where(eq(atolls.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function getAtollById(id: number): Promise<Atoll | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(atolls).where(eq(atolls.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createAtoll(data: InsertAtoll): Promise<Atoll | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(atolls).values(data);
+  const id = (result as any).insertId;
+  const atoll = await getAtollById(id);
+  return atoll || null;
+}
+
+export async function updateAtoll(id: number, data: Partial<InsertAtoll>): Promise<Atoll | null> {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(atolls).set(data).where(eq(atolls.id, id));
+  const atoll = await getAtollById(id);
+  return atoll || null;
+}
+
+export async function deleteAtoll(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(atolls).where(eq(atolls.id, id));
+  return true;
+}
+
+export async function getAtollsByRegion(region: string): Promise<Atoll[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(atolls).where(and(eq(atolls.region, region), eq(atolls.published, 1))).orderBy(atolls.name);
 }

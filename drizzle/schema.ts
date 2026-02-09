@@ -447,3 +447,26 @@ export const branding = mysqlTable("branding", {
 
 export type Branding = typeof branding.$inferSelect;
 export type InsertBranding = typeof branding.$inferInsert;
+
+// Atolls table for Maldives region browsing
+export const atolls = mysqlTable("atolls", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(), // e.g., "Kaafu Atoll"
+  slug: varchar("slug", { length: 255 }).notNull().unique(), // e.g., "kaafu-atoll"
+  region: varchar("region", { length: 100 }).notNull(), // "North", "Central", "South"
+  description: text("description"), // Overview of the atoll
+  heroImage: varchar("heroImage", { length: 500 }), // Hero image URL
+  overview: text("overview"), // Detailed overview
+  bestFor: varchar("bestFor", { length: 500 }), // e.g., "short stays, budget trips, surfing"
+  highlights: text("highlights"), // Key highlights as JSON array
+  activities: text("activities"), // Available activities as JSON array
+  accommodation: text("accommodation"), // Accommodation options as JSON array
+  transportation: text("transportation"), // How to reach the atoll
+  bestSeason: varchar("bestSeason", { length: 255 }), // Best time to visit
+  published: int("published").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Atoll = typeof atolls.$inferSelect;
+export type InsertAtoll = typeof atolls.$inferInsert;

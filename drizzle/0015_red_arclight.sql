@@ -1,0 +1,20 @@
+CREATE TABLE `atolls` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`slug` varchar(255) NOT NULL,
+	`region` varchar(100) NOT NULL,
+	`description` text,
+	`heroImage` varchar(500),
+	`overview` text,
+	`bestFor` varchar(500),
+	`highlights` text,
+	`activities` text,
+	`accommodation` text,
+	`transportation` text,
+	`bestSeason` varchar(255),
+	`published` int NOT NULL DEFAULT 0,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `atolls_id` PRIMARY KEY(`id`),
+	CONSTRAINT `atolls_slug_unique` UNIQUE(`slug`)
+);

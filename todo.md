@@ -633,3 +633,18 @@
 - [ ] Verify no 404 errors
 - [ ] Run full customer journey test
 - [ ] Save checkpoint
+
+
+## Atolls-First Browsing System Implementation
+- [ ] Create atolls table in database schema
+- [ ] Add atoll fields (name, slug, region, description, hero_image)
+- [ ] Create database migration for atolls table
+- [ ] Create Atolls browsing page component
+- [ ] Create Atoll detail page component
+- [ ] Populate 6 key atolls: Kaafu, Alif Alif, Alif Dhaal, Baa, Vaavu, Lhaviyani
+- [ ] Populate comprehensive island guide content for all islands
+- [ ] Link islands to their parent atolls
+- [ ] Update navigation to include Atolls link
+- [ ] Create user flow from Atolls → Island Details
+- [ ] Test Atolls browsing experience
+- [ ] Test Map → Island → Atoll flow
