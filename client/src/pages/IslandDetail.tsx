@@ -58,7 +58,7 @@ export default function IslandDetail() {
         setRelatedPackages(related);
       }
     }
-  }, [guides, packages, slug]);
+  }, [slug]);
 
   if (isLoading) {
     return (
