@@ -8,7 +8,6 @@ import { Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { createMarkerElement, getMarkerIcon } from "@/lib/mapMarkers";
 
 // Set Mapbox token
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -16,7 +15,7 @@ if (MAPBOX_TOKEN) {
   mapboxgl.accessToken = MAPBOX_TOKEN;
 }
 
-// Location data constants (same as SVG map)
+// Location data constants
 const MALDIVES_LOCATIONS = [
   {
     id: 1,
@@ -508,18 +507,33 @@ const AIRPORTS = [
   },
 ];
 
-type LocationType = typeof MALDIVES_LOCATIONS[0] | typeof POPULAR_ISLANDS[0] | typeof LUXURY_RESORTS[0] | typeof DIVE_POINTS[0] | typeof SURF_SPOTS[0] | typeof AIRPORTS[0];
+type LocationType = 
+  | typeof MALDIVES_LOCATIONS[0] 
+  | typeof POPULAR_ISLANDS[0] 
+  | typeof LUXURY_RESORTS[0] 
+  | typeof DIVE_POINTS[0] 
+  | typeof SURF_SPOTS[0] 
+  | typeof AIRPORTS[0];
+
+// Marker emoji icons
+const MARKER_ICONS = {
+  atoll: "🏝️",
+  island: "🏝️",
+  resort: "🏨",
+  dive_point: "🤿",
+  surf_spot: "🏄",
+  airport: "✈️",
+};
 
 export default function MaldivesMapNew() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
-  const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const markersRef = useRef<{ marker: mapboxgl.Marker; element: HTMLElement; location: LocationType }[]>([]);
   const popupRef = useRef<mapboxgl.Popup | null>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLocation, setSelectedLocation] = useState<LocationType | null>(null);
   const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts" | "airports">("all");
-  const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
   const [selectedActivities, setSelectedActivities] = useState<Set<string>>(new Set());
 
   // Activity filter options
@@ -539,24 +553,6 @@ export default function MaldivesMapNew() {
       newActivities.add(activityId);
     }
     setSelectedActivities(newActivities);
-  };
-
-  const matchesSelectedActivities = (location: any): boolean => {
-    if (selectedActivities.size === 0) return true;
-    const highlights = location.highlights || [];
-    const description = location.description || "";
-    const combinedText = (highlights.join(" ") + " " + description).toLowerCase();
-    
-    const activities = Array.from(selectedActivities);
-    for (let i = 0; i < activities.length; i++) {
-      const activity = activities[i];
-      if (activity === "diving" && (combinedText.includes("dive") || combinedText.includes("diving"))) return true;
-      if (activity === "surfing" && (combinedText.includes("surf") || combinedText.includes("wave"))) return true;
-      if (activity === "snorkeling" && (combinedText.includes("snorkel") || combinedText.includes("reef"))) return true;
-      if (activity === "water-sports" && (combinedText.includes("water sport") || combinedText.includes("jet ski"))) return true;
-      if (activity === "relaxation" && (combinedText.includes("relax") || combinedText.includes("beach") || combinedText.includes("calm"))) return true;
-    }
-    return false;
   };
 
   // Initialize map
@@ -587,143 +583,140 @@ export default function MaldivesMapNew() {
     if (!map.current) return;
 
     // Clear existing markers
-    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current.forEach(({ marker }) => marker.remove());
     markersRef.current = [];
 
     // Close existing popup
     if (popupRef.current) {
       popupRef.current.remove();
+      popupRef.current = null;
     }
 
-    const addMarkersForLocations = (locations: LocationType[], color: string, icon: string) => {
-      locations.forEach((location) => {
-        const el = createMarkerElement(icon, color);
-
-        const marker = new mapboxgl.Marker({ element: el })
-          .setLngLat([location.lng, location.lat])
-          .addTo(map.current!);
-
-        el.addEventListener("click", () => {
-          setSelectedLocation(location);
-          
-          // Smooth zoom animation to the clicked location
-          if (map.current) {
-            map.current.flyTo({
-              center: [location.lng, location.lat],
-              zoom: 12,
-              duration: 1500, // 1.5 second animation
-              essential: true
-            });
-          }
-          
-          // Create enhanced popup with details
-          const popupContent = document.createElement("div");
-          popupContent.className = "p-4 max-w-sm bg-white rounded-lg";
-          
-          // Build highlights list
-          const highlights = (location as any).highlights || [];
-          const highlightsHtml = highlights.length > 0 
-            ? `<ul class="text-xs text-gray-600 mb-3 space-y-1">${highlights.map((h: string) => `<li>• ${h}</li>`).join('')}</ul>`
-            : '';
-          
-          // Build additional info based on location type
-          let additionalInfo = '';
-          const loc = location as any;
-          if (loc.rating) {
-            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Rating:</span> ⭐ ${loc.rating}</p>`;
-          }
-          if (loc.pricePerNight) {
-            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Price:</span> ${loc.pricePerNight}</p>`;
-          }
-          if (loc.difficulty) {
-            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Difficulty:</span> ${loc.difficulty}</p>`;
-          }
-          if (loc.waveHeight) {
-            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Wave Height:</span> ${loc.waveHeight}</p>`;
-          }
-          if (loc.code) {
-            additionalInfo += `<p class="text-sm mb-2"><span class="font-semibold">Code:</span> ${loc.code}</p>`;
-          }
-          
-          popupContent.innerHTML = `
-            <h3 class="font-bold text-lg mb-1">${location.name}</h3>
-            <p class="text-xs text-gray-500 mb-2">${location.type}</p>
-            <p class="text-sm text-gray-700 mb-3">${location.description}</p>
-            ${highlightsHtml}
-            ${additionalInfo}
-            <button class="w-full bg-blue-600 text-white px-3 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
-              View Full Details
-            </button>
-          `;
-          
-          // Add click handler to the button
-          const button = popupContent.querySelector('button');
-          if (button && (location as any).slug) {
-            button.addEventListener('click', (e) => {
-              e.stopPropagation();
-              // Navigate to island detail page
-              window.location.href = `/island/${(location as any).slug}`;
-            });
-          }
-
-          popupRef.current = new mapboxgl.Popup({ offset: 25, maxWidth: '300px' })
-            .setDOMContent(popupContent)
-            .setLngLat([location.lng, location.lat])
-            .addTo(map.current!);
-        });
-
-        markersRef.current.push(marker);
-      });
+    const createMarkerElement = (icon: string): HTMLElement => {
+      const el = document.createElement("div");
+      el.style.fontSize = "32px";
+      el.style.cursor = "pointer";
+      el.style.userSelect = "none";
+      el.textContent = icon;
+      return el;
     };
 
-    // Filter and add markers based on activity filter
-    if (activityFilter === "all" || activityFilter === "atolls") {
-      addMarkersForLocations(MALDIVES_LOCATIONS, "%233b82f6", "atoll");
-    }
-    if (activityFilter === "all" || activityFilter === "islands") {
-      addMarkersForLocations(POPULAR_ISLANDS, "%2310b981", "island");
-    }
-    if (activityFilter === "all" || activityFilter === "resorts") {
-      addMarkersForLocations(LUXURY_RESORTS, "%23f59e0b", "resort");
-    }
-    if (activityFilter === "all" || activityFilter === "dives") {
-      addMarkersForLocations(DIVE_POINTS, "%2306b6d4", "dive_point");
-    }
-    if (activityFilter === "all" || activityFilter === "surfs") {
-      addMarkersForLocations(SURF_SPOTS, "%23eab308", "surf_spot");
-    }
-    if (activityFilter === "all" || activityFilter === "airports") {
-      addMarkersForLocations(AIRPORTS, "%23ec4899", "airport");
-    }
-    // Filter locations based on search term
+    const addMarker = (location: LocationType, icon: string) => {
+      const el = createMarkerElement(icon);
+
+      const marker = new mapboxgl.Marker({ element: el })
+        .setLngLat([location.lng, location.lat])
+        .addTo(map.current!);
+
+      // Add click event listener
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        
+        // Update selected location
+        setSelectedLocation(location);
+
+        // Zoom animation
+        if (map.current) {
+          map.current.flyTo({
+            center: [location.lng, location.lat],
+            zoom: 12,
+            duration: 1500,
+            essential: true,
+          });
+        }
+
+        // Create and show popup
+        if (popupRef.current) {
+          popupRef.current.remove();
+        }
+
+        const popupContent = document.createElement("div");
+        popupContent.className = "p-3 bg-white rounded-lg shadow-lg max-w-xs";
+
+        // Build popup HTML
+        const highlights = (location as any).highlights || [];
+        const highlightsHtml =
+          highlights.length > 0
+            ? `<ul class="text-xs text-gray-600 mb-2 space-y-1">${highlights.map((h: string) => `<li>• ${h}</li>`).join("")}</ul>`
+            : "";
+
+        let additionalInfo = "";
+        const loc = location as any;
+        if (loc.rating) {
+          additionalInfo += `<p class="text-sm mb-1"><strong>Rating:</strong> ⭐ ${loc.rating}</p>`;
+        }
+        if (loc.pricePerNight) {
+          additionalInfo += `<p class="text-sm mb-1"><strong>Price:</strong> ${loc.pricePerNight}</p>`;
+        }
+        if (loc.difficulty) {
+          additionalInfo += `<p class="text-sm mb-1"><strong>Difficulty:</strong> ${loc.difficulty}</p>`;
+        }
+        if (loc.waveHeight) {
+          additionalInfo += `<p class="text-sm mb-1"><strong>Wave Height:</strong> ${loc.waveHeight}</p>`;
+        }
+        if (loc.code) {
+          additionalInfo += `<p class="text-sm mb-1"><strong>Code:</strong> ${loc.code}</p>`;
+        }
+
+        popupContent.innerHTML = `
+          <h3 class="font-bold text-base mb-1">${location.name}</h3>
+          <p class="text-xs text-gray-500 mb-2">${location.type}</p>
+          <p class="text-sm text-gray-700 mb-2">${location.description}</p>
+          ${highlightsHtml}
+          ${additionalInfo}
+        `;
+
+        popupRef.current = new mapboxgl.Popup({ offset: 25, maxWidth: "300px" })
+          .setDOMContent(popupContent)
+          .setLngLat([location.lng, location.lat])
+          .addTo(map.current!);
+      });
+
+      markersRef.current.push({ marker, element: el, location });
+    };
+
+    // Filter locations by search term
     const filterBySearch = (locations: LocationType[]) => {
       if (!searchTerm) return locations;
       const term = searchTerm.toLowerCase();
-      return locations.filter((loc: any) => 
-        loc.name.toLowerCase().includes(term) ||
-        loc.description?.toLowerCase().includes(term) ||
-        loc.highlights?.some((h: string) => h.toLowerCase().includes(term))
+      return locations.filter(
+        (loc: any) =>
+          loc.name.toLowerCase().includes(term) ||
+          loc.description?.toLowerCase().includes(term) ||
+          loc.highlights?.some((h: string) => h.toLowerCase().includes(term))
       );
     };
 
-    // Re-add markers with search filtering
+    // Add markers based on filter
     if (activityFilter === "all" || activityFilter === "atolls") {
-      addMarkersForLocations(filterBySearch(MALDIVES_LOCATIONS), "%233b82f6", "atoll");
+      filterBySearch(MALDIVES_LOCATIONS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.atoll);
+      });
     }
     if (activityFilter === "all" || activityFilter === "islands") {
-      addMarkersForLocations(filterBySearch(POPULAR_ISLANDS), "%2310b981", "island");
+      filterBySearch(POPULAR_ISLANDS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.island);
+      });
     }
     if (activityFilter === "all" || activityFilter === "resorts") {
-      addMarkersForLocations(filterBySearch(LUXURY_RESORTS), "%23f59e0b", "resort");
+      filterBySearch(LUXURY_RESORTS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.resort);
+      });
     }
     if (activityFilter === "all" || activityFilter === "dives") {
-      addMarkersForLocations(filterBySearch(DIVE_POINTS), "%2306b6d4", "dive_point");
+      filterBySearch(DIVE_POINTS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.dive_point);
+      });
     }
     if (activityFilter === "all" || activityFilter === "surfs") {
-      addMarkersForLocations(filterBySearch(SURF_SPOTS), "%23eab308", "surf_spot");
+      filterBySearch(SURF_SPOTS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.surf_spot);
+      });
     }
     if (activityFilter === "all" || activityFilter === "airports") {
-      addMarkersForLocations(filterBySearch(AIRPORTS), "%23ec4899", "airport");
+      filterBySearch(AIRPORTS).forEach((loc) => {
+        addMarker(loc, MARKER_ICONS.airport);
+      });
     }
   }, [activityFilter, searchTerm, selectedActivities]);
 
