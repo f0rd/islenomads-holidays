@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Calendar, ArrowLeft } from 'lucide-react';
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
+import Navigation from '@/components/Navigation';
 
 interface IslandGuide {
   id: number;
@@ -69,18 +70,21 @@ export default function IslandDetail() {
 
   if (!island) {
     return (
-      <div className="container py-12">
-        <Link href="/">
-          <Button variant="outline" className="gap-2 mb-6">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Button>
-        </Link>
-        <Card>
-          <CardContent className="py-12">
-            <p className="text-center text-gray-500">Island guide not found.</p>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container py-12">
+          <Link href="/">
+            <Button variant="outline" className="gap-2 mb-6">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Button>
+          </Link>
+          <Card>
+            <CardContent className="py-12">
+              <p className="text-center text-gray-500">Island guide not found.</p>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     );
   }
@@ -93,9 +97,11 @@ export default function IslandDetail() {
   const activities = parseListContent(island.activities);
   const dining = parseListContent(island.dining);
   const packingItems = parseListContent(island.packingTips);
+  const faqItems = parseListContent(island.faqContent);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      <Navigation />
       {/* Header */}
       <div className="relative h-96 overflow-hidden">
         {island.image && (
@@ -106,272 +112,218 @@ export default function IslandDetail() {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        
-        <div className="absolute inset-0 flex flex-col justify-between p-6">
-          <Link href="/">
-            <Button variant="outline" className="gap-2 w-fit bg-white/90 hover:bg-white">
-              <ArrowLeft className="w-4 h-4" />
-              Back
-            </Button>
-          </Link>
-          
-          <div className="text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">{island.name}</h1>
-            <p className="text-lg text-white/90">{island.description}</p>
+        <div className="absolute bottom-0 left-0 right-0 text-white p-8">
+          <div className="container">
+            <h1 className="text-4xl font-bold mb-2">{island.name}</h1>
+            <p className="text-lg text-gray-200">{island.description}</p>
           </div>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="container py-12">
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-8">
+              <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="activities">Activities</TabsTrigger>
                 <TabsTrigger value="practical">Practical</TabsTrigger>
-                <TabsTrigger value="itinerary">Itinerary</TabsTrigger>
+                <TabsTrigger value="faq">FAQ</TabsTrigger>
               </TabsList>
 
-              {/* Overview Tab */}
-              <TabsContent value="overview" className="space-y-6">
+              <TabsContent value="overview" className="mt-6">
                 <Card>
-                  <CardHeader>
-                    <CardTitle>About {island.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-gray-700 leading-relaxed">{island.overview}</p>
-                    
-                    <div className="grid md:grid-cols-2 gap-4 mt-6">
-                      <div className="flex gap-3 p-4 bg-blue-50 rounded-lg">
-                        <Calendar className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                        <div>
-                          <p className="font-semibold text-sm text-blue-900">Best Season</p>
-                          <p className="text-sm text-blue-800">{island.bestSeason}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-3 p-4 bg-green-50 rounded-lg">
-                        <MapPin className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
-                        <div>
-                          <p className="font-semibold text-sm text-green-900">Location</p>
-                          <p className="text-sm text-green-800">{island.latitude ? island.latitude.toFixed(3) : 'N/A'}°, {island.longitude ? island.longitude.toFixed(3) : 'N/A'}°</p>
-                        </div>
-                      </div>
-                    </div>
+                  <CardContent className="pt-6">
+                    <p className="text-gray-700 leading-relaxed">{island.overview || island.description}</p>
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              {/* Activities Tab */}
-              <TabsContent value="activities" className="space-y-6">
+              <TabsContent value="activities" className="mt-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex gap-2">
+                    <CardTitle className="flex items-center gap-2">
                       <Compass className="w-5 h-5" />
-                      Activities & Attractions
+                      Activities & Experiences
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {activities.map((activity, idx) => (
-                        <div key={idx} className="flex gap-2 p-3 bg-slate-50 rounded-lg">
-                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm">{activity}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex gap-2">
-                      <Utensils className="w-5 h-5" />
-                      Dining Options
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {dining.map((option, idx) => (
-                        <div key={idx} className="flex gap-2 p-3 bg-amber-50 rounded-lg">
-                          <div className="w-2 h-2 bg-amber-600 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm">{option}</span>
-                        </div>
-                      ))}
-                    </div>
+                    {activities.length > 0 ? (
+                      <ul className="space-y-2">
+                        {activities.map((activity, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-accent font-bold">•</span>
+                            <span>{activity}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-500">No activities listed</p>
+                    )}
                   </CardContent>
                 </Card>
               </TabsContent>
 
-              {/* Practical Tab */}
-              <TabsContent value="practical" className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex gap-2">
-                      <Backpack className="w-5 h-5" />
-                      Packing Tips
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      {packingItems.map((item, idx) => (
-                        <div key={idx} className="flex gap-2 p-3 bg-purple-50 rounded-lg">
-                          <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                          <span className="text-sm">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+              <TabsContent value="practical" className="mt-6">
+                <div className="space-y-6">
+                  {island.howToReach && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <MapPin className="w-5 h-5" />
+                          How to Reach
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700">{island.howToReach}</p>
+                      </CardContent>
+                    </Card>
+                  )}
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex gap-2">
-                      <AlertCircle className="w-5 h-5" />
-                      Health & Safety
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-700 leading-relaxed">{island.healthSafety}</p>
-                  </CardContent>
-                </Card>
+                  {island.bestSeason && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Calendar className="w-5 h-5" />
+                          Best Time to Visit
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700">{island.bestSeason}</p>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {dining.length > 0 && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Utensils className="w-5 h-5" />
+                          Dining Options
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-2">
+                          {dining.map((option, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <span className="text-accent font-bold">•</span>
+                              <span>{option}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {packingItems.length > 0 && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <Backpack className="w-5 h-5" />
+                          Packing Tips
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-2">
+                          {packingItems.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <span className="text-accent font-bold">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {island.healthSafety && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                          <AlertCircle className="w-5 h-5" />
+                          Health & Safety
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700">{island.healthSafety}</p>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
               </TabsContent>
 
-              {/* Itinerary Tab */}
-              <TabsContent value="itinerary" className="space-y-6">
+              <TabsContent value="faq" className="mt-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>3-Day Itinerary</CardTitle>
+                    <CardTitle className="flex items-center gap-2">
+                      <HelpCircle className="w-5 h-5" />
+                      Frequently Asked Questions
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      {island.itinerary?.split('Day ').map((day: string, idx: number) => {
-                        if (!day.trim()) return null;
-                        const [dayNum, ...content] = day.split(':');
-                        return (
-                          <div key={idx} className="flex gap-4">
-                            <div className="flex-shrink-0">
-                              <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-white font-semibold">
-                                {idx + 1}
-                              </div>
-                            </div>
-                            <div className="flex-1 pt-1">
-                              <p className="text-sm text-gray-700">{content.join(':').trim()}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                    {faqItems.length > 0 ? (
+                      <ul className="space-y-2">
+                        {faqItems.map((faq, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-accent font-bold">Q:</span>
+                            <span>{faq}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-500">No FAQs available</p>
+                    )}
                   </CardContent>
                 </Card>
               </TabsContent>
             </Tabs>
-
-            {/* FAQ Section */}
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <HelpCircle className="w-5 h-5" />
-                  Frequently Asked Questions
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                      {island.faq?.split('Q:').map((qa: string, idx: number) => {
-                    if (!qa.trim()) return null;
-                    const [question, answer] = qa.split('A:');
-                    return (
-                      <div key={idx} className="border-b pb-4 last:border-b-0">
-                        <p className="font-semibold text-sm mb-2">Q: {question.trim()}</p>
-                        <p className="text-sm text-gray-600">A: {answer?.trim()}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Sidebar */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1">
             {/* Map Card */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex gap-2">
-                  <Map className="w-5 h-5" />
-                  Location
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-slate-100 rounded-lg h-64 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">
-                       {island.latitude ? island.latitude.toFixed(3) : 'N/A'}°N, {island.longitude ? island.longitude.toFixed(3) : 'N/A'}°E
-                    </p>
-                    <p className="text-xs text-gray-500 mt-2">Interactive map coming soon</p>
+            {island.latitude && island.longitude && (
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Map className="w-5 h-5" />
+                    Location
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <p className="text-gray-500">Coordinates: {island.latitude.toFixed(2)}, {island.longitude?.toFixed(2) || 'N/A'}</p>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* How to Reach */}
-            <Card>
-              <CardHeader>
-                <CardTitle>How to Reach</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-700 leading-relaxed">{island.howToReach}</p>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Related Packages */}
             {relatedPackages.length > 0 && (
               <Card>
                 <CardHeader>
                   <CardTitle>Related Packages</CardTitle>
-                  <CardDescription>Vacation packages for {island.name}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  {relatedPackages.slice(0, 3).map((pkg: any) => (
-                    <div key={pkg.id} className="p-3 border rounded-lg hover:bg-slate-50 transition-colors">
-                      <p className="font-semibold text-sm">{pkg.name}</p>
-                      <p className="text-xs text-gray-600 mt-1">{pkg.duration}</p>
-                      <p className="text-sm font-bold text-primary mt-2">${pkg.price}</p>
-                    </div>
-                  ))}
-                  <Link href="/packages">
-                    <Button variant="outline" className="w-full">
-                      View All Packages
-                    </Button>
-                  </Link>
+                <CardContent>
+                  <div className="space-y-4">
+                    {relatedPackages.map((pkg: any) => (
+                      <div key={pkg.id} className="border-b pb-4 last:border-b-0">
+                        <h4 className="font-semibold text-sm mb-1">{pkg.name}</h4>
+                        <p className="text-xs text-gray-600 mb-2">{pkg.destination}</p>
+                        <div className="flex justify-between items-center">
+                          <span className="text-accent font-bold">${pkg.price}</span>
+                          <Link href={`/packages/${pkg.id}`}>
+                            <Button size="sm" variant="outline">View</Button>
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
             )}
-
-            {/* Booking Card */}
-            <Card className="border-primary/50 bg-primary/5">
-              <CardHeader>
-                <CardTitle>Interested in Visiting?</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-gray-700">
-                  Browse our vacation packages and book your trip to {island.name} today.
-                </p>
-                <Link href="/packages">
-                  <Button className="w-full">
-                    Browse Packages
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" className="w-full">
-                    Contact Us
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

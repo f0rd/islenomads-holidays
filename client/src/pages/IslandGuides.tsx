@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Link } from "wouter";
 import { Loader2, Search } from "lucide-react";
+import Navigation from "@/components/Navigation";
 
 export default function IslandGuides() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -47,8 +48,9 @@ export default function IslandGuides() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navigation />
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary/80 text-white py-12">
+      <div className="bg-gradient-to-r from-primary to-primary/80 text-white py-12 mt-20">
         <div className="container">
           <h1 className="text-4xl font-bold mb-4">Island Guides</h1>
           <p className="text-lg text-primary-foreground/90">
