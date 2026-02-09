@@ -41,6 +41,9 @@ export interface TripItinerary {
   isOptimal: boolean;
 }
 
+// Import ferry routes
+import { FERRY_ROUTES } from './ferryRoutes';
+
 // Available destinations
 export const AVAILABLE_DESTINATIONS: Destination[] = [
   {
@@ -353,53 +356,27 @@ export function findDirectRoutes(
   const normalizedFrom = from.toLowerCase();
   const normalizedTo = to.toLowerCase();
 
-  // Check speedboat routes for direct connection
-  SPEEDBOAT_ROUTES.forEach((route) => {
-    if (
-      route.startPoint.toLowerCase().includes(normalizedFrom) &&
-      route.endPoint.toLowerCase().includes(normalizedTo)
-    ) {
-      routes.push({
-        id: route.id,
-        routeName: route.name,
-        routeType: "speedboat",
-        from: route.startPoint,
-        to: route.endPoint,
-        duration: route.duration,
-        durationMinutes: parseDuration(route.duration),
-        distance: route.distance,
-        price: route.price,
-        priceAmount: parsePrice(route.price),
-        departureTime: route.schedule[0] || "06:00",
-        capacity: route.capacity,
-        speed: route.speed,
-        amenities: route.amenities,
-        operator: route.operator,
-      });
-    }
-  });
-
   // Check ferry routes for direct connection
-  PUBLIC_FERRY_ROUTES.forEach((route) => {
+  FERRY_ROUTES.forEach((route: any) => {
     if (
-      route.startPoint.toLowerCase().includes(normalizedFrom) &&
-      route.endPoint.toLowerCase().includes(normalizedTo)
+      route.from.toLowerCase().includes(normalizedFrom) &&
+      route.to.toLowerCase().includes(normalizedTo)
     ) {
       routes.push({
         id: route.id,
-        routeName: route.name,
-        routeType: "ferry",
-        from: route.startPoint,
-        to: route.endPoint,
-        duration: route.duration,
-        durationMinutes: parseDuration(route.duration),
-        distance: route.distance,
-        price: route.price,
-        priceAmount: parsePrice(route.price),
-        departureTime: route.schedule[0] || "06:00",
+        routeName: `${route.from} to ${route.to}`,
+        routeType: route.type,
+        from: route.from,
+        to: route.to,
+        duration: `${route.durationMinutes} mins`,
+        durationMinutes: route.durationMinutes,
+        distance: "N/A",
+        price: `$${route.priceUSD}`,
+        priceAmount: route.priceUSD,
+        departureTime: "06:00",
         capacity: route.capacity,
-        speed: route.speed,
-        amenities: route.amenities,
+        speed: "N/A",
+        amenities: [],
         operator: route.operator,
       });
     }
