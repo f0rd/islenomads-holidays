@@ -26,6 +26,7 @@ const MALDIVES_LOCATIONS = [
     description: "The capital city of Maldives, gateway to the islands",
     highlights: ["National Museum", "Grand Friday Mosque", "Local Markets"],
     image: "/images/male-city.jpg",
+    activities: ["relaxation"],
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ const MALDIVES_LOCATIONS = [
     description: "Popular atoll with luxury resorts and pristine beaches",
     highlights: ["Crystal Clear Waters", "Coral Reefs", "Water Sports"],
     image: "/images/north-male-atoll.jpg",
+    activities: ["diving", "snorkeling", "water-sports"],
   },
   {
     id: 3,
@@ -46,6 +48,7 @@ const MALDIVES_LOCATIONS = [
     description: "Serene atoll with exclusive resorts and calm lagoons",
     highlights: ["Luxury Resorts", "Calm Lagoons", "Diving Spots"],
     image: "/images/south-male-atoll.jpg",
+    activities: ["diving", "relaxation"],
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const MALDIVES_LOCATIONS = [
     description: "Famous for manta rays and whale sharks",
     highlights: ["Manta Ray Spotting", "Whale Sharks", "House Reef Diving"],
     image: "/images/ari-atoll.jpg",
+    activities: ["diving", "snorkeling"],
   },
   {
     id: 5,
@@ -66,6 +70,7 @@ const MALDIVES_LOCATIONS = [
     description: "UNESCO Biosphere Reserve with exceptional marine life",
     highlights: ["Hanifaru Bay", "Manta Rays", "Snorkeling"],
     image: "/images/baa-atoll.jpg",
+    activities: ["snorkeling", "diving"],
   },
   {
     id: 6,
@@ -76,6 +81,7 @@ const MALDIVES_LOCATIONS = [
     description: "Pristine diving destination with minimal crowds",
     highlights: ["Pristine Reefs", "Wreck Diving", "Shark Encounters"],
     image: "/images/vaavu-atoll.jpg",
+    activities: ["diving"],
   },
   {
     id: 7,
@@ -86,6 +92,7 @@ const MALDIVES_LOCATIONS = [
     description: "Tranquil atoll perfect for relaxation and diving",
     highlights: ["Quiet Beaches", "Excellent Diving", "Local Culture"],
     image: "/images/meemu-atoll.jpg",
+    activities: ["diving", "relaxation"],
   },
   {
     id: 8,
@@ -96,26 +103,18 @@ const MALDIVES_LOCATIONS = [
     description: "Southernmost atoll with unique history and charm",
     highlights: ["Historical Sites", "Beautiful Lagoons", "Local Islands"],
     image: "/images/addu-atoll.jpg",
+    activities: ["relaxation", "snorkeling"],
   },
   {
     id: 9,
     name: "Thiladhunmathi Atoll",
     type: "Atoll",
-    lat: 6.00,
-    lng: 73.20,
-    description: "Northern atoll with exclusive resorts and pristine reefs",
-    highlights: ["Exclusive Resorts", "Pristine Reefs", "Water Activities"],
+    lat: 5.8,
+    lng: 73.2,
+    description: "Remote atoll with pristine reefs and minimal tourism",
+    highlights: ["Pristine Reefs", "Minimal Crowds", "House Reefs"],
     image: "/images/thiladhunmathi-atoll.jpg",
-  },
-  {
-    id: 10,
-    name: "Haa Alifu Atoll",
-    type: "Atoll",
-    lat: 6.80,
-    lng: 73.00,
-    description: "Northernmost atoll with untouched beauty",
-    highlights: ["Untouched Beaches", "Rare Marine Life", "Adventure"],
-    image: "/images/haa-alifu-atoll.jpg",
+    activities: ["diving", "snorkeling"],
   },
 ];
 
@@ -124,14 +123,16 @@ const POPULAR_ISLANDS = [
     id: "island-1",
     name: "Maafushi Island",
     type: "Island",
-    lat: 4.25,
-    lng: 73.42,
+    lat: 4.38,
+    lng: 73.4,
     category: "Local Island",
     slug: "maafushi",
+    guideSlug: "maafushi-island",
     description: "Popular local island with budget-friendly guesthouses and vibrant culture",
     highlights: ["Local Atmosphere", "Budget Friendly", "Beach Bars", "Water Sports"],
     population: "~2000",
     rating: 4.4,
+    activities: ["water-sports", "snorkeling"],
   },
   {
     id: "island-2",
@@ -145,6 +146,7 @@ const POPULAR_ISLANDS = [
     highlights: ["Watermelon Farms", "Local Markets", "Fishing Village", "Authentic Experience"],
     population: "~1500",
     rating: 4.3,
+    activities: ["relaxation"],
   },
   {
     id: "island-3",
@@ -158,6 +160,7 @@ const POPULAR_ISLANDS = [
     highlights: ["House Reef Diving", "Local Restaurants", "Fishing Culture", "Peaceful"],
     population: "~800",
     rating: 4.5,
+    activities: ["diving", "snorkeling"],
   },
   {
     id: "island-4",
@@ -171,6 +174,7 @@ const POPULAR_ISLANDS = [
     highlights: ["Surf Breaks", "Beach Vibes", "Local Cafes", "Yoga Retreats"],
     population: "~1200",
     rating: 4.6,
+    activities: ["surfing", "relaxation"],
   },
   {
     id: "island-5",
@@ -184,6 +188,7 @@ const POPULAR_ISLANDS = [
     highlights: ["Scenic Beaches", "Dive Sites", "Snorkeling", "Island Hopping"],
     population: "~600",
     rating: 4.4,
+    activities: ["diving", "snorkeling"],
   },
 ];
 
@@ -200,6 +205,7 @@ const LUXURY_RESORTS = [
     amenities: ["Glass Villas", "Underwater Spa", "Private Pool", "Michelin-starred Dining"],
     rating: 4.9,
     pricePerNight: "$1500+",
+    activities: ["relaxation", "water-sports"],
   },
   {
     id: "resort-2",
@@ -213,6 +219,7 @@ const LUXURY_RESORTS = [
     amenities: ["Underwater Bedroom", "Private Yacht", "Infinity Pool", "Fine Dining"],
     rating: 4.9,
     pricePerNight: "$1800+",
+    activities: ["relaxation", "diving"],
   },
   {
     id: "resort-3",
@@ -226,6 +233,7 @@ const LUXURY_RESORTS = [
     amenities: ["Overwater Villas", "Spa", "Fine Dining", "Diving Center"],
     rating: 4.8,
     pricePerNight: "$800-1200",
+    activities: ["diving", "snorkeling"],
   },
   {
     id: "resort-4",
@@ -239,6 +247,7 @@ const LUXURY_RESORTS = [
     amenities: ["Beach Villas", "Restaurant", "Snorkeling", "Water Sports"],
     rating: 4.5,
     pricePerNight: "$400-600",
+    activities: ["snorkeling", "water-sports"],
   },
   {
     id: "resort-5",
@@ -252,6 +261,7 @@ const LUXURY_RESORTS = [
     amenities: ["All-Inclusive", "House Reef", "Spa", "Diving Packages"],
     rating: 4.7,
     pricePerNight: "$600-900",
+    activities: ["diving", "snorkeling", "relaxation"],
   },
   {
     id: "resort-6",
@@ -264,7 +274,8 @@ const LUXURY_RESORTS = [
     description: "Boutique resort with personalized service and intimate atmosphere",
     amenities: ["Beach Villas", "Spa", "Restaurant", "Water Activities"],
     rating: 4.6,
-    pricePerNight: "$500-700",
+    activities: ["water-sports", "relaxation"],
+    pricePerNight: "$500-800",
   },
   {
     id: "resort-7",
@@ -278,6 +289,7 @@ const LUXURY_RESORTS = [
     amenities: ["Overwater Villas", "Spa", "Multiple Restaurants", "Watersports"],
     rating: 4.7,
     pricePerNight: "$700-1000",
+    activities: ["water-sports", "diving"],
   },
   {
     id: "resort-8",
@@ -291,6 +303,7 @@ const LUXURY_RESORTS = [
     amenities: ["Modern Villas", "Spa", "Fine Dining", "Diving"],
     rating: 4.8,
     pricePerNight: "$900-1300",
+    activities: ["diving", "snorkeling"],
   },
 ];
 
@@ -306,6 +319,7 @@ const DIVE_POINTS = [
     description: "Iconic reef with excellent coral formations and tropical fish",
     highlights: ["Coral Gardens", "Reef Sharks", "Groupers"],
     rating: 4.8,
+    activities: ["diving", "snorkeling"],
   },
   {
     id: "dive-2",
@@ -318,6 +332,7 @@ const DIVE_POINTS = [
     description: "Dramatic underwater mountain with strong currents and large pelagics",
     highlights: ["Pelagic Fish", "Sharks", "Eagle Rays"],
     rating: 4.9,
+    activities: ["diving"],
   },
   {
     id: "dive-3",
@@ -330,6 +345,7 @@ const DIVE_POINTS = [
     description: "Channel dive with strong currents and abundant marine life",
     highlights: ["Manta Rays", "Snappers", "Trevally"],
     rating: 4.7,
+    activities: ["diving"],
   },
   {
     id: "dive-4",
@@ -342,6 +358,7 @@ const DIVE_POINTS = [
     description: "UNESCO site famous for manta ray aggregations",
     highlights: ["Manta Rays", "Whale Sharks", "Snorkeling"],
     rating: 4.9,
+    activities: ["diving", "snorkeling"],
   },
   {
     id: "dive-5",
@@ -354,6 +371,7 @@ const DIVE_POINTS = [
     description: "Channel with excellent visibility and diverse marine life",
     highlights: ["Reef Fish", "Rays", "Octopus"],
     rating: 4.6,
+    activities: ["diving", "snorkeling"],
   },
   {
     id: "dive-6",
@@ -366,6 +384,7 @@ const DIVE_POINTS = [
     description: "Beautiful thila with colorful corals and schooling fish",
     highlights: ["Coral Formations", "Schooling Fish", "Turtles"],
     rating: 4.5,
+    activities: ["diving"],
   },
   {
     id: "dive-7",
@@ -378,6 +397,7 @@ const DIVE_POINTS = [
     description: "Wreck dive with historical significance and marine life",
     highlights: ["Wreck Exploration", "Groupers", "Snappers"],
     rating: 4.4,
+    activities: ["diving"],
   },
   {
     id: "dive-8",
@@ -390,6 +410,7 @@ const DIVE_POINTS = [
     description: "Popular thila with excellent coral and abundant fish",
     highlights: ["Coral Reefs", "Reef Sharks", "Jacks"],
     rating: 4.7,
+    activities: ["diving", "snorkeling"],
   },
 ];
 
@@ -405,6 +426,7 @@ const SURF_SPOTS = [
     description: "Consistent reef break with long rides and friendly atmosphere",
     highlights: ["Consistent Waves", "Right Hander", "Reef Break"],
     rating: 4.6,
+    activities: ["surfing"],
   },
   {
     id: "surf-2",
@@ -417,6 +439,7 @@ const SURF_SPOTS = [
     description: "Mellow beach break perfect for beginners and learning",
     highlights: ["Beach Break", "Beginner Friendly", "Sandy Bottom"],
     rating: 4.3,
+    activities: ["surfing"],
   },
   {
     id: "surf-3",
@@ -429,6 +452,7 @@ const SURF_SPOTS = [
     description: "Powerful reef break with challenging conditions",
     highlights: ["Powerful Waves", "Reef Break", "Left Hander"],
     rating: 4.5,
+    activities: ["surfing"],
   },
   {
     id: "surf-4",
@@ -441,6 +465,7 @@ const SURF_SPOTS = [
     description: "Consistent point break with smooth waves",
     highlights: ["Point Break", "Long Rides", "Scenic"],
     rating: 4.4,
+    activities: ["surfing"],
   },
   {
     id: "surf-5",
@@ -453,6 +478,7 @@ const SURF_SPOTS = [
     description: "Challenging reef break with fast walls",
     highlights: ["Reef Break", "Fast Walls", "Barrels"],
     rating: 4.7,
+    activities: ["surfing"],
   },
   {
     id: "surf-6",
@@ -465,6 +491,7 @@ const SURF_SPOTS = [
     description: "Fun reef break with multiple peaks",
     highlights: ["Multiple Peaks", "Reef Break", "Fun Waves"],
     rating: 4.5,
+    activities: ["surfing"],
   },
 ];
 
@@ -480,6 +507,7 @@ const AIRPORTS = [
     highlights: ["International Flights", "Seaplane Hub", "Customs & Immigration"],
     airlines: "Emirates, Qatar Airways, Singapore Airlines, Turkish Airlines",
     rating: 4.4,
+    activities: ["relaxation"],
   },
   {
     id: "airport-2",
@@ -492,6 +520,7 @@ const AIRPORTS = [
     highlights: ["Southern Atolls Access", "Domestic Flights", "Regional Hub"],
     airlines: "FlyMe, Maldivian Airlines",
     rating: 4.2,
+    activities: ["relaxation"],
   },
   {
     id: "airport-3",
@@ -504,6 +533,7 @@ const AIRPORTS = [
     highlights: ["Northern Atolls Access", "Regional Flights", "Scenic Location"],
     airlines: "Maldivian Airlines, FlyMe",
     rating: 4.1,
+    activities: ["relaxation"],
   },
 ];
 
@@ -515,7 +545,6 @@ type LocationType =
   | typeof SURF_SPOTS[0] 
   | typeof AIRPORTS[0];
 
-// Marker emoji icons
 const MARKER_ICONS = {
   atoll: "🏝️",
   island: "🏝️",
@@ -675,16 +704,32 @@ export default function MaldivesMapNew() {
       markersRef.current.push({ marker, element: el, location });
     };
 
-    // Filter locations by search term
+    // Filter locations by search term and activities
     const filterBySearch = (locations: LocationType[]) => {
-      if (!searchTerm) return locations;
-      const term = searchTerm.toLowerCase();
-      return locations.filter(
-        (loc: any) =>
-          loc.name.toLowerCase().includes(term) ||
-          loc.description?.toLowerCase().includes(term) ||
-          loc.highlights?.some((h: string) => h.toLowerCase().includes(term))
-      );
+      let filtered = locations;
+      
+      // Filter by search term
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filtered = filtered.filter(
+          (loc: any) =>
+            loc.name.toLowerCase().includes(term) ||
+            loc.description?.toLowerCase().includes(term) ||
+            loc.highlights?.some((h: string) => h.toLowerCase().includes(term))
+        );
+      }
+      
+      // Filter by selected activities
+      if (selectedActivities.size > 0) {
+        filtered = filtered.filter((loc: any) => {
+          const locActivities = loc.activities || [];
+          return Array.from(selectedActivities).some(activity =>
+            locActivities.includes(activity)
+          );
+        });
+      }
+      
+      return filtered;
     };
 
     // Add markers based on filter
@@ -729,6 +774,23 @@ export default function MaldivesMapNew() {
     if (activityFilter === "all" || activityFilter === "surfs") count += SURF_SPOTS.length;
     if (activityFilter === "all" || activityFilter === "airports") count += AIRPORTS.length;
     return count;
+  };
+
+  // Count locations for each activity
+  const getActivityCount = (activityId: string): number => {
+    const allLocations = [
+      ...MALDIVES_LOCATIONS,
+      ...POPULAR_ISLANDS,
+      ...LUXURY_RESORTS,
+      ...DIVE_POINTS,
+      ...SURF_SPOTS,
+      ...AIRPORTS,
+    ];
+    
+    return allLocations.filter((loc: any) => {
+      const locActivities = loc.activities || [];
+      return locActivities.includes(activityId);
+    }).length;
   };
 
   return (
@@ -790,6 +852,9 @@ export default function MaldivesMapNew() {
                 >
                   <span>{activity.icon}</span>
                   {activity.label}
+                  <span className="text-xs bg-white/20 px-2 py-0.5 rounded">
+                    {getActivityCount(activity.id)}
+                  </span>
                 </button>
               ))}
               {selectedActivities.size > 0 && (
@@ -855,11 +920,11 @@ export default function MaldivesMapNew() {
                 onClick={() => setActivityFilter("dives")}
                 className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
                   activityFilter === "dives"
-                    ? "bg-cyan-600 text-white"
+                    ? "bg-purple-600 text-white"
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
-                <Waves className="w-4 h-4" />
+                <Anchor className="w-4 h-4" />
                 Dive Sites
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{DIVE_POINTS.length}</span>
               </button>
@@ -867,11 +932,11 @@ export default function MaldivesMapNew() {
                 onClick={() => setActivityFilter("surfs")}
                 className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
                   activityFilter === "surfs"
-                    ? "bg-yellow-600 text-white"
+                    ? "bg-orange-600 text-white"
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
-                <Anchor className="w-4 h-4" />
+                <Waves className="w-4 h-4" />
                 Surf Spots
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{SURF_SPOTS.length}</span>
               </button>
@@ -879,99 +944,48 @@ export default function MaldivesMapNew() {
                 onClick={() => setActivityFilter("airports")}
                 className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
                   activityFilter === "airports"
-                    ? "bg-pink-600 text-white"
+                    ? "bg-indigo-600 text-white"
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
-                <MapPin className="w-4 h-4" />
+                <Info className="w-4 h-4" />
                 Airports
                 <span className="text-xs bg-white/20 px-2 py-0.5 rounded">{AIRPORTS.length}</span>
               </button>
             </div>
+
+            {/* Selected Location Details */}
+            {selectedLocation && (
+              <Card className="border-2 border-primary/50">
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <CardTitle className="text-xl">{selectedLocation.name}</CardTitle>
+                      <p className="text-sm text-muted-foreground">{selectedLocation.type}</p>
+                    </div>
+                    <button
+                      onClick={() => setSelectedLocation(null)}
+                      className="p-1 hover:bg-secondary rounded"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-foreground">{selectedLocation.description}</p>
+                  
+                  {(selectedLocation as any).guideSlug && (
+                    <Link href={`/island/${(selectedLocation as any).guideSlug}`}>
+                      <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                        <BookOpen className="w-4 h-4 mr-2" />
+                        View Full Island Guide
+                      </Button>
+                    </Link>
+                  )}
+                </CardContent>
+              </Card>
+            )}
           </div>
-
-          {/* Legend */}
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle className="text-lg">Map Legend</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-blue-600" />
-                  <span className="text-sm">Atolls</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-green-600" />
-                  <span className="text-sm">Islands</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-amber-600" />
-                  <span className="text-sm">Resorts</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-cyan-600" />
-                  <span className="text-sm">Dive Sites</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-yellow-600" />
-                  <span className="text-sm">Surf Spots</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-pink-600" />
-                  <span className="text-sm">Airports</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Selected Location Details */}
-          {selectedLocation && (
-            <Card className="mb-8">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>{selectedLocation.name}</CardTitle>
-                <button
-                  onClick={() => setSelectedLocation(null)}
-                  className="p-1 hover:bg-secondary rounded"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">{selectedLocation.description}</p>
-                {"highlights" in selectedLocation && selectedLocation.highlights && (
-                  <div>
-                    <h4 className="font-semibold mb-2">Highlights</h4>
-                    <ul className="grid grid-cols-2 gap-2">
-                      {(selectedLocation.highlights as string[]).map((highlight: string, idx: number) => (
-                        <li key={idx} className="text-sm flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {"rating" in selectedLocation && selectedLocation.rating && (
-                  <div>
-                    <span className="text-sm font-semibold">Rating: </span>
-                    <span className="text-sm">⭐ {selectedLocation.rating}/5</span>
-                  </div>
-                )}
-                {/* Link to island detail page if it's an island */}
-                {"slug" in selectedLocation && (
-                  <Link href={`/island/${selectedLocation.slug}`}>
-                    <Button className="w-full">View Full Island Guide</Button>
-                  </Link>
-                )}
-                <Link href="/packages">
-                  <Button variant="outline" className="w-full">
-                    Browse Vacation Packages
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          )}
         </div>
       </section>
 

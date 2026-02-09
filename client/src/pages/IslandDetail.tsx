@@ -156,7 +156,7 @@ export default function IslandDetail() {
                         <MapPin className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
                         <div>
                           <p className="font-semibold text-sm text-green-900">Location</p>
-                          <p className="text-sm text-green-800">{island.latitude.toFixed(3)}°, {island.longitude.toFixed(3)}°</p>
+                          <p className="text-sm text-green-800">{island.latitude ? island.latitude.toFixed(3) : 'N/A'}°, {island.longitude ? island.longitude.toFixed(3) : 'N/A'}°</p>
                         </div>
                       </div>
                     </div>
@@ -309,7 +309,7 @@ export default function IslandDetail() {
                   <div className="text-center">
                     <MapPin className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                     <p className="text-sm text-gray-600">
-                      {island.latitude.toFixed(3)}°N, {island.longitude.toFixed(3)}°E
+                       {island.latitude ? island.latitude.toFixed(3) : 'N/A'}°N, {island.longitude ? island.longitude.toFixed(3) : 'N/A'}°E
                     </p>
                     <p className="text-xs text-gray-500 mt-2">Interactive map coming soon</p>
                   </div>

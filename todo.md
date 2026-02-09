@@ -528,3 +528,16 @@
 - [ ] Update destination detail page to display island guide information
 - [ ] Test destination to island guide mapping
 - [ ] Verify island guide content displays on destination pages
+
+## Map Activity-Based Filtering
+- [x] Review current map implementation and activity data structure
+- [x] Add activity filter state management to map component
+- [x] Create activity filter UI with toggle buttons
+- [x] Implement filtering logic for map markers
+- [x] Add activity counts to filter buttons
+- [x] Test activity filtering functionality
+- [x] Verify filtered markers display correctly
+- [x] Add activity tags to all location data (diving, surfing, snorkeling, water-sports, relaxation)
+- [x] Implement dynamic marker updates based on selected activities
+- [x] Support multiple activity selection simultaneously
+- [x] Add "Clear Filters" button for easy reset

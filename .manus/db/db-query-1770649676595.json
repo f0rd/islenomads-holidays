@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE map_locations SET guideId = 2 WHERE slug = 'maafushi';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE map_locations SET guideId = 2 WHERE slug = 'maafushi';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 60
+}

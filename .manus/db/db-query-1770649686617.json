@@ -1,0 +1,125 @@
+{
+  "query": "SELECT id, name, slug FROM map_locations LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM map_locations LIMIT 50;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Malé",
+      "slug": "male"
+    },
+    {
+      "id": "2",
+      "name": "Hulhumalé",
+      "slug": "hulhumale"
+    },
+    {
+      "id": "3",
+      "name": "Veligandu Island",
+      "slug": "veligandu-island"
+    },
+    {
+      "id": "4",
+      "name": "Maafushi Island",
+      "slug": "maafushi-island"
+    },
+    {
+      "id": "5",
+      "name": "Dhigurah Island",
+      "slug": "dhigurah-island"
+    },
+    {
+      "id": "6",
+      "name": "Ukulhas Island",
+      "slug": "ukulhas-island"
+    },
+    {
+      "id": "7",
+      "name": "Kandooma Island",
+      "slug": "kandooma-island"
+    },
+    {
+      "id": "8",
+      "name": "Thulusdhoo Island",
+      "slug": "thulusdhoo-island"
+    },
+    {
+      "id": "9",
+      "name": "Fihalhohi Island",
+      "slug": "fihalhohi-island"
+    },
+    {
+      "id": "10",
+      "name": "Biyadhoo Island",
+      "slug": "biyadhoo-island"
+    },
+    {
+      "id": "11",
+      "name": "Eydhafushi Island",
+      "slug": "eydhafushi-island"
+    },
+    {
+      "id": "12",
+      "name": "Hangnaameedhoo Island",
+      "slug": "hangnaameedhoo-island"
+    },
+    {
+      "id": "13",
+      "name": "Gan Island",
+      "slug": "gan-island"
+    },
+    {
+      "id": "14",
+      "name": "Funadhoo Island",
+      "slug": "funadhoo-island"
+    },
+    {
+      "id": "15",
+      "name": "Felidhoo Island",
+      "slug": "felidhoo-island"
+    },
+    {
+      "id": "16",
+      "name": "Naifaru Island",
+      "slug": "naifaru-island"
+    },
+    {
+      "id": "17",
+      "name": "Meedhoo Island",
+      "slug": "meedhoo-island"
+    },
+    {
+      "id": "18",
+      "name": "Rasdhoo Island",
+      "slug": "rasdhoo-island"
+    },
+    {
+      "id": "19",
+      "name": "Isdhoo Island",
+      "slug": "isdhoo-island"
+    },
+    {
+      "id": "20",
+      "name": "Velidhoo Island",
+      "slug": "velidhoo-island"
+    },
+    {
+      "id": "21",
+      "name": "Dhaalu Kudahuvadhoo",
+      "slug": "dhaalu-kudahuvadhoo"
+    },
+    {
+      "id": "22",
+      "name": "Haa Alif Hanimadhoo",
+      "slug": "haa-alif-hanimadhoo"
+    },
+    {
+      "id": "23",
+      "name": "Haa Dhaalu Kulhudhuffushi",
+      "slug": "haa-dhaalu-kulhudhuffushi"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tMalé\tmale\n2\tHulhumalé\thulhumale\n3\tVeligandu Island\tveligandu-island\n4\tMaafushi Island\tmaafushi-island\n5\tDhigurah Island\tdhigurah-island\n6\tUkulhas Island\tukulhas-island\n7\tKandooma Island\tkandooma-island\n8\tThulusdhoo Island\tthulusdhoo-island\n9\tFihalhohi Island\tfihalhohi-island\n10\tBiyadhoo Island\tbiyadhoo-island\n11\tEydhafushi Island\teydhafushi-island\n12\tHangnaameedhoo Island\thangnaameedhoo-island\n13\tGan Island\tgan-island\n14\tFunadhoo Island\tfunadhoo-island\n15\tFelidhoo Island\tfelidhoo-island\n16\tNaifaru Island\tnaifaru-island\n17\tMeedhoo Island\tmeedhoo-island\n18\tRasdhoo Island\trasdhoo-island\n19\tIsdhoo Island\tisdhoo-island\n20\tVelidhoo Island\tvelidhoo-island\n21\tDhaalu Kudahuvadhoo\tdhaalu-kudahuvadhoo\n22\tHaa Alif Hanimadhoo\thaa-alif-hanimadhoo\n23\tHaa Dhaalu Kulhudhuffushi\thaa-dhaalu-kulhudhuffushi\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}
