@@ -19,7 +19,8 @@ import {
   getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer,
   getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
-  deleteTransport
+  deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
+  deleteAtoll, getAtollsByRegion
 } from "./db";
 
 export const appRouter = router({
@@ -852,6 +853,86 @@ export const appRouter = router({
           return role;
         }),
     }),
+  }),
+
+  atolls: router({
+    list: publicProcedure.query(async () => {
+      return getAllAtolls();
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllAtollsAdmin();
+    }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getAtollBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getAtollById(input.id);
+      }),
+
+    getByRegion: publicProcedure
+      .input(z.object({ region: z.string() }))
+      .query(async ({ input }) => {
+        return getAtollsByRegion(input.region);
+      }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string(),
+          slug: z.string(),
+          region: z.string(),
+          description: z.string().optional(),
+          heroImage: z.string().optional(),
+          overview: z.string().optional(),
+          bestFor: z.string().optional(),
+          highlights: z.string().optional(),
+          activities: z.string().optional(),
+          accommodation: z.string().optional(),
+          transportation: z.string().optional(),
+          bestSeason: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        return createAtoll(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          region: z.string().optional(),
+          description: z.string().optional(),
+          heroImage: z.string().optional(),
+          overview: z.string().optional(),
+          bestFor: z.string().optional(),
+          highlights: z.string().optional(),
+          activities: z.string().optional(),
+          accommodation: z.string().optional(),
+          transportation: z.string().optional(),
+          bestSeason: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateAtoll(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteAtoll(input.id);
+      }),
   }),
 });
 

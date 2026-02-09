@@ -1,0 +1,1182 @@
+{
+  "islands": [
+    {
+      "name": "Maafushi Island",
+      "slug": "maafushi-island",
+      "atoll": "Kaafu Atoll",
+      "overview": "Maafushi is a vibrant local island in Kaafu Atoll, just 45 minutes by speedboat from Malé. Known for its authentic Maldivian culture, pristine beaches, and excellent value for money, Maafushi offers an ideal blend of relaxation and adventure. The island features colorful local guesthouses, fresh seafood restaurants, and direct access to some of the Maldives' best diving and snorkeling sites.",
+      "quickFacts": [
+        "Distance from Malé: 45 minutes by speedboat",
+        "Island Type: Local inhabited island",
+        "Population: ~2,500 residents",
+        "Best For: Budget travelers, divers, culture enthusiasts",
+        "Average Temperature: 28-30°C year-round",
+        "Water Temperature: 26-29°C",
+        "Accommodation: Guesthouses ($30-80 USD per night)",
+        "Main Language: Dhivehi, English widely spoken"
+      ],
+      "flightInfo": "No airport on Maafushi. Fly into Malé International Airport (MLE), then take a 45-minute speedboat transfer to the island.",
+      "speedboatInfo": "Regular speedboat services operate from Malé to Maafushi. Journey takes 45 minutes. Boats depart multiple times daily. Cost: $15-25 USD per person.",
+      "ferryInfo": "Public ferry available from Malé. Takes approximately 1.5-2 hours. More economical option at $3-5 USD per person. Less frequent than speedboats.",
+      "topThingsToDo": [
+        "Snorkeling at Banana Reef - excellent coral formations and tropical fish",
+        "Diving at HP Reef - advanced dive site with rays and sharks",
+        "Visit the local fish market and experience authentic island life",
+        "Relax on Maafushi Beach - pristine white sand and turquoise waters",
+        "Try local cuisine at beachfront restaurants",
+        "Dolphin watching tours at sunset",
+        "Explore the island on foot or by bicycle",
+        "Visit the local mosque and learn about Maldivian culture"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Banana Reef",
+            "difficulty": "Beginner",
+            "description": "Shallow coral reef perfect for beginners. Abundant tropical fish, parrotfish, and occasionally reef sharks.",
+            "depth": "3-8 meters",
+            "tips": "Best visited in morning. Bring reef shoes for protection."
+          },
+          {
+            "name": "Artificial Reef",
+            "difficulty": "Beginner to Intermediate",
+            "description": "Sunken ship and artificial structures attracting diverse marine life.",
+            "depth": "5-12 meters",
+            "tips": "Great for photography. Calm conditions usually in morning."
+          }
+        ],
+        "generalTips": [
+          "Wear reef-safe sunscreen",
+          "Bring an underwater camera",
+          "Start early to avoid crowds",
+          "Always snorkel with a buddy",
+          "Watch for strong currents in channels"
+        ]
+      },
+      "divingGuide": {
+        "sites": [
+          {
+            "name": "HP Reef",
+            "difficulty": "Advanced",
+            "description": "Thrilling dive site with strong currents, large pelagics, and occasional reef sharks.",
+            "depth": "12-40 meters",
+            "tips": "Requires advanced certification. Best in dry season."
+          },
+          {
+            "name": "Maafushi Kandu",
+            "difficulty": "Intermediate",
+            "description": "Channel dive with good coral formations and schooling fish.",
+            "depth": "8-25 meters",
+            "tips": "Excellent for macro photography."
+          }
+        ],
+        "generalTips": [
+          "Book dives through local dive centers",
+          "Bring dive certification card",
+          "Dive early morning for best visibility",
+          "Expect water temperature 26-29°C"
+        ]
+      },
+      "surfWatersports": {
+        "description": "Maafushi offers excellent conditions for water sports enthusiasts.",
+        "activities": [
+          "Surfing: Nearby breaks suitable for intermediate surfers",
+          "Jet skiing: Available through local operators",
+          "Kayaking: Explore shallow lagoons and mangroves",
+          "Windsurfing: Best during dry season (March-October)"
+        ]
+      },
+      "beachesLocalRules": {
+        "beaches": [
+          {
+            "name": "Maafushi Main Beach",
+            "description": "The primary public beach with white sand and clear waters. Popular gathering spot for locals and tourists.",
+            "rules": "Respectful dress code required. No alcohol consumption on beach."
+          },
+          {
+            "name": "Sunset Beach",
+            "description": "Quieter beach on the western side, perfect for sunset watching.",
+            "rules": "Private area during certain hours. Check with locals before visiting."
+          }
+        ],
+        "generalRules": [
+          "Respect local customs and dress modestly",
+          "No alcohol in public areas",
+          "Friday is holy day - limited activities",
+          "Photography of locals requires permission",
+          "Protect coral reefs - don't touch or step on them"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Maafushi Fish Market Restaurant",
+          "cuisine": "Fresh Seafood",
+          "description": "Authentic local dining experience with freshly caught fish and traditional Maldivian curries.",
+          "priceRange": "$5-15 USD per meal"
+        },
+        {
+          "name": "Café Maafushi",
+          "cuisine": "International & Local",
+          "description": "Casual beachfront café serving breakfast, lunch, and dinner. Good coffee and smoothies.",
+          "priceRange": "$3-10 USD per meal"
+        },
+        {
+          "name": "Island Spice Restaurant",
+          "cuisine": "Maldivian & Asian Fusion",
+          "description": "Popular spot for authentic flavors with modern presentation.",
+          "priceRange": "$8-18 USD per meal"
+        }
+      ],
+      "currency": "Maldivian Rufiyaa (MVR) - 1 USD ≈ 15 MVR. USD widely accepted.",
+      "language": "Dhivehi (official), English widely spoken in tourism areas",
+      "bestTimeToVisit": "November to April (dry season) - sunny, calm seas, perfect for water activities",
+      "whatToPack": [
+        "Reef-safe sunscreen (SPF 50+)",
+        "Snorkeling gear or rental locally",
+        "Light, breathable clothing",
+        "Modest clothing for island exploration",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Reef shoes",
+        "Hat and sunglasses",
+        "Medications and first aid kit",
+        "Waterproof phone case"
+      ],
+      "healthTips": [
+        "Stay hydrated - drink plenty of water",
+        "Protect yourself from sun exposure",
+        "Decompression sickness risk for divers - follow safety protocols",
+        "Dengue fever prevention - use mosquito repellent",
+        "Travel insurance recommended",
+        "Basic medical facilities available on island"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Police",
+          "number": "119"
+        },
+        {
+          "service": "Ambulance",
+          "number": "102"
+        },
+        {
+          "service": "Fire",
+          "number": "118"
+        },
+        {
+          "service": "Island Clinic",
+          "number": "Local guesthouse can provide contact"
+        }
+      ],
+      "threeDayItinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Island Exploration",
+          "activities": [
+            "Morning: Arrive in Malé, take speedboat to Maafushi (45 min)",
+            "Afternoon: Check into guesthouse, relax on beach",
+            "Evening: Explore island on foot, dinner at local restaurant"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Snorkeling Adventure",
+          "activities": [
+            "Morning: Snorkeling at Banana Reef",
+            "Afternoon: Rest at beach, visit local market",
+            "Evening: Sunset dolphin watching tour"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Culture & Departure",
+          "activities": [
+            "Morning: Visit local mosque and cultural sites",
+            "Afternoon: Last beach time, souvenir shopping",
+            "Evening: Speedboat back to Malé"
+          ]
+        }
+      ],
+      "fiveDayItinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Acclimatization",
+          "activities": [
+            "Arrive in Malé, speedboat to Maafushi",
+            "Settle into guesthouse, explore island",
+            "Dinner at beachfront restaurant"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Snorkeling Day",
+          "activities": [
+            "Morning: Banana Reef snorkeling",
+            "Afternoon: Beach relaxation",
+            "Evening: Sunset walk on beach"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Diving Experience",
+          "activities": [
+            "Morning: Discover Scuba or certification course",
+            "Afternoon: Rest and hydrate",
+            "Evening: Local cuisine exploration"
+          ]
+        },
+        {
+          "day": 4,
+          "title": "Island Culture",
+          "activities": [
+            "Morning: Visit fish market and local school",
+            "Afternoon: Kayaking in lagoon",
+            "Evening: Dolphin watching tour"
+          ]
+        },
+        {
+          "day": 5,
+          "title": "Relaxation & Departure",
+          "activities": [
+            "Morning: Final beach time",
+            "Afternoon: Shopping and packing",
+            "Evening: Speedboat back to Malé"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Maafushi safe for tourists?",
+          "answer": "Yes, Maafushi is very safe. It's a well-established tourist destination with good infrastructure and friendly locals. Standard travel precautions apply."
+        },
+        {
+          "question": "What's the best time to visit?",
+          "answer": "November to April offers the best weather with sunny days and calm seas. May to October is monsoon season with occasional rain but fewer tourists."
+        },
+        {
+          "question": "How much does a guesthouse cost?",
+          "answer": "Budget guesthouses range from $30-80 USD per night, offering good value compared to resort islands."
+        },
+        {
+          "question": "Can I snorkel directly from the beach?",
+          "answer": "Yes, some areas have decent snorkeling from shore, but organized snorkeling tours to better reefs are recommended."
+        },
+        {
+          "question": "Is alcohol available?",
+          "answer": "Alcohol is not available for public consumption on local islands due to Islamic law. Some guesthouses may serve in private areas."
+        }
+      ],
+      "latitude": "4.1939",
+      "longitude": "73.5104",
+      "metaTitle": "Maafushi Island Maldives - Budget Diving & Snorkeling Guide",
+      "metaDescription": "Complete guide to Maafushi Island in Kaafu Atoll. Discover snorkeling, diving, local culture, guesthouses, and authentic Maldivian experiences.",
+      "metaKeywords": "Maafushi Island, Kaafu Atoll, Maldives snorkeling, budget travel, local island",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 1
+    },
+    {
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "atoll": "Kaafu Atoll",
+      "overview": "Banana Reef is one of the most accessible and popular snorkeling destinations in the Maldives, located just off Maafushi Island. Named for its distinctive curved shape, this shallow coral reef is perfect for beginners and families. The reef teems with colorful tropical fish, parrotfish, and occasionally reef sharks, making it an unforgettable underwater experience.",
+      "quickFacts": [
+        "Location: Off Maafushi Island, Kaafu Atoll",
+        "Depth: 3-8 meters (ideal for beginners)",
+        "Distance from Malé: 50 minutes by speedboat",
+        "Difficulty Level: Beginner",
+        "Best For: Families, first-time snorkelers, photographers",
+        "Visibility: 15-25 meters (seasonal)",
+        "Marine Life: Tropical fish, parrotfish, reef sharks, rays",
+        "Access: Organized snorkeling tours from Maafushi"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Main Coral Formation",
+            "difficulty": "Beginner",
+            "description": "The primary banana-shaped coral structure with excellent fish activity.",
+            "depth": "3-6 meters",
+            "tips": "Best in morning for optimal visibility and fish activity."
+          },
+          {
+            "name": "Sandy Bottom Area",
+            "difficulty": "Beginner",
+            "description": "Shallow sandy areas with scattered corals, perfect for resting.",
+            "depth": "2-4 meters",
+            "tips": "Watch for stingrays - shuffle feet when walking."
+          }
+        ],
+        "generalTips": [
+          "Wear reef shoes to protect feet",
+          "Apply reef-safe sunscreen",
+          "Don't touch or stand on coral",
+          "Bring an underwater camera",
+          "Go early morning for best conditions",
+          "Stay close to guide and group"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Maafushi Beach Café",
+          "cuisine": "Casual International",
+          "description": "Refreshments before/after snorkeling tours",
+          "priceRange": "$2-8 USD"
+        }
+      ],
+      "bestTimeToVisit": "November to April - dry season with best visibility and calm conditions",
+      "whatToPack": [
+        "Reef-safe sunscreen",
+        "Snorkeling gear",
+        "Reef shoes",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Hat and sunglasses",
+        "Light clothing",
+        "Waterproof bag"
+      ],
+      "healthTips": [
+        "Avoid sun exposure during peak hours (11am-3pm)",
+        "Stay hydrated throughout the day",
+        "Don't snorkel alone",
+        "Watch for strong currents",
+        "Know basic first aid for minor cuts"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Maafushi Clinic",
+          "number": "Local contact through guesthouse"
+        },
+        {
+          "service": "Coast Guard",
+          "number": "119"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Banana Reef suitable for non-swimmers?",
+          "answer": "Yes, with proper flotation device and guide supervision. Many operators provide life jackets."
+        },
+        {
+          "question": "What's the best time of day to visit?",
+          "answer": "Early morning (7-9am) offers best visibility and fewer crowds."
+        },
+        {
+          "question": "How long does a typical snorkeling tour last?",
+          "answer": "Usually 2-3 hours including boat transfer and time in water."
+        },
+        {
+          "question": "Are there dangerous marine animals?",
+          "answer": "Reef sharks are present but not aggressive. Stingrays are harmless if you shuffle your feet."
+        }
+      ],
+      "latitude": "4.1850",
+      "longitude": "73.5200",
+      "metaTitle": "Banana Reef Maldives - Best Beginner Snorkeling Guide",
+      "metaDescription": "Explore Banana Reef, Maldives' most popular snorkeling destination. Perfect for families and beginners with colorful coral and tropical fish.",
+      "metaKeywords": "Banana Reef, snorkeling Maldives, beginner snorkeling, Kaafu Atoll",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 2
+    },
+    {
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "atoll": "Kaafu Atoll",
+      "overview": "Hulhumalé is a modern, purpose-built island just 25 minutes from Malé International Airport, making it the perfect gateway to the Maldives. This artificial island combines convenience with authentic Maldivian charm, offering excellent value accommodation, local restaurants, and easy access to water activities. It's ideal for travelers seeking comfort without the premium resort prices.",
+      "quickFacts": [
+        "Distance from Malé Airport: 25 minutes by speedboat",
+        "Island Type: Modern artificial island",
+        "Population: ~50,000 residents",
+        "Best For: Budget travelers, families, business travelers",
+        "Average Temperature: 28-30°C year-round",
+        "Water Temperature: 26-29°C",
+        "Accommodation: Budget hotels and guesthouses ($40-100 USD)",
+        "Main Language: Dhivehi, English widely spoken"
+      ],
+      "flightInfo": "Fly into Malé International Airport (MLE). Hulhumalé is just 25 minutes away by speedboat - the closest accommodation option to the airport.",
+      "speedboatInfo": "Regular speedboat transfers from Malé Airport to Hulhumalé. Journey time: 25 minutes. Cost: $12-20 USD per person. Multiple daily departures.",
+      "ferryInfo": "Public ferry available from Malé. Takes approximately 45 minutes. Cost: $2-3 USD per person. Budget-friendly option.",
+      "topThingsToDo": [
+        "Relax on Hulhumalé Beach - pristine white sand and turquoise waters",
+        "Snorkeling from the beach or organized tours",
+        "Visit the local market and experience island culture",
+        "Enjoy water sports - jet skiing, kayaking, paddleboarding",
+        "Dine at local restaurants with authentic Maldivian cuisine",
+        "Explore the island by bicycle or on foot",
+        "Visit nearby dive sites",
+        "Sunset fishing trips"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Hulhumalé House Reef",
+            "difficulty": "Beginner to Intermediate",
+            "description": "Accessible directly from the beach. Good coral formations and tropical fish.",
+            "depth": "2-8 meters",
+            "tips": "Best in morning. Can snorkel independently from beach."
+          },
+          {
+            "name": "Nearby Reefs",
+            "difficulty": "Intermediate",
+            "description": "Short boat rides to excellent snorkeling sites.",
+            "depth": "5-15 meters",
+            "tips": "Book through local operators for guided tours."
+          }
+        ],
+        "generalTips": [
+          "Wear reef-safe sunscreen",
+          "Bring snorkeling gear or rent locally",
+          "Start early for best visibility",
+          "Always snorkel with a buddy",
+          "Respect marine life"
+        ]
+      },
+      "divingGuide": {
+        "sites": [
+          {
+            "name": "Hulhumalé Kandu",
+            "difficulty": "Intermediate",
+            "description": "Channel dive with good coral and fish life.",
+            "depth": "8-25 meters",
+            "tips": "Excellent for macro photography."
+          },
+          {
+            "name": "Nearby Atolls",
+            "difficulty": "Beginner to Advanced",
+            "description": "Multiple dive sites accessible from Hulhumalé.",
+            "depth": "Varies 5-40 meters",
+            "tips": "Book through PADI-certified dive centers."
+          }
+        ],
+        "generalTips": [
+          "Several dive centers on island",
+          "Bring certification card",
+          "Expect water temperature 26-29°C",
+          "Dive early morning for best conditions"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Local Market Restaurants",
+          "cuisine": "Maldivian",
+          "description": "Authentic local dining with fresh seafood and curries",
+          "priceRange": "$4-12 USD per meal"
+        },
+        {
+          "name": "Beach Cafés",
+          "cuisine": "International & Local",
+          "description": "Casual dining with ocean views",
+          "priceRange": "$5-15 USD per meal"
+        },
+        {
+          "name": "Hotel Restaurants",
+          "cuisine": "Various",
+          "description": "Mid-range to upscale dining options",
+          "priceRange": "$10-25 USD per meal"
+        }
+      ],
+      "currency": "Maldivian Rufiyaa (MVR) - 1 USD ≈ 15 MVR. USD widely accepted.",
+      "language": "Dhivehi (official), English widely spoken",
+      "bestTimeToVisit": "November to April (dry season) - sunny, calm seas, perfect for water activities",
+      "whatToPack": [
+        "Reef-safe sunscreen (SPF 50+)",
+        "Snorkeling gear or plan to rent",
+        "Light, breathable clothing",
+        "Modest clothing for island",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Reef shoes",
+        "Hat and sunglasses",
+        "Medications and first aid",
+        "Waterproof phone case"
+      ],
+      "healthTips": [
+        "Stay hydrated - drink plenty of water",
+        "Protect from sun exposure",
+        "Decompression sickness risk for divers",
+        "Dengue fever prevention - use mosquito repellent",
+        "Travel insurance recommended",
+        "Modern medical facilities available"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Police",
+          "number": "119"
+        },
+        {
+          "service": "Ambulance",
+          "number": "102"
+        },
+        {
+          "service": "Hulhumalé Hospital",
+          "number": "Local contact available"
+        }
+      ],
+      "threeDayItinerary": [
+        {
+          "day": 1,
+          "title": "Arrival & Relaxation",
+          "activities": [
+            "Arrive at Malé Airport, speedboat to Hulhumalé (25 min)",
+            "Check into accommodation, relax on beach",
+            "Dinner at local restaurant"
+          ]
+        },
+        {
+          "day": 2,
+          "title": "Water Activities",
+          "activities": [
+            "Morning: Beach snorkeling or organized snorkeling tour",
+            "Afternoon: Water sports or beach relaxation",
+            "Evening: Sunset fishing trip"
+          ]
+        },
+        {
+          "day": 3,
+          "title": "Culture & Departure",
+          "activities": [
+            "Morning: Explore local market",
+            "Afternoon: Last beach time, shopping",
+            "Evening: Speedboat back to Malé"
+          ]
+        }
+      ],
+      "latitude": "4.2500",
+      "longitude": "73.5400",
+      "metaTitle": "Hulhumalé Maldives - Budget Island Near Airport",
+      "metaDescription": "Discover Hulhumalé, the closest island to Malé Airport. Perfect budget accommodation, snorkeling, and local dining just 25 minutes from the airport.",
+      "metaKeywords": "Hulhumalé, Kaafu Atoll, near airport, budget Maldives, snorkeling",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 3
+    },
+    {
+      "name": "Veligandu Island",
+      "slug": "veligandu-island",
+      "atoll": "Alif Alif Atoll",
+      "overview": "Veligandu is a pristine island resort in Alif Alif Atoll, famous for its spectacular house reef and excellent diving opportunities. This intimate island offers a perfect balance of luxury and natural beauty, with direct access to world-class snorkeling and diving sites. Ideal for couples, divers, and those seeking a more exclusive island experience.",
+      "quickFacts": [
+        "Distance from Malé: 90 minutes by speedboat",
+        "Island Type: Private resort island",
+        "Best For: Divers, couples, luxury travelers",
+        "Average Temperature: 28-30°C year-round",
+        "Water Temperature: 26-29°C",
+        "Accommodation: All-inclusive resort ($300-600+ USD per night)",
+        "Main Language: English, Dhivehi"
+      ],
+      "flightInfo": "Fly into Malé International Airport (MLE). Domestic seaplane or speedboat transfer to Veligandu (90 minutes).",
+      "speedboatInfo": "Speedboat transfer from Malé to Veligandu takes approximately 90 minutes. Usually included in resort package.",
+      "ferryInfo": "Not available. Speedboat or seaplane transfer required.",
+      "topThingsToDo": [
+        "World-class house reef snorkeling directly from the beach",
+        "Diving at nearby premium dive sites",
+        "Spa and wellness treatments",
+        "Water sports - kayaking, paddleboarding, windsurfing",
+        "Sunset dolphin watching",
+        "Island excursions to nearby islands",
+        "Fishing expeditions",
+        "Romantic beach dinners"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Veligandu House Reef",
+            "difficulty": "Beginner to Intermediate",
+            "description": "Spectacular house reef with pristine coral and abundant marine life.",
+            "depth": "2-15 meters",
+            "tips": "Snorkel directly from the beach. Best in morning."
+          },
+          {
+            "name": "Nearby Reefs",
+            "difficulty": "Intermediate to Advanced",
+            "description": "Premium snorkeling sites accessible by boat.",
+            "depth": "5-20 meters",
+            "tips": "Arrange through resort dive center."
+          }
+        ],
+        "generalTips": [
+          "Use reef-safe sunscreen",
+          "Snorkel gear provided by resort",
+          "Best visibility in morning",
+          "Respect marine life",
+          "Bring underwater camera"
+        ]
+      },
+      "divingGuide": {
+        "sites": [
+          {
+            "name": "Veligandu Reef",
+            "difficulty": "Intermediate",
+            "description": "House reef with excellent coral formations and fish life.",
+            "depth": "5-25 meters",
+            "tips": "Perfect for all levels."
+          },
+          {
+            "name": "Alif Alif Dive Sites",
+            "difficulty": "Intermediate to Advanced",
+            "description": "Multiple premium dive sites in the atoll.",
+            "depth": "8-40 meters",
+            "tips": "PADI-certified instructors available."
+          }
+        ],
+        "generalTips": [
+          "Dive center on resort",
+          "Bring certification card",
+          "Multiple dives daily available",
+          "Equipment rental available"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Resort Main Restaurant",
+          "cuisine": "International & Maldivian",
+          "description": "All-inclusive dining with buffet and à la carte options",
+          "priceRange": "Included in resort package"
+        },
+        {
+          "name": "Beach Bar & Grill",
+          "cuisine": "Seafood & International",
+          "description": "Casual beachfront dining",
+          "priceRange": "Included in resort package"
+        },
+        {
+          "name": "Spa Café",
+          "cuisine": "Healthy & Light",
+          "description": "Wellness-focused cuisine",
+          "priceRange": "Included in resort package"
+        }
+      ],
+      "currency": "Maldivian Rufiyaa (MVR) - 1 USD ≈ 15 MVR. USD widely accepted.",
+      "language": "English, Dhivehi",
+      "bestTimeToVisit": "November to April (dry season) - sunny, calm seas, perfect for diving and snorkeling",
+      "whatToPack": [
+        "Reef-safe sunscreen",
+        "Snorkeling/diving gear (provided by resort)",
+        "Light, breathable clothing",
+        "Modest clothing for island",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Reef shoes",
+        "Hat and sunglasses",
+        "Medications",
+        "Waterproof phone case"
+      ],
+      "healthTips": [
+        "Stay hydrated",
+        "Protect from sun exposure",
+        "Decompression sickness prevention for divers",
+        "Resort medical facilities available",
+        "Travel insurance recommended"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Resort Medical Center",
+          "number": "Available 24/7"
+        },
+        {
+          "service": "Coast Guard",
+          "number": "119"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is Veligandu suitable for non-divers?",
+          "answer": "Yes, excellent snorkeling from the house reef. Many activities available for all interests."
+        },
+        {
+          "question": "What's included in the all-inclusive package?",
+          "answer": "Typically meals, drinks, snorkeling, some water sports, and entertainment. Check resort details."
+        },
+        {
+          "question": "Can I do a diving certification course?",
+          "answer": "Yes, PADI courses available through the resort dive center."
+        }
+      ],
+      "latitude": "5.0500",
+      "longitude": "73.2800",
+      "metaTitle": "Veligandu Island Resort Maldives - Luxury Diving Paradise",
+      "metaDescription": "Experience luxury at Veligandu Island Resort. World-class diving, pristine house reef, and exclusive island experience in Alif Alif Atoll.",
+      "metaKeywords": "Veligandu Island, Alif Alif Atoll, luxury resort, diving Maldives",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 4
+    },
+    {
+      "name": "Dhigurah Island",
+      "slug": "dhigurah-island",
+      "atoll": "Alif Dhaal Atoll",
+      "overview": "Dhigurah is a charming local island in Alif Dhaal Atoll, famous for its long, pristine beach and excellent value for money. This authentic island offers a perfect blend of relaxation, water activities, and local culture. Known for whale shark sightings during season and world-class snorkeling, Dhigurah is ideal for budget-conscious travelers seeking authentic experiences.",
+      "quickFacts": [
+        "Distance from Malé: 75 minutes by speedboat",
+        "Island Type: Local inhabited island",
+        "Population: ~1,500 residents",
+        "Best For: Budget travelers, whale shark enthusiasts, snorkelers",
+        "Average Temperature: 28-30°C year-round",
+        "Water Temperature: 26-29°C",
+        "Accommodation: Guesthouses ($40-100 USD per night)",
+        "Main Language: Dhivehi, English widely spoken"
+      ],
+      "flightInfo": "No airport on Dhigurah. Fly into Malé International Airport (MLE), then take a 75-minute speedboat transfer.",
+      "speedboatInfo": "Speedboat services from Malé to Dhigurah. Journey takes 75 minutes. Cost: $20-30 USD per person.",
+      "ferryInfo": "Public ferry available from Malé. Takes approximately 2-2.5 hours. Cost: $5-8 USD per person.",
+      "topThingsToDo": [
+        "Relax on Dhigurah's famous long beach",
+        "Whale shark snorkeling (seasonal - June to October)",
+        "Snorkeling at nearby reefs",
+        "Diving at premium dive sites",
+        "Visit local fish market and experience island life",
+        "Enjoy fresh seafood at beachfront restaurants",
+        "Sunset dolphin watching",
+        "Island hopping to nearby islands"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Dhigurah House Reef",
+            "difficulty": "Beginner to Intermediate",
+            "description": "Good coral formations with tropical fish. Accessible from beach.",
+            "depth": "3-10 meters",
+            "tips": "Best in morning. Can snorkel independently."
+          },
+          {
+            "name": "Whale Shark Snorkeling",
+            "difficulty": "Intermediate",
+            "description": "Seasonal whale shark encounters (June-October). Unforgettable experience.",
+            "depth": "5-15 meters",
+            "tips": "Book with local operators. Early morning departures."
+          }
+        ],
+        "generalTips": [
+          "Wear reef-safe sunscreen",
+          "Bring snorkeling gear or rent locally",
+          "Whale sharks are gentle - maintain distance",
+          "Early morning for best conditions",
+          "Always snorkel with a buddy"
+        ]
+      },
+      "divingGuide": {
+        "sites": [
+          {
+            "name": "Dhigurah Kandu",
+            "difficulty": "Intermediate",
+            "description": "Channel dive with good coral and fish life.",
+            "depth": "8-25 meters",
+            "tips": "Good for macro photography."
+          },
+          {
+            "name": "Alif Dhaal Dive Sites",
+            "difficulty": "Beginner to Advanced",
+            "description": "Multiple dive sites in the atoll.",
+            "depth": "5-40 meters",
+            "tips": "Book through local dive centers."
+          }
+        ],
+        "generalTips": [
+          "PADI-certified dive centers available",
+          "Bring certification card",
+          "Expect water temperature 26-29°C",
+          "Dive early morning"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Local Fish Restaurants",
+          "cuisine": "Fresh Seafood",
+          "description": "Authentic local dining with daily catch",
+          "priceRange": "$6-15 USD per meal"
+        },
+        {
+          "name": "Beach Cafés",
+          "cuisine": "International & Local",
+          "description": "Casual beachfront dining",
+          "priceRange": "$4-12 USD per meal"
+        }
+      ],
+      "currency": "Maldivian Rufiyaa (MVR) - 1 USD ≈ 15 MVR. USD widely accepted.",
+      "language": "Dhivehi (official), English widely spoken",
+      "bestTimeToVisit": "June to October for whale shark season; November to April for best weather",
+      "whatToPack": [
+        "Reef-safe sunscreen (SPF 50+)",
+        "Snorkeling gear or plan to rent",
+        "Light, breathable clothing",
+        "Modest clothing for island",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Reef shoes",
+        "Hat and sunglasses",
+        "Medications",
+        "Waterproof phone case"
+      ],
+      "healthTips": [
+        "Stay hydrated",
+        "Protect from sun exposure",
+        "Decompression sickness prevention",
+        "Dengue fever prevention",
+        "Travel insurance recommended",
+        "Basic medical facilities available"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Police",
+          "number": "119"
+        },
+        {
+          "service": "Ambulance",
+          "number": "102"
+        },
+        {
+          "service": "Island Clinic",
+          "number": "Local contact through guesthouse"
+        }
+      ],
+      "faq": [
+        {
+          "question": "When is whale shark season?",
+          "answer": "June to October is peak season. August-September offers best sightings."
+        },
+        {
+          "question": "Are whale sharks dangerous?",
+          "answer": "No, whale sharks are gentle filter feeders. Maintain respectful distance during snorkeling."
+        },
+        {
+          "question": "What's the beach like?",
+          "answer": "Dhigurah has one of the longest beaches in the Maldives - pristine white sand and turquoise waters."
+        }
+      ],
+      "latitude": "3.8000",
+      "longitude": "72.8500",
+      "metaTitle": "Dhigurah Island Maldives - Whale Sharks & Budget Travel",
+      "metaDescription": "Discover Dhigurah Island in Alif Dhaal Atoll. Famous for whale sharks, long beaches, and authentic Maldivian experiences at budget prices.",
+      "metaKeywords": "Dhigurah Island, whale sharks, Alif Dhaal Atoll, budget Maldives",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 5
+    },
+    {
+      "name": "Hanifaru Bay",
+      "slug": "hanifaru-bay",
+      "atoll": "Baa Atoll",
+      "overview": "Hanifaru Bay is a UNESCO Biosphere Reserve and one of the world's most spectacular marine ecosystems. Located in Baa Atoll, this protected area is famous for massive seasonal gatherings of manta rays and whale sharks. A visit to Hanifaru Bay offers an unparalleled opportunity to witness nature's grandeur and support marine conservation efforts.",
+      "quickFacts": [
+        "Location: Baa Atoll, UNESCO Biosphere Reserve",
+        "Distance from Malé: 120 minutes by speedboat",
+        "Best For: Marine enthusiasts, photographers, conservation-minded travelers",
+        "Peak Season: June to November (manta rays), August to October (whale sharks)",
+        "Average Temperature: 28-30°C year-round",
+        "Water Temperature: 26-29°C",
+        "Access: Organized tours from nearby islands or resorts",
+        "Protection Status: Protected marine area with strict regulations"
+      ],
+      "flightInfo": "Fly into Malé International Airport (MLE). Transfer to nearby resort islands in Baa Atoll (domestic flight or speedboat), then boat to Hanifaru Bay.",
+      "speedboatInfo": "Access via speedboat from nearby islands. Early morning departures recommended.",
+      "ferryInfo": "Not directly accessible. Use speedboat or organized tour operators.",
+      "topThingsToDo": [
+        "Snorkel with manta rays (seasonal - June to November)",
+        "Whale shark encounters (seasonal - August to October)",
+        "Underwater photography and videography",
+        "Learn about marine conservation",
+        "Visit nearby Baa Atoll islands",
+        "Diving at premium dive sites",
+        "Sunset boat tours"
+      ],
+      "snorkelingGuide": {
+        "spots": [
+          {
+            "name": "Manta Ray Feeding Grounds",
+            "difficulty": "Intermediate",
+            "description": "Seasonal gathering of manta rays during plankton blooms. Spectacular and humbling experience.",
+            "depth": "3-8 meters",
+            "tips": "June-November peak season. Respect manta rays - observe from distance. Early morning best."
+          },
+          {
+            "name": "Whale Shark Encounters",
+            "difficulty": "Intermediate",
+            "description": "Seasonal whale shark sightings during feeding season.",
+            "depth": "5-15 meters",
+            "tips": "August-October best. Maintain respectful distance."
+          }
+        ],
+        "generalTips": [
+          "Use reef-safe sunscreen",
+          "Respect protected area regulations",
+          "Don't touch marine animals",
+          "Follow guide instructions",
+          "Bring underwater camera",
+          "Book with authorized operators only"
+        ]
+      },
+      "divingGuide": {
+        "sites": [
+          {
+            "name": "Hanifaru Channel",
+            "difficulty": "Intermediate to Advanced",
+            "description": "Drift diving through manta ray feeding area. Thrilling experience.",
+            "depth": "5-20 meters",
+            "tips": "Seasonal. Book with authorized dive operators."
+          }
+        ],
+        "generalTips": [
+          "Strict regulations apply",
+          "Only authorized operators allowed",
+          "PADI certification required",
+          "Respect marine life"
+        ]
+      },
+      "foodCafes": [
+        {
+          "name": "Resort Restaurants",
+          "cuisine": "Various",
+          "description": "Dining at nearby resort islands",
+          "priceRange": "Varies by resort"
+        }
+      ],
+      "currency": "Maldivian Rufiyaa (MVR) - 1 USD ≈ 15 MVR. USD widely accepted.",
+      "language": "English, Dhivehi",
+      "bestTimeToVisit": "June to November for manta rays; August to October for whale sharks; June-July for both",
+      "whatToPack": [
+        "Reef-safe sunscreen (SPF 50+)",
+        "Snorkeling gear",
+        "Underwater camera",
+        "Quick-dry towel",
+        "Light, breathable clothing",
+        "Hat and sunglasses",
+        "Waterproof phone case",
+        "Medications",
+        "Binoculars for surface viewing"
+      ],
+      "healthTips": [
+        "Stay hydrated",
+        "Protect from sun exposure",
+        "Don't touch marine animals",
+        "Respect protected area rules",
+        "Travel insurance recommended"
+      ],
+      "emergencyContacts": [
+        {
+          "service": "Coast Guard",
+          "number": "119"
+        },
+        {
+          "service": "Resort Medical Center",
+          "number": "Available at nearby resorts"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is it guaranteed to see manta rays?",
+          "answer": "Not guaranteed, but June-November offers excellent chances. Plankton blooms attract them."
+        },
+        {
+          "question": "Are manta rays dangerous?",
+          "answer": "No, they're gentle filter feeders. Maintain respectful distance and follow guide instructions."
+        },
+        {
+          "question": "Can non-swimmers visit?",
+          "answer": "With proper flotation device and guide supervision, yes. Check with tour operator."
+        },
+        {
+          "question": "What's the conservation importance?",
+          "answer": "Hanifaru is a UNESCO Biosphere Reserve protecting critical marine habitat and species."
+        }
+      ],
+      "latitude": "5.3500",
+      "longitude": "73.3500",
+      "metaTitle": "Hanifaru Bay Maldives - Manta Rays & Whale Sharks UNESCO Reserve",
+      "metaDescription": "Visit Hanifaru Bay, a UNESCO Biosphere Reserve in Baa Atoll. Witness spectacular manta ray and whale shark gatherings in this protected marine ecosystem.",
+      "metaKeywords": "Hanifaru Bay, manta rays, whale sharks, Baa Atoll, UNESCO Biosphere",
+      "published": 1,
+      "featured": 1,
+      "displayOrder": 6
+    }
+  ],
+  "atolls": [
+    {
+      "name": "Kaafu Atoll",
+      "slug": "kaafu-atoll",
+      "region": "Central",
+      "description": "Kaafu Atoll is the most visited atoll in the Maldives, home to the capital Malé and numerous resort islands. It offers excellent accessibility, diverse accommodation options, and world-class diving and snorkeling.",
+      "overview": "Kaafu Atoll is the gateway to the Maldives, featuring the capital city Malé and an impressive array of resort and local islands. The atoll is famous for its accessibility, diverse marine life, and excellent diving conditions. From budget guesthouses to luxury resorts, Kaafu offers options for every traveler.",
+      "bestFor": "First-time visitors, divers, budget travelers, families, couples",
+      "highlights": [
+        "Closest to Malé International Airport",
+        "Diverse accommodation options",
+        "Excellent diving and snorkeling",
+        "Local islands with authentic culture",
+        "Easy access to multiple islands"
+      ],
+      "activities": [
+        "Snorkeling at Banana Reef",
+        "Diving at HP Reef and other sites",
+        "Island hopping",
+        "Local culture exploration",
+        "Water sports",
+        "Sunset dolphin watching"
+      ],
+      "accommodation": [
+        "Luxury resorts ($300-1000+ USD/night)",
+        "Mid-range resorts ($150-300 USD/night)",
+        "Budget guesthouses ($30-80 USD/night)",
+        "All-inclusive packages available"
+      ],
+      "transportation": "Speedboat from Malé (15-90 minutes depending on island). Public ferry available. Domestic flights for some resorts.",
+      "bestSeason": "November to April (dry season) - sunny, calm seas, perfect for water activities",
+      "published": 1
+    },
+    {
+      "name": "Alif Alif Atoll",
+      "slug": "alif-alif-atoll",
+      "region": "North",
+      "description": "Alif Alif Atoll is known for its pristine coral reefs, excellent diving conditions, and exclusive resort islands. This atoll offers a more secluded experience while maintaining accessibility from Malé.",
+      "overview": "Alif Alif Atoll features some of the Maldives' most pristine coral reefs and is a paradise for divers. The atoll is home to several exclusive resorts and offers excellent value for luxury seekers. Known for its house reefs and abundant marine life.",
+      "bestFor": "Divers, luxury travelers, couples seeking seclusion, water sports enthusiasts",
+      "highlights": [
+        "Pristine coral reefs",
+        "Excellent diving conditions",
+        "Exclusive resort islands",
+        "Abundant marine life",
+        "House reef snorkeling"
+      ],
+      "activities": [
+        "World-class diving",
+        "Snorkeling at house reefs",
+        "Water sports",
+        "Spa and wellness",
+        "Island excursions",
+        "Fishing"
+      ],
+      "accommodation": [
+        "Luxury resorts ($400-1200+ USD/night)",
+        "All-inclusive packages",
+        "Premium amenities and services"
+      ],
+      "transportation": "Speedboat from Malé (90-120 minutes). Domestic seaplane available for premium resorts.",
+      "bestSeason": "November to April (dry season) - optimal diving conditions",
+      "published": 1
+    },
+    {
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll",
+      "region": "North",
+      "description": "Alif Dhaal Atoll is famous for its whale shark encounters and offers a perfect blend of luxury resorts and budget-friendly local islands. The atoll is ideal for marine enthusiasts and those seeking authentic experiences.",
+      "overview": "Alif Dhaal Atoll is renowned for seasonal whale shark gatherings and offers diverse accommodation options. The atoll combines luxury resort experiences with authentic local island culture, making it perfect for varied travelers.",
+      "bestFor": "Whale shark enthusiasts, budget travelers, marine photographers, families",
+      "highlights": [
+        "Seasonal whale shark encounters",
+        "Diverse accommodation options",
+        "Authentic local islands",
+        "Excellent snorkeling",
+        "Marine photography opportunities"
+      ],
+      "activities": [
+        "Whale shark snorkeling (seasonal)",
+        "Snorkeling at house reefs",
+        "Diving",
+        "Island hopping",
+        "Local culture exploration",
+        "Fishing"
+      ],
+      "accommodation": [
+        "Luxury resorts ($300-800 USD/night)",
+        "Mid-range resorts ($150-300 USD/night)",
+        "Budget guesthouses ($40-100 USD/night)"
+      ],
+      "transportation": "Speedboat from Malé (75-120 minutes). Ferry available for local islands.",
+      "bestSeason": "June to October for whale sharks; November to April for best weather",
+      "published": 1
+    },
+    {
+      "name": "Baa Atoll",
+      "slug": "baa-atoll",
+      "region": "North",
+      "description": "Baa Atoll is a UNESCO Biosphere Reserve famous for Hanifaru Bay, where massive gatherings of manta rays and whale sharks occur seasonally. The atoll offers pristine marine ecosystems and exclusive resort experiences.",
+      "overview": "Baa Atoll is home to Hanifaru Bay, one of the world's most spectacular marine ecosystems. This UNESCO Biosphere Reserve offers unparalleled opportunities to witness manta rays and whale sharks in their natural habitat. Perfect for conservation-minded travelers.",
+      "bestFor": "Marine enthusiasts, photographers, conservation-minded travelers, luxury seekers",
+      "highlights": [
+        "UNESCO Biosphere Reserve status",
+        "Hanifaru Bay manta ray gatherings",
+        "Seasonal whale shark encounters",
+        "Pristine coral reefs",
+        "Exclusive resorts"
+      ],
+      "activities": [
+        "Manta ray snorkeling (seasonal)",
+        "Whale shark encounters (seasonal)",
+        "Diving at premium sites",
+        "Marine photography",
+        "Conservation education",
+        "Luxury resort experiences"
+      ],
+      "accommodation": [
+        "Luxury resorts ($500-1500+ USD/night)",
+        "All-inclusive packages",
+        "Premium amenities"
+      ],
+      "transportation": "Speedboat or domestic flight from Malé (120-150 minutes). Resort transfers arranged.",
+      "bestSeason": "June to November for manta rays; August to October for whale sharks",
+      "published": 1
+    },
+    {
+      "name": "Vaavu Atoll",
+      "slug": "vaavu-atoll",
+      "region": "Central",
+      "description": "Vaavu Atoll is a hidden gem offering pristine diving conditions, exclusive resorts, and fewer crowds. The atoll is perfect for divers seeking world-class experiences in a more secluded setting.",
+      "overview": "Vaavu Atoll is known for its pristine diving conditions and exclusive resort islands. The atoll offers a more intimate experience with excellent house reefs and abundant marine life. Perfect for divers seeking quality over quantity.",
+      "bestFor": "Divers, luxury travelers, those seeking seclusion, water sports enthusiasts",
+      "highlights": [
+        "Pristine diving conditions",
+        "Exclusive resort islands",
+        "Excellent house reefs",
+        "Fewer crowds",
+        "Abundant marine life"
+      ],
+      "activities": [
+        "World-class diving",
+        "Snorkeling at house reefs",
+        "Water sports",
+        "Spa and wellness",
+        "Fishing",
+        "Island excursions"
+      ],
+      "accommodation": [
+        "Luxury resorts ($400-1000+ USD/night)",
+        "All-inclusive packages",
+        "Premium services"
+      ],
+      "transportation": "Speedboat from Malé (120-150 minutes). Resort transfers arranged.",
+      "bestSeason": "November to April (dry season) - optimal diving conditions",
+      "published": 1
+    },
+    {
+      "name": "Lhaviyani Atoll",
+      "slug": "lhaviyani-atoll",
+      "region": "North",
+      "description": "Lhaviyani Atoll is renowned for its excellent diving and snorkeling, pristine coral reefs, and luxury resort islands. The atoll offers world-class marine experiences in an exclusive setting.",
+      "overview": "Lhaviyani Atoll is a premier diving destination featuring world-class dive sites, pristine coral reefs, and exclusive resorts. The atoll is perfect for divers and those seeking premium island experiences with excellent marine life encounters.",
+      "bestFor": "Divers, luxury travelers, marine photographers, adventure seekers",
+      "highlights": [
+        "World-class diving sites",
+        "Pristine coral reefs",
+        "Exclusive resorts",
+        "Abundant marine life",
+        "Excellent house reefs"
+      ],
+      "activities": [
+        "Premium diving",
+        "Snorkeling at house reefs",
+        "Water sports",
+        "Spa and wellness",
+        "Marine photography",
+        "Island excursions"
+      ],
+      "accommodation": [
+        "Luxury resorts ($400-1200+ USD/night)",
+        "All-inclusive packages",
+        "Premium amenities"
+      ],
+      "transportation": "Speedboat from Malé (120-150 minutes). Domestic seaplane available.",
+      "bestSeason": "November to April (dry season) - optimal diving conditions",
+      "published": 1
+    }
+  ]
+}
