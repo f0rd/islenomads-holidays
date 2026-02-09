@@ -19,7 +19,7 @@ if (MAPBOX_TOKEN) {
 const MALDIVES_LOCATIONS = [
   {
     id: 1,
-    name: "Malé City",
+    name: "Male City",
     type: "Capital",
     lat: 4.1748,
     lng: 73.5082,
@@ -30,7 +30,7 @@ const MALDIVES_LOCATIONS = [
   },
   {
     id: 2,
-    name: "North Malé Atoll",
+    name: "North Male Atoll",
     type: "Atoll",
     lat: 4.25,
     lng: 73.45,
@@ -41,7 +41,7 @@ const MALDIVES_LOCATIONS = [
   },
   {
     id: 3,
-    name: "South Malé Atoll",
+    name: "South Male Atoll",
     type: "Atoll",
     lat: 3.95,
     lng: 73.50,
@@ -285,7 +285,7 @@ const LUXURY_RESORTS = [
     lng: 73.52,
     category: "Luxury",
     price: "$$$$",
-    description: "Iconic resort close to Malé with excellent facilities and service",
+    description: "Iconic resort close to Male with excellent facilities and service",
     amenities: ["Overwater Villas", "Spa", "Multiple Restaurants", "Watersports"],
     rating: 4.7,
     pricePerNight: "$700-1000",
@@ -498,7 +498,7 @@ const SURF_SPOTS = [
 const AIRPORTS = [
   {
     id: "airport-1",
-    name: "Malé International Airport",
+    name: "Male International Airport",
     type: "Airport",
     lat: 4.1924,
     lng: 73.2285,

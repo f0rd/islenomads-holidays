@@ -30,6 +30,7 @@ import StaffProfile from "./pages/StaffProfile";
 import AdminBranding from "./pages/AdminBranding";
 import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
+import IslandGuides from "./pages/IslandGuides";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -48,6 +49,7 @@ function Router() {
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"\island-guide/:islandId"} component={IslandGuide} />
       <Route path={"/island/:slug"} component={IslandDetail} />
+      <Route path={"/island-guides"} component={IslandGuides} />
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
