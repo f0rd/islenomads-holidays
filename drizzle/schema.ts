@@ -395,3 +395,28 @@ export const crmCustomers = mysqlTable("crm_customers", {
 
 export type CrmCustomer = typeof crmCustomers.$inferSelect;
 export type InsertCrmCustomer = typeof crmCustomers.$inferInsert;
+
+
+// Branding & Assets Management
+export const branding = mysqlTable("branding", {
+  id: int("id").autoincrement().primaryKey(),
+  // Logo URLs
+  logoUrl: varchar("logoUrl", { length: 500 }), // Main logo with text
+  logoMarkUrl: varchar("logoMarkUrl", { length: 500 }), // Logo mark only (cross icon)
+  faviconUrl: varchar("faviconUrl", { length: 500 }), // Favicon
+  // Logo Variants
+  logoWhiteUrl: varchar("logoWhiteUrl", { length: 500 }), // White version for dark backgrounds
+  logoColorUrl: varchar("logoColorUrl", { length: 500 }), // Color version
+  // Branding Colors
+  primaryColor: varchar("primaryColor", { length: 7 }), // Hex color code (e.g., #0D7F7F)
+  accentColor: varchar("accentColor", { length: 7 }), // Accent color (e.g., #00D4D4)
+  // Company Info
+  companyName: varchar("companyName", { length: 255 }), // "Isle Nomads"
+  tagline: varchar("tagline", { length: 500 }), // Company tagline
+  // Metadata
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Branding = typeof branding.$inferSelect;
+export type InsertBranding = typeof branding.$inferInsert;

@@ -16,17 +16,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center shadow-lg">
-                <span className="text-primary font-bold text-xl">IN</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight">
-                  Isle Nomads
-                </span>
-                <span className="text-xs text-accent leading-tight font-semibold">
-                  Holidays
-                </span>
-              </div>
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/EbseTOGtZahDcrEN.png"
+                alt="Isle Nomads Logo"
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
               Your gateway to paradise. Discover the Maldives with personalized travel experiences and unforgettable memories.
