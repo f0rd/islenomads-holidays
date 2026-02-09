@@ -227,6 +227,9 @@
 - [x] Update Footer component with logo
 - [x] Create CMS page for branding management
 - [x] Test branding across all pages
+- [x] Replace PNG logos with SVG versions
+- [x] Update favicon to use SVG
+- [x] Test SVG logos across all pages
 
 ## Staff Login & Role-Based Access Control
 - [x] Update database schema for staff roles and permissions

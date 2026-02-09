@@ -17,9 +17,9 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/EfCAwlJHEUivvOej.png"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/rHzLHXNItqkoEpcn.svg"
                 alt="Isle Nomads Logo"
-                className="h-32 w-auto drop-shadow-lg"
+                className="h-32 w-auto"
               />
             </div>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
