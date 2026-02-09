@@ -15,6 +15,9 @@ import {
   ChevronRight,
   Calendar,
   Users,
+  Star,
+  Utensils,
+  Activity,
 } from "lucide-react";
 import {
   AVAILABLE_DESTINATIONS,
@@ -30,7 +33,6 @@ import { getDestinationInfo } from "@/utils/destinationInfo";
 import WeatherForecast from "@/components/WeatherForecast";
 import WeatherRecommendations from "@/components/WeatherRecommendations";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Star, MapPin as MapPinIcon, Utensils, Activity, Calendar as CalendarIcon } from "lucide-react";
 
 export default function TripPlanner() {
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
@@ -579,7 +581,7 @@ export default function TripPlanner() {
             <>
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
-                  <MapPinIcon className="w-5 h-5 text-cyan-600" />
+                  <MapPin className="w-5 h-5 text-cyan-600" />
                   {destinationInfo.name}
                 </DialogTitle>
               </DialogHeader>
@@ -662,7 +664,7 @@ export default function TripPlanner() {
                 {/* Best Time to Visit */}
                 <div>
                   <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <CalendarIcon className="w-4 h-4 text-cyan-600" />
+                    <Calendar className="w-4 h-4 text-cyan-600" />
                     Best Time to Visit
                   </p>
                   <p className="text-sm text-foreground mb-2">{destinationInfo.bestMonths.join(", ")}</p>

@@ -4,8 +4,10 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MapPin, Info, Waves, Anchor, Building2, Palmtree, BookOpen } from "lucide-react";
+import { MapPin, Info, Waves, Anchor, Building2, Palmtree, BookOpen, Star, Clock, Utensils, Activity, Calendar } from "lucide-react";
 import { Link } from "wouter";
+import { getDestinationInfo } from "@/utils/destinationInfo";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // Maldives popular locations data
 const MALDIVES_LOCATIONS = [
@@ -522,6 +524,8 @@ export default function MaldivesMap() {
   const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts" | "airports">("all");
   const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
   const [zoom, setZoom] = useState(1);
+  const [selectedIslandInfo, setSelectedIslandInfo] = useState<string | null>(null);
+  const islandInfo = selectedIslandInfo ? getDestinationInfo(selectedIslandInfo) : null;
 
   // Filter locations based on search and activity type
   useEffect(() => {
@@ -1590,6 +1594,108 @@ export default function MaldivesMap() {
           )}
         </div>
       </section>
+
+      {/* Island Info Modal */}
+      <Dialog open={!!selectedIslandInfo} onOpenChange={() => setSelectedIslandInfo(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          {islandInfo && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-cyan-600" />
+                  {islandInfo.name}
+                </DialogTitle>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                {/* Basic Info */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Atoll</p>
+                    <p className="font-semibold text-foreground">{islandInfo.atoll}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Type</p>
+                    <p className="font-semibold text-foreground capitalize">{islandInfo.type}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Distance from Male</p>
+                    <p className="font-semibold text-foreground">{islandInfo.distanceFromMale} km</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Rating</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <p className="font-semibold text-foreground">{islandInfo.rating}/5</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <p className="text-sm text-muted-foreground mb-2">About</p>
+                  <p className="text-foreground">{islandInfo.description}</p>
+                </div>
+
+                {/* Travel Info */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-cyan-600" />
+                    Travel Options
+                  </p>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="text-muted-foreground">Ferry:</span> <span className="font-medium text-foreground">{islandInfo.ferryDuration}</span></p>
+                    {islandInfo.flightAvailable && islandInfo.flightDuration && (
+                      <p><span className="text-muted-foreground">Flight:</span> <span className="font-medium text-foreground">{islandInfo.flightDuration}</span></p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Amenities */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Utensils className="w-4 h-4 text-cyan-600" />
+                    Amenities
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {islandInfo.amenities.map((amenity, idx) => (
+                      <p key={idx} className="text-sm text-foreground">• {amenity}</p>
+                    ))}
+                  </div>
+                  <div className="mt-3 space-y-1 text-sm">
+                    <p className="text-muted-foreground">Guesthouses: <span className="font-semibold text-foreground">{islandInfo.guesthouses}</span></p>
+                    <p className="text-muted-foreground">Resorts: <span className="font-semibold text-foreground">{islandInfo.resorts}</span></p>
+                    <p className="text-muted-foreground">Restaurants: <span className="font-semibold text-foreground">{islandInfo.restaurants}</span></p>
+                  </div>
+                </div>
+
+                {/* Activities */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-600" />
+                    Activities
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {islandInfo.activities.map((activity, idx) => (
+                      <p key={idx} className="text-sm text-foreground">• {activity}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Best Time to Visit */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-cyan-600" />
+                    Best Time to Visit
+                  </p>
+                  <p className="text-sm text-foreground mb-2">{islandInfo.bestMonths.join(", ")}</p>
+                  <p className="text-sm text-muted-foreground">{islandInfo.weatherSummary}</p>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
