@@ -26,9 +26,9 @@ export default function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/vSjAAzmhFbZMRswg.png"
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/MrtPVkAHipIUCfJy.png"
             alt="Isle Nomads Logo"
-            className="h-20 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-xl brightness-110"
+            className="h-16 w-auto group-hover:scale-105 transition-transform duration-300 drop-shadow-lg"
           />
         </Link>
 
