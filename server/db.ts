@@ -497,13 +497,19 @@ export async function getAllBlogPostsAdmin(): Promise<BlogPost[]> {
 }
 
 export async function getAllPackages(limit?: number): Promise<Package[]> {
-  const db = await getDb();
-  if (!db) return [];
-  let query = db.select().from(packages).where(eq(packages.published, 1));
-  if (limit) {
-    query = query.limit(limit) as any;
+  try {
+    const db = await getDb();
+    if (!db) return [];
+    let query = db.select().from(packages).where(eq(packages.published, 1));
+    if (limit) {
+      query = query.limit(limit) as any;
+    }
+    const result = await query;
+    return result as any;
+  } catch (error) {
+    console.error('[getAllPackages] Error fetching packages:', error);
+    return [];
   }
-  return query as any;
 }
 
 export async function getAllPackagesAdmin(): Promise<Package[]> {

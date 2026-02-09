@@ -1,0 +1,8 @@
+{
+  "query": "SELECT COUNT(*) as count FROM packages;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as count FROM packages;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1105 (HY000) at line 1: no available peers, region: {id:1022287 region_epoch:<conf_ver:11 version:235373 > peers:<id:1022288 store_id:2001 > peers:<id:1022289 store_id:2020 > peers:<id:1064011 store_id:2192 > }"
+  ]
+}
