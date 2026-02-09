@@ -45,11 +45,34 @@ export default function TripPlanner() {
   const [showWeather, setShowWeather] = useState(false);
   const [weatherDestination, setWeatherDestination] = useState<string | null>(null);
   const [weatherCoords, setWeatherCoords] = useState<{ lat: number; lng: number } | null>(null);
+  const [showGuesthouses, setShowGuesthouses] = useState(false);
+
+  const GUESTHOUSE_ISLANDS = [
+    "maafushi-island",
+    "ukulhas-island",
+    "dhigurah-island",
+    "eydhafushi-island",
+    "hangnaameedhoo-island",
+    "gan-island",
+    "funadhoo-island",
+    "felidhoo-island",
+    "naifaru-island",
+    "meedhoo-island",
+    "rasdhoo-island",
+    "isdhoo-island",
+    "velidhoo-island",
+    "dhaalu-kudahuvadhoo",
+    "haa-alif-hanimadhoo",
+    "haa-dhaalu-kulhudhuffushi",
+  ];
 
   const filteredDestinations = AVAILABLE_DESTINATIONS.filter(
-    (dest) =>
-      dest.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      !selectedDestinations.includes(dest.id)
+    (dest) => {
+      const matchesSearch = dest.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const notSelected = !selectedDestinations.includes(dest.id);
+      const matchesGuesthouses = !showGuesthouses || GUESTHOUSE_ISLANDS.includes(dest.id);
+      return matchesSearch && notSelected && matchesGuesthouses;
+    }
   );
 
   const handleAddDestination = (destId: string) => {
@@ -166,6 +189,20 @@ export default function TripPlanner() {
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Guesthouse Filter */}
+                  <div className="flex items-center gap-2 p-3 bg-secondary rounded-lg border border-cyan-200">
+                    <input
+                      type="checkbox"
+                      id="guesthouse-filter"
+                      checked={showGuesthouses}
+                      onChange={(e) => setShowGuesthouses(e.target.checked)}
+                      className="w-4 h-4 cursor-pointer"
+                    />
+                    <label htmlFor="guesthouse-filter" className="text-sm font-medium text-foreground cursor-pointer">
+                      Show Guesthouse Islands
+                    </label>
                   </div>
 
                   {/* Destination Search */}
