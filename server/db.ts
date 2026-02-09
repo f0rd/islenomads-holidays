@@ -288,6 +288,14 @@ export async function deleteMapLocation(id: number): Promise<boolean> {
   return true;
 }
 
+export async function getMapLocationWithGuide(id: number): Promise<any> {
+  const location = await getMapLocationById(id);
+  if (!location || !location.guideId) return location;
+
+  const guide = await getIslandGuideById(location.guideId);
+  return { ...location, guide };
+}
+
 // Island Guides helpers
 export async function getIslandGuides(published?: boolean): Promise<IslandGuide[]> {
   const db = await getDb();

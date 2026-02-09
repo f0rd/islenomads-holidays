@@ -1,0 +1,1 @@
+ALTER TABLE `map_locations` ADD `guideId` int;

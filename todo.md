@@ -518,3 +518,13 @@
 - [x] Update home page to sort featured destinations by displayOrder
 - [ ] Test reordering functionality
 - [ ] Verify order persists across page reloads
+
+## Destination to Island Guide Mapping
+- [x] Add guideId field to map_locations schema
+- [x] Create database migration for guideId field
+- [x] Add getMapLocationWithGuide function to db.ts
+- [x] Create getWithGuide tRPC endpoint
+- [x] Create relationship between map_locations and island_guides
+- [ ] Update destination detail page to display island guide information
+- [ ] Test destination to island guide mapping
+- [ ] Verify island guide content displays on destination pages

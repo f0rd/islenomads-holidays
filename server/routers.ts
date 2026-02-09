@@ -11,7 +11,7 @@ import {
   getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage,
   updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
   getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug,
-  getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides,
+  getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getMapLocationWithGuide, getIslandGuides,
   getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
   deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
@@ -469,6 +469,12 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteMapLocation(input.id);
+      }),
+
+    getWithGuide: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getMapLocationWithGuide(input.id);
       }),
   }),
 

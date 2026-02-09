@@ -199,6 +199,7 @@ export const mapLocations = mysqlTable("map_locations", {
   population: int("population"), // For islands/cities
   priceRange: varchar("priceRange", { length: 50 }), // For resorts
   bestSeason: varchar("bestSeason", { length: 100 }),
+  guideId: int("guideId"), // Reference to island_guides
   published: int("published").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
