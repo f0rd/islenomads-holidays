@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { Link } from "wouter";
-import ContactForm from "@/components/ContactForm";
+import ContactFormEnhanced from "@/components/ContactFormEnhanced";
 import { trpc } from "@/lib/trpc";
 import { Loader2 } from "lucide-react";
 
@@ -540,7 +540,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-            <ContactForm />
+            <ContactFormEnhanced />
           </div>
         </div>
       </section>
