@@ -267,6 +267,55 @@ export const AVAILABLE_DESTINATIONS: Destination[] = [
     lat: 6.6167,
     lng: 73.2833,
   },
+  {
+    id: "dharavandhoo-island",
+    name: "Dharavandhoo Island",
+    type: "island",
+    lat: 5.2667,
+    lng: 73.4167,
+  },
+  {
+    id: "thoddoo-island",
+    name: "Thoddoo Island",
+    type: "island",
+    lat: 4.3167,
+    lng: 72.9167,
+  },
+  {
+    id: "goidhoo-island",
+    name: "Goidhoo Island",
+    type: "island",
+    lat: 5.0833,
+    lng: 72.7833,
+  },
+  {
+    id: "fulidhoo-island",
+    name: "Fulidhoo Island",
+    type: "island",
+    lat: 4.9667,
+    lng: 72.8833,
+  },
+  {
+    id: "milandhoo-island",
+    name: "Milandhoo Island",
+    type: "island",
+    lat: 5.3667,
+    lng: 72.8167,
+  },
+  {
+    id: "thinadhoo-island",
+    name: "Thinadhoo Island",
+    type: "island",
+    lat: 4.8833,
+    lng: 72.9667,
+  },
+  {
+    id: "kamadhoo-island",
+    name: "Kamadhoo Island",
+    type: "island",
+    lat: 3.5333,
+    lng: 72.8167,
+  },
 ];
 
 // Parse duration string to minutes
