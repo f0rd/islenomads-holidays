@@ -18,19 +18,19 @@ import {
 } from "lucide-react";
 import {
   AVAILABLE_DESTINATIONS,
+  findDirectRoutes,
   findOptimalItinerary,
   generateItineraryOptions,
   calculateTripStats,
   validateItinerary,
   TripItinerary,
 } from "@/utils/tripPlanner";
+import { calculateRoute, FERRY_ROUTES } from "@/utils/ferryRoutes";
 import WeatherForecast from "@/components/WeatherForecast";
 import WeatherRecommendations from "@/components/WeatherRecommendations";
 
 export default function TripPlanner() {
-  const [selectedDestinations, setSelectedDestinations] = useState<string[]>([
-    "male",
-  ]);
+  const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split("T")[0]
   );
@@ -87,8 +87,8 @@ export default function TripPlanner() {
   };
 
   const handleGenerateItinerary = () => {
-    if (selectedDestinations.length < 2) {
-      alert("Please select at least 2 destinations");
+    if (selectedDestinations.length < 1) {
+      alert("Please select at least 1 destination");
       return;
     }
 
