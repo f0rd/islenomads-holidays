@@ -647,7 +647,37 @@ export default function MaldivesMapNew() {
     if (activityFilter === "all" || activityFilter === "airports") {
       addMarkersForLocations(AIRPORTS, "%23ec4899", "airport");
     }
-  }, [activityFilter]);
+    // Filter locations based on search term
+    const filterBySearch = (locations: LocationType[]) => {
+      if (!searchTerm) return locations;
+      const term = searchTerm.toLowerCase();
+      return locations.filter((loc: any) => 
+        loc.name.toLowerCase().includes(term) ||
+        loc.description?.toLowerCase().includes(term) ||
+        loc.highlights?.some((h: string) => h.toLowerCase().includes(term))
+      );
+    };
+
+    // Re-add markers with search filtering
+    if (activityFilter === "all" || activityFilter === "atolls") {
+      addMarkersForLocations(filterBySearch(MALDIVES_LOCATIONS), "%233b82f6", "atoll");
+    }
+    if (activityFilter === "all" || activityFilter === "islands") {
+      addMarkersForLocations(filterBySearch(POPULAR_ISLANDS), "%2310b981", "island");
+    }
+    if (activityFilter === "all" || activityFilter === "resorts") {
+      addMarkersForLocations(filterBySearch(LUXURY_RESORTS), "%23f59e0b", "resort");
+    }
+    if (activityFilter === "all" || activityFilter === "dives") {
+      addMarkersForLocations(filterBySearch(DIVE_POINTS), "%2306b6d4", "dive_point");
+    }
+    if (activityFilter === "all" || activityFilter === "surfs") {
+      addMarkersForLocations(filterBySearch(SURF_SPOTS), "%23eab308", "surf_spot");
+    }
+    if (activityFilter === "all" || activityFilter === "airports") {
+      addMarkersForLocations(filterBySearch(AIRPORTS), "%23ec4899", "airport");
+    }
+  }, [activityFilter, searchTerm]);
 
   const getMarkerCount = () => {
     let count = 0;
@@ -677,8 +707,28 @@ export default function MaldivesMapNew() {
             </p>
           </div>
 
-          {/* Map Container */}
+          {/* Search and Filter Section */}
           <div className="mb-8 space-y-4">
+            {/* Search Input */}
+            <div className="flex gap-2">
+              <Input
+                type="text"
+                placeholder="Search islands, atolls, resorts, dive sites, or surf spots..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="flex-1 px-4 py-2 rounded-lg border border-border bg-background text-foreground"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="px-4 py-2 rounded-lg bg-secondary text-foreground hover:bg-secondary/80 transition-colors"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            {/* Map Container */}
             <div
               ref={mapContainer}
               className="w-full h-96 md:h-[600px] rounded-lg border border-border shadow-lg overflow-hidden"
