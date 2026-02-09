@@ -520,6 +520,44 @@ export default function MaldivesMapNew() {
   const [selectedLocation, setSelectedLocation] = useState<LocationType | null>(null);
   const [activityFilter, setActivityFilter] = useState<"all" | "atolls" | "dives" | "surfs" | "islands" | "resorts" | "airports">("all");
   const [priceFilter, setPriceFilter] = useState<"all" | "budget" | "mid" | "luxury">("all");
+  const [selectedActivities, setSelectedActivities] = useState<Set<string>>(new Set());
+
+  // Activity filter options
+  const activityOptions = [
+    { id: "diving", label: "Diving", icon: "🤿" },
+    { id: "surfing", label: "Surfing", icon: "🏄" },
+    { id: "snorkeling", label: "Snorkeling", icon: "🤽" },
+    { id: "water-sports", label: "Water Sports", icon: "🚤" },
+    { id: "relaxation", label: "Relaxation", icon: "🏖️" },
+  ];
+
+  const toggleActivity = (activityId: string) => {
+    const newActivities = new Set(selectedActivities);
+    if (newActivities.has(activityId)) {
+      newActivities.delete(activityId);
+    } else {
+      newActivities.add(activityId);
+    }
+    setSelectedActivities(newActivities);
+  };
+
+  const matchesSelectedActivities = (location: any): boolean => {
+    if (selectedActivities.size === 0) return true;
+    const highlights = location.highlights || [];
+    const description = location.description || "";
+    const combinedText = (highlights.join(" ") + " " + description).toLowerCase();
+    
+    const activities = Array.from(selectedActivities);
+    for (let i = 0; i < activities.length; i++) {
+      const activity = activities[i];
+      if (activity === "diving" && (combinedText.includes("dive") || combinedText.includes("diving"))) return true;
+      if (activity === "surfing" && (combinedText.includes("surf") || combinedText.includes("wave"))) return true;
+      if (activity === "snorkeling" && (combinedText.includes("snorkel") || combinedText.includes("reef"))) return true;
+      if (activity === "water-sports" && (combinedText.includes("water sport") || combinedText.includes("jet ski"))) return true;
+      if (activity === "relaxation" && (combinedText.includes("relax") || combinedText.includes("beach") || combinedText.includes("calm"))) return true;
+    }
+    return false;
+  };
 
   // Initialize map
   useEffect(() => {
@@ -677,7 +715,7 @@ export default function MaldivesMapNew() {
     if (activityFilter === "all" || activityFilter === "airports") {
       addMarkersForLocations(filterBySearch(AIRPORTS), "%23ec4899", "airport");
     }
-  }, [activityFilter, searchTerm]);
+  }, [activityFilter, searchTerm, selectedActivities]);
 
   const getMarkerCount = () => {
     let count = 0;
@@ -734,7 +772,34 @@ export default function MaldivesMapNew() {
               className="w-full h-96 md:h-[600px] rounded-lg border border-border shadow-lg overflow-hidden"
             />
 
-            {/* Filter Buttons */}
+            {/* Activity Filter Buttons */}
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="text-sm font-semibold text-foreground">Filter by Activity:</span>
+              {activityOptions.map((activity) => (
+                <button
+                  key={activity.id}
+                  onClick={() => toggleActivity(activity.id)}
+                  className={`px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2 text-sm ${
+                    selectedActivities.has(activity.id)
+                      ? "bg-cyan-600 text-white shadow-md"
+                      : "bg-secondary text-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  <span>{activity.icon}</span>
+                  {activity.label}
+                </button>
+              ))}
+              {selectedActivities.size > 0 && (
+                <button
+                  onClick={() => setSelectedActivities(new Set())}
+                  className="px-3 py-2 rounded-lg font-medium transition-all flex items-center gap-2 text-sm bg-red-500/20 text-red-600 hover:bg-red-500/30"
+                >
+                  Clear Filters
+                </button>
+              )}
+            </div>
+
+            {/* Location Type Filter Buttons */}
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setActivityFilter("all")}
