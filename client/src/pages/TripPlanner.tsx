@@ -21,20 +21,19 @@ import {
 } from "lucide-react";
 import {
   AVAILABLE_DESTINATIONS,
-  findDirectRoutes,
-  findOptimalItinerary,
-  generateItineraryOptions,
+  generateItineraryOptionsAsync,
   calculateTripStats,
   validateItinerary,
   TripItinerary,
-} from "@/utils/tripPlanner";
-import { calculateRoute, FERRY_ROUTES } from "@/utils/ferryRoutes";
+} from "@/utils/tripPlannerAsync";
+import { trpc } from "@/lib/trpc";
 import { getDestinationInfo } from "@/utils/destinationInfo";
 import WeatherForecast from "@/components/WeatherForecast";
 import WeatherRecommendations from "@/components/WeatherRecommendations";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export default function TripPlanner() {
+  const { data: transports = [] } = trpc.transports.list.useQuery();
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
   const [startDate, setStartDate] = useState(
     new Date().toISOString().split("T")[0]
@@ -48,6 +47,7 @@ export default function TripPlanner() {
     "balanced"
   );
   const [showWeather, setShowWeather] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [weatherDestination, setWeatherDestination] = useState<string | null>(null);
   const [weatherCoords, setWeatherCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [showGuesthouses, setShowGuesthouses] = useState(false);
@@ -93,23 +93,31 @@ export default function TripPlanner() {
     );
   };
 
-  const handleGenerateItinerary = () => {
+  const handleGenerateItinerary = async () => {
     if (selectedDestinations.length < 2) {
       alert("Please select at least 2 destinations");
       return;
     }
 
-    console.log("Generating itinerary for destinations:", selectedDestinations);
-    const options = generateItineraryOptions(selectedDestinations, startDate);
-    console.log("Generated options:", options);
+    setIsGenerating(true);
+    try {
+      console.log("Generating itinerary for destinations:", selectedDestinations);
+      const options = await generateItineraryOptionsAsync(transports, selectedDestinations, startDate);
+      console.log("Generated options:", options);
 
-    if (options.length === 0) {
-      alert("No routes available for the selected destinations");
-      return;
+      if (options.length === 0) {
+        alert("No routes available for the selected destinations");
+        return;
+      }
+
+      setItineraryOptions(options);
+      setSelectedItinerary(options[0]);
+    } catch (error) {
+      console.error("Error generating itinerary:", error);
+      alert("Error generating itinerary. Please try again.");
+    } finally {
+      setIsGenerating(false);
     }
-
-    setItineraryOptions(options);
-    setSelectedItinerary(options[0]);
   };
 
   const handleSelectItinerary = (itinerary: TripItinerary) => {
@@ -294,9 +302,9 @@ export default function TripPlanner() {
                   <Button
                     onClick={handleGenerateItinerary}
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3"
-                    disabled={selectedDestinations.length < 2}
+                    disabled={selectedDestinations.length < 2 || isGenerating}
                   >
-                    Generate Itinerary
+                    {isGenerating ? "Generating..." : "Generate Itinerary"}
                   </Button>
                 </CardContent>
               </Card>

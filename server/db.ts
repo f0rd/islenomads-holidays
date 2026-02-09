@@ -1,9 +1,53 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+
+// Transport helpers (centralized transport/ferry data)
+export async function getAllTransports(): Promise<Transport[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(transports).where(eq(transports.published, 1));
+}
+
+export async function getAllTransportsAdmin(): Promise<Transport[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(transports);
+}
+
+export async function getTransportById(id: number): Promise<Transport | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(transports).where(eq(transports.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createTransport(data: InsertTransport): Promise<Transport | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(transports).values(data);
+  const id = (result as any).insertId;
+  const transport = await getTransportById(id);
+  return transport || null;
+}
+
+export async function updateTransport(id: number, data: Partial<InsertTransport>): Promise<Transport | null> {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(transports).set(data).where(eq(transports.id, id));
+  const transport = await getTransportById(id);
+  return transport || null;
+}
+
+export async function deleteTransport(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(transports).where(eq(transports.id, id));
+  return true;
+}
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {

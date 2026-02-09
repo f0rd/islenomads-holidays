@@ -123,6 +123,30 @@ export const packages = mysqlTable("packages", {
 export type Package = typeof packages.$inferSelect;
 export type InsertPackage = typeof packages.$inferInsert;
 
+// Transports table - centralized transport/ferry data used by Trip Planner and Boat Routes
+export const transports = mysqlTable("transports", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(), // e.g., "Male to Maafushi Ferry"
+  fromLocation: varchar("fromLocation", { length: 255 }).notNull(), // e.g., "male"
+  toLocation: varchar("toLocation", { length: 255 }).notNull(), // e.g., "maafushi-island"
+  transportType: mysqlEnum("transportType", ["ferry", "speedboat", "dhoni", "seaplane"]).notNull(),
+  durationMinutes: int("durationMinutes").notNull(), // Duration in minutes
+  priceUSD: int("priceUSD").notNull(), // Price in USD
+  capacity: int("capacity").notNull(), // Passenger capacity
+  operator: varchar("operator", { length: 255 }).notNull(), // e.g., "Public Ferry", "Speedboat Express"
+  departureTime: varchar("departureTime", { length: 50 }), // e.g., "06:00"
+  schedule: text("schedule"), // JSON array of departure times
+  amenities: text("amenities"), // JSON array of amenities
+  description: text("description"),
+  image: varchar("image", { length: 500 }),
+  published: int("published").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Transport = typeof transports.$inferSelect;
+export type InsertTransport = typeof transports.$inferInsert;
+
 // Boat Routes table
 export const boatRoutes = mysqlTable("boat_routes", {
   id: int("id").autoincrement().primaryKey(),

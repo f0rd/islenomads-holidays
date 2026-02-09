@@ -6,7 +6,7 @@ import { z } from "zod";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
 import { TRPCError } from "@trpc/server";
-import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer, getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff, logActivity } from "./db";
+import { getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost, getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage, updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug, getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug, getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getIslandGuides, getIslandGuideBySlug, getIslandGuideById, getAllIslandGuidesAdmin, createIslandGuide, updateIslandGuide, deleteIslandGuide, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags, updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType, deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery, getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer, getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff, logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport, deleteTransport } from "./db";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -49,6 +49,88 @@ export const appRouter = router({
           console.error("[Contact Form] Error:", error);
           throw new Error("Failed to submit contact form. Please try again.");
         }
+      }),
+  }),
+
+  transports: router({
+    list: publicProcedure.query(async () => {
+      return getAllTransports();
+    }),
+
+    listAdmin: protectedProcedure.query(async (opts) => {
+      if (opts.ctx.user?.role !== 'admin') {
+        throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can access this' });
+      }
+      return getAllTransportsAdmin();
+    }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getTransportById(input.id);
+      }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          name: z.string().min(1, "Name is required"),
+          fromLocation: z.string().min(1, "From location is required"),
+          toLocation: z.string().min(1, "To location is required"),
+          transportType: z.enum(["ferry", "speedboat", "dhoni", "seaplane"]),
+          durationMinutes: z.number().min(1, "Duration must be at least 1 minute"),
+          priceUSD: z.number().min(0, "Price must be non-negative"),
+          capacity: z.number().min(1, "Capacity must be at least 1"),
+          operator: z.string().min(1, "Operator is required"),
+          departureTime: z.string().optional(),
+          schedule: z.string().optional(),
+          amenities: z.string().optional(),
+          description: z.string().optional(),
+          image: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can create transports' });
+        }
+        return createTransport(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().optional(),
+          fromLocation: z.string().optional(),
+          toLocation: z.string().optional(),
+          transportType: z.enum(["ferry", "speedboat", "dhoni", "seaplane"]).optional(),
+          durationMinutes: z.number().optional(),
+          priceUSD: z.number().optional(),
+          capacity: z.number().optional(),
+          operator: z.string().optional(),
+          departureTime: z.string().optional(),
+          schedule: z.string().optional(),
+          amenities: z.string().optional(),
+          description: z.string().optional(),
+          image: z.string().optional(),
+          published: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can update transports' });
+        }
+        const { id, ...data } = input;
+        return updateTransport(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can delete transports' });
+        }
+        return deleteTransport(input.id);
       }),
   }),
 

@@ -1,0 +1,20 @@
+CREATE TABLE `transports` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`fromLocation` varchar(255) NOT NULL,
+	`toLocation` varchar(255) NOT NULL,
+	`transportType` enum('ferry','speedboat','dhoni','seaplane') NOT NULL,
+	`durationMinutes` int NOT NULL,
+	`priceUSD` int NOT NULL,
+	`capacity` int NOT NULL,
+	`operator` varchar(255) NOT NULL,
+	`departureTime` varchar(50),
+	`schedule` text,
+	`amenities` text,
+	`description` text,
+	`image` varchar(500),
+	`published` int NOT NULL DEFAULT 1,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `transports_id` PRIMARY KEY(`id`)
+);
