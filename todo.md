@@ -466,3 +466,13 @@
 - [ ] Implement filtering by location type
 - [ ] Add zoom and pan controls
 - [ ] Test Mapbox integration
+
+## Package Categorization by Journey Type
+- [ ] Update packages database schema with category field
+- [ ] Add journey type categories (Family Adventures, Solo Travel, Water Sports, Relaxation, Luxury, Adventure)
+- [ ] Create tRPC procedures for filtering packages by category
+- [ ] Redesign Packages page with category filter tabs
+- [ ] Add category icons and visual indicators
+- [ ] Populate existing packages with appropriate categories
+- [ ] Implement category-based package recommendations
+- [ ] Test package filtering and categorization

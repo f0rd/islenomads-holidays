@@ -242,6 +242,26 @@ export const appRouter = router({
         return getPackageById(input.id);
       }),
 
+    getByCategory: publicProcedure
+      .input(z.object({ category: z.string() }))
+      .query(async ({ input }) => {
+        const allPackages = await getAllPackages();
+        return allPackages.filter(pkg => pkg.category === input.category);
+      }),
+
+    getCategories: publicProcedure.query(async () => {
+      return [
+        { id: 'family-adventures', label: 'Family Adventures', icon: '👨‍👩‍👧‍👦' },
+        { id: 'solo-travel', label: 'Solo Travel', icon: '🧑‍🚀' },
+        { id: 'water-sports', label: 'Water Sports', icon: '🏄' },
+        { id: 'relaxation', label: 'Relaxation', icon: '🧘' },
+        { id: 'luxury', label: 'Luxury', icon: '👑' },
+        { id: 'adventure', label: 'Adventure', icon: '🏔️' },
+        { id: 'diving-snorkeling', label: 'Diving & Snorkeling', icon: '🤿' },
+        { id: 'island-hopping', label: 'Island Hopping', icon: '🏝️' },
+      ];
+    }),
+
     create: protectedProcedure
       .input(
         z.object({
@@ -251,6 +271,7 @@ export const appRouter = router({
           price: z.number(),
           duration: z.string(),
           destination: z.string(),
+          category: z.enum(['family-adventures', 'solo-travel', 'water-sports', 'relaxation', 'luxury', 'adventure', 'diving-snorkeling', 'island-hopping']).optional(),
           highlights: z.string().optional(),
           amenities: z.string().optional(),
           image: z.string().optional(),

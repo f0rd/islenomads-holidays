@@ -93,6 +93,7 @@ export const packages = mysqlTable("packages", {
   price: int("price").notNull(), // Price in cents
   duration: varchar("duration", { length: 100 }).notNull(), // e.g., "5 days"
   destination: varchar("destination", { length: 255 }).notNull(),
+  category: mysqlEnum("category", ["family-adventures", "solo-travel", "water-sports", "relaxation", "luxury", "adventure", "diving-snorkeling", "island-hopping"]).notNull().default("adventure"),
   highlights: text("highlights"), // JSON array of highlights
   amenities: text("amenities"), // JSON array of amenities
   image: varchar("image", { length: 500 }),

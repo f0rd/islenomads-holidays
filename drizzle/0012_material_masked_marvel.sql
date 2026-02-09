@@ -1,0 +1,1 @@
+ALTER TABLE `packages` ADD `category` enum('family-adventures','solo-travel','water-sports','relaxation','luxury','adventure','diving-snorkeling','island-hopping') DEFAULT 'adventure' NOT NULL;

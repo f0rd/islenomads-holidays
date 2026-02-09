@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE packages SET category = 'romantic' WHERE name = 'Romantic Escape';\nUPDATE packages SET category = 'luxury' WHERE name = 'Ultimate Paradise';\nUPDATE packages SET category = 'island-hopping' WHERE name = 'Island Explorer';\nUPDATE packages SET category = 'romantic' WHERE name = 'Honeymoon Bliss';\nUPDATE packages SET category = 'adventure' WHERE name = 'Adventure Seeker';\nUPDATE packages SET category = 'family' WHERE name = 'Family Fun Paradise';\nUPDATE packages SET category = 'luxury' WHERE name = 'Luxury Retreat';\nUPDATE packages SET category = 'budget' WHERE name = 'Budget Beach Getaway';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE packages SET category = 'romantic' WHERE name = 'Romantic Escape';\nUPDATE packages SET category = 'luxury' WHERE name = 'Ultimate Paradise';\nUPDATE packages SET category = 'island-hopping' WHERE name = 'Island Explorer';\nUPDATE packages SET category = 'romantic' WHERE name = 'Honeymoon Bliss';\nUPDATE packages SET category = 'adventure' WHERE name = 'Adventure Seeker';\nUPDATE packages SET category = 'family' WHERE name = 'Family Fun Paradise';\nUPDATE packages SET category = 'luxury' WHERE name = 'Luxury Retreat';\nUPDATE packages SET category = 'budget' WHERE name = 'Budget Beach Getaway';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1265 (01000) at line 1: Data truncated for column '%s' at row %d"
+  ]
+}

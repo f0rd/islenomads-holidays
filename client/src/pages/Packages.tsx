@@ -24,6 +24,7 @@ import { Search, MapPin, Calendar, DollarSign, Loader2 } from "lucide-react";
 
 export default function Packages() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedDestination, setSelectedDestination] = useState<string>("");
   const [priceRange, setPriceRange] = useState<string>("all");
   const [durationFilter, setDurationFilter] = useState<string>("");
@@ -32,8 +33,9 @@ export default function Packages() {
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const itemsPerPage = 12;
 
-  // Fetch all packages
+  // Fetch all packages and categories
   const { data: packages = [], isLoading } = trpc.packages.list.useQuery();
+  const { data: categories = [] } = trpc.packages.getCategories.useQuery();
 
   // Extract unique destinations and durations
   const destinations = useMemo(() => {
@@ -61,6 +63,10 @@ export default function Packages() {
         pkg.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         pkg.destination?.toLowerCase().includes(searchQuery.toLowerCase());
 
+      // Category filter
+      const matchesCategory =
+        selectedCategory === "all" || pkg.category === selectedCategory;
+
       // Destination filter
       const matchesDestination =
         !selectedDestination || pkg.destination === selectedDestination;
@@ -84,6 +90,7 @@ export default function Packages() {
 
       return (
         matchesSearch &&
+        matchesCategory &&
         matchesDestination &&
         matchesPrice &&
         matchesDuration &&
@@ -103,155 +110,160 @@ export default function Packages() {
     }
 
     return filtered;
-  }, [packages, searchQuery, selectedDestination, priceRange, durationFilter, sortBy]);
+  }, [packages, searchQuery, selectedCategory, selectedDestination, priceRange, durationFilter, sortBy]);
 
   // Pagination
   const totalPages = Math.ceil(filteredPackages.length / itemsPerPage);
-  const paginatedPackages = useMemo(() => {
-    const start = (currentPage - 1) * itemsPerPage;
-    return filteredPackages.slice(start, start + itemsPerPage);
-  }, [filteredPackages, currentPage]);
+  const paginatedPackages = filteredPackages.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
-  const handlePriceRangeChange = (value: string) => {
-    setPriceRange(value);
-    setCurrentPage(1);
-  };
-
-  const handleDestinationChange = (value: string) => {
-    setSelectedDestination(value === "all" ? "" : value);
-    setCurrentPage(1);
-  };
-
-  const handleDurationChange = (value: string) => {
-    setDurationFilter(value === "all" ? "" : value);
-    setCurrentPage(1);
-  };
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setCurrentPage(1);
-  };
-
-  const resetFilters = () => {
-    setSearchQuery("");
-    setSelectedDestination("");
-    setPriceRange("all");
-    setDurationFilter("");
-    setSortBy("featured");
-    setCurrentPage(1);
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(price / 100);
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
-      <section className="flex-1 py-12 bg-gradient-to-b from-primary/5 to-background pt-24">
-        <div className="container max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Discover Our Vacation Packages
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Explore our curated selection of unforgettable Maldives experiences.
-              Find the perfect package for your dream vacation.
-            </p>
-          </div>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-16">
+        <div className="container">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Vacation Packages
+          </h1>
+          <p className="text-lg opacity-90">
+            Discover our curated collection of unforgettable Maldives experiences
+          </p>
+        </div>
+      </section>
 
+      {/* Main Content */}
+      <section className="flex-1 py-12">
+        <div className="container">
           {/* Search Bar */}
           <div className="mb-8">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+              <Search className="absolute left-3 top-3 text-muted-foreground" />
               <Input
-                type="text"
-                placeholder="Search packages by name, destination, or description..."
+                placeholder="Search packages..."
                 value={searchQuery}
-                onChange={(e) => handleSearch(e.target.value)}
-                className="pl-12 py-6 text-base"
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1);
+                }}
+                className="pl-10"
               />
             </div>
           </div>
 
-          {/* Filters */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            {/* Destination Filter */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Destination</label>
-              <Select value={selectedDestination || "all"} onValueChange={handleDestinationChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Destinations" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Destinations</SelectItem>
-                  {destinations.map((dest) => (
-                    <SelectItem key={dest} value={dest}>
-                      {dest}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Price Range Filter */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Price Range</label>
-              <Select value={priceRange} onValueChange={handlePriceRangeChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Prices" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Prices</SelectItem>
-                  <SelectItem value="budget">Budget (&lt; $2,000)</SelectItem>
-                  <SelectItem value="mid">Mid-Range ($2,000 - $5,000)</SelectItem>
-                  <SelectItem value="luxury">Luxury (&gt; $5,000)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Duration Filter */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Duration</label>
-              <Select value={durationFilter || "all"} onValueChange={handleDurationChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="All Durations" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Durations</SelectItem>
-                  {durations.map((dur) => (
-                    <SelectItem key={dur} value={dur}>
-                      {dur}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Sort By */}
-            <div>
-              <label className="block text-sm font-medium mb-2">Sort By</label>
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Sort by" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="featured">Featured</SelectItem>
-                  <SelectItem value="price-low">Price: Low to High</SelectItem>
-                  <SelectItem value="price-high">Price: High to Low</SelectItem>
-                  <SelectItem value="name">Name: A to Z</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Reset Button */}
-            <div className="flex items-end">
+          {/* Category Filter Tabs */}
+          <div className="mb-8">
+            <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+              Journey Type
+            </h3>
+            <div className="flex flex-wrap gap-2">
               <Button
-                variant="outline"
-                onClick={resetFilters}
-                className="w-full"
+                variant={selectedCategory === "all" ? "default" : "outline"}
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setCurrentPage(1);
+                }}
+                className="rounded-full"
               >
-                Reset Filters
+                All Packages
               </Button>
+              {categories.map((cat: any) => (
+                <Button
+                  key={cat.id}
+                  variant={
+                    selectedCategory === cat.id ? "default" : "outline"
+                  }
+                  onClick={() => {
+                    setSelectedCategory(cat.id);
+                    setCurrentPage(1);
+                  }}
+                  className="rounded-full"
+                >
+                  <span className="mr-2">{cat.icon}</span>
+                  {cat.label}
+                </Button>
+              ))}
             </div>
+          </div>
+
+          {/* Filters Section */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <Select value={selectedDestination || "all-destinations"} onValueChange={(value) => {
+              setSelectedDestination(value === "all-destinations" ? "" : value);
+              setCurrentPage(1);
+            }}>
+              <SelectTrigger>
+                <MapPin className="w-4 h-4 mr-2" />
+                <SelectValue placeholder="All Destinations" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all-destinations">All Destinations</SelectItem>
+                {destinations.map((dest) => (
+                  <SelectItem key={dest} value={dest}>
+                    {dest}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={durationFilter || "all-durations"} onValueChange={(value) => {
+              setDurationFilter(value === "all-durations" ? "" : value);
+              setCurrentPage(1);
+            }}>
+              <SelectTrigger>
+                <Calendar className="w-4 h-4 mr-2" />
+                <SelectValue placeholder="All Durations" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all-durations">All Durations</SelectItem>
+                {durations.map((dur) => (
+                  <SelectItem key={dur} value={dur}>
+                    {dur}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={priceRange} onValueChange={(value) => {
+              setPriceRange(value);
+              setCurrentPage(1);
+            }}>
+              <SelectTrigger>
+                <DollarSign className="w-4 h-4 mr-2" />
+                <SelectValue placeholder="All Prices" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Prices</SelectItem>
+                <SelectItem value="budget">Budget (&lt;$2,000)</SelectItem>
+                <SelectItem value="mid">Mid-Range ($2,000 - $5,000)</SelectItem>
+                <SelectItem value="luxury">Luxury (&gt;$5,000)</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={sortBy} onValueChange={(value) => {
+              setSortBy(value);
+              setCurrentPage(1);
+            }}>
+              <SelectTrigger>
+                <SelectValue placeholder="Sort By" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="featured">Featured</SelectItem>
+                <SelectItem value="price-low">Price: Low to High</SelectItem>
+                <SelectItem value="price-high">Price: High to Low</SelectItem>
+                <SelectItem value="name">Name: A to Z</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Results Count */}
@@ -263,177 +275,174 @@ export default function Packages() {
 
           {/* Packages Grid */}
           {isLoading ? (
-            <div className="flex justify-center items-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-accent" />
+            <div className="flex justify-center items-center py-12">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
             </div>
           ) : paginatedPackages.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {paginatedPackages.map((pkg: any) => (
-                  <Card key={pkg.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    {/* Package Image */}
+                  <Card
+                    key={pkg.id}
+                    className="hover:shadow-lg transition-shadow cursor-pointer overflow-hidden"
+                  >
                     {pkg.image && (
-                      <div className="relative h-48 overflow-hidden bg-muted">
+                      <div className="h-48 overflow-hidden bg-muted">
                         <img
                           src={pkg.image}
                           alt={pkg.name}
                           className="w-full h-full object-cover hover:scale-105 transition-transform"
                         />
-                        {pkg.featured === 1 && (
-                          <Badge className="absolute top-4 right-4 bg-accent text-primary">
-                            Featured
-                          </Badge>
-                        )}
                       </div>
                     )}
-
                     <CardHeader>
-                      <h3 className="text-xl font-bold text-foreground">{pkg.name}</h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {pkg.description}
-                      </p>
-                    </CardHeader>
-
-                    <CardContent className="space-y-4">
-                      {/* Package Details */}
-                      <div className="space-y-2 text-sm">
-                        {pkg.destination && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
+                      <div className="flex justify-between items-start gap-2">
+                        <div className="flex-1">
+                          <h3 className="font-bold text-lg line-clamp-2">
+                            {pkg.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground flex items-center gap-1 mt-1">
                             <MapPin className="w-4 h-4" />
-                            <span>{pkg.destination}</span>
-                          </div>
-                        )}
-                        {pkg.duration && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Calendar className="w-4 h-4" />
-                            <span>{pkg.duration}</span>
-                          </div>
-                        )}
-                        <div className="flex items-center gap-2 text-accent font-semibold">
-                          <DollarSign className="w-4 h-4" />
-                          <span>${pkg.price.toLocaleString()}</span>
-                        </div>
-                      </div>
-
-                      {/* Highlights */}
-                      {pkg.highlights && (
-                        <div className="pt-2 border-t">
-                          <p className="text-xs font-medium text-muted-foreground mb-2">
-                            Highlights:
+                            {pkg.destination}
                           </p>
-                          <div className="flex flex-wrap gap-1">
-                            {pkg.highlights
-                              .split(",")
-                              .slice(0, 3)
-                              .map((highlight: string, idx: number) => (
-                                <Badge key={idx} variant="secondary" className="text-xs">
-                                  {highlight.trim()}
-                                </Badge>
-                              ))}
-                          </div>
+                        </div>
+                        {pkg.featured === 1 && (
+                          <Badge variant="default">Featured</Badge>
+                        )}
+                      </div>
+                      {pkg.category && (
+                        <div className="mt-2">
+                          <Badge variant="secondary">
+                            {categories.find((c: any) => c.id === pkg.category)?.label}
+                          </Badge>
                         </div>
                       )}
-
-                      {/* View Details Button */}
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {pkg.description}
+                      </p>
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="flex items-center gap-1 text-sm">
+                          <Calendar className="w-4 h-4" />
+                          {pkg.duration}
+                        </div>
+                        <div className="text-lg font-bold text-primary">
+                          {formatPrice(pkg.price)}
+                        </div>
+                      </div>
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button
-                            className="w-full bg-accent text-primary hover:bg-accent/90"
+                            className="w-full"
                             onClick={() => setSelectedPackage(pkg)}
                           >
                             View Details
                           </Button>
                         </DialogTrigger>
-                        {selectedPackage?.id === pkg.id && (
-                          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-                            <DialogHeader>
-                              <DialogTitle className="text-2xl">
-                                {selectedPackage.name}
-                              </DialogTitle>
-                            </DialogHeader>
-                            <div className="space-y-6">
-                              {/* Image */}
-                              {selectedPackage.image && (
-                                <img
-                                  src={selectedPackage.image}
-                                  alt={selectedPackage.name}
-                                  className="w-full h-64 object-cover rounded-lg"
-                                />
-                              )}
-
-                              {/* Description */}
+                        <DialogContent className="max-w-2xl">
+                          <DialogHeader>
+                            <DialogTitle>{pkg.name}</DialogTitle>
+                          </DialogHeader>
+                          <div className="space-y-4">
+                            {pkg.image && (
+                              <img
+                                src={pkg.image}
+                                alt={pkg.name}
+                                className="w-full h-64 object-cover rounded-lg"
+                              />
+                            )}
+                            <div>
+                              <h4 className="font-semibold mb-2">Description</h4>
+                              <p className="text-sm text-muted-foreground">
+                                {pkg.description}
+                              </p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
                               <div>
-                                <h4 className="font-semibold mb-2">Description</h4>
-                                <p className="text-muted-foreground">
-                                  {selectedPackage.description}
+                                <p className="text-sm text-muted-foreground">
+                                  Duration
+                                </p>
+                                <p className="font-semibold">{pkg.duration}</p>
+                              </div>
+                              <div>
+                                <p className="text-sm text-muted-foreground">
+                                  Price
+                                </p>
+                                <p className="font-semibold text-primary">
+                                  {formatPrice(pkg.price)}
                                 </p>
                               </div>
-
-                              {/* Package Details */}
-                              <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                  <p className="text-sm text-muted-foreground">Destination</p>
-                                  <p className="font-semibold">{selectedPackage.destination}</p>
-                                </div>
-                                <div>
-                                  <p className="text-sm text-muted-foreground">Duration</p>
-                                  <p className="font-semibold">{selectedPackage.duration}</p>
-                                </div>
-                                <div>
-                                  <p className="text-sm text-muted-foreground">Price</p>
-                                  <p className="font-semibold text-accent text-lg">
-                                    ${selectedPackage.price.toLocaleString()}
-                                  </p>
-                                </div>
-                                <div>
-                                  <p className="text-sm text-muted-foreground">Status</p>
-                                  <p className="font-semibold">
-                                    {selectedPackage.published === 1
-                                      ? "Available"
-                                      : "Coming Soon"}
-                                  </p>
-                                </div>
+                              <div>
+                                <p className="text-sm text-muted-foreground">
+                                  Destination
+                                </p>
+                                <p className="font-semibold">
+                                  {pkg.destination}
+                                </p>
                               </div>
-
-                              {/* Highlights */}
-                              {selectedPackage.highlights && (
-                                <div>
-                                  <h4 className="font-semibold mb-3">Highlights</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                    {selectedPackage.highlights
-                                      .split(",")
-                                      .map((highlight: string, idx: number) => (
-                                        <Badge key={idx} variant="secondary">
-                                          {highlight.trim()}
-                                        </Badge>
-                                      ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* Amenities */}
-                              {selectedPackage.amenities && (
-                                <div>
-                                  <h4 className="font-semibold mb-3">Amenities</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                    {selectedPackage.amenities
-                                      .split(",")
-                                      .map((amenity: string, idx: number) => (
-                                        <Badge key={idx} variant="outline">
-                                          {amenity.trim()}
-                                        </Badge>
-                                      ))}
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* Book Now Button */}
-                              <Button className="w-full bg-accent text-primary hover:bg-accent/90 py-6 text-lg">
-                                Book Now
-                              </Button>
+                              <div>
+                                <p className="text-sm text-muted-foreground">
+                                  Category
+                                </p>
+                                <p className="font-semibold">
+                                  {categories.find((c: any) => c.id === pkg.category)?.label}
+                                </p>
+                              </div>
                             </div>
-                          </DialogContent>
-                        )}
+                            {pkg.highlights && (
+                              <div>
+                                <h4 className="font-semibold mb-2">
+                                  Highlights
+                                </h4>
+                                <ul className="text-sm space-y-1">
+                                  {(() => {
+                                    try {
+                                      const parsed = typeof pkg.highlights === 'string' ? JSON.parse(pkg.highlights) : pkg.highlights;
+                                      return Array.isArray(parsed) ? parsed : [pkg.highlights];
+                                    } catch {
+                                      return [pkg.highlights];
+                                    }
+                                  })().map(
+                                    (h: string, i: number) => (
+                                      <li key={i} className="flex items-start gap-2">
+                                        <span className="text-primary">✓</span>
+                                        {h}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+                            {pkg.amenities && (
+                              <div>
+                                <h4 className="font-semibold mb-2">
+                                  Amenities
+                                </h4>
+                                <ul className="text-sm space-y-1">
+                                  {(() => {
+                                    try {
+                                      const parsed = typeof pkg.amenities === 'string' ? JSON.parse(pkg.amenities) : pkg.amenities;
+                                      return Array.isArray(parsed) ? parsed : [pkg.amenities];
+                                    } catch {
+                                      return [pkg.amenities];
+                                    }
+                                  })().map(
+                                    (a: string, i: number) => (
+                                      <li key={i} className="flex items-start gap-2">
+                                        <span className="text-primary">•</span>
+                                        {a}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+                            <Button className="w-full" size="lg">
+                              Book This Package
+                            </Button>
+                          </div>
+                        </DialogContent>
                       </Dialog>
                     </CardContent>
                   </Card>
@@ -442,33 +451,34 @@ export default function Packages() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-2 mb-12">
+                <div className="flex justify-center gap-2">
                   <Button
                     variant="outline"
-                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                    onClick={() =>
+                      setCurrentPage(Math.max(1, currentPage - 1))
+                    }
                     disabled={currentPage === 1}
                   >
                     Previous
                   </Button>
-
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <Button
-                      key={page}
-                      variant={currentPage === page ? "default" : "outline"}
-                      onClick={() => setCurrentPage(page)}
-                      className={
-                        currentPage === page
-                          ? "bg-accent text-primary hover:bg-accent/90"
-                          : ""
-                      }
-                    >
-                      {page}
-                    </Button>
-                  ))}
-
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <Button
+                        key={page}
+                        variant={
+                          currentPage === page ? "default" : "outline"
+                        }
+                        onClick={() => setCurrentPage(page)}
+                      >
+                        {page}
+                      </Button>
+                    )
+                  )}
                   <Button
                     variant="outline"
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    onClick={() =>
+                      setCurrentPage(Math.min(totalPages, currentPage + 1))
+                    }
                     disabled={currentPage === totalPages}
                   >
                     Next
@@ -477,13 +487,10 @@ export default function Packages() {
               )}
             </>
           ) : (
-            <div className="text-center py-20">
-              <p className="text-lg text-muted-foreground mb-4">
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">
                 No packages found matching your criteria.
               </p>
-              <Button onClick={resetFilters} variant="outline">
-                Reset Filters
-              </Button>
             </div>
           )}
         </div>

@@ -1,0 +1,118 @@
+{
+  "query": "SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'packages' ORDER BY ORDINAL_POSITION;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'packages' ORDER BY ORDINAL_POSITION;",
+  "rows": [
+    {
+      "COLUMN_NAME": "id",
+      "DATA_TYPE": "int"
+    },
+    {
+      "COLUMN_NAME": "name",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "slug",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "description",
+      "DATA_TYPE": "text"
+    },
+    {
+      "COLUMN_NAME": "price",
+      "DATA_TYPE": "int"
+    },
+    {
+      "COLUMN_NAME": "duration",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "destination",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "highlights",
+      "DATA_TYPE": "text"
+    },
+    {
+      "COLUMN_NAME": "amenities",
+      "DATA_TYPE": "text"
+    },
+    {
+      "COLUMN_NAME": "image",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "featured",
+      "DATA_TYPE": "int"
+    },
+    {
+      "COLUMN_NAME": "published",
+      "DATA_TYPE": "int"
+    },
+    {
+      "COLUMN_NAME": "metaTitle",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "metaDescription",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "metaKeywords",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "createdAt",
+      "DATA_TYPE": "timestamp"
+    },
+    {
+      "COLUMN_NAME": "updatedAt",
+      "DATA_TYPE": "timestamp"
+    },
+    {
+      "COLUMN_NAME": "ogTitle",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "ogDescription",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "ogImage",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "focusKeyword",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "seoScore",
+      "DATA_TYPE": "int"
+    },
+    {
+      "COLUMN_NAME": "canonicalUrl",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "robotsIndex",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "robotsFollow",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "schemaType",
+      "DATA_TYPE": "varchar"
+    },
+    {
+      "COLUMN_NAME": "category",
+      "DATA_TYPE": "enum"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\tDATA_TYPE\nid\tint\nname\tvarchar\nslug\tvarchar\ndescription\ttext\nprice\tint\nduration\tvarchar\ndestination\tvarchar\nhighlights\ttext\namenities\ttext\nimage\tvarchar\nfeatured\tint\npublished\tint\nmetaTitle\tvarchar\nmetaDescription\tvarchar\nmetaKeywords\tvarchar\ncreatedAt\ttimestamp\nupdatedAt\ttimestamp\nogTitle\tvarchar\nogDescription\tvarchar\nogImage\tvarchar\nfocusKeyword\tvarchar\nseoScore\tint\ncanonicalUrl\tvarchar\nrobotsIndex\tvarchar\nrobotsFollow\tvarchar\nschemaType\tvarchar\ncategory\tenum\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}
