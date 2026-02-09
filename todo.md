@@ -541,3 +541,37 @@
 - [x] Implement dynamic marker updates based on selected activities
 - [x] Support multiple activity selection simultaneously
 - [x] Add "Clear Filters" button for easy reset
+
+
+## Boat Routes & Maps CMS Management - Phase 1
+- [x] Create AdminBoatRoutes page for listing all boat routes
+- [x] Build boat route creation form with validation
+- [x] Build boat route editing form
+- [x] Add delete boat route functionality
+- [x] Implement boat route search and filtering in CMS
+- [x] Create AdminMapLocations page for listing all map locations
+- [x] Build map location creation form with validation
+- [x] Build map location editing form
+- [x] Add delete map location functionality
+- [x] Implement map location search and filtering in CMS
+- [x] Create tRPC endpoints for boat routes CRUD (already exist)
+- [x] Create tRPC endpoints for map locations CRUD (already exist)
+- [x] Integrate boat routes CMS into staff dashboard
+- [x] Integrate map locations CMS into staff dashboard
+- [x] Test boat routes and maps CMS functionality
+
+## RBAC Middleware Implementation - Phase 2
+- [ ] Create RBAC middleware for protecting routes
+- [ ] Implement permission checking for admin routes
+- [ ] Add role-based access control to all admin pages
+- [ ] Create permission constants and utilities
+- [ ] Test RBAC middleware functionality
+- [ ] Verify unauthorized access is blocked
+
+## Destination Guide Content Linking - Phase 3
+- [ ] Link boat routes to island guides
+- [ ] Link map locations to island guides
+- [ ] Link packages to island guides
+- [ ] Create cross-references between related content
+- [ ] Update island guide pages to show related content
+- [ ] Test content linking and navigation

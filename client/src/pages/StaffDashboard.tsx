@@ -60,6 +60,8 @@ export default function StaffDashboard() {
     { icon: FileText, label: "Blog Posts", href: "/admin/blog", badge: "3" },
     { icon: Package, label: "Packages", href: "/admin/packages", badge: "2" },
     { icon: MapPin, label: "Island Guides", href: "/admin/island-guides", badge: null },
+    { icon: MapPin, label: "Map Locations", href: "/admin/map-locations", badge: null },
+    { icon: MapPin, label: "Boat Routes", href: "/admin/boat-routes", badge: null },
     { icon: BarChart3, label: "SEO Optimizer", href: "/admin/seo-optimizer", badge: "5" },
     { icon: Activity, label: "CRM - Queries", href: "/admin/crm", badge: "5" },
     { icon: Users, label: "Staff Management", href: "/admin/staff", badge: null },
