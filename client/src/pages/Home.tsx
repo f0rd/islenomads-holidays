@@ -6,6 +6,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -19,7 +20,7 @@ import {
   Users,
   Waves,
 } from "lucide-react";
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "wouter";
 import ContactForm from "@/components/ContactForm";
 import { trpc } from "@/lib/trpc";
@@ -46,6 +47,26 @@ export default function Home() {
 
   useEffect(() => {
     setIsVisible(true);
+    // Set dynamic page title and meta tags for SEO
+    document.title = "Maldives Luxury Vacations | Isle Nomads Travel Specialist";
+    
+    // Update meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute('content', 'Discover luxury Maldives vacations with Isle Nomads. Expert travel planning, premium resorts, and unforgettable island experiences.');
+    
+    // Update meta keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (!metaKeywords) {
+      metaKeywords = document.createElement('meta');
+      metaKeywords.setAttribute('name', 'keywords');
+      document.head.appendChild(metaKeywords);
+    }
+    metaKeywords.setAttribute('content', 'Maldives vacations, luxury travel, island resorts, Maldives holidays, travel specialist, Maldives packages');
   }, []);
 
   return (
