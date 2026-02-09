@@ -94,12 +94,14 @@ export default function TripPlanner() {
   };
 
   const handleGenerateItinerary = () => {
-    if (selectedDestinations.length < 1) {
-      alert("Please select at least 1 destination");
+    if (selectedDestinations.length < 2) {
+      alert("Please select at least 2 destinations");
       return;
     }
 
+    console.log("Generating itinerary for destinations:", selectedDestinations);
     const options = generateItineraryOptions(selectedDestinations, startDate);
+    console.log("Generated options:", options);
 
     if (options.length === 0) {
       alert("No routes available for the selected destinations");

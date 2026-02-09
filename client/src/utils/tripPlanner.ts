@@ -353,14 +353,17 @@ export function findDirectRoutes(
   to: string
 ): RouteSegment[] {
   const routes: RouteSegment[] = [];
-  const normalizedFrom = from.toLowerCase();
-  const normalizedTo = to.toLowerCase();
+  const normalizedFrom = from.toLowerCase().replace(/\s+/g, '-');
+  const normalizedTo = to.toLowerCase().replace(/\s+/g, '-');
 
   // Check ferry routes for direct connection
   FERRY_ROUTES.forEach((route: any) => {
+    const routeFromNorm = route.from.toLowerCase().replace(/\s+/g, '-');
+    const routeToNorm = route.to.toLowerCase().replace(/\s+/g, '-');
+    
     if (
-      route.from.toLowerCase().includes(normalizedFrom) &&
-      route.to.toLowerCase().includes(normalizedTo)
+      (routeFromNorm.includes(normalizedFrom) || normalizedFrom.includes(routeFromNorm)) &&
+      (routeToNorm.includes(normalizedTo) || normalizedTo.includes(routeToNorm))
     ) {
       routes.push({
         id: route.id,
@@ -384,58 +387,64 @@ export function findDirectRoutes(
 
   // If no direct routes found, try hub-based routing through Male City
   if (routes.length === 0 && normalizedFrom !== "male" && normalizedTo !== "male") {
-    let fromToMaleRoute: RouteSegment | null = null;
-    let maleToToRoute: RouteSegment | null = null;
+    let fromToMaleRoute: RouteSegment | undefined;
+    let maleToToRoute: RouteSegment | undefined;
 
     // Find route from source to Male
-    PUBLIC_FERRY_ROUTES.forEach((route) => {
-      if (!fromToMaleRoute && route.startPoint.toLowerCase().includes(normalizedFrom) && route.endPoint.toLowerCase().includes("male")) {
+    FERRY_ROUTES.forEach((route) => {
+      const routeFromNorm = route.from.toLowerCase().replace(/\s+/g, '-');
+      const routeToNorm = route.to.toLowerCase().replace(/\s+/g, '-');
+      if (!fromToMaleRoute && (routeFromNorm.includes(normalizedFrom) || normalizedFrom.includes(routeFromNorm)) && (routeToNorm.includes("male") || "male".includes(routeToNorm))) {
         fromToMaleRoute = {
           id: route.id,
-          routeName: route.name,
-          routeType: "ferry",
-          from: route.startPoint,
-          to: route.endPoint,
-          duration: route.duration,
-          durationMinutes: parseDuration(route.duration),
-          distance: route.distance,
-          price: route.price,
-          priceAmount: parsePrice(route.price),
-          departureTime: route.schedule[0] || "06:00",
+          routeName: `${route.from} to ${route.to}`,
+          routeType: route.type,
+          from: route.from,
+          to: route.to,
+          duration: `${route.durationMinutes} mins`,
+          durationMinutes: route.durationMinutes,
+          distance: "N/A",
+          price: `$${route.priceUSD}`,
+          priceAmount: route.priceUSD,
+          departureTime: "06:00",
           capacity: route.capacity,
-          speed: route.speed,
-          amenities: route.amenities,
+          speed: "N/A",
+          amenities: [],
           operator: route.operator,
         };
       }
     });
 
-    // Find route from Male to destination
-    PUBLIC_FERRY_ROUTES.forEach((route) => {
-      if (!maleToToRoute && route.startPoint.toLowerCase().includes("male") && route.endPoint.toLowerCase().includes(normalizedTo)) {
+    // Find route from Male to destination (or reverse route if available)
+    FERRY_ROUTES.forEach((route) => {
+      const routeFromNorm = route.from.toLowerCase().replace(/\s+/g, '-');
+      const routeToNorm = route.to.toLowerCase().replace(/\s+/g, '-');
+      // Check for Male → Destination OR Destination → Male (reverse)
+      if (!maleToToRoute && ((routeFromNorm.includes("male") && (routeToNorm.includes(normalizedTo) || normalizedTo.includes(routeToNorm))) || (routeToNorm.includes("male") && (routeFromNorm.includes(normalizedTo) || normalizedTo.includes(routeFromNorm))))) {
         maleToToRoute = {
           id: route.id,
-          routeName: route.name,
-          routeType: "ferry",
-          from: route.startPoint,
-          to: route.endPoint,
-          duration: route.duration,
-          durationMinutes: parseDuration(route.duration),
-          distance: route.distance,
-          price: route.price,
-          priceAmount: parsePrice(route.price),
-          departureTime: route.schedule[0] || "06:00",
+          routeName: `${route.from} to ${route.to}`,
+          routeType: route.type,
+          from: route.from,
+          to: route.to,
+          duration: `${route.durationMinutes} mins`,
+          durationMinutes: route.durationMinutes,
+          distance: "N/A",
+          price: `$${route.priceUSD}`,
+          priceAmount: route.priceUSD,
+          departureTime: "06:00",
           capacity: route.capacity,
-          speed: route.speed,
-          amenities: route.amenities,
+          speed: "N/A",
+          amenities: [],
           operator: route.operator,
         };
       }
     });
 
     // Combine hub routes if both legs exist
-    if (fromToMaleRoute && maleToToRoute) {
+    if (fromToMaleRoute !== undefined && maleToToRoute !== undefined) {
       const totalMinutes = fromToMaleRoute.durationMinutes + maleToToRoute.durationMinutes + 120;
+      const totalPrice = fromToMaleRoute.priceAmount + maleToToRoute.priceAmount;
       routes.push({
         id: `hub-${fromToMaleRoute.id}-${maleToToRoute.id}`,
         routeName: `${fromToMaleRoute.from} → Male → ${maleToToRoute.to}`,
@@ -445,8 +454,8 @@ export function findDirectRoutes(
         duration: `${Math.floor(totalMinutes / 60)}h ${totalMinutes % 60}m`,
         durationMinutes: totalMinutes,
         distance: "Multi-leg",
-        price: `$${fromToMaleRoute.priceAmount + maleToToRoute.priceAmount}`,
-        priceAmount: fromToMaleRoute.priceAmount + maleToToRoute.priceAmount,
+        price: `$${totalPrice}`,
+        priceAmount: totalPrice,
         departureTime: fromToMaleRoute.departureTime,
         capacity: Math.min(fromToMaleRoute.capacity, maleToToRoute.capacity),
         speed: "Variable",
