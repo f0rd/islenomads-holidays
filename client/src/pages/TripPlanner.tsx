@@ -26,8 +26,11 @@ import {
   TripItinerary,
 } from "@/utils/tripPlanner";
 import { calculateRoute, FERRY_ROUTES } from "@/utils/ferryRoutes";
+import { getDestinationInfo } from "@/utils/destinationInfo";
 import WeatherForecast from "@/components/WeatherForecast";
 import WeatherRecommendations from "@/components/WeatherRecommendations";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Star, MapPin as MapPinIcon, Utensils, Activity, Calendar as CalendarIcon } from "lucide-react";
 
 export default function TripPlanner() {
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>([]);
@@ -46,6 +49,8 @@ export default function TripPlanner() {
   const [weatherDestination, setWeatherDestination] = useState<string | null>(null);
   const [weatherCoords, setWeatherCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [showGuesthouses, setShowGuesthouses] = useState(false);
+  const [selectedDestinationInfo, setSelectedDestinationInfo] = useState<string | null>(null);
+  const destinationInfo = selectedDestinationInfo ? getDestinationInfo(selectedDestinationInfo) : null;
 
   const GUESTHOUSE_ISLANDS = [
     "maafushi-island",
@@ -566,6 +571,108 @@ export default function TripPlanner() {
           </div>
         </div>
       </section>
+
+      {/* Destination Info Modal */}
+      <Dialog open={!!selectedDestinationInfo} onOpenChange={() => setSelectedDestinationInfo(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          {destinationInfo && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <MapPinIcon className="w-5 h-5 text-cyan-600" />
+                  {destinationInfo.name}
+                </DialogTitle>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                {/* Basic Info */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Atoll</p>
+                    <p className="font-semibold text-foreground">{destinationInfo.atoll}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Type</p>
+                    <p className="font-semibold text-foreground capitalize">{destinationInfo.type}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Distance from Malé</p>
+                    <p className="font-semibold text-foreground">{destinationInfo.distanceFromMale} km</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Rating</p>
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <p className="font-semibold text-foreground">{destinationInfo.rating}/5 ({destinationInfo.reviews} reviews)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div>
+                  <p className="text-sm text-muted-foreground mb-2">About</p>
+                  <p className="text-foreground">{destinationInfo.description}</p>
+                </div>
+
+                {/* Travel Info */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-cyan-600" />
+                    Travel Options
+                  </p>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="text-muted-foreground">Ferry:</span> <span className="font-medium text-foreground">{destinationInfo.ferryDuration}</span></p>
+                    {destinationInfo.flightAvailable && destinationInfo.flightDuration && (
+                      <p><span className="text-muted-foreground">Flight:</span> <span className="font-medium text-foreground">{destinationInfo.flightDuration}</span></p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Amenities */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Utensils className="w-4 h-4 text-cyan-600" />
+                    Amenities
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {destinationInfo.amenities.map((amenity, idx) => (
+                      <p key={idx} className="text-sm text-foreground">• {amenity}</p>
+                    ))}
+                  </div>
+                  <div className="mt-3 space-y-1 text-sm">
+                    <p className="text-muted-foreground">Guesthouses: <span className="font-semibold text-foreground">{destinationInfo.guesthouses}</span></p>
+                    <p className="text-muted-foreground">Resorts: <span className="font-semibold text-foreground">{destinationInfo.resorts}</span></p>
+                    <p className="text-muted-foreground">Restaurants: <span className="font-semibold text-foreground">{destinationInfo.restaurants}</span></p>
+                  </div>
+                </div>
+
+                {/* Activities */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-600" />
+                    Activities
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {destinationInfo.activities.map((activity, idx) => (
+                      <p key={idx} className="text-sm text-foreground">• {activity}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Best Time to Visit */}
+                <div>
+                  <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <CalendarIcon className="w-4 h-4 text-cyan-600" />
+                    Best Time to Visit
+                  </p>
+                  <p className="text-sm text-foreground mb-2">{destinationInfo.bestMonths.join(", ")}</p>
+                  <p className="text-sm text-muted-foreground">{destinationInfo.weatherSummary}</p>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
