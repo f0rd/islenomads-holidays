@@ -1,41 +1,89 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Palmtree, Waves, Ship, Clock, Users, Zap } from "lucide-react";
-import { SPEEDBOAT_ROUTES, PUBLIC_FERRY_ROUTES, BOAT_INFORMATION } from "@/data/boatRoutes";
+import { trpc } from "@/lib/trpc";
+import { BOAT_INFORMATION } from "@/data/boatRoutes";
 
 export default function BoatRoutes() {
+  const { data: transports = [], isLoading } = trpc.transports.list.useQuery();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedRoute, setSelectedRoute] = useState<(typeof SPEEDBOAT_ROUTES)[0] | (typeof PUBLIC_FERRY_ROUTES)[0] | null>(null);
+  const [selectedRoute, setSelectedRoute] = useState<any | null>(null);
   const [selectedBoat, setSelectedBoat] = useState<(typeof BOAT_INFORMATION)[0] | null>(null);
   const [routeType, setRouteType] = useState<"all" | "speedboat" | "ferry">("all");
-  const [filteredSpeedboats, setFilteredSpeedboats] = useState(SPEEDBOAT_ROUTES);
-  const [filteredFerries, setFilteredFerries] = useState(PUBLIC_FERRY_ROUTES);
 
-  // Filter routes based on search
+  // Convert database transports to display format
+  const convertTransportToRoute = (transport: any, type: "speedboat" | "ferry") => ({
+    id: `transport-${transport.id}`,
+    name: transport.name,
+    type: type === "speedboat" ? "Speedboat Route" : "Ferry Route",
+    startPoint: transport.fromLocation.replace(/-/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    endPoint: transport.toLocation.replace(/-/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    duration: `${transport.durationMinutes} mins`,
+    distance: "N/A",
+    frequency: "Multiple times daily",
+    capacity: transport.capacity,
+    speed: type === "speedboat" ? "40 knots" : "25 knots",
+    price: `$${transport.priceUSD}`,
+    amenities: transport.amenities ? JSON.parse(transport.amenities) : ["Life Jackets"],
+    operator: transport.operator,
+    schedule: transport.schedule ? JSON.parse(transport.schedule) : [transport.departureTime || "06:00"],
+    transportType: transport.transportType,
+    durationMinutes: transport.durationMinutes,
+    priceUSD: transport.priceUSD,
+  });
+
+  // Memoize converted routes to avoid recalculation
+  const { speedboats, ferries } = useMemo(() => {
+    const speedboatList = transports
+      .filter((t: any) => t.transportType === "speedboat")
+      .map((t: any) => convertTransportToRoute(t, "speedboat"));
+    
+    const ferryList = transports
+      .filter((t: any) => t.transportType === "ferry")
+      .map((t: any) => convertTransportToRoute(t, "ferry"));
+
+    return { speedboats: speedboatList, ferries: ferryList };
+  }, [transports]);
+
+  // Filter routes based on search and type
+  const filteredRoutes = useMemo(() => {
+    const searchLower = searchTerm.toLowerCase();
+    let allRoutes = [...speedboats, ...ferries];
+
+    // Filter by type
+    if (routeType === "speedboat") {
+      allRoutes = speedboats;
+    } else if (routeType === "ferry") {
+      allRoutes = ferries;
+    }
+
+    // Filter by search term
+    return allRoutes.filter(
+      (route) =>
+        route.name.toLowerCase().includes(searchLower) ||
+        route.startPoint.toLowerCase().includes(searchLower) ||
+        route.endPoint.toLowerCase().includes(searchLower)
+    );
+  }, [speedboats, ferries, searchTerm, routeType]);
+
   const handleSearch = (term: string) => {
     setSearchTerm(term);
-    const searchLower = term.toLowerCase();
-
-    const speedboats = SPEEDBOAT_ROUTES.filter(
-      (route) =>
-        route.name.toLowerCase().includes(searchLower) ||
-        route.startPoint.toLowerCase().includes(searchLower) ||
-        route.endPoint.toLowerCase().includes(searchLower)
-    );
-
-    const ferries = PUBLIC_FERRY_ROUTES.filter(
-      (route) =>
-        route.name.toLowerCase().includes(searchLower) ||
-        route.startPoint.toLowerCase().includes(searchLower) ||
-        route.endPoint.toLowerCase().includes(searchLower)
-    );
-
-    setFilteredSpeedboats(speedboats);
-    setFilteredFerries(ferries);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navigation />
+        <div className="flex-1 flex items-center justify-center">
+          <p className="text-lg text-muted-foreground">Loading boat routes...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -73,7 +121,7 @@ export default function BoatRoutes() {
                     : "bg-secondary text-foreground hover:bg-secondary/80"
                 }`}
               >
-                All Routes
+                All Routes ({filteredRoutes.length})
               </button>
               <button
                 onClick={() => setRouteType("speedboat")}
@@ -84,7 +132,7 @@ export default function BoatRoutes() {
                 }`}
               >
                 <Zap className="w-4 h-4" />
-                Speedboats
+                Speedboats ({speedboats.length})
               </button>
               <button
                 onClick={() => setRouteType("ferry")}
@@ -95,336 +143,148 @@ export default function BoatRoutes() {
                 }`}
               >
                 <Ship className="w-4 h-4" />
-                Ferries
+                Ferries ({ferries.length})
               </button>
             </div>
           </div>
 
-          {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Routes List */}
-            <div className="lg:col-span-2 space-y-4">
-              {/* Speedboat Routes */}
-              {(routeType === "all" || routeType === "speedboat") && (
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Zap className="w-6 h-6 text-blue-600" />
-                    Speedboat Routes ({filteredSpeedboats.length})
-                  </h2>
-                  <div className="space-y-3">
-                    {filteredSpeedboats.length > 0 ? (
-                      filteredSpeedboats.map((route) => (
-                        <Card
-                          key={route.id}
-                          onClick={() => setSelectedRoute(route)}
-                          className={`cursor-pointer transition-all ${
-                            selectedRoute?.id === route.id
-                              ? "border-blue-600 bg-blue-50 shadow-lg"
-                              : "hover:shadow-md"
-                          }`}
-                        >
-                          <CardContent className="pt-6">
-                            <div className="flex items-start justify-between mb-3">
-                              <div>
-                                <h3 className="font-bold text-foreground text-lg">{route.name}</h3>
-                                <p className="text-sm text-muted-foreground">
-                                  {route.startPoint} → {route.endPoint}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-xl font-bold text-blue-600">{route.price}</div>
-                                <div className="text-xs text-muted-foreground">{route.duration}</div>
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-4 gap-2 text-sm">
-                              <div className="flex items-center gap-1">
-                                <Clock className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.frequency}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Users className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.capacity} pax</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Zap className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.speed}</span>
-                              </div>
-                              <div className="text-muted-foreground">{route.distance}</div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))
-                    ) : (
-                      <div className="text-center text-muted-foreground py-8">
-                        No speedboat routes found
+          {/* Routes Grid */}
+          {filteredRoutes.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {filteredRoutes.map((route) => (
+                <Card
+                  key={route.id}
+                  className="cursor-pointer hover:shadow-lg transition-all"
+                  onClick={() => setSelectedRoute(route)}
+                >
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <CardTitle className="text-lg">{route.name}</CardTitle>
+                        <p className="text-sm text-muted-foreground mt-1">{route.type}</p>
                       </div>
-                    )}
-                  </div>
-                </div>
-              )}
+                      {route.transportType === "speedboat" ? (
+                        <Zap className="w-5 h-5 text-blue-600" />
+                      ) : (
+                        <Ship className="w-5 h-5 text-cyan-600" />
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Waves className="w-4 h-4 text-muted-foreground" />
+                      <span>
+                        {route.startPoint} → {route.endPoint}
+                      </span>
+                    </div>
 
-              {/* Ferry Routes */}
-              {(routeType === "all" || routeType === "ferry") && (
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                    <Ship className="w-6 h-6 text-cyan-600" />
-                    Public Ferry Routes ({filteredFerries.length})
-                  </h2>
-                  <div className="space-y-3">
-                    {filteredFerries.length > 0 ? (
-                      filteredFerries.map((route) => (
-                        <Card
-                          key={route.id}
-                          onClick={() => setSelectedRoute(route)}
-                          className={`cursor-pointer transition-all ${
-                            selectedRoute?.id === route.id
-                              ? "border-cyan-600 bg-cyan-50 shadow-lg"
-                              : "hover:shadow-md"
-                          }`}
-                        >
-                          <CardContent className="pt-6">
-                            <div className="flex items-start justify-between mb-3">
-                              <div>
-                                <h3 className="font-bold text-foreground text-lg">{route.name}</h3>
-                                <p className="text-sm text-muted-foreground">
-                                  {route.startPoint} → {route.endPoint}
-                                </p>
-                              </div>
-                              <div className="text-right">
-                                <div className="text-xl font-bold text-cyan-600">{route.price}</div>
-                                <div className="text-xs text-muted-foreground">{route.duration}</div>
-                              </div>
-                            </div>
-                            <div className="grid grid-cols-4 gap-2 text-sm">
-                              <div className="flex items-center gap-1">
-                                <Clock className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.frequency}</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Users className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.capacity} pax</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                <Zap className="w-4 h-4 text-muted-foreground" />
-                                <span>{route.speed}</span>
-                              </div>
-                              <div className="text-muted-foreground">{route.distance}</div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))
-                    ) : (
-                      <div className="text-center text-muted-foreground py-8">
-                        No ferry routes found
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm">{route.duration}</span>
                       </div>
-                    )}
-                  </div>
-                </div>
-              )}
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-sm">{route.capacity} pax</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t">
+                      <p className="font-semibold text-lg text-primary">{route.price}</p>
+                      <p className="text-xs text-muted-foreground">Operator: {route.operator}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-
-            {/* Sidebar - Boat Information */}
-            <div className="lg:col-span-1">
-              <Card className="h-full overflow-hidden flex flex-col">
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Ship className="w-5 h-5 text-cyan-600" />
-                    Boat Fleet ({BOAT_INFORMATION.length})
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 overflow-y-auto space-y-2 max-h-96">
-                  {BOAT_INFORMATION.map((boat) => (
-                    <div
-                      key={boat.id}
-                      onClick={() => setSelectedBoat(boat)}
-                      className={`p-3 rounded-lg cursor-pointer transition-all text-sm ${
-                        selectedBoat?.id === boat.id
-                          ? "bg-cyan-600 text-white shadow-lg"
-                          : "bg-secondary hover:bg-secondary/80"
-                      }`}
-                    >
-                      <div className="font-semibold">{boat.name}</div>
-                      <div className="text-xs opacity-75">{boat.type}</div>
-                      <div className="text-xs opacity-75 mt-1">⭐ {boat.rating}</div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-lg text-muted-foreground">No routes found matching your search.</p>
             </div>
-          </div>
-
-          {/* Route Details */}
-          {selectedRoute && (
-            <Card className="mt-8 border-blue-600">
-              <CardHeader className="bg-blue-50">
-                <CardTitle className="flex items-center gap-2 text-blue-900">
-                  <Zap className="w-5 h-5" />
-                  {selectedRoute.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Route Information */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-4">Route Information</h3>
-                      <div className="space-y-3">
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">From</span>
-                          <span className="font-semibold">{selectedRoute.startPoint}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">To</span>
-                          <span className="font-semibold">{selectedRoute.endPoint}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Distance</span>
-                          <span className="font-semibold">{selectedRoute.distance}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Duration</span>
-                          <span className="font-semibold">{selectedRoute.duration}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Speed</span>
-                          <span className="font-semibold">{selectedRoute.speed}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Price</span>
-                          <span className="font-semibold text-lg text-blue-600">{selectedRoute.price}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Operator</h3>
-                      <p className="text-foreground font-medium">{selectedRoute.operator}</p>
-                    </div>
-                  </div>
-
-                  {/* Schedule and Amenities */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Departure Schedule</h3>
-                      <div className="grid grid-cols-3 gap-2">
-                        {selectedRoute.schedule.map((time, idx) => (
-                          <div
-                            key={idx}
-                            className="px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-center font-medium text-sm"
-                          >
-                            {time}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Amenities</h3>
-                      <div className="space-y-2">
-                        {selectedRoute.amenities.map((amenity, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                            <span className="text-foreground">{amenity}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Capacity & Frequency</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <Users className="w-4 h-4 text-blue-600" />
-                          <span className="text-foreground">Capacity: {selectedRoute.capacity} passengers</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-blue-600" />
-                          <span className="text-foreground">Frequency: {selectedRoute.frequency}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           )}
 
-          {/* Boat Details */}
-          {selectedBoat && (
-            <Card className="mt-8 border-cyan-600">
-              <CardHeader className="bg-cyan-50">
-                <CardTitle className="flex items-center gap-2 text-cyan-900">
-                  <Ship className="w-5 h-5" />
-                  {selectedBoat.name}
-                </CardTitle>
+          {/* Selected Route Details */}
+          {selectedRoute && (
+            <Card className="mb-12 border-primary/50 bg-primary/5">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-2xl">{selectedRoute.name}</CardTitle>
+                  <button
+                    onClick={() => setSelectedRoute(null)}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    ✕
+                  </button>
+                </div>
               </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Boat Specifications */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-4">Specifications</h3>
-                      <div className="space-y-3">
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Type</span>
-                          <span className="font-semibold">{selectedBoat.type}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Length</span>
-                          <span className="font-semibold">{selectedBoat.length}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Speed</span>
-                          <span className="font-semibold">{selectedBoat.speed}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Capacity</span>
-                          <span className="font-semibold">{selectedBoat.capacity} passengers</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Year Built</span>
-                          <span className="font-semibold">{selectedBoat.yearBuilt}</span>
-                        </div>
-                        <div className="flex justify-between border-b border-border pb-2">
-                          <span className="text-muted-foreground">Rating</span>
-                          <span className="font-semibold">⭐ {selectedBoat.rating}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Description</h3>
-                      <p className="text-muted-foreground">{selectedBoat.description}</p>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-semibold mb-3">Route Information</h3>
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        <span className="text-muted-foreground">From:</span> {selectedRoute.startPoint}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">To:</span> {selectedRoute.endPoint}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Duration:</span> {selectedRoute.duration}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Distance:</span> {selectedRoute.distance}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Frequency:</span> {selectedRoute.frequency}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Amenities and Safety */}
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Amenities</h3>
-                      <div className="space-y-2">
-                        {selectedBoat.amenities.map((amenity, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
-                            <span className="text-foreground">{amenity}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-3">Safety Features</h3>
-                      <div className="space-y-2">
-                        {selectedBoat.safetyFeatures.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                            <span className="text-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                  <div>
+                    <h3 className="font-semibold mb-3">Vessel Information</h3>
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        <span className="text-muted-foreground">Type:</span> {selectedRoute.type}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Capacity:</span> {selectedRoute.capacity} passengers
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Speed:</span> {selectedRoute.speed}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Operator:</span> {selectedRoute.operator}
+                      </p>
+                      <p>
+                        <span className="text-muted-foreground">Price:</span> {selectedRoute.price}
+                      </p>
                     </div>
                   </div>
                 </div>
+
+                <div>
+                  <h3 className="font-semibold mb-3">Amenities</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedRoute.amenities.map((amenity: string, idx: number) => (
+                      <span key={idx} className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">
+                        {amenity}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {selectedRoute.schedule && selectedRoute.schedule.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold mb-3">Departure Times</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedRoute.schedule.map((time: string, idx: number) => (
+                        <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded text-sm font-medium">
+                          {time}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
           )}
