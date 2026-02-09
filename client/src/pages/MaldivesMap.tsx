@@ -8,6 +8,7 @@ import { MapPin, Info, Waves, Anchor, Building2, Palmtree, BookOpen, Star, Clock
 import { Link } from "wouter";
 import { getDestinationInfo } from "@/utils/destinationInfo";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import LocationDetailPanel from "@/components/LocationDetailPanel";
 
 // Maldives popular locations data
 const MALDIVES_LOCATIONS = [
@@ -1237,358 +1238,59 @@ export default function MaldivesMap() {
 
           {/* Details Sections */}
           {selectedIsland && (
-            <Card className="mt-8 border-green-600">
-              <CardHeader className="bg-green-50">
-                <CardTitle className="flex items-center gap-2 text-green-900">
-                  <Palmtree className="w-5 h-5" />
-                  {selectedIsland.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div className="w-full h-48 bg-gradient-to-br from-green-300 to-emerald-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
-                      🏝️
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedIsland.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedIsland.highlights.map((highlight, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium"
-                          >
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Category</div>
-                        <div className="font-semibold text-foreground">{selectedIsland.category}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Population</div>
-                        <div className="font-semibold text-foreground">{selectedIsland.population}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Rating</div>
-                        <div className="font-semibold text-foreground">⭐ {selectedIsland.rating}</div>
-                      </div>
-                    </div>
-                    <div className="pt-4">
-                      <Link href={`/island/${selectedIsland.slug}`}>
-                        <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                          View Full Island Guide
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedIsland}
+              type="island"
+              onClose={() => setSelectedIsland(null)}
+            />
           )}
+
+
 
           {selectedResort && (
-            <Card className="mt-8 border-purple-600">
-              <CardHeader className="bg-purple-50">
-                <CardTitle className="flex items-center gap-2 text-purple-900">
-                  <Building2 className="w-5 h-5" />
-                  {selectedResort.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div className="w-full h-48 bg-gradient-to-br from-purple-300 to-violet-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
-                      🏨
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedResort.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Amenities</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedResort.amenities.map((amenity, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium"
-                          >
-                            {amenity}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Category</div>
-                        <div className="font-semibold text-foreground">{selectedResort.category}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Price/Night</div>
-                        <div className="font-semibold text-foreground">{selectedResort.pricePerNight}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Rating</div>
-                        <div className="font-semibold text-foreground">⭐ {selectedResort.rating}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedResort}
+              type="resort"
+              onClose={() => setSelectedResort(null)}
+            />
           )}
+
 
           {selectedLocation && (
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-accent" />
-                  {selectedLocation.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div
-                      className="w-full h-48 bg-gradient-to-br from-cyan-300 to-teal-400 rounded-lg flex items-center justify-center text-white font-semibold"
-                      style={{
-                        backgroundImage: `url(${selectedLocation.image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    >
-                      {selectedLocation.name}
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedLocation.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedLocation.highlights.map((highlight, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium"
-                          >
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Latitude</div>
-                        <div className="font-semibold text-foreground">
-                          {selectedLocation.lat.toFixed(4)}°N
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Longitude</div>
-                        <div className="font-semibold text-foreground">
-                          {selectedLocation.lng.toFixed(4)}°E
-                        </div>
-                      </div>
-                    </div>
-                    <div className="pt-4 border-t border-border">
-                      <Link href="/island-guide/male-guide">
-                        <Button className="w-full gap-2">
-                          <BookOpen className="w-4 h-4" />
-                          Read Full Island Guide
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedLocation}
+              type="atoll"
+              onClose={() => setSelectedLocation(null)}
+            />
           )}
+
 
           {selectedDive && (
-            <Card className="mt-8 border-cyan-600">
-              <CardHeader className="bg-cyan-50">
-                <CardTitle className="flex items-center gap-2 text-cyan-900">
-                  <Anchor className="w-5 h-5" />
-                  {selectedDive.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div className="w-full h-48 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-lg flex items-center justify-center text-white font-semibold text-2xl">
-                      ⚓
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedDive.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedDive.highlights.map((highlight, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium"
-                          >
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Difficulty</div>
-                        <div className="font-semibold text-foreground">{selectedDive.difficulty}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Depth</div>
-                        <div className="font-semibold text-foreground">{selectedDive.depth}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Rating</div>
-                        <div className="font-semibold text-foreground">⭐ {selectedDive.rating}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedDive}
+              type="dive"
+              onClose={() => setSelectedDive(null)}
+            />
           )}
+
 
           {selectedSurf && (
-            <Card className="mt-8 border-amber-500">
-              <CardHeader className="bg-amber-50">
-                <CardTitle className="flex items-center gap-2 text-amber-900">
-                  <Waves className="w-5 h-5" />
-                  {selectedSurf.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div className="w-full h-48 bg-gradient-to-br from-amber-300 to-orange-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
-                      🌊
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedSurf.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedSurf.highlights.map((highlight, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium"
-                          >
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Difficulty</div>
-                        <div className="font-semibold text-foreground">{selectedSurf.difficulty}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Wave Height</div>
-                        <div className="font-semibold text-foreground">{selectedSurf.waveHeight}</div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Rating</div>
-                        <div className="font-semibold text-foreground">⭐ {selectedSurf.rating}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedSurf}
+              type="surf"
+              onClose={() => setSelectedSurf(null)}
+            />
           )}
 
+
           {selectedAirport && (
-            <Card className="mt-8 border-indigo-600">
-              <CardHeader className="bg-indigo-50">
-                <CardTitle className="flex items-center gap-2 text-indigo-900">
-                  <MapPin className="w-5 h-5" />
-                  {selectedAirport.name} ({selectedAirport.code})
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-1">
-                    <div className="w-full h-48 bg-gradient-to-br from-indigo-300 to-blue-400 rounded-lg flex items-center justify-center text-white font-semibold text-4xl">
-                      ✈️
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                      <p className="text-muted-foreground">{selectedAirport.description}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Airlines</h3>
-                      <p className="text-muted-foreground">{selectedAirport.airlines}</p>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-2">Highlights</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedAirport.highlights.map((highlight, idx) => (
-                          <span key={idx} className="px-3 py-1 bg-indigo-100 text-indigo-900 rounded-full text-sm font-medium">
-                            {highlight}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-                      <div>
-                        <div className="text-xs text-muted-foreground">Latitude</div>
-                        <div className="font-semibold text-foreground">
-                          {selectedAirport.lat.toFixed(4)}°N
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">Longitude</div>
-                        <div className="font-semibold text-foreground">
-                          {selectedAirport.lng.toFixed(4)}°E
-                        </div>
-                      </div>
-                    </div>
-                    <div className="pt-4 border-t border-border">
-                      <div className="text-sm text-muted-foreground">Rating: {selectedAirport.rating}/5 ⭐</div>
-                    </div>
-                    <div className="pt-4 flex gap-3 flex-wrap">
-                      <Link href="/packages">
-                        <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium">
-                          Book a Package
-                        </button>
-                      </Link>
-                      <button onClick={() => setSelectedAirport(null)} className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors text-sm font-medium">
-                        Close
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <LocationDetailPanel
+              location={selectedAirport}
+              type="airport"
+              onClose={() => setSelectedAirport(null)}
+            />
           )}
+
         </div>
       </section>
 
