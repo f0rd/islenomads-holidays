@@ -126,15 +126,30 @@ export default function ExploreMaldives() {
               Discover pristine atolls and beautiful islands. Browse by region or search for your perfect destination.
             </p>
 
-            {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
-              <Input
-                placeholder="Search atolls and islands..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 py-3 text-base bg-background text-foreground border-border"
-              />
+            {/* Enhanced Search Bar */}
+            <div className="relative max-w-2xl mx-auto">
+              <div className="relative group">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5 group-focus-within:text-accent transition-colors" />
+                <Input
+                  placeholder="Search atolls, islands, dive sites, attractions..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-4 py-4 text-base bg-background text-foreground border-2 border-border hover:border-accent focus:border-accent transition-colors rounded-lg shadow-lg"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    X
+                  </button>
+                )}
+              </div>
+              {searchQuery && (
+                <div className="mt-3 text-sm text-muted-foreground text-center">
+                  {filteredAtolls.length + filteredIslands.length + filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length} results found
+                </div>
+              )}
             </div>
           </div>
         </div>
