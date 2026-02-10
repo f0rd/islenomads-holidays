@@ -246,6 +246,7 @@ export const islandGuides = mysqlTable("island_guides", {
   // FAQ
   faq: text("faq"), // JSON array of Q&A
   // Media
+  heroImage: varchar("heroImage", { length: 500 }), // Hero image URL
   images: text("images"), // JSON array of image URLs
   // Coordinates
   latitude: varchar("latitude", { length: 50 }),

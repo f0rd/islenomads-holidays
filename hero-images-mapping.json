@@ -1,0 +1,290 @@
+{
+  "atolls": [
+    {
+      "slug": "alif-alif-atoll",
+      "name": "Alif Alif Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Pristine coral reefs and exclusive resorts"
+    },
+    {
+      "slug": "alif-dhaal-atoll",
+      "name": "Alif Dhaal Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Whale shark encounters and diving"
+    },
+    {
+      "slug": "baa-atoll",
+      "name": "Baa Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "UNESCO Biosphere Reserve with manta rays"
+    },
+    {
+      "slug": "dhaalu-atoll",
+      "name": "Dhaalu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Quiet atoll with growing local tourism"
+    },
+    {
+      "slug": "faafu-atoll",
+      "name": "Faafu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Less visited atoll with pristine reefs"
+    },
+    {
+      "slug": "gaafu-alif-atoll",
+      "name": "Gaafu Alif Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Southern atoll with deep channels"
+    },
+    {
+      "slug": "gaafu-dhaalu-atoll",
+      "name": "Gaafu Dhaalu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Remote southern atoll with strong culture"
+    },
+    {
+      "slug": "gnaviyani-atoll",
+      "name": "Gnaviyani Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Smallest administrative atoll"
+    },
+    {
+      "slug": "haa-dhaalu-atoll",
+      "name": "Haa Dhaalu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Northern atoll with heritage islands"
+    },
+    {
+      "slug": "haa-alif-atoll",
+      "name": "Haa Alif Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Northernmost atoll of the Maldives"
+    },
+    {
+      "slug": "kaafu-atoll",
+      "name": "Kaafu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Home to Malé and major transport hub"
+    },
+    {
+      "slug": "laamu-atoll",
+      "name": "Laamu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Surf and eco-focused atoll"
+    },
+    {
+      "slug": "lhaviyani-atoll",
+      "name": "Lhaviyani Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Known for dive sites and lagoons"
+    },
+    {
+      "slug": "meemu-atoll",
+      "name": "Meemu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Quiet islands with local charm"
+    },
+    {
+      "slug": "noonu-atoll",
+      "name": "Noonu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Northern atoll with untouched reefs"
+    },
+    {
+      "slug": "raa-atoll",
+      "name": "Raa Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Popular for diving and resorts"
+    },
+    {
+      "slug": "seenu-atoll",
+      "name": "Seenu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Addu City and WWII heritage"
+    },
+    {
+      "slug": "shaviyani-atoll",
+      "name": "Shaviyani Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Developing local island tourism"
+    },
+    {
+      "slug": "thaa-atoll",
+      "name": "Thaa Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Remote and culturally rich atoll"
+    },
+    {
+      "slug": "vaavu-atoll",
+      "name": "Vaavu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Closest diving atoll to Malé"
+    }
+  ],
+  "islands": [
+    {
+      "slug": "maafushi",
+      "name": "Maafushi Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Most popular budget island near Malé"
+    },
+    {
+      "slug": "fulidhoo",
+      "name": "Fulidhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Easy ferry access and bikini beach"
+    },
+    {
+      "slug": "dhigurah",
+      "name": "Dhigurah Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Long sandy island with marine life"
+    },
+    {
+      "slug": "ukulhas",
+      "name": "Ukulhas Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Clean island with great beaches"
+    },
+    {
+      "slug": "dharavandhoo",
+      "name": "Dharavandhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Gateway to Hanifaru Bay"
+    },
+    {
+      "slug": "thoddoo",
+      "name": "Thoddoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Famous for agriculture and lagoons"
+    },
+    {
+      "slug": "guraidhoo",
+      "name": "Guraidhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Surf and local culture hub"
+    },
+    {
+      "slug": "dhiffushi",
+      "name": "Dhiffushi Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Budget surf island"
+    },
+    {
+      "slug": "rasdhoo",
+      "name": "Rasdhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Diving hotspot"
+    },
+    {
+      "slug": "hulhumale",
+      "name": "Hulhumalé Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Urban island near airport"
+    },
+    {
+      "slug": "kudahuvadhoo",
+      "name": "Kudahuvadhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Administrative island with culture"
+    },
+    {
+      "slug": "naifaru",
+      "name": "Naifaru Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Busy island with services"
+    },
+    {
+      "slug": "fodhdhoo",
+      "name": "Fodhdhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Quiet eco island"
+    },
+    {
+      "slug": "felidhoo",
+      "name": "Felidhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Local life and diving"
+    },
+    {
+      "slug": "muli",
+      "name": "Muli Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Peaceful local island"
+    },
+    {
+      "slug": "kolhufushi",
+      "name": "Kolhufushi Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Traditional fishing island"
+    },
+    {
+      "slug": "gan",
+      "name": "Gan Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Addu city heritage island"
+    },
+    {
+      "slug": "feidhoo",
+      "name": "Feidhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Connected to Addu city"
+    },
+    {
+      "slug": "maradhoo",
+      "name": "Maradhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Residential island"
+    },
+    {
+      "slug": "hithadhoo",
+      "name": "Hithadhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Largest southern city island"
+    },
+    {
+      "slug": "veymandoo",
+      "name": "Veymandoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Quiet and scenic"
+    },
+    {
+      "slug": "madifushi",
+      "name": "Madifushi Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Local island with beaches"
+    },
+    {
+      "slug": "inguraidhoo",
+      "name": "Inguraidhoo Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Community island"
+    },
+    {
+      "slug": "alifushi",
+      "name": "Alifushi Island",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Boat-building island"
+    },
+    {
+      "slug": "ungoofaaru",
+      "name": "Ungoofaaru Island",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Administrative capital of Raa"
+    }
+  ],
+  "attractions": [
+    {
+      "slug": "hanifaru-bay",
+      "name": "Hanifaru Bay",
+      "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop",
+      "description": "Manta ray aggregation site"
+    },
+    {
+      "slug": "haa-alifu-atoll",
+      "name": "Haa Alifu Atoll",
+      "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop",
+      "description": "Northern heritage atoll"
+    }
+  ]
+}

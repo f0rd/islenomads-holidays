@@ -26,6 +26,7 @@ interface IslandGuideData {
   overview: string | null;
   featured: number;
   published: number;
+  heroImage?: string | null;
   contentType?: 'island' | 'point_of_interest';
 }
 
@@ -320,12 +321,20 @@ export default function ExploreMaldives() {
                   {filteredIslands.map((island: IslandGuideData) => (
                     <Link key={island.id} href={`/island/${island.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        {/* Hero Image Placeholder */}
+                        {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
-                          <div className="text-center">
-                            <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                            <p className="text-sm text-primary-foreground/80 font-semibold">Island Guide</p>
-                          </div>
+                          {island.heroImage ? (
+                            <img
+                              src={island.heroImage}
+                              alt={island.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="text-center">
+                              <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                              <p className="text-sm text-primary-foreground/80 font-semibold">Island Guide</p>
+                            </div>
+                          )}
 
                           {island.atoll && (
                             <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
@@ -376,12 +385,20 @@ export default function ExploreMaldives() {
                   {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => (
                     <Link key={poi.id} href={`/island/${poi.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        {/* Hero Image Placeholder */}
+                        {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
-                          <div className="text-center">
-                            <Star className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                            <p className="text-sm text-primary-foreground/80 font-semibold">Attraction</p>
-                          </div>
+                          {poi.heroImage ? (
+                            <img
+                              src={poi.heroImage}
+                              alt={poi.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="text-center">
+                              <Star className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                              <p className="text-sm text-primary-foreground/80 font-semibold">Attraction</p>
+                            </div>
+                          )}
 
                           {poi.atoll && (
                             <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">

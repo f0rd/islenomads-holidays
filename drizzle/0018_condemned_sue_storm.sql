@@ -1,0 +1,1 @@
+ALTER TABLE `island_guides` ADD `heroImage` varchar(500);
