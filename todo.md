@@ -734,7 +734,8 @@
 - [x] Create database helper functions for boat routes with island references
 - [x] Add tRPC procedures for boat routes queries (listWithIslands, fromIsland, toIsland)
 - [x] Add boat routes state to IslandDetail component
-- [ ] Add boat routes UI section to IslandDetail page
+- [x] Fix infinite loop in IslandDetail useEffect (changed dependency array to use .length)
+- [ ] Add boat routes UI section to IslandDetail page (will use useQuery hooks for proper implementation)
 - [ ] Connect boat_routes to Maps visualization with route lines
 - [ ] Update Maps to show boat routes between islands
 - [ ] Test data consistency across Explore Maldives, Maps, and Boat Routes modules

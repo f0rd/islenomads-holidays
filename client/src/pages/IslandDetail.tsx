@@ -47,6 +47,7 @@ export default function IslandDetail() {
   // Fetch boat routes
   const [boatRoutesFrom, setBoatRoutesFrom] = useState<any[]>([]);
   const [boatRoutesTo, setBoatRoutesTo] = useState<any[]>([]);
+  const [boatRoutesFetched, setBoatRoutesFetched] = useState(false);
 
   useEffect(() => {
     if (guides.length > 0 && slug) {
@@ -62,7 +63,10 @@ export default function IslandDetail() {
         setRelatedPackages(related);
       }
     }
-  }, [slug, guides, packages]);
+  }, [slug, guides.length, packages.length]);
+
+  // TODO: Add boat routes fetching with proper hook implementation
+  // Will use useQuery hooks instead of async/await in useEffect
 
   if (isLoading) {
     return (
