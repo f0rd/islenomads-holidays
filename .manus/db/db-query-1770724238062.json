@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, slug FROM atolls ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls ORDER BY name",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Alif Alif Atoll",
+      "slug": "alif-alif-atoll"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll"
+    },
+    {
+      "id": "4",
+      "name": "Baa Atoll",
+      "slug": "baa-atoll"
+    },
+    {
+      "id": "1",
+      "name": "Kaafu Atoll",
+      "slug": "kaafu-atoll"
+    },
+    {
+      "id": "6",
+      "name": "Lhaviyani Atoll",
+      "slug": "lhaviyani-atoll"
+    },
+    {
+      "id": "5",
+      "name": "Vaavu Atoll",
+      "slug": "vaavu-atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n2\tAlif Alif Atoll\talif-alif-atoll\n3\tAlif Dhaal Atoll\talif-dhaal-atoll\n4\tBaa Atoll\tbaa-atoll\n1\tKaafu Atoll\tkaafu-atoll\n6\tLhaviyani Atoll\tlhaviyani-atoll\n5\tVaavu Atoll\tvaavu-atoll\n",
+  "stderr": "",
+  "execution_time_ms": 106
+}
