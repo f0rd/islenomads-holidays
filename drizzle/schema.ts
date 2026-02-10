@@ -154,6 +154,10 @@ export const boatRoutes = mysqlTable("boat_routes", {
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   type: mysqlEnum("type", ["speedboat", "ferry"]).notNull(),
+  fromIslandGuideId: int("fromIslandGuideId"), // Reference to island_guides (starting point)
+  toIslandGuideId: int("toIslandGuideId"), // Reference to island_guides (destination)
+  fromAtollId: int("fromAtollId"), // Reference to atolls (starting atoll)
+  toAtollId: int("toAtollId"), // Reference to atolls (destination atoll)
   fromLocation: varchar("fromLocation", { length: 255 }).notNull(),
   toLocation: varchar("toLocation", { length: 255 }).notNull(),
   fromLat: varchar("fromLat", { length: 50 }).notNull(),

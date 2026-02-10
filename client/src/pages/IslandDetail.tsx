@@ -43,6 +43,10 @@ export default function IslandDetail() {
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
   const { data: packages = [] } = trpc.packages.list.useQuery();
+  
+  // Fetch boat routes
+  const [boatRoutesFrom, setBoatRoutesFrom] = useState<any[]>([]);
+  const [boatRoutesTo, setBoatRoutesTo] = useState<any[]>([]);
 
   useEffect(() => {
     if (guides.length > 0 && slug) {

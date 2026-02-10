@@ -233,6 +233,59 @@ export async function deleteBoatRoute(id: number): Promise<boolean> {
   return true;
 }
 
+// Get boat routes with island guide references
+export async function getBoatRoutesWithIslands(): Promise<(BoatRoute & { fromIsland?: IslandGuide; toIsland?: IslandGuide })[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const routes = await db.select().from(boatRoutes).where(eq(boatRoutes.published, 1));
+  
+  // Enrich with island guide data
+  const enriched = await Promise.all(
+    routes.map(async (route) => {
+      let fromIsland: IslandGuide | undefined;
+      let toIsland: IslandGuide | undefined;
+      
+      if (route.fromIslandGuideId) {
+        fromIsland = await getIslandGuideById(route.fromIslandGuideId);
+      }
+      if (route.toIslandGuideId) {
+        toIsland = await getIslandGuideById(route.toIslandGuideId);
+      }
+      
+      return { ...route, fromIsland, toIsland };
+    })
+  );
+  
+  return enriched;
+}
+
+// Get boat routes from a specific island
+export async function getBoatRoutesFromIsland(islandGuideId: number): Promise<BoatRoute[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(boatRoutes).where(
+    and(
+      eq(boatRoutes.fromIslandGuideId, islandGuideId),
+      eq(boatRoutes.published, 1)
+    )
+  ) as any;
+}
+
+// Get boat routes to a specific island
+export async function getBoatRoutesToIsland(islandGuideId: number): Promise<BoatRoute[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(boatRoutes).where(
+    and(
+      eq(boatRoutes.toIslandGuideId, islandGuideId),
+      eq(boatRoutes.published, 1)
+    )
+  ) as any;
+}
+
 // Map Locations helpers
 export async function getMapLocations(published?: boolean): Promise<MapLocation[]> {
   const db = await getDb();

@@ -10,7 +10,7 @@ import {
   getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost,
   getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage,
   updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
-  getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getMapLocations, getMapLocationBySlug,
+  getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getBoatRoutesWithIslands, getBoatRoutesFromIsland, getBoatRoutesToIsland, getMapLocations, getMapLocationBySlug,
   getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getMapLocationWithGuide, getIslandGuides,
   getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
   deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
@@ -404,6 +404,22 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteBoatRoute(input.id);
+      }),
+
+    listWithIslands: publicProcedure.query(async () => {
+      return getBoatRoutesWithIslands();
+    }),
+
+    fromIsland: publicProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return getBoatRoutesFromIsland(input.islandGuideId);
+      }),
+
+    toIsland: publicProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return getBoatRoutesToIsland(input.islandGuideId);
       }),
   }),
 

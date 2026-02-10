@@ -724,3 +724,18 @@
 - [x] Add rating field for sorting and recommendations
 - [x] Add reviewCount, capacity, operatorInfo fields for operational management
 - [x] Push database migration with new fields
+
+
+## Unified Data Structure - Island Guides, Boat Routes, Maps, Explore Maldives
+- [x] Verify island_guides data is fully populated in database
+- [x] Update Explore Maldives page to fetch island_guides from database (already using trpc.islandGuides.list)
+- [x] Create boat_routes CMS module infrastructure (routes already exist in DB)
+- [x] Add foreign key references to boat_routes table (fromIslandGuideId, toIslandGuideId, fromAtollId, toAtollId)
+- [x] Create database helper functions for boat routes with island references
+- [x] Add tRPC procedures for boat routes queries (listWithIslands, fromIsland, toIsland)
+- [x] Add boat routes state to IslandDetail component
+- [ ] Add boat routes UI section to IslandDetail page
+- [ ] Connect boat_routes to Maps visualization with route lines
+- [ ] Update Maps to show boat routes between islands
+- [ ] Test data consistency across Explore Maldives, Maps, and Boat Routes modules
+- [ ] Add boat routes filtering to Explore Maldives (filter by route type, duration, price)
