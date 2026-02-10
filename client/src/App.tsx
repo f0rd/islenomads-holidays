@@ -31,6 +31,8 @@ import AdminBranding from "./pages/AdminBranding";
 import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
 import IslandGuides from "./pages/IslandGuides";
+import Atolls from "./pages/Atolls";
+import AtollDetail from "./pages/AtollDetail";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -47,9 +49,11 @@ function Router() {
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
-      <Route path={"\island-guide/:islandId"} component={IslandGuide} />
+      <Route path={"\\island-guide/:islandId"} component={IslandGuide} />
       <Route path={"/island/:slug"} component={IslandDetail} />
-      <Route path={"/island-guides"} component={IslandGuides} />
+      <Route path={"\\island-guides"} component={IslandGuides} />
+      <Route path={"/atolls"} component={Atolls} />
+      <Route path={"/atoll/:slug"} component={AtollDetail} />
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />

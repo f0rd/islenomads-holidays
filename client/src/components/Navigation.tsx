@@ -13,6 +13,7 @@ export default function Navigation() {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Map", href: "/map" },
+    { label: "Atolls", href: "/atolls" },
     { label: "Island Guides", href: "/island-guides" },
     { label: "Trip Planner", href: "/trip-planner" },
     { label: "Packages", href: "/packages" },
