@@ -4,32 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Calendar, ArrowLeft } from 'lucide-react';
+import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Calendar, ArrowLeft, Waves, Zap } from 'lucide-react';
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
-
-interface IslandGuide {
-  id: number;
-  name: string;
-  slug: string;
-  description: string | null;
-  overview: string | null;
-  image: string | null;
-  latitude: number;
-  longitude: number;
-  activities: string | null;
-  dining: string | null;
-  packingTips: string | null;
-  healthSafety: string | null;
-  faqContent: string | null;
-  itinerary: string | null;
-  bestSeason: string | null;
-  howToReach: string | null;
-  published: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export default function IslandDetail() {
   const [, params] = useRoute('/island/:slug');
@@ -37,36 +15,31 @@ export default function IslandDetail() {
   
   const [island, setIsland] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showBooking, setShowBooking] = useState(false);
-  const [relatedPackages, setRelatedPackages] = useState<any[]>([]);
 
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
   const { data: packages = [] } = trpc.packages.list.useQuery();
-  
-  // Fetch boat routes
-  const [boatRoutesFrom, setBoatRoutesFrom] = useState<any[]>([]);
-  const [boatRoutesTo, setBoatRoutesTo] = useState<any[]>([]);
-  const [boatRoutesFetched, setBoatRoutesFetched] = useState(false);
 
   useEffect(() => {
     if (guides.length > 0 && slug) {
       const foundIsland = guides.find((g: any) => g.slug === slug);
       setIsland(foundIsland || null);
       setIsLoading(false);
+    }
+  }, [slug, guides.length]);
 
-      // Find related packages for this island
-      if (foundIsland) {
-        const related = packages.filter((pkg: any) => 
-          pkg.destination?.toLowerCase().includes(foundIsland.name.toLowerCase())
-        );
-        setRelatedPackages(related);
+  // Helper function to parse JSON strings
+  const parseJSON = (data: any): any => {
+    if (!data) return null;
+    if (typeof data === 'string') {
+      try {
+        return JSON.parse(data);
+      } catch {
+        return data;
       }
     }
-  }, [slug, guides.length, packages.length]);
-
-  // TODO: Add boat routes fetching with proper hook implementation
-  // Will use useQuery hooks instead of async/await in useEffect
+    return data;
+  };
 
   if (isLoading) {
     return (
@@ -97,24 +70,21 @@ export default function IslandDetail() {
     );
   }
 
-  const parseListContent = (content: string | null): string[] => {
-    if (!content) return [];
-    return content.split(',').map(item => item.trim()).filter(Boolean);
-  };
-
-  const activities = parseListContent(island.activities);
-  const dining = parseListContent(island.dining);
-  const packingItems = parseListContent(island.packingTips);
-  const faqItems = parseListContent(island.faqContent);
+  // Parse data from database
+  const quickFacts = parseJSON(island.quickFacts) || [];
+  const topThingsToDo = parseJSON(island.topThingsToDo) || [];
+  const foodCafes = parseJSON(island.foodCafes) || [];
+  const faqs = parseJSON(island.faq) || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navigation />
+      
       {/* Header */}
       <div className="relative h-96 overflow-hidden">
-        {island.image && (
+        {island.heroImage && (
           <img
-            src={island.image}
+            src={island.heroImage}
             alt={island.name}
             className="w-full h-full object-cover"
           />
@@ -123,7 +93,7 @@ export default function IslandDetail() {
         <div className="absolute bottom-0 left-0 right-0 text-white p-8">
           <div className="container">
             <h1 className="text-4xl font-bold mb-2">{island.name}</h1>
-            <p className="text-lg text-gray-200">{island.description}</p>
+            <p className="text-lg text-gray-200">Explore this beautiful destination</p>
           </div>
         </div>
       </div>
@@ -141,127 +111,200 @@ export default function IslandDetail() {
                 <TabsTrigger value="faq">FAQ</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="overview" className="mt-6">
-                <Card>
-                  <CardContent className="pt-6">
-                    <p className="text-gray-700 leading-relaxed">{island.overview || island.description}</p>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-
-              <TabsContent value="activities" className="mt-6">
+              {/* Overview Tab */}
+              <TabsContent value="overview" className="mt-6 space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Compass className="w-5 h-5" />
-                      Activities & Experiences
-                    </CardTitle>
+                    <CardTitle>About {island.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    {activities.length > 0 ? (
-                      <ul className="space-y-2">
-                        {activities.map((activity, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-accent font-bold">•</span>
-                            <span>{activity}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-gray-500">No activities listed</p>
-                    )}
+                    <p className="text-gray-700 leading-relaxed">{island.overview}</p>
                   </CardContent>
                 </Card>
+
+                {/* Quick Facts */}
+                {quickFacts.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <AlertCircle className="w-5 h-5" />
+                        Quick Facts
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {quickFacts.map((fact: string, idx: number) => (
+                          fact && (
+                            <div key={idx} className="flex items-start gap-2 p-3 bg-accent/10 rounded-lg">
+                              <span className="text-accent font-bold text-lg">•</span>
+                              <span className="text-sm text-gray-700">{fact}</span>
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
               </TabsContent>
 
-              <TabsContent value="practical" className="mt-6">
-                <div className="space-y-6">
-                  {island.howToReach && (
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <MapPin className="w-5 h-5" />
-                          How to Reach
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700">{island.howToReach}</p>
-                      </CardContent>
-                    </Card>
-                  )}
+              {/* Activities Tab */}
+              <TabsContent value="activities" className="mt-6 space-y-6">
+                {/* Top Things to Do */}
+                {topThingsToDo.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Compass className="w-5 h-5" />
+                        Top Things to Do
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {topThingsToDo.map((item: any, idx: number) => (
+                          item && (item.title || item.description) && (
+                            <div key={idx} className="border-l-4 border-accent pl-4">
+                              {item.title && <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>}
+                              {item.description && <p className="text-gray-700 text-sm">{item.description}</p>}
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
 
-                  {island.bestSeason && (
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <Calendar className="w-5 h-5" />
-                          Best Time to Visit
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700">{island.bestSeason}</p>
-                      </CardContent>
-                    </Card>
-                  )}
+                {/* Snorkeling Guide */}
+                {island.snorkelingGuide && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Waves className="w-5 h-5" />
+                        Snorkeling Guide
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{island.snorkelingGuide}</p>
+                    </CardContent>
+                  </Card>
+                )}
 
-                  {dining.length > 0 && (
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <Utensils className="w-5 h-5" />
-                          Dining Options
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-2">
-                          {dining.map((option, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <span className="text-accent font-bold">•</span>
-                              <span>{option}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  )}
+                {/* Diving Guide */}
+                {island.divingGuide && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Zap className="w-5 h-5" />
+                        Diving Guide
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{island.divingGuide}</p>
+                    </CardContent>
+                  </Card>
+                )}
 
-                  {packingItems.length > 0 && (
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <Backpack className="w-5 h-5" />
-                          Packing Tips
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-2">
-                          {packingItems.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-3">
-                              <span className="text-accent font-bold">•</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  )}
-
-                  {island.healthSafety && (
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="flex items-center gap-2">
-                          <AlertCircle className="w-5 h-5" />
-                          Health & Safety
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-gray-700">{island.healthSafety}</p>
-                      </CardContent>
-                    </Card>
-                  )}
-                </div>
+                {/* Surf & Watersports */}
+                {island.surfWatersports && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Surf & Watersports</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{island.surfWatersports}</p>
+                    </CardContent>
+                  </Card>
+                )}
               </TabsContent>
 
+              {/* Practical Tab */}
+              <TabsContent value="practical" className="mt-6 space-y-6">
+                {/* How to Get There */}
+                {(island.flightInfo || island.speedboatInfo || island.ferryInfo) && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <MapPin className="w-5 h-5" />
+                        How to Get There
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      {island.flightInfo && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">✈️ By Flight</h4>
+                          <p className="text-gray-700 text-sm">{island.flightInfo}</p>
+                        </div>
+                      )}
+                      {island.speedboatInfo && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">🚤 By Speedboat</h4>
+                          <p className="text-gray-700 text-sm">{island.speedboatInfo}</p>
+                        </div>
+                      )}
+                      {island.ferryInfo && (
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">⛴️ By Ferry</h4>
+                          <p className="text-gray-700 text-sm">{island.ferryInfo}</p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Food & Cafes */}
+                {foodCafes.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Utensils className="w-5 h-5" />
+                        Food & Cafés
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {foodCafes.map((cafe: string, idx: number) => (
+                          cafe && (
+                            <li key={idx} className="flex items-start gap-3">
+                              <span className="text-accent font-bold">•</span>
+                              <span className="text-gray-700">{cafe}</span>
+                            </li>
+                          )
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Practical Information */}
+                {(island.currency || island.language || island.bestTimeToVisit) && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <AlertCircle className="w-5 h-5" />
+                        Practical Information
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      {island.currency && <p className="text-gray-700"><strong>Currency:</strong> {island.currency}</p>}
+                      {island.language && <p className="text-gray-700"><strong>Language:</strong> {island.language}</p>}
+                      {island.bestTimeToVisit && <p className="text-gray-700"><strong>Best Time to Visit:</strong> {island.bestTimeToVisit}</p>}
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Beaches & Local Rules */}
+                {island.beachesLocalRules && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Beaches & Local Rules</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{parseJSON(island.beachesLocalRules) || island.beachesLocalRules}</p>
+                    </CardContent>
+                  </Card>
+                )}
+              </TabsContent>
+
+              {/* FAQ Tab */}
               <TabsContent value="faq" className="mt-6">
                 <Card>
                   <CardHeader>
@@ -271,15 +314,18 @@ export default function IslandDetail() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    {faqItems.length > 0 ? (
-                      <ul className="space-y-2">
-                        {faqItems.map((faq, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-accent font-bold">Q:</span>
-                            <span>{faq}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {Array.isArray(faqs) && faqs.length > 0 ? (
+                      <div className="space-y-4">
+                        {faqs.map((faq: any, idx: number) => {
+                          const faqItem = typeof faq === 'string' ? { question: faq } : faq;
+                          return faqItem && (faqItem.question || faqItem.answer) && (
+                            <div key={idx} className="border-b pb-4 last:border-b-0">
+                              {faqItem.question && <h4 className="font-semibold text-gray-900 mb-2">{faqItem.question}</h4>}
+                              {faqItem.answer && <p className="text-gray-700 text-sm">{faqItem.answer}</p>}
+                            </div>
+                          );
+                        })}
+                      </div>
                     ) : (
                       <p className="text-gray-500">No FAQs available</p>
                     )}
@@ -291,47 +337,31 @@ export default function IslandDetail() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            {/* Map Card */}
-            {island.latitude && island.longitude && (
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Map className="w-5 h-5" />
-                    Location
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">Coordinates: {typeof island.latitude === 'string' ? parseFloat(island.latitude).toFixed(2) : island.latitude?.toFixed(2)}, {typeof island.longitude === 'string' ? parseFloat(island.longitude).toFixed(2) : island.longitude?.toFixed(2) || 'N/A'}</p>
+            <Card className="sticky top-24">
+              <CardHeader>
+                <CardTitle>Island Info</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {island.latitude && island.longitude && (
+                  <div>
+                    <p className="text-sm font-semibold text-gray-600 mb-1">Coordinates</p>
+                    <p className="text-sm text-gray-700">
+                      {parseFloat(island.latitude).toFixed(2)}°N, {parseFloat(island.longitude).toFixed(2)}°E
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Related Packages */}
-            {relatedPackages.length > 0 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>Related Packages</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {relatedPackages.map((pkg: any) => (
-                      <div key={pkg.id} className="border-b pb-4 last:border-b-0">
-                        <h4 className="font-semibold text-sm mb-1">{pkg.name}</h4>
-                        <p className="text-xs text-gray-600 mb-2">{pkg.destination}</p>
-                        <div className="flex justify-between items-center">
-                          <span className="text-accent font-bold">${pkg.price}</span>
-                          <Link href={`/packages/${pkg.id}`}>
-                            <Button size="sm" variant="outline">View</Button>
-                          </Link>
-                        </div>
-                      </div>
-                    ))}
+                )}
+                {island.atoll && (
+                  <div>
+                    <p className="text-sm font-semibold text-gray-600 mb-1">Atoll</p>
+                    <p className="text-sm text-gray-700">{island.atoll}</p>
                   </div>
-                </CardContent>
-              </Card>
-            )}
+                )}
+                
+                <Button className="w-full" size="lg">
+                  Plan Your Trip
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
