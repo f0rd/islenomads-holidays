@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -879,4 +879,68 @@ export async function getAtollsByRegion(region: string): Promise<Atoll[]> {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(atolls).where(and(eq(atolls.region, region), eq(atolls.published, 1))).orderBy(atolls.name);
+}
+
+
+// Activity Spots helpers
+export async function getActivitySpotsByIslandId(islandGuideId: number): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).where(and(eq(activitySpots.islandGuideId, islandGuideId), eq(activitySpots.published, 1))).orderBy(activitySpots.displayOrder);
+}
+
+export async function getActivitySpotsByIslandIdAndType(islandGuideId: number, spotType: string): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).where(and(eq(activitySpots.islandGuideId, islandGuideId), eq(activitySpots.spotType, spotType as any), eq(activitySpots.published, 1))).orderBy(activitySpots.displayOrder);
+}
+
+export async function getActivitySpotBySlug(slug: string): Promise<ActivitySpot | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(activitySpots).where(eq(activitySpots.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function getActivitySpotById(id: number): Promise<ActivitySpot | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(activitySpots).where(eq(activitySpots.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createActivitySpot(data: InsertActivitySpot): Promise<ActivitySpot | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(activitySpots).values(data);
+  const id = (result as any).insertId;
+  const spot = await getActivitySpotById(id);
+  return spot || null;
+}
+
+export async function updateActivitySpot(id: number, data: Partial<InsertActivitySpot>): Promise<ActivitySpot | null> {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(activitySpots).set(data).where(eq(activitySpots.id, id));
+  const spot = await getActivitySpotById(id);
+  return spot || null;
+}
+
+export async function deleteActivitySpot(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(activitySpots).where(eq(activitySpots.id, id));
+  return true;
+}
+
+export async function getAllActivitySpots(): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).where(eq(activitySpots.published, 1)).orderBy(activitySpots.displayOrder);
+}
+
+export async function getAllActivitySpotsAdmin(): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).orderBy(activitySpots.displayOrder);
 }

@@ -20,7 +20,9 @@ import {
   getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
-  deleteAtoll, getAtollsByRegion
+  deleteAtoll, getAtollsByRegion, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
+  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
+  getAllActivitySpots, getAllActivitySpotsAdmin
 } from "./db";
 
 export const appRouter = router({
@@ -932,6 +934,129 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteAtoll(input.id);
+      }),
+  }),
+
+  activitySpots: router({
+    listByIsland: publicProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return getActivitySpotsByIslandId(input.islandGuideId);
+      }),
+
+    listByIslandAndType: publicProcedure
+      .input(z.object({ islandGuideId: z.number(), spotType: z.string() }))
+      .query(async ({ input }) => {
+        return getActivitySpotsByIslandIdAndType(input.islandGuideId, input.spotType);
+      }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getActivitySpotBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getActivitySpotById(input.id);
+      }),
+
+    list: publicProcedure.query(async () => {
+      return getAllActivitySpots();
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllActivitySpotsAdmin();
+    }),
+
+    create: protectedProcedure
+      .input(
+        z.object({
+          islandGuideId: z.number(),
+          name: z.string(),
+          slug: z.string(),
+          spotType: z.enum(["surf_spot", "dive_site", "snorkeling_spot"]),
+          description: z.string().optional(),
+          difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
+          latitude: z.string().optional(),
+          longitude: z.string().optional(),
+          accessInfo: z.string().optional(),
+          bestSeason: z.string().optional(),
+          bestTime: z.string().optional(),
+          waterConditions: z.string().optional(),
+          maxDepth: z.number().optional(),
+          minDepth: z.number().optional(),
+          marineLife: z.string().optional(),
+          waveHeight: z.string().optional(),
+          waveType: z.string().optional(),
+          coralCoverage: z.string().optional(),
+          fishSpecies: z.string().optional(),
+          tips: z.string().optional(),
+          facilities: z.string().optional(),
+          images: z.string().optional(),
+          metaTitle: z.string().optional(),
+          metaDescription: z.string().optional(),
+          published: z.number().optional(),
+          featured: z.number().optional(),
+          displayOrder: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can create activity spots' });
+        }
+        return createActivitySpot(input);
+      }),
+
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          islandGuideId: z.number().optional(),
+          name: z.string().optional(),
+          slug: z.string().optional(),
+          spotType: z.enum(["surf_spot", "dive_site", "snorkeling_spot"]).optional(),
+          description: z.string().optional(),
+          difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
+          latitude: z.string().optional(),
+          longitude: z.string().optional(),
+          accessInfo: z.string().optional(),
+          bestSeason: z.string().optional(),
+          bestTime: z.string().optional(),
+          waterConditions: z.string().optional(),
+          maxDepth: z.number().optional(),
+          minDepth: z.number().optional(),
+          marineLife: z.string().optional(),
+          waveHeight: z.string().optional(),
+          waveType: z.string().optional(),
+          coralCoverage: z.string().optional(),
+          fishSpecies: z.string().optional(),
+          tips: z.string().optional(),
+          facilities: z.string().optional(),
+          images: z.string().optional(),
+          metaTitle: z.string().optional(),
+          metaDescription: z.string().optional(),
+          published: z.number().optional(),
+          featured: z.number().optional(),
+          displayOrder: z.number().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can update activity spots' });
+        }
+        const { id, ...data } = input;
+        return updateActivitySpot(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can delete activity spots' });
+        }
+        return deleteActivitySpot(input.id);
       }),
   }),
 });

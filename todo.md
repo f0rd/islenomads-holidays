@@ -670,3 +670,14 @@
 - [x] Update ExploreMaldives to filter Islands tab to show only islands
 - [x] Create Points of Interest section/tab for places like Hanifaru Bay
 - [x] Test filtering and verify correct categorization
+
+
+## Hierarchical Browsing Structure (Maldives → Atoll → Island → Activity Spots)
+- [x] Create activity spots tables in schema (surf_spots, dive_sites, snorkeling_spots)
+- [x] Add activity_spots table with common fields (name, location, difficulty, description, coordinates)
+- [x] Create tRPC endpoints for activity spots CRUD operations
+- [ ] Update Island detail page with activity spots tabs (Surf Spots, Dive Sites, Snorkeling Spots)
+- [ ] Create activity spot detail pages with maps and information
+- [ ] Populate database with sample activity spots for featured islands
+- [ ] Add breadcrumb navigation showing: Maldives > Atoll > Island > Activity Spot
+- [ ] Test hierarchical navigation flow (Maldives → Atoll → Island → Activity)

@@ -472,3 +472,51 @@ export const atolls = mysqlTable("atolls", {
 
 export type Atoll = typeof atolls.$inferSelect;
 export type InsertAtoll = typeof atolls.$inferInsert;
+
+
+// Activity Spots - Hierarchical structure for Surf Spots, Dive Sites, and Snorkeling Spots
+export const activitySpots = mysqlTable("activity_spots", {
+  id: int("id").autoincrement().primaryKey(),
+  islandGuideId: int("islandGuideId").notNull(), // Reference to island_guides
+  name: varchar("name", { length: 255 }).notNull(), // e.g., "Pasta Point", "Blue Lagoon Dive Site"
+  slug: varchar("slug", { length: 255 }).notNull(), // URL-friendly identifier
+  spotType: mysqlEnum("spotType", ["surf_spot", "dive_site", "snorkeling_spot"]).notNull(), // Type of activity spot
+  description: text("description"), // Detailed description
+  difficulty: mysqlEnum("difficulty", ["beginner", "intermediate", "advanced"]).default("intermediate"), // Skill level required
+  // Location & Access
+  latitude: varchar("latitude", { length: 50 }),
+  longitude: varchar("longitude", { length: 50 }),
+  accessInfo: text("accessInfo"), // How to reach the spot (boat, walk, etc.)
+  // Activity Details
+  bestSeason: varchar("bestSeason", { length: 255 }), // Best time to visit
+  bestTime: varchar("bestTime", { length: 100 }), // Best time of day
+  waterConditions: text("waterConditions"), // Current conditions, visibility, etc.
+  // For Dive Sites
+  maxDepth: int("maxDepth"), // Max depth in meters
+  minDepth: int("minDepth"), // Min depth in meters
+  marineLife: text("marineLife"), // JSON array of marine life you might see
+  // For Surf Spots
+  waveHeight: varchar("waveHeight", { length: 100 }), // e.g., "2-4 feet", "4-6 feet"
+  waveType: varchar("waveType", { length: 100 }), // e.g., "Beach break", "Reef break"
+  // For Snorkeling Spots
+  coralCoverage: varchar("coralCoverage", { length: 100 }), // e.g., "90%", "Excellent"
+  fishSpecies: text("fishSpecies"), // JSON array of fish species
+  // General
+  tips: text("tips"), // JSON array of tips and recommendations
+  facilities: text("facilities"), // JSON array of nearby facilities
+  images: text("images"), // JSON array of image URLs
+  // SEO & Status
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  published: int("published").default(0).notNull(),
+  featured: int("featured").default(0).notNull(),
+  displayOrder: int("displayOrder").default(0).notNull(),
+  viewCount: int("viewCount").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ActivitySpot = typeof activitySpots.$inferSelect;
+export type InsertActivitySpot = typeof activitySpots.$inferInsert;
+export type ActivitySpotType = 'surf_spot' | 'dive_site' | 'snorkeling_spot';
+export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
