@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+'use client';
+
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Calendar, ArrowLeft, Waves, Zap } from 'lucide-react';
+import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Calendar, ArrowLeft, Waves, Zap, Plane, Ship } from 'lucide-react';
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
+import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
   const [, params] = useRoute('/island/:slug');
@@ -104,8 +106,10 @@ export default function IslandDetail() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-6 mb-6">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
+                <TabsTrigger value="things-to-do">Things to Do</TabsTrigger>
+                <TabsTrigger value="how-to-get">How to Get</TabsTrigger>
                 <TabsTrigger value="activities">Activities</TabsTrigger>
                 <TabsTrigger value="practical">Practical</TabsTrigger>
                 <TabsTrigger value="faq">FAQ</TabsTrigger>
@@ -147,9 +151,8 @@ export default function IslandDetail() {
                 )}
               </TabsContent>
 
-              {/* Activities Tab */}
-              <TabsContent value="activities" className="mt-6 space-y-6">
-                {/* Top Things to Do */}
+              {/* Things to Do Tab */}
+              <TabsContent value="things-to-do" className="mt-6 space-y-6">
                 {topThingsToDo.length > 0 && (
                   <Card>
                     <CardHeader>
@@ -172,7 +175,53 @@ export default function IslandDetail() {
                     </CardContent>
                   </Card>
                 )}
+              </TabsContent>
 
+              {/* How to Get There Tab */}
+              <TabsContent value="how-to-get" className="mt-6 space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="w-5 h-5" />
+                      How to Get There
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {island.flightInfo && (
+                      <div className="border-l-4 border-blue-500 pl-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Plane className="w-5 h-5 text-blue-500" />
+                          <h4 className="font-semibold text-gray-900">By Flight</h4>
+                        </div>
+                        <p className="text-gray-700 text-sm">{island.flightInfo}</p>
+                      </div>
+                    )}
+                    
+                    {island.speedboatInfo && (
+                      <div className="border-l-4 border-orange-500 pl-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Ship className="w-5 h-5 text-orange-500" />
+                          <h4 className="font-semibold text-gray-900">By Speedboat</h4>
+                        </div>
+                        <p className="text-gray-700 text-sm">{island.speedboatInfo}</p>
+                      </div>
+                    )}
+                    
+                    {island.ferryInfo && (
+                      <div className="border-l-4 border-teal-500 pl-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Ship className="w-5 h-5 text-teal-500" />
+                          <h4 className="font-semibold text-gray-900">By Ferry</h4>
+                        </div>
+                        <p className="text-gray-700 text-sm">{island.ferryInfo}</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              {/* Activities Tab */}
+              <TabsContent value="activities" className="mt-6 space-y-6">
                 {/* Snorkeling Guide */}
                 {island.snorkelingGuide && (
                   <Card>
@@ -202,55 +251,11 @@ export default function IslandDetail() {
                     </CardContent>
                   </Card>
                 )}
-
-                {/* Surf & Watersports */}
-                {island.surfWatersports && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Surf & Watersports</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{island.surfWatersports}</p>
-                    </CardContent>
-                  </Card>
-                )}
               </TabsContent>
 
               {/* Practical Tab */}
               <TabsContent value="practical" className="mt-6 space-y-6">
-                {/* How to Get There */}
-                {(island.flightInfo || island.speedboatInfo || island.ferryInfo) && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <MapPin className="w-5 h-5" />
-                        How to Get There
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      {island.flightInfo && (
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">✈️ By Flight</h4>
-                          <p className="text-gray-700 text-sm">{island.flightInfo}</p>
-                        </div>
-                      )}
-                      {island.speedboatInfo && (
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">🚤 By Speedboat</h4>
-                          <p className="text-gray-700 text-sm">{island.speedboatInfo}</p>
-                        </div>
-                      )}
-                      {island.ferryInfo && (
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">⛴️ By Ferry</h4>
-                          <p className="text-gray-700 text-sm">{island.ferryInfo}</p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Food & Cafes */}
+                {/* Food & Cafés */}
                 {foodCafes.length > 0 && (
                   <Card>
                     <CardHeader>
@@ -263,9 +268,9 @@ export default function IslandDetail() {
                       <ul className="space-y-2">
                         {foodCafes.map((cafe: string, idx: number) => (
                           cafe && (
-                            <li key={idx} className="flex items-start gap-3">
-                              <span className="text-accent font-bold">•</span>
-                              <span className="text-gray-700">{cafe}</span>
+                            <li key={idx} className="flex items-start gap-2 text-gray-700">
+                              <span className="text-accent font-bold mt-1">•</span>
+                              <span>{cafe}</span>
                             </li>
                           )
                         ))}
@@ -273,64 +278,32 @@ export default function IslandDetail() {
                     </CardContent>
                   </Card>
                 )}
-
-                {/* Practical Information */}
-                {(island.currency || island.language || island.bestTimeToVisit) && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <AlertCircle className="w-5 h-5" />
-                        Practical Information
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      {island.currency && <p className="text-gray-700"><strong>Currency:</strong> {island.currency}</p>}
-                      {island.language && <p className="text-gray-700"><strong>Language:</strong> {island.language}</p>}
-                      {island.bestTimeToVisit && <p className="text-gray-700"><strong>Best Time to Visit:</strong> {island.bestTimeToVisit}</p>}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Beaches & Local Rules */}
-                {island.beachesLocalRules && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Beaches & Local Rules</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{parseJSON(island.beachesLocalRules) || island.beachesLocalRules}</p>
-                    </CardContent>
-                  </Card>
-                )}
               </TabsContent>
 
               {/* FAQ Tab */}
-              <TabsContent value="faq" className="mt-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <HelpCircle className="w-5 h-5" />
-                      Frequently Asked Questions
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {Array.isArray(faqs) && faqs.length > 0 ? (
+              <TabsContent value="faq" className="mt-6 space-y-6">
+                {faqs.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <HelpCircle className="w-5 h-5" />
+                        Frequently Asked Questions
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
                       <div className="space-y-4">
-                        {faqs.map((faq: any, idx: number) => {
-                          const faqItem = typeof faq === 'string' ? { question: faq } : faq;
-                          return faqItem && (faqItem.question || faqItem.answer) && (
+                        {faqs.map((faq: any, idx: number) => (
+                          faq && (faq.question || faq.answer) && (
                             <div key={idx} className="border-b pb-4 last:border-b-0">
-                              {faqItem.question && <h4 className="font-semibold text-gray-900 mb-2">{faqItem.question}</h4>}
-                              {faqItem.answer && <p className="text-gray-700 text-sm">{faqItem.answer}</p>}
+                              {faq.question && <h4 className="font-semibold text-gray-900 mb-2">{faq.question}</h4>}
+                              {faq.answer && <p className="text-gray-700 text-sm">{faq.answer}</p>}
                             </div>
-                          );
-                        })}
+                          )
+                        ))}
                       </div>
-                    ) : (
-                      <p className="text-gray-500">No FAQs available</p>
-                    )}
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                )}
               </TabsContent>
             </Tabs>
           </div>
@@ -344,20 +317,21 @@ export default function IslandDetail() {
               <CardContent className="space-y-4">
                 {island.latitude && island.longitude && (
                   <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-1">Coordinates</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-2">Coordinates</p>
                     <p className="text-sm text-gray-700">
                       {parseFloat(island.latitude).toFixed(2)}°N, {parseFloat(island.longitude).toFixed(2)}°E
                     </p>
                   </div>
                 )}
-                {island.atoll && (
+                
+                {island.atollId && (
                   <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-1">Atoll</p>
-                    <p className="text-sm text-gray-700">{island.atoll}</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-2">Atoll</p>
+                    <p className="text-sm text-gray-700">{island.atollId}</p>
                   </div>
                 )}
-                
-                <Button className="w-full" size="lg">
+
+                <Button className="w-full bg-accent hover:bg-accent/90">
                   Plan Your Trip
                 </Button>
               </CardContent>

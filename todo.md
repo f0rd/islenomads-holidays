@@ -778,3 +778,13 @@
 - [ ] Test create, edit, delete operations for activity spots
 - [ ] Test island linking - verify spots appear on island detail pages
 - [ ] Create activity spot detail pages for public view
+
+
+## Island Detail Page Layout Fix
+- [x] Fix tab organization to show Overview, Activities, Practical, FAQ tabs
+- [x] Add Top Things to Do section to Activities tab
+- [x] Add How to Get There section to Practical tab
+- [x] Restructure tabs to have Things to Do and How to Get There as separate tabs
+- [x] New tab structure: Overview, Things to Do, How to Get There, Activities, Practical, FAQ
+- [x] Test Male Capital City page displays new tab structure
+- [x] Verify all content displays correctly in new tabs
