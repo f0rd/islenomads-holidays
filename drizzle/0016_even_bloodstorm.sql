@@ -1,0 +1,1 @@
+ALTER TABLE `island_guides` ADD `contentType` enum('island','point_of_interest') DEFAULT 'island' NOT NULL;

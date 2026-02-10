@@ -26,6 +26,7 @@ interface IslandGuideData {
   overview: string | null;
   featured: number;
   published: number;
+  contentType?: 'island' | 'point_of_interest';
 }
 
 interface AtollData {
@@ -39,7 +40,7 @@ interface AtollData {
 }
 
 export default function ExploreMaldives() {
-  const [activeTab, setActiveTab] = useState<'atolls' | 'islands'>('atolls');
+  const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi'>('atolls');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -65,13 +66,25 @@ export default function ExploreMaldives() {
     });
   }, [atolls, selectedRegion, searchQuery]);
 
-  // Filter and search islands
+  // Filter and search islands (only actual islands, not POIs)
   const filteredIslands = useMemo(() => {
     return islands.filter((island: IslandGuideData) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
-      return matchesSearch && isPublished;
+      const isActualIsland = island.contentType !== 'point_of_interest'; // Filter out POIs
+      return matchesSearch && isPublished && isActualIsland;
+    });
+  }, [islands, searchQuery]);
+
+  // Filter and search points of interest
+  const filteredPointsOfInterest = useMemo(() => {
+    return islands.filter((island: IslandGuideData) => {
+      const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
+      const isPublished = island.published === 1;
+      const isPOI = island.contentType === 'point_of_interest'; // Only POIs
+      return matchesSearch && isPublished && isPOI;
     });
   }, [islands, searchQuery]);
 
@@ -110,10 +123,10 @@ export default function ExploreMaldives() {
       {/* Main Content */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands')} className="w-full">
+            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands' | 'poi')} className="w-full">
             {/* Tab Navigation */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
-              <TabsList className="grid w-full md:w-auto grid-cols-2">
+              <TabsList className="grid w-full md:w-auto grid-cols-3">
                 <TabsTrigger value="atolls" className="gap-2">
                   <Waves className="w-4 h-4" />
                   Atolls
@@ -121,6 +134,10 @@ export default function ExploreMaldives() {
                 <TabsTrigger value="islands" className="gap-2">
                   <MapPin className="w-4 h-4" />
                   Islands
+                </TabsTrigger>
+                <TabsTrigger value="poi" className="gap-2">
+                  <Star className="w-4 h-4" />
+                  Attractions
                 </TabsTrigger>
               </TabsList>
 
@@ -265,6 +282,62 @@ export default function ExploreMaldives() {
                   <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                   <p className="text-lg text-muted-foreground">
                     No islands found matching your search.
+                  </p>
+                </div>
+              )}
+            </TabsContent>
+
+            {/* Points of Interest Tab */}
+            <TabsContent value="poi" className="space-y-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-2">Attractions & Points of Interest</h2>
+                <p className="text-muted-foreground">
+                  {filteredPointsOfInterest.length} attraction{filteredPointsOfInterest.length !== 1 ? 's' : ''} found
+                </p>
+              </div>
+
+              {filteredPointsOfInterest.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredPointsOfInterest.map((poi: IslandGuideData) => (
+                    <Link key={poi.id} href={`/island/${poi.slug}`}>
+                      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                        {/* Hero Image Placeholder */}
+                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
+                          <div className="text-center">
+                            <Star className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                            <p className="text-sm text-primary-foreground/80 font-semibold">Attraction</p>
+                          </div>
+
+                          {poi.atoll && (
+                            <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
+                              {poi.atoll}
+                            </Badge>
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <CardContent className="flex-1 flex flex-col p-6">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                            {poi.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                            {poi.overview || 'Discover this amazing attraction in the Maldives.'}
+                          </p>
+
+                          <Button variant="outline" className="w-full gap-2 group/btn">
+                            Learn More
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12">
+                  <Star className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-lg text-muted-foreground">
+                    No attractions found matching your search.
                   </p>
                 </div>
               )}

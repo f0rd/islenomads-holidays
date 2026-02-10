@@ -661,3 +661,12 @@
 - [x] Test unified explore page navigation
 - [ ] Update all internal links to point to new routes
 - [ ] Remove old separate Atolls and Island Guides pages
+
+
+## Island Guides Categorization Refinement
+- [x] Add contentType field to island_guides schema (island vs point_of_interest)
+- [x] Update database migration for contentType field
+- [x] Categorize existing guides (Hanifaru Bay, etc. as point_of_interest)
+- [x] Update ExploreMaldives to filter Islands tab to show only islands
+- [x] Create Points of Interest section/tab for places like Hanifaru Bay
+- [x] Test filtering and verify correct categorization
