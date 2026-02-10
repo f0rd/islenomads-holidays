@@ -52,8 +52,21 @@ interface IslandGuideFormProps {
 }
 
 export function IslandGuideForm({ initialData, onSubmit, isLoading = false, islandName }: IslandGuideFormProps) {
+  // Parse JSON strings from database into arrays
+  const parseInitialData = (data?: IslandGuideFormData): IslandGuideFormData => {
+    if (!data) return undefined as any;
+    
+    return {
+      ...data,
+      quickFacts: typeof data.quickFacts === 'string' ? JSON.parse(data.quickFacts || '[]') : (data.quickFacts || []),
+      topThingsToDo: typeof data.topThingsToDo === 'string' ? JSON.parse(data.topThingsToDo || '[]') : (data.topThingsToDo || []),
+      faqs: typeof data.faqs === 'string' ? JSON.parse(data.faqs || '[]') : (data.faqs || []),
+      activitySpots: typeof data.activitySpots === 'string' ? JSON.parse(data.activitySpots || '[]') : (data.activitySpots || []),
+    };
+  };
+
   const [formData, setFormData] = useState<IslandGuideFormData>(
-    initialData || {
+    parseInitialData(initialData) || {
       name: islandName || '',
       slug: '',
       overview: '',

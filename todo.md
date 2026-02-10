@@ -748,3 +748,9 @@
 - [ ] Update Maps to show boat routes between islands
 - [ ] Test data consistency across Explore Maldives, Maps, and Boat Routes modules
 - [ ] Add boat routes filtering to Explore Maldives (filter by route type, duration, price)
+
+
+## Data Mismatch Issues
+- [x] Fix Male - The Capital City quickFacts data type error (added JSON parsing in IslandGuideForm)
+- [x] Verify all island guides have correct data types for quickFacts, topThingsToDo, faqs (parseInitialData function handles all array fields)
+- [x] Check database for data type inconsistencies in island_guides table (confirmed arrays stored as JSON strings)
