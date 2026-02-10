@@ -49,7 +49,9 @@ interface IslandGuideData {
 }
 
 export default function AtollDetail() {
-  const [match, params] = useRoute('/atoll/:slug');
+  const [matchExplore, paramsExplore] = useRoute('/explore-maldives/atoll/:slug');
+  const [matchAtoll, paramsAtoll] = useRoute('/atoll/:slug');
+  const params = paramsExplore || paramsAtoll;
   const [atoll, setAtoll] = useState<AtollData | null>(null);
   const [featuredIslands, setFeaturedIslands] = useState<IslandGuideData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +59,7 @@ export default function AtollDetail() {
   // Fetch atoll by slug
   const { data: atollData } = trpc.atolls.getBySlug.useQuery(
     { slug: params?.slug || '' },
-    { enabled: !!params?.slug }
+    { enabled: !!params?.slug && (!!matchExplore || !!matchAtoll) }
   );
 
   // Fetch all islands to find those in this atoll

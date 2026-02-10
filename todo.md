@@ -648,3 +648,16 @@
 - [x] Create user flow from Atolls → Island Details
 - [x] Test Atolls browsing experience
 - [ ] Test Map → Island → Atoll flow
+
+
+## Explore Maldives - Unified Browsing System
+- [x] Rename Island Guides to Explore Maldives in navigation
+- [x] Create unified ExploreMaldives page combining atolls and islands
+- [x] Update routes to use /explore-maldives instead of /island-guides and /atolls
+- [x] Update atoll detail page to use /explore-maldives/atoll/:slug
+- [x] Create tab interface for Atolls vs Islands browsing
+- [x] Implement unified search across atolls and islands
+- [x] Add region filtering for both atolls and islands
+- [x] Test unified explore page navigation
+- [ ] Update all internal links to point to new routes
+- [ ] Remove old separate Atolls and Island Guides pages

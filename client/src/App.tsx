@@ -33,6 +33,7 @@ import AdminMapLocations from "./pages/AdminMapLocations";
 import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
+import ExploreMaldives from "./pages/ExploreMaldives";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -52,6 +53,8 @@ function Router() {
       <Route path={"\\island-guide/:islandId"} component={IslandGuide} />
       <Route path={"/island/:slug"} component={IslandDetail} />
       <Route path={"\\island-guides"} component={IslandGuides} />
+      <Route path={"/explore-maldives"} component={ExploreMaldives} />
+      <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
       <Route path={"/staff-login"} component={StaffLogin} />
