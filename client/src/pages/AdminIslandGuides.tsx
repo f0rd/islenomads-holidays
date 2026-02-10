@@ -127,7 +127,7 @@ export default function AdminIslandGuides() {
     setSelectedGuide(undefined);
   };
 
-  const handleSave = async () => {
+  const handleSave = async (formData: IslandGuideFormData) => {
     setIsSubmitting(true);
     try {
       await refetch();

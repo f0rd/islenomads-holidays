@@ -4,6 +4,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 
+export interface ActivitySpot {
+  id?: number;
+  name: string;
+  spotType: 'surf_spot' | 'dive_site' | 'snorkeling_spot';
+  category?: string;
+  description?: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  bestSeason?: string;
+  maxDepth?: number;
+  minDepth?: number;
+  waveHeight?: string;
+  coralCoverage?: string;
+  tips?: string;
+}
+
 export interface IslandGuideFormData {
   name: string;
   slug: string;
@@ -25,6 +40,7 @@ export interface IslandGuideFormData {
   itinerary3Day: string;
   itinerary5Day: string;
   faqs: Array<{ question: string; answer: string }>;
+  activitySpots?: ActivitySpot[];
   published: boolean;
 }
 
@@ -54,6 +70,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
       itinerary3Day: '',
       itinerary5Day: '',
       faqs: Array(6).fill({ question: '', answer: '' }),
+      activitySpots: [],
       published: false,
     }
   );
@@ -107,14 +124,38 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     setFormData({ ...formData, faqs: updated });
   };
 
+  const addActivitySpot = () => {
+    const newSpot: ActivitySpot = {
+      name: '',
+      spotType: 'dive_site',
+      difficulty: 'intermediate',
+    };
+    setFormData({
+      ...formData,
+      activitySpots: [...(formData.activitySpots || []), newSpot],
+    });
+  };
+
+  const updateActivitySpot = (index: number, field: keyof ActivitySpot, value: any) => {
+    const updated = [...(formData.activitySpots || [])];
+    updated[index] = { ...updated[index], [field]: value };
+    setFormData({ ...formData, activitySpots: updated });
+  };
+
+  const removeActivitySpot = (index: number) => {
+    const updated = (formData.activitySpots || []).filter((_, i) => i !== index);
+    setFormData({ ...formData, activitySpots: updated });
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Tabs defaultValue="basic" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="basic">Basic Info</TabsTrigger>
           <TabsTrigger value="content">Content</TabsTrigger>
           <TabsTrigger value="guides">Guides</TabsTrigger>
           <TabsTrigger value="itineraries">Itineraries</TabsTrigger>
+          <TabsTrigger value="activities">Activities</TabsTrigger>
         </TabsList>
 
         {/* Basic Info Tab */}
@@ -513,6 +554,136 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                     />
                   </div>
                 ))}
+              </CardContent>
+            )}
+          </Card>
+        </TabsContent>
+
+        {/* Activity Spots Tab */}
+        <TabsContent value="activities" className="space-y-4">
+          <Card>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('activities')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Activity Spots</CardTitle>
+                  <CardDescription>Manage dive sites, surf spots, and snorkeling locations</CardDescription>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.activities ? 'rotate-180' : ''}`} />
+              </div>
+            </CardHeader>
+            {expandedSections.activities && (
+              <CardContent className="space-y-4">
+                {(formData.activitySpots || []).map((spot, index) => (
+                  <div key={index} className="space-y-3 p-4 border rounded-lg bg-gray-50">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-medium">Activity Spot {index + 1}</h4>
+                      <button
+                        type="button"
+                        onClick={() => removeActivitySpot(index)}
+                        className="p-1 text-red-600 hover:bg-red-50 rounded"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        value={spot.name}
+                        onChange={(e) => updateActivitySpot(index, 'name', e.target.value)}
+                        className="col-span-2 px-3 py-2 border rounded-md"
+                        placeholder="Spot name (e.g., Pasta Point, Blue Lagoon)"
+                      />
+                      <select
+                        value={spot.spotType}
+                        onChange={(e) => updateActivitySpot(index, 'spotType', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                      >
+                        <option value="dive_site">Dive Site</option>
+                        <option value="surf_spot">Surf Spot</option>
+                        <option value="snorkeling_spot">Snorkeling Spot</option>
+                      </select>
+                      <select
+                        value={spot.difficulty}
+                        onChange={(e) => updateActivitySpot(index, 'difficulty', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                      >
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                      </select>
+                    </div>
+                    <input
+                      type="text"
+                      value={spot.category || ''}
+                      onChange={(e) => updateActivitySpot(index, 'category', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md"
+                      placeholder="Category (e.g., Beginner Dive Sites, Manta Ray Spots)"
+                    />
+                    <textarea
+                      value={spot.description || ''}
+                      onChange={(e) => updateActivitySpot(index, 'description', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md min-h-[60px]"
+                      placeholder="Description of the activity spot..."
+                    />
+                    <input
+                      type="text"
+                      value={spot.bestSeason || ''}
+                      onChange={(e) => updateActivitySpot(index, 'bestSeason', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md"
+                      placeholder="Best season (e.g., November - April)"
+                    />
+                    {spot.spotType === 'dive_site' && (
+                      <div className="grid grid-cols-2 gap-3">
+                        <input
+                          type="number"
+                          value={spot.minDepth || ''}
+                          onChange={(e) => updateActivitySpot(index, 'minDepth', parseInt(e.target.value))}
+                          className="px-3 py-2 border rounded-md"
+                          placeholder="Min depth (m)"
+                        />
+                        <input
+                          type="number"
+                          value={spot.maxDepth || ''}
+                          onChange={(e) => updateActivitySpot(index, 'maxDepth', parseInt(e.target.value))}
+                          className="px-3 py-2 border rounded-md"
+                          placeholder="Max depth (m)"
+                        />
+                      </div>
+                    )}
+                    {spot.spotType === 'surf_spot' && (
+                      <input
+                        type="text"
+                        value={spot.waveHeight || ''}
+                        onChange={(e) => updateActivitySpot(index, 'waveHeight', e.target.value)}
+                        className="w-full px-3 py-2 border rounded-md"
+                        placeholder="Wave height (e.g., 2-4 feet)"
+                      />
+                    )}
+                    {spot.spotType === 'snorkeling_spot' && (
+                      <input
+                        type="text"
+                        value={spot.coralCoverage || ''}
+                        onChange={(e) => updateActivitySpot(index, 'coralCoverage', e.target.value)}
+                        className="w-full px-3 py-2 border rounded-md"
+                        placeholder="Coral coverage (e.g., 90%, Excellent)"
+                      />
+                    )}
+                    <textarea
+                      value={spot.tips || ''}
+                      onChange={(e) => updateActivitySpot(index, 'tips', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md min-h-[50px]"
+                      placeholder="Tips and recommendations..."
+                    />
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addActivitySpot}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Activity Spot
+                </button>
               </CardContent>
             )}
           </Card>
