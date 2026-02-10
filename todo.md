@@ -735,6 +735,7 @@
 - [x] Add tRPC procedures for boat routes queries (listWithIslands, fromIsland, toIsland)
 - [x] Add boat routes state to IslandDetail component
 - [x] Fix infinite loop in IslandDetail useEffect (changed dependency array to use .length)
+- [x] Fix null reference error in IslandGuideForm (added null checks for quickFacts, topThingsToDo, faqs arrays)
 - [ ] Add boat routes UI section to IslandDetail page (will use useQuery hooks for proper implementation)
 - [ ] Connect boat_routes to Maps visualization with route lines
 - [ ] Update Maps to show boat routes between islands

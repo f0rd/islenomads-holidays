@@ -190,7 +190,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             </CardHeader>
             {expandedSections.quickFacts && (
               <CardContent className="space-y-3">
-                {formData.quickFacts.map((fact, index) => (
+                {(formData.quickFacts || []).map((fact, index) => (
                   <input
                     key={index}
                     type="text"
@@ -270,7 +270,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             </CardHeader>
             {expandedSections.thingsToDo && (
               <CardContent className="space-y-4">
-                {formData.topThingsToDo.map((item, index) => (
+                {(formData.topThingsToDo || []).map((item, index) => (
                   <div key={index} className="space-y-2 p-3 border rounded-md bg-gray-50">
                     <input
                       type="text"
@@ -496,7 +496,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             </CardHeader>
             {expandedSections.faqs && (
               <CardContent className="space-y-4">
-                {formData.faqs.map((faq, index) => (
+                {(formData.faqs || []).map((faq, index) => (
                   <div key={index} className="space-y-2 p-3 border rounded-md bg-gray-50">
                     <input
                       type="text"
