@@ -39,6 +39,17 @@ interface AtollData {
   bestFor: string | null;
 }
 
+interface ActivitySpotData {
+  id: number;
+  name: string;
+  slug: string;
+  spotType: 'surf_spot' | 'dive_site' | 'snorkeling_spot';
+  description: string | null;
+  difficulty: string | null;
+  bestSeason: string | null;
+  islandGuideId: number;
+}
+
 export default function ExploreMaldives() {
   const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi'>('atolls');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
@@ -49,6 +60,9 @@ export default function ExploreMaldives() {
 
   // Fetch island guides
   const { data: islands = [] } = trpc.islandGuides.list.useQuery();
+
+  // Fetch activity spots
+  const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
 
   // Get unique regions from atolls
   const regions = useMemo(() => {
@@ -77,16 +91,22 @@ export default function ExploreMaldives() {
     });
   }, [islands, searchQuery]);
 
-  // Filter and search points of interest
+  // Filter and search points of interest (combine POIs and activity spots)
   const filteredPointsOfInterest = useMemo(() => {
-    return islands.filter((island: IslandGuideData) => {
+    const pois = islands.filter((island: IslandGuideData) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
-      const isPOI = island.contentType === 'point_of_interest'; // Only POIs
+      const isPOI = island.contentType === 'point_of_interest';
       return matchesSearch && isPublished && isPOI;
     });
-  }, [islands, searchQuery]);
+    const spots = activitySpots.filter((spot: ActivitySpotData) => {
+      const matchesSearch = spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
+      return matchesSearch;
+    });
+    return { pois, spots };
+  }, [islands, activitySpots, searchQuery]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -220,6 +240,46 @@ export default function ExploreMaldives() {
                       </Card>
                     </Link>
                   ))}
+
+                  {/* Activity Spots */}
+                  {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => {
+                    const spotTypeLabel = spot.spotType === 'dive_site' ? 'Dive Site' : 
+                                         spot.spotType === 'surf_spot' ? 'Surf Spot' : 'Snorkeling Spot';
+                    const spotIcon = spot.spotType === 'dive_site' ? <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" /> :
+                                    spot.spotType === 'surf_spot' ? <Waves className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" /> :
+                                    <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />;
+                    return (
+                      <Card key={`spot-${spot.id}`} className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                        {/* Hero Image Placeholder */}
+                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
+                          <div className="text-center">
+                            {spotIcon}
+                            <p className="text-sm text-primary-foreground/80 font-semibold">{spotTypeLabel}</p>
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <CardContent className="flex-1 flex flex-col p-6">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                            {spot.name}
+                          </h3>
+                          {spot.difficulty && (
+                            <p className="text-sm text-muted-foreground mb-2">
+                              <span className="font-semibold">Difficulty:</span> {spot.difficulty}
+                            </p>
+                          )}
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
+                            {spot.description || 'Discover this amazing activity spot in the Maldives.'}
+                          </p>
+
+                          <Button variant="outline" className="w-full gap-2 group/btn">
+                            Learn More
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="text-center py-12">
@@ -292,13 +352,13 @@ export default function ExploreMaldives() {
               <div>
                 <h2 className="text-3xl font-bold mb-2">Attractions & Points of Interest</h2>
                 <p className="text-muted-foreground">
-                  {filteredPointsOfInterest.length} attraction{filteredPointsOfInterest.length !== 1 ? 's' : ''} found
+                  {filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length} attraction{(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) !== 1 ? 's' : ''} found
                 </p>
               </div>
 
-              {filteredPointsOfInterest.length > 0 ? (
+              {(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredPointsOfInterest.map((poi: IslandGuideData) => (
+                  {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => (
                     <Link key={poi.id} href={`/island/${poi.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image Placeholder */}
