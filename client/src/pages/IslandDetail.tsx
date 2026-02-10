@@ -58,7 +58,7 @@ export default function IslandDetail() {
         setRelatedPackages(related);
       }
     }
-  }, [slug]);
+  }, [slug, guides, packages]);
 
   if (isLoading) {
     return (
@@ -294,7 +294,7 @@ export default function IslandDetail() {
                 </CardHeader>
                 <CardContent>
                   <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">Coordinates: {island.latitude.toFixed(2)}, {island.longitude?.toFixed(2) || 'N/A'}</p>
+                    <p className="text-gray-500">Coordinates: {typeof island.latitude === 'string' ? parseFloat(island.latitude).toFixed(2) : island.latitude?.toFixed(2)}, {typeof island.longitude === 'string' ? parseFloat(island.longitude).toFixed(2) : island.longitude?.toFixed(2) || 'N/A'}</p>
                   </div>
                 </CardContent>
               </Card>
