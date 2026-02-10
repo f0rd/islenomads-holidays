@@ -697,3 +697,13 @@
 - [ ] Add accommodation types for each island
 - [ ] Add transportation options for each island
 - [ ] Add best season information for each island
+
+
+## Continue Explore Maldives Enhancement
+- [ ] Populate remaining 47 dive sites from comprehensive list
+- [ ] Create activity spot detail pages with maps and information
+- [ ] Add activity tabs (Dive Sites, Surf Spots, Snorkeling Spots) to island detail pages
+- [ ] Test hierarchical browsing flow (Maldives → Atoll → Island → Activity)
+- [ ] Add snorkeling spots data to activity_spots table
+- [ ] Create activity spot comparison feature
+- [ ] Add user reviews and ratings for activity spots
