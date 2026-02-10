@@ -765,3 +765,16 @@
 - [x] Add Diving Guide section to Activities tab
 - [x] Fix IslandDetail component to use correct database field names (flightInfo, speedboatInfo, ferryInfo)
 - [x] Test all content sections display correctly on island detail pages
+
+
+## Activity Spots CMS Module
+- [x] Create dedicated CMS page for managing dive sites and surf spots (AdminActivitySpots.tsx)
+- [x] Design activity spot form with all fields (name, type, difficulty, depth, coordinates, etc.) (ActivitySpotForm.tsx)
+- [x] Add island linking/association functionality to activity spot form (island dropdown in form)
+- [x] Create activity spots list view with filtering by type (dive/surf/snorkeling)
+- [x] Add search and sorting functionality to activity spots list
+- [x] Add activity spots to admin navigation menu (/admin/activity-spots route)
+- [ ] Implement bulk import for activity spots (CSV/JSON)
+- [ ] Test create, edit, delete operations for activity spots
+- [ ] Test island linking - verify spots appear on island detail pages
+- [ ] Create activity spot detail pages for public view

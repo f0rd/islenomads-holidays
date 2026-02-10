@@ -30,6 +30,7 @@ import StaffProfile from "./pages/StaffProfile";
 import AdminBranding from "./pages/AdminBranding";
 import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
+import AdminActivitySpots from "./pages/AdminActivitySpots";
 import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
@@ -51,9 +52,9 @@ function Router() {
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"\\island-guide/:islandId"} component={IslandGuide} />
-      <Route path={"/island/:slug"} component={IslandDetail} />
-      <Route path={"\\island-guides"} component={IslandGuides} />
-      <Route path={"/explore-maldives"} component={ExploreMaldives} />
+      <Route path={"/island/:slug"} component={IslandDetail} />      <Route path={"\\island-guides"} component={IslandGuides} />
+      <Route path={"\\explore-maldives"} component={ExploreMaldives} />
+      <Route path={"\\admin/activity-spots"} component={AdminActivitySpots} />
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
