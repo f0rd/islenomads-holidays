@@ -256,46 +256,6 @@ export default function ExploreMaldives() {
                       </Card>
                     </Link>
                   ))}
-
-                  {/* Activity Spots */}
-                  {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => {
-                    const spotTypeLabel = spot.spotType === 'dive_site' ? 'Dive Site' : 
-                                         spot.spotType === 'surf_spot' ? 'Surf Spot' : 'Snorkeling Spot';
-                    const spotIcon = spot.spotType === 'dive_site' ? <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" /> :
-                                    spot.spotType === 'surf_spot' ? <Waves className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" /> :
-                                    <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />;
-                    return (
-                      <Card key={`spot-${spot.id}`} className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        {/* Hero Image Placeholder */}
-                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
-                          <div className="text-center">
-                            {spotIcon}
-                            <p className="text-sm text-primary-foreground/80 font-semibold">{spotTypeLabel}</p>
-                          </div>
-                        </div>
-
-                        {/* Content */}
-                        <CardContent className="flex-1 flex flex-col p-6">
-                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
-                            {spot.name}
-                          </h3>
-                          {spot.difficulty && (
-                            <p className="text-sm text-muted-foreground mb-2">
-                              <span className="font-semibold">Difficulty:</span> {spot.difficulty}
-                            </p>
-                          )}
-                          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
-                            {spot.description || 'Discover this amazing activity spot in the Maldives.'}
-                          </p>
-
-                          <Button variant="outline" className="w-full gap-2 group/btn">
-                            Learn More
-                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
                 </div>
               ) : (
                 <div className="text-center py-12">
