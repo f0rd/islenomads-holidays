@@ -220,10 +220,10 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Flight Information</label>
                   <textarea
-                    value={formData.transportation.flight}
+                    value={formData.transportation?.flight || ''}
                     onChange={(e) => setFormData({
                       ...formData,
-                      transportation: { ...formData.transportation, flight: e.target.value }
+                      transportation: { ...(formData.transportation || {}), flight: e.target.value }
                     })}
                     className="w-full px-3 py-2 border rounded-md min-h-[80px]"
                     placeholder="Flight details..."
@@ -232,10 +232,10 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Speedboat Information</label>
                   <textarea
-                    value={formData.transportation.speedboat}
+                    value={formData.transportation?.speedboat || ''}
                     onChange={(e) => setFormData({
                       ...formData,
-                      transportation: { ...formData.transportation, speedboat: e.target.value }
+                      transportation: { ...(formData.transportation || {}), speedboat: e.target.value }
                     })}
                     className="w-full px-3 py-2 border rounded-md min-h-[80px]"
                     placeholder="Speedboat details..."
@@ -244,10 +244,10 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Ferry Information</label>
                   <textarea
-                    value={formData.transportation.ferry}
+                    value={formData.transportation?.ferry || ''}
                     onChange={(e) => setFormData({
                       ...formData,
-                      transportation: { ...formData.transportation, ferry: e.target.value }
+                      transportation: { ...(formData.transportation || {}), ferry: e.target.value }
                     })}
                     className="w-full px-3 py-2 border rounded-md min-h-[80px]"
                     placeholder="Ferry details..."
