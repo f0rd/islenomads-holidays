@@ -342,6 +342,7 @@ export default function ExploreMaldives() {
 
               {(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {/* Render POIs */}
                   {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => (
                     <Link key={poi.id} href={`/island/${poi.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
@@ -383,6 +384,48 @@ export default function ExploreMaldives() {
                         </CardContent>
                       </Card>
                     </Link>
+                  ))}
+
+                  {/* Render Activity Spots */}
+                  {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
+                    <Card key={spot.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
+                      {/* Hero Image */}
+                      <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
+                        {spot.description ? (
+                          <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
+                            <Fish className="w-12 h-12 text-white mx-auto group-hover:scale-110 transition-transform" />
+                          </div>
+                        ) : (
+                          <div className="text-center">
+                            <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                            <p className="text-sm text-primary-foreground/80 font-semibold">Dive Site</p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <CardContent className="flex-1 flex flex-col p-6">
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                          {spot.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-2">
+                          {spot.spotType === 'dive_site' ? 'Dive Site' : spot.spotType === 'surf_spot' ? 'Surf Spot' : 'Snorkeling Spot'}
+                        </p>
+                        {spot.difficulty && (
+                          <p className="text-xs text-accent font-semibold mb-4">
+                            Difficulty: {spot.difficulty}
+                          </p>
+                        )}
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
+                          {spot.description || 'Explore this amazing dive site.'}
+                        </p>
+
+                        <Button variant="outline" className="w-full gap-2 group/btn">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </Button>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               ) : (
