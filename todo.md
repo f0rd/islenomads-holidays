@@ -788,3 +788,5 @@
 - [x] New tab structure: Overview, Things to Do, How to Get There, Activities, Practical, FAQ
 - [x] Test Male Capital City page displays new tab structure
 - [x] Verify all content displays correctly in new tabs
+- [x] Remove Activities tab and consolidate snorkeling/diving guides into Things to Do tab
+- [x] Final tab structure: Overview, Things to Do, How to Get There, Practical, FAQ

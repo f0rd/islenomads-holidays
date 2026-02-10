@@ -106,11 +106,10 @@ export default function IslandDetail() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-6 mb-6">
+              <TabsList className="grid w-full grid-cols-5 mb-6">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
                 <TabsTrigger value="things-to-do">Things to Do</TabsTrigger>
                 <TabsTrigger value="how-to-get">How to Get</TabsTrigger>
-                <TabsTrigger value="activities">Activities</TabsTrigger>
                 <TabsTrigger value="practical">Practical</TabsTrigger>
                 <TabsTrigger value="faq">FAQ</TabsTrigger>
               </TabsList>
@@ -175,6 +174,36 @@ export default function IslandDetail() {
                     </CardContent>
                   </Card>
                 )}
+
+                {/* Snorkeling Guide */}
+                {island.snorkelingGuide && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Waves className="w-5 h-5" />
+                        Snorkeling Guide
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{island.snorkelingGuide}</p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Diving Guide */}
+                {island.divingGuide && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Zap className="w-5 h-5" />
+                        Diving Guide
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed">{island.divingGuide}</p>
+                    </CardContent>
+                  </Card>
+                )}
               </TabsContent>
 
               {/* How to Get There Tab */}
@@ -220,38 +249,7 @@ export default function IslandDetail() {
                 </Card>
               </TabsContent>
 
-              {/* Activities Tab */}
-              <TabsContent value="activities" className="mt-6 space-y-6">
-                {/* Snorkeling Guide */}
-                {island.snorkelingGuide && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Waves className="w-5 h-5" />
-                        Snorkeling Guide
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{island.snorkelingGuide}</p>
-                    </CardContent>
-                  </Card>
-                )}
 
-                {/* Diving Guide */}
-                {island.divingGuide && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Zap className="w-5 h-5" />
-                        Diving Guide
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{island.divingGuide}</p>
-                    </CardContent>
-                  </Card>
-                )}
-              </TabsContent>
 
               {/* Practical Tab */}
               <TabsContent value="practical" className="mt-6 space-y-6">
