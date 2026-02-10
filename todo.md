@@ -707,3 +707,20 @@
 - [ ] Add snorkeling spots data to activity_spots table
 - [ ] Create activity spot comparison feature
 - [ ] Add user reviews and ratings for activity spots
+
+
+## Data Unification - Map & Explore Maldives
+- [x] Audit Map page data structure and sources
+- [x] Audit Explore Maldives data structure and sources
+- [x] Identify data inconsistencies and duplicate tables
+- [x] Refactor Map page to use unified data sources (atolls, island_guides, activity_spots)
+- [x] Ensure Map and Explore Maldives use same tRPC endpoints
+- [x] Test Map page displays same data as Explore Maldives
+- [x] Verify no duplicate data in database
+
+## Activity Spots Table Optimization
+- [x] Add atollId field for direct atoll reference
+- [x] Add category field for better organization (e.g., "Beginner Dive Sites", "Manta Ray Spots")
+- [x] Add rating field for sorting and recommendations
+- [x] Add reviewCount, capacity, operatorInfo fields for operational management
+- [x] Push database migration with new fields

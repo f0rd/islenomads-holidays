@@ -479,9 +479,11 @@ export type InsertAtoll = typeof atolls.$inferInsert;
 export const activitySpots = mysqlTable("activity_spots", {
   id: int("id").autoincrement().primaryKey(),
   islandGuideId: int("islandGuideId").notNull(), // Reference to island_guides
+  atollId: int("atollId"), // Optional direct reference to atolls for easier filtering
   name: varchar("name", { length: 255 }).notNull(), // e.g., "Pasta Point", "Blue Lagoon Dive Site"
   slug: varchar("slug", { length: 255 }).notNull(), // URL-friendly identifier
   spotType: mysqlEnum("spotType", ["surf_spot", "dive_site", "snorkeling_spot"]).notNull(), // Type of activity spot
+  category: varchar("category", { length: 100 }), // e.g., "Beginner Dive Sites", "Advanced Surf Breaks", "Manta Ray Spots"
   description: text("description"), // Detailed description
   difficulty: mysqlEnum("difficulty", ["beginner", "intermediate", "advanced"]).default("intermediate"), // Skill level required
   // Location & Access
@@ -506,6 +508,11 @@ export const activitySpots = mysqlTable("activity_spots", {
   tips: text("tips"), // JSON array of tips and recommendations
   facilities: text("facilities"), // JSON array of nearby facilities
   images: text("images"), // JSON array of image URLs
+  // Management & Ratings
+  rating: varchar("rating", { length: 10 }), // e.g., "4.8", for sorting and recommendations
+  reviewCount: int("reviewCount").default(0), // Number of reviews
+  capacity: int("capacity"), // Max people per session (for operational planning)
+  operatorInfo: text("operatorInfo"), // JSON with operator details (name, contact, etc.)
   // SEO & Status
   metaTitle: varchar("metaTitle", { length: 255 }),
   metaDescription: varchar("metaDescription", { length: 500 }),

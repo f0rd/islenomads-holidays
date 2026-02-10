@@ -10,7 +10,7 @@ import BlogDetail from "./pages/BlogDetail";
 import AdminBlog from "./pages/AdminBlog";
 import AdminPackages from "./pages/AdminPackages";
 import Packages from "./pages/Packages";
-import MaldivesMapNew from "./pages/MaldivesMapNew";
+import MaldivesMap from "./pages/MaldivesMap";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
@@ -45,7 +45,7 @@ function Router() {
       <Route path={"/packages"} component={Packages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
-      <Route path={"/map"} component={MaldivesMapNew} />
+      <Route path={"/map"} component={MaldivesMap} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />

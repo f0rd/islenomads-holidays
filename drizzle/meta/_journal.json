@@ -134,6 +134,13 @@
       "when": 1770726610584,
       "tag": "0018_condemned_sue_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1770728643682,
+      "tag": "0019_thin_rumiko_fujikawa",
+      "breakpoints": true
     }
   ]
 }
