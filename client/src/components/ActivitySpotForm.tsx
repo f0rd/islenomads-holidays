@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -6,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { trpc } from '@/lib/trpc';
+import { useState, useEffect } from 'react';
 
 interface ActivitySpotFormProps {
   initialData?: any;
@@ -17,11 +19,10 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
   const [formData, setFormData] = useState<any>({
     name: '',
     slug: '',
-    spotType: 'dive_site',
-    islandGuideId: '',
-    atollId: '',
+    spotType: 'Dive Site',
+    islandGuideId: '0',
     category: '',
-    difficulty: 'beginner',
+    difficulty: 'Beginner',
     description: '',
     maxDepth: '',
     minDepth: '',
@@ -65,11 +66,10 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
       setFormData({
         name: initialData.name || '',
         slug: initialData.slug || '',
-        spotType: initialData.spotType || 'dive_site',
-        islandGuideId: initialData.islandGuideId || '',
-        atollId: initialData.atollId || '',
+        spotType: initialData.spotType || 'Dive Site',
+        islandGuideId: initialData.islandGuideId || '0',
         category: initialData.category || '',
-        difficulty: initialData.difficulty || 'beginner',
+        difficulty: initialData.difficulty || 'Beginner',
         description: initialData.description || '',
         maxDepth: initialData.maxDepth || '',
         minDepth: initialData.minDepth || '',
@@ -83,7 +83,7 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
         operatorInfo: initialData.operatorInfo || '',
         metaTitle: initialData.metaTitle || '',
         metaDescription: initialData.metaDescription || '',
-        published: initialData.published === 1,
+        published: initialData.published ? true : false,
       });
     }
   }, [initialData]);
@@ -109,14 +109,35 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Map spotType display names to router enum values
+    const spotTypeMap: { [key: string]: string } = {
+      'Dive Site': 'dive_site',
+      'Surf Spot': 'surf_spot',
+      'Snorkeling': 'snorkeling_spot',
+    };
+
+    // Map difficulty display names to router enum values
+    const difficultyMap: { [key: string]: string } = {
+      'Beginner': 'beginner',
+      'Intermediate': 'intermediate',
+      'Advanced': 'advanced',
+    };
+
     const submitData: any = {
-      ...formData,
       islandGuideId: formData.islandGuideId ? parseInt(formData.islandGuideId) : 0,
-      atollId: formData.atollId ? parseInt(formData.atollId) : undefined,
+      name: formData.name,
+      slug: formData.slug,
+      spotType: spotTypeMap[formData.spotType] || 'dive_site',
+      description: formData.description || undefined,
+      difficulty: difficultyMap[formData.difficulty] || 'beginner',
+      bestSeason: formData.bestSeason || undefined,
       maxDepth: formData.maxDepth ? parseInt(formData.maxDepth) : undefined,
       minDepth: formData.minDepth ? parseInt(formData.minDepth) : undefined,
-      reviewCount: formData.reviewCount ? parseInt(formData.reviewCount) : 0,
-      capacity: formData.capacity ? parseInt(formData.capacity) : undefined,
+      marineLife: formData.marineLife || undefined,
+      waveHeight: formData.waveHeight || undefined,
+      coralCoverage: formData.coralCoverage || undefined,
+      metaTitle: formData.metaTitle || undefined,
+      metaDescription: formData.metaDescription || undefined,
       published: formData.published ? 1 : 0,
     };
 
@@ -159,30 +180,36 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="type">Type *</Label>
-            <Select value={formData.spotType} onValueChange={(value) => setFormData({ ...formData, spotType: value })}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="dive_site">Dive Site</SelectItem>
-                <SelectItem value="surf_spot">Surf Spot</SelectItem>
-                <SelectItem value="snorkeling_spot">Snorkeling</SelectItem>
-              </SelectContent>
-            </Select>
+              <Label htmlFor="type">Type</Label>
+              <Select
+                value={formData.spotType}
+                onValueChange={(value) => setFormData({ ...formData, spotType: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select type..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Dive Site">Dive Site</SelectItem>
+                  <SelectItem value="Surf Spot">Surf Spot</SelectItem>
+                  <SelectItem value="Snorkeling">Snorkeling</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="difficulty">Difficulty Level</Label>
-            <Select value={formData.difficulty} onValueChange={(value) => setFormData({ ...formData, difficulty: value })}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="beginner">Beginner</SelectItem>
-                <SelectItem value="intermediate">Intermediate</SelectItem>
-                <SelectItem value="advanced">Advanced</SelectItem>
-              </SelectContent>
-            </Select>
+              <Label htmlFor="difficulty">Difficulty</Label>
+              <Select
+                value={formData.difficulty}
+                onValueChange={(value) => setFormData({ ...formData, difficulty: value })}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select difficulty..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Beginner">Beginner</SelectItem>
+                  <SelectItem value="Intermediate">Intermediate</SelectItem>
+                  <SelectItem value="Advanced">Advanced</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
@@ -216,7 +243,7 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
                   <SelectValue placeholder="Select an island..." />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">None</SelectItem>
+                  <SelectItem value="0">None</SelectItem>
                   {islands.map((island) => (
                     <SelectItem key={island.id} value={island.id.toString()}>
                       {island.name}
@@ -238,14 +265,13 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
         </CardContent>
       </Card>
 
-      {/* Dive-Specific Fields */}
-      {formData.spotType === 'dive_site' && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Dive Site Details</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Dive Site Details */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Dive Site Details</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="minDepth">Min Depth (meters)</Label>
               <Input
@@ -266,39 +292,20 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
                 placeholder="e.g., 30"
               />
             </div>
-              <div className="space-y-2">
-                <Label htmlFor="coralCoverage">Coral Coverage</Label>
-                <Input
-                  id="coralCoverage"
-                  value={formData.coralCoverage}
-                  onChange={(e) => setFormData({ ...formData, coralCoverage: e.target.value })}
-                  placeholder="e.g., 70%"
-                />
-              </div>
-            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="marineLife">Marine Life</Label>
-              <Textarea
-                id="marineLife"
-                value={formData.marineLife}
-                onChange={(e) => setFormData({ ...formData, marineLife: e.target.value })}
-                placeholder="Describe marine life found here..."
-                rows={3}
+              <Label htmlFor="coralCoverage">Coral Coverage</Label>
+              <Input
+                id="coralCoverage"
+                value={formData.coralCoverage}
+                onChange={(e) => setFormData({ ...formData, coralCoverage: e.target.value })}
+                placeholder="e.g., 70%"
               />
             </div>
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Surf-Specific Fields */}
-      {formData.spotType === 'surf_spot' && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Surf Spot Details</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="waveHeight">Wave Height</Label>
+              <Label htmlFor="waveHeight">Wave Height (Surf)</Label>
               <Input
                 id="waveHeight"
                 value={formData.waveHeight}
@@ -306,9 +313,20 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
                 placeholder="e.g., 2-4 feet"
               />
             </div>
-          </CardContent>
-        </Card>
-      )}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="marineLife">Marine Life</Label>
+            <Textarea
+              id="marineLife"
+              value={formData.marineLife}
+              onChange={(e) => setFormData({ ...formData, marineLife: e.target.value })}
+              placeholder="Describe marine life found here..."
+              rows={3}
+            />
+          </div>
+        </CardContent>
+      </Card>
 
       {/* General Details */}
       <Card>
@@ -331,9 +349,9 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
               <Input
                 id="rating"
                 type="number"
+                step="0.1"
                 min="0"
                 max="5"
-                step="0.1"
                 value={formData.rating}
                 onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
                 placeholder="4.5"
@@ -365,7 +383,7 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="operatorInfo">Operator Information</Label>
+            <Label htmlFor="operatorInfo">Operator Info</Label>
             <Textarea
               id="operatorInfo"
               value={formData.operatorInfo}
@@ -374,39 +392,42 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
               rows={3}
             />
           </div>
+        </CardContent>
+      </Card>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="metaTitle">Meta Title (SEO)</Label>
-              <Input
-                id="metaTitle"
-                value={formData.metaTitle}
-                onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
-                placeholder="SEO title for search engines"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="metaDescription">Meta Description (SEO)</Label>
-              <Input
-                id="metaDescription"
-                value={formData.metaDescription}
-                onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
-                placeholder="SEO description for search engines"
-              />
-            </div>
+      {/* SEO */}
+      <Card>
+        <CardHeader>
+          <CardTitle>SEO</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="metaTitle">Meta Title</Label>
+            <Input
+              id="metaTitle"
+              value={formData.metaTitle}
+              onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
+              placeholder="SEO title for search engines"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="metaDescription">Meta Description</Label>
+            <Input
+              id="metaDescription"
+              value={formData.metaDescription}
+              onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
+              placeholder="SEO description for search engines"
+            />
           </div>
         </CardContent>
       </Card>
 
-      {/* Submit Buttons */}
+      {/* Buttons */}
       <div className="flex gap-3 justify-end">
         <Button type="button" variant="outline" onClick={() => onSuccess()}>
           Cancel
         </Button>
-        <Button
-          type="submit"
-          disabled={createMutation.isPending || updateMutation.isPending}
-        >
+        <Button type="submit" disabled={createMutation.isPending || updateMutation.isPending}>
           {initialData ? 'Update Spot' : 'Create Spot'}
         </Button>
       </div>

@@ -809,3 +809,15 @@
 - [x] Test Things to Do tab displays new structure
 - [x] Verify activities, snorkeling, diving, and food sections display correctly
 - [x] See section ready for attractions data (will display when populated in CMS)
+
+
+## Activity Spots CMS Restructuring
+- [x] Remove snorkeling and diving guide fields from island_guides schema
+- [x] Update IslandGuideForm to remove snorkeling/diving sections
+- [x] Add island association dropdown to ActivitySpotForm
+- [x] Update ActivitySpots CMS page to display island associations
+- [x] Update IslandDetail to display linked activity spots
+- [x] Update Things to Do tab structure (See, Do, Eat only - no guides)
+- [x] Fix ActivitySpotForm data mapping to match server schema
+- [x] Test activity spot creation and island linking
+- [x] Verify activity spots display on island detail pages

@@ -39,10 +39,7 @@ export interface IslandGuideFormData {
     ferry: string;
   };
   topThingsToDo: Array<{ title: string; description: string }>;
-  snorkelingGuide: string;
-  divingGuide: string;
-  surfWatersports: string;
-  sandBankDolphinTrips: string;
+  // Activity spots (snorkeling, diving, surfing) are now managed separately in activity_spots table
   beachesLocalRules: string;
   foodCafes: string;
   practicalInfo: string;
@@ -84,10 +81,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
       attractions: [],
       transportation: { flight: '', speedboat: '', ferry: '' },
       topThingsToDo: Array(10).fill({ title: '', description: '' }),
-      snorkelingGuide: '',
-      divingGuide: '',
-      surfWatersports: '',
-      sandBankDolphinTrips: '',
+      // Activity spots managed separately
       beachesLocalRules: '',
       foodCafes: '',
       practicalInfo: '',
@@ -405,84 +399,15 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
 
         {/* Guides Tab */}
         <TabsContent value="guides" className="space-y-4">
-          {/* Snorkeling Guide */}
+          {/* Activity Spots (Snorkeling, Diving, Surfing) are now managed separately in the Activity Spots CMS */}
           <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('snorkeling')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>Snorkeling Guide</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.snorkeling ? 'rotate-180' : ''}`} />
-              </div>
+            <CardHeader>
+              <CardTitle>Activity Spots</CardTitle>
+              <CardDescription>Manage dive sites, snorkeling spots, and surf spots separately in the Activity Spots CMS module</CardDescription>
             </CardHeader>
-            {expandedSections.snorkeling && (
-              <CardContent>
-                <textarea
-                  value={formData.snorkelingGuide}
-                  onChange={(e) => setFormData({ ...formData, snorkelingGuide: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Snorkeling guide and tips..."
-                />
-              </CardContent>
-            )}
-          </Card>
-
-          {/* Diving Guide */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('diving')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>Diving Guide</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.diving ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.diving && (
-              <CardContent>
-                <textarea
-                  value={formData.divingGuide}
-                  onChange={(e) => setFormData({ ...formData, divingGuide: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Diving guide and information..."
-                />
-              </CardContent>
-            )}
-          </Card>
-
-          {/* Surf & Watersports */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('surfWatersports')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>Surf & Watersports</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.surfWatersports ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.surfWatersports && (
-              <CardContent>
-                <textarea
-                  value={formData.surfWatersports}
-                  onChange={(e) => setFormData({ ...formData, surfWatersports: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Surf and watersports information..."
-                />
-              </CardContent>
-            )}
-          </Card>
-
-          {/* Sandbank & Dolphin Trips */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('sandbank')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>Sandbank & Dolphin Trips</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.sandbank ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.sandbank && (
-              <CardContent>
-                <textarea
-                  value={formData.sandBankDolphinTrips}
-                  onChange={(e) => setFormData({ ...formData, sandBankDolphinTrips: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Sandbank and dolphin trip information..."
-                />
-              </CardContent>
-            )}
+            <CardContent>
+              <p className="text-sm text-gray-600">Link activity spots to this island using the Activity Spots CMS page</p>
+            </CardContent>
           </Card>
 
           {/* Beaches & Local Rules */}

@@ -17,18 +17,28 @@ export default function IslandDetail() {
   
   const [island, setIsland] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [linkedActivitySpots, setLinkedActivitySpots] = useState<any[]>([]);
 
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
   const { data: packages = [] } = trpc.packages.list.useQuery();
+  const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
+  
+
 
   useEffect(() => {
     if (guides.length > 0 && slug) {
       const foundIsland = guides.find((g: any) => g.slug === slug);
       setIsland(foundIsland || null);
       setIsLoading(false);
+      
+      // Filter activity spots linked to this island
+      if (foundIsland) {
+        const linked = activitySpots.filter((spot: any) => spot.islandGuideId === foundIsland.id);
+        setLinkedActivitySpots(linked);
+      }
     }
-  }, [slug, guides.length]);
+  }, [slug, guides.length, activitySpots]);
 
   // Helper function to parse JSON strings
   const parseJSON = (data: any): any => {
@@ -200,25 +210,34 @@ export default function IslandDetail() {
                         ))}
                       </div>
                       
-                      {/* Snorkeling Guide */}
-                      {island.snorkelingGuide && (
-                        <div className="mt-6 pt-6 border-t">
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                      {/* Activity Spots - Dive Sites, Snorkeling, Surfing */}
+                      {linkedActivitySpots.length > 0 && (
+                        <div className="mt-6 pt-6 border-t space-y-4">
+                          <h4 className="font-semibold text-gray-900 flex items-center gap-2">
                             <Waves className="w-4 h-4" />
-                            Snorkeling
+                            Water Activities
                           </h4>
-                          <p className="text-gray-700 text-sm">{island.snorkelingGuide}</p>
-                        </div>
-                      )}
-                      
-                      {/* Diving Guide */}
-                      {island.divingGuide && (
-                        <div className="mt-6 pt-6 border-t">
-                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                            <Zap className="w-4 h-4" />
-                            Diving
-                          </h4>
-                          <p className="text-gray-700 text-sm">{island.divingGuide}</p>
+                          <div className="space-y-3">
+                            {linkedActivitySpots.map((spot: any, idx: number) => (
+                              <div key={idx} className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                                <div className="flex items-start justify-between mb-2">
+                                  <h5 className="font-semibold text-gray-900">{spot.name}</h5>
+                                  <Badge className="text-xs">
+                                    {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
+                                  </Badge>
+                                </div>
+                                {spot.difficulty && (
+                                  <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
+                                )}
+                                {spot.description && (
+                                  <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
+                                )}
+                                {spot.bestSeason && (
+                                  <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </CardContent>
