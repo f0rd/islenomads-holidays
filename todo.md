@@ -841,3 +841,14 @@
 
 ## Missing Content - Island Guides
 - [x] Add "How to Get There" transportation information to Thoddoo Island guide
+
+
+## Activity Spots Hybrid Approach (Proximity-Based)
+- [x] Add latitude/longitude columns to activity_spots table (already existed)
+- [x] Create database function (getNearbyActivitySpots) to find nearby activity spots within radius
+- [x] Add tRPC endpoint (activitySpots.getNearby) for proximity-based queries
+- [x] Update ActivitySpotForm to include coordinate input fields (Latitude/Longitude)
+- [x] Update IslandDetail to fetch and display nearby activity spots (within 10 km radius)
+- [x] Display directly linked spots (blue badges) and nearby spots (green badges) with distinction
+- [x] Test nearby spots display on Thulusdhoo Island page
+- [x] Verify coordinate input fields in Activity Spots CMS form

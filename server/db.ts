@@ -1024,3 +1024,52 @@ export async function getIslandGuidesWithActivitySpots(): Promise<(IslandGuide &
   
   return islandsWithSpots;
 }
+
+
+/**
+ * Get nearby activity spots within a specified radius of an island
+ * Uses Haversine formula to calculate distance between coordinates
+ * @param latitude Island latitude
+ * @param longitude Island longitude
+ * @param radiusKm Search radius in kilometers (default 10 km)
+ * @returns Array of nearby activity spots
+ */
+export async function getNearbyActivitySpots(latitude: string | number, longitude: string | number, radiusKm: number = 10): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const lat = typeof latitude === 'string' ? parseFloat(latitude) : latitude;
+  const lon = typeof longitude === 'string' ? parseFloat(longitude) : longitude;
+  
+  // Get all published activity spots with coordinates
+  const allSpots = await db
+    .select()
+    .from(activitySpots)
+    .where(eq(activitySpots.published, 1));
+  
+  // Filter spots within radius using Haversine formula
+  const nearbySpots = allSpots.filter((spot) => {
+    if (!spot.latitude || !spot.longitude) return false;
+    
+    const spotLat = parseFloat(spot.latitude);
+    const spotLon = parseFloat(spot.longitude);
+    
+    // Haversine formula to calculate distance
+    const R = 6371; // Earth's radius in km
+    const dLat = (spotLat - lat) * (Math.PI / 180);
+    const dLon = (spotLon - lon) * (Math.PI / 180);
+    const a = 
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat * (Math.PI / 180)) * Math.cos(spotLat * (Math.PI / 180)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    
+    return distance <= radiusKm;
+  });
+  
+  return nearbySpots.sort((a, b) => {
+    // Sort by display order
+    return (a.displayOrder || 0) - (b.displayOrder || 0);
+  });
+}

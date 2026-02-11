@@ -24,6 +24,8 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
     category: '',
     difficulty: 'Beginner',
     description: '',
+    latitude: '',
+    longitude: '',
     maxDepth: '',
     minDepth: '',
     waveHeight: '',
@@ -71,6 +73,8 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
         category: initialData.category || '',
         difficulty: initialData.difficulty || 'Beginner',
         description: initialData.description || '',
+        latitude: initialData.latitude || '',
+        longitude: initialData.longitude || '',
         maxDepth: initialData.maxDepth || '',
         minDepth: initialData.minDepth || '',
         waveHeight: initialData.waveHeight || '',
@@ -259,6 +263,31 @@ export default function ActivitySpotForm({ initialData, islands, onSuccess }: Ac
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 placeholder="e.g., Manta Ray Spots, Beginner Dive Sites"
+              />
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="latitude">Latitude</Label>
+              <Input
+                id="latitude"
+                type="number"
+                step="0.000001"
+                value={formData.latitude}
+                onChange={(e) => setFormData({ ...formData, latitude: e.target.value })}
+                placeholder="e.g., 4.1699"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="longitude">Longitude</Label>
+              <Input
+                id="longitude"
+                type="number"
+                step="0.000001"
+                value={formData.longitude}
+                onChange={(e) => setFormData({ ...formData, longitude: e.target.value })}
+                placeholder="e.g., 73.5079"
               />
             </div>
           </div>

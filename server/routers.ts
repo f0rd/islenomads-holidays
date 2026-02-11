@@ -22,7 +22,7 @@ import {
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll, getAtollsByRegion, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
   getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
-  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots
+  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots
 } from "./db";
 
 export const appRouter = router({
@@ -1077,6 +1077,12 @@ export const appRouter = router({
           throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can delete activity spots' });
         }
         return deleteActivitySpot(input.id);
+      }),
+
+    getNearby: publicProcedure
+      .input(z.object({ latitude: z.union([z.string(), z.number()]), longitude: z.union([z.string(), z.number()]), radiusKm: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getNearbyActivitySpots(input.latitude, input.longitude, input.radiusKm || 10);
       }),
   }),
 });
