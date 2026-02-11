@@ -864,3 +864,10 @@
 - [x] Add "Back to Explore" button on island pages
 - [ ] Add pagination/navigation between activity spots
 - [ ] Improve mobile navigation responsiveness
+
+
+## Activity Spots Data Population
+- [x] Run seed script to populate 21 activity spots (8 surf, 7 dive, 6 snorkeling)
+- [x] Verify activity spot counts updated on Explore Maldives page
+- [x] Test activity filtering with snorkeling spots
+- [x] Verify snorkeling spots display on island detail pages
