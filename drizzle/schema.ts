@@ -233,6 +233,8 @@ export const islandGuides = mysqlTable("island_guides", {
   divingGuide: text("divingGuide"), // JSON object with sites, difficulty, tips
   surfWatersports: text("surfWatersports"), // JSON object
   sandbankDolphinTrips: text("sandbankDolphinTrips"), // JSON object
+  // Attractions & Landmarks (See section)
+  attractions: text("attractions"), // JSON array of landmarks/attractions with name, description, location
   // Beaches & Local Rules
   beachesLocalRules: text("beachesLocalRules"), // JSON object with beaches and rules
   // Food & Cafés

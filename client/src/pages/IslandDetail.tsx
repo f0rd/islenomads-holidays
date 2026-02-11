@@ -150,17 +150,45 @@ export default function IslandDetail() {
                 )}
               </TabsContent>
 
-              {/* Things to Do Tab */}
+              {/* Things to Do Tab - WikiTravel Style */}
               <TabsContent value="things-to-do" className="mt-6 space-y-6">
+                {/* See Section - Attractions & Landmarks */}
+                {island.attractions && parseJSON(island.attractions).length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <MapPin className="w-5 h-5" />
+                        See
+                      </CardTitle>
+                      <CardDescription>Attractions & Landmarks</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {parseJSON(island.attractions).map((attraction: any, idx: number) => (
+                          attraction && (attraction.name || attraction.description) && (
+                            <div key={idx} className="border-l-4 border-blue-500 pl-4">
+                              {attraction.name && <h4 className="font-semibold text-gray-900 mb-1">{attraction.name}</h4>}
+                              {attraction.location && <p className="text-xs text-gray-500 mb-2">{attraction.location}</p>}
+                              {attraction.description && <p className="text-gray-700 text-sm">{attraction.description}</p>}
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Do Section - Activities */}
                 {topThingsToDo.length > 0 && (
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Compass className="w-5 h-5" />
-                        Top Things to Do
+                        Do
                       </CardTitle>
+                      <CardDescription>Activities & Experiences</CardDescription>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="space-y-4">
                       <div className="space-y-4">
                         {topThingsToDo.map((item: any, idx: number) => (
                           item && (item.title || item.description) && (
@@ -171,36 +199,53 @@ export default function IslandDetail() {
                           )
                         ))}
                       </div>
+                      
+                      {/* Snorkeling Guide */}
+                      {island.snorkelingGuide && (
+                        <div className="mt-6 pt-6 border-t">
+                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                            <Waves className="w-4 h-4" />
+                            Snorkeling
+                          </h4>
+                          <p className="text-gray-700 text-sm">{island.snorkelingGuide}</p>
+                        </div>
+                      )}
+                      
+                      {/* Diving Guide */}
+                      {island.divingGuide && (
+                        <div className="mt-6 pt-6 border-t">
+                          <h4 className="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                            <Zap className="w-4 h-4" />
+                            Diving
+                          </h4>
+                          <p className="text-gray-700 text-sm">{island.divingGuide}</p>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 )}
 
-                {/* Snorkeling Guide */}
-                {island.snorkelingGuide && (
+                {/* Eat Section - Food & Dining */}
+                {foodCafes.length > 0 && (
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Waves className="w-5 h-5" />
-                        Snorkeling Guide
+                        <Utensils className="w-5 h-5" />
+                        Eat
                       </CardTitle>
+                      <CardDescription>Dining & Cafés</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{island.snorkelingGuide}</p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Diving Guide */}
-                {island.divingGuide && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Zap className="w-5 h-5" />
-                        Diving Guide
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-700 leading-relaxed">{island.divingGuide}</p>
+                      <div className="space-y-4">
+                        {foodCafes.map((cafe: any, idx: number) => (
+                          cafe && (cafe.name || cafe.description) && (
+                            <div key={idx} className="border-l-4 border-orange-500 pl-4">
+                              {cafe.name && <h4 className="font-semibold text-gray-900 mb-1">{cafe.name}</h4>}
+                              {cafe.description && <p className="text-gray-700 text-sm">{cafe.description}</p>}
+                            </div>
+                          )
+                        ))}
+                      </div>
                     </CardContent>
                   </Card>
                 )}

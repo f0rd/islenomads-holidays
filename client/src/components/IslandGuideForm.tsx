@@ -4,6 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 
+export interface Attraction {
+  id?: string;
+  name: string;
+  description: string;
+  location?: string;
+  icon?: string;
+}
+
 export interface ActivitySpot {
   id?: number;
   name: string;
@@ -24,6 +32,7 @@ export interface IslandGuideFormData {
   slug: string;
   overview: string;
   quickFacts: string[];
+  attractions?: Attraction[];
   transportation: {
     flight: string;
     speedboat: string;
@@ -59,6 +68,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     return {
       ...data,
       quickFacts: typeof data.quickFacts === 'string' ? JSON.parse(data.quickFacts || '[]') : (data.quickFacts || []),
+      attractions: typeof data.attractions === 'string' ? JSON.parse(data.attractions || '[]') : (data.attractions || []),
       topThingsToDo: typeof data.topThingsToDo === 'string' ? JSON.parse(data.topThingsToDo || '[]') : (data.topThingsToDo || []),
       faqs: typeof data.faqs === 'string' ? JSON.parse(data.faqs || '[]') : (data.faqs || []),
       activitySpots: typeof data.activitySpots === 'string' ? JSON.parse(data.activitySpots || '[]') : (data.activitySpots || []),
@@ -71,6 +81,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
       slug: '',
       overview: '',
       quickFacts: ['', '', '', '', '', '', '', ''],
+      attractions: [],
       transportation: { flight: '', speedboat: '', ferry: '' },
       topThingsToDo: Array(10).fill({ title: '', description: '' }),
       snorkelingGuide: '',

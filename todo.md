@@ -790,3 +790,22 @@
 - [x] Verify all content displays correctly in new tabs
 - [x] Remove Activities tab and consolidate snorkeling/diving guides into Things to Do tab
 - [x] Final tab structure: Overview, Things to Do, How to Get There, Practical, FAQ
+
+
+## Things to Do Tab Restructuring (WikiTravel Format)
+- [ ] Add attractions/landmarks field to island_guides schema
+- [ ] Update IslandGuideForm to include attractions section with name, description, location
+- [ ] Restructure Things to Do tab to have 3 subsections: See (attractions), Do (activities), Eat (dining)
+- [ ] Display attractions with descriptions and icons in See section
+- [ ] Display activities (snorkeling, diving) in Do section
+- [ ] Display food & cafes in Eat section
+- [ ] Test Male Capital City page displays new Things to Do structure
+
+
+## Things to Do Tab Restructuring (WikiTravel Style)
+- [x] Add attractions field to island_guides schema
+- [x] Add attractions interface and parsing to IslandGuideForm component
+- [x] Restructure Things to Do tab with WikiTravel-style See, Do, Eat sections
+- [x] Test Things to Do tab displays new structure
+- [x] Verify activities, snorkeling, diving, and food sections display correctly
+- [x] See section ready for attractions data (will display when populated in CMS)
