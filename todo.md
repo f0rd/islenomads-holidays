@@ -838,3 +838,6 @@
 - [x] Test multi-activity filtering (Diving + Surfing)
 - [x] Test Clear button functionality
 - [x] Verify activity counts display correctly
+
+## Missing Content - Island Guides
+- [x] Add "How to Get There" transportation information to Thoddoo Island guide
