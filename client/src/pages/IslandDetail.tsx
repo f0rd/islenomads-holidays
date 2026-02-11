@@ -391,16 +391,18 @@ export default function IslandDetail() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
-                        {foodCafes.map((cafe: string, idx: number) => (
-                          cafe && (
-                            <li key={idx} className="flex items-start gap-2 text-gray-700">
-                              <span className="text-accent font-bold mt-1">•</span>
-                              <span>{cafe}</span>
-                            </li>
+                      <div className="space-y-4">
+                        {foodCafes.map((cafe: any, idx: number) => (
+                          cafe && (cafe.name || cafe.description) && (
+                            <div key={idx} className="border-l-4 border-orange-500 pl-4">
+                              {cafe.name && <h4 className="font-semibold text-gray-900 mb-1">{cafe.name}</h4>}
+                              {cafe.cuisine && <p className="text-gray-600 text-sm mb-1">Cuisine: {cafe.cuisine}</p>}
+                              {cafe.description && <p className="text-gray-700 text-sm">{cafe.description}</p>}
+                              {cafe.priceRange && <p className="text-gray-600 text-sm mt-1">Price Range: {cafe.priceRange}</p>}
+                            </div>
                           )
                         ))}
-                      </ul>
+                      </div>
                     </CardContent>
                   </Card>
                 )}

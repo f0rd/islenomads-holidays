@@ -852,3 +852,7 @@
 - [x] Display directly linked spots (blue badges) and nearby spots (green badges) with distinction
 - [x] Test nearby spots display on Thulusdhoo Island page
 - [x] Verify coordinate input fields in Activity Spots CMS form
+
+
+## Bug Fixes
+- [x] Fix React rendering error on Hulhumale island page (Practical tab cafe rendering)
