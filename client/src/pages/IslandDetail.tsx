@@ -100,9 +100,38 @@ export default function IslandDetail() {
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
 
+  // Get all islands for navigation
+  const allIslands = guides.filter((g: any) => g.published);
+  const currentIslandIndex = allIslands.findIndex((g: any) => g.id === island.id);
+  const previousIsland = currentIslandIndex > 0 ? allIslands[currentIslandIndex - 1] : null;
+  const nextIsland = currentIslandIndex < allIslands.length - 1 ? allIslands[currentIslandIndex + 1] : null;
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navigation />
+      
+      {/* Breadcrumb Navigation */}
+      <div className="bg-white border-b border-gray-200 sticky top-20 z-40">
+        <div className="container py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-sm">
+            <Link href="/">
+              <span className="text-primary hover:text-accent cursor-pointer transition-colors">Home</span>
+            </Link>
+            <span className="text-gray-400">/</span>
+            <Link href="/explore-maldives">
+              <span className="text-primary hover:text-accent cursor-pointer transition-colors">Explore</span>
+            </Link>
+            <span className="text-gray-400">/</span>
+            <span className="text-gray-600 font-medium">{island.name}</span>
+          </div>
+          <Link href="/explore-maldives">
+            <Button variant="outline" size="sm" className="gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Explore
+            </Button>
+          </Link>
+        </div>
+      </div>
       
       {/* Header */}
       <div className="relative h-96 overflow-hidden">
@@ -464,6 +493,43 @@ export default function IslandDetail() {
                 </Button>
               </CardContent>
             </Card>
+          </div>
+        </div>
+
+        {/* Island Navigation */}
+        <div className="mt-12 border-t pt-8">
+          <h3 className="text-lg font-semibold mb-6 text-gray-900">Explore More Islands</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {previousIsland && (
+              <Link href={`/island/${previousIsland.slug}`}>
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                  <CardContent className="p-4">
+                    <div className="flex items-center gap-3">
+                      <ArrowLeft className="w-5 h-5 text-primary flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-gray-500 font-medium">Previous Island</p>
+                        <p className="font-semibold text-gray-900">{previousIsland.name}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
+            {nextIsland && (
+              <Link href={`/island/${nextIsland.slug}`}>
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-xs text-gray-500 font-medium">Next Island</p>
+                        <p className="font-semibold text-gray-900">{nextIsland.name}</p>
+                      </div>
+                      <ArrowLeft className="w-5 h-5 text-primary flex-shrink-0 rotate-180" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
           </div>
         </div>
       </div>
