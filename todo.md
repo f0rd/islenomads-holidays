@@ -821,3 +821,20 @@
 - [x] Fix ActivitySpotForm data mapping to match server schema
 - [x] Test activity spot creation and island linking
 - [x] Verify activity spots display on island detail pages
+
+
+## Explore Maldives Activity-Based Filtering
+- [x] Create database function to fetch islands with linked activity spots
+- [x] Add tRPC endpoint for islands with activity spots (listWithActivitySpots)
+- [x] Add activity filter UI to Explore Maldives Islands tab
+- [x] Implement activity filter state management (selectedActivities)
+- [x] Calculate available activities and activity counts dynamically
+- [x] Implement filtering logic with OR operator (islands with any selected activity)
+- [x] Add activity icons (diving, snorkeling, surfing) to filter buttons
+- [x] Display activity badges on island cards
+- [x] Add Clear button to reset filters
+- [x] Update heading dynamically based on selected activities
+- [x] Test single activity filtering (Diving)
+- [x] Test multi-activity filtering (Diving + Surfing)
+- [x] Test Clear button functionality
+- [x] Verify activity counts display correctly

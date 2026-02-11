@@ -12,8 +12,11 @@ import {
   ArrowRight,
   Waves,
   Fish,
+  Zap,
+  Wind,
   Users,
-  Star
+  Star,
+  X
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
@@ -51,16 +54,24 @@ interface ActivitySpotData {
   islandGuideId: number;
 }
 
+interface IslandWithSpots extends IslandGuideData {
+  activitySpots: ActivitySpotData[];
+}
+
 export default function ExploreMaldives() {
   const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi'>('atolls');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedActivities, setSelectedActivities] = useState<Set<string>>(new Set());
 
   // Fetch atolls
   const { data: atolls = [] } = trpc.atolls.list.useQuery();
 
   // Fetch island guides
   const { data: islands = [] } = trpc.islandGuides.list.useQuery();
+
+  // Fetch islands with activity spots
+  const { data: islandsWithSpots = [] } = trpc.islandGuides.listWithActivitySpots.useQuery();
 
   // Fetch activity spots
   const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
@@ -70,6 +81,36 @@ export default function ExploreMaldives() {
     const uniqueRegions = new Set(atolls.map((a: AtollData) => a.region));
     return ['All', ...Array.from(uniqueRegions)];
   }, [atolls]);
+
+  // Get activity types available on islands
+  const availableActivities = useMemo(() => {
+    const activities = new Set<string>();
+    islandsWithSpots.forEach((island: IslandWithSpots) => {
+      island.activitySpots?.forEach((spot: ActivitySpotData) => {
+        if (spot.spotType === 'dive_site') activities.add('diving');
+        if (spot.spotType === 'snorkeling_spot') activities.add('snorkeling');
+        if (spot.spotType === 'surf_spot') activities.add('surfing');
+      });
+    });
+    return Array.from(activities).sort();
+  }, [islandsWithSpots]);
+
+  // Get activity counts
+  const activityCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    islandsWithSpots.forEach((island: IslandWithSpots) => {
+      island.activitySpots?.forEach((spot: ActivitySpotData) => {
+        let activity = '';
+        if (spot.spotType === 'dive_site') activity = 'diving';
+        if (spot.spotType === 'snorkeling_spot') activity = 'snorkeling';
+        if (spot.spotType === 'surf_spot') activity = 'surfing';
+        if (activity) {
+          counts[activity] = (counts[activity] || 0) + 1;
+        }
+      });
+    });
+    return counts;
+  }, [islandsWithSpots]);
 
   // Filter and search atolls
   const filteredAtolls = useMemo(() => {
@@ -81,16 +122,33 @@ export default function ExploreMaldives() {
     });
   }, [atolls, selectedRegion, searchQuery]);
 
-  // Filter and search islands (only actual islands, not POIs)
+  // Filter and search islands with activity filtering
   const filteredIslands = useMemo(() => {
-    return islands.filter((island: IslandGuideData) => {
+    return islandsWithSpots.filter((island: IslandWithSpots) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
-      const isActualIsland = island.contentType !== 'point_of_interest'; // Filter out POIs
-      return matchesSearch && isPublished && isActualIsland;
+      const isActualIsland = island.contentType !== 'point_of_interest';
+      
+      // Activity filtering
+      let matchesActivities = true;
+      if (selectedActivities.size > 0) {
+        const islandActivityTypes = new Set<string>();
+        island.activitySpots?.forEach((spot: ActivitySpotData) => {
+          if (spot.spotType === 'dive_site') islandActivityTypes.add('diving');
+          if (spot.spotType === 'snorkeling_spot') islandActivityTypes.add('snorkeling');
+          if (spot.spotType === 'surf_spot') islandActivityTypes.add('surfing');
+        });
+        
+        // Island must have at least one of the selected activities
+        matchesActivities = Array.from(selectedActivities).some(activity => 
+          islandActivityTypes.has(activity)
+        );
+      }
+      
+      return matchesSearch && isPublished && isActualIsland && matchesActivities;
     });
-  }, [islands, searchQuery]);
+  }, [islandsWithSpots, searchQuery, selectedActivities]);
 
   // Filter and search points of interest (combine POIs and activity spots)
   const filteredPointsOfInterest = useMemo(() => {
@@ -108,6 +166,29 @@ export default function ExploreMaldives() {
     });
     return { pois, spots };
   }, [islands, activitySpots, searchQuery]);
+
+  const toggleActivity = (activity: string) => {
+    const newActivities = new Set(selectedActivities);
+    if (newActivities.has(activity)) {
+      newActivities.delete(activity);
+    } else {
+      newActivities.add(activity);
+    }
+    setSelectedActivities(newActivities);
+  };
+
+  const getActivityIcon = (activity: string) => {
+    switch (activity) {
+      case 'diving':
+        return <Fish className="w-4 h-4" />;
+      case 'snorkeling':
+        return <Zap className="w-4 h-4" />;
+      case 'surfing':
+        return <Wind className="w-4 h-4" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -159,7 +240,7 @@ export default function ExploreMaldives() {
       {/* Main Content */}
       <section className="py-16 md:py-24">
         <div className="container">
-            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands' | 'poi')} className="w-full">
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands' | 'poi')} className="w-full">
             {/* Tab Navigation */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
               <TabsList className="grid w-full md:w-auto grid-cols-3">
@@ -191,6 +272,38 @@ export default function ExploreMaldives() {
                       {region}
                     </Button>
                   ))}
+                </div>
+              )}
+
+              {/* Activity Filter - Only show for Islands tab */}
+              {activeTab === 'islands' && availableActivities.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {availableActivities.map((activity) => (
+                    <Button
+                      key={activity}
+                      variant={selectedActivities.has(activity) ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => toggleActivity(activity)}
+                      className="rounded-full gap-2 capitalize"
+                    >
+                      {getActivityIcon(activity)}
+                      {activity}
+                      {activityCounts[activity] && (
+                        <span className="text-xs opacity-75">({activityCounts[activity]})</span>
+                      )}
+                    </Button>
+                  ))}
+                  {selectedActivities.size > 0 && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setSelectedActivities(new Set())}
+                      className="rounded-full gap-2"
+                    >
+                      <X className="w-4 h-4" />
+                      Clear
+                    </Button>
+                  )}
                 </div>
               )}
             </div>
@@ -270,7 +383,12 @@ export default function ExploreMaldives() {
             {/* Islands Tab */}
             <TabsContent value="islands" className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold mb-2">Featured Islands</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  {selectedActivities.size > 0 
+                    ? `Islands with ${Array.from(selectedActivities).join(', ')}`
+                    : 'Featured Islands'
+                  }
+                </h2>
                 <p className="text-muted-foreground">
                   {filteredIslands.length} island{filteredIslands.length !== 1 ? 's' : ''} found
                 </p>
@@ -278,7 +396,7 @@ export default function ExploreMaldives() {
 
               {filteredIslands.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredIslands.map((island: IslandGuideData) => (
+                  {filteredIslands.map((island: IslandWithSpots) => (
                     <Link key={island.id} href={`/island/${island.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
@@ -312,6 +430,25 @@ export default function ExploreMaldives() {
                             {island.overview || 'Discover this beautiful island in the Maldives.'}
                           </p>
 
+                          {/* Activity Badges */}
+                          {island.activitySpots && island.activitySpots.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mb-4">
+                              {Array.from(new Set(
+                                island.activitySpots.map(spot => {
+                                  if (spot.spotType === 'dive_site') return 'diving';
+                                  if (spot.spotType === 'snorkeling_spot') return 'snorkeling';
+                                  if (spot.spotType === 'surf_spot') return 'surfing';
+                                  return '';
+                                }).filter(Boolean)
+                              )).map((activity) => (
+                                <Badge key={activity} variant="secondary" className="text-xs capitalize gap-1">
+                                  {getActivityIcon(activity)}
+                                  {activity}
+                                </Badge>
+                              ))}
+                            </div>
+                          )}
+
                           <Button variant="outline" className="w-full gap-2 group/btn">
                             View Guide
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -325,7 +462,10 @@ export default function ExploreMaldives() {
                 <div className="text-center py-12">
                   <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                   <p className="text-lg text-muted-foreground">
-                    No islands found matching your search.
+                    {selectedActivities.size > 0 
+                      ? `No islands found with ${Array.from(selectedActivities).join(', ')}.`
+                      : 'No islands found matching your search.'
+                    }
                   </p>
                 </div>
               )}
@@ -357,14 +497,8 @@ export default function ExploreMaldives() {
                           ) : (
                             <div className="text-center">
                               <Star className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                              <p className="text-sm text-primary-foreground/80 font-semibold">Attraction</p>
+                              <p className="text-sm text-primary-foreground/80 font-semibold">Point of Interest</p>
                             </div>
-                          )}
-
-                          {poi.atoll && (
-                            <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
-                              {poi.atoll}
-                            </Badge>
                           )}
                         </div>
 
@@ -374,7 +508,7 @@ export default function ExploreMaldives() {
                             {poi.name}
                           </h3>
                           <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
-                            {poi.overview || 'Discover this amazing attraction in the Maldives.'}
+                            {poi.overview || 'Discover this amazing point of interest.'}
                           </p>
 
                           <Button variant="outline" className="w-full gap-2 group/btn">
@@ -391,15 +525,16 @@ export default function ExploreMaldives() {
                     <Card key={spot.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
                       {/* Hero Image */}
                       <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
-                        {spot.description ? (
-                          <div className="w-full h-full bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
-                            <Fish className="w-12 h-12 text-white mx-auto group-hover:scale-110 transition-transform" />
-                          </div>
-                        ) : (
-                          <div className="text-center">
-                            <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                            <p className="text-sm text-primary-foreground/80 font-semibold">Dive Site</p>
-                          </div>
+                        <div className="text-center">
+                          {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType.replace('_', ' ')}</p>
+                        </div>
+                        {spot.difficulty && (
+                          <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
+                            {spot.difficulty}
+                          </Badge>
                         )}
                       </div>
 
@@ -408,22 +543,15 @@ export default function ExploreMaldives() {
                         <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
                           {spot.name}
                         </h3>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          {spot.spotType === 'dive_site' ? 'Dive Site' : spot.spotType === 'surf_spot' ? 'Surf Spot' : 'Snorkeling Spot'}
-                        </p>
-                        {spot.difficulty && (
-                          <p className="text-xs text-accent font-semibold mb-4">
-                            Difficulty: {spot.difficulty}
-                          </p>
-                        )}
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
-                          {spot.description || 'Explore this amazing dive site.'}
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                          {spot.description || 'Discover this amazing activity spot.'}
                         </p>
 
-                        <Button variant="outline" className="w-full gap-2 group/btn">
-                          Learn More
-                          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
+                        {spot.bestSeason && (
+                          <Badge variant="secondary" className="mb-4 w-fit text-xs">
+                            Best: {spot.bestSeason}
+                          </Badge>
+                        )}
                       </CardContent>
                     </Card>
                   ))}
@@ -438,55 +566,6 @@ export default function ExploreMaldives() {
               )}
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-16 md:py-24 bg-muted/50">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <Waves className="w-8 h-8 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">26 Atolls</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Explore the natural atolls that make up the Maldives archipelago.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="w-8 h-8 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">1,190 Islands</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Discover coral islands with pristine beaches and crystal-clear waters.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <Fish className="w-8 h-8 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">World-Class Diving</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Experience some of the best diving and snorkeling in the world.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
         </div>
       </section>
 

@@ -22,7 +22,7 @@ import {
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll, getAtollsByRegion, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
   getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
-  getAllActivitySpots, getAllActivitySpotsAdmin
+  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots
 } from "./db";
 
 export const appRouter = router({
@@ -568,6 +568,10 @@ export const appRouter = router({
       .mutation(async ({ input }) => {
         return updateDisplayOrder(input.updates);
       }),
+
+    listWithActivitySpots: publicProcedure.query(async () => {
+      return getIslandGuidesWithActivitySpots();
+    }),
   }),
 
   seo: router({

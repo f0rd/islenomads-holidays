@@ -997,3 +997,30 @@ export async function getAllActivitySpotsAdmin(): Promise<ActivitySpot[]> {
   if (!db) return [];
   return db.select().from(activitySpots).orderBy(activitySpots.displayOrder);
 }
+
+export async function getIslandGuidesWithActivitySpots(): Promise<(IslandGuide & { activitySpots: ActivitySpot[] })[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  // Get all published islands
+  const islands = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.published, 1));
+  
+  // For each island, fetch its activity spots
+  const islandsWithSpots = await Promise.all(
+    islands.map(async (island) => {
+      const spots = await db
+        .select()
+        .from(activitySpots)
+        .where(eq(activitySpots.islandGuideId, island.id));
+      return {
+        ...island,
+        activitySpots: spots,
+      };
+    })
+  );
+  
+  return islandsWithSpots;
+}
