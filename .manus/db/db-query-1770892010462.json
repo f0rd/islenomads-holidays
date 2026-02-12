@@ -1,0 +1,210 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides ORDER BY name;",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "slug": "alifushi"
+    },
+    {
+      "id": "4",
+      "name": "Banana Reef",
+      "slug": "banana-reef"
+    },
+    {
+      "id": "60014",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi"
+    },
+    {
+      "id": "60008",
+      "name": "Dhigurah",
+      "slug": "dhigurah"
+    },
+    {
+      "id": "5",
+      "name": "Dhigurah Island",
+      "slug": "dhigurah-island"
+    },
+    {
+      "id": "60021",
+      "name": "Feidhoo",
+      "slug": "feidhoo"
+    },
+    {
+      "id": "60011",
+      "name": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "id": "60017",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo"
+    },
+    {
+      "id": "60010",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo"
+    },
+    {
+      "id": "9",
+      "name": "Fulidhoo Island",
+      "slug": "fulidhoo-island"
+    },
+    {
+      "id": "60020",
+      "name": "Gan",
+      "slug": "gan"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo"
+    },
+    {
+      "id": "10",
+      "name": "Haa Alifu Atoll",
+      "slug": "haa-alifu-atoll"
+    },
+    {
+      "id": "30007",
+      "name": "Hanifaru Bay",
+      "slug": "hanifaru-bay"
+    },
+    {
+      "id": "60013",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru"
+    },
+    {
+      "id": "60023",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo"
+    },
+    {
+      "id": "30004",
+      "name": "Hulhumalé",
+      "slug": "hulhumale"
+    },
+    {
+      "id": "60026",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo"
+    },
+    {
+      "id": "8",
+      "name": "Kandooma Island",
+      "slug": "kandooma-island"
+    },
+    {
+      "id": "60019",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi"
+    },
+    {
+      "id": "60016",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo"
+    },
+    {
+      "id": "60002",
+      "name": "Maafushi",
+      "slug": "maafushi"
+    },
+    {
+      "id": "2",
+      "name": "Maafushi Island",
+      "slug": "maafushi-island"
+    },
+    {
+      "id": "60025",
+      "name": "Madifushi",
+      "slug": "madifushi"
+    },
+    {
+      "id": "1",
+      "name": "Male - The Capital City",
+      "slug": "male-capital-city"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male"
+    },
+    {
+      "id": "60022",
+      "name": "Maradhoo",
+      "slug": "maradhoo"
+    },
+    {
+      "id": "60018",
+      "name": "Muli",
+      "slug": "muli"
+    },
+    {
+      "id": "60012",
+      "name": "Naifaru",
+      "slug": "naifaru"
+    },
+    {
+      "id": "60005",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo"
+    },
+    {
+      "id": "60006",
+      "name": "Thoddoo",
+      "slug": "thoddoo"
+    },
+    {
+      "id": "60003",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo"
+    },
+    {
+      "id": "3",
+      "name": "Thulusdhoo Island",
+      "slug": "thulusdhoo-island"
+    },
+    {
+      "id": "60007",
+      "name": "Ukulhas",
+      "slug": "ukulhas"
+    },
+    {
+      "id": "6",
+      "name": "Ukulhas Island",
+      "slug": "ukulhas-island"
+    },
+    {
+      "id": "60028",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru"
+    },
+    {
+      "id": "60009",
+      "name": "Veligandu",
+      "slug": "veligandu"
+    },
+    {
+      "id": "7",
+      "name": "Veligandu Island",
+      "slug": "veligandu-island"
+    },
+    {
+      "id": "60024",
+      "name": "Veymandoo",
+      "slug": "veymandoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n60027\tAlifushi\talifushi\n4\tBanana Reef\tbanana-reef\n60014\tDharavandhoo\tdharavandhoo\n60004\tDhiffushi\tdhiffushi\n60008\tDhigurah\tdhigurah\n5\tDhigurah Island\tdhigurah-island\n60021\tFeidhoo\tfeidhoo\n60011\tFelidhoo\tfelidhoo\n60017\tFodhdhoo\tfodhdhoo\n60010\tFulidhoo\tfulidhoo\n9\tFulidhoo Island\tfulidhoo-island\n60020\tGan\tgan\n60015\tGuraidhoo\tguraidhoo\n10\tHaa Alifu Atoll\thaa-alifu-atoll\n30007\tHanifaru Bay\thanifaru-bay\n60013\tHinnavaru\thinnavaru\n60023\tHithadhoo\thithadhoo\n30004\tHulhumalé\thulhumale\n60026\tInguraidhoo\tinguraidhoo\n8\tKandooma Island\tkandooma-island\n60019\tKolhufushi\tkolhufushi\n60016\tKudahuvadhoo\tkudahuvadhoo\n60002\tMaafushi\tmaafushi\n2\tMaafushi Island\tmaafushi-island\n60025\tMadifushi\tmadifushi\n1\tMale - The Capital City\tmale-capital-city\n60001\tMalé\tmale\n60022\tMaradhoo\tmaradhoo\n60018\tMuli\tmuli\n60012\tNaifaru\tnaifaru\n60005\tRasdhoo\trasdhoo\n60006\tThoddoo\tthoddoo\n60003\tThulusdhoo\tthulusdhoo\n3\tThulusdhoo Island\tthulusdhoo-island\n60007\tUkulhas\tukulhas\n6\tUkulhas Island\tukulhas-island\n60028\tUngoofaaru\tungoofaaru\n60009\tVeligandu\tveligandu\n7\tVeligandu Island\tveligandu-island\n60024\tVeymandoo\tveymandoo\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}
