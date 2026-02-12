@@ -1079,6 +1079,7 @@
 - [x] Dhigurah House Reef, Fulidhoo Kandu, Felidhoo Kandu, Rasdhoo Madivaru
 - [x] Thoddoo House Reef, Ukulhas House Reef, Naifaru Kandu, Hanifaru Bay
 - [x] All dive sites include marine life info, best seasons, visibility, and max depths
+- [x] Add Fuvahmulah Tiger Shark dive spot to attractions database
 
 ## Island Database Cleanup & Expansion
 - [x] Removed duplicate island entries (11 duplicates deleted)
