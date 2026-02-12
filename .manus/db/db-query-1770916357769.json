@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total_routes, COUNT(DISTINCT type) as route_types FROM boat_routes WHERE published = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_routes, COUNT(DISTINCT type) as route_types FROM boat_routes WHERE published = 1;",
+  "rows": [
+    {
+      "total_routes": "21",
+      "route_types": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_routes\troute_types\n21\t2\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}
