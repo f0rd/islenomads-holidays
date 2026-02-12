@@ -759,3 +759,62 @@ export const spotTypes = mysqlTable(
 
 export type SpotType = typeof spotTypes.$inferSelect;
 export type InsertSpotType = typeof spotTypes.$inferInsert;
+
+
+// Airports table for Maldives airports
+export const airports = mysqlTable("airports", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(), // e.g., "Malé International Airport"
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  iataCode: varchar("iataCode", { length: 10 }).notNull().unique(), // e.g., "MLE"
+  icaoCode: varchar("icaoCode", { length: 10 }), // e.g., "VRMM"
+  description: text("description"),
+  // Location
+  latitude: varchar("latitude", { length: 50 }).notNull(),
+  longitude: varchar("longitude", { length: 50 }).notNull(),
+  atoll: varchar("atoll", { length: 255 }), // Which atoll the airport is in
+  // Facilities & Services
+  facilities: text("facilities"), // JSON array of facilities
+  airlines: text("airlines"), // JSON array of airlines
+  // Connectivity
+  internationalFlights: int("internationalFlights").default(1).notNull(),
+  domesticFlights: int("domesticFlights").default(0).notNull(),
+  // Contact & Info
+  phone: varchar("phone", { length: 20 }),
+  email: varchar("email", { length: 320 }),
+  website: varchar("website", { length: 500 }),
+  // Status
+  isActive: int("isActive").default(1).notNull(),
+  published: int("published").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Airport = typeof airports.$inferSelect;
+export type InsertAirport = typeof airports.$inferInsert;
+
+// Airport Routes table - speedboat/ferry routes from airports to islands
+export const airportRoutes = mysqlTable("airport_routes", {
+  id: int("id").autoincrement().primaryKey(),
+  airportId: int("airportId").notNull().references(() => airports.id, { onDelete: "cascade" }),
+  islandGuideId: int("islandGuideId").notNull().references(() => islandGuides.id, { onDelete: "cascade" }),
+  // Route Details
+  transportType: mysqlEnum("transportType", ["speedboat", "ferry", "seaplane", "dhoni"]).notNull(),
+  distance: varchar("distance", { length: 100 }), // e.g., "45 km"
+  duration: varchar("duration", { length: 100 }).notNull(), // e.g., "20 mins"
+  price: int("price"), // Price in cents
+  // Availability
+  frequency: varchar("frequency", { length: 100 }), // e.g., "Daily"
+  operatingDays: varchar("operatingDays", { length: 100 }), // e.g., "Daily"
+  // Additional Info
+  description: text("description"),
+  notes: text("notes"),
+  // Status
+  isPopular: int("isPopular").default(0).notNull(),
+  published: int("published").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AirportRoute = typeof airportRoutes.$inferSelect;
+export type InsertAirportRoute = typeof airportRoutes.$inferInsert;

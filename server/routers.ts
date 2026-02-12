@@ -1158,3 +1158,6 @@ export const appRouter = router({
 });
 
 export type AppRouter = typeof appRouter;
+
+// Note: Airport routes will be added via API endpoint in Express server
+// The AirportInfo component fetches from /api/airport-routes?islandGuideId={id}

@@ -10,6 +10,7 @@ import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
 import WaterActivitiesSection from '@/components/WaterActivitiesSection';
+import AirportInfo from '@/components/AirportInfo';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -301,11 +302,16 @@ export default function IslandDetail() {
 
               {/* How to Get There Tab */}
               <TabsContent value="how-to-get" className="mt-6 space-y-6">
+                {/* Airport Information */}
+                {island && (
+                  <AirportInfo islandGuideId={island.id} islandName={island.name} />
+                )}
+                
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <MapPin className="w-5 h-5" />
-                      How to Get There
+                      Additional Transportation Info
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">

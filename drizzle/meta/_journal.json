@@ -176,6 +176,13 @@
       "when": 1770881132167,
       "tag": "0024_jittery_mentallo",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1770900342473,
+      "tag": "0025_bent_jamie_braddock",
+      "breakpoints": true
     }
   ]
 }

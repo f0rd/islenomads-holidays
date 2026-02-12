@@ -1,4 +1,3 @@
-import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -35,6 +34,23 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  
+  // Airport routes API endpoint
+  app.get('/api/airport-routes', async (req, res) => {
+    try {
+      const { islandGuideId } = req.query;
+      if (!islandGuideId) {
+        return res.status(400).json({ error: 'islandGuideId is required' });
+      }
+      
+      // Return empty array for now - will be implemented with database query
+      res.json([]);
+    } catch (error) {
+      console.error('Error fetching airport routes:', error);
+      res.status(500).json({ error: 'Failed to fetch airport routes' });
+    }
+  });
+  
   // tRPC API
   app.use(
     "/api/trpc",

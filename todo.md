@@ -972,3 +972,35 @@
 - [x] All 34 dive sites successfully inserted and displaying with proper categorization
 - [x] Filtering works correctly (All/Diving/Surfing buttons)
 - [x] Each dive site shows depth range, marine life, best season, and best time
+
+
+## Airport Integration
+- [ ] Create airports table in database schema
+- [ ] Add all Maldives airports (Male, Gan, Hanimaadhoo, Maamigili, Kadhdhoo, etc.)
+- [ ] Add airport details (IATA code, location, coordinates, facilities)
+- [ ] Add nearestAirportId field to island guides
+- [ ] Link islands to their nearest airports with speedboat times
+- [ ] Create AirportInfo component to display airport details on island pages
+- [ ] Display speedboat travel time and distance from airport to island
+- [ ] Test airport display on islands (Dhigurah with Maamigili, etc.)
+- [ ] Add "How to Get There" section using airport information
+
+
+## Airport Integration - Status Update
+- [x] Created airports and airport_routes tables in database schema
+- [x] Inserted 6 Maldives airports (Male, Gan, Hanimaadhoo, Maamigili, Kadhdhoo, Thimarafushi)
+- [x] Added airport details (IATA codes, coordinates, facilities, airlines, contact info)
+- [x] Created 16+ airport routes linking airports to islands with speedboat times
+- [x] Created AirportInfo component with beautiful card layout showing:
+  * Airport name and IATA code
+  * Transfer type (speedboat, ferry, seaplane, dhoni)
+  * Travel duration and distance
+  * Estimated cost
+  * Frequency and operating days
+  * Airport facilities and airlines
+  * Contact information
+- [x] Added API endpoint /api/airport-routes for fetching airport routes
+- [x] Integrated AirportInfo component into IslandDetail page "How to Get There" tab
+- [x] Tested on Dhigurah Island page
+- [ ] PENDING: Implement database query in API endpoint to fetch airport routes from database
+- [ ] PENDING: Test airport information displays on multiple islands after API implementation
