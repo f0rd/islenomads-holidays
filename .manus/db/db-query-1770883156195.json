@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, name, slug, topThingsToDo, attractions FROM island_guides WHERE slug = 'ukulhas-island' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, topThingsToDo, attractions FROM island_guides WHERE slug = 'ukulhas-island' LIMIT 1;",
+  "rows": [
+    {
+      "id": "6",
+      "name": "Ukulhas Island",
+      "slug": "ukulhas-island",
+      "topThingsToDo": "[\"Diving expeditions\",\"Local village exploration\",\"Beach walks\",\"Fishing experiences\",\"Cultural immersion\",\"Photography\"]",
+      "attractions": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttopThingsToDo\tattractions\n6\tUkulhas Island\tukulhas-island\t[\"Diving expeditions\",\"Local village exploration\",\"Beach walks\",\"Fishing experiences\",\"Cultural immersion\",\"Photography\"]\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 95
+}
