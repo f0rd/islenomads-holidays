@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'activity_spots' AND COLUMN_NAME = 'spotType';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'activity_spots' AND COLUMN_NAME = 'spotType';",
+  "rows": [
+    {
+      "COLUMN_TYPE": "enum('surf_spot','dive_site','snorkeling_spot')"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_TYPE\nenum('surf_spot','dive_site','snorkeling_spot')\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

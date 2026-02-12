@@ -1,0 +1,8 @@
+{
+  "query": "SELECT name, spotType, COUNT(*) as count FROM activity_spots GROUP BY spotType;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, spotType, COUNT(*) as count FROM activity_spots GROUP BY spotType;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1055 (42000) at line 1: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'JUCCYykxYWxAcNny3wop55.activity_spots.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"
+  ]
+}

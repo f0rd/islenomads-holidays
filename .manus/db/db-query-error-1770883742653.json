@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, name, type, islandId FROM activity_spots WHERE islandId = (SELECT id FROM island_guides WHERE slug = 'thulusdhoo-island') ORDER BY type;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, islandId FROM activity_spots WHERE islandId = (SELECT id FROM island_guides WHERE slug = 'thulusdhoo-island') ORDER BY type;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'islandid' in 'where clause'"
+  ]
+}

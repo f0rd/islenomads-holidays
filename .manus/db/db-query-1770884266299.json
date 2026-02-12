@@ -1,0 +1,19 @@
+{
+  "query": "SELECT DISTINCT `spotType` FROM activity_spots ORDER BY `spotType`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT DISTINCT `spotType` FROM activity_spots ORDER BY `spotType`;",
+  "rows": [
+    {
+      "spotType": "surf_spot"
+    },
+    {
+      "spotType": "dive_site"
+    },
+    {
+      "spotType": "snorkeling_spot"
+    }
+  ],
+  "messages": [],
+  "stdout": "spotType\nsurf_spot\ndive_site\nsnorkeling_spot\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

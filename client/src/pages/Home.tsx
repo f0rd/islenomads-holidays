@@ -340,7 +340,7 @@ export default function Home() {
                       <p className="text-gray-600 mb-4 line-clamp-2">
                         {guide.overview || 'Discover the beauty of this island paradise'}
                       </p>
-                      <Link href={`/island-guide/${guide.slug}`}>
+                      <Link href={`/island/${guide.slug}`}>
                         <Button
                           variant="outline"
                           className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"

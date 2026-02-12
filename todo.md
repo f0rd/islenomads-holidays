@@ -918,3 +918,10 @@
 - [x] Populate Things to Do section for Ukulhas Island with 6 activities
 - [x] Add Food & Cafés recommendations for Ukulhas Island
 - [x] Add Practical Information section with travel tips for Ukulhas Island
+
+
+## Bug Fixes - Activity Spots Display
+- [ ] Fix surfing activities not showing in Thulusdhoo Island Things to Do section
+- [ ] Verify activity spot spotType values are correctly set (should have surf_spot, dive_site, snorkeling_spot)
+- [ ] Ensure surfing spots are linked to Thulusdhoo Island (islandGuideId matches)
+- [ ] Test activity spots filtering by type in admin panel

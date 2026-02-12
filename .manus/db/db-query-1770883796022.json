@@ -1,0 +1,58 @@
+{
+  "query": "SELECT id, name, spotType, islandGuideId FROM activity_spots WHERE spotType = 'surf_spot' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, islandGuideId FROM activity_spots WHERE spotType = 'surf_spot' LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "islandGuideId": "60003"
+    },
+    {
+      "id": "60001",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "islandGuideId": "60003"
+    },
+    {
+      "id": "60002",
+      "name": "Riptide",
+      "spotType": "surf_spot",
+      "islandGuideId": "60004"
+    },
+    {
+      "id": "60003",
+      "name": "Sultans",
+      "spotType": "surf_spot",
+      "islandGuideId": "60015"
+    },
+    {
+      "id": "60004",
+      "name": "Jailbreaks",
+      "spotType": "surf_spot",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "60005",
+      "name": "Foxys",
+      "spotType": "surf_spot",
+      "islandGuideId": "60011"
+    },
+    {
+      "id": "60006",
+      "name": "Yeyye",
+      "spotType": "surf_spot",
+      "islandGuideId": "60020"
+    },
+    {
+      "id": "60007",
+      "name": "Two Ways",
+      "spotType": "surf_spot",
+      "islandGuideId": "60022"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tislandGuideId\n1\tCokes\tsurf_spot\t60003\n60001\tPasta Point\tsurf_spot\t60003\n60002\tRiptide\tsurf_spot\t60004\n60003\tSultans\tsurf_spot\t60015\n60004\tJailbreaks\tsurf_spot\t60008\n60005\tFoxys\tsurf_spot\t60011\n60006\tYeyye\tsurf_spot\t60020\n60007\tTwo Ways\tsurf_spot\t60022\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

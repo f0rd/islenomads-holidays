@@ -1,0 +1,31 @@
+{
+  "query": "SELECT name, `spotType`, difficulty, description, `bestSeason` FROM activity_spots WHERE `islandGuideId` IN (SELECT id FROM island_guides WHERE name LIKE '%Thulusdhoo%') ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, `spotType`, difficulty, description, `bestSeason` FROM activity_spots WHERE `islandGuideId` IN (SELECT id FROM island_guides WHERE name LIKE '%Thulusdhoo%') ORDER BY name;",
+  "rows": [
+    {
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "description": "Fast right-hand reef break",
+      "bestSeason": "Mar-Oct"
+    },
+    {
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "description": "Fun and playful wave",
+      "bestSeason": "Mar-Oct"
+    },
+    {
+      "name": "Thulusdhoo Reef",
+      "spotType": "snorkeling_spot",
+      "difficulty": "beginner",
+      "description": "Shallow reef perfect for beginners",
+      "bestSeason": "All Year"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tspotType\tdifficulty\tdescription\tbestSeason\nCokes\tsurf_spot\tbeginner\tFast right-hand reef break\tMar-Oct\nPasta Point\tsurf_spot\tintermediate\tFun and playful wave\tMar-Oct\nThulusdhoo Reef\tsnorkeling_spot\tbeginner\tShallow reef perfect for beginners\tAll Year\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

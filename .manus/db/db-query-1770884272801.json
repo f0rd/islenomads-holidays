@@ -1,0 +1,26 @@
+{
+  "query": "SELECT name, `spotType` FROM activity_spots WHERE name IN ('Cokes', 'Pasta Point', 'Riptide', 'Sultans') LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, `spotType` FROM activity_spots WHERE name IN ('Cokes', 'Pasta Point', 'Riptide', 'Sultans') LIMIT 5;",
+  "rows": [
+    {
+      "name": "Cokes",
+      "spotType": "surf_spot"
+    },
+    {
+      "name": "Pasta Point",
+      "spotType": "surf_spot"
+    },
+    {
+      "name": "Riptide",
+      "spotType": "surf_spot"
+    },
+    {
+      "name": "Sultans",
+      "spotType": "surf_spot"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tspotType\nCokes\tsurf_spot\nPasta Point\tsurf_spot\nRiptide\tsurf_spot\nSultans\tsurf_spot\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

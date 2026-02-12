@@ -1,0 +1,52 @@
+{
+  "query": "SELECT id, name, \"spotType\", category FROM activity_spots WHERE name IN ('Pasta Point', 'Riptide', 'Sultans', 'Jailbreaks', 'Foxys', 'Yeyye', 'Two Ways') ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, \"spotType\", category FROM activity_spots WHERE name IN ('Pasta Point', 'Riptide', 'Sultans', 'Jailbreaks', 'Foxys', 'Yeyye', 'Two Ways') ORDER BY name;",
+  "rows": [
+    {
+      "id": "60005",
+      "name": "Foxys",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60004",
+      "name": "Jailbreaks",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60001",
+      "name": "Pasta Point",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60002",
+      "name": "Riptide",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60003",
+      "name": "Sultans",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60007",
+      "name": "Two Ways",
+      "spotType": "spotType",
+      "category": "NULL"
+    },
+    {
+      "id": "60006",
+      "name": "Yeyye",
+      "spotType": "spotType",
+      "category": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tcategory\n60005\tFoxys\tspotType\tNULL\n60004\tJailbreaks\tspotType\tNULL\n60001\tPasta Point\tspotType\tNULL\n60002\tRiptide\tspotType\tNULL\n60003\tSultans\tspotType\tNULL\n60007\tTwo Ways\tspotType\tNULL\n60006\tYeyye\tspotType\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

@@ -1,0 +1,115 @@
+{
+  "query": "SELECT id, name, `spotType`, `islandGuideId`, (SELECT name FROM island_guides ig WHERE ig.id = activity_spots.islandGuideId) as island_name FROM activity_spots WHERE `spotType` = 'dive_site' ORDER BY name LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, `spotType`, `islandGuideId`, (SELECT name FROM island_guides ig WHERE ig.id = activity_spots.islandGuideId) as island_name FROM activity_spots WHERE `spotType` = 'dive_site' ORDER BY name LIMIT 20;",
+  "rows": [
+    {
+      "id": "60008",
+      "name": "Banana Reef",
+      "spotType": "dive_site",
+      "islandGuideId": "4",
+      "island_name": "Banana Reef"
+    },
+    {
+      "id": "7",
+      "name": "Bathala Thila",
+      "spotType": "dive_site",
+      "islandGuideId": "60005",
+      "island_name": "Rasdhoo"
+    },
+    {
+      "id": "13",
+      "name": "Fesdu Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60005",
+      "island_name": "Rasdhoo"
+    },
+    {
+      "id": "3",
+      "name": "Fish Head",
+      "spotType": "dive_site",
+      "islandGuideId": "60005",
+      "island_name": "Rasdhoo"
+    },
+    {
+      "id": "6",
+      "name": "Fotteyo Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60011",
+      "island_name": "Felidhoo"
+    },
+    {
+      "id": "30001",
+      "name": "Fulidhoo House Reef",
+      "spotType": "dive_site",
+      "islandGuideId": "9",
+      "island_name": "Fulidhoo Island"
+    },
+    {
+      "id": "30002",
+      "name": "Fulidhoo House Reef",
+      "spotType": "dive_site",
+      "islandGuideId": "9",
+      "island_name": "Fulidhoo Island"
+    },
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "spotType": "dive_site",
+      "islandGuideId": "60014",
+      "island_name": "Dharavandhoo"
+    },
+    {
+      "id": "5",
+      "name": "Kuda Rah Thila",
+      "spotType": "dive_site",
+      "islandGuideId": "60008",
+      "island_name": "Dhigurah"
+    },
+    {
+      "id": "4",
+      "name": "Maaya Thila",
+      "spotType": "dive_site",
+      "islandGuideId": "60005",
+      "island_name": "Rasdhoo"
+    },
+    {
+      "id": "8",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60023",
+      "island_name": "Hithadhoo"
+    },
+    {
+      "id": "9",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60022",
+      "island_name": "Maradhoo"
+    },
+    {
+      "id": "11",
+      "name": "Miyaru Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60008",
+      "island_name": "Dhigurah"
+    },
+    {
+      "id": "10",
+      "name": "Vaavu Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60010",
+      "island_name": "Fulidhoo"
+    },
+    {
+      "id": "12",
+      "name": "Veligandu Kandu",
+      "spotType": "dive_site",
+      "islandGuideId": "60009",
+      "island_name": "Veligandu"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tislandGuideId\tisland_name\n60008\tBanana Reef\tdive_site\t4\tBanana Reef\n7\tBathala Thila\tdive_site\t60005\tRasdhoo\n13\tFesdu Kandu\tdive_site\t60005\tRasdhoo\n3\tFish Head\tdive_site\t60005\tRasdhoo\n6\tFotteyo Kandu\tdive_site\t60011\tFelidhoo\n30001\tFulidhoo House Reef\tdive_site\t9\tFulidhoo Island\n30002\tFulidhoo House Reef\tdive_site\t9\tFulidhoo Island\n2\tHanifaru Bay\tdive_site\t60014\tDharavandhoo\n5\tKuda Rah Thila\tdive_site\t60008\tDhigurah\n4\tMaaya Thila\tdive_site\t60005\tRasdhoo\n8\tMaradhoo Kandu\tdive_site\t60023\tHithadhoo\n9\tMaradhoo Kandu\tdive_site\t60022\tMaradhoo\n11\tMiyaru Kandu\tdive_site\t60008\tDhigurah\n10\tVaavu Kandu\tdive_site\t60010\tFulidhoo\n12\tVeligandu Kandu\tdive_site\t60009\tVeligandu\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}
