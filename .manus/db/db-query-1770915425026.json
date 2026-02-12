@@ -1,0 +1,18 @@
+{
+  "query": "SELECT id, name, slug, atoll, latitude, longitude FROM island_guides WHERE name LIKE '%Fuvahmulah%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll, latitude, longitude FROM island_guides WHERE name LIKE '%Fuvahmulah%';",
+  "rows": [
+    {
+      "id": "90001",
+      "name": "Fuvahmulah Island",
+      "slug": "fuvahmulah-island",
+      "atoll": "Fuvahmulah",
+      "latitude": "0.2833",
+      "longitude": "73.4167"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\tlatitude\tlongitude\n90001\tFuvahmulah Island\tfuvahmulah-island\tFuvahmulah\t0.2833\t73.4167\n",
+  "stderr": "",
+  "execution_time_ms": 87
+}
