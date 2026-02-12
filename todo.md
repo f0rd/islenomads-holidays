@@ -935,3 +935,16 @@
 - [x] Test Things to Do displays correctly on Ukulhas Island page
 - [x] Test Things to Do displays correctly on Veligandu Island page
 - [x] All 22 island guides now display activities correctly
+
+
+## Water Activities Display Enhancement
+- [x] Create WaterActivitiesSection component with improved categorization
+- [x] Implement activity type grouping (Diving, Snorkeling, Surfing)
+- [x] Add distance display for nearby activities (km from island)
+- [x] Create activity icons for each water activity type (🤿 Dive, 🤽 Snorkel, 🏄 Surf)
+- [x] Implement visual hierarchy with direct vs nearby activities (blue vs green cards)
+- [x] Add activity difficulty badges with color coding (Beginner/Intermediate/Advanced)
+- [x] Display marine life and wave info for relevant activities
+- [x] Test water activities display on multiple islands (Thulusdhoo Island verified)
+- [x] Implement activity filtering within the section (All/Diving/Snorkeling/Surfing filters)
+- [x] Add legend explaining card colors and proximity information

@@ -9,6 +9,7 @@ import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Cale
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
+import WaterActivitiesSection from '@/components/WaterActivitiesSection';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -257,86 +258,15 @@ export default function IslandDetail() {
                         ))}
                       </div>
                       
-                      {/* Activity Spots - Dive Sites, Snorkeling, Surfing */}
+                      {/* Water Activities - Using Enhanced Component */}
                       {(linkedActivitySpots.length > 0 || nearbyActivitySpots.length > 0) && (
-                        <div className="mt-6 pt-6 border-t space-y-4">
-                          <h4 className="font-semibold text-gray-900 flex items-center gap-2">
-                            <Waves className="w-4 h-4" />
-                            Water Activities
-                          </h4>
-                          <div className="space-y-3">
-                            {linkedActivitySpots.map((spot: any, idx: number) => (
-                              <div key={`linked-${idx}`} className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                                <div className="flex items-start justify-between mb-2">
-                                  <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                  <Badge className="text-xs bg-blue-600">
-                                    {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                  </Badge>
-                                </div>
-                                {spot.difficulty && (
-                                  <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                )}
-                                {spot.description && (
-                                  <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                )}
-                                {spot.bestSeason && (
-                                  <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                )}
-                              </div>
-                            ))}
-                            {nearbyActivitySpots.length > 0 && linkedActivitySpots.length > 0 && (
-                              <div className="mt-4 pt-4 border-t">
-                                <p className="text-xs text-gray-500 mb-3 flex items-center gap-2">
-                                  <MapPin className="w-3 h-3" />
-                                  Nearby spots (within 10 km)
-                                </p>
-                                <div className="space-y-3">
-                                  {nearbyActivitySpots.map((spot: any, idx: number) => (
-                                    <div key={`nearby-${idx}`} className="bg-green-50 border border-green-200 rounded-lg p-3 opacity-85">
-                                      <div className="flex items-start justify-between mb-2">
-                                        <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                        <Badge className="text-xs bg-green-600">
-                                          {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                        </Badge>
-                                      </div>
-                                      {spot.difficulty && (
-                                        <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                      )}
-                                      {spot.description && (
-                                        <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                      )}
-                                      {spot.bestSeason && (
-                                        <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                            {nearbyActivitySpots.length > 0 && linkedActivitySpots.length === 0 && (
-                              <div className="space-y-3">
-                                {nearbyActivitySpots.map((spot: any, idx: number) => (
-                                  <div key={`nearby-${idx}`} className="bg-green-50 border border-green-200 rounded-lg p-3">
-                                    <div className="flex items-start justify-between mb-2">
-                                      <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                      <Badge className="text-xs bg-green-600">
-                                        {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                      </Badge>
-                                    </div>
-                                    {spot.difficulty && (
-                                      <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                    )}
-                                    {spot.description && (
-                                      <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                    )}
-                                    {spot.bestSeason && (
-                                      <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                        <div className="mt-6 pt-6 border-t">
+                          <WaterActivitiesSection
+                            linkedSpots={linkedActivitySpots}
+                            nearbySpots={nearbyActivitySpots}
+                            islandLatitude={island.latitude}
+                            islandLongitude={island.longitude}
+                          />
                         </div>
                       )}
                     </CardContent>
