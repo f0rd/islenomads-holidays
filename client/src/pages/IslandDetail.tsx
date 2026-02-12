@@ -310,7 +310,7 @@ export default function IslandDetail() {
                 
                 {/* Boat Routes Information */}
                 {island && (
-                  <BoatRoutesInfo islandGuideId={island.id} islandName={island.name} />
+                  <BoatRoutesInfo key={island.id} islandGuideId={island.id} islandName={island.name} />
                 )}
                 
                 <Card>

@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name FROM island_guides ORDER BY id LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM island_guides ORDER BY id LIMIT 15;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male - The Capital City"
+    },
+    {
+      "id": "2",
+      "name": "Maafushi Island"
+    },
+    {
+      "id": "3",
+      "name": "Thulusdhoo Island"
+    },
+    {
+      "id": "4",
+      "name": "Banana Reef"
+    },
+    {
+      "id": "5",
+      "name": "Dhigurah Island"
+    },
+    {
+      "id": "6",
+      "name": "Ukulhas Island"
+    },
+    {
+      "id": "7",
+      "name": "Veligandu Island"
+    },
+    {
+      "id": "8",
+      "name": "Kandooma Island"
+    },
+    {
+      "id": "9",
+      "name": "Fulidhoo Island"
+    },
+    {
+      "id": "10",
+      "name": "Haa Alifu Atoll"
+    },
+    {
+      "id": "30004",
+      "name": "Hulhumalé"
+    },
+    {
+      "id": "30007",
+      "name": "Hanifaru Bay"
+    },
+    {
+      "id": "60001",
+      "name": "Malé"
+    },
+    {
+      "id": "60002",
+      "name": "Maafushi"
+    },
+    {
+      "id": "60003",
+      "name": "Thulusdhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tMale - The Capital City\n2\tMaafushi Island\n3\tThulusdhoo Island\n4\tBanana Reef\n5\tDhigurah Island\n6\tUkulhas Island\n7\tVeligandu Island\n8\tKandooma Island\n9\tFulidhoo Island\n10\tHaa Alifu Atoll\n30004\tHulhumalé\n30007\tHanifaru Bay\n60001\tMalé\n60002\tMaafushi\n60003\tThulusdhoo\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

@@ -1,0 +1,100 @@
+{
+  "query": "SELECT id, toIslandGuideId, toLocation FROM boat_routes ORDER BY toIslandGuideId;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, toIslandGuideId, toLocation FROM boat_routes ORDER BY toIslandGuideId;",
+  "rows": [
+    {
+      "id": "19",
+      "toIslandGuideId": "1",
+      "toLocation": "Thulusdhoo Island"
+    },
+    {
+      "id": "20",
+      "toIslandGuideId": "1",
+      "toLocation": "Thulusdhoo Island"
+    },
+    {
+      "id": "21",
+      "toIslandGuideId": "2",
+      "toLocation": "Dhigurah Island"
+    },
+    {
+      "id": "22",
+      "toIslandGuideId": "2",
+      "toLocation": "Dhigurah Island"
+    },
+    {
+      "id": "23",
+      "toIslandGuideId": "3",
+      "toLocation": "Rasdhoo Island"
+    },
+    {
+      "id": "24",
+      "toIslandGuideId": "3",
+      "toLocation": "Rasdhoo Island"
+    },
+    {
+      "id": "25",
+      "toIslandGuideId": "4",
+      "toLocation": "Veligandu Island"
+    },
+    {
+      "id": "26",
+      "toIslandGuideId": "4",
+      "toLocation": "Veligandu Island"
+    },
+    {
+      "id": "27",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island"
+    },
+    {
+      "id": "28",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island"
+    },
+    {
+      "id": "29",
+      "toIslandGuideId": "7",
+      "toLocation": "Fulidhoo Island"
+    },
+    {
+      "id": "30",
+      "toIslandGuideId": "7",
+      "toLocation": "Fulidhoo Island"
+    },
+    {
+      "id": "31",
+      "toIslandGuideId": "8",
+      "toLocation": "Felidhoo Island"
+    },
+    {
+      "id": "32",
+      "toIslandGuideId": "8",
+      "toLocation": "Felidhoo Island"
+    },
+    {
+      "id": "33",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island"
+    },
+    {
+      "id": "34",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island"
+    },
+    {
+      "id": "35",
+      "toIslandGuideId": "11",
+      "toLocation": "Maafushi Island"
+    },
+    {
+      "id": "36",
+      "toIslandGuideId": "11",
+      "toLocation": "Maafushi Island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttoIslandGuideId\ttoLocation\n19\t1\tThulusdhoo Island\n20\t1\tThulusdhoo Island\n21\t2\tDhigurah Island\n22\t2\tDhigurah Island\n23\t3\tRasdhoo Island\n24\t3\tRasdhoo Island\n25\t4\tVeligandu Island\n26\t4\tVeligandu Island\n27\t6\tKandooma Island\n28\t6\tKandooma Island\n29\t7\tFulidhoo Island\n30\t7\tFulidhoo Island\n31\t8\tFelidhoo Island\n32\t8\tFelidhoo Island\n33\t10\tUkulhas Island\n34\t10\tUkulhas Island\n35\t11\tMaafushi Island\n36\t11\tMaafushi Island\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

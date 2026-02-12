@@ -22,13 +22,25 @@ interface BoatRoutesInfoProps {
 export default function BoatRoutesInfo({ islandGuideId, islandName }: BoatRoutesInfoProps) {
   const [boatRoutes, setBoatRoutes] = useState<BoatRoute[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+  console.log('BoatRoutesInfo rendered with islandGuideId:', islandGuideId, 'islandName:', islandName);
 
   useEffect(() => {
+    // Reset state when island changes
+    setBoatRoutes([]);
+    setIsLoading(true);
+    
     const fetchBoatRoutes = async () => {
       try {
-        const response = await fetch(`/api/boat-routes?islandGuideId=${islandGuideId}`);
+        const response = await fetch(`/api/boat-routes?islandGuideId=${islandGuideId}&t=${Date.now()}`, {
+          headers: {
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+          }
+        });
         if (response.ok) {
           const data = await response.json();
+          console.log('Fetched boat routes for island', islandGuideId, ':', data);
           setBoatRoutes(data);
         }
       } catch (error) {

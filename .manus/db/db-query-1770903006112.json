@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, toIslandGuideId, toLocation FROM boat_routes WHERE toLocation = 'Kandooma Island' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, toIslandGuideId, toLocation FROM boat_routes WHERE toLocation = 'Kandooma Island' LIMIT 5;",
+  "rows": [
+    {
+      "id": "11",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island"
+    },
+    {
+      "id": "12",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttoIslandGuideId\ttoLocation\n11\t6\tKandooma Island\n12\t6\tKandooma Island\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

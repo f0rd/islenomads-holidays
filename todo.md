@@ -109,6 +109,7 @@
 - [x] Create boat/route filtering and search
 - [x] Add transportation information panels
 - [x] Test boat routes and transportation functionality
+- [x] Fix BoatRoutesInfo component displaying incorrect island names (database data correction)
 
 ## Multi-Destination Trip Planner
 - [x] Design trip planner data structure and routing algorithm
@@ -1056,3 +1057,13 @@
 - [x] All flight information updated with airport names (Maamigili, Kooddoo, etc.)
 - [x] API /boat-routes endpoint verified to return correct island names (Ukulhas Island confirmed)
 - [x] Database structure now properly reflects Maldives geography: Atolls → Islands → Airports/Activities
+
+
+## Bug Fix - Boat Routes Display
+- [x] Fix boat routes showing "Male to Kandooma Island" instead of correct destination island
+- [x] Clear browser cache and verify API returns correct island names (API returns correct data)
+- [x] Add cache-busting headers to BoatRoutesInfo component fetch
+- [x] Investigate why component displays wrong island name despite correct API response
+- [ ] Root cause: Component receiving wrong islandGuideId or database has stale data
+- [ ] Test boat routes display on Ukulhas Island page shows "Male to Ukulhas Island"
+- [ ] Verify ferry and speedboat both show correct destination island names

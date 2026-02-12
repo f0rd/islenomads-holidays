@@ -1,0 +1,64 @@
+{
+  "query": "SELECT id, toIslandGuideId, toLocation, type FROM boat_routes WHERE type='ferry';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, toIslandGuideId, toLocation, type FROM boat_routes WHERE type='ferry';",
+  "rows": [
+    {
+      "id": "2",
+      "toIslandGuideId": "1",
+      "toLocation": "Thulusdhoo Island",
+      "type": "ferry"
+    },
+    {
+      "id": "4",
+      "toIslandGuideId": "2",
+      "toLocation": "Male City",
+      "type": "ferry"
+    },
+    {
+      "id": "6",
+      "toIslandGuideId": "3",
+      "toLocation": "Dhigurah Island",
+      "type": "ferry"
+    },
+    {
+      "id": "8",
+      "toIslandGuideId": "4",
+      "toLocation": "Rasdhoo Island",
+      "type": "ferry"
+    },
+    {
+      "id": "10",
+      "toIslandGuideId": "5",
+      "toLocation": "Veligandu Island",
+      "type": "ferry"
+    },
+    {
+      "id": "12",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island",
+      "type": "ferry"
+    },
+    {
+      "id": "14",
+      "toIslandGuideId": "7",
+      "toLocation": "Fulidhoo Island",
+      "type": "ferry"
+    },
+    {
+      "id": "16",
+      "toIslandGuideId": "8",
+      "toLocation": "Felidhoo Island",
+      "type": "ferry"
+    },
+    {
+      "id": "18",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island",
+      "type": "ferry"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttoIslandGuideId\ttoLocation\ttype\n2\t1\tThulusdhoo Island\tferry\n4\t2\tMale City\tferry\n6\t3\tDhigurah Island\tferry\n8\t4\tRasdhoo Island\tferry\n10\t5\tVeligandu Island\tferry\n12\t6\tKandooma Island\tferry\n14\t7\tFulidhoo Island\tferry\n16\t8\tFelidhoo Island\tferry\n18\t10\tUkulhas Island\tferry\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}
