@@ -1,0 +1,9 @@
+{
+  "query": "\nINSERT IGNORE INTO island_spot_access (islandId, spotId, distanceKm, recommended, sortOrder)\nSELECT ig.id as islandId, asp.id as spotId, NULL as distanceKm, 1 as recommended, 0 as sortOrder\nFROM island_guides ig\nJOIN activity_spots asp ON ig.id = asp.islandGuideId\nWHERE asp.published = 1 AND ig.published = 1;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \nINSERT IGNORE INTO island_spot_access (islandId, spotId, distanceKm, recommended, sortOrder)\nSELECT ig.id as islandId, asp.id as spotId, NULL as distanceKm, 1 as recommended, 0 as sortOrder\nFROM island_guides ig\nJOIN activity_spots asp ON ig.id = asp.islandGuideId\nWHERE asp.published = 1 AND ig.published = 1;\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 71
+}

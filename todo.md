@@ -878,3 +878,25 @@
 - [x] Add accurate GPS coordinates for all 22 activity spots with real Maldives locations
 - [x] Test proximity-based display with updated coordinates
 - [x] Verify nearby spots appear on island pages (tested on Thulusdhoo - showing 3 spots including nearby Pasta Point)
+
+
+## Database Schema Redesign (Many-to-Many Architecture)
+- [ ] Add new tables to Drizzle schema (activityTypes, islandSpotAccess, experiences, transportRoutes, seo, media)
+- [ ] Run database migration to create new tables
+- [ ] Create data migration script to backfill existing data
+- [ ] Update database helper functions to query new tables
+- [ ] Create tRPC endpoints for new queries
+- [ ] Update IslandDetail component to use new data structure
+- [ ] Test new queries and UI
+- [ ] Archive old tables (activity_spots, island_guides modifications)
+
+
+## Database Schema Redesign (Many-to-Many Island-Spot Relationships)
+- [x] Add new tables for improved schema (activityTypes, islandSpotAccess, experiences, transportRoutes, media, seo, spotTypes)
+- [x] Run database migration to create new tables (7 new tables created)
+- [x] Create data migration script to backfill data from existing tables
+- [x] Update database helper functions in server/db.ts (15+ new functions)
+- [x] Create tRPC endpoints for new queries (9 new endpoints)
+- [x] Update IslandDetail component to use new data structure
+- [x] Write comprehensive vitest tests for new schema (13 tests - all passing)
+- [x] Test new queries and UI with updated data (verified on Thulusdhoo island page)

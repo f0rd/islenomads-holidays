@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal } from "drizzle-orm/mysql-core";
+import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal, primaryKey, unique, index } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -484,6 +484,7 @@ export const activitySpots = mysqlTable("activity_spots", {
   id: int("id").autoincrement().primaryKey(),
   islandGuideId: int("islandGuideId").notNull(), // Reference to island_guides
   atollId: int("atollId"), // Optional direct reference to atolls for easier filtering
+  primaryTypeId: int("primaryTypeId"), // FK to activity_types for categorization
   name: varchar("name", { length: 255 }).notNull(), // e.g., "Pasta Point", "Blue Lagoon Dive Site"
   slug: varchar("slug", { length: 255 }).notNull(), // URL-friendly identifier
   spotType: mysqlEnum("spotType", ["surf_spot", "dive_site", "snorkeling_spot"]).notNull(), // Type of activity spot
@@ -532,3 +533,229 @@ export type ActivitySpot = typeof activitySpots.$inferSelect;
 export type InsertActivitySpot = typeof activitySpots.$inferInsert;
 export type ActivitySpotType = 'surf_spot' | 'dive_site' | 'snorkeling_spot';
 export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
+
+
+// ============================================================================
+// NEW SCHEMA: Activity Types, Island-Spot Access, Experiences, Transport Routes
+// ============================================================================
+
+/**
+ * Activity Types: Defines categories like diving, snorkeling, surfing, etc.
+ * Allows flexible filtering and organization of all activity spots.
+ */
+export const activityTypes = mysqlTable("activity_types", {
+  id: int("id").autoincrement().primaryKey(),
+  key: varchar("key", { length: 50 }).notNull().unique(), // e.g., "diving", "snorkeling", "surfing"
+  name: varchar("name", { length: 100 }).notNull(), // Display name
+  icon: varchar("icon", { length: 100 }), // Icon class or emoji
+  description: text("description"),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ActivityType = typeof activityTypes.$inferSelect;
+export type InsertActivityType = typeof activityTypes.$inferInsert;
+
+/**
+ * Island-Spot Access: Many-to-many relationship with practical metadata
+ * Solves: Multiple islands can access the same spot
+ * Stores: Distance, travel time, boat type, price, operator notes
+ */
+export const islandSpotAccess = mysqlTable(
+  "island_spot_access",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    islandId: int("islandId").notNull(),
+    spotId: int("spotId").notNull(),
+    // Access metadata
+    distanceKm: decimal("distanceKm", { precision: 6, scale: 2 }),
+    travelTimeMin: int("travelTimeMin"),
+    transferType: mysqlEnum("transferType", [
+      "dhoni",
+      "speedboat",
+      "public_ferry",
+      "walk",
+      "mixed",
+    ]),
+    priceFromUsd: decimal("priceFromUsd", { precision: 8, scale: 2 }),
+    operatorNotes: text("operatorNotes"),
+    recommended: int("recommended").default(0).notNull(),
+    sortOrder: int("sortOrder").default(0).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    islandSpotAccessIdx: index("idx_island_spot_access_island").on(
+      table.islandId
+    ),
+    spotAccessIdx: index("idx_island_spot_access_spot").on(table.spotId),
+    uniqueAccess: unique("unique_island_spot_access").on(
+      table.islandId,
+      table.spotId
+    ),
+  })
+);
+
+export type IslandSpotAccess = typeof islandSpotAccess.$inferSelect;
+export type InsertIslandSpotAccess = typeof islandSpotAccess.$inferInsert;
+
+/**
+ * Experiences: Bookable products like "2-tank dive", "night fishing", "sandbank trip"
+ * These are the actual offerings that can be purchased/booked
+ */
+export const experiences = mysqlTable("experiences", {
+  id: int("id").autoincrement().primaryKey(),
+  activityTypeId: int("activityTypeId").notNull(), // FK to activityTypes
+  title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  shortIntro: varchar("shortIntro", { length: 500 }),
+  description: text("description"),
+  durationMin: int("durationMin"), // Duration in minutes
+  priceFromUsd: decimal("priceFromUsd", { precision: 8, scale: 2 }),
+  includes: text("includes"), // What's included (JSON or text)
+  excludes: text("excludes"), // What's not included
+  requirements: text("requirements"), // Certification, age, etc.
+  featuredImage: varchar("featuredImage", { length: 500 }),
+  published: int("published").default(0).notNull(),
+  featured: int("featured").default(0).notNull(),
+  displayOrder: int("displayOrder").default(0).notNull(),
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Experience = typeof experiences.$inferSelect;
+export type InsertExperience = typeof experiences.$inferInsert;
+
+/**
+ * Island-Experience: Many-to-many linking islands to available experiences
+ * Allows "Popular things to do" on island pages
+ */
+export const islandExperiences = mysqlTable(
+  "island_experiences",
+  {
+    islandId: int("islandId").notNull(),
+    experienceId: int("experienceId").notNull(),
+    sortOrder: int("sortOrder").default(0).notNull(),
+  },
+  (table) => ({
+    primaryKey: primaryKey({ columns: [table.islandId, table.experienceId] }),
+  })
+);
+
+export type IslandExperience = typeof islandExperiences.$inferSelect;
+export type InsertIslandExperience = typeof islandExperiences.$inferInsert;
+
+/**
+ * Transport Routes: Public ferries, speedboats, private transfers
+ * Stores schedule info and booking details for "How to Get There"
+ */
+export const transportRoutes = mysqlTable(
+  "transport_routes",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    fromIslandId: int("fromIslandId").notNull(),
+    toIslandId: int("toIslandId").notNull(),
+    routeType: mysqlEnum("routeType", [
+      "public_ferry",
+      "speedboat",
+      "private_transfer",
+    ]).notNull(),
+    operatorName: varchar("operatorName", { length: 255 }),
+    scheduleText: text("scheduleText"), // Simple CMS version (e.g., "Daily 8am, 2pm, 5pm")
+    durationMin: int("durationMin"),
+    priceMvr: decimal("priceMvr", { precision: 8, scale: 2 }),
+    priceUsd: decimal("priceUsd", { precision: 8, scale: 2 }),
+    bookingInfo: text("bookingInfo"),
+    sourceUrl: varchar("sourceUrl", { length: 500 }),
+    lastVerifiedAt: timestamp("lastVerifiedAt"),
+    isActive: int("isActive").default(1).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    fromIslandIdx: index("idx_transport_from_island").on(table.fromIslandId),
+    toIslandIdx: index("idx_transport_to_island").on(table.toIslandId),
+    routeIdx: index("idx_transport_route_type").on(
+      table.fromIslandId,
+      table.toIslandId,
+      table.routeType
+    ),
+  })
+);
+
+export type TransportRoute = typeof transportRoutes.$inferSelect;
+export type InsertTransportRoute = typeof transportRoutes.$inferInsert;
+
+/**
+ * Media: Centralized media storage for all entities
+ * Replaces scattered image URLs with proper asset management
+ */
+export const media = mysqlTable("media", {
+  id: int("id").autoincrement().primaryKey(),
+  url: varchar("url", { length: 500 }).notNull(),
+  altText: varchar("altText", { length: 255 }),
+  caption: text("caption"),
+  credit: varchar("credit", { length: 255 }),
+  width: int("width"),
+  height: int("height"),
+  mimeType: varchar("mimeType", { length: 50 }),
+  fileSize: int("fileSize"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Media = typeof media.$inferSelect;
+export type InsertMedia = typeof media.$inferInsert;
+
+/**
+ * SEO: Reusable SEO metadata for islands, spots, atolls, experiences, blogs
+ * Prevents duplication and centralizes SEO management
+ */
+export const seoMetadata = mysqlTable(
+  "seo_metadata",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    entityType: mysqlEnum("entityType", [
+      "island",
+      "spot",
+      "atoll",
+      "experience",
+      "blog",
+    ]).notNull(),
+    entityId: int("entityId").notNull(),
+    metaTitle: varchar("metaTitle", { length: 255 }),
+    metaDescription: varchar("metaDescription", { length: 500 }),
+    metaKeywords: varchar("metaKeywords", { length: 500 }),
+    ogImageId: int("ogImageId"), // FK to media
+    twitterCard: varchar("twitterCard", { length: 50 }),
+    canonicalUrl: varchar("canonicalUrl", { length: 500 }),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    entityIdx: unique("unique_seo_entity").on(table.entityType, table.entityId),
+  })
+);
+
+export type SeoMetadata = typeof seoMetadata.$inferSelect;
+export type InsertSeoMetadata = typeof seoMetadata.$inferInsert;
+
+/**
+ * Spot Types (Optional): For multi-type tags per spot
+ * E.g., a spot can be snorkeling + beach + photography
+ */
+export const spotTypes = mysqlTable(
+  "spot_types",
+  {
+    spotId: int("spotId").notNull(),
+    activityTypeId: int("activityTypeId").notNull(),
+  },
+  (table) => ({
+    primaryKey: primaryKey({ columns: [table.spotId, table.activityTypeId] }),
+  })
+);
+
+export type SpotType = typeof spotTypes.$inferSelect;
+export type InsertSpotType = typeof spotTypes.$inferInsert;

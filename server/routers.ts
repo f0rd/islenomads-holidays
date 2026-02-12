@@ -22,7 +22,10 @@ import {
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll, getAtollsByRegion, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
   getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
-  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots
+  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
+  getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
+  getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
+  upsertSeoMetadata, getIslandWithSpots
 } from "./db";
 
 export const appRouter = router({
@@ -1083,6 +1086,67 @@ export const appRouter = router({
       .input(z.object({ latitude: z.union([z.string(), z.number()]), longitude: z.union([z.string(), z.number()]), radiusKm: z.number().optional() }))
       .query(async ({ input }) => {
         return getNearbyActivitySpots(input.latitude, input.longitude, input.radiusKm || 10);
+      }),
+
+    // New schema endpoints
+    getSpotsByIsland: publicProcedure
+      .input(z.object({ islandId: z.number() }))
+      .query(async ({ input }) => {
+        return getSpotsByIsland(input.islandId);
+      }),
+
+    getIslandsBySpot: publicProcedure
+      .input(z.object({ spotId: z.number() }))
+      .query(async ({ input }) => {
+        return getIslandsBySpot(input.spotId);
+      }),
+
+    getByActivityType: publicProcedure
+      .input(z.object({ activityTypeId: z.number() }))
+      .query(async ({ input }) => {
+        return getSpotsByActivityType(input.activityTypeId);
+      }),
+  }),
+
+  activityTypes: router({
+    list: publicProcedure.query(async () => {
+      return getAllActivityTypes();
+    }),
+
+    getByKey: publicProcedure
+      .input(z.object({ key: z.string() }))
+      .query(async ({ input }) => {
+        return getActivityTypeByKey(input.key);
+      }),
+  }),
+
+  experiences: router({
+    getByIsland: publicProcedure
+      .input(z.object({ islandId: z.number() }))
+      .query(async ({ input }) => {
+        return getExperiencesByIsland(input.islandId);
+      }),
+
+    getByActivityType: publicProcedure
+      .input(z.object({ activityTypeId: z.number() }))
+      .query(async ({ input }) => {
+        return getExperiencesByActivityType(input.activityTypeId);
+      }),
+  }),
+
+  transportRoutes: router({
+    getBetweenIslands: publicProcedure
+      .input(z.object({ fromIslandId: z.number(), toIslandId: z.number() }))
+      .query(async ({ input }) => {
+        return getTransportRoutesBetweenIslands(input.fromIslandId, input.toIslandId);
+      }),
+  }),
+
+  islandData: router({
+    getWithSpots: publicProcedure
+      .input(z.object({ islandId: z.number() }))
+      .query(async ({ input }) => {
+        return getIslandWithSpots(input.islandId);
       }),
   }),
 });

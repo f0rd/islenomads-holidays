@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -1072,4 +1072,248 @@ export async function getNearbyActivitySpots(latitude: string | number, longitud
     // Sort by display order
     return (a.displayOrder || 0) - (b.displayOrder || 0);
   });
+}
+
+
+// ============================================================================
+// NEW SCHEMA HELPERS: Activity Types, Island-Spot Access, Experiences
+// ============================================================================
+
+/**
+ * Get all activity types
+ */
+export async function getAllActivityTypes(): Promise<ActivityType[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activityTypes).orderBy(activityTypes.sortOrder);
+}
+
+/**
+ * Get activity type by key
+ */
+export async function getActivityTypeByKey(key: string): Promise<ActivityType | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(activityTypes).where(eq(activityTypes.key, key)).limit(1);
+  return result[0];
+}
+
+/**
+ * Get all spots accessible from an island (many-to-many via islandSpotAccess)
+ * Returns spots with their access metadata (distance, time, price, etc.)
+ */
+export async function getSpotsByIsland(islandId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select({
+      spot: activitySpots,
+      access: islandSpotAccess,
+      activityType: activityTypes,
+    })
+    .from(islandSpotAccess)
+    .innerJoin(activitySpots, eq(islandSpotAccess.spotId, activitySpots.id))
+    .leftJoin(activityTypes, eq(activitySpots.primaryTypeId, activityTypes.id))
+    .where(eq(islandSpotAccess.islandId, islandId))
+    .orderBy(islandSpotAccess.sortOrder);
+  
+  return result;
+}
+
+/**
+ * Get all islands that can access a specific spot
+ */
+export async function getIslandsBySpot(spotId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select({
+      island: {
+        id: islandGuides.id,
+        name: islandGuides.name,
+        slug: islandGuides.slug,
+      },
+    })
+    .from(islandSpotAccess)
+    .innerJoin(islandGuides, eq(islandSpotAccess.islandId, islandGuides.id))
+    .where(eq(islandSpotAccess.spotId, spotId))
+    .orderBy(islandSpotAccess.sortOrder);
+  
+  return result;
+}
+
+/**
+ * Get all spots by activity type
+ */
+export async function getSpotsByActivityType(activityTypeId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(activitySpots)
+    .where(eq(activitySpots.primaryTypeId, activityTypeId))
+    .orderBy(activitySpots.displayOrder);
+  
+  return result;
+}
+
+/**
+ * Get transport routes between two islands
+ */
+export async function getTransportRoutesBetweenIslands(fromIslandId: number, toIslandId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(transportRoutes)
+    .where(
+      and(
+        eq(transportRoutes.fromIslandId, fromIslandId),
+        eq(transportRoutes.toIslandId, toIslandId),
+        eq(transportRoutes.isActive, 1)
+      )
+    );
+  
+  return result;
+}
+
+/**
+ * Get all experiences for an island
+ */
+export async function getExperiencesByIsland(islandId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select({
+      experience: experiences,
+      activityType: activityTypes,
+    })
+    .from(islandExperiences)
+    .innerJoin(experiences, eq(islandExperiences.experienceId, experiences.id))
+    .leftJoin(activityTypes, eq(experiences.activityTypeId, activityTypes.id))
+    .where(eq(islandExperiences.islandId, islandId))
+    .orderBy(islandExperiences.sortOrder);
+  
+  return result;
+}
+
+/**
+ * Get all experiences by activity type
+ */
+export async function getExperiencesByActivityType(activityTypeId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(experiences)
+    .where(eq(experiences.activityTypeId, activityTypeId))
+    .orderBy(experiences.displayOrder);
+  
+  return result;
+}
+
+/**
+ * Get SEO metadata for an entity
+ */
+export async function getSeoMetadata(entityType: string, entityId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  
+  const result = await db
+    .select()
+    .from(seoMetadata)
+    .where(
+      and(
+        eq(seoMetadata.entityType, entityType as any),
+        eq(seoMetadata.entityId, entityId)
+      )
+    )
+    .limit(1);
+  
+  return result[0];
+}
+
+/**
+ * Create or update SEO metadata
+ */
+export async function upsertSeoMetadata(data: {
+  entityType: string;
+  entityId: number;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+  ogImageId?: number;
+}) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  // Check if exists
+  const existing = await getSeoMetadata(data.entityType, data.entityId);
+  
+  if (existing) {
+    // Update
+    await db
+      .update(seoMetadata)
+      .set({
+        metaTitle: data.metaTitle,
+        metaDescription: data.metaDescription,
+        metaKeywords: data.metaKeywords,
+        ogImageId: data.ogImageId,
+      })
+      .where(
+        and(
+          eq(seoMetadata.entityType, data.entityType as any),
+          eq(seoMetadata.entityId, data.entityId)
+        )
+      );
+    return existing;
+  } else {
+    // Insert
+    const result = await db.insert(seoMetadata).values(data as any);
+    const id = (result as any).insertId;
+    return getSeoMetadata(data.entityType, data.entityId);
+  }
+}
+
+/**
+ * Get island spots with full details including access metadata
+ * This is the main query for island detail pages
+ */
+export async function getIslandWithSpots(islandId: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  // Get island
+  const island = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.id, islandId))
+    .limit(1);
+  
+  if (!island || !island[0]) return null;
+  
+  // Get spots accessible from this island
+  const spots = await getSpotsByIsland(islandId);
+  
+  // Get experiences available on this island
+  const experienceData = await getExperiencesByIsland(islandId);
+  
+  // Get transport routes from this island
+  const routes = await db
+    .select()
+    .from(transportRoutes)
+    .where(eq(transportRoutes.fromIslandId, islandId));
+  
+  return {
+    island: island[0],
+    spots,
+    experiences: experienceData,
+    transportRoutes: routes,
+  };
 }
