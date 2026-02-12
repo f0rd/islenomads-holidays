@@ -5,10 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Edit2, Trash2, Search, Filter } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import ActivitySpotForm from '@/components/ActivitySpotForm';
+import { AdminPageLayout } from '@/components/AdminPageLayout';
 
 export default function AdminActivitySpots() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -92,182 +92,188 @@ export default function AdminActivitySpots() {
     return island?.name || 'Unknown';
   };
 
+  const headerAction = (
+    <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+      <DialogTrigger asChild>
+        <Button className="gap-2">
+          <Plus className="w-4 h-4" />
+          New Activity Spot
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle>
+            {editingSpot ? 'Edit Activity Spot' : 'Create New Activity Spot'}
+          </DialogTitle>
+          <DialogDescription>
+            {editingSpot
+              ? 'Update the activity spot details and island association'
+              : 'Add a new dive site, surf spot, or snorkeling location'}
+          </DialogDescription>
+        </DialogHeader>
+        <ActivitySpotForm
+          initialData={editingSpot}
+          islands={islands}
+          onSuccess={handleFormSuccess}
+        />
+      </DialogContent>
+    </Dialog>
+  );
+
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">Activity Spots Management</h1>
-          <p className="text-gray-600 mt-1">Manage dive sites, surf spots, and snorkeling locations</p>
+    <AdminPageLayout
+      title="Activity Spots Management"
+      description="Manage dive sites, surf spots, and snorkeling locations"
+      headerAction={headerAction}
+      breadcrumbs={[
+        { label: "CMS", href: "/admin" },
+        { label: "Activity Management", href: "/admin/activity-spots" },
+        { label: "Activity Spots", href: "/admin/activity-spots" },
+      ]}
+    >
+      <div className="space-y-6">
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Total Spots</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{spots.length}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Dive Sites</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'dive').length}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Surf Spots</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'surf').length}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Snorkeling</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'snorkeling').length}</div>
+            </CardContent>
+          </Card>
         </div>
-        <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-          <DialogTrigger asChild>
-            <Button className="gap-2">
-              <Plus className="w-4 h-4" />
-              New Activity Spot
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>
-                {editingSpot ? 'Edit Activity Spot' : 'Create New Activity Spot'}
-              </DialogTitle>
-              <DialogDescription>
-                {editingSpot
-                  ? 'Update the activity spot details and island association'
-                  : 'Add a new dive site, surf spot, or snorkeling location'}
-              </DialogDescription>
-            </DialogHeader>
-            <ActivitySpotForm
-              initialData={editingSpot}
-              islands={islands}
-              onSuccess={handleFormSuccess}
-            />
-          </DialogContent>
-        </Dialog>
-      </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* Filters */}
         <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Total Spots</CardTitle>
+          <CardHeader>
+            <CardTitle className="text-lg">Filters</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{spots.length}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Dive Sites</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'dive').length}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Surf Spots</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'surf').length}</div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Snorkeling</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{spots.filter((s: any) => s.type === 'snorkeling').length}</div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Filters */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Filters</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Search</label>
-              <div className="relative">
-                <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-                <Input
-                  placeholder="Search spots by name..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
+          <CardContent className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Search</label>
+                <div className="relative">
+                  <Search className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+                  <Input
+                    placeholder="Search spots by name..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Type</label>
+                <Select value={filterType} onValueChange={(value: any) => setFilterType(value)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Types</SelectItem>
+                    <SelectItem value="dive">Dive Sites</SelectItem>
+                    <SelectItem value="surf">Surf Spots</SelectItem>
+                    <SelectItem value="snorkeling">Snorkeling</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Type</label>
-              <Select value={filterType} onValueChange={(value: any) => setFilterType(value)}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Types</SelectItem>
-                  <SelectItem value="dive">Dive Sites</SelectItem>
-                  <SelectItem value="surf">Surf Spots</SelectItem>
-                  <SelectItem value="snorkeling">Snorkeling</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
 
-      {/* Activity Spots List */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Activity Spots ({filteredSpots.length})</CardTitle>
-          <CardDescription>
-            {filterType !== 'all' && `Showing ${filterType} spots`}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {isLoading ? (
-            <div className="flex items-center justify-center py-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-            </div>
-          ) : filteredSpots.length > 0 ? (
-            <div className="space-y-3">
-              {filteredSpots.map((spot: any) => (
-                <div
-                  key={spot.id}
-                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition"
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-gray-900">{spot.name}</h3>
-                      <Badge className={getTypeBadgeColor(spot.type)}>
-                        {spot.type}
-                      </Badge>
-                      {spot.difficulty && (
-                        <Badge className={getDifficultyColor(spot.difficulty)}>
-                          {spot.difficulty}
+        {/* Activity Spots List */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Activity Spots ({filteredSpots.length})</CardTitle>
+            <CardDescription>
+              {filterType !== 'all' && `Showing ${filterType} spots`}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {isLoading ? (
+              <div className="flex items-center justify-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+              </div>
+            ) : filteredSpots.length > 0 ? (
+              <div className="space-y-3">
+                {filteredSpots.map((spot: any) => (
+                  <div
+                    key={spot.id}
+                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="font-semibold text-gray-900">{spot.name}</h3>
+                        <Badge className={getTypeBadgeColor(spot.type)}>
+                          {spot.type}
                         </Badge>
-                      )}
+                        {spot.difficulty && (
+                          <Badge className={getDifficultyColor(spot.difficulty)}>
+                            {spot.difficulty}
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                        <span>Island: <strong>{getIslandName(spot.islandGuideId)}</strong></span>
+                        {spot.depth && <span>Depth: <strong>{spot.depth}</strong></span>}
+                        {spot.rating && <span>Rating: <strong>{spot.rating}★</strong></span>}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
-                      <span>Island: <strong>{getIslandName(spot.islandGuideId)}</strong></span>
-                      {spot.depth && <span>Depth: <strong>{spot.depth}</strong></span>}
-                      {spot.rating && <span>Rating: <strong>{spot.rating}★</strong></span>}
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleEdit(spot)}
+                        className="gap-1"
+                      >
+                        <Edit2 className="w-4 h-4" />
+                        Edit
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => handleDelete(spot.id)}
+                        className="gap-1"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        Delete
+                      </Button>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleEdit(spot)}
-                      className="gap-1"
-                    >
-                      <Edit2 className="w-4 h-4" />
-                      Edit
-                    </Button>
-                    <Button
-                      variant="destructive"
-                      size="sm"
-                      onClick={() => handleDelete(spot.id)}
-                      className="gap-1"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                      Delete
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-500">No activity spots found</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-gray-500">No activity spots found</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </AdminPageLayout>
   );
 }
