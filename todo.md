@@ -921,7 +921,17 @@
 
 
 ## Bug Fixes - Activity Spots Display
-- [ ] Fix surfing activities not showing in Thulusdhoo Island Things to Do section
-- [ ] Verify activity spot spotType values are correctly set (should have surf_spot, dive_site, snorkeling_spot)
-- [ ] Ensure surfing spots are linked to Thulusdhoo Island (islandGuideId matches)
-- [ ] Test activity spots filtering by type in admin panel
+- [x] Fix surfing activities not showing in Thulusdhoo Island Things to Do section
+- [x] Verify activity spot spotType values are correctly set (should have surf_spot, dive_site, snorkeling_spot)
+- [x] Ensure surfing spots are linked to Thulusdhoo Island (islandGuideId matches)
+- [x] Test activity spots filtering by type in admin panel
+
+## Data Structure Fix - Things to Do Display
+- [x] Identify root cause: topThingsToDo stored as array of strings instead of array of objects
+- [x] Create data migration script to fix all island guides
+- [x] Apply fix to 22 island guides with incorrect data structure
+- [x] Verify Things to Do displays correctly on Male Island page
+- [x] Test Things to Do displays correctly on Thulusdhoo Island page
+- [x] Test Things to Do displays correctly on Ukulhas Island page
+- [x] Test Things to Do displays correctly on Veligandu Island page
+- [x] All 22 island guides now display activities correctly

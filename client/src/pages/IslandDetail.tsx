@@ -99,6 +99,12 @@ export default function IslandDetail() {
   const topThingsToDo = parseJSON(island.topThingsToDo) || [];
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
+  
+  // Debug logging
+  console.log('Island name:', island.name);
+  console.log('Raw topThingsToDo from DB:', island.topThingsToDo);
+  console.log('Parsed topThingsToDo:', topThingsToDo);
+  console.log('topThingsToDo length:', topThingsToDo.length);
 
   // Get all islands for navigation
   const allIslands = guides.filter((g: any) => g.published);
