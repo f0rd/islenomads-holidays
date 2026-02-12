@@ -1,0 +1,13 @@
+{
+  "query": "SELECT topThingsToDo FROM island_guides WHERE slug = 'male-capital-city';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT topThingsToDo FROM island_guides WHERE slug = 'male-capital-city';",
+  "rows": [
+    {
+      "topThingsToDo": "[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "topThingsToDo\n[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

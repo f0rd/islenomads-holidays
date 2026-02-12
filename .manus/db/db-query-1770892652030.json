@@ -1,0 +1,22 @@
+{
+  "query": "SELECT name, topThingsToDo FROM island_guides WHERE name LIKE '%Thoddoo%' OR name LIKE '%Thulusdhoo%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, topThingsToDo FROM island_guides WHERE name LIKE '%Thoddoo%' OR name LIKE '%Thulusdhoo%'",
+  "rows": [
+    {
+      "name": "Thulusdhoo Island",
+      "topThingsToDo": "[\"Surfing at main break\",\"Snorkeling\",\"Diving\",\"Visit local restaurants\",\"Beach relaxation\",\"Photography\"]"
+    },
+    {
+      "name": "Thulusdhoo",
+      "topThingsToDo": "[\"Surfing\",\"Snorkeling\",\"Diving\",\"Island hopping\",\"Local cultural experiences\",\"Fishing trips\"]"
+    },
+    {
+      "name": "Thoddoo",
+      "topThingsToDo": "[\"Farm tours\",\"Snorkeling\",\"Diving\",\"Island hopping\",\"Local cooking classes\",\"Photography\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\ttopThingsToDo\nThulusdhoo Island\t[\"Surfing at main break\",\"Snorkeling\",\"Diving\",\"Visit local restaurants\",\"Beach relaxation\",\"Photography\"]\nThulusdhoo\t[\"Surfing\",\"Snorkeling\",\"Diving\",\"Island hopping\",\"Local cultural experiences\",\"Fishing trips\"]\nThoddoo\t[\"Farm tours\",\"Snorkeling\",\"Diving\",\"Island hopping\",\"Local cooking classes\",\"Photography\"]\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

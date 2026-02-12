@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, slug, topThingsToDo FROM island_guides WHERE slug LIKE '%male%' LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, topThingsToDo FROM island_guides WHERE slug LIKE '%male%' LIMIT 5",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male - The Capital City",
+      "slug": "male-capital-city",
+      "topThingsToDo": "[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]"
+    },
+    {
+      "id": "30004",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "topThingsToDo": "[\"Relax on Hulhumalé Beach - pristine white sand and turquoise waters\",\"Snorkeling from the beach or organized tours\",\"Visit the local market and experience island culture\",\"Enjoy water sports - jet skiing, kayaking, paddleboarding\",\"Dine at local restaurants with authentic Maldivian cuisine\",\"Explore the island by bicycle or on foot\",\"Visit nearby dive sites\",\"Sunset fishing trips\"]"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "topThingsToDo": "[\"City walking tours\",\"Shopping at local markets\",\"Visiting mosques and temples\",\"Dining at local restaurants\",\"Photography\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttopThingsToDo\n1\tMale - The Capital City\tmale-capital-city\t[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]\n30004\tHulhumalé\thulhumale\t[\"Relax on Hulhumalé Beach - pristine white sand and turquoise waters\",\"Snorkeling from the beach or organized tours\",\"Visit the local market and experience island culture\",\"Enjoy water sports - jet skiing, kayaking, paddleboarding\",\"Dine at local restaurants with authentic Maldivian cuisine\",\"Explore the island by bicycle or on foot\",\"Visit nearby dive sites\",\"Sunset fishing trips\"]\n60001\tMalé\tmale\t[\"City walking tours\",\"Shopping at local markets\",\"Visiting mosques and temples\",\"Dining at local restaurants\",\"Photography\"]\n",
+  "stderr": "",
+  "execution_time_ms": 87
+}

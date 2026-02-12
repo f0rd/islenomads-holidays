@@ -25,7 +25,7 @@ interface IslandGuideItem {
 export default function AdminIslandGuides() {
   const { user, loading: authLoading } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedGuide, setSelectedGuide] = useState<IslandGuideFormData | undefined>(undefined);
+  const [selectedGuide, setSelectedGuide] = useState<(IslandGuideFormData & { id?: number }) | undefined>(undefined);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,6 +35,8 @@ export default function AdminIslandGuides() {
   // Fetch all island guides
   const { data: guides = [], isLoading, refetch } = trpc.islandGuides.listAdmin.useQuery();
   const updateDisplayOrderMutation = trpc.islandGuides.updateDisplayOrder.useMutation();
+  const createMutation = trpc.islandGuides.create.useMutation();
+  const updateMutation = trpc.islandGuides.update.useMutation();
 
   // Get featured guides sorted by display order
   const featuredGuides = useMemo(() => {
@@ -130,8 +132,28 @@ export default function AdminIslandGuides() {
   const handleSave = async (formData: IslandGuideFormData) => {
     setIsSubmitting(true);
     try {
+      const dataToSave = {
+        ...formData,
+        quickFacts: JSON.stringify(formData.quickFacts || []),
+        topThingsToDo: JSON.stringify(formData.topThingsToDo || []),
+        foodCafes: formData.foodCafes || '',
+        practicalInfo: formData.practicalInfo || '',
+        faqs: JSON.stringify(formData.faqs || []),
+      };
+
+      if (isCreating) {
+        await createMutation.mutateAsync(dataToSave as any);
+      } else if (isEditing && (selectedGuide as any)?.id) {
+        await updateMutation.mutateAsync({
+          id: (selectedGuide as any).id,
+          ...dataToSave,
+        } as any);
+      }
+      
       await refetch();
       handleCancel();
+    } catch (error) {
+      console.error('Error saving island guide:', error);
     } finally {
       setIsSubmitting(false);
     }

@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, topThingsToDo, LENGTH(topThingsToDo) as content_length FROM island_guides WHERE name = 'Male - The Capital City'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, topThingsToDo, LENGTH(topThingsToDo) as content_length FROM island_guides WHERE name = 'Male - The Capital City'",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male - The Capital City",
+      "topThingsToDo": "[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]",
+      "content_length": "146"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttopThingsToDo\tcontent_length\n1\tMale - The Capital City\t[\"Visit Friday Mosque\",\"Explore Male City Centre\",\"Shop at Local Markets\",\"Relax at Artificial Beach\",\"Visit National Centre\",\"Try Local Cuisine\"]\t146\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

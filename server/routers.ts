@@ -548,6 +548,12 @@ export const appRouter = router({
           slug: z.string().optional(),
           description: z.string().optional(),
           published: z.number().optional(),
+          quickFacts: z.any().optional(),
+          topThingsToDo: z.any().optional(),
+          foodCafes: z.any().optional(),
+          faq: z.any().optional(),
+          howToGetThere: z.string().optional(),
+          practicalInfo: z.string().optional(),
         })
       )
       .mutation(async ({ input }) => {

@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, slug, topThingsToDo FROM island_guides WHERE slug = 'male' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, topThingsToDo FROM island_guides WHERE slug = 'male' LIMIT 1;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "topThingsToDo": "[\"City walking tours\",\"Shopping at local markets\",\"Visiting mosques and temples\",\"Dining at local restaurants\",\"Photography\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttopThingsToDo\n60001\tMalé\tmale\t[\"City walking tours\",\"Shopping at local markets\",\"Visiting mosques and temples\",\"Dining at local restaurants\",\"Photography\"]\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}
