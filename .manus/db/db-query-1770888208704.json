@@ -1,0 +1,19 @@
+{
+  "query": "SHOW TABLES LIKE '%island%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SHOW TABLES LIKE '%island%'",
+  "rows": [
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55 (%island%)": "island_experiences"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55 (%island%)": "island_guides"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55 (%island%)": "island_spot_access"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_JUCCYykxYWxAcNny3wop55 (%island%)\nisland_experiences\nisland_guides\nisland_spot_access\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

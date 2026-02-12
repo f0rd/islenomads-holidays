@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE name LIKE '%Male%' OR slug LIKE '%male%' LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE name LIKE '%Male%' OR slug LIKE '%male%' LIMIT 5",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male - The Capital City",
+      "slug": "male-capital-city"
+    },
+    {
+      "id": "30004",
+      "name": "Hulhumalé",
+      "slug": "hulhumale"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tMale - The Capital City\tmale-capital-city\n30004\tHulhumalé\thulhumale\n60001\tMalé\tmale\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}
