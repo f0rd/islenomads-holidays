@@ -1,0 +1,160 @@
+{
+  "query": "SELECT id, name, atoll FROM island_guides ORDER BY name LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll FROM island_guides ORDER BY name LIMIT 50;",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "id": "4",
+      "name": "Banana Reef",
+      "atoll": "North Malé Atoll"
+    },
+    {
+      "id": "60014",
+      "name": "Dharavandhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "60008",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "60021",
+      "name": "Feidhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "id": "60011",
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll"
+    },
+    {
+      "id": "60017",
+      "name": "Fodhdhoo",
+      "atoll": "Noonu Atoll"
+    },
+    {
+      "id": "60010",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll"
+    },
+    {
+      "id": "90001",
+      "name": "Fuvahmulah Island",
+      "atoll": "Fuvahmulah"
+    },
+    {
+      "id": "60020",
+      "name": "Gan",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "60013",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "id": "60023",
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "id": "60026",
+      "name": "Inguraidhoo",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "id": "60019",
+      "name": "Kolhufushi",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "id": "60016",
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll"
+    },
+    {
+      "id": "60002",
+      "name": "Maafushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "60025",
+      "name": "Madifushi",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "60022",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "id": "60018",
+      "name": "Muli",
+      "atoll": "Meemu Atoll"
+    },
+    {
+      "id": "60012",
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "id": "60005",
+      "name": "Rasdhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "60006",
+      "name": "Thoddoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "60003",
+      "name": "Thulusdhoo",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "60007",
+      "name": "Ukulhas",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "60028",
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "id": "60009",
+      "name": "Veligandu",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "60024",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\n60027\tAlifushi\tRaa Atoll\n4\tBanana Reef\tNorth Malé Atoll\n60014\tDharavandhoo\tBaa Atoll\n60004\tDhiffushi\tKaafu Atoll\n60008\tDhigurah\tAlif Dhaal Atoll\n60021\tFeidhoo\tSeenu Atoll\n60011\tFelidhoo\tVaavu Atoll\n60017\tFodhdhoo\tNoonu Atoll\n60010\tFulidhoo\tVaavu Atoll\n90001\tFuvahmulah Island\tFuvahmulah\n60020\tGan\tSeenu Atoll\n60015\tGuraidhoo\tKaafu Atoll\n60013\tHinnavaru\tLhaviyani Atoll\n60023\tHithadhoo\tSeenu Atoll\n60026\tInguraidhoo\tRaa Atoll\n60019\tKolhufushi\tThaa Atoll\n60016\tKudahuvadhoo\tDhaalu Atoll\n60002\tMaafushi\tKaafu Atoll\n60025\tMadifushi\tThaa Atoll\n60001\tMalé\tKaafu Atoll\n60022\tMaradhoo\tSeenu Atoll\n60018\tMuli\tMeemu Atoll\n60012\tNaifaru\tLhaviyani Atoll\n60005\tRasdhoo\tAlif Alif Atoll\n60006\tThoddoo\tAlif Alif Atoll\n60003\tThulusdhoo\tKaafu Atoll\n60007\tUkulhas\tAlif Alif Atoll\n60028\tUngoofaaru\tRaa Atoll\n60009\tVeligandu\tAlif Dhaal Atoll\n60024\tVeymandoo\tThaa Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

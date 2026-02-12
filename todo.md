@@ -1069,6 +1069,15 @@
 - [ ] Verify ferry and speedboat both show correct destination island names
 
 ## Airports Database
+- [x] Cleaned and added 15 Maldives airports to database
+- [x] Added international and domestic airport data
+- [x] Integrated airport data with island guides
+
+## Island Database Cleanup & Expansion
+- [x] Removed duplicate island entries (11 duplicates deleted)
+- [x] Added missing islands from airport locations (Fuvahmulah, Hulhumalé, Hanifaru Bay, Maamigili)
+- [x] Verified no duplicate search results (e.g., "Ukulhas" now shows only one result)
+- [x] Confirmed 33 total islands in database with unique slugs
 - [x] Clean and structure Maldives airport data (18 airports total)
 - [x] Add international airports to database (Velana, Gan, Maafaru, Hanimaadhoo, Villa)
 - [x] Add domestic airports to database (Dharavandhoo, Dhaalu, Fuvahmulah, Ifuru, Kadhdhoo, Kooddoo, Kaadedhdhoo, Kulhudhuffushi, Madivaru, Maavarulu, Hoarafushi, Funadhoo, Thimarafushi)
