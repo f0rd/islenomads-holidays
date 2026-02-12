@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, name, type, fromLocation, toLocation, toIslandGuideId FROM boat_routes LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, fromLocation, toLocation, toIslandGuideId FROM boat_routes LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male to Thulusdhoo Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Thulusdhoo Island",
+      "toIslandGuideId": "1"
+    },
+    {
+      "id": "2",
+      "name": "Male to Thulusdhoo Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Thulusdhoo Island",
+      "toIslandGuideId": "1"
+    },
+    {
+      "id": "3",
+      "name": "Male to Kandooma Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Kandooma Island",
+      "toIslandGuideId": "2"
+    },
+    {
+      "id": "4",
+      "name": "Male to Kandooma Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Kandooma Island",
+      "toIslandGuideId": "2"
+    },
+    {
+      "id": "5",
+      "name": "Male to Dhigurah Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Dhigurah Island",
+      "toIslandGuideId": "3"
+    },
+    {
+      "id": "6",
+      "name": "Male to Dhigurah Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Dhigurah Island",
+      "toIslandGuideId": "3"
+    },
+    {
+      "id": "7",
+      "name": "Male to Rasdhoo Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Rasdhoo Island",
+      "toIslandGuideId": "4"
+    },
+    {
+      "id": "8",
+      "name": "Male to Rasdhoo Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Rasdhoo Island",
+      "toIslandGuideId": "4"
+    },
+    {
+      "id": "9",
+      "name": "Male to Veligandu Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Veligandu Island",
+      "toIslandGuideId": "5"
+    },
+    {
+      "id": "10",
+      "name": "Male to Veligandu Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Veligandu Island",
+      "toIslandGuideId": "5"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tfromLocation\ttoLocation\ttoIslandGuideId\n1\tMale to Thulusdhoo Speedboat\tspeedboat\tMale\tThulusdhoo Island\t1\n2\tMale to Thulusdhoo Ferry\tferry\tMale\tThulusdhoo Island\t1\n3\tMale to Kandooma Speedboat\tspeedboat\tMale\tKandooma Island\t2\n4\tMale to Kandooma Ferry\tferry\tMale\tKandooma Island\t2\n5\tMale to Dhigurah Speedboat\tspeedboat\tMale\tDhigurah Island\t3\n6\tMale to Dhigurah Ferry\tferry\tMale\tDhigurah Island\t3\n7\tMale to Rasdhoo Speedboat\tspeedboat\tMale\tRasdhoo Island\t4\n8\tMale to Rasdhoo Ferry\tferry\tMale\tRasdhoo Island\t4\n9\tMale to Veligandu Speedboat\tspeedboat\tMale\tVeligandu Island\t5\n10\tMale to Veligandu Ferry\tferry\tMale\tVeligandu Island\t5\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
