@@ -1,0 +1,242 @@
+{
+  "query": "SELECT id, name, spotType, latitude, longitude, islandGuideId FROM activity_spots ORDER BY spotType, name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, latitude, longitude, islandGuideId FROM activity_spots ORDER BY spotType, name;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "latitude": "4.33",
+      "longitude": "73.56",
+      "islandGuideId": "60003"
+    },
+    {
+      "id": "60005",
+      "name": "Foxys",
+      "spotType": "surf_spot",
+      "latitude": "3.56",
+      "longitude": "73.52",
+      "islandGuideId": "60011"
+    },
+    {
+      "id": "60004",
+      "name": "Jailbreaks",
+      "spotType": "surf_spot",
+      "latitude": "3.65",
+      "longitude": "72.95",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "60001",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "latitude": "4.335",
+      "longitude": "73.555",
+      "islandGuideId": "60003"
+    },
+    {
+      "id": "60002",
+      "name": "Riptide",
+      "spotType": "surf_spot",
+      "latitude": "4.32",
+      "longitude": "73.59",
+      "islandGuideId": "60004"
+    },
+    {
+      "id": "60003",
+      "name": "Sultans",
+      "spotType": "surf_spot",
+      "latitude": "4.3",
+      "longitude": "73.58",
+      "islandGuideId": "60015"
+    },
+    {
+      "id": "60007",
+      "name": "Two Ways",
+      "spotType": "surf_spot",
+      "latitude": "-0.61",
+      "longitude": "73.14",
+      "islandGuideId": "60022"
+    },
+    {
+      "id": "60006",
+      "name": "Yeyye",
+      "spotType": "surf_spot",
+      "latitude": "-0.69",
+      "longitude": "73.15",
+      "islandGuideId": "60020"
+    },
+    {
+      "id": "60008",
+      "name": "Banana Reef",
+      "spotType": "dive_site",
+      "latitude": "4.29",
+      "longitude": "73.28",
+      "islandGuideId": "4"
+    },
+    {
+      "id": "7",
+      "name": "Bathala Thila",
+      "spotType": "dive_site",
+      "latitude": "4.25",
+      "longitude": "72.95",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "13",
+      "name": "Fesdu Kandu",
+      "spotType": "dive_site",
+      "latitude": "4.18",
+      "longitude": "72.97",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "3",
+      "name": "Fish Head",
+      "spotType": "dive_site",
+      "latitude": "4.261",
+      "longitude": "72.995",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "6",
+      "name": "Fotteyo Kandu",
+      "spotType": "dive_site",
+      "latitude": "3.56",
+      "longitude": "73.52",
+      "islandGuideId": "60011"
+    },
+    {
+      "id": "30002",
+      "name": "Fulidhoo House Reef",
+      "spotType": "dive_site",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "islandGuideId": "9"
+    },
+    {
+      "id": "30001",
+      "name": "Fulidhoo House Reef",
+      "spotType": "dive_site",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "islandGuideId": "9"
+    },
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "spotType": "dive_site",
+      "latitude": "5.188",
+      "longitude": "73.11",
+      "islandGuideId": "60014"
+    },
+    {
+      "id": "5",
+      "name": "Kuda Rah Thila",
+      "spotType": "dive_site",
+      "latitude": "3.65",
+      "longitude": "72.95",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "4",
+      "name": "Maaya Thila",
+      "spotType": "dive_site",
+      "latitude": "4.282",
+      "longitude": "72.969",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "9",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "latitude": "-0.61",
+      "longitude": "73.14",
+      "islandGuideId": "60022"
+    },
+    {
+      "id": "8",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "latitude": "-0.61",
+      "longitude": "73.14",
+      "islandGuideId": "60023"
+    },
+    {
+      "id": "11",
+      "name": "Miyaru Kandu",
+      "spotType": "dive_site",
+      "latitude": "3.62",
+      "longitude": "72.95",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "10",
+      "name": "Vaavu Kandu",
+      "spotType": "dive_site",
+      "latitude": "3.56",
+      "longitude": "73.52",
+      "islandGuideId": "60010"
+    },
+    {
+      "id": "12",
+      "name": "Veligandu Kandu",
+      "spotType": "dive_site",
+      "latitude": "3.68",
+      "longitude": "72.87",
+      "islandGuideId": "60009"
+    },
+    {
+      "id": "60011",
+      "name": "Dhigurah Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "3.65",
+      "longitude": "72.95",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "60012",
+      "name": "Fulidhoo Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "3.85",
+      "longitude": "72.82",
+      "islandGuideId": "60010"
+    },
+    {
+      "id": "60009",
+      "name": "Maafushi House Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "4.4",
+      "longitude": "73.41",
+      "islandGuideId": "60002"
+    },
+    {
+      "id": "60014",
+      "name": "Rasdhoo Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "4.261",
+      "longitude": "72.995",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "60010",
+      "name": "Thulusdhoo Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "4.33",
+      "longitude": "73.56",
+      "islandGuideId": "60003"
+    },
+    {
+      "id": "60013",
+      "name": "Veligandu Reef",
+      "spotType": "snorkeling_spot",
+      "latitude": "5.05",
+      "longitude": "73.05",
+      "islandGuideId": "60009"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tlatitude\tlongitude\tislandGuideId\n1\tCokes\tsurf_spot\t4.33\t73.56\t60003\n60005\tFoxys\tsurf_spot\t3.56\t73.52\t60011\n60004\tJailbreaks\tsurf_spot\t3.65\t72.95\t60008\n60001\tPasta Point\tsurf_spot\t4.335\t73.555\t60003\n60002\tRiptide\tsurf_spot\t4.32\t73.59\t60004\n60003\tSultans\tsurf_spot\t4.3\t73.58\t60015\n60007\tTwo Ways\tsurf_spot\t-0.61\t73.14\t60022\n60006\tYeyye\tsurf_spot\t-0.69\t73.15\t60020\n60008\tBanana Reef\tdive_site\t4.29\t73.28\t4\n7\tBathala Thila\tdive_site\t4.25\t72.95\t60005\n13\tFesdu Kandu\tdive_site\t4.18\t72.97\t60005\n3\tFish Head\tdive_site\t4.261\t72.995\t60005\n6\tFotteyo Kandu\tdive_site\t3.56\t73.52\t60011\n30002\tFulidhoo House Reef\tdive_site\tNULL\tNULL\t9\n30001\tFulidhoo House Reef\tdive_site\tNULL\tNULL\t9\n2\tHanifaru Bay\tdive_site\t5.188\t73.11\t60014\n5\tKuda Rah Thila\tdive_site\t3.65\t72.95\t60008\n4\tMaaya Thila\tdive_site\t4.282\t72.969\t60005\n9\tMaradhoo Kandu\tdive_site\t-0.61\t73.14\t60022\n8\tMaradhoo Kandu\tdive_site\t-0.61\t73.14\t60023\n11\tMiyaru Kandu\tdive_site\t3.62\t72.95\t60008\n10\tVaavu Kandu\tdive_site\t3.56\t73.52\t60010\n12\tVeligandu Kandu\tdive_site\t3.68\t72.87\t60009\n60011\tDhigurah Reef\tsnorkeling_spot\t3.65\t72.95\t60008\n60012\tFulidhoo Reef\tsnorkeling_spot\t3.85\t72.82\t60010\n60009\tMaafushi House Reef\tsnorkeling_spot\t4.4\t73.41\t60002\n60014\tRasdhoo Reef\tsnorkeling_spot\t4.261\t72.995\t60005\n60010\tThulusdhoo Reef\tsnorkeling_spot\t4.33\t73.56\t60003\n60013\tVeligandu Reef\tsnorkeling_spot\t5.05\t73.05\t60009\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

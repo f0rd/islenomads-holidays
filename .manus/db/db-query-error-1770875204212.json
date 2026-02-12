@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, name, spot_type, latitude, longitude, island_guide_id FROM activity_spots ORDER BY spot_type, name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spot_type, latitude, longitude, island_guide_id FROM activity_spots ORDER BY spot_type, name;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'spot_type' in 'field list'"
+  ]
+}

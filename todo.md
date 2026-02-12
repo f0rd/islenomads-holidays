@@ -871,3 +871,10 @@
 - [x] Verify activity spot counts updated on Explore Maldives page
 - [x] Test activity filtering with snorkeling spots
 - [x] Verify snorkeling spots display on island detail pages
+
+
+## Activity Spots Coordinate Updates
+- [x] Audit current activity spot coordinates (found 29 total spots)
+- [x] Add accurate GPS coordinates for all 22 activity spots with real Maldives locations
+- [x] Test proximity-based display with updated coordinates
+- [x] Verify nearby spots appear on island pages (tested on Thulusdhoo - showing 3 spots including nearby Pasta Point)
