@@ -11,6 +11,7 @@ import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
 import WaterActivitiesSection from '@/components/WaterActivitiesSection';
 import AirportInfo from '@/components/AirportInfo';
+import BoatRoutesInfo from '@/components/BoatRoutesInfo';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -305,6 +306,11 @@ export default function IslandDetail() {
                 {/* Airport Information */}
                 {island && (
                   <AirportInfo islandGuideId={island.id} islandName={island.name} />
+                )}
+                
+                {/* Boat Routes Information */}
+                {island && (
+                  <BoatRoutesInfo islandGuideId={island.id} islandName={island.name} />
                 )}
                 
                 <Card>

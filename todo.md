@@ -1029,3 +1029,15 @@
 - [x] All 25 snorkeling spots successfully inserted and displaying with proper categorization
 - [x] Filtering works correctly (All/Diving/Snorkeling/Surfing buttons)
 - [x] Each snorkeling spot shows coral coverage, fish species, best season, and best time
+
+
+## Transportation Routing Enhancement
+- [x] Review airport_routes and boat_routes data structure in database
+- [x] Create BoatRoutesInfo component showing boat transportation options
+- [x] Populate boat_routes table with 20 routes (speedboat and ferry for 10 islands)
+- [x] Display routes as: Male to Island with durations for each segment
+- [x] Update IslandDetail How to Get section to use BoatRoutesInfo component
+- [x] Test on Ukulhas Island (shows 55 min speedboat, 1h 50 min ferry)
+- [x] Verified all transportation options display with accurate durations and prices
+- [x] Each route shows: distance, duration, price per person, and passenger capacity
+- [x] Speedboat and Ferry options clearly separated with color-coded cards
