@@ -1073,6 +1073,13 @@
 - [x] Added international and domestic airport data
 - [x] Integrated airport data with island guides
 
+## Dive Sites & Attractions Database
+- [x] Added 14 popular Maldives dive sites with difficulty ratings and coordinates
+- [x] Kandooma Thila, Banana Reef, Maaya Thila, HP Reef, Fotteyo Kandu, Veligandu Reef
+- [x] Dhigurah House Reef, Fulidhoo Kandu, Felidhoo Kandu, Rasdhoo Madivaru
+- [x] Thoddoo House Reef, Ukulhas House Reef, Naifaru Kandu, Hanifaru Bay
+- [x] All dive sites include marine life info, best seasons, visibility, and max depths
+
 ## Island Database Cleanup & Expansion
 - [x] Removed duplicate island entries (11 duplicates deleted)
 - [x] Added missing islands from airport locations (Fuvahmulah, Hulhumalé, Hanifaru Bay, Maamigili)
