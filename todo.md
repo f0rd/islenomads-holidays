@@ -959,3 +959,16 @@
 - [x] Tested on Thulusdhoo Island (4 spots: Cokes, Pasta Point, Jails, Chickens)
 - [x] Tested on Kandooma Island (1 spot: Kandooma Reef)
 - [x] All 21 surf spots successfully inserted and displaying with proper categorization
+
+
+## Maldives Dive Sites Population
+- [x] Research and compile all famous Maldives dive sites with authentic data (34 dive sites)
+- [x] Create SQL insert statements for 30+ dive sites into database
+- [x] Link dive sites to appropriate island guides (17 islands)
+- [x] Verify dive sites display correctly on island pages with WaterActivitiesSection
+- [x] Test filtering and categorization of dive sites by difficulty and marine life
+- [x] Tested on Thulusdhoo Island (3 dive sites + 3 surf spots = 6 total)
+- [x] Tested on Kandooma Island (2 dive sites + 1 surf spot = 3 total)
+- [x] All 34 dive sites successfully inserted and displaying with proper categorization
+- [x] Filtering works correctly (All/Diving/Surfing buttons)
+- [x] Each dive site shows depth range, marine life, best season, and best time
