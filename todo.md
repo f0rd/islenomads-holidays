@@ -1067,3 +1067,12 @@
 - [ ] Root cause: Component receiving wrong islandGuideId or database has stale data
 - [ ] Test boat routes display on Ukulhas Island page shows "Male to Ukulhas Island"
 - [ ] Verify ferry and speedboat both show correct destination island names
+
+## Airports Database
+- [x] Clean and structure Maldives airport data (18 airports total)
+- [x] Add international airports to database (Velana, Gan, Maafaru, Hanimaadhoo, Villa)
+- [x] Add domestic airports to database (Dharavandhoo, Dhaalu, Fuvahmulah, Ifuru, Kadhdhoo, Kooddoo, Kaadedhdhoo, Kulhudhuffushi, Madivaru, Maavarulu, Hoarafushi, Funadhoo, Thimarafushi)
+- [x] Verify airport coordinates and atoll assignments
+- [ ] Create airport routes API endpoint
+- [ ] Build airport transfers component for island pages
+- [ ] Integrate airport information into trip planner
