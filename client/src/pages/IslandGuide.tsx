@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { useParams } from "wouter";
+import { useParams, useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,8 +16,20 @@ import {
   HelpCircle,
   Share2,
   BookOpen,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+
+const ISLAND_NAVIGATION = [
+  { slug: "male-guide", name: "Male City" },
+  { slug: "maafushi-island", name: "Maafushi Island" },
+  { slug: "thoddoo-island", name: "Thoddoo Island" },
+  { slug: "guraidhoo-island", name: "Guraidhoo Island" },
+  { slug: "thulusdhoo-island", name: "Thulusdhoo Island" },
+  { slug: "kandooma-island", name: "Kandooma Island" },
+  { slug: "fuvamulah-island", name: "Fuvamulah Island" },
+];
 
 function normalizeGuideData(guide: any) {
   if (!guide) return null;
@@ -55,9 +67,14 @@ function normalizeGuideData(guide: any) {
 
 export default function IslandGuide() {
   const { islandId = "male-guide" } = useParams();
+  const [, navigate] = useLocation();
   const { data: rawGuide, isLoading, error } = trpc.islandGuides.getBySlug.useQuery({ slug: islandId });
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
   const [activeTab, setActiveTab] = useState("overview");
+  
+  const currentIndex = useMemo(() => ISLAND_NAVIGATION.findIndex(i => i.slug === islandId), [islandId]);
+  const previousIsland = currentIndex > 0 ? ISLAND_NAVIGATION[currentIndex - 1] : null;
+  const nextIsland = currentIndex < ISLAND_NAVIGATION.length - 1 ? ISLAND_NAVIGATION[currentIndex + 1] : null;
 
   if (isLoading) {
     return (
@@ -475,6 +492,41 @@ export default function IslandGuide() {
               </Card>
             </TabsContent>
           </Tabs>
+
+          {/* Navigation Buttons */}
+          <div className="mt-12 flex justify-between items-center gap-4">
+            {previousIsland ? (
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 hover:bg-primary/10"
+                onClick={() => navigate(`/island/${previousIsland.slug}`)}
+              >
+                <ChevronLeft className="w-4 h-4" />
+                {previousIsland.name}
+              </Button>
+            ) : (
+              <div />
+            )}
+            <Button
+              variant="outline"
+              onClick={() => navigate('/map')}
+              className="hover:bg-accent/10"
+            >
+              Back to Map
+            </Button>
+            {nextIsland ? (
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 hover:bg-primary/10"
+                onClick={() => navigate(`/island/${nextIsland.slug}`)}
+              >
+                {nextIsland.name}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            ) : (
+              <div />
+            )}
+          </div>
 
           {/* CTA Section */}
           <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-8 text-center">
