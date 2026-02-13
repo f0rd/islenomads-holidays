@@ -1130,3 +1130,13 @@
 - [ ] Populate excursions with pricing and details
 - [ ] Link excursions to islands
 - [ ] Create excursions API endpoint
+
+## Unified ID System for All Locations
+- [x] Create unified locations data file with consistent IDs
+- [x] Define ID naming convention for islands, diving spots, surf spots
+- [x] Update MaldivesMapNew to use unified IDs
+- [x] Update islandGuides to use unified IDs (database-driven)
+- [x] Create guides for all islands without guides
+- [x] Ensure all map links use correct guide IDs
+- [x] Test all ID mappings and references
+- [x] Verify island selection from map links to guides correctly

@@ -51,7 +51,7 @@ function Router() {
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
-      <Route path={"\\island-guide/:islandId"} component={IslandGuide} />
+      <Route path={"/island/:islandId"} component={IslandGuide} />
       <Route path={"/island/:slug"} component={IslandDetail} />      <Route path={"\\island-guides"} component={IslandGuides} />
       <Route path={"\\explore-maldives"} component={ExploreMaldives} />
       <Route path={"\\admin/activity-spots"} component={AdminActivitySpots} />
