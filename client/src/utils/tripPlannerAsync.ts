@@ -470,7 +470,27 @@ export async function findOptimalItineraryAsync(
     .map((id) => AVAILABLE_DESTINATIONS.find((d) => d.id === id))
     .filter((d) => d !== undefined) as Destination[];
 
-  if (destinations.length < 2) return null;
+  if (destinations.length < 1) return null;
+  
+  // For single island, create a stay itinerary
+  if (destinations.length === 1) {
+    const island = destinations[0];
+    const itinerary: TripItinerary = {
+      id: `single-${island.id}`,
+      destinations: [island],
+      segments: [],
+      totalDuration: "1 day",
+      totalDurationMinutes: 1440,
+      totalCost: "$0",
+      totalCostAmount: 0,
+      totalDistance: "0 km",
+      totalDistanceKm: 0,
+      startDate: startDate,
+      endDate: startDate,
+      isOptimal: true,
+    };
+    return itinerary;
+  }
 
   const segments: RouteSegment[] = [];
   let totalDurationMinutes = 0;
