@@ -1,0 +1,24 @@
+{
+  "query": "SELECT name, type, duration, price, schedule FROM boat_routes WHERE toLocation = 'Dhiffushi Island' AND published = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, type, duration, price, schedule FROM boat_routes WHERE toLocation = 'Dhiffushi Island' AND published = 1;",
+  "rows": [
+    {
+      "name": "Male to Dhiffushi Speedboat",
+      "type": "speedboat",
+      "duration": "30 minutes",
+      "price": "1800",
+      "schedule": "[\"08:00\", \"10:00\", \"14:00\", \"16:00\"]"
+    },
+    {
+      "name": "Male to Dhiffushi Ferry",
+      "type": "ferry",
+      "duration": "45 minutes",
+      "price": "300",
+      "schedule": "[\"06:30\", \"09:00\", \"12:00\", \"15:30\", \"18:00\"]"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\ttype\tduration\tprice\tschedule\nMale to Dhiffushi Speedboat\tspeedboat\t30 minutes\t1800\t[\"08:00\", \"10:00\", \"14:00\", \"16:00\"]\nMale to Dhiffushi Ferry\tferry\t45 minutes\t300\t[\"06:30\", \"09:00\", \"12:00\", \"15:30\", \"18:00\"]\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

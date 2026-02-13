@@ -1,0 +1,9 @@
+{
+  "query": "INSERT IGNORE INTO boat_routes (name, slug, type, fromLocation, toLocation, fromLat, fromLng, toLat, toLng, distance, duration, price, schedule, capacity, published) VALUES ('Male to Dhiffushi Speedboat', 'male-dhiffushi-speedboat', 'speedboat', 'Male', 'Dhiffushi Island', '4.1667', '73.5167', '4.2667', '73.5167', '15 km', '30 minutes', 1800, '[\\\"08:00\\\", \\\"10:00\\\", \\\"14:00\\\", \\\"16:00\\\"]', 50, 1), ('Male to Dhiffushi Ferry', 'male-dhiffushi-ferry', 'ferry', 'Male', 'Dhiffushi Island', '4.1667', '73.5167', '4.2667', '73.5167', '15 km', '45 minutes', 300, '[\\\"06:30\\\", \\\"09:00\\\", \\\"12:00\\\", \\\"15:30\\\", \\\"18:00\\\"]', 100, 1);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT IGNORE INTO boat_routes (name, slug, type, fromLocation, toLocation, fromLat, fromLng, toLat, toLng, distance, duration, price, schedule, capacity, published) VALUES ('Male to Dhiffushi Speedboat', 'male-dhiffushi-speedboat', 'speedboat', 'Male', 'Dhiffushi Island', '4.1667', '73.5167', '4.2667', '73.5167', '15 km', '30 minutes', 1800, '[\\\"08:00\\\", \\\"10:00\\\", \\\"14:00\\\", \\\"16:00\\\"]', 50, 1), ('Male to Dhiffushi Ferry', 'male-dhiffushi-ferry', 'ferry', 'Male', 'Dhiffushi Island', '4.1667', '73.5167', '4.2667', '73.5167', '15 km', '45 minutes', 300, '[\\\"06:30\\\", \\\"09:00\\\", \\\"12:00\\\", \\\"15:30\\\", \\\"18:00\\\"]', 100, 1);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 80
+}
