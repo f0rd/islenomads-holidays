@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name FROM activity_types LIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM activity_types LIMIT 20",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Diving"
+    },
+    {
+      "id": "2",
+      "name": "Snorkeling"
+    },
+    {
+      "id": "3",
+      "name": "Surfing"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tDiving\n2\tSnorkeling\n3\tSurfing\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

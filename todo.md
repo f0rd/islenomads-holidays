@@ -1122,3 +1122,11 @@
 - [x] Boat routes include pricing, schedules, and travel times
 - [x] Database population complete with real-world data from web sources
 - [x] Removed duplicate Hanifaru Bay entries from islands list (it's a dive site, not an island)
+
+
+## Excursions & Activities Database
+- [ ] Create excursions table schema in drizzle
+- [ ] Add excursion types (diving, snorkeling, fishing, island hopping, etc.)
+- [ ] Populate excursions with pricing and details
+- [ ] Link excursions to islands
+- [ ] Create excursions API endpoint
