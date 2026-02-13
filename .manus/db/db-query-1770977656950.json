@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name, slug, atoll FROM island_guides WHERE name LIKE '%Hanifaru%' OR slug LIKE '%hanifaru%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll FROM island_guides WHERE name LIKE '%Hanifaru%' OR slug LIKE '%hanifaru%';",
+  "rows": [
+    {
+      "id": "90003",
+      "name": "Hanifaru Bay",
+      "slug": "hanifaru-bay",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "id": "90018",
+      "name": "Hanifaru Bay",
+      "slug": "hanifaru-bay-dive",
+      "atoll": "Baa Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\n90003\tHanifaru Bay\thanifaru-bay\tBaa Atoll\n90018\tHanifaru Bay\thanifaru-bay-dive\tBaa Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 98
+}

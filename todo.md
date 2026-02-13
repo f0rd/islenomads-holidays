@@ -1121,3 +1121,4 @@
 - [x] Comprehensive coverage of all atoll regions
 - [x] Boat routes include pricing, schedules, and travel times
 - [x] Database population complete with real-world data from web sources
+- [x] Removed duplicate Hanifaru Bay entries from islands list (it's a dive site, not an island)
