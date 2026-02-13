@@ -47,6 +47,9 @@ function normalizeGuideData(guide: any) {
     fiveDayItinerary: parseJSON(guide.fiveDayItinerary, []),
     faq: parseJSON(guide.faq, []),
     images: parseJSON(guide.images, []),
+    nearbyAirports: parseJSON(guide.nearbyAirports, []),
+    nearbyDiveSites: parseJSON(guide.nearbyDiveSites, []),
+    nearbySurfSpots: parseJSON(guide.nearbySurfSpots, []),
   };
 }
 
@@ -138,7 +141,7 @@ export default function IslandGuide() {
       <section className="py-12">
         <div className="container">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 lg:grid-cols-9">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 lg:grid-cols-12 gap-1">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="quick-facts">Quick Facts</TabsTrigger>
               <TabsTrigger value="getting-there">Getting There</TabsTrigger>
@@ -147,6 +150,9 @@ export default function IslandGuide() {
               <TabsTrigger value="practical">Practical</TabsTrigger>
               <TabsTrigger value="itineraries">Itineraries</TabsTrigger>
               <TabsTrigger value="faq">FAQ</TabsTrigger>
+              <TabsTrigger value="airports">Airports</TabsTrigger>
+              <TabsTrigger value="diving">Diving</TabsTrigger>
+              <TabsTrigger value="surfing">Surfing</TabsTrigger>
             </TabsList>
 
             {/* Overview Tab */}
@@ -369,6 +375,102 @@ export default function IslandGuide() {
                       <p className="text-sm text-muted-foreground">{item.answer}</p>
                     </div>
                   ))}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Nearby Airports Tab */}
+            <TabsContent value="airports" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Plane className="w-5 h-5" />
+                    Nearby Airports
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {Array.isArray(guide.nearbyAirports) && guide.nearbyAirports.length > 0 ? (
+                    <div className="space-y-4">
+                      {guide.nearbyAirports.map((airport: any, idx: number) => (
+                        <div key={idx} className="border-b pb-4 last:border-b-0">
+                          <div className="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 className="font-semibold">{airport.name}</h4>
+                              <p className="text-sm text-muted-foreground">IATA Code: {airport.iataCode}</p>
+                            </div>
+                            <Button size="sm" variant="outline">View</Button>
+                          </div>
+                          <p className="text-sm text-accent font-medium">Distance: {airport.distance}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-muted-foreground">No nearby airports information available</p>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Nearby Dive Sites Tab */}
+            <TabsContent value="diving" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Waves className="w-5 h-5" />
+                    Nearby Dive Sites
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {Array.isArray(guide.nearbyDiveSites) && guide.nearbyDiveSites.length > 0 ? (
+                    <div className="space-y-4">
+                      {guide.nearbyDiveSites.map((site: any, idx: number) => (
+                        <div key={idx} className="border-b pb-4 last:border-b-0">
+                          <div className="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 className="font-semibold">{site.name}</h4>
+                              <p className="text-sm text-muted-foreground">Difficulty: {site.difficulty}</p>
+                            </div>
+                            <Button size="sm" variant="outline">Explore</Button>
+                          </div>
+                          <p className="text-sm text-accent font-medium">Distance: {site.distance}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-muted-foreground">No nearby dive sites information available</p>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Nearby Surf Spots Tab */}
+            <TabsContent value="surfing" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Waves className="w-5 h-5" />
+                    Nearby Surf Spots
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {Array.isArray(guide.nearbySurfSpots) && guide.nearbySurfSpots.length > 0 ? (
+                    <div className="space-y-4">
+                      {guide.nearbySurfSpots.map((spot: any, idx: number) => (
+                        <div key={idx} className="border-b pb-4 last:border-b-0">
+                          <div className="flex justify-between items-start mb-2">
+                            <div>
+                              <h4 className="font-semibold">{spot.name}</h4>
+                              <p className="text-sm text-muted-foreground">Difficulty: {spot.difficulty}</p>
+                            </div>
+                            <Button size="sm" variant="outline">Explore</Button>
+                          </div>
+                          <p className="text-sm text-accent font-medium">Distance: {spot.distance}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-muted-foreground">No nearby surf spots information available</p>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>

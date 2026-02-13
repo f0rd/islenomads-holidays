@@ -1140,3 +1140,20 @@
 - [x] Ensure all map links use correct guide IDs
 - [x] Test all ID mappings and references
 - [x] Verify island selection from map links to guides correctly
+
+## Nearby Locations Information for Island Guides
+- [ ] Add nearby airport information to each island guide
+- [ ] Add nearby dive sites information to each island guide
+- [ ] Add nearby surf spots information to each island guide
+- [ ] Update IslandGuide component to display nearby locations
+- [ ] Add navigation buttons to nearby locations
+- [ ] Test navigation to nearby airports, dive sites, and surf spots
+
+
+## Nearby Locations Information (COMPLETED)
+- [x] Add nearby airport information to island guides
+- [x] Add nearby dive sites information to island guides
+- [x] Add nearby surf spots information to island guides
+- [x] Create navigation buttons for nearby locations
+- [x] Test nearby locations display and navigation
+- [x] Verified working on Maafushi Island, Thoddoo Island, and all other islands

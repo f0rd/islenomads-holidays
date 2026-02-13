@@ -249,6 +249,10 @@ export const islandGuides = mysqlTable("island_guides", {
   fiveDayItinerary: text("fiveDayItinerary"), // JSON array
   // FAQ
   faq: text("faq"), // JSON array of Q&A
+  // Nearby Locations
+  nearbyAirports: text("nearbyAirports"), // JSON array of nearby airports with name, distance, iata code
+  nearbyDiveSites: text("nearbyDiveSites"), // JSON array of nearby dive sites with name, distance, difficulty
+  nearbySurfSpots: text("nearbySurfSpots"), // JSON array of nearby surf spots with name, distance, difficulty
   // Media
   heroImage: varchar("heroImage", { length: 500 }), // Hero image URL
   images: text("images"), // JSON array of image URLs
