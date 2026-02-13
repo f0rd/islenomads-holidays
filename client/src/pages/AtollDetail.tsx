@@ -77,7 +77,8 @@ export default function AtollDetail() {
                             island.name?.toLowerCase().includes('thila') ||
                             island.name?.toLowerCase().includes('kandu') ||
                             island.name?.toLowerCase().includes('shark') ||
-                            island.name?.toLowerCase().includes('bay');
+                            island.name?.toLowerCase().includes('bay') ||
+                            island.name?.toLowerCase().includes('madivaru');
           return island.atoll === atollData.name && island.published === 1 && !isDiveSite;
         }
       );
@@ -413,9 +414,9 @@ export default function AtollDetail() {
         <section className="py-16 md:py-24 bg-muted/50">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Destinations in {atoll.name}</h2>
+              <h2 className="text-4xl font-bold mb-4">Featured Islands in {atoll.name}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
-                Explore the islands, dive sites, and attractions within this atoll and discover unique experiences, activities, and accommodations.
+                Explore the islands within this atoll and discover unique experiences, activities, and accommodations.
               </p>
             </div>
 
