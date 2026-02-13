@@ -194,6 +194,21 @@ const POPULAR_ISLANDS = [
     rating: 4.4,
     activities: ["diving", "snorkeling"],
   },
+  {
+    id: "island-fuvamulah",
+    name: "Fuvamulah Island",
+    type: "Island",
+    lat: 3.2667,
+    lng: 73.5167,
+    category: "Local Island",
+    slug: "fuvamulah",
+    guideSlug: "fuvamulah-island",
+    description: "Unique volcanic island famous for year-round tiger shark diving and pristine beaches",
+    highlights: ["Tiger Shark Diving", "Thoondu Beach", "Nature Park", "Cultural Sites"],
+    population: "~9000",
+    rating: 4.8,
+    activities: ["diving", "snorkeling", "surfing"],
+  },
 ];
 
 const LUXURY_RESORTS = [
