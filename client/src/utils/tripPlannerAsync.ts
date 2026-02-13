@@ -611,10 +611,7 @@ export function calculateTripStats(itinerary: TripItinerary) {
 }
 
 // Validate itinerary
-export function validateItinerary(itinerary: TripItinerary): {
-  isValid: boolean;
-  errors: string[];
-} {
+export function validateItinerary(itinerary: TripItinerary): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   if (!itinerary.destinations || itinerary.destinations.length < 2) {

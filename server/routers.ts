@@ -581,6 +581,12 @@ export const appRouter = router({
     listWithActivitySpots: publicProcedure.query(async () => {
       return getIslandGuidesWithActivitySpots();
     }),
+
+    getExperiences: publicProcedure
+      .input(z.object({ islandId: z.number() }))
+      .query(async ({ input }) => {
+        return getExperiencesByIsland(input.islandId);
+      }),
   }),
 
   seo: router({

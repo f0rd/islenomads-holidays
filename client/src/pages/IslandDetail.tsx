@@ -12,6 +12,7 @@ import Navigation from '@/components/Navigation';
 import WaterActivitiesSection from '@/components/WaterActivitiesSection';
 import AirportInfo from '@/components/AirportInfo';
 import BoatRoutesInfo from '@/components/BoatRoutesInfo';
+import ExcursionsInfo from '@/components/ExcursionsInfo';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -22,6 +23,7 @@ export default function IslandDetail() {
   const [isLoading, setIsLoading] = useState(true);
   const [linkedActivitySpots, setLinkedActivitySpots] = useState<any[]>([]);
   const [nearbyActivitySpots, setNearbyActivitySpots] = useState<any[]>([]);
+  const [experiences, setExperiences] = useState<any[]>([]);
 
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
@@ -32,6 +34,12 @@ export default function IslandDetail() {
   const { data: nearbySpots = [] } = trpc.activitySpots.getNearby.useQuery(
     { latitude: island?.latitude || 0, longitude: island?.longitude || 0, radiusKm: 10 },
     { enabled: !!island?.latitude && !!island?.longitude }
+  );
+
+  // Fetch experiences for this island
+  const { data: islandExperiences = [] } = trpc.islandGuides.getExperiences.useQuery(
+    { islandId: island?.id || 0 },
+    { enabled: !!island?.id }
   );
 
   useEffect(() => {
@@ -54,6 +62,13 @@ export default function IslandDetail() {
       setNearbyActivitySpots(nearbySpots);
     }
   }, [nearbySpots]);
+
+  // Update experiences when fetched
+  useEffect(() => {
+    if (islandExperiences && islandExperiences.length > 0) {
+      setExperiences(islandExperiences);
+    }
+  }, [islandExperiences]);
 
   // Helper function to parse JSON strings
   const parseJSON = (data: any): any => {
@@ -212,6 +227,10 @@ export default function IslandDetail() {
 
               {/* Things to Do Tab - WikiTravel Style */}
               <TabsContent value="things-to-do" className="mt-6 space-y-6">
+                {/* Excursions Section */}
+                {experiences.length > 0 && (
+                  <ExcursionsInfo excursions={experiences} islandName={island.name} />
+                )}
                 {/* See Section - Attractions & Landmarks */}
                 {island.attractions && parseJSON(island.attractions).length > 0 && (
                   <Card>
