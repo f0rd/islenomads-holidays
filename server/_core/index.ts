@@ -54,7 +54,7 @@ async function startServer() {
     }
   });
   
-  // Boat routes API endpoint
+  // Boat routes API endpoint - supports both islandGuideId and slug
   app.get('/api/boat-routes', async (req, res) => {
     try {
       const { islandGuideId } = req.query;

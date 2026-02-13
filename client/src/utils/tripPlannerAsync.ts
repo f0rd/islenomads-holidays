@@ -6,6 +6,7 @@ export interface Destination {
   type: "island" | "atoll" | "city";
   lat: number;
   lng: number;
+  islandGuideId?: number; // Database island_guides table ID for islands
 }
 
 export interface RouteSegment {
@@ -105,6 +106,7 @@ export const AVAILABLE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.4,
     lng: 73.4,
+    islandGuideId: 2,
   },
   {
     id: "dharavandhoo-island",
@@ -140,6 +142,7 @@ export const AVAILABLE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.1,
     lng: 73.3,
+    islandGuideId: 1,
   },
   {
     id: "thulusdhoo-island",
@@ -147,6 +150,7 @@ export const AVAILABLE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.5,
     lng: 73.3,
+    islandGuideId: 3,
   },
   {
     id: "hangnaameedhoo-island",
