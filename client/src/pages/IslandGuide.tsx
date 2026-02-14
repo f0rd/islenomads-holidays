@@ -76,6 +76,9 @@ export default function IslandGuide() {
   const previousIsland = currentIndex > 0 ? ISLAND_NAVIGATION[currentIndex - 1] : null;
   const nextIsland = currentIndex < ISLAND_NAVIGATION.length - 1 ? ISLAND_NAVIGATION[currentIndex + 1] : null;
 
+
+
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -108,9 +111,27 @@ export default function IslandGuide() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-12">
-        <div className="container">
+      {/* Image mapping for hero section */}
+      {(() => {
+        const islandImages = {
+          'male': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/NrfGKIQyisEeoTSa.jpg',
+          'maafushi': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/YYwGlTIcJzLqPXCh.jpg',
+          'thoddoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/IFenyYaGxXpkGxds.jpg',
+          'guraidhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/kRpeRnzSKegeoLeX.jpeg',
+          'thulusdhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/kPliERCwFhvovAop.jpeg',
+          'kandooma': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/mCclTHjbSjkDwcsD.jpeg',
+          'fuvamulah': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/RvnbcKAjOnOSwABP.jpg',
+        };
+        const islandKey = (guide.slug?.split('-')[0] || 'maafushi') as keyof typeof islandImages;
+        const heroImage = islandImages[islandKey] || islandImages['maafushi'];
+        
+        return (
+          <>
+            {/* Hero Section with Background Image */}
+            <section className="relative h-96 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground overflow-hidden">
+              <img src={heroImage} alt={guide.name} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/85" />
+              <div className="container relative z-10 h-full flex flex-col justify-end pb-8">
           <div className="flex items-start justify-between mb-6">
             <div>
               <h1 className="text-4xl font-bold mb-2">{guide.name}</h1>
@@ -152,7 +173,10 @@ export default function IslandGuide() {
             </Card>
           </div>
         </div>
-      </section>
+            </section>
+          </>
+        );
+      })()}
 
       {/* Main Content */}
       <section className="py-12">
