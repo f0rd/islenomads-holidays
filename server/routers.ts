@@ -534,7 +534,9 @@ export const appRouter = router({
     getByIslandId: publicProcedure
       .input(z.object({ islandId: z.number() }))
       .query(async ({ input }) => {
-        return getIslandGuideByIslandId(input.islandId);
+        const guide = await getIslandGuideByIslandId(input.islandId);
+        // Return null explicitly instead of undefined to avoid React Query errors
+        return guide || null;
       }),
 
     getPlaceWithGuide: publicProcedure

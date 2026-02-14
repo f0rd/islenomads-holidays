@@ -1497,3 +1497,11 @@
 - [x] Update MaldivesMap.tsx island links to use island IDs
 - [x] Update MaldivesMapNew.tsx island links to use island IDs
 - [x] Test all navigation links in browser and verify they work
+
+
+## Invalid Island ID Error Handling
+- [x] Update getByIslandId procedure to return null instead of undefined
+- [x] Update IslandGuide component to handle null guide data
+- [x] Add error message for invalid island IDs
+- [x] Create vitest tests for error handling (5 tests passing)
+- [x] Test graceful fallback to /explore-maldives page

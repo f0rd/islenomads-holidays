@@ -101,7 +101,7 @@ export default function IslandGuide() {
     );
   }
 
-  if (error || !guide) {
+  if (error || !guide || rawGuide === null) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="w-full max-w-md">
@@ -110,6 +110,8 @@ export default function IslandGuide() {
             <h2 className="text-xl font-semibold mb-2">Island Guide Not Found</h2>
             <p className="text-muted-foreground mb-4">
               The island guide you're looking for doesn't exist or could not be loaded.
+              {isNaN(numericIslandId) && <br />}
+              {isNaN(numericIslandId) && `(Invalid island ID: ${islandId})`}
             </p>
             <Button variant="outline" onClick={() => navigate('/explore-maldives')}>
               Back to Explore
