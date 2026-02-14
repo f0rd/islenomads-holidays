@@ -1,0 +1,9 @@
+{
+  "query": "SELECT ig.id, ig.name, p.type FROM island_guides ig LEFT JOIN places p ON p.name = ig.name WHERE p.type IN ('dive_site', 'poi', 'surf_spot', 'snorkeling_spot') LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.id, ig.name, p.type FROM island_guides ig LEFT JOIN places p ON p.name = ig.name WHERE p.type IN ('dive_site', 'poi', 'surf_spot', 'snorkeling_spot') LIMIT 20;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 54
+}

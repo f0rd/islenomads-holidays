@@ -1573,3 +1573,12 @@
 - [x] Test all island cards navigate to correct island guides (Dhonfanu ID 1, Eydhafushi ID 2, etc.)
 - [x] Verify island navigation (Previous/Next) works correctly with proper sequencing
 - [x] Ensure all 129 islands are accessible from Explore Maldives page with correct links
+
+
+## Fix POI Categorization on Explore Maldives
+- [x] Identify dive sites and POIs that should not appear in Islands tab (Maaya Thila, Kandooma Thila, HP Reef)
+- [x] Create fix-poi-categorization.ts script to update database
+- [x] Update places table to set correct type for dive sites (dive_site instead of island)
+- [x] Update island_guides table contentType for POIs (point_of_interest instead of island)
+- [x] Test Explore Maldives Islands tab shows only actual islands (129 islands found)
+- [x] Test Explore Maldives Attractions tab shows dive sites and POIs correctly (3 dive sites displaying)
