@@ -1,9 +1,0 @@
-{
-  "query": "UPDATE boat_routes SET toLocation = 'Thulusdhoo Island' WHERE toIslandGuideId = 1;\nUPDATE boat_routes SET toLocation = 'Male City' WHERE toIslandGuideId = 2;\nUPDATE boat_routes SET toLocation = 'Dhigurah Island' WHERE toIslandGuideId = 3;\nUPDATE boat_routes SET toLocation = 'Rasdhoo Island' WHERE toIslandGuideId = 4;\nUPDATE boat_routes SET toLocation = 'Veligandu Island' WHERE toIslandGuideId = 5;\nUPDATE boat_routes SET toLocation = 'Kandooma Island' WHERE toIslandGuideId = 6;\nUPDATE boat_routes SET toLocation = 'Fulidhoo Island' WHERE toIslandGuideId = 7;\nUPDATE boat_routes SET toLocation = 'Felidhoo Island' WHERE toIslandGuideId = 8;\nUPDATE boat_routes SET toLocation = 'Ukulhas Island' WHERE toIslandGuideId = 10;",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE boat_routes SET toLocation = 'Thulusdhoo Island' WHERE toIslandGuideId = 1;\nUPDATE boat_routes SET toLocation = 'Male City' WHERE toIslandGuideId = 2;\nUPDATE boat_routes SET toLocation = 'Dhigurah Island' WHERE toIslandGuideId = 3;\nUPDATE boat_routes SET toLocation = 'Rasdhoo Island' WHERE toIslandGuideId = 4;\nUPDATE boat_routes SET toLocation = 'Veligandu Island' WHERE toIslandGuideId = 5;\nUPDATE boat_routes SET toLocation = 'Kandooma Island' WHERE toIslandGuideId = 6;\nUPDATE boat_routes SET toLocation = 'Fulidhoo Island' WHERE toIslandGuideId = 7;\nUPDATE boat_routes SET toLocation = 'Felidhoo Island' WHERE toIslandGuideId = 8;\nUPDATE boat_routes SET toLocation = 'Ukulhas Island' WHERE toIslandGuideId = 10;",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 113
-}

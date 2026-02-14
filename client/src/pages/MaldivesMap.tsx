@@ -8,7 +8,6 @@ import { Link } from "wouter";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
-import { getIslandGuideUrl } from "@shared/locations";
 
 export default function MaldivesMap() {
   const [activityFilter, setActivityFilter] = useState("all");
@@ -515,7 +514,7 @@ export default function MaldivesMap() {
                         <img src={selectedIsland.heroImage} alt={selectedIsland.name} className="w-full h-40 object-cover rounded-lg" />
                       )}
                       <p className="text-sm">{selectedIsland.overview}</p>
-                      <Link href={getIslandGuideUrl(selectedIsland.id)}>
+                      <Link href={`/island/${selectedIsland.slug}`}>
                         <Button className="w-full">View Guide</Button>
                       </Link>
                     </div>

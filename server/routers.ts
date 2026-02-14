@@ -12,7 +12,7 @@ import {
   updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
   getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getBoatRoutesWithIslands, getBoatRoutesFromIsland, getBoatRoutesToIsland, getMapLocations, getMapLocationBySlug,
   getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getMapLocationWithGuide, getIslandGuides,
-  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, getIslandGuideByIslandId, getPlaceWithGuide, createIslandGuide, updateIslandGuide,
+  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
   deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
   deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
@@ -521,28 +521,10 @@ export const appRouter = router({
         return getIslandGuideBySlug(input.slug);
       }),
 
-    /**
-     * @deprecated Use getByIslandId instead for consistent island ID-based linking
-     */
-
     getById: publicProcedure
       .input(z.object({ id: z.number() }))
       .query(async ({ input }) => {
         return getIslandGuideById(input.id);
-      }),
-
-    getByIslandId: publicProcedure
-      .input(z.object({ islandId: z.number() }))
-      .query(async ({ input }) => {
-        const guide = await getIslandGuideByIslandId(input.islandId);
-        // Return null explicitly instead of undefined to avoid React Query errors
-        return guide || null;
-      }),
-
-    getPlaceWithGuide: publicProcedure
-      .input(z.object({ placeId: z.number() }))
-      .query(async ({ input }) => {
-        return getPlaceWithGuide(input.placeId);
       }),
 
     create: protectedProcedure
@@ -599,12 +581,6 @@ export const appRouter = router({
     listWithActivitySpots: publicProcedure.query(async () => {
       return getIslandGuidesWithActivitySpots();
     }),
-
-    getExperiences: publicProcedure
-      .input(z.object({ islandId: z.number() }))
-      .query(async ({ input }) => {
-        return getExperiencesByIsland(input.islandId);
-      }),
   }),
 
   seo: router({
@@ -1182,6 +1158,3 @@ export const appRouter = router({
 });
 
 export type AppRouter = typeof appRouter;
-
-// Note: Airport routes will be added via API endpoint in Express server
-// The AirportInfo component fetches from /api/airport-routes?islandGuideId={id}

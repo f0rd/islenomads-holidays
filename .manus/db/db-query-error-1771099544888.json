@@ -1,8 +1,0 @@
-{
-  "query": "SELECT \n  p.id,\n  p.name as island_name,\n  p.type,\n  p.atoll,\n  CASE WHEN ig.id IS NOT NULL THEN 'Has Guide' ELSE 'No Guide' END as guide_status,\n  ig.id as guide_id\nFROM places p\nLEFT JOIN island_guides ig ON LOWER(REPLACE(p.name, ' ', '')) = LOWER(REPLACE(ig.name, ' ', ''))\nWHERE p.type = 'island'\nORDER BY guide_status, p.atoll, p.name",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  p.id,\n  p.name as island_name,\n  p.type,\n  p.atoll,\n  CASE WHEN ig.id IS NOT NULL THEN 'Has Guide' ELSE 'No Guide' END as guide_status,\n  ig.id as guide_id\nFROM places p\nLEFT JOIN island_guides ig ON LOWER(REPLACE(p.name, ' ', '')) = LOWER(REPLACE(ig.name, ' ', ''))\nWHERE p.type = 'island'\nORDER BY guide_status, p.atoll, p.name",
-  "returncode": 1,
-  "logs": [
-    "ERROR 1054 (42S22) at line 1: Unknown column 'p.atoll' in 'order clause'"
-  ]
-}

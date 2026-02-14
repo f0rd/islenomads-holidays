@@ -1,9 +1,0 @@
-{
-  "query": "UPDATE island_guides ig\nJOIN places p ON ig.name = p.name\nJOIN atolls a ON p.atollId = a.id AND a.name = ig.atoll\nSET ig.placeId = p.id\nWHERE ig.contentType = 'island' AND ig.placeId IS NULL",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides ig\nJOIN places p ON ig.name = p.name\nJOIN atolls a ON p.atollId = a.id AND a.name = ig.atoll\nSET ig.placeId = p.id\nWHERE ig.contentType = 'island' AND ig.placeId IS NULL",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 74
-}

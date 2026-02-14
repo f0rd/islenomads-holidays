@@ -1,1 +1,0 @@
-ALTER TABLE `island_guides` ADD `placeId` int;

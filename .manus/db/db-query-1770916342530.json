@@ -1,9 +1,0 @@
-{
-  "query": "INSERT IGNORE INTO island_guides (name, slug, atoll, latitude, longitude, published) VALUES ('Kadhoo Island', 'kadhoo-island', 'Laamu Atoll', 0.5333, 73.0667, 1), ('Maavah Island', 'maavah-island', 'Laamu Atoll', 0.5000, 73.0333, 1), ('Hithadhoo Island', 'hithadhoo-island', 'Seenu Atoll', 0.5833, 73.4833, 1), ('Maradhoo Island', 'maradhoo-island', 'Seenu Atoll', 0.5500, 73.4500, 1), ('Feydhoo Island', 'feydhoo-island', 'Seenu Atoll', 0.5167, 73.4167, 1), ('Hulhumeedhoo Island', 'hulhumeedhoo-island', 'Seenu Atoll', 0.4833, 73.3833, 1);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT IGNORE INTO island_guides (name, slug, atoll, latitude, longitude, published) VALUES ('Kadhoo Island', 'kadhoo-island', 'Laamu Atoll', 0.5333, 73.0667, 1), ('Maavah Island', 'maavah-island', 'Laamu Atoll', 0.5000, 73.0333, 1), ('Hithadhoo Island', 'hithadhoo-island', 'Seenu Atoll', 0.5833, 73.4833, 1), ('Maradhoo Island', 'maradhoo-island', 'Seenu Atoll', 0.5500, 73.4500, 1), ('Feydhoo Island', 'feydhoo-island', 'Seenu Atoll', 0.5167, 73.4167, 1), ('Hulhumeedhoo Island', 'hulhumeedhoo-island', 'Seenu Atoll', 0.4833, 73.3833, 1);",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 61
-}

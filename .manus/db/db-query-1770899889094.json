@@ -1,9 +1,0 @@
-{
-  "query": "\n-- Veligandu Island Dive Sites (corrected)\nINSERT INTO activity_spots (name, islandGuideId, spotType, slug, latitude, longitude, difficulty, description, bestSeason, bestTime, coralCoverage, marineLife, maxDepth, minDepth, published) VALUES\n('Veligandu Reef', 16, 'dive_site', 'veligandu-reef-dive', 5.0520, 73.2820, 'beginner', 'Gentle reef perfect for beginners and relaxed diving.', 'Year-round', 'Morning (7am-12pm)', '87% coral', 'Parrotfish, fusiliers, grouper', 28, 5, 1);\n",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Veligandu Island Dive Sites (corrected)\nINSERT INTO activity_spots (name, islandGuideId, spotType, slug, latitude, longitude, difficulty, description, bestSeason, bestTime, coralCoverage, marineLife, maxDepth, minDepth, published) VALUES\n('Veligandu Reef', 16, 'dive_site', 'veligandu-reef-dive', 5.0520, 73.2820, 'beginner', 'Gentle reef perfect for beginners and relaxed diving.', 'Year-round', 'Morning (7am-12pm)', '87% coral', 'Parrotfish, fusiliers, grouper', 28, 5, 1);\n",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 57
-}

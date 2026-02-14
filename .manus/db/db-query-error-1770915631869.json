@@ -1,8 +1,0 @@
-{
-  "query": "INSERT INTO island_guides (name, slug, atoll, latitude, longitude, description, activities, bestSeason, published) VALUES ('Fuvahmulah Tiger Shark', 'fuvahmulah-tiger-shark', 'Gnaviyani Atoll', 0.2667, 73.3833, 'Thrilling dive site famous for tiger shark encounters. Deep channel dive with strong currents and excellent visibility. Popular among experienced divers seeking pelagic encounters.', 'Diving', 'March to October', 1);",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO island_guides (name, slug, atoll, latitude, longitude, description, activities, bestSeason, published) VALUES ('Fuvahmulah Tiger Shark', 'fuvahmulah-tiger-shark', 'Gnaviyani Atoll', 0.2667, 73.3833, 'Thrilling dive site famous for tiger shark encounters. Deep channel dive with strong currents and excellent visibility. Popular among experienced divers seeking pelagic encounters.', 'Diving', 'March to October', 1);",
-  "returncode": 1,
-  "logs": [
-    "ERROR 1054 (42S22) at line 1: Unknown column 'description' in 'field list'"
-  ]
-}

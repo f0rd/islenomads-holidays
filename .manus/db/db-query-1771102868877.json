@@ -1,9 +1,0 @@
-{
-  "query": "SELECT id, name FROM places WHERE name LIKE '%omadhoo%' OR name LIKE '%dhangethi%' OR name LIKE '%goidhoo%' OR name LIKE '%fehendhoo%' OR name LIKE '%hanimadhoo%' OR name LIKE '%fuvahmulah%' OR name LIKE '%fuvamulah%' OR name LIKE '%godhdhoo%';",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM places WHERE name LIKE '%omadhoo%' OR name LIKE '%dhangethi%' OR name LIKE '%goidhoo%' OR name LIKE '%fehendhoo%' OR name LIKE '%hanimadhoo%' OR name LIKE '%fuvahmulah%' OR name LIKE '%fuvamulah%' OR name LIKE '%godhdhoo%';",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 55
-}

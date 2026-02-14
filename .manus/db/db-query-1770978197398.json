@@ -1,9 +1,0 @@
-{
-  "query": "UPDATE island_guides SET \n  speedboatInfo = 'Speedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.',\n  ferryInfo = 'Public ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.',\n  flightInfo = 'Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.'\nWHERE published = 1 AND contentType = 'island' LIMIT 50;",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET \n  speedboatInfo = 'Speedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.',\n  ferryInfo = 'Public ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.',\n  flightInfo = 'Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.'\nWHERE published = 1 AND contentType = 'island' LIMIT 50;",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 72
-}

@@ -1,9 +1,0 @@
-{
-  "query": "SELECT id, name, type, latitude, longitude FROM map_locations WHERE type IN ('airport', 'dive_site', 'surf_spot') ORDER BY type, name;",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, latitude, longitude FROM map_locations WHERE type IN ('airport', 'dive_site', 'surf_spot') ORDER BY type, name;",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 59
-}

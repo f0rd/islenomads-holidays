@@ -1,9 +1,0 @@
-{
-  "query": "UPDATE island_guides ig\nJOIN places p ON LOWER(REPLACE(ig.name, ' ', '')) = LOWER(REPLACE(p.name, ' ', ''))\nSET ig.placeId = p.id\nWHERE ig.placeId IS NULL AND p.type = 'island'",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides ig\nJOIN places p ON LOWER(REPLACE(ig.name, ' ', '')) = LOWER(REPLACE(p.name, ' ', ''))\nSET ig.placeId = p.id\nWHERE ig.placeId IS NULL AND p.type = 'island'",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 74
-}

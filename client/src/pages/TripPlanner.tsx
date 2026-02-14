@@ -94,8 +94,8 @@ export default function TripPlanner() {
   };
 
   const handleGenerateItinerary = async () => {
-    if (selectedDestinations.length < 1) {
-      alert("Please select at least 1 destination");
+    if (selectedDestinations.length < 2) {
+      alert("Please select at least 2 destinations");
       return;
     }
 
@@ -302,9 +302,9 @@ export default function TripPlanner() {
                   <Button
                     onClick={handleGenerateItinerary}
                     className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3"
-                    disabled={selectedDestinations.length < 1 || isGenerating}
+                    disabled={selectedDestinations.length < 2 || isGenerating}
                   >
-                    {isGenerating ? "Generating..." : selectedDestinations.length === 1 ? "View Island" : "Generate Itinerary"}
+                    {isGenerating ? "Generating..." : "Generate Itinerary"}
                   </Button>
                 </CardContent>
               </Card>

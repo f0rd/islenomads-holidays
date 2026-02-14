@@ -1,9 +1,0 @@
-{
-  "query": "INSERT INTO places (atollId, name, code, type)\nSELECT \n  a.id,\n  ig.name,\n  LOWER(REPLACE(REPLACE(REPLACE(ig.slug, '-', '_'), ' ', '_'), '--', '_')),\n  'island'\nFROM (\n  SELECT \n    name,\n    slug,\n    atoll,\n    ROW_NUMBER() OVER (PARTITION BY name, atoll ORDER BY id) as rn\n  FROM island_guides\n  WHERE contentType = 'island'\n) ig\nLEFT JOIN atolls a ON ig.atoll = a.name\nWHERE ig.rn = 1",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO places (atollId, name, code, type)\nSELECT \n  a.id,\n  ig.name,\n  LOWER(REPLACE(REPLACE(REPLACE(ig.slug, '-', '_'), ' ', '_'), '--', '_')),\n  'island'\nFROM (\n  SELECT \n    name,\n    slug,\n    atoll,\n    ROW_NUMBER() OVER (PARTITION BY name, atoll ORDER BY id) as rn\n  FROM island_guides\n  WHERE contentType = 'island'\n) ig\nLEFT JOIN atolls a ON ig.atoll = a.name\nWHERE ig.rn = 1",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 72
-}

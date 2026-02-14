@@ -1,9 +1,0 @@
-{
-  "query": "INSERT INTO places (atollId, name, code, type)\nSELECT \n  aspo.atollId,\n  aspo.name,\n  LOWER(REPLACE(REPLACE(REPLACE(aspo.slug, '-', '_'), ' ', '_'), '--', '_')),\n  CASE \n    WHEN aspo.spotType = 'dive_site' THEN 'dive_site'\n    WHEN aspo.spotType = 'surf_spot' THEN 'surf_spot'\n    WHEN aspo.spotType = 'snorkeling_spot' THEN 'snorkeling_spot'\n    ELSE aspo.spotType\n  END\nFROM activity_spots aspo\nWHERE aspo.spotType IN ('dive_site', 'surf_spot', 'snorkeling_spot')\nON DUPLICATE KEY UPDATE type = type",
-  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO places (atollId, name, code, type)\nSELECT \n  aspo.atollId,\n  aspo.name,\n  LOWER(REPLACE(REPLACE(REPLACE(aspo.slug, '-', '_'), ' ', '_'), '--', '_')),\n  CASE \n    WHEN aspo.spotType = 'dive_site' THEN 'dive_site'\n    WHEN aspo.spotType = 'surf_spot' THEN 'surf_spot'\n    WHEN aspo.spotType = 'snorkeling_spot' THEN 'snorkeling_spot'\n    ELSE aspo.spotType\n  END\nFROM activity_spots aspo\nWHERE aspo.spotType IN ('dive_site', 'surf_spot', 'snorkeling_spot')\nON DUPLICATE KEY UPDATE type = type",
-  "rows": [],
-  "messages": [],
-  "stdout": "",
-  "stderr": "",
-  "execution_time_ms": 64
-}

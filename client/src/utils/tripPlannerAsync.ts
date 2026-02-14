@@ -6,7 +6,6 @@ export interface Destination {
   type: "island" | "atoll" | "city";
   lat: number;
   lng: number;
-  islandGuideId?: number; // Database island_guides table ID for islands
 }
 
 export interface RouteSegment {
@@ -42,8 +41,8 @@ export interface TripItinerary {
   isOptimal: boolean;
 }
 
-// Base destinations (cities and atolls)
-const BASE_DESTINATIONS: Destination[] = [
+// Available destinations
+export const AVAILABLE_DESTINATIONS: Destination[] = [
   {
     id: "male",
     name: "Malé City",
@@ -106,7 +105,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.4,
     lng: 73.4,
-    islandGuideId: 2,
   },
   {
     id: "dharavandhoo-island",
@@ -114,7 +112,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 5.1,
     lng: 73.2,
-    islandGuideId: 6,
   },
   {
     id: "eydhafushi-island",
@@ -122,7 +119,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 5.1,
     lng: 73.2,
-    islandGuideId: 7,
   },
   {
     id: "dhigurah-island",
@@ -130,7 +126,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 3.8,
     lng: 72.8,
-    islandGuideId: 8,
   },
   {
     id: "ukulhas-island",
@@ -138,7 +133,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.3,
     lng: 72.8,
-    islandGuideId: 5,
   },
   {
     id: "kandooma-island",
@@ -146,7 +140,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.1,
     lng: 73.3,
-    islandGuideId: 1,
   },
   {
     id: "thulusdhoo-island",
@@ -154,7 +147,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.5,
     lng: 73.3,
-    islandGuideId: 3,
   },
   {
     id: "hangnaameedhoo-island",
@@ -162,7 +154,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 3.7,
     lng: 73.0,
-    islandGuideId: 9,
   },
   {
     id: "gan-island",
@@ -170,7 +161,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 0.7,
     lng: 73.2,
-    islandGuideId: 23,
   },
   {
     id: "funadhoo-island",
@@ -178,7 +168,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 3.0,
     lng: 72.8,
-    islandGuideId: 24,
   },
   {
     id: "felidhoo-island",
@@ -186,7 +175,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 2.8,
     lng: 72.8,
-    islandGuideId: 14,
   },
   {
     id: "naifaru-island",
@@ -194,7 +182,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 5.3,
     lng: 73.4,
-    islandGuideId: 15,
   },
   {
     id: "meedhoo-island",
@@ -202,7 +189,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 2.8,
     lng: 72.9,
-    islandGuideId: 16,
   },
   {
     id: "rasdhoo-island",
@@ -210,7 +196,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 4.2,
     lng: 72.8,
-    islandGuideId: 17,
   },
   {
     id: "isdhoo-island",
@@ -218,7 +203,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 3.0,
     lng: 72.8,
-    islandGuideId: 18,
   },
   {
     id: "velidhoo-island",
@@ -226,7 +210,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 3.6,
     lng: 72.8,
-    islandGuideId: 19,
   },
   {
     id: "dhaalu-kudahuvadhoo",
@@ -234,7 +217,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 2.8,
     lng: 72.8,
-    islandGuideId: 20,
   },
   {
     id: "haa-alif-hanimadhoo",
@@ -242,7 +224,6 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 6.0,
     lng: 73.2,
-    islandGuideId: 21,
   },
   {
     id: "haa-dhaalu-kulhudhuffushi",
@@ -250,52 +231,8 @@ const BASE_DESTINATIONS: Destination[] = [
     type: "island",
     lat: 6.3,
     lng: 73.1,
-    islandGuideId: 22,
-  },
-  {
-    id: "dhiffushi-island",
-    name: "Dhiffushi Island",
-    type: "island",
-    lat: 4.35,
-    lng: 73.5,
-    islandGuideId: 4,
-  },
-  {
-    id: "fuvahmulah-island",
-    name: "Fuvahmulah Island",
-    type: "island",
-    lat: -0.3,
-    lng: 73.4,
-    islandGuideId: 10,
-  },
-  {
-    id: "hulhumale-island",
-    name: "Hulhumalé Island",
-    type: "island",
-    lat: 4.2,
-    lng: 73.55,
-    islandGuideId: 11,
-  },
-  {
-    id: "hanifaru-bay",
-    name: "Hanifaru Bay",
-    type: "island",
-    lat: 5.05,
-    lng: 73.4,
-    islandGuideId: 12,
-  },
-  {
-    id: "maamigili-island",
-    name: "Maamigili Island",
-    type: "island",
-    lat: 3.85,
-    lng: 72.85,
-    islandGuideId: 13,
   },
 ];
-
-// Export all available destinations (base + islands)
-export const AVAILABLE_DESTINATIONS: Destination[] = BASE_DESTINATIONS;
 
 function parseDuration(duration: string): number {
   const match = duration.match(/(\d+)\s*(?:h|hour)?s?\s*(?:(\d+)\s*m)?/i);
@@ -470,27 +407,7 @@ export async function findOptimalItineraryAsync(
     .map((id) => AVAILABLE_DESTINATIONS.find((d) => d.id === id))
     .filter((d) => d !== undefined) as Destination[];
 
-  if (destinations.length < 1) return null;
-  
-  // For single island, create a stay itinerary
-  if (destinations.length === 1) {
-    const island = destinations[0];
-    const itinerary: TripItinerary = {
-      id: `single-${island.id}`,
-      destinations: [island],
-      segments: [],
-      totalDuration: "1 day",
-      totalDurationMinutes: 1440,
-      totalCost: "$0",
-      totalCostAmount: 0,
-      totalDistance: "0 km",
-      totalDistanceKm: 0,
-      startDate: startDate,
-      endDate: startDate,
-      isOptimal: true,
-    };
-    return itinerary;
-  }
+  if (destinations.length < 2) return null;
 
   const segments: RouteSegment[] = [];
   let totalDurationMinutes = 0;
@@ -611,7 +528,10 @@ export function calculateTripStats(itinerary: TripItinerary) {
 }
 
 // Validate itinerary
-export function validateItinerary(itinerary: TripItinerary): { isValid: boolean; errors: string[] } {
+export function validateItinerary(itinerary: TripItinerary): {
+  isValid: boolean;
+  errors: string[];
+} {
   const errors: string[] = [];
 
   if (!itinerary.destinations || itinerary.destinations.length < 2) {
@@ -635,16 +555,3 @@ export function validateItinerary(itinerary: TripItinerary): { isValid: boolean;
     errors,
   };
 }
-
-
-// Additional islands from database (IDs 25+)
-// These will be dynamically populated from the database
-const ADDITIONAL_ISLANDS: Destination[] = [
-  // Placeholder for additional islands - can be populated from database query
-  // Total database islands: 141
-  // Currently defined: 24 islands
-  // Remaining: 117 islands to be added
-];
-
-// Combine all destinations
-export const ALL_DESTINATIONS: Destination[] = [...BASE_DESTINATIONS, ...ADDITIONAL_ISLANDS];
