@@ -135,7 +135,7 @@ export default function IslandGuide() {
           <div className="flex items-start justify-between mb-6">
             <div>
               <h1 className="text-4xl font-bold mb-2">{guide.name}</h1>
-              <p className="text-primary-foreground/80">{guide.atoll} Atoll</p>
+              <p className="text-primary-foreground/80">{guide.atoll}</p>
             </div>
             <Button variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10">
               <Share2 className="w-4 h-4 mr-2" />

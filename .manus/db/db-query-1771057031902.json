@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, name, slug, atoll, HEX(atoll) as atoll_hex FROM island_guides WHERE slug IN ('maafushi-island', 'guraidhoo-island', 'thulusdhoo-island')",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll, HEX(atoll) as atoll_hex FROM island_guides WHERE slug IN ('maafushi-island', 'guraidhoo-island', 'thulusdhoo-island')",
+  "rows": [
+    {
+      "id": "150004",
+      "name": "Guraidhoo Island",
+      "slug": "guraidhoo-island",
+      "atoll": "Kaafu Atoll",
+      "atoll_hex": "4B616166752041746F6C6C"
+    },
+    {
+      "id": "150002",
+      "name": "Maafushi Island",
+      "slug": "maafushi-island",
+      "atoll": "Kaafu Atoll",
+      "atoll_hex": "4B616166752041746F6C6C"
+    },
+    {
+      "id": "150005",
+      "name": "Thulusdhoo Island",
+      "slug": "thulusdhoo-island",
+      "atoll": "Kaafu Atoll",
+      "atoll_hex": "4B616166752041746F6C6C"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\tatoll_hex\n150004\tGuraidhoo Island\tguraidhoo-island\tKaafu Atoll\t4B616166752041746F6C6C\n150002\tMaafushi Island\tmaafushi-island\tKaafu Atoll\t4B616166752041746F6C6C\n150005\tThulusdhoo Island\tthulusdhoo-island\tKaafu Atoll\t4B616166752041746F6C6C\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}
