@@ -62,16 +62,16 @@ export const MINIMAL_ISLAND_GUIDES: MinimalIslandGuide[] = [
   {
     id: "thoddoo-island",
     name: "Thoddoo Island",
-    atoll: "Baa",
+    atoll: "North Ari Atoll",
     overview:
-      "Thoddoo is an authentic local island in Baa Atoll, famous for its agricultural heritage and traditional Maldivian culture. This peaceful island is known for its watermelon farms, local markets, and fishing traditions, offering genuine cultural immersion.",
+      "Thoddoo is an authentic local island in North Ari Atoll, famous for its agricultural heritage and traditional Maldivian culture. This peaceful island is known for its watermelon farms, local markets, and fishing traditions, offering genuine cultural immersion.",
     quickFacts: [
       "Population: ~1,500 residents",
-      "Atoll: Baa (UNESCO Biosphere Reserve)",
+      "Atoll: North Ari Atoll (Alif Alif)",
       "Famous for: Watermelon farms and agriculture",
       "Best time: November-April",
       "Main activity: Cultural immersion and relaxation",
-      "Distance from Male: 150 km (domestic flight)",
+      "Distance from Male: 67 km (speedboat)",
       "Local market: Fresh produce and handicrafts",
       "Unique: Agricultural island with farming culture",
     ],
