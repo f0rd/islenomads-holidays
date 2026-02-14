@@ -1,0 +1,9 @@
+{
+  "query": "DELETE FROM island_guides WHERE slug = 'male-guide';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute DELETE FROM island_guides WHERE slug = 'male-guide';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 61
+}

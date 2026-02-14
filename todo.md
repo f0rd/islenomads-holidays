@@ -1216,3 +1216,12 @@
 - [x] Delete misspelled "Fuvahmulah Island" entry from database
 - [x] Verify no other atolls have duplicate islands
 - [x] Test Gnaviyani Atoll page displays correctly (now shows only 1 island)
+
+
+## Bug Fix - Malé City vs Island Duplication
+- [x] Investigate Malé displayed as both City and Island on Kaafu Atoll page
+- [x] Check database for duplicate Malé entries (found: Malé and Malé City)
+- [x] Delete Malé City duplicate entry from database
+- [x] Ensure Malé displays correctly on Kaafu Atoll page (now shows only 1 Malé)
+- [x] Verify Malé Island Guide page works correctly
+- [x] Test Kaafu Atoll page displays all islands correctly (Featured Islands: 10, down from 11)
