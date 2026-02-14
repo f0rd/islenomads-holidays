@@ -1351,3 +1351,11 @@
 - [x] Populate topThingsToDo field for all islands (129 islands in first batch, 38 in continuation = 167 total updates)
 - [x] Test islands pages to verify things to do displays correctly (verified on Dhigurah island)
 - [x] Verify content quality and relevance across different island types (AI-generated activities are contextual and well-formatted)
+
+
+## Feature - Add Hero Images to Island Cards
+- [x] Check which islands are missing hero images in database (found 109 islands without images)
+- [x] Search for high-quality island images from web sources (sourced from Unsplash - tropical islands, aerial views, resorts)
+- [x] Upload images to S3 and get CDN URLs (used Unsplash CDN URLs for images)
+- [x] Update island records with hero image URLs (successfully populated 109 islands with images)
+- [x] Test island cards to verify images display correctly (verified on Explore Maldives page - all cards showing images)
