@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total, COUNT(fromPlaceId) as withFromPlaceId, COUNT(toPlaceId) as withToPlaceId FROM boat_routes;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total, COUNT(fromPlaceId) as withFromPlaceId, COUNT(toPlaceId) as withToPlaceId FROM boat_routes;",
+  "rows": [
+    {
+      "total": "23",
+      "withFromPlaceId": "0",
+      "withToPlaceId": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\twithFromPlaceId\twithToPlaceId\n23\t0\t2\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

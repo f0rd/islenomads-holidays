@@ -1525,3 +1525,11 @@
 - [x] Remove duplicate island names from locations
 - [x] Write comprehensive location sync tests (7 tests passing)
 - [x] Verify Maafushi guide loads correctly at /island/87
+
+
+## Fix Empty Getting There Section
+- [x] Check which island guide sections are empty (Getting There, Transportation)
+- [x] Verify boat routes and transportation data structure in database
+- [x] Map boat routes to correct place IDs instead of guide IDs (23/23 routes mapped)
+- [x] Update island guide queries to include transportation/boat route data
+- [ ] Test Getting There section displays correctly on island guides
