@@ -1394,3 +1394,13 @@
 - [x] Remove duplicate island guides (13 duplicates removed, now 128 unique guides)
 - [x] Verify 1:1 relationships between places and island_guides
 - [x] Test website to ensure all relationships are working correctly
+
+
+## Feature - Migrate Resorts and Airports to Unified Places Table
+- [ ] Check for existing resorts and airports data in database
+- [ ] Create resorts in places table with type='resort'
+- [ ] Create airports in places table with type='airport' linked to island locations
+- [ ] Add placeId foreign key to resort and airport related tables
+- [ ] Link resorts and airports to places via placeId
+- [ ] Test resorts and airports data and verify relationships
+- [ ] Verify all resort and airport references are updated

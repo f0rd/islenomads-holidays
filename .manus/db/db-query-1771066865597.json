@@ -1,0 +1,30 @@
+{
+  "query": "SELECT type, COUNT(*) as count FROM places GROUP BY type ORDER BY count DESC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT type, COUNT(*) as count FROM places GROUP BY type ORDER BY count DESC",
+  "rows": [
+    {
+      "type": "island",
+      "count": "128"
+    },
+    {
+      "type": "dive_site",
+      "count": "40"
+    },
+    {
+      "type": "surf_spot",
+      "count": "25"
+    },
+    {
+      "type": "snorkeling_spot",
+      "count": "23"
+    },
+    {
+      "type": "",
+      "count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "type\tcount\nisland\t128\ndive_site\t40\nsurf_spot\t25\nsnorkeling_spot\t23\n\t2\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

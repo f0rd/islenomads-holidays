@@ -1,0 +1,37 @@
+{
+  "query": "SELECT * FROM map_locations WHERE name LIKE '%airport%' OR name LIKE '%malé%' OR name LIKE '%male%' OR slug LIKE '%airport%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT * FROM map_locations WHERE name LIKE '%airport%' OR name LIKE '%malé%' OR name LIKE '%male%' OR slug LIKE '%airport%'",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "type": "island",
+      "latitude": "4.203100",
+      "longitude": "73.546900",
+      "description": "Modern artificial island near Malé with beaches and resorts",
+      "highlights": "[\"Beaches\", \"Water Sports\", \"Resorts\", \"Shopping\"]",
+      "amenities": "[\"Luxury Resorts\", \"Water Sports\", \"Restaurants\", \"Spas\"]",
+      "image": "https://islenomads.com/images/hulhumale.jpg",
+      "icon": "island",
+      "color": "#4ECDC4",
+      "difficulty": "NULL",
+      "depth": "NULL",
+      "waveHeight": "NULL",
+      "rating": "4.6",
+      "reviews": "200",
+      "population": "50000",
+      "priceRange": "$$$",
+      "bestSeason": "Year-round",
+      "published": "1",
+      "createdAt": "2026-02-09 07:15:02",
+      "updatedAt": "2026-02-14 10:41:11",
+      "guideId": "NULL",
+      "placeId": "112"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttype\tlatitude\tlongitude\tdescription\thighlights\tamenities\timage\ticon\tcolor\tdifficulty\tdepth\twaveHeight\trating\treviews\tpopulation\tpriceRange\tbestSeason\tpublished\tcreatedAt\tupdatedAt\tguideId\tplaceId\n2\tHulhumalé\thulhumale\tisland\t4.203100\t73.546900\tModern artificial island near Malé with beaches and resorts\t[\"Beaches\", \"Water Sports\", \"Resorts\", \"Shopping\"]\t[\"Luxury Resorts\", \"Water Sports\", \"Restaurants\", \"Spas\"]\thttps://islenomads.com/images/hulhumale.jpg\tisland\t#4ECDC4\tNULL\tNULL\tNULL\t4.6\t200\t50000\t$$$\tYear-round\t1\t2026-02-09 07:15:02\t2026-02-14 10:41:11\tNULL\t112\n",
+  "stderr": "",
+  "execution_time_ms": 186
+}

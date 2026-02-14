@@ -1,0 +1,24 @@
+{
+  "query": "SELECT id, name, slug, type, guideId FROM map_locations WHERE name LIKE '%gan%' OR slug LIKE '%gan%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, type, guideId FROM map_locations WHERE name LIKE '%gan%' OR slug LIKE '%gan%'",
+  "rows": [
+    {
+      "id": "3",
+      "name": "Veligandu Island",
+      "slug": "veligandu-island",
+      "type": "island",
+      "guideId": "NULL"
+    },
+    {
+      "id": "13",
+      "name": "Gan Island",
+      "slug": "gan-island",
+      "type": "island",
+      "guideId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttype\tguideId\n3\tVeligandu Island\tveligandu-island\tisland\tNULL\n13\tGan Island\tgan-island\tisland\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}
