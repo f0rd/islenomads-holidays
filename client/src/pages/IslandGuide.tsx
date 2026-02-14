@@ -246,6 +246,61 @@ export default function IslandGuide() {
               </Card>
             </TabsContent>
 
+            {/* Getting There Tab */}
+            <TabsContent value="getting-there" className="space-y-6 mt-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Plane className="w-5 h-5" />
+                    Transportation Options
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {guide.gettingThere || 'Various transportation options available to reach this island.'}
+                  </p>
+                  <div className="space-y-3">
+                    {Array.isArray(guide.boatRoutes) && guide.boatRoutes.length > 0 ? (
+                      guide.boatRoutes.map((route: any, idx: number) => (
+                        <div key={idx} className="p-4 border rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-sm mb-1">{route.name}</h4>
+                              <p className="text-xs text-muted-foreground mb-2">
+                                {route.type && `${route.type.charAt(0).toUpperCase() + route.type.slice(1)}`}
+                              </p>
+                              <div className="flex flex-wrap gap-4 text-xs">
+                                {route.duration && (
+                                  <div className="flex items-center gap-1">
+                                    <Clock className="w-3 h-3" />
+                                    <span>{route.duration}</span>
+                                  </div>
+                                )}
+                                {route.price && (
+                                  <div className="flex items-center gap-1">
+                                    <DollarSign className="w-3 h-3" />
+                                    <span>${route.price}</span>
+                                  </div>
+                                )}
+                                {route.capacity && (
+                                  <div className="flex items-center gap-1">
+                                    <Users className="w-3 h-3" />
+                                    <span>{route.capacity} passengers</span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Transportation information coming soon.</p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
             {/* Activities Tab */}
             <TabsContent value="activities" className="space-y-6 mt-6">
               <Card>

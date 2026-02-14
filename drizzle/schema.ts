@@ -130,6 +130,8 @@ export const transports = mysqlTable("transports", {
   name: varchar("name", { length: 255 }).notNull(), // e.g., "Male to Maafushi Ferry"
   fromLocation: varchar("fromLocation", { length: 255 }).notNull(), // e.g., "male"
   toLocation: varchar("toLocation", { length: 255 }).notNull(), // e.g., "maafushi-island"
+  fromPlaceId: int("fromPlaceId"), // Reference to places (starting point)
+  toPlaceId: int("toPlaceId"), // Reference to places (destination)
   transportType: mysqlEnum("transportType", ["ferry", "speedboat", "dhoni", "seaplane"]).notNull(),
   durationMinutes: int("durationMinutes").notNull(), // Duration in minutes
   priceUSD: int("priceUSD").notNull(), // Price in USD

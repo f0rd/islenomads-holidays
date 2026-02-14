@@ -1533,3 +1533,12 @@
 - [x] Map boat routes to correct place IDs instead of guide IDs (23/23 routes mapped)
 - [x] Update island guide queries to include transportation/boat route data
 - [ ] Test Getting There section displays correctly on island guides
+
+
+## Update Transports Table to Use Place IDs
+- [x] Add fromPlaceId and toPlaceId columns to transports table schema
+- [x] Create migration to add new columns (pnpm db:push successful)
+- [x] Create script to map transports to place IDs using fuzzy matching
+- [x] Update all transports with correct place IDs (28/28 transports mapped)
+- [x] Add Getting There tab to IslandGuide component
+- [ ] Test Getting There section displays transports correctly
