@@ -114,13 +114,13 @@ export default function IslandGuide() {
       {/* Image mapping for hero section */}
       {(() => {
         const islandImages = {
-          'male': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/NrfGKIQyisEeoTSa.jpg',
-          'maafushi': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/YYwGlTIcJzLqPXCh.jpg',
-          'thoddoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/IFenyYaGxXpkGxds.jpg',
-          'guraidhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/kRpeRnzSKegeoLeX.jpeg',
-          'thulusdhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/kPliERCwFhvovAop.jpeg',
-          'kandooma': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/mCclTHjbSjkDwcsD.jpeg',
-          'fuvamulah': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/RvnbcKAjOnOSwABP.jpg',
+          'male': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/AMFUxjirqWIZeEHY.jpg',
+          'maafushi': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/jUSvETpOSDgUXbXy.jpg',
+          'thoddoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/RHNXxxpgQlUuhPsw.jpg',
+          'guraidhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/KZBoagawswyUJRUA.jpg',
+          'thulusdhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/zYmHRbsZkVNKHvwa.jpg',
+          'kandooma': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/gmUnHEIJbezcGrEC.jpg',
+          'fuvamulah': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/nVYLGtBCUQVThIoT.jpg',
         };
         const islandKey = (guide.slug?.split('-')[0] || 'maafushi') as keyof typeof islandImages;
         const heroImage = islandImages[islandKey] || islandImages['maafushi'];

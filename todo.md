@@ -1243,3 +1243,17 @@
 - [x] Implement image mapping for all 7 islands (Malé, Maafushi, Thoddoo, Guraidhoo, Thulusdhoo, Kandooma, Fuvamulah)
 - [x] Test image display on Fuvamulah Island page - displaying correctly
 - [x] Verify responsive image loading with overlay gradient for text readability
+
+
+## Feature - Replace Generic Images with Island-Specific Photos
+- [x] Search for Malé city photos (capital city, harbor, local markets)
+- [x] Search for Maafushi Island specific photos (aerial island view)
+- [x] Search for Thoddoo Island specific photos (watermelon farms)
+- [x] Search for Guraidhoo Island specific photos (local island aerial)
+- [x] Search for Thulusdhoo Island specific photos (island aerial view)
+- [x] Search for Kandooma Island specific photos (resort island)
+- [x] Search for Fuvamulah Island specific photos (tiger shark diving)
+- [x] Download all island-specific images from free sources (Unsplash, Pexels, Pixabay)
+- [x] Upload new images to S3 (all 7 images uploaded successfully)
+- [x] Update image mapping in IslandGuide.tsx with new CDN URLs
+- [x] Test each island page - Fuvamulah (tiger sharks), Maafushi (island aerial), Thoddoo (watermelon farms) all displaying correctly
