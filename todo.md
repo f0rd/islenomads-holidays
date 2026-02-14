@@ -1516,3 +1516,12 @@
 - [x] Add Fehendhoo to places table (ID: 30003)
 - [x] Add Hanimadhoo to places table (ID: 30004)
 - [x] Verify all guides are now properly mapped (6/6 guides mapped)
+
+
+## Fix Maafushi Island Link Error
+- [x] Identify Maafushi mapping issue (ID mismatch in locations.ts)
+- [x] Regenerate locations.ts with correct database IDs  
+- [x] Fix featured islands to use correct IDs (Maafushi ID 87, Thoddoo ID 65, etc.)
+- [x] Remove duplicate island names from locations
+- [x] Write comprehensive location sync tests (7 tests passing)
+- [x] Verify Maafushi guide loads correctly at /island/87
