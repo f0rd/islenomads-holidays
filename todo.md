@@ -1565,3 +1565,11 @@
 - [x] Test newly generated guides display correctly in browser
 - [x] Verify all tabs work (Overview, Getting There, Activities, Food, Practical, Itineraries, FAQ)
 - [x] Confirm emoji-enhanced activities and food items display properly
+
+
+## Link Explore Maldives Islands to Island Guides
+- [x] Verify island IDs in locations.ts match database places table
+- [x] Update getIslandGuidesWithActivitySpots to include placeId field
+- [x] Test all island cards navigate to correct island guides (Dhonfanu ID 1, Eydhafushi ID 2, etc.)
+- [x] Verify island navigation (Previous/Next) works correctly with proper sequencing
+- [x] Ensure all 129 islands are accessible from Explore Maldives page with correct links

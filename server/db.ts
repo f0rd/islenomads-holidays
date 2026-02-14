@@ -1060,25 +1060,28 @@ export async function getAllActivitySpotsAdmin(): Promise<ActivitySpot[]> {
   return db.select().from(activitySpots).orderBy(activitySpots.displayOrder);
 }
 
-export async function getIslandGuidesWithActivitySpots(): Promise<(IslandGuide & { activitySpots: ActivitySpot[] })[]> {
+export async function getIslandGuidesWithActivitySpots(): Promise<(IslandGuide & { activitySpots: ActivitySpot[]; placeId?: number })[]> {
   const db = await getDb();
   if (!db) return [];
   
-  // Get all published islands
-  const islands = await db
+  // Get all published islands with their place IDs
+  const results = await db
     .select()
     .from(islandGuides)
+    .leftJoin(places, eq(places.name, islandGuides.name))
     .where(eq(islandGuides.published, 1));
   
   // For each island, fetch its activity spots
   const islandsWithSpots = await Promise.all(
-    islands.map(async (island) => {
+    results.map(async (row: any) => {
+      const island = row.island_guides;
       const spots = await db
         .select()
         .from(activitySpots)
         .where(eq(activitySpots.islandGuideId, island.id));
       return {
         ...island,
+        placeId: row.places?.id,
         activitySpots: spots,
       };
     })
