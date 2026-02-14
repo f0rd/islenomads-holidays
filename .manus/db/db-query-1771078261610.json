@@ -1,0 +1,135 @@
+{
+  "query": "SELECT \n  ig.name,\n  ig.slug,\n  CASE \n    WHEN CHAR_LENGTH(COALESCE(ig.topThingsToDo, '')) > 100 THEN 'Complete'\n    ELSE 'Incomplete'\n  END as content_status\nFROM island_guides ig\nWHERE CHAR_LENGTH(COALESCE(ig.topThingsToDo, '')) <= 100\nORDER BY ig.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  ig.name,\n  ig.slug,\n  CASE \n    WHEN CHAR_LENGTH(COALESCE(ig.topThingsToDo, '')) > 100 THEN 'Complete'\n    ELSE 'Incomplete'\n  END as content_status\nFROM island_guides ig\nWHERE CHAR_LENGTH(COALESCE(ig.topThingsToDo, '')) <= 100\nORDER BY ig.name",
+  "rows": [
+    {
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Gan",
+      "slug": "gan",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Guraidhoo",
+      "slug": "guraidhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Hithadhoo",
+      "slug": "hithadhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Kolhufushi",
+      "slug": "kolhufushi",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Muli",
+      "slug": "muli",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "content_status": "Incomplete"
+    },
+    {
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "content_status": "Incomplete"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tcontent_status\nAlifushi\talifushi\tIncomplete\nDharavandhoo\tdharavandhoo\tIncomplete\nDhiffushi\tdhiffushi\tIncomplete\nDhigurah\tdhigurah\tIncomplete\nFeidhoo\tfeidhoo\tIncomplete\nFelidhoo\tfelidhoo\tIncomplete\nFodhdhoo\tfodhdhoo\tIncomplete\nFulidhoo\tfulidhoo\tIncomplete\nGan\tgan\tIncomplete\nGuraidhoo\tguraidhoo\tIncomplete\nHithadhoo\thithadhoo\tIncomplete\nHulhumalé\thulhumale\tIncomplete\nInguraidhoo\tinguraidhoo\tIncomplete\nKolhufushi\tkolhufushi\tIncomplete\nKudahuvadhoo\tkudahuvadhoo\tIncomplete\nMaafushi\tmaafushi\tIncomplete\nMadifushi\tmadifushi\tIncomplete\nMaradhoo\tmaradhoo\tIncomplete\nMuli\tmuli\tIncomplete\nNaifaru\tnaifaru\tIncomplete\nRasdhoo\trasdhoo\tIncomplete\nThoddoo\tthoddoo\tIncomplete\nUkulhas\tukulhas\tIncomplete\nUngoofaaru\tungoofaaru\tIncomplete\nVeymandoo\tveymandoo\tIncomplete\n",
+  "stderr": "",
+  "execution_time_ms": 64
+}

@@ -9,6 +9,10 @@ import { Map, MapPin, Compass, Utensils, Backpack, AlertCircle, HelpCircle, Cale
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import Navigation from '@/components/Navigation';
+import WaterActivitiesSection from '@/components/WaterActivitiesSection';
+import AirportInfo from '@/components/AirportInfo';
+import BoatRoutesInfo from '@/components/BoatRoutesInfo';
+import ExcursionsInfo from '@/components/ExcursionsInfo';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -19,6 +23,7 @@ export default function IslandDetail() {
   const [isLoading, setIsLoading] = useState(true);
   const [linkedActivitySpots, setLinkedActivitySpots] = useState<any[]>([]);
   const [nearbyActivitySpots, setNearbyActivitySpots] = useState<any[]>([]);
+  const [experiences, setExperiences] = useState<any[]>([]);
 
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
@@ -29,6 +34,12 @@ export default function IslandDetail() {
   const { data: nearbySpots = [] } = trpc.activitySpots.getNearby.useQuery(
     { latitude: island?.latitude || 0, longitude: island?.longitude || 0, radiusKm: 10 },
     { enabled: !!island?.latitude && !!island?.longitude }
+  );
+
+  // Fetch experiences for this island
+  const { data: islandExperiences = [] } = trpc.islandGuides.getExperiences.useQuery(
+    { islandId: island?.id || 0 },
+    { enabled: !!island?.id }
   );
 
   useEffect(() => {
@@ -51,6 +62,13 @@ export default function IslandDetail() {
       setNearbyActivitySpots(nearbySpots);
     }
   }, [nearbySpots]);
+
+  // Update experiences when fetched
+  useEffect(() => {
+    if (islandExperiences && islandExperiences.length > 0) {
+      setExperiences(islandExperiences);
+    }
+  }, [islandExperiences]);
 
   // Helper function to parse JSON strings
   const parseJSON = (data: any): any => {
@@ -99,6 +117,12 @@ export default function IslandDetail() {
   const topThingsToDo = parseJSON(island.topThingsToDo) || [];
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
+  
+  // Debug logging
+  console.log('Island name:', island.name);
+  console.log('Raw topThingsToDo from DB:', island.topThingsToDo);
+  console.log('Parsed topThingsToDo:', topThingsToDo);
+  console.log('topThingsToDo length:', topThingsToDo.length);
 
   // Get all islands for navigation
   const allIslands = guides.filter((g: any) => g.published);
@@ -203,6 +227,10 @@ export default function IslandDetail() {
 
               {/* Things to Do Tab - WikiTravel Style */}
               <TabsContent value="things-to-do" className="mt-6 space-y-6">
+                {/* Excursions Section */}
+                {experiences.length > 0 && (
+                  <ExcursionsInfo excursions={experiences} islandName={island.name} />
+                )}
                 {/* See Section - Attractions & Landmarks */}
                 {island.attractions && parseJSON(island.attractions).length > 0 && (
                   <Card>
@@ -251,86 +279,15 @@ export default function IslandDetail() {
                         ))}
                       </div>
                       
-                      {/* Activity Spots - Dive Sites, Snorkeling, Surfing */}
+                      {/* Water Activities - Using Enhanced Component */}
                       {(linkedActivitySpots.length > 0 || nearbyActivitySpots.length > 0) && (
-                        <div className="mt-6 pt-6 border-t space-y-4">
-                          <h4 className="font-semibold text-gray-900 flex items-center gap-2">
-                            <Waves className="w-4 h-4" />
-                            Water Activities
-                          </h4>
-                          <div className="space-y-3">
-                            {linkedActivitySpots.map((spot: any, idx: number) => (
-                              <div key={`linked-${idx}`} className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                                <div className="flex items-start justify-between mb-2">
-                                  <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                  <Badge className="text-xs bg-blue-600">
-                                    {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                  </Badge>
-                                </div>
-                                {spot.difficulty && (
-                                  <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                )}
-                                {spot.description && (
-                                  <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                )}
-                                {spot.bestSeason && (
-                                  <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                )}
-                              </div>
-                            ))}
-                            {nearbyActivitySpots.length > 0 && linkedActivitySpots.length > 0 && (
-                              <div className="mt-4 pt-4 border-t">
-                                <p className="text-xs text-gray-500 mb-3 flex items-center gap-2">
-                                  <MapPin className="w-3 h-3" />
-                                  Nearby spots (within 10 km)
-                                </p>
-                                <div className="space-y-3">
-                                  {nearbyActivitySpots.map((spot: any, idx: number) => (
-                                    <div key={`nearby-${idx}`} className="bg-green-50 border border-green-200 rounded-lg p-3 opacity-85">
-                                      <div className="flex items-start justify-between mb-2">
-                                        <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                        <Badge className="text-xs bg-green-600">
-                                          {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                        </Badge>
-                                      </div>
-                                      {spot.difficulty && (
-                                        <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                      )}
-                                      {spot.description && (
-                                        <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                      )}
-                                      {spot.bestSeason && (
-                                        <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                            {nearbyActivitySpots.length > 0 && linkedActivitySpots.length === 0 && (
-                              <div className="space-y-3">
-                                {nearbyActivitySpots.map((spot: any, idx: number) => (
-                                  <div key={`nearby-${idx}`} className="bg-green-50 border border-green-200 rounded-lg p-3">
-                                    <div className="flex items-start justify-between mb-2">
-                                      <h5 className="font-semibold text-gray-900">{spot.name}</h5>
-                                      <Badge className="text-xs bg-green-600">
-                                        {spot.spotType === 'dive_site' ? 'Dive' : spot.spotType === 'surf_spot' ? 'Surf' : 'Snorkel'}
-                                      </Badge>
-                                    </div>
-                                    {spot.difficulty && (
-                                      <p className="text-xs text-gray-600 mb-2">Difficulty: {spot.difficulty}</p>
-                                    )}
-                                    {spot.description && (
-                                      <p className="text-sm text-gray-700 mb-2">{spot.description}</p>
-                                    )}
-                                    {spot.bestSeason && (
-                                      <p className="text-xs text-gray-600">Best Season: {spot.bestSeason}</p>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                        <div className="mt-6 pt-6 border-t">
+                          <WaterActivitiesSection
+                            linkedSpots={linkedActivitySpots}
+                            nearbySpots={nearbyActivitySpots}
+                            islandLatitude={island.latitude}
+                            islandLongitude={island.longitude}
+                          />
                         </div>
                       )}
                     </CardContent>
@@ -365,11 +322,21 @@ export default function IslandDetail() {
 
               {/* How to Get There Tab */}
               <TabsContent value="how-to-get" className="mt-6 space-y-6">
+                {/* Airport Information */}
+                {island && (
+                  <AirportInfo islandGuideId={island.id} islandName={island.name} />
+                )}
+                
+                {/* Boat Routes Information */}
+                {island && (
+                  <BoatRoutesInfo key={island.id} islandGuideId={island.id} islandName={island.name} />
+                )}
+                
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <MapPin className="w-5 h-5" />
-                      How to Get There
+                      Additional Transportation Info
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">

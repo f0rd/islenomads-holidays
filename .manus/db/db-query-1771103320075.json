@@ -1,0 +1,40 @@
+{
+  "query": "SELECT 'guide' as type, id, name FROM island_guides WHERE name LIKE '%aafushi%' UNION ALL SELECT 'place' as type, id, name FROM places WHERE name LIKE '%aafushi%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT 'guide' as type, id, name FROM island_guides WHERE name LIKE '%aafushi%' UNION ALL SELECT 'place' as type, id, name FROM places WHERE name LIKE '%aafushi%';",
+  "rows": [
+    {
+      "type": "guide",
+      "id": "180001",
+      "name": "Maafushi"
+    },
+    {
+      "type": "place",
+      "id": "33",
+      "name": "Naalaafushi"
+    },
+    {
+      "type": "place",
+      "id": "87",
+      "name": "Maafushi"
+    },
+    {
+      "type": "place",
+      "id": "152",
+      "name": "Maafushi House Reef"
+    },
+    {
+      "type": "place",
+      "id": "178",
+      "name": "Maafushi Reef"
+    },
+    {
+      "type": "place",
+      "id": "225",
+      "name": "Maafushi Lagoon Snorkel"
+    }
+  ],
+  "messages": [],
+  "stdout": "type\tid\tname\nguide\t180001\tMaafushi\nplace\t33\tNaalaafushi\nplace\t87\tMaafushi\nplace\t152\tMaafushi House Reef\nplace\t178\tMaafushi Reef\nplace\t225\tMaafushi Lagoon Snorkel\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

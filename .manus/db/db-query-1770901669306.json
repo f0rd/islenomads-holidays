@@ -1,0 +1,9 @@
+{
+  "query": "SELECT br.*, ig.name as toIslandName FROM boat_routes br LEFT JOIN island_guides ig ON br.toIslandGuideId = ig.id WHERE br.toIslandGuideId = 10 OR br.toLocation LIKE '%Ukulhas%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT br.*, ig.name as toIslandName FROM boat_routes br LEFT JOIN island_guides ig ON br.toIslandGuideId = ig.id WHERE br.toIslandGuideId = 10 OR br.toLocation LIKE '%Ukulhas%';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 55
+}

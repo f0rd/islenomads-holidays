@@ -1,0 +1,192 @@
+{
+  "query": "SELECT id, name, atoll, slug, CASE WHEN overview IS NOT NULL AND overview != '' THEN 'has content' ELSE 'empty' END as status FROM island_guides WHERE contentType = 'island' AND (name, atoll) IN (SELECT name, atoll FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1) ORDER BY name, atoll, id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, slug, CASE WHEN overview IS NOT NULL AND overview != '' THEN 'has content' ELSE 'empty' END as status FROM island_guides WHERE contentType = 'island' AND (name, atoll) IN (SELECT name, atoll FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1) ORDER BY name, atoll, id",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "slug": "alifushi",
+      "status": "has content"
+    },
+    {
+      "id": "120034",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "slug": "alifushi-island",
+      "status": "empty"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "slug": "dhiffushi",
+      "status": "has content"
+    },
+    {
+      "id": "120048",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "slug": "dhiffushi-island",
+      "status": "empty"
+    },
+    {
+      "id": "60011",
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "felidhoo",
+      "status": "has content"
+    },
+    {
+      "id": "120062",
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "felidhoo-island-vaavu",
+      "status": "empty"
+    },
+    {
+      "id": "60010",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "fulidhoo",
+      "status": "has content"
+    },
+    {
+      "id": "120063",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "fulidhoo-island",
+      "status": "empty"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "slug": "guraidhoo",
+      "status": "has content"
+    },
+    {
+      "id": "150004",
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "slug": "guraidhoo-island",
+      "status": "has content"
+    },
+    {
+      "id": "60013",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "hinnavaru",
+      "status": "has content"
+    },
+    {
+      "id": "120044",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "hinnavaru-island",
+      "status": "empty"
+    },
+    {
+      "id": "60023",
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "hithadhoo",
+      "status": "has content"
+    },
+    {
+      "id": "120094",
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "hithadhoo-island",
+      "status": "empty"
+    },
+    {
+      "id": "60016",
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "slug": "kudahuvadhoo",
+      "status": "has content"
+    },
+    {
+      "id": "120082",
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "slug": "kudahuvadhoo-island",
+      "status": "empty"
+    },
+    {
+      "id": "60022",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "maradhoo",
+      "status": "has content"
+    },
+    {
+      "id": "120095",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "maradhoo-island",
+      "status": "empty"
+    },
+    {
+      "id": "60018",
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "slug": "muli",
+      "status": "has content"
+    },
+    {
+      "id": "120071",
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "slug": "muli-island",
+      "status": "empty"
+    },
+    {
+      "id": "60012",
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "naifaru",
+      "status": "has content"
+    },
+    {
+      "id": "120046",
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "naifaru-island",
+      "status": "empty"
+    },
+    {
+      "id": "60028",
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll",
+      "slug": "ungoofaaru",
+      "status": "has content"
+    },
+    {
+      "id": "120037",
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll",
+      "slug": "ungoofaaru-island",
+      "status": "empty"
+    },
+    {
+      "id": "60024",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "slug": "veymandoo",
+      "status": "has content"
+    },
+    {
+      "id": "120089",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "slug": "veymandoo-island",
+      "status": "empty"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tslug\tstatus\n60027\tAlifushi\tRaa Atoll\talifushi\thas content\n120034\tAlifushi\tRaa Atoll\talifushi-island\tempty\n60004\tDhiffushi\tKaafu Atoll\tdhiffushi\thas content\n120048\tDhiffushi\tKaafu Atoll\tdhiffushi-island\tempty\n60011\tFelidhoo\tVaavu Atoll\tfelidhoo\thas content\n120062\tFelidhoo\tVaavu Atoll\tfelidhoo-island-vaavu\tempty\n60010\tFulidhoo\tVaavu Atoll\tfulidhoo\thas content\n120063\tFulidhoo\tVaavu Atoll\tfulidhoo-island\tempty\n60015\tGuraidhoo\tKaafu Atoll\tguraidhoo\thas content\n150004\tGuraidhoo\tKaafu Atoll\tguraidhoo-island\thas content\n60013\tHinnavaru\tLhaviyani Atoll\thinnavaru\thas content\n120044\tHinnavaru\tLhaviyani Atoll\thinnavaru-island\tempty\n60023\tHithadhoo\tSeenu Atoll\thithadhoo\thas content\n120094\tHithadhoo\tSeenu Atoll\thithadhoo-island\tempty\n60016\tKudahuvadhoo\tDhaalu Atoll\tkudahuvadhoo\thas content\n120082\tKudahuvadhoo\tDhaalu Atoll\tkudahuvadhoo-island\tempty\n60022\tMaradhoo\tSeenu Atoll\tmaradhoo\thas content\n120095\tMaradhoo\tSeenu Atoll\tmaradhoo-island\tempty\n60018\tMuli\tMeemu Atoll\tmuli\thas content\n120071\tMuli\tMeemu Atoll\tmuli-island\tempty\n60012\tNaifaru\tLhaviyani Atoll\tnaifaru\thas content\n120046\tNaifaru\tLhaviyani Atoll\tnaifaru-island\tempty\n60028\tUngoofaaru\tRaa Atoll\tungoofaaru\thas content\n120037\tUngoofaaru\tRaa Atoll\tungoofaaru-island\tempty\n60024\tVeymandoo\tThaa Atoll\tveymandoo\thas content\n120089\tVeymandoo\tThaa Atoll\tveymandoo-island\tempty\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

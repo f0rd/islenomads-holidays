@@ -1,0 +1,130 @@
+{
+  "query": "SELECT id, name, atoll, topThingsToDo FROM island_guides WHERE contentType = 'island' ORDER BY name LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, topThingsToDo FROM island_guides WHERE contentType = 'island' ORDER BY name LIMIT 20;",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120034",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120002",
+      "name": "Baarah",
+      "atoll": "Haa Alif Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "90006",
+      "name": "Banana Reef",
+      "atoll": "Kaafu Atoll",
+      "topThingsToDo": "[{\"title\":\"Diving\",\"description\":\"Coral garden, tropical fish, sea turtles, rays, excellent for beginners\"},{\"title\":\"Marine Life\",\"description\":\"Tropical fish, sea turtles, rays, groupers, snappers, parrotfish\"},{\"title\":\"Best Season\",\"description\":\"Year-round\"},{\"title\":\"Visibility\",\"description\":\"15-30 meters\"}]"
+    },
+    {
+      "id": "120080",
+      "name": "Bandidhoo",
+      "atoll": "Dhaalu Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120075",
+      "name": "Bileddhoo",
+      "atoll": "Faafu Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "atoll": "Alifu Alif Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120086",
+      "name": "Burunee",
+      "atoll": "Thaa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120076",
+      "name": "Dharanboodhoo",
+      "atoll": "Faafu Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "60014",
+      "name": "Dharavandhoo",
+      "atoll": "Baa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120003",
+      "name": "Dhiddhoo",
+      "atoll": "Haa Alif Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "topThingsToDo": "[{\"title\":\"Snorkeling\",\"description\":\"Activity 1\"},{\"title\":\"Diving\",\"description\":\"Activity 2\"},{\"title\":\"Island hopping\",\"description\":\"Activity 3\"},{\"title\":\"Beach relaxation\",\"description\":\"Activity 4\"},{\"title\":\"Local cultural experiences\",\"description\":\"Activity 5\"}]"
+    },
+    {
+      "id": "120048",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120067",
+      "name": "Dhiggaru",
+      "atoll": "Meemu Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "60008",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll",
+      "topThingsToDo": "[{\"title\":\"Snorkeling\",\"description\":\"Activity 1\"},{\"title\":\"Diving\",\"description\":\"Activity 2\"},{\"title\":\"Whale shark watching\",\"description\":\"Activity 3\"},{\"title\":\"Island hopping\",\"description\":\"Activity 4\"},{\"title\":\"Beach relaxation\",\"description\":\"Activity 5\"},{\"title\":\"Photography\",\"description\":\"Activity 6\"}]"
+    },
+    {
+      "id": "90011",
+      "name": "Dhigurah House Reef",
+      "atoll": "Alif Dhaal Atoll",
+      "topThingsToDo": "[{\"title\":\"Diving\",\"description\":\"Pristine corals, tropical fish, beginner-friendly, excellent for snorkeling\"},{\"title\":\"Marine Life\",\"description\":\"Tropical fish, groupers, snappers, parrotfish, rays, sea turtles\"},{\"title\":\"Best Season\",\"description\":\"Year-round\"},{\"title\":\"Visibility\",\"description\":\"15-30 meters\"}]"
+    },
+    {
+      "id": "120087",
+      "name": "Dhiyamigili",
+      "atoll": "Thaa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120038",
+      "name": "Dhonfanu",
+      "atoll": "Baa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120035",
+      "name": "Dhuvaafaru",
+      "atoll": "Raa Atoll",
+      "topThingsToDo": "NULL"
+    },
+    {
+      "id": "120039",
+      "name": "Eydhafushi",
+      "atoll": "Baa Atoll",
+      "topThingsToDo": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\ttopThingsToDo\n60027\tAlifushi\tRaa Atoll\tNULL\n120034\tAlifushi\tRaa Atoll\tNULL\n120002\tBaarah\tHaa Alif Atoll\tNULL\n90006\tBanana Reef\tKaafu Atoll\t[{\"title\":\"Diving\",\"description\":\"Coral garden, tropical fish, sea turtles, rays, excellent for beginners\"},{\"title\":\"Marine Life\",\"description\":\"Tropical fish, sea turtles, rays, groupers, snappers, parrotfish\"},{\"title\":\"Best Season\",\"description\":\"Year-round\"},{\"title\":\"Visibility\",\"description\":\"15-30 meters\"}]\n120080\tBandidhoo\tDhaalu Atoll\tNULL\n120075\tBileddhoo\tFaafu Atoll\tNULL\n120055\tBodufolhudhoo\tAlifu Alif Atoll\tNULL\n120086\tBurunee\tThaa Atoll\tNULL\n120076\tDharanboodhoo\tFaafu Atoll\tNULL\n60014\tDharavandhoo\tBaa Atoll\tNULL\n120003\tDhiddhoo\tHaa Alif Atoll\tNULL\n60004\tDhiffushi\tKaafu Atoll\t[{\"title\":\"Snorkeling\",\"description\":\"Activity 1\"},{\"title\":\"Diving\",\"description\":\"Activity 2\"},{\"title\":\"Island hopping\",\"description\":\"Activity 3\"},{\"title\":\"Beach relaxation\",\"description\":\"Activity 4\"},{\"title\":\"Local cultural experiences\",\"description\":\"Activity 5\"}]\n120048\tDhiffushi\tKaafu Atoll\tNULL\n120067\tDhiggaru\tMeemu Atoll\tNULL\n60008\tDhigurah\tAlif Dhaal Atoll\t[{\"title\":\"Snorkeling\",\"description\":\"Activity 1\"},{\"title\":\"Diving\",\"description\":\"Activity 2\"},{\"title\":\"Whale shark watching\",\"description\":\"Activity 3\"},{\"title\":\"Island hopping\",\"description\":\"Activity 4\"},{\"title\":\"Beach relaxation\",\"description\":\"Activity 5\"},{\"title\":\"Photography\",\"description\":\"Activity 6\"}]\n90011\tDhigurah House Reef\tAlif Dhaal Atoll\t[{\"title\":\"Diving\",\"description\":\"Pristine corals, tropical fish, beginner-friendly, excellent for snorkeling\"},{\"title\":\"Marine Life\",\"description\":\"Tropical fish, groupers, snappers, parrotfish, rays, sea turtles\"},{\"title\":\"Best Season\",\"description\":\"Year-round\"},{\"title\":\"Visibility\",\"description\":\"15-30 meters\"}]\n120087\tDhiyamigili\tThaa Atoll\tNULL\n120038\tDhonfanu\tBaa Atoll\tNULL\n120035\tDhuvaafaru\tRaa Atoll\tNULL\n120039\tEydhafushi\tBaa Atoll\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

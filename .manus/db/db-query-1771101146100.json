@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total_guides, SUM(CASE WHEN topThingsToDo LIKE '%emoji%' THEN 1 ELSE 0 END) as emoji_formatted FROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_guides, SUM(CASE WHEN topThingsToDo LIKE '%emoji%' THEN 1 ELSE 0 END) as emoji_formatted FROM island_guides",
+  "rows": [
+    {
+      "total_guides": "46",
+      "emoji_formatted": "25"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\temoji_formatted\n46\t25\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

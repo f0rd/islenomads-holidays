@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total_islands FROM island_guides WHERE contentType = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_islands FROM island_guides WHERE contentType = 'island';",
+  "rows": [
+    {
+      "total_islands": "33"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_islands\n33\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

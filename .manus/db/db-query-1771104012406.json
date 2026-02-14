@@ -1,0 +1,14 @@
+{
+  "query": "SELECT id, name FROM places WHERE type='island' AND (name LIKE '%Male%' OR name LIKE '%male%' OR id=1) LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM places WHERE type='island' AND (name LIKE '%Male%' OR name LIKE '%male%' OR id=1) LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tDhonfanu\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

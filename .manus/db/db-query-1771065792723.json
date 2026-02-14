@@ -1,0 +1,9 @@
+{
+  "query": "DELETE FROM island_guides\nWHERE contentType = 'island' AND placeId IS NOT NULL AND id NOT IN (\n  SELECT MIN(id) FROM (\n    SELECT MIN(id) as id\n    FROM island_guides\n    WHERE contentType = 'island' AND placeId IS NOT NULL\n    GROUP BY placeId\n  ) as keep_ids\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute DELETE FROM island_guides\nWHERE contentType = 'island' AND placeId IS NOT NULL AND id NOT IN (\n  SELECT MIN(id) FROM (\n    SELECT MIN(id) as id\n    FROM island_guides\n    WHERE contentType = 'island' AND placeId IS NOT NULL\n    GROUP BY placeId\n  ) as keep_ids\n)",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 66
+}

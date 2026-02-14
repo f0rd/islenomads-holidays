@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET latitude = '4.215128', longitude = '72.864471', atoll = 'Ari Atoll', flightInfo = 'By Flight: 45 minutes domestic flight from Male to Ari Atoll' WHERE slug = 'ukulhas-island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET latitude = '4.215128', longitude = '72.864471', atoll = 'Ari Atoll', flightInfo = 'By Flight: 45 minutes domestic flight from Male to Ari Atoll' WHERE slug = 'ukulhas-island';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 57
+}

@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 2;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 2;",
+  "rows": [
+    {
+      "id": "21",
+      "name": "Male to Dhigurah Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Dhigurah Island",
+      "duration": "45 minutes",
+      "price": "5000"
+    },
+    {
+      "id": "22",
+      "name": "Male to Dhigurah Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Dhigurah Island",
+      "duration": "1 hour 50 minutes",
+      "price": "2500"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tfromLocation\ttoLocation\tduration\tprice\n21\tMale to Dhigurah Speedboat\tspeedboat\tMale\tDhigurah Island\t45 minutes\t5000\n22\tMale to Dhigurah Ferry\tferry\tMale\tDhigurah Island\t1 hour 50 minutes\t2500\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

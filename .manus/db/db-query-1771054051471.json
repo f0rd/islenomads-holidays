@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE atoll = 'Gnaviyani Atoll';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE atoll = 'Gnaviyani Atoll';",
+  "rows": [
+    {
+      "id": "120001",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark"
+    },
+    {
+      "id": "150007",
+      "name": "Fuvamulah Island",
+      "slug": "fuvamulah-island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n120001\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\n150007\tFuvamulah Island\tfuvamulah-island\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}

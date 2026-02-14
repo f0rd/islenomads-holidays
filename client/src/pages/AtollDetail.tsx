@@ -18,6 +18,8 @@ import {
   ChevronLeft
 } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { getAtollHeroImage, getAttractionImage } from '@shared/atollImages';
+import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
 
 interface AtollData {
   id: number;
@@ -69,10 +71,18 @@ export default function AtollDetail() {
     if (atollData) {
       setAtoll(atollData);
       
-      // Filter islands by atoll
+      // Filter islands by atoll, excluding dive sites and attractions
       const islands = allIslands.filter(
-        (island: IslandGuideData) => 
-          island.atoll === atollData.name && island.published === 1
+        (island: IslandGuideData) => {
+          // Check if it's an actual island (not a dive site or attraction)
+          const isDiveSite = island.name?.toLowerCase().includes('reef') || 
+                            island.name?.toLowerCase().includes('thila') ||
+                            island.name?.toLowerCase().includes('kandu') ||
+                            island.name?.toLowerCase().includes('shark') ||
+                            island.name?.toLowerCase().includes('bay') ||
+                            island.name?.toLowerCase().includes('madivaru');
+          return island.atoll === atollData.name && island.published === 1 && !isDiveSite;
+        }
       );
       setFeaturedIslands(islands);
       setIsLoading(false);
@@ -92,17 +102,7 @@ export default function AtollDetail() {
   // Get hero image with fallback
   const getHeroImage = (atoll: AtollData) => {
     if (atoll.heroImage) return atoll.heroImage;
-    
-    const fallbackImages: Record<string, string> = {
-      'Kaafu Atoll': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop',
-      'Alif Alif Atoll': 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&h=600&fit=crop',
-      'Alif Dhaal Atoll': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=600&fit=crop',
-      'Baa Atoll': 'https://images.unsplash.com/photo-1439405326854-014607f694d7?w=1200&h=600&fit=crop',
-      'Vaavu Atoll': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop',
-      'Lhaviyani Atoll': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop',
-    };
-    
-    return fallbackImages[atoll.name] || 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=600&fit=crop';
+    return getAtollHeroImage(atoll.slug);
   };
 
   if (isLoading) {
@@ -416,11 +416,17 @@ export default function AtollDetail() {
               {featuredIslands.map((island) => (
                 <Link key={island.id} href={`/island/${island.slug}`}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                    <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden">
-                      <div className="text-center">
-                        <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                        <p className="text-sm text-primary-foreground/80 font-semibold">Island Guide</p>
-                      </div>
+                    <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
+                      {island.slug ? (
+                        <>
+                          <img
+                            src={getIslandFeaturedImage(island.slug)}
+                            alt={island.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        </>
+                      ) : null}
                     </div>
 
                     <CardContent className="flex-1 flex flex-col p-6">

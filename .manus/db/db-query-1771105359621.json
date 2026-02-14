@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE transports SET fromPlaceId = 169, toPlaceId = 175 WHERE id = 2; UPDATE transports SET fromPlaceId = 169, toPlaceId = 175 WHERE id = 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE transports SET fromPlaceId = 169, toPlaceId = 175 WHERE id = 2; UPDATE transports SET fromPlaceId = 169, toPlaceId = 175 WHERE id = 20;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 73
+}

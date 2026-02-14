@@ -176,6 +176,62 @@
       "when": 1770881132167,
       "tag": "0024_jittery_mentallo",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1770900342473,
+      "tag": "0025_bent_jamie_braddock",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "5",
+      "when": 1771007868643,
+      "tag": "0026_familiar_loki",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "5",
+      "when": 1771065015325,
+      "tag": "0027_faithful_wraith",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1771065332757,
+      "tag": "0028_salty_swarm",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "5",
+      "when": 1771065593551,
+      "tag": "0029_redundant_bedlam",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "5",
+      "when": 1771065657357,
+      "tag": "0030_loving_carnage",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "5",
+      "when": 1771065974541,
+      "tag": "0031_wide_midnight",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "5",
+      "when": 1771105279549,
+      "tag": "0032_common_taskmaster",
+      "breakpoints": true
     }
   ]
 }

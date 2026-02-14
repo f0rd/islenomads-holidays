@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total, SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_content FROM island_guides WHERE contentType = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total, SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_content FROM island_guides WHERE contentType = 'island';",
+  "rows": [
+    {
+      "total": "141",
+      "with_content": "32"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\twith_content\n141\t32\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

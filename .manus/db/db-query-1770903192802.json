@@ -1,0 +1,154 @@
+{
+  "query": "SELECT id, toIslandGuideId, toLocation, type, duration, price FROM boat_routes ORDER BY toIslandGuideId, type;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, toIslandGuideId, toLocation, type, duration, price FROM boat_routes ORDER BY toIslandGuideId, type;",
+  "rows": [
+    {
+      "id": "1",
+      "toIslandGuideId": "1",
+      "toLocation": "Thulusdhoo Island",
+      "type": "speedboat",
+      "duration": "45 minutes",
+      "price": "5000"
+    },
+    {
+      "id": "2",
+      "toIslandGuideId": "1",
+      "toLocation": "Thulusdhoo Island",
+      "type": "ferry",
+      "duration": "1 hour 30 minutes",
+      "price": "2500"
+    },
+    {
+      "id": "3",
+      "toIslandGuideId": "2",
+      "toLocation": "Male City",
+      "type": "speedboat",
+      "duration": "50 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "4",
+      "toIslandGuideId": "2",
+      "toLocation": "Male City",
+      "type": "ferry",
+      "duration": "1 hour 45 minutes",
+      "price": "2800"
+    },
+    {
+      "id": "5",
+      "toIslandGuideId": "3",
+      "toLocation": "Dhigurah Island",
+      "type": "speedboat",
+      "duration": "1 hour",
+      "price": "6000"
+    },
+    {
+      "id": "6",
+      "toIslandGuideId": "3",
+      "toLocation": "Dhigurah Island",
+      "type": "ferry",
+      "duration": "2 hours",
+      "price": "3000"
+    },
+    {
+      "id": "7",
+      "toIslandGuideId": "4",
+      "toLocation": "Rasdhoo Island",
+      "type": "speedboat",
+      "duration": "55 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "8",
+      "toIslandGuideId": "4",
+      "toLocation": "Rasdhoo Island",
+      "type": "ferry",
+      "duration": "1 hour 50 minutes",
+      "price": "2800"
+    },
+    {
+      "id": "9",
+      "toIslandGuideId": "5",
+      "toLocation": "Veligandu Island",
+      "type": "speedboat",
+      "duration": "50 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "10",
+      "toIslandGuideId": "5",
+      "toLocation": "Veligandu Island",
+      "type": "ferry",
+      "duration": "1 hour 45 minutes",
+      "price": "2800"
+    },
+    {
+      "id": "11",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island",
+      "type": "speedboat",
+      "duration": "50 minutes",
+      "price": "5000"
+    },
+    {
+      "id": "12",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island",
+      "type": "ferry",
+      "duration": "1 hour 45 minutes",
+      "price": "2500"
+    },
+    {
+      "id": "13",
+      "toIslandGuideId": "7",
+      "toLocation": "Fulidhoo Island",
+      "type": "speedboat",
+      "duration": "1 hour 15 minutes",
+      "price": "6500"
+    },
+    {
+      "id": "14",
+      "toIslandGuideId": "7",
+      "toLocation": "Fulidhoo Island",
+      "type": "ferry",
+      "duration": "2 hours 15 minutes",
+      "price": "3200"
+    },
+    {
+      "id": "15",
+      "toIslandGuideId": "8",
+      "toLocation": "Felidhoo Island",
+      "type": "speedboat",
+      "duration": "1 hour 10 minutes",
+      "price": "6500"
+    },
+    {
+      "id": "16",
+      "toIslandGuideId": "8",
+      "toLocation": "Felidhoo Island",
+      "type": "ferry",
+      "duration": "2 hours 10 minutes",
+      "price": "3200"
+    },
+    {
+      "id": "17",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island",
+      "type": "speedboat",
+      "duration": "55 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "18",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island",
+      "type": "ferry",
+      "duration": "1 hour 50 minutes",
+      "price": "2800"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttoIslandGuideId\ttoLocation\ttype\tduration\tprice\n1\t1\tThulusdhoo Island\tspeedboat\t45 minutes\t5000\n2\t1\tThulusdhoo Island\tferry\t1 hour 30 minutes\t2500\n3\t2\tMale City\tspeedboat\t50 minutes\t5500\n4\t2\tMale City\tferry\t1 hour 45 minutes\t2800\n5\t3\tDhigurah Island\tspeedboat\t1 hour\t6000\n6\t3\tDhigurah Island\tferry\t2 hours\t3000\n7\t4\tRasdhoo Island\tspeedboat\t55 minutes\t5500\n8\t4\tRasdhoo Island\tferry\t1 hour 50 minutes\t2800\n9\t5\tVeligandu Island\tspeedboat\t50 minutes\t5500\n10\t5\tVeligandu Island\tferry\t1 hour 45 minutes\t2800\n11\t6\tKandooma Island\tspeedboat\t50 minutes\t5000\n12\t6\tKandooma Island\tferry\t1 hour 45 minutes\t2500\n13\t7\tFulidhoo Island\tspeedboat\t1 hour 15 minutes\t6500\n14\t7\tFulidhoo Island\tferry\t2 hours 15 minutes\t3200\n15\t8\tFelidhoo Island\tspeedboat\t1 hour 10 minutes\t6500\n16\t8\tFelidhoo Island\tferry\t2 hours 10 minutes\t3200\n17\t10\tUkulhas Island\tspeedboat\t55 minutes\t5500\n18\t10\tUkulhas Island\tferry\t1 hour 50 minutes\t2800\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

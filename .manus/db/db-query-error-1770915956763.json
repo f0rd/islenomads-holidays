@@ -1,0 +1,8 @@
+{
+  "query": "INSERT IGNORE INTO boat_routes (fromLocation, toLocation, toIslandGuideId, transportType, duration, price, schedule) VALUES ('Male', 'Maafushi Island', 2, 'Speedboat', 45, 35.00, 'Daily 08:00, 14:00'), ('Male', 'Maafushi Island', 2, 'Ferry', 75, 18.00, 'Daily 09:00, 16:00'), ('Male', 'Thulusdhoo Island', 3, 'Speedboat', 50, 40.00, 'Daily 08:30, 14:30'), ('Male', 'Thulusdhoo Island', 3, 'Ferry', 90, 20.00, 'Daily 09:30, 17:00'), ('Male', 'Kandooma Island', 4, 'Speedboat', 40, 30.00, 'Daily 08:00, 15:00'), ('Male', 'Kandooma Island', 4, 'Ferry', 60, 15.00, 'Daily 09:00, 17:00');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT IGNORE INTO boat_routes (fromLocation, toLocation, toIslandGuideId, transportType, duration, price, schedule) VALUES ('Male', 'Maafushi Island', 2, 'Speedboat', 45, 35.00, 'Daily 08:00, 14:00'), ('Male', 'Maafushi Island', 2, 'Ferry', 75, 18.00, 'Daily 09:00, 16:00'), ('Male', 'Thulusdhoo Island', 3, 'Speedboat', 50, 40.00, 'Daily 08:30, 14:30'), ('Male', 'Thulusdhoo Island', 3, 'Ferry', 90, 20.00, 'Daily 09:30, 17:00'), ('Male', 'Kandooma Island', 4, 'Speedboat', 40, 30.00, 'Daily 08:00, 15:00'), ('Male', 'Kandooma Island', 4, 'Ferry', 60, 15.00, 'Daily 09:00, 17:00');",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'transportType' in 'field list'"
+  ]
+}

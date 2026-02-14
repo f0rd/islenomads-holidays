@@ -130,6 +130,8 @@ export const transports = mysqlTable("transports", {
   name: varchar("name", { length: 255 }).notNull(), // e.g., "Male to Maafushi Ferry"
   fromLocation: varchar("fromLocation", { length: 255 }).notNull(), // e.g., "male"
   toLocation: varchar("toLocation", { length: 255 }).notNull(), // e.g., "maafushi-island"
+  fromPlaceId: int("fromPlaceId"), // Reference to places (starting point)
+  toPlaceId: int("toPlaceId"), // Reference to places (destination)
   transportType: mysqlEnum("transportType", ["ferry", "speedboat", "dhoni", "seaplane"]).notNull(),
   durationMinutes: int("durationMinutes").notNull(), // Duration in minutes
   priceUSD: int("priceUSD").notNull(), // Price in USD
@@ -154,8 +156,10 @@ export const boatRoutes = mysqlTable("boat_routes", {
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   type: mysqlEnum("type", ["speedboat", "ferry"]).notNull(),
-  fromIslandGuideId: int("fromIslandGuideId"), // Reference to island_guides (starting point)
-  toIslandGuideId: int("toIslandGuideId"), // Reference to island_guides (destination)
+  fromPlaceId: int("fromPlaceId"), // Reference to places (starting point)
+  toPlaceId: int("toPlaceId"), // Reference to places (destination)
+  fromIslandGuideId: int("fromIslandGuideId"), // Reference to island_guides (starting point) - deprecated
+  toIslandGuideId: int("toIslandGuideId"), // Reference to island_guides (destination) - deprecated
   fromAtollId: int("fromAtollId"), // Reference to atolls (starting atoll)
   toAtollId: int("toAtollId"), // Reference to atolls (destination atoll)
   fromLocation: varchar("fromLocation", { length: 255 }).notNull(),
@@ -184,6 +188,7 @@ export type InsertBoatRoute = typeof boatRoutes.$inferInsert;
 // Map Locations table (islands, resorts, dive sites, etc.)
 export const mapLocations = mysqlTable("map_locations", {
   id: int("id").autoincrement().primaryKey(),
+  placeId: int("placeId"), // Reference to places table
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   type: mysqlEnum("type", ["island", "resort", "dive_site", "surf_spot", "atoll", "city"]).notNull(),
@@ -215,6 +220,7 @@ export type InsertMapLocation = typeof mapLocations.$inferInsert;
 // Island Guides table - comprehensive guides for islands with editable content
 export const islandGuides = mysqlTable("island_guides", {
   id: int("id").autoincrement().primaryKey(),
+  placeId: int("placeId"), // Reference to places table
   locationId: int("locationId"), // Reference to mapLocations
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
@@ -249,6 +255,10 @@ export const islandGuides = mysqlTable("island_guides", {
   fiveDayItinerary: text("fiveDayItinerary"), // JSON array
   // FAQ
   faq: text("faq"), // JSON array of Q&A
+  // Nearby Locations
+  nearbyAirports: text("nearbyAirports"), // JSON array of nearby airports with name, distance, iata code
+  nearbyDiveSites: text("nearbyDiveSites"), // JSON array of nearby dive sites with name, distance, difficulty
+  nearbySurfSpots: text("nearbySurfSpots"), // JSON array of nearby surf spots with name, distance, difficulty
   // Media
   heroImage: varchar("heroImage", { length: 500 }), // Hero image URL
   images: text("images"), // JSON array of image URLs
@@ -478,10 +488,24 @@ export const atolls = mysqlTable("atolls", {
 export type Atoll = typeof atolls.$inferSelect;
 export type InsertAtoll = typeof atolls.$inferInsert;
 
+// Places table - Unified entity for all geographical locations (islands, dive sites, surf spots, etc.)
+export const places = mysqlTable("places", {
+  id: int("id").autoincrement().primaryKey(),
+  atollId: int("atollId"), // Foreign key to atolls (optional for non-island places)
+  name: varchar("name", { length: 255 }).notNull(), // Place name
+  code: varchar("code", { length: 50 }).notNull().unique(), // Unique place code
+  type: mysqlEnum("type", ["island", "dive_site", "surf_spot", "snorkeling_spot", "poi"]).notNull(), // Type of place
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Place = typeof places.$inferSelect;
+export type InsertPlace = typeof places.$inferInsert;
 
 // Activity Spots - Hierarchical structure for Surf Spots, Dive Sites, and Snorkeling Spots
 export const activitySpots = mysqlTable("activity_spots", {
   id: int("id").autoincrement().primaryKey(),
+  placeId: int("placeId"), // Reference to places table
   islandGuideId: int("islandGuideId").notNull(), // Reference to island_guides
   atollId: int("atollId"), // Optional direct reference to atolls for easier filtering
   primaryTypeId: int("primaryTypeId"), // FK to activity_types for categorization
@@ -759,3 +783,62 @@ export const spotTypes = mysqlTable(
 
 export type SpotType = typeof spotTypes.$inferSelect;
 export type InsertSpotType = typeof spotTypes.$inferInsert;
+
+
+// Airports table for Maldives airports
+export const airports = mysqlTable("airports", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(), // e.g., "Malé International Airport"
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  iataCode: varchar("iataCode", { length: 10 }).notNull().unique(), // e.g., "MLE"
+  icaoCode: varchar("icaoCode", { length: 10 }), // e.g., "VRMM"
+  description: text("description"),
+  // Location
+  latitude: varchar("latitude", { length: 50 }).notNull(),
+  longitude: varchar("longitude", { length: 50 }).notNull(),
+  atoll: varchar("atoll", { length: 255 }), // Which atoll the airport is in
+  // Facilities & Services
+  facilities: text("facilities"), // JSON array of facilities
+  airlines: text("airlines"), // JSON array of airlines
+  // Connectivity
+  internationalFlights: int("internationalFlights").default(1).notNull(),
+  domesticFlights: int("domesticFlights").default(0).notNull(),
+  // Contact & Info
+  phone: varchar("phone", { length: 20 }),
+  email: varchar("email", { length: 320 }),
+  website: varchar("website", { length: 500 }),
+  // Status
+  isActive: int("isActive").default(1).notNull(),
+  published: int("published").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Airport = typeof airports.$inferSelect;
+export type InsertAirport = typeof airports.$inferInsert;
+
+// Airport Routes table - speedboat/ferry routes from airports to islands
+export const airportRoutes = mysqlTable("airport_routes", {
+  id: int("id").autoincrement().primaryKey(),
+  airportId: int("airportId").notNull().references(() => airports.id, { onDelete: "cascade" }),
+  islandGuideId: int("islandGuideId").notNull().references(() => islandGuides.id, { onDelete: "cascade" }),
+  // Route Details
+  transportType: mysqlEnum("transportType", ["speedboat", "ferry", "seaplane", "dhoni"]).notNull(),
+  distance: varchar("distance", { length: 100 }), // e.g., "45 km"
+  duration: varchar("duration", { length: 100 }).notNull(), // e.g., "20 mins"
+  price: int("price"), // Price in cents
+  // Availability
+  frequency: varchar("frequency", { length: 100 }), // e.g., "Daily"
+  operatingDays: varchar("operatingDays", { length: 100 }), // e.g., "Daily"
+  // Additional Info
+  description: text("description"),
+  notes: text("notes"),
+  // Status
+  isPopular: int("isPopular").default(0).notNull(),
+  published: int("published").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AirportRoute = typeof airportRoutes.$inferSelect;
+export type InsertAirportRoute = typeof airportRoutes.$inferInsert;

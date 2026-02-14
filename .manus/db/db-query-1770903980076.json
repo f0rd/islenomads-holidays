@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 10;",
+  "rows": [
+    {
+      "id": "33",
+      "name": "Male to Ukulhas Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Ukulhas Island",
+      "duration": "55 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "34",
+      "name": "Male to Ukulhas Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Ukulhas Island",
+      "duration": "1 hour 50 minutes",
+      "price": "2800"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tfromLocation\ttoLocation\tduration\tprice\n33\tMale to Ukulhas Speedboat\tspeedboat\tMale\tUkulhas Island\t55 minutes\t5500\n34\tMale to Ukulhas Ferry\tferry\tMale\tUkulhas Island\t1 hour 50 minutes\t2800\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}

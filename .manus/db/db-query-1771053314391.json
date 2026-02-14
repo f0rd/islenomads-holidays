@@ -1,0 +1,148 @@
+{
+  "query": "SELECT id, name, type, slug FROM map_locations WHERE type IN ('island', 'resort', 'city') ORDER BY name LIMIT 50",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, slug FROM map_locations WHERE type IN ('island', 'resort', 'city') ORDER BY name LIMIT 50",
+  "rows": [
+    {
+      "id": "10",
+      "name": "Biyadhoo Island",
+      "type": "island",
+      "slug": "biyadhoo-island"
+    },
+    {
+      "id": "21",
+      "name": "Dhaalu Kudahuvadhoo",
+      "type": "island",
+      "slug": "dhaalu-kudahuvadhoo"
+    },
+    {
+      "id": "5",
+      "name": "Dhigurah Island",
+      "type": "island",
+      "slug": "dhigurah-island"
+    },
+    {
+      "id": "11",
+      "name": "Eydhafushi Island",
+      "type": "island",
+      "slug": "eydhafushi-island"
+    },
+    {
+      "id": "15",
+      "name": "Felidhoo Island",
+      "type": "island",
+      "slug": "felidhoo-island"
+    },
+    {
+      "id": "9",
+      "name": "Fihalhohi Island",
+      "type": "island",
+      "slug": "fihalhohi-island"
+    },
+    {
+      "id": "14",
+      "name": "Funadhoo Island",
+      "type": "island",
+      "slug": "funadhoo-island"
+    },
+    {
+      "id": "13",
+      "name": "Gan Island",
+      "type": "island",
+      "slug": "gan-island"
+    },
+    {
+      "id": "22",
+      "name": "Haa Alif Hanimadhoo",
+      "type": "island",
+      "slug": "haa-alif-hanimadhoo"
+    },
+    {
+      "id": "23",
+      "name": "Haa Dhaalu Kulhudhuffushi",
+      "type": "island",
+      "slug": "haa-dhaalu-kulhudhuffushi"
+    },
+    {
+      "id": "12",
+      "name": "Hangnaameedhoo Island",
+      "type": "island",
+      "slug": "hangnaameedhoo-island"
+    },
+    {
+      "id": "2",
+      "name": "Hulhumalé",
+      "type": "island",
+      "slug": "hulhumale"
+    },
+    {
+      "id": "19",
+      "name": "Isdhoo Island",
+      "type": "island",
+      "slug": "isdhoo-island"
+    },
+    {
+      "id": "7",
+      "name": "Kandooma Island",
+      "type": "island",
+      "slug": "kandooma-island"
+    },
+    {
+      "id": "4",
+      "name": "Maafushi Island",
+      "type": "island",
+      "slug": "maafushi-island"
+    },
+    {
+      "id": "1",
+      "name": "Malé",
+      "type": "city",
+      "slug": "male"
+    },
+    {
+      "id": "17",
+      "name": "Meedhoo Island",
+      "type": "island",
+      "slug": "meedhoo-island"
+    },
+    {
+      "id": "16",
+      "name": "Naifaru Island",
+      "type": "island",
+      "slug": "naifaru-island"
+    },
+    {
+      "id": "18",
+      "name": "Rasdhoo Island",
+      "type": "island",
+      "slug": "rasdhoo-island"
+    },
+    {
+      "id": "8",
+      "name": "Thulusdhoo Island",
+      "type": "island",
+      "slug": "thulusdhoo-island"
+    },
+    {
+      "id": "6",
+      "name": "Ukulhas Island",
+      "type": "island",
+      "slug": "ukulhas-island"
+    },
+    {
+      "id": "20",
+      "name": "Velidhoo Island",
+      "type": "island",
+      "slug": "velidhoo-island"
+    },
+    {
+      "id": "3",
+      "name": "Veligandu Island",
+      "type": "island",
+      "slug": "veligandu-island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tslug\n10\tBiyadhoo Island\tisland\tbiyadhoo-island\n21\tDhaalu Kudahuvadhoo\tisland\tdhaalu-kudahuvadhoo\n5\tDhigurah Island\tisland\tdhigurah-island\n11\tEydhafushi Island\tisland\teydhafushi-island\n15\tFelidhoo Island\tisland\tfelidhoo-island\n9\tFihalhohi Island\tisland\tfihalhohi-island\n14\tFunadhoo Island\tisland\tfunadhoo-island\n13\tGan Island\tisland\tgan-island\n22\tHaa Alif Hanimadhoo\tisland\thaa-alif-hanimadhoo\n23\tHaa Dhaalu Kulhudhuffushi\tisland\thaa-dhaalu-kulhudhuffushi\n12\tHangnaameedhoo Island\tisland\thangnaameedhoo-island\n2\tHulhumalé\tisland\thulhumale\n19\tIsdhoo Island\tisland\tisdhoo-island\n7\tKandooma Island\tisland\tkandooma-island\n4\tMaafushi Island\tisland\tmaafushi-island\n1\tMalé\tcity\tmale\n17\tMeedhoo Island\tisland\tmeedhoo-island\n16\tNaifaru Island\tisland\tnaifaru-island\n18\tRasdhoo Island\tisland\trasdhoo-island\n8\tThulusdhoo Island\tisland\tthulusdhoo-island\n6\tUkulhas Island\tisland\tukulhas-island\n20\tVelidhoo Island\tisland\tvelidhoo-island\n3\tVeligandu Island\tisland\tveligandu-island\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

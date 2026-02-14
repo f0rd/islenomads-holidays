@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, name FROM places WHERE type = 'island' ORDER BY id LIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM places WHERE type = 'island' ORDER BY id LIMIT 20",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo"
+    },
+    {
+      "id": "4",
+      "name": "HP Reef"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi"
+    },
+    {
+      "id": "9",
+      "name": "Maaya Thila"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tDhonfanu\n2\tEydhafushi\n3\tFelidhoo\n4\tHP Reef\n5\tHimmafushi\n6\tIhavandhoo\n7\tKaashidhoo\n8\tKolhufushi\n9\tMaaya Thila\n10\tMaduvvaree\n11\tMakunudhoo\n12\tMaradhoo\n13\tMathiveri\n14\tNaivaadhoo\n15\tOlhuvelifushi\n16\tThinadhoo\n17\tBandidhoo\n18\tBodufolhudhoo\n19\tDharanboodhoo\n20\tFelidhoo Kandu\n",
+  "stderr": "",
+  "execution_time_ms": 71
+}

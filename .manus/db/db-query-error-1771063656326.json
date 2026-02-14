@@ -1,0 +1,8 @@
+{
+  "query": "SELECT i.id, i.name, i.atoll FROM islands i LEFT JOIN island_guides ig ON i.id = ig.islandId WHERE ig.id IS NULL ORDER BY i.atoll, i.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT i.id, i.name, i.atoll FROM islands i LEFT JOIN island_guides ig ON i.id = ig.islandId WHERE ig.id IS NULL ORDER BY i.atoll, i.name",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 'juccyykxywxacnny3wop55.islands' doesn't exist"
+  ]
+}

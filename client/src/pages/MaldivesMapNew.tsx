@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { getIslandGuideUrl } from "@shared/locations";
 
 // Set Mapbox token
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -120,7 +121,7 @@ const MALDIVES_LOCATIONS = [
 
 const POPULAR_ISLANDS = [
   {
-    id: "island-1",
+    id: "island-maafushi",
     name: "Maafushi Island",
     type: "Island",
     lat: 4.38,
@@ -135,13 +136,14 @@ const POPULAR_ISLANDS = [
     activities: ["water-sports", "snorkeling"],
   },
   {
-    id: "island-2",
+    id: "island-thoddoo",
     name: "Thoddoo Island",
     type: "Island",
     lat: 5.3,
     lng: 73.4,
     category: "Local Island",
     slug: "thoddoo",
+    guideSlug: "thoddoo-island",
     description: "Authentic local island known for agriculture and traditional culture",
     highlights: ["Watermelon Farms", "Local Markets", "Fishing Village", "Authentic Experience"],
     population: "~1500",
@@ -149,13 +151,14 @@ const POPULAR_ISLANDS = [
     activities: ["relaxation"],
   },
   {
-    id: "island-3",
+    id: "island-guraidhoo",
     name: "Guraidhoo Island",
     type: "Island",
     lat: 3.95,
     lng: 73.52,
     category: "Local Island",
     slug: "guraidhoo",
+    guideSlug: "guraidhoo-island",
     description: "Charming local island with excellent house reefs and friendly locals",
     highlights: ["House Reef Diving", "Local Restaurants", "Fishing Culture", "Peaceful"],
     population: "~800",
@@ -163,13 +166,14 @@ const POPULAR_ISLANDS = [
     activities: ["diving", "snorkeling"],
   },
   {
-    id: "island-4",
+    id: "island-thulusdhoo",
     name: "Thulusdhoo Island",
     type: "Island",
     lat: 4.35,
     lng: 73.55,
     category: "Local Island",
     slug: "thulusdhoo",
+    guideSlug: "thulusdhoo-island",
     description: "Laid-back island famous for surfing and relaxed beach culture",
     highlights: ["Surf Breaks", "Beach Vibes", "Local Cafes", "Yoga Retreats"],
     population: "~1200",
@@ -177,18 +181,34 @@ const POPULAR_ISLANDS = [
     activities: ["surfing", "relaxation"],
   },
   {
-    id: "island-5",
+    id: "island-kandooma",
     name: "Kandooma Island",
     type: "Island",
     lat: 3.88,
     lng: 73.52,
     category: "Local Island",
     slug: "kandooma",
+    guideSlug: "kandooma-island",
     description: "Scenic island with beautiful beaches and excellent diving spots",
     highlights: ["Scenic Beaches", "Dive Sites", "Snorkeling", "Island Hopping"],
     population: "~600",
     rating: 4.4,
     activities: ["diving", "snorkeling"],
+  },
+  {
+    id: "island-fuvamulah",
+    name: "Fuvamulah Island",
+    type: "Island",
+    lat: 3.2667,
+    lng: 73.5167,
+    category: "Local Island",
+    slug: "fuvamulah",
+    guideSlug: "fuvamulah-island",
+    description: "Unique volcanic island famous for year-round tiger shark diving and pristine beaches",
+    highlights: ["Tiger Shark Diving", "Thoondu Beach", "Nature Park", "Cultural Sites"],
+    population: "~9000",
+    rating: 4.8,
+    activities: ["diving", "snorkeling", "surfing"],
   },
 ];
 
@@ -974,8 +994,8 @@ export default function MaldivesMapNew() {
                 <CardContent className="space-y-3">
                   <p className="text-sm text-foreground">{selectedLocation.description}</p>
                   
-                  {(selectedLocation as any).guideSlug && (
-                    <Link href={`/island/${(selectedLocation as any).guideSlug}`}>
+                  {(selectedLocation as any).guideId && (
+                    <Link href={getIslandGuideUrl((selectedLocation as any).guideId)}>
                       <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
                         <BookOpen className="w-4 h-4 mr-2" />
                         View Full Island Guide

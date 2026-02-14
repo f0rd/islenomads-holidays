@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, name FROM atolls ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM atolls ORDER BY name",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Alif Alif Atoll"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "4",
+      "name": "Baa Atoll"
+    },
+    {
+      "id": "30001",
+      "name": "Dhaalu Atoll"
+    },
+    {
+      "id": "30002",
+      "name": "Faafu Atoll"
+    },
+    {
+      "id": "30003",
+      "name": "Gaafu Alif Atoll"
+    },
+    {
+      "id": "30004",
+      "name": "Gaafu Dhaalu Atoll"
+    },
+    {
+      "id": "30005",
+      "name": "Gnaviyani Atoll"
+    },
+    {
+      "id": "30007",
+      "name": "Haa Alif Atoll"
+    },
+    {
+      "id": "30006",
+      "name": "Haa Dhaalu Atoll"
+    },
+    {
+      "id": "1",
+      "name": "Kaafu Atoll"
+    },
+    {
+      "id": "30008",
+      "name": "Laamu Atoll"
+    },
+    {
+      "id": "6",
+      "name": "Lhaviyani Atoll"
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll"
+    },
+    {
+      "id": "30010",
+      "name": "Noonu Atoll"
+    },
+    {
+      "id": "30011",
+      "name": "Raa Atoll"
+    },
+    {
+      "id": "30012",
+      "name": "Seenu Atoll"
+    },
+    {
+      "id": "30013",
+      "name": "Shaviyani Atoll"
+    },
+    {
+      "id": "30014",
+      "name": "Thaa Atoll"
+    },
+    {
+      "id": "5",
+      "name": "Vaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n2\tAlif Alif Atoll\n3\tAlif Dhaal Atoll\n4\tBaa Atoll\n30001\tDhaalu Atoll\n30002\tFaafu Atoll\n30003\tGaafu Alif Atoll\n30004\tGaafu Dhaalu Atoll\n30005\tGnaviyani Atoll\n30007\tHaa Alif Atoll\n30006\tHaa Dhaalu Atoll\n1\tKaafu Atoll\n30008\tLaamu Atoll\n6\tLhaviyani Atoll\n30009\tMeemu Atoll\n30010\tNoonu Atoll\n30011\tRaa Atoll\n30012\tSeenu Atoll\n30013\tShaviyani Atoll\n30014\tThaa Atoll\n5\tVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

@@ -35,6 +35,7 @@ import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
 import ExploreMaldives from "./pages/ExploreMaldives";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -51,13 +52,18 @@ function Router() {
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
-      <Route path={"\\island-guide/:islandId"} component={IslandGuide} />
-      <Route path={"/island/:slug"} component={IslandDetail} />      <Route path={"\\island-guides"} component={IslandGuides} />
-      <Route path={"\\explore-maldives"} component={ExploreMaldives} />
-      <Route path={"\\admin/activity-spots"} component={AdminActivitySpots} />
+      {/* Island Guide Routes - UPDATED to use island IDs */}
+      {/* Primary route: /island/:islandId (e.g., /island/1, /island/5) */}
+      <Route path={"/island/:islandId"} component={IslandGuide} />
+      {/* Fallback route for backward compatibility with slug-based URLs */}
+      <Route path={"/island-detail/:slug"} component={IslandDetail} />
+      
+      <Route path={"/island-guides"} component={IslandGuides} />
+      <Route path={"/explore-maldives"} component={ExploreMaldives} />
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
+      <Route path={"/admin/activity-spots"} component={AdminActivitySpots} />
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
@@ -69,9 +75,10 @@ function Router() {
       <Route path={"/admin/crm/:id"} component={AdminCRMDetail} />
       <Route path={"/admin/crm"} component={AdminCRM} />
       <Route path={"/admin/branding"} component={AdminBranding} />
-      <Route path={"\admin/transports"} component={AdminTransports} />
-      <Route path={"\admin/map-locations"} component={AdminMapLocations} />
-      <Route path={"\admin"} component={StaffDashboard} />
+      <Route path={"/admin/transports"} component={AdminTransports} />
+      <Route path={"/admin/map-locations"} component={AdminMapLocations} />
+      <Route path={"/admin/data-management"} component={AdminDashboard} />
+      <Route path={"/admin"} component={StaffDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

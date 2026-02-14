@@ -1,0 +1,9 @@
+{
+  "query": "INSERT IGNORE INTO boat_routes (name, slug, type, fromLocation, toLocation, fromLat, fromLng, toLat, toLng, distance, duration, price, schedule, capacity, published) VALUES ('Male to Maafushi Speedboat', 'male-maafushi-speedboat', 'speedboat', 'Male', 'Maafushi Island', '4.1667', '73.5167', '4.3833', '73.5167', '27 km', '45 minutes', 2000, '[\\\"08:00\\\", \\\"14:00\\\"]', 50, 1);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT IGNORE INTO boat_routes (name, slug, type, fromLocation, toLocation, fromLat, fromLng, toLat, toLng, distance, duration, price, schedule, capacity, published) VALUES ('Male to Maafushi Speedboat', 'male-maafushi-speedboat', 'speedboat', 'Male', 'Maafushi Island', '4.1667', '73.5167', '4.3833', '73.5167', '27 km', '45 minutes', 2000, '[\\\"08:00\\\", \\\"14:00\\\"]', 50, 1);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 66
+}

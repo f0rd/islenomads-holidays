@@ -1,0 +1,101 @@
+{
+  "query": "SELECT id, name, slug, contentType, published FROM island_guides WHERE atoll = 'Kaafu Atoll' ORDER BY published DESC, name ASC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, contentType, published FROM island_guides WHERE atoll = 'Kaafu Atoll' ORDER BY published DESC, name ASC;",
+  "rows": [
+    {
+      "id": "90006",
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120048",
+      "name": "Dhiffushi Island",
+      "slug": "dhiffushi-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120049",
+      "name": "Gaafaru Island",
+      "slug": "gaafaru-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120050",
+      "name": "Gulhi Island",
+      "slug": "gulhi-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120052",
+      "name": "Himmafushi Island",
+      "slug": "himmafushi-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "90002",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120053",
+      "name": "Huraa Island",
+      "slug": "huraa-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "120054",
+      "name": "Kaashidhoo Island",
+      "slug": "kaashidhoo-island",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "90005",
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "contentType": "island",
+      "published": "1"
+    },
+    {
+      "id": "60003",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo",
+      "contentType": "island",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tcontentType\tpublished\n90006\tBanana Reef\tbanana-reef\tisland\t1\n60004\tDhiffushi\tdhiffushi\tisland\t1\n120048\tDhiffushi Island\tdhiffushi-island\tisland\t1\n120049\tGaafaru Island\tgaafaru-island\tisland\t1\n120050\tGulhi Island\tgulhi-island\tisland\t1\n60015\tGuraidhoo\tguraidhoo\tisland\t1\n120052\tHimmafushi Island\thimmafushi-island\tisland\t1\n90002\tHulhumalé\thulhumale\tisland\t1\n120053\tHuraa Island\thuraa-island\tisland\t1\n120054\tKaashidhoo Island\tkaashidhoo-island\tisland\t1\n90005\tKandooma Thila\tkandooma-thila\tisland\t1\n60001\tMalé\tmale\tisland\t1\n60003\tThulusdhoo\tthulusdhoo\tisland\t1\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}

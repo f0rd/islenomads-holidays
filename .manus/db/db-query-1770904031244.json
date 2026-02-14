@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 3;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, fromLocation, toLocation, duration, price FROM boat_routes WHERE toIslandGuideId = 3;",
+  "rows": [
+    {
+      "id": "23",
+      "name": "Male to Rasdhoo Speedboat",
+      "type": "speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Rasdhoo Island",
+      "duration": "40 minutes",
+      "price": "4500"
+    },
+    {
+      "id": "24",
+      "name": "Male to Rasdhoo Ferry",
+      "type": "ferry",
+      "fromLocation": "Male",
+      "toLocation": "Rasdhoo Island",
+      "duration": "1 hour 40 minutes",
+      "price": "2200"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tfromLocation\ttoLocation\tduration\tprice\n23\tMale to Rasdhoo Speedboat\tspeedboat\tMale\tRasdhoo Island\t40 minutes\t4500\n24\tMale to Rasdhoo Ferry\tferry\tMale\tRasdhoo Island\t1 hour 40 minutes\t2200\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

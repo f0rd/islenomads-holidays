@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  (SELECT COUNT(*) FROM island_guides WHERE placeId IS NULL) as orphaned_guides,\n  (SELECT COUNT(*) FROM island_guides WHERE placeId IS NOT NULL) as linked_guides,\n  (SELECT COUNT(*) FROM places WHERE type = 'island') as total_islands,\n  (SELECT COUNT(*) FROM island_guides) as total_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  (SELECT COUNT(*) FROM island_guides WHERE placeId IS NULL) as orphaned_guides,\n  (SELECT COUNT(*) FROM island_guides WHERE placeId IS NOT NULL) as linked_guides,\n  (SELECT COUNT(*) FROM places WHERE type = 'island') as total_islands,\n  (SELECT COUNT(*) FROM island_guides) as total_guides",
+  "rows": [
+    {
+      "orphaned_guides": "6",
+      "linked_guides": "40",
+      "total_islands": "128",
+      "total_guides": "46"
+    }
+  ],
+  "messages": [],
+  "stdout": "orphaned_guides\tlinked_guides\ttotal_islands\ttotal_guides\n6\t40\t128\t46\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

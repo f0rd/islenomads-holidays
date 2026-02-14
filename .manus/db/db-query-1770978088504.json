@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name, toLocation, toIslandGuideId FROM boat_routes WHERE toLocation = 'Dhiffushi Island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, toLocation, toIslandGuideId FROM boat_routes WHERE toLocation = 'Dhiffushi Island';",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Male to Dhiffushi Speedboat",
+      "toLocation": "Dhiffushi Island",
+      "toIslandGuideId": "120048"
+    },
+    {
+      "id": "60002",
+      "name": "Male to Dhiffushi Ferry",
+      "toLocation": "Dhiffushi Island",
+      "toIslandGuideId": "120048"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttoLocation\ttoIslandGuideId\n60001\tMale to Dhiffushi Speedboat\tDhiffushi Island\t120048\n60002\tMale to Dhiffushi Ferry\tDhiffushi Island\t120048\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

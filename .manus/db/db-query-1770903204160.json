@@ -1,0 +1,42 @@
+{
+  "query": "SELECT id, toIslandGuideId, toLocation, type, duration, price FROM boat_routes WHERE toIslandGuideId IN (6, 10) ORDER BY toIslandGuideId, type;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, toIslandGuideId, toLocation, type, duration, price FROM boat_routes WHERE toIslandGuideId IN (6, 10) ORDER BY toIslandGuideId, type;",
+  "rows": [
+    {
+      "id": "11",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island",
+      "type": "speedboat",
+      "duration": "50 minutes",
+      "price": "5000"
+    },
+    {
+      "id": "12",
+      "toIslandGuideId": "6",
+      "toLocation": "Kandooma Island",
+      "type": "ferry",
+      "duration": "1 hour 45 minutes",
+      "price": "2500"
+    },
+    {
+      "id": "17",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island",
+      "type": "speedboat",
+      "duration": "55 minutes",
+      "price": "5500"
+    },
+    {
+      "id": "18",
+      "toIslandGuideId": "10",
+      "toLocation": "Ukulhas Island",
+      "type": "ferry",
+      "duration": "1 hour 50 minutes",
+      "price": "2800"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttoIslandGuideId\ttoLocation\ttype\tduration\tprice\n11\t6\tKandooma Island\tspeedboat\t50 minutes\t5000\n12\t6\tKandooma Island\tferry\t1 hour 45 minutes\t2500\n17\t10\tUkulhas Island\tspeedboat\t55 minutes\t5500\n18\t10\tUkulhas Island\tferry\t1 hour 50 minutes\t2800\n",
+  "stderr": "",
+  "execution_time_ms": 72
+}

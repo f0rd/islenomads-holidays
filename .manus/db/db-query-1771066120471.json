@@ -1,0 +1,18 @@
+{
+  "query": "SELECT type, COUNT(*) as count FROM map_locations GROUP BY type ORDER BY count DESC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT type, COUNT(*) as count FROM map_locations GROUP BY type ORDER BY count DESC",
+  "rows": [
+    {
+      "type": "island",
+      "count": "22"
+    },
+    {
+      "type": "city",
+      "count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "type\tcount\nisland\t22\ncity\t1\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

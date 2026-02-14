@@ -1,0 +1,25 @@
+{
+  "query": "SELECT name FROM atolls LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name FROM atolls LIMIT 5",
+  "rows": [
+    {
+      "name": "Kaafu Atoll"
+    },
+    {
+      "name": "Alif Alif Atoll"
+    },
+    {
+      "name": "Alif Dhaal Atoll"
+    },
+    {
+      "name": "Baa Atoll"
+    },
+    {
+      "name": "Vaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\nKaafu Atoll\nAlif Alif Atoll\nAlif Dhaal Atoll\nBaa Atoll\nVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

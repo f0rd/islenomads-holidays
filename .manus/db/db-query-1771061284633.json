@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, atoll, CHAR_LENGTH(atoll) FROM island_guides WHERE name = 'Dhigurah';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, CHAR_LENGTH(atoll) FROM island_guides WHERE name = 'Dhigurah';",
+  "rows": [
+    {
+      "id": "60008",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll",
+      "CHAR_LENGTH(atoll)": "16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tCHAR_LENGTH(atoll)\n60008\tDhigurah\tAlif Dhaal Atoll\t16\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

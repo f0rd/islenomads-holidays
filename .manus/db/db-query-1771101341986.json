@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE name LIKE '%Guraidhoo%' OR slug LIKE '%guraidhoo%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE name LIKE '%Guraidhoo%' OR slug LIKE '%guraidhoo%'",
+  "rows": [
+    {
+      "id": "180007",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo"
+    },
+    {
+      "id": "180023",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n180007\tGuraidhoo\tguraidhoo\n180023\tInguraidhoo\tinguraidhoo\n",
+  "stderr": "",
+  "execution_time_ms": 72
+}

@@ -1,0 +1,101 @@
+{
+  "query": "SELECT ig.id, ig.name, ig.slug, \n  IF(ig.overview IS NOT NULL AND ig.overview != '', 'YES', 'NO') as has_overview,\n  IF(ig.topThingsToDo IS NOT NULL AND ig.topThingsToDo != '', 'YES', 'NO') as has_activities\nFROM island_guides ig\nWHERE ig.name IN ('Himmafushi', 'Omadhoo', 'Feridhoo', 'Dhangethi', 'Mathiveri', 'Gulhi', 'Goidhoo', 'Fulhadhoo', 'Fehendhoo', 'Hanimadhoo', 'Fuvahmulah')\nORDER BY ig.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.id, ig.name, ig.slug, \n  IF(ig.overview IS NOT NULL AND ig.overview != '', 'YES', 'NO') as has_overview,\n  IF(ig.topThingsToDo IS NOT NULL AND ig.topThingsToDo != '', 'YES', 'NO') as has_activities\nFROM island_guides ig\nWHERE ig.name IN ('Himmafushi', 'Omadhoo', 'Feridhoo', 'Dhangethi', 'Mathiveri', 'Gulhi', 'Goidhoo', 'Fulhadhoo', 'Fehendhoo', 'Hanimadhoo', 'Fuvahmulah')\nORDER BY ig.name",
+  "rows": [
+    {
+      "id": "180029",
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "120056",
+      "name": "Feridhoo",
+      "slug": "feridhoo-island",
+      "has_overview": "NO",
+      "has_activities": "YES"
+    },
+    {
+      "id": "180034",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180037",
+      "name": "Fuvahmulah",
+      "slug": "fuvahmulah",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180033",
+      "name": "Goidhoo",
+      "slug": "goidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180032",
+      "name": "Gulhi",
+      "slug": "gulhi",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    },
+    {
+      "id": "120059",
+      "name": "Mathiveri",
+      "slug": "mathiveri-island",
+      "has_overview": "NO",
+      "has_activities": "YES"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "slug": "omadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\thas_overview\thas_activities\n180029\tDhangethi\tdhangethi\tYES\tNO\n180035\tFehendhoo\tfehendhoo\tYES\tNO\n180028\tFeridhoo\tferidhoo\tYES\tNO\n120056\tFeridhoo\tferidhoo-island\tNO\tYES\n180034\tFulhadhoo\tfulhadhoo\tYES\tNO\n180037\tFuvahmulah\tfuvahmulah\tYES\tNO\n180033\tGoidhoo\tgoidhoo\tYES\tNO\n180032\tGulhi\tgulhi\tYES\tNO\n180036\tHanimadhoo\thanimadhoo\tYES\tNO\n180026\tHimmafushi\thimmafushi\tYES\tNO\n180030\tMathiveri\tmathiveri\tYES\tNO\n120059\tMathiveri\tmathiveri-island\tNO\tYES\n180027\tOmadhoo\tomadhoo\tYES\tNO\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}
