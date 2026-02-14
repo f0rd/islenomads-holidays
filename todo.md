@@ -1404,3 +1404,10 @@
 - [ ] Link resorts and airports to places via placeId
 - [ ] Test resorts and airports data and verify relationships
 - [ ] Verify all resort and airport references are updated
+
+
+## Bug Fix - Featured Islands Missing on Atoll Pages
+- [ ] Check atoll page to verify featured islands section is missing
+- [ ] Identify the issue with featured islands query or component
+- [ ] Fix the featured islands section on atoll pages
+- [ ] Test atoll pages to verify featured islands display correctly
