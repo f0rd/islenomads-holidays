@@ -1442,5 +1442,5 @@
 - [x] Add emojis to dining options
 - [x] Add emojis to FAQ sections
 - [x] Improve formatting of guide content with better structure
-- [ ] Add icons/emojis to all guide sections (Getting There, Practical, Itineraries)
-- [ ] Apply emoji enhancements to remaining island guides (Maafushi, Dhiffushi, Omadhoo, Feridhoo, Dhangethi, Gulhi, Goidhoo, Fulhadhoo, Fehendhoo, Hanimadhoo, Ukulhas, Vilamendhoo)
+- [x] Add icons/emojis to all guide sections (Getting There, Practical, Itineraries)
+- [x] Apply emoji enhancements to remaining island guides (Maafushi, Dhiffushi, Omadhoo, Feridhoo, Dhangethi, Gulhi, Goidhoo, Fulhadhoo, Fehendhoo, Hanimadhoo, Ukulhas, Vilamendhoo)
