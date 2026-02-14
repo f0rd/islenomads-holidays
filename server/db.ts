@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -380,6 +380,59 @@ export async function getIslandGuideBySlug(slug: string): Promise<IslandGuide | 
 
   const result = await db.select().from(islandGuides).where(eq(islandGuides.slug, slug)).limit(1);
   return result[0];
+}
+
+/**
+ * Get island guide by island ID (from places table)
+ * This is the preferred method for linking island guides
+ * Fetches the place by ID, then finds the matching island guide by name
+ */
+export async function getIslandGuideByIslandId(islandId: number): Promise<IslandGuide | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  // First, get the place by ID
+  const place = await db.select().from(places).where(eq(places.id, islandId)).limit(1);
+  if (!place || !place[0]) return undefined;
+
+  const placeData = place[0];
+  
+  // Find the island guide by matching the place name
+  const result = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.name, placeData.name))
+    .limit(1);
+  
+  return result[0];
+}
+
+/**
+ * Get place with its associated island guide
+ * Returns both place and guide data together
+ * Matches by place name to island guide name
+ */
+export async function getPlaceWithGuide(placeId: number): Promise<{ place: Place; guide: IslandGuide | null } | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const place = await db.select().from(places).where(eq(places.id, placeId)).limit(1);
+  if (!place || !place[0]) return undefined;
+
+  let guide: IslandGuide | null = null;
+  
+  // Find guide by matching place name
+  const guideResult = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.name, place[0].name))
+    .limit(1);
+  guide = guideResult[0] || null;
+
+  return {
+    place: place[0],
+    guide,
+  };
 }
 
 export async function createIslandGuide(data: InsertIslandGuide): Promise<IslandGuide | null> {

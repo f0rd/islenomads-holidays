@@ -12,7 +12,7 @@ import {
   updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
   getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getBoatRoutesWithIslands, getBoatRoutesFromIsland, getBoatRoutesToIsland, getMapLocations, getMapLocationBySlug,
   getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getMapLocationWithGuide, getIslandGuides,
-  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, createIslandGuide, updateIslandGuide,
+  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, getIslandGuideByIslandId, getPlaceWithGuide, createIslandGuide, updateIslandGuide,
   deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
   deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
@@ -521,10 +521,26 @@ export const appRouter = router({
         return getIslandGuideBySlug(input.slug);
       }),
 
+    /**
+     * @deprecated Use getByIslandId instead for consistent island ID-based linking
+     */
+
     getById: publicProcedure
       .input(z.object({ id: z.number() }))
       .query(async ({ input }) => {
         return getIslandGuideById(input.id);
+      }),
+
+    getByIslandId: publicProcedure
+      .input(z.object({ islandId: z.number() }))
+      .query(async ({ input }) => {
+        return getIslandGuideByIslandId(input.islandId);
+      }),
+
+    getPlaceWithGuide: publicProcedure
+      .input(z.object({ placeId: z.number() }))
+      .query(async ({ input }) => {
+        return getPlaceWithGuide(input.placeId);
       }),
 
     create: protectedProcedure

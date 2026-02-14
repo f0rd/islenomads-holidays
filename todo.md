@@ -1474,3 +1474,25 @@
 - [ ] Generate guides for remaining 86 islands (in progress - schema constraints)
 - [ ] Verify all 132 islands display correctly with new format
 - [ ] Test emoji rendering across all browsers and devices
+
+
+## Island Guide Refactoring - Use Island IDs Instead of Slugs
+- [ ] Add getByIslandId procedure to server routers
+- [ ] Create getIslandGuideByIslandId function in db.ts
+- [ ] Refactor IslandGuide component to use island ID routing
+- [ ] Update App.tsx routing to use island IDs
+- [ ] Test all island guide pages load correctly
+- [ ] Remove slug-based routing from IslandGuide component
+
+
+## Navigation Links Refactoring - Use Island IDs
+- [x] Create unified island locations configuration (shared/locations.ts)
+- [x] Update App.tsx routing from /island/:slug to /island/:islandId
+- [x] Update IslandGuide.tsx component to use island IDs
+- [x] Add getByIslandId procedure to server routers
+- [x] Create getIslandGuideByIslandId function in db.ts
+- [x] Write comprehensive vitest tests for island navigation (31 tests passing)
+- [ ] Update Home.tsx island links to use island IDs
+- [ ] Update Map.tsx island links to use island IDs
+- [ ] Update all other components with island links to use IDs
+- [ ] Test all navigation links in browser and verify they work

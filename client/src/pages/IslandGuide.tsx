@@ -20,16 +20,19 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
 
-const ISLAND_NAVIGATION = [
-  { slug: "male-guide", name: "Male City" },
-  { slug: "maafushi-island", name: "Maafushi Island" },
-  { slug: "thoddoo-island", name: "Thoddoo Island" },
-  { slug: "guraidhoo-island", name: "Guraidhoo Island" },
-  { slug: "thulusdhoo-island", name: "Thulusdhoo Island" },
-  { slug: "kandooma-island", name: "Kandooma Island" },
-  { slug: "fuvamulah-island", name: "Fuvamulah Island" },
-];
+/**
+ * UPDATED: IslandGuide component now uses island ID instead of slug
+ * 
+ * Route: /island/:islandId (e.g., /island/1, /island/5)
+ * Navigation: Uses FEATURED_ISLANDS array with island IDs
+ * 
+ * Key Changes:
+ * - Fetches guide by island ID using trpc.islandGuides.getByIslandId
+ * - Navigation uses getAdjacentIslands() helper for previous/next
+ * - All links use getIslandGuideUrl() to build URLs with IDs
+ */
 
 function normalizeGuideData(guide: any) {
   if (!guide) return null;
@@ -66,18 +69,24 @@ function normalizeGuideData(guide: any) {
 }
 
 export default function IslandGuide() {
-  const { islandId = "male-guide" } = useParams();
+  // Get island ID from URL params (e.g., /island/1)
+  const { islandId = "1" } = useParams();
   const [, navigate] = useLocation();
-  const { data: rawGuide, isLoading, error } = trpc.islandGuides.getBySlug.useQuery({ slug: islandId });
+  
+  // Convert string ID to number
+  const numericIslandId = parseInt(islandId, 10);
+  
+  // Fetch guide by island ID (using the new getByIslandId procedure)
+  const { data: rawGuide, isLoading, error } = trpc.islandGuides.getByIslandId.useQuery(
+    { islandId: numericIslandId },
+    { enabled: !isNaN(numericIslandId) }
+  );
+  
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
   const [activeTab, setActiveTab] = useState("overview");
   
-  const currentIndex = useMemo(() => ISLAND_NAVIGATION.findIndex(i => i.slug === islandId), [islandId]);
-  const previousIsland = currentIndex > 0 ? ISLAND_NAVIGATION[currentIndex - 1] : null;
-  const nextIsland = currentIndex < ISLAND_NAVIGATION.length - 1 ? ISLAND_NAVIGATION[currentIndex + 1] : null;
-
-
-
+  // Get adjacent islands for navigation (previous/next)
+  const adjacentIslands = useMemo(() => getAdjacentIslands(numericIslandId), [numericIslandId]);
 
   if (isLoading) {
     return (
@@ -100,9 +109,11 @@ export default function IslandGuide() {
             <AlertCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
             <h2 className="text-xl font-semibold mb-2">Island Guide Not Found</h2>
             <p className="text-muted-foreground mb-4">
-              The island guide you're looking for doesn't exist.
+              The island guide you're looking for doesn't exist or could not be loaded.
             </p>
-            <Button variant="outline" onClick={() => window.location.href = '/map'}>Back to Maps</Button>
+            <Button variant="outline" onClick={() => navigate('/explore-maldives')}>
+              Back to Explore
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -111,33 +122,61 @@ export default function IslandGuide() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Image mapping for hero section */}
-      {(() => {
-        const islandImages = {
-          'male': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/AMFUxjirqWIZeEHY.jpg',
-          'maafushi': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/jUSvETpOSDgUXbXy.jpg',
-          'thoddoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/RHNXxxpgQlUuhPsw.jpg',
-          'guraidhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/KZBoagawswyUJRUA.jpg',
-          'thulusdhoo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/zYmHRbsZkVNKHvwa.jpg',
-          'kandooma': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/gmUnHEIJbezcGrEC.jpg',
-          'fuvamulah': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/nVYLGtBCUQVThIoT.jpg',
-        };
-        const islandKey = (guide.slug?.split('-')[0] || 'maafushi') as keyof typeof islandImages;
-        const heroImage = islandImages[islandKey] || islandImages['maafushi'];
-        
-        return (
-          <>
-            {/* Hero Section with Background Image */}
-            <section className="relative h-96 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground overflow-hidden">
-              <img src={heroImage} alt={guide.name} className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/85" />
-              <div className="container relative z-10 h-full flex flex-col justify-end pb-8">
+      {/* Navigation Bar with Previous/Next Island Links */}
+      <div className="bg-background border-b">
+        <div className="container py-4 flex items-center justify-between">
+          {adjacentIslands.previous ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.id))}
+              className="flex items-center gap-2"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              {adjacentIslands.previous.name}
+            </Button>
+          ) : (
+            <div />
+          )}
+          
+          <h2 className="text-lg font-semibold">{guide.name}</h2>
+          
+          {adjacentIslands.next ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.id))}
+              className="flex items-center gap-2"
+            >
+              {adjacentIslands.next.name}
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          ) : (
+            <div />
+          )}
+        </div>
+      </div>
+
+      {/* Hero Section with Background Image */}
+      <section className="relative h-96 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground overflow-hidden">
+        {guide.heroImage && (
+          <img 
+            src={guide.heroImage} 
+            alt={guide.name} 
+            className="absolute inset-0 w-full h-full object-cover" 
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/85" />
+        <div className="container relative z-10 h-full flex flex-col justify-end pb-8">
           <div className="flex items-start justify-between mb-6">
             <div>
               <h1 className="text-4xl font-bold mb-2">{guide.name}</h1>
               <p className="text-primary-foreground/80">{guide.atoll}</p>
             </div>
-            <Button variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10">
+            <Button 
+              variant="outline" 
+              className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10"
+            >
               <Share2 className="w-4 h-4 mr-2" />
               Share
             </Button>
@@ -167,16 +206,15 @@ export default function IslandGuide() {
               <CardContent className="pt-6">
                 <p className="text-sm text-muted-foreground mb-1">Coordinates</p>
                 <p className="text-sm font-mono">
-                  {guide.latitude && guide.longitude ? `${parseFloat(guide.latitude).toFixed(4)}, ${parseFloat(guide.longitude).toFixed(4)}` : 'N/A'}
+                  {guide.latitude && guide.longitude 
+                    ? `${parseFloat(guide.latitude).toFixed(4)}, ${parseFloat(guide.longitude).toFixed(4)}` 
+                    : 'N/A'}
                 </p>
               </CardContent>
             </Card>
           </div>
         </div>
-            </section>
-          </>
-        );
-      })()}
+      </section>
 
       {/* Main Content */}
       <section className="py-12">
@@ -206,169 +244,47 @@ export default function IslandGuide() {
               </Card>
             </TabsContent>
 
-            {/* Quick Facts Tab */}
-            <TabsContent value="quick-facts" className="space-y-6 mt-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Quick Facts</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {Array.isArray(guide.quickFacts) && guide.quickFacts.map((fact: any, idx: number) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{fact}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Getting There Tab */}
-            <TabsContent value="getting-there" className="space-y-6 mt-6">
-              {/* Nearby Airports */}
-              {Array.isArray(guide.nearbyAirports) && guide.nearbyAirports.length > 0 && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Plane className="w-5 h-5" />
-                    Nearby Airports
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-4 mb-6">
-                    {guide.nearbyAirports.map((airport: any, idx: number) => (
-                      <Card key={idx}>
-                        <CardHeader>
-                          <CardTitle className="text-base">{airport.name}</CardTitle>
-                          <p className="text-xs text-muted-foreground mt-1">IATA: {airport.iata}</p>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3">{airport.distance}</p>
-                          <Button size="sm" variant="outline">View Details</Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Transportation Methods */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Transportation Methods</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Plane className="w-5 h-5" />
-                        Speedboat
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">
-                        {guide.speedboatInfo || 'Speedboat transfers available from Male Airport'}
-                      </p>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Waves className="w-5 h-5" />
-                        Ferry
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">
-                        {guide.ferryInfo || 'Public ferry services available'}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </TabsContent>
-
             {/* Activities Tab */}
             <TabsContent value="activities" className="space-y-6 mt-6">
-              {/* Top Things to Do */}
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Top Things to Do</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => (
-                    <Card key={idx}>
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <span className="text-2xl">{activity.icon}</span>
-                          {activity.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">
-                          {activity.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              {/* Nearby Dive Sites */}
-              {Array.isArray(guide.nearbyDiveSites) && guide.nearbyDiveSites.length > 0 && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 mt-8">🤿 Nearby Dive Sites</h3>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Things to Do</CardTitle>
+                </CardHeader>
+                <CardContent>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {guide.nearbyDiveSites.map((dive: any, idx: number) => (
-                      <Card key={idx}>
-                        <CardHeader>
-                          <CardTitle className="text-base">{dive.name}</CardTitle>
-                          <p className="text-xs text-muted-foreground mt-1">Difficulty: {dive.difficulty}</p>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3">{dive.distance}</p>
-                          <Button size="sm" variant="outline">Explore</Button>
-                        </CardContent>
-                      </Card>
+                    {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => (
+                      <div key={idx} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div className="flex items-start gap-3">
+                          <span className="text-2xl">{activity.emoji || '🎯'}</span>
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-sm mb-1">{activity.title}</h4>
+                            <p className="text-sm text-muted-foreground">{activity.description}</p>
+                          </div>
+                        </div>
+                      </div>
                     ))}
                   </div>
-                </div>
-              )}
-
-              {/* Nearby Surf Spots */}
-              {Array.isArray(guide.nearbySurfSpots) && guide.nearbySurfSpots.length > 0 && (
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 mt-8">🏄 Nearby Surf Spots</h3>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {guide.nearbySurfSpots.map((surf: any, idx: number) => (
-                      <Card key={idx}>
-                        <CardHeader>
-                          <CardTitle className="text-base">{surf.name}</CardTitle>
-                          <p className="text-xs text-muted-foreground mt-1">Difficulty: {surf.difficulty}</p>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3">{surf.distance}</p>
-                          <Button size="sm" variant="outline">Explore</Button>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              )}
+                </CardContent>
+              </Card>
             </TabsContent>
 
             {/* Food Tab */}
             <TabsContent value="food" className="space-y-6 mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Utensils className="w-5 h-5" />
-                    Dining Options
-                  </CardTitle>
+                  <CardTitle>Food & Cafés</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    {Array.isArray(guide.foodCafes) && guide.foodCafes.map((cafe: any, idx: number) => (
-                      <div key={idx} className="border-b pb-4 last:border-b-0">
-                        <h4 className="font-semibold text-sm mb-1">{cafe.name}</h4>
-                        <p className="text-xs text-muted-foreground mb-2">{cafe.cuisine} • {cafe.priceRange}</p>
-                        <p className="text-sm">{cafe.type}</p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {Array.isArray(guide.foodCafes) && guide.foodCafes.map((item: any, idx: number) => (
+                      <div key={idx} className="p-4 border rounded-lg">
+                        <div className="flex items-start gap-3">
+                          <span className="text-2xl">{item.emoji || '🍽️'}</span>
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-sm mb-1">{item.name}</h4>
+                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                          </div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -378,107 +294,36 @@ export default function IslandGuide() {
 
             {/* Practical Tab */}
             <TabsContent value="practical" className="space-y-6 mt-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-base">What to Pack</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {Array.isArray(guide.whatToPack) && guide.whatToPack.map((item: any, idx: number) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="w-4 h-4 text-accent" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-base">Health Tips</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {Array.isArray(guide.healthTips) && guide.healthTips.map((tip: any, idx: number) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm">
-                          <CheckCircle className="w-4 h-4 text-accent" />
-                          {tip}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5" />
-                    Emergency Contacts
-                  </CardTitle>
+                  <CardTitle>Practical Information</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {Array.isArray(guide.emergencyContacts) && guide.emergencyContacts.map((contact: any, idx: number) => {
-                      const displayText = typeof contact === 'string' ? contact : (contact?.name ? `${contact.name}${contact.phone ? ` - ${contact.phone}` : ''}` : 'Contact information');
-                      return <li key={idx} className="text-sm">{displayText}</li>;
-                    })}
-                  </ul>
+                <CardContent className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2">Getting There</h4>
+                    <p className="text-sm text-muted-foreground">{guide.gettingThere || 'Information not available'}</p>
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
             {/* Itineraries Tab */}
             <TabsContent value="itineraries" className="space-y-6 mt-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">3-Day Itinerary</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {Array.isArray(guide.threeDayItinerary) && guide.threeDayItinerary.map((day: any, idx: number) => (
-                      <div key={idx} className="border-l-2 border-accent pl-4">
-                        <h4 className="font-semibold text-sm mb-2">Day {day.day}</h4>
-                        <ul className="space-y-1">
-                          {Array.isArray(day.activities) && day.activities.map((activity: any, aidx: number) => (
-                            <li key={aidx} className="text-xs text-muted-foreground">• {activity}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">5-Day Itinerary</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {Array.isArray(guide.fiveDayItinerary) && guide.fiveDayItinerary.map((day: any, idx: number) => (
-                      <div key={idx} className="border-l-2 border-accent pl-4">
-                        <h4 className="font-semibold text-sm mb-2">Day {day.day}</h4>
-                        <ul className="space-y-1">
-                          {Array.isArray(day.activities) && day.activities.map((activity: any, aidx: number) => (
-                            <li key={aidx} className="text-xs text-muted-foreground">• {activity}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle>3-Day Itinerary</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm whitespace-pre-wrap">{guide.threeDayItinerary || 'Itinerary not available'}</p>
+                </CardContent>
+              </Card>
             </TabsContent>
 
             {/* FAQ Tab */}
             <TabsContent value="faq" className="space-y-6 mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <HelpCircle className="w-5 h-5" />
-                    Frequently Asked Questions
-                  </CardTitle>
+                  <CardTitle>Frequently Asked Questions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {Array.isArray(guide.faq) && guide.faq.map((item: any, idx: number) => (
@@ -490,60 +335,46 @@ export default function IslandGuide() {
                 </CardContent>
               </Card>
             </TabsContent>
-
-
           </Tabs>
+        </div>
+      </section>
 
-          {/* Navigation Buttons */}
-          <div className="mt-12 flex justify-between items-center gap-4">
-            {previousIsland ? (
+      {/* Footer Navigation */}
+      <section className="border-t py-8 bg-muted/50">
+        <div className="container">
+          <div className="flex items-center justify-between">
+            {adjacentIslands.previous ? (
               <Button
                 variant="outline"
-                className="flex items-center gap-2 hover:bg-primary/10"
-                onClick={() => navigate(`/island/${previousIsland.slug}`)}
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.id))}
+                className="flex items-center gap-2"
               >
                 <ChevronLeft className="w-4 h-4" />
-                {previousIsland.name}
+                Previous: {adjacentIslands.previous.name}
               </Button>
             ) : (
               <div />
             )}
+            
             <Button
               variant="outline"
               onClick={() => navigate('/explore-maldives')}
-              className="hover:bg-accent/10"
             >
-              Explore Maldives
+              View All Islands
             </Button>
-            {nextIsland ? (
+            
+            {adjacentIslands.next ? (
               <Button
                 variant="outline"
-                className="flex items-center gap-2 hover:bg-primary/10"
-                onClick={() => navigate(`/island/${nextIsland.slug}`)}
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.id))}
+                className="flex items-center gap-2"
               >
-                {nextIsland.name}
+                Next: {adjacentIslands.next.name}
                 <ChevronRight className="w-4 h-4" />
               </Button>
             ) : (
               <div />
             )}
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-12 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Ready to Explore {guide.name}?</h2>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Let our travel specialists help you plan the perfect getaway to this beautiful island.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                <BookOpen className="w-4 h-4 mr-2" />
-                Plan Your Trip
-              </Button>
-              <Button size="lg" variant="outline">
-                Get Custom Pricing
-              </Button>
-            </div>
           </div>
         </div>
       </section>
