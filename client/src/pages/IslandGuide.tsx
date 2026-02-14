@@ -397,9 +397,10 @@ export default function IslandGuide() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    {Array.isArray(guide.emergencyContacts) && guide.emergencyContacts.map((contact: any, idx: number) => (
-                      <li key={idx} className="text-sm">{contact}</li>
-                    ))}
+                    {Array.isArray(guide.emergencyContacts) && guide.emergencyContacts.map((contact: any, idx: number) => {
+                      const displayText = typeof contact === 'string' ? contact : (contact?.name ? `${contact.name}${contact.phone ? ` - ${contact.phone}` : ''}` : 'Contact information');
+                      return <li key={idx} className="text-sm">{displayText}</li>;
+                    })}
                   </ul>
                 </CardContent>
               </Card>
