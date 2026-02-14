@@ -1,0 +1,1 @@
+ALTER TABLE `activity_spots` ADD `placeId` int;

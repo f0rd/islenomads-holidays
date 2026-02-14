@@ -1,0 +1,75 @@
+{
+  "query": "SELECT name, atoll, COUNT(*) as count FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1 ORDER BY count DESC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, atoll, COUNT(*) as count FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1 ORDER BY count DESC",
+  "rows": [
+    {
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "count": "2"
+    },
+    {
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\tcount\nMaradhoo\tSeenu Atoll\t2\nFelidhoo\tVaavu Atoll\t2\nHinnavaru\tLhaviyani Atoll\t2\nHithadhoo\tSeenu Atoll\t2\nUngoofaaru\tRaa Atoll\t2\nDhiffushi\tKaafu Atoll\t2\nGuraidhoo\tKaafu Atoll\t2\nNaifaru\tLhaviyani Atoll\t2\nAlifushi\tRaa Atoll\t2\nKudahuvadhoo\tDhaalu Atoll\t2\nMuli\tMeemu Atoll\t2\nVeymandoo\tThaa Atoll\t2\nFulidhoo\tVaavu Atoll\t2\n",
+  "stderr": "",
+  "execution_time_ms": 69
+}

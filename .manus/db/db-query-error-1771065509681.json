@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO places (atollId, name, code, type)\nSELECT \n  a.id as atollId,\n  ig.name,\n  LOWER(REPLACE(REPLACE(REPLACE(ig.slug, '-', '_'), ' ', '_'), '--', '_')) as code,\n  'island' as type\nFROM (\n  SELECT \n    ig.name,\n    ig.slug,\n    ig.atoll,\n    ROW_NUMBER() OVER (PARTITION BY ig.name, ig.atoll ORDER BY ig.id) as rn\n  FROM island_guides ig\n  WHERE ig.contentType = 'island'\n) ig\nLEFT JOIN atolls a ON ig.atoll = a.name\nWHERE ig.rn = 1\nON DUPLICATE KEY UPDATE code = code",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO places (atollId, name, code, type)\nSELECT \n  a.id as atollId,\n  ig.name,\n  LOWER(REPLACE(REPLACE(REPLACE(ig.slug, '-', '_'), ' ', '_'), '--', '_')) as code,\n  'island' as type\nFROM (\n  SELECT \n    ig.name,\n    ig.slug,\n    ig.atoll,\n    ROW_NUMBER() OVER (PARTITION BY ig.name, ig.atoll ORDER BY ig.id) as rn\n  FROM island_guides ig\n  WHERE ig.contentType = 'island'\n) ig\nLEFT JOIN atolls a ON ig.atoll = a.name\nWHERE ig.rn = 1\nON DUPLICATE KEY UPDATE code = code",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1052 (23000) at line 1: Column 'code' in field list is ambiguous"
+  ]
+}

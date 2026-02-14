@@ -1359,3 +1359,38 @@
 - [x] Upload images to S3 and get CDN URLs (used Unsplash CDN URLs for images)
 - [x] Update island records with hero image URLs (successfully populated 109 islands with images)
 - [x] Test island cards to verify images display correctly (verified on Explore Maldives page - all cards showing images)
+
+
+## Feature - Check and Fix Island/Island Guide Mismatches
+- [ ] Query database to find islands without matching island guides
+- [ ] Identify island guides without matching islands
+- [ ] Report findings and create action plan
+- [ ] Fix mismatches by creating missing guides or removing orphaned entries
+
+
+## Feature - Restructure Database with Unified ID System
+- [ ] Update schema to create atolls table with id, name, region, heroImage, etc.
+- [ ] Update schema to create islands table with id, name, atollId (FK), coordinates, etc.
+- [ ] Update island_guides table to reference islandId instead of storing island/atoll data
+- [ ] Migrate existing atoll data from island_guides to new atolls table
+- [ ] Migrate existing island data from island_guides to new islands table
+- [ ] Update map_locations table to use proper entity IDs and types
+- [ ] Remove duplicate island guides and consolidate data
+- [ ] Test all relationships and verify data integrity
+
+
+## Feature - Create Unified Places Table and Restructure Database
+- [x] Create places table with atollId, name, code, and type columns
+- [x] Migrate island data from island_guides to places table (128 islands)
+- [x] Add placeId foreign key to island_guides table
+- [x] Link island guides to places (128 guides linked)
+- [x] Add placeId foreign key to boat_routes table (fromPlaceId, toPlaceId)
+- [x] Link boat routes to places
+- [x] Add placeId foreign key to map_locations table
+- [x] Link map locations to places
+- [x] Migrate dive sites and surf spots from activity_spots to places table
+- [x] Add placeId foreign key to activity_spots table
+- [x] Link activity_spots to places
+- [x] Remove duplicate island guides (13 duplicates removed, now 128 unique guides)
+- [x] Verify 1:1 relationships between places and island_guides
+- [x] Test website to ensure all relationships are working correctly

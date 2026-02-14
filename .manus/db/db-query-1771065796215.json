@@ -1,0 +1,15 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_island_guides,\n  (SELECT COUNT(DISTINCT placeId) FROM island_guides WHERE contentType = 'island' AND placeId IS NOT NULL) as unique_places,\n  (SELECT COUNT(*) FROM places WHERE type = 'island') as total_places\nFROM island_guides\nWHERE contentType = 'island'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_island_guides,\n  (SELECT COUNT(DISTINCT placeId) FROM island_guides WHERE contentType = 'island' AND placeId IS NOT NULL) as unique_places,\n  (SELECT COUNT(*) FROM places WHERE type = 'island') as total_places\nFROM island_guides\nWHERE contentType = 'island'",
+  "rows": [
+    {
+      "total_island_guides": "10",
+      "unique_places": "1",
+      "total_places": "128"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_island_guides\tunique_places\ttotal_places\n10\t1\t128\n",
+  "stderr": "",
+  "execution_time_ms": 69
+}

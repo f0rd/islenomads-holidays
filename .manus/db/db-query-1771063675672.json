@@ -1,0 +1,192 @@
+{
+  "query": "SELECT id, name, atoll, slug, overview FROM island_guides WHERE contentType = 'island' AND (name, atoll) IN (SELECT name, atoll FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1) ORDER BY name, atoll, id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, slug, overview FROM island_guides WHERE contentType = 'island' AND (name, atoll) IN (SELECT name, atoll FROM island_guides WHERE contentType = 'island' GROUP BY name, atoll HAVING COUNT(*) > 1) ORDER BY name, atoll, id",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "slug": "alifushi",
+      "overview": "Famous boat-building island with maritime heritage"
+    },
+    {
+      "id": "120034",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "slug": "alifushi-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "slug": "dhiffushi",
+      "overview": "Dhiffushi offers a perfect balance of accessibility and authenticity. Located just 30 minutes from Malé, the island features pristine beaches, excellent house reef snorkeling, and a welcoming local community. It's an ideal destination for those seeking a quieter island experience."
+    },
+    {
+      "id": "120048",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "slug": "dhiffushi-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60011",
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "felidhoo",
+      "overview": "Felidhoo is the administrative center of Vaavu Atoll and offers a unique blend of local culture and natural beauty. The island features pristine beaches, excellent diving sites, and a welcoming community. It's an ideal base for exploring the remote Vaavu Atoll."
+    },
+    {
+      "id": "120062",
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "felidhoo-island-vaavu",
+      "overview": "NULL"
+    },
+    {
+      "id": "60010",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "fulidhoo",
+      "overview": "Fulidhoo is a small, authentic local island offering a genuine Maldivian experience. The island features beautiful beaches, excellent snorkeling, and a welcoming community. It's an ideal destination for travelers seeking an off-the-beaten-path experience."
+    },
+    {
+      "id": "120063",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "slug": "fulidhoo-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "slug": "guraidhoo",
+      "overview": "Surf and local culture hub with excellent reef breaks"
+    },
+    {
+      "id": "150004",
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "slug": "guraidhoo-island",
+      "overview": "Guraidhoo is a charming local island in South Male Atoll with excellent house reefs and friendly locals."
+    },
+    {
+      "id": "60013",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "hinnavaru",
+      "overview": "Hinnavaru offers a perfect blend of accessibility and authenticity. The island features beautiful beaches, excellent house reef snorkeling, and a welcoming local community. It's an ideal destination for travelers seeking a quieter island experience with easy access to diving sites."
+    },
+    {
+      "id": "120044",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "hinnavaru-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60023",
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "hithadhoo",
+      "overview": "Largest southern city island with heritage and modern services"
+    },
+    {
+      "id": "120094",
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "hithadhoo-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60016",
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "slug": "kudahuvadhoo",
+      "overview": "Administrative island with rich local culture and heritage"
+    },
+    {
+      "id": "120082",
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "slug": "kudahuvadhoo-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60022",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "maradhoo",
+      "overview": "Residential island with local community and culture"
+    },
+    {
+      "id": "120095",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "slug": "maradhoo-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60018",
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "slug": "muli",
+      "overview": "Peaceful local island with beautiful beaches and culture"
+    },
+    {
+      "id": "120071",
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "slug": "muli-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60012",
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "naifaru",
+      "overview": "Naifaru is a bustling local island and the administrative center of Lhaviyani Atoll. The island offers authentic Maldivian culture, excellent diving opportunities, and a welcoming community. It's an ideal base for exploring the pristine Lhaviyani Atoll."
+    },
+    {
+      "id": "120046",
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "slug": "naifaru-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60028",
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll",
+      "slug": "ungoofaaru",
+      "overview": "Administrative capital of Raa with excellent services"
+    },
+    {
+      "id": "120037",
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll",
+      "slug": "ungoofaaru-island",
+      "overview": "NULL"
+    },
+    {
+      "id": "60024",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "slug": "veymandoo",
+      "overview": "Quiet and scenic island with peaceful atmosphere"
+    },
+    {
+      "id": "120089",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "slug": "veymandoo-island",
+      "overview": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tslug\toverview\n60027\tAlifushi\tRaa Atoll\talifushi\tFamous boat-building island with maritime heritage\n120034\tAlifushi\tRaa Atoll\talifushi-island\tNULL\n60004\tDhiffushi\tKaafu Atoll\tdhiffushi\tDhiffushi offers a perfect balance of accessibility and authenticity. Located just 30 minutes from Malé, the island features pristine beaches, excellent house reef snorkeling, and a welcoming local community. It's an ideal destination for those seeking a quieter island experience.\n120048\tDhiffushi\tKaafu Atoll\tdhiffushi-island\tNULL\n60011\tFelidhoo\tVaavu Atoll\tfelidhoo\tFelidhoo is the administrative center of Vaavu Atoll and offers a unique blend of local culture and natural beauty. The island features pristine beaches, excellent diving sites, and a welcoming community. It's an ideal base for exploring the remote Vaavu Atoll.\n120062\tFelidhoo\tVaavu Atoll\tfelidhoo-island-vaavu\tNULL\n60010\tFulidhoo\tVaavu Atoll\tfulidhoo\tFulidhoo is a small, authentic local island offering a genuine Maldivian experience. The island features beautiful beaches, excellent snorkeling, and a welcoming community. It's an ideal destination for travelers seeking an off-the-beaten-path experience.\n120063\tFulidhoo\tVaavu Atoll\tfulidhoo-island\tNULL\n60015\tGuraidhoo\tKaafu Atoll\tguraidhoo\tSurf and local culture hub with excellent reef breaks\n150004\tGuraidhoo\tKaafu Atoll\tguraidhoo-island\tGuraidhoo is a charming local island in South Male Atoll with excellent house reefs and friendly locals.\n60013\tHinnavaru\tLhaviyani Atoll\thinnavaru\tHinnavaru offers a perfect blend of accessibility and authenticity. The island features beautiful beaches, excellent house reef snorkeling, and a welcoming local community. It's an ideal destination for travelers seeking a quieter island experience with easy access to diving sites.\n120044\tHinnavaru\tLhaviyani Atoll\thinnavaru-island\tNULL\n60023\tHithadhoo\tSeenu Atoll\thithadhoo\tLargest southern city island with heritage and modern services\n120094\tHithadhoo\tSeenu Atoll\thithadhoo-island\tNULL\n60016\tKudahuvadhoo\tDhaalu Atoll\tkudahuvadhoo\tAdministrative island with rich local culture and heritage\n120082\tKudahuvadhoo\tDhaalu Atoll\tkudahuvadhoo-island\tNULL\n60022\tMaradhoo\tSeenu Atoll\tmaradhoo\tResidential island with local community and culture\n120095\tMaradhoo\tSeenu Atoll\tmaradhoo-island\tNULL\n60018\tMuli\tMeemu Atoll\tmuli\tPeaceful local island with beautiful beaches and culture\n120071\tMuli\tMeemu Atoll\tmuli-island\tNULL\n60012\tNaifaru\tLhaviyani Atoll\tnaifaru\tNaifaru is a bustling local island and the administrative center of Lhaviyani Atoll. The island offers authentic Maldivian culture, excellent diving opportunities, and a welcoming community. It's an ideal base for exploring the pristine Lhaviyani Atoll.\n120046\tNaifaru\tLhaviyani Atoll\tnaifaru-island\tNULL\n60028\tUngoofaaru\tRaa Atoll\tungoofaaru\tAdministrative capital of Raa with excellent services\n120037\tUngoofaaru\tRaa Atoll\tungoofaaru-island\tNULL\n60024\tVeymandoo\tThaa Atoll\tveymandoo\tQuiet and scenic island with peaceful atmosphere\n120089\tVeymandoo\tThaa Atoll\tveymandoo-island\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}
