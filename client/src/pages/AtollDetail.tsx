@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { getAtollHeroImage, getAttractionImage } from '@shared/atollImages';
+import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
 
 interface AtollData {
   id: number;
@@ -416,19 +417,16 @@ export default function AtollDetail() {
                 <Link key={island.id} href={`/island/${island.slug}`}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
-                      {island.slug && getAttractionImage('beach-sunset') ? (
+                      {island.slug ? (
                         <>
                           <img
-                            src={getAttractionImage('beach-sunset')}
+                            src={getIslandFeaturedImage(island.slug)}
                             alt={island.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </>
                       ) : null}
-                      <div className="text-center absolute inset-0 flex items-center justify-center">
-                        <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                      </div>
                     </div>
 
                     <CardContent className="flex-1 flex flex-col p-6">
