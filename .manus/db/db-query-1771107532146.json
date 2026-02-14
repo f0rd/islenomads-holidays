@@ -1,0 +1,170 @@
+{
+  "query": "SELECT id, name, overview, topThingsToDo, foodCafes, attractions FROM island_guides WHERE (overview IS NULL OR overview = '') OR (topThingsToDo IS NULL OR topThingsToDo = '') LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, overview, topThingsToDo, foodCafes, attractions FROM island_guides WHERE (overview IS NULL OR overview = '') OR (topThingsToDo IS NULL OR topThingsToDo = '') LIMIT 20;",
+  "rows": [
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "overview": "NULL",
+      "topThingsToDo": "[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world directly off Bodufolhudhoo's shores. Encounter colorful fish, reef sharks, and healthy corals just steps from the beach.\"},{\"emoji\":\"🎯\",\"title\":\"Manta Ray Excursion\",\"description\":\"Embark on a boat trip to nearby cleaning stations or feeding grounds to swim alongside majestic manta rays. This incredible encounter is a highlight for many visitors.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through the charming village of Bodufolhudhoo, observe local life, and interact with residents. Learn about Maldivian culture and daily routines.\"},{\"emoji\":\"🐠\",\"title\":\"Sunset Fishing Trip\",\"description\":\"Experience traditional Maldivian hand-line fishing as the sun sets over the Indian Ocean. Catch your own dinner, which can often be cooked fresh for you.\"},{\"emoji\":\"🏊\",\"title\":\"Sandbank Picnic & Swim\",\"description\":\"Take a short boat ride to a secluded sandbank for a private picnic lunch and pristine swimming. Enjoy the ultimate castaway experience on a tiny patch of white sand.\"},{\"emoji\":\"🏄\",\"title\":\"PADI Certified Diving\",\"description\":\"Explore incredible dive sites around Alifu Alif Atoll, known for diverse marine life, vibrant reefs, and potential encounters with pelagic species. Options for all certification levels.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking or Stand-Up Paddleboarding\",\"description\":\"Glide across the calm, turquoise lagoon surrounding Bodufolhudhoo. Enjoy a peaceful paddle and take in the stunning views of the island from the water.\"},{\"emoji\":\"🎯\",\"title\":\"Dolphin Watching Cruise\",\"description\":\"Set out on a boat at dawn or dusk to witness playful pods of dolphins leaping and swimming in their natural habitat. A magical experience for nature lovers.\"}]",
+      "foodCafes": "[]",
+      "attractions": "NULL"
+    },
+    {
+      "id": "120056",
+      "name": "Feridhoo",
+      "overview": "NULL",
+      "topThingsToDo": "[{\"emoji\":\"🏄\",\"title\":\"House Reef Diving\",\"description\":\"Pristine house reef with 80% live corals, exceptional diving directly from beach\"},{\"emoji\":\"🤿\",\"title\":\"Snorkeling\",\"description\":\"Excellent snorkeling with diverse marine life, vibrant coral gardens\"},{\"emoji\":\"🏊\",\"title\":\"Swimming\",\"description\":\"Crystal-clear waters, beautiful beaches, perfect for swimming\"},{\"emoji\":\"🌅\",\"title\":\"Sunset Views\",\"description\":\"Spectacular sunsets over the ocean, perfect for photography\"},{\"emoji\":\"🏝️\",\"title\":\"Island Exploration\",\"description\":\"Walk around island, visit local shops, experience authentic culture\"}]",
+      "foodCafes": "[{\"emoji\":\"👥\",\"name\":\"️ Local Restaurants\",\"description\":\"Traditional Maldivian cuisine and fresh seafood\"},{\"emoji\":\"☕\",\"name\":\"Cafes\",\"description\":\"Tea, coffee, and snacks\"}]",
+      "attractions": "[{\"name\":\"House Reef\",\"description\":\"80% live corals, accessible 24/7 from shore, pristine coral gardens\"},{\"name\":\"Feridhoo Caves\",\"description\":\"Unique underwater formation with swim-throughs\"},{\"name\":\"Teardrop Lagoon\",\"description\":\"Turquoise lagoon with excellent visibility\"}]"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "overview": "NULL",
+      "topThingsToDo": "[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world just steps from the shore, encountering colorful coral formations and diverse marine life.\"},{\"emoji\":\"🌅\",\"title\":\"Dolphin Cruise at Sunset\",\"description\":\"Embark on a traditional Maldivian Dhoni to witness playful pods of dolphins leaping through the waves as the sun dips below the horizon.\"},{\"emoji\":\"🐠\",\"title\":\"Traditional Maldivian Fishing Trip\",\"description\":\"Experience hand-line fishing like a local, trying your luck at catching reef fish often used for a fresh BBQ dinner.\"},{\"emoji\":\"🏝️\",\"title\":\"Island Hopping to Nearby Sandbanks\",\"description\":\"Explore pristine, secluded sandbanks that emerge from the ocean, perfect for sunbathing, swimming, and photography in untouched natural beauty.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through Himandhoo village, observe local life, visit the mosque, and interact with friendly islanders to understand Maldivian culture.\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving Excursion\",\"description\":\"Dive into the deeper waters surrounding Himandhoo to explore spectacular dive sites, encountering manta rays, reef sharks, and intricate coral gardens.\"},{\"emoji\":\"🏖️\",\"title\":\"Beachfront BBQ Dinner\",\"description\":\"Indulge in a freshly grilled seafood and local delicacies dinner right on the beach, under a canopy of stars.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking and Paddleboarding\",\"description\":\"Gently glide over the crystal-clear lagoon waters, offering a serene way to explore the coastline and enjoy the tranquility of the ocean.\"}]",
+      "foodCafes": "[]",
+      "attractions": "NULL"
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "overview": "NULL",
+      "topThingsToDo": "[{\"emoji\":\"🤿\",\"title\":\"Maalhos House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world just steps from the shore, teeming with colorful fish and healthy corals.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through the village, observe local life, visit the mosque, and interact with friendly islanders to understand Maldivian culture.\"},{\"emoji\":\"🐠\",\"title\":\"Sunset Fishing Trip\",\"description\":\"Experience traditional Maldivian hand-line fishing as the sun sets, with your catch potentially being prepared for dinner.\"},{\"emoji\":\"🎯\",\"title\":\"Sandbank Excursion & Picnic\",\"description\":\"Take a short boat ride to a secluded sandbank, perfect for sunbathing, swimming, and enjoying a private picnic lunch.\"},{\"emoji\":\"🎯\",\"title\":\"Dolphin Watching Cruise\",\"description\":\"Embark on a boat trip to spot playful pods of dolphins leaping and swimming in their natural ocean habitat.\"},{\"emoji\":\"👨‍🍳\",\"title\":\"Traditional Maldivian Cooking Class\",\"description\":\"Learn to prepare authentic Maldivian dishes like 'Garudhiya' or 'Mas Huni' with local ingredients and guidance.\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving at Nearby Dive Sites\",\"description\":\"Explore diverse dive sites around Maalhos, encountering reef sharks, manta rays, and an abundance of marine life in crystal-clear waters.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking or Stand-Up Paddleboarding\",\"description\":\"Paddle across the calm turquoise lagoon, enjoying panoramic views of the island and surrounding ocean at your own pace.\"}]",
+      "foodCafes": "[]",
+      "attractions": "NULL"
+    },
+    {
+      "id": "120059",
+      "name": "Mathiveri",
+      "overview": "NULL",
+      "topThingsToDo": "[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Small intimate island with snorkeling\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving\",\"description\":\"Professional dive centers available\"},{\"emoji\":\"🏝️\",\"title\":\"Island Exploration\",\"description\":\"Small intimate local island\"}]",
+      "foodCafes": "[{\"emoji\":\"👥\",\"name\":\"Local Guesthouses\",\"description\":\"Serve meals for guests\"}]",
+      "attractions": "[{\"name\":\"House Reef\",\"description\":\"Snorkeling opportunities\"},{\"name\":\"Small Island\",\"description\":\"Intimate local experience\"}]"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "overview": "Easy ferry access and bikini beach, perfect for budget travelers",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "overview": "Long sandy island with rich marine life and excellent diving",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180005",
+      "name": "Dharavandhoo",
+      "overview": "Gateway to Hanifaru Bay and UNESCO Biosphere Reserve",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180007",
+      "name": "Guraidhoo",
+      "overview": "Surf and local culture hub with excellent reef breaks",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180009",
+      "name": "Rasdhoo",
+      "overview": "Diving hotspot with pristine coral reefs and marine life",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "overview": "Urban island near airport with modern amenities and services",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180011",
+      "name": "Kudahuvadhoo",
+      "overview": "Administrative island with rich local culture and heritage",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180012",
+      "name": "Naifaru",
+      "overview": "Busy island with excellent services and local amenities",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180013",
+      "name": "Fodhdhoo",
+      "overview": "Quiet eco island with pristine natural environment",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180014",
+      "name": "Felidhoo",
+      "overview": "Local life and diving opportunities with authentic experiences",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180015",
+      "name": "Muli",
+      "overview": "Peaceful local island with beautiful beaches and culture",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180016",
+      "name": "Kolhufushi",
+      "overview": "Traditional fishing island with authentic Maldivian heritage",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180017",
+      "name": "Gan",
+      "overview": "Addu city heritage island with WWII history and culture",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "overview": "Connected to Addu city with local amenities and services",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "overview": "Residential island with local community and culture",
+      "topThingsToDo": "NULL",
+      "foodCafes": "NULL",
+      "attractions": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\toverview\ttopThingsToDo\tfoodCafes\tattractions\n120055\tBodufolhudhoo\tNULL\t[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world directly off Bodufolhudhoo's shores. Encounter colorful fish, reef sharks, and healthy corals just steps from the beach.\"},{\"emoji\":\"🎯\",\"title\":\"Manta Ray Excursion\",\"description\":\"Embark on a boat trip to nearby cleaning stations or feeding grounds to swim alongside majestic manta rays. This incredible encounter is a highlight for many visitors.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through the charming village of Bodufolhudhoo, observe local life, and interact with residents. Learn about Maldivian culture and daily routines.\"},{\"emoji\":\"🐠\",\"title\":\"Sunset Fishing Trip\",\"description\":\"Experience traditional Maldivian hand-line fishing as the sun sets over the Indian Ocean. Catch your own dinner, which can often be cooked fresh for you.\"},{\"emoji\":\"🏊\",\"title\":\"Sandbank Picnic & Swim\",\"description\":\"Take a short boat ride to a secluded sandbank for a private picnic lunch and pristine swimming. Enjoy the ultimate castaway experience on a tiny patch of white sand.\"},{\"emoji\":\"🏄\",\"title\":\"PADI Certified Diving\",\"description\":\"Explore incredible dive sites around Alifu Alif Atoll, known for diverse marine life, vibrant reefs, and potential encounters with pelagic species. Options for all certification levels.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking or Stand-Up Paddleboarding\",\"description\":\"Glide across the calm, turquoise lagoon surrounding Bodufolhudhoo. Enjoy a peaceful paddle and take in the stunning views of the island from the water.\"},{\"emoji\":\"🎯\",\"title\":\"Dolphin Watching Cruise\",\"description\":\"Set out on a boat at dawn or dusk to witness playful pods of dolphins leaping and swimming in their natural habitat. A magical experience for nature lovers.\"}]\t[]\tNULL\n120056\tFeridhoo\tNULL\t[{\"emoji\":\"🏄\",\"title\":\"House Reef Diving\",\"description\":\"Pristine house reef with 80% live corals, exceptional diving directly from beach\"},{\"emoji\":\"🤿\",\"title\":\"Snorkeling\",\"description\":\"Excellent snorkeling with diverse marine life, vibrant coral gardens\"},{\"emoji\":\"🏊\",\"title\":\"Swimming\",\"description\":\"Crystal-clear waters, beautiful beaches, perfect for swimming\"},{\"emoji\":\"🌅\",\"title\":\"Sunset Views\",\"description\":\"Spectacular sunsets over the ocean, perfect for photography\"},{\"emoji\":\"🏝️\",\"title\":\"Island Exploration\",\"description\":\"Walk around island, visit local shops, experience authentic culture\"}]\t[{\"emoji\":\"👥\",\"name\":\"️ Local Restaurants\",\"description\":\"Traditional Maldivian cuisine and fresh seafood\"},{\"emoji\":\"☕\",\"name\":\"Cafes\",\"description\":\"Tea, coffee, and snacks\"}]\t[{\"name\":\"House Reef\",\"description\":\"80% live corals, accessible 24/7 from shore, pristine coral gardens\"},{\"name\":\"Feridhoo Caves\",\"description\":\"Unique underwater formation with swim-throughs\"},{\"name\":\"Teardrop Lagoon\",\"description\":\"Turquoise lagoon with excellent visibility\"}]\n120057\tHimandhoo\tNULL\t[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world just steps from the shore, encountering colorful coral formations and diverse marine life.\"},{\"emoji\":\"🌅\",\"title\":\"Dolphin Cruise at Sunset\",\"description\":\"Embark on a traditional Maldivian Dhoni to witness playful pods of dolphins leaping through the waves as the sun dips below the horizon.\"},{\"emoji\":\"🐠\",\"title\":\"Traditional Maldivian Fishing Trip\",\"description\":\"Experience hand-line fishing like a local, trying your luck at catching reef fish often used for a fresh BBQ dinner.\"},{\"emoji\":\"🏝️\",\"title\":\"Island Hopping to Nearby Sandbanks\",\"description\":\"Explore pristine, secluded sandbanks that emerge from the ocean, perfect for sunbathing, swimming, and photography in untouched natural beauty.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through Himandhoo village, observe local life, visit the mosque, and interact with friendly islanders to understand Maldivian culture.\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving Excursion\",\"description\":\"Dive into the deeper waters surrounding Himandhoo to explore spectacular dive sites, encountering manta rays, reef sharks, and intricate coral gardens.\"},{\"emoji\":\"🏖️\",\"title\":\"Beachfront BBQ Dinner\",\"description\":\"Indulge in a freshly grilled seafood and local delicacies dinner right on the beach, under a canopy of stars.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking and Paddleboarding\",\"description\":\"Gently glide over the crystal-clear lagoon waters, offering a serene way to explore the coastline and enjoy the tranquility of the ocean.\"}]\t[]\tNULL\n120058\tMaalhos\tNULL\t[{\"emoji\":\"🤿\",\"title\":\"Maalhos House Reef Snorkeling\",\"description\":\"Discover the vibrant underwater world just steps from the shore, teeming with colorful fish and healthy corals.\"},{\"emoji\":\"🚶\",\"title\":\"Local Island Walking Tour\",\"description\":\"Stroll through the village, observe local life, visit the mosque, and interact with friendly islanders to understand Maldivian culture.\"},{\"emoji\":\"🐠\",\"title\":\"Sunset Fishing Trip\",\"description\":\"Experience traditional Maldivian hand-line fishing as the sun sets, with your catch potentially being prepared for dinner.\"},{\"emoji\":\"🎯\",\"title\":\"Sandbank Excursion & Picnic\",\"description\":\"Take a short boat ride to a secluded sandbank, perfect for sunbathing, swimming, and enjoying a private picnic lunch.\"},{\"emoji\":\"🎯\",\"title\":\"Dolphin Watching Cruise\",\"description\":\"Embark on a boat trip to spot playful pods of dolphins leaping and swimming in their natural ocean habitat.\"},{\"emoji\":\"👨‍🍳\",\"title\":\"Traditional Maldivian Cooking Class\",\"description\":\"Learn to prepare authentic Maldivian dishes like 'Garudhiya' or 'Mas Huni' with local ingredients and guidance.\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving at Nearby Dive Sites\",\"description\":\"Explore diverse dive sites around Maalhos, encountering reef sharks, manta rays, and an abundance of marine life in crystal-clear waters.\"},{\"emoji\":\"🎯\",\"title\":\"Kayaking or Stand-Up Paddleboarding\",\"description\":\"Paddle across the calm turquoise lagoon, enjoying panoramic views of the island and surrounding ocean at your own pace.\"}]\t[]\tNULL\n120059\tMathiveri\tNULL\t[{\"emoji\":\"🤿\",\"title\":\"House Reef Snorkeling\",\"description\":\"Small intimate island with snorkeling\"},{\"emoji\":\"🏄\",\"title\":\"Scuba Diving\",\"description\":\"Professional dive centers available\"},{\"emoji\":\"🏝️\",\"title\":\"Island Exploration\",\"description\":\"Small intimate local island\"}]\t[{\"emoji\":\"👥\",\"name\":\"Local Guesthouses\",\"description\":\"Serve meals for guests\"}]\t[{\"name\":\"House Reef\",\"description\":\"Snorkeling opportunities\"},{\"name\":\"Small Island\",\"description\":\"Intimate local experience\"}]\n180002\tFulidhoo\tEasy ferry access and bikini beach, perfect for budget travelers\tNULL\tNULL\tNULL\n180003\tDhigurah\tLong sandy island with rich marine life and excellent diving\tNULL\tNULL\tNULL\n180005\tDharavandhoo\tGateway to Hanifaru Bay and UNESCO Biosphere Reserve\tNULL\tNULL\tNULL\n180007\tGuraidhoo\tSurf and local culture hub with excellent reef breaks\tNULL\tNULL\tNULL\n180009\tRasdhoo\tDiving hotspot with pristine coral reefs and marine life\tNULL\tNULL\tNULL\n180010\tHulhumalé\tUrban island near airport with modern amenities and services\tNULL\tNULL\tNULL\n180011\tKudahuvadhoo\tAdministrative island with rich local culture and heritage\tNULL\tNULL\tNULL\n180012\tNaifaru\tBusy island with excellent services and local amenities\tNULL\tNULL\tNULL\n180013\tFodhdhoo\tQuiet eco island with pristine natural environment\tNULL\tNULL\tNULL\n180014\tFelidhoo\tLocal life and diving opportunities with authentic experiences\tNULL\tNULL\tNULL\n180015\tMuli\tPeaceful local island with beautiful beaches and culture\tNULL\tNULL\tNULL\n180016\tKolhufushi\tTraditional fishing island with authentic Maldivian heritage\tNULL\tNULL\tNULL\n180017\tGan\tAddu city heritage island with WWII history and culture\tNULL\tNULL\tNULL\n180018\tFeidhoo\tConnected to Addu city with local amenities and services\tNULL\tNULL\tNULL\n180019\tMaradhoo\tResidential island with local community and culture\tNULL\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 68
+}
