@@ -1,0 +1,40 @@
+{
+  "query": "SELECT ig.id, ig.name as guide_name, COUNT(p.id) as matching_places FROM island_guides ig LEFT JOIN places p ON ig.name = p.name GROUP BY ig.id, ig.name HAVING matching_places = 0 ORDER BY ig.id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.id, ig.name as guide_name, COUNT(p.id) as matching_places FROM island_guides ig LEFT JOIN places p ON ig.name = p.name GROUP BY ig.id, ig.name HAVING matching_places = 0 ORDER BY ig.id LIMIT 20;",
+  "rows": [
+    {
+      "id": "180027",
+      "guide_name": "Omadhoo",
+      "matching_places": "0"
+    },
+    {
+      "id": "180029",
+      "guide_name": "Dhangethi",
+      "matching_places": "0"
+    },
+    {
+      "id": "180033",
+      "guide_name": "Goidhoo",
+      "matching_places": "0"
+    },
+    {
+      "id": "180035",
+      "guide_name": "Fehendhoo",
+      "matching_places": "0"
+    },
+    {
+      "id": "180036",
+      "guide_name": "Hanimadhoo",
+      "matching_places": "0"
+    },
+    {
+      "id": "180037",
+      "guide_name": "Fuvahmulah",
+      "matching_places": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tguide_name\tmatching_places\n180027\tOmadhoo\t0\n180029\tDhangethi\t0\n180033\tGoidhoo\t0\n180035\tFehendhoo\t0\n180036\tHanimadhoo\t0\n180037\tFuvahmulah\t0\n",
+  "stderr": "",
+  "execution_time_ms": 80
+}

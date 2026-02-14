@@ -1505,3 +1505,14 @@
 - [x] Add error message for invalid island IDs
 - [x] Create vitest tests for error handling (5 tests passing)
 - [x] Test graceful fallback to /explore-maldives page
+
+
+## Fix Unmapped Island Guides
+- [x] Identify 6 unmapped island guides
+- [x] Update Fuvahmulah → Fuvamulah mapping
+- [x] Update Goidhoo → Godhdhoo mapping
+- [x] Add Omadhoo to places table (ID: 30001)
+- [x] Add Dhangethi to places table (ID: 30002)
+- [x] Add Fehendhoo to places table (ID: 30003)
+- [x] Add Hanimadhoo to places table (ID: 30004)
+- [x] Verify all guides are now properly mapped (6/6 guides mapped)

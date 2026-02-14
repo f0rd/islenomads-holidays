@@ -1,0 +1,350 @@
+{
+  "query": "SELECT id, name FROM places WHERE name LIKE '%dhoo%' OR name LIKE '%dha%' OR name LIKE '%feh%' OR name LIKE '%hani%' OR name LIKE '%oma%' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM places WHERE name LIKE '%dhoo%' OR name LIKE '%dha%' OR name LIKE '%feh%' OR name LIKE '%hani%' OR name LIKE '%oma%' ORDER BY name;",
+  "rows": [
+    {
+      "id": "17",
+      "name": "Bandidhoo"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo"
+    },
+    {
+      "id": "228",
+      "name": "Felidhoo House Reef"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu"
+    },
+    {
+      "id": "229",
+      "name": "Felidhoo Lagoon Snorkel"
+    },
+    {
+      "id": "170",
+      "name": "Felidhoo Pass"
+    },
+    {
+      "id": "198",
+      "name": "Felidhoo Reef"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo"
+    },
+    {
+      "id": "78",
+      "name": "Filladhoo"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo"
+    },
+    {
+      "id": "142",
+      "name": "Fulidhoo House Reef"
+    },
+    {
+      "id": "42",
+      "name": "Fulidhoo Kandu"
+    },
+    {
+      "id": "155",
+      "name": "Fulidhoo Reef"
+    },
+    {
+      "id": "196",
+      "name": "Fulidhoo Reef"
+    },
+    {
+      "id": "227",
+      "name": "Fulidhoo Reef Snorkel"
+    },
+    {
+      "id": "79",
+      "name": "Funadhoo"
+    },
+    {
+      "id": "45",
+      "name": "Gemendhoo"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo"
+    },
+    {
+      "id": "81",
+      "name": "Guraidhoo"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo"
+    },
+    {
+      "id": "25",
+      "name": "Hithadhoo"
+    },
+    {
+      "id": "113",
+      "name": "Hulhumeedhoo"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo"
+    },
+    {
+      "id": "47",
+      "name": "Inguraidhoo"
+    },
+    {
+      "id": "85",
+      "name": "Isdhoo"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo"
+    },
+    {
+      "id": "116",
+      "name": "Kadhoo"
+    },
+    {
+      "id": "48",
+      "name": "Kalaidhoo"
+    },
+    {
+      "id": "49",
+      "name": "Kandooma"
+    },
+    {
+      "id": "213",
+      "name": "Kandooma House Reef"
+    },
+    {
+      "id": "208",
+      "name": "Kandooma Kandu"
+    },
+    {
+      "id": "214",
+      "name": "Kandooma Lagoon Snorkel"
+    },
+    {
+      "id": "176",
+      "name": "Kandooma Reef"
+    },
+    {
+      "id": "209",
+      "name": "Kandooma Reef"
+    },
+    {
+      "id": "215",
+      "name": "Kandooma Reef Drift"
+    },
+    {
+      "id": "26",
+      "name": "Kandooma Thila"
+    },
+    {
+      "id": "118",
+      "name": "Kendhoo"
+    },
+    {
+      "id": "50",
+      "name": "Keyodhoo"
+    },
+    {
+      "id": "51",
+      "name": "Kudahuvadhoo"
+    },
+    {
+      "id": "27",
+      "name": "Kumundhoo"
+    },
+    {
+      "id": "86",
+      "name": "Kurendhoo"
+    },
+    {
+      "id": "29",
+      "name": "Maaenboodhoo"
+    },
+    {
+      "id": "121",
+      "name": "Maarandhoo"
+    },
+    {
+      "id": "55",
+      "name": "Magoodhoo"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo"
+    },
+    {
+      "id": "136",
+      "name": "Maradhoo Kandu"
+    },
+    {
+      "id": "88",
+      "name": "Meedhoo"
+    },
+    {
+      "id": "57",
+      "name": "Meedhoo"
+    },
+    {
+      "id": "89",
+      "name": "Milandhoo"
+    },
+    {
+      "id": "32",
+      "name": "Mulhadhoo"
+    },
+    {
+      "id": "91",
+      "name": "Muraidhoo"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo"
+    },
+    {
+      "id": "59",
+      "name": "Nellaidhoo"
+    },
+    {
+      "id": "60",
+      "name": "Neykurendhoo"
+    },
+    {
+      "id": "61",
+      "name": "Nilandhoo"
+    },
+    {
+      "id": "62",
+      "name": "Noomaraa"
+    },
+    {
+      "id": "34",
+      "name": "Raimmandhoo"
+    },
+    {
+      "id": "63",
+      "name": "Rakeedhoo"
+    },
+    {
+      "id": "35",
+      "name": "Rasdhoo"
+    },
+    {
+      "id": "218",
+      "name": "Rasdhoo House Reef"
+    },
+    {
+      "id": "185",
+      "name": "Rasdhoo Kandu"
+    },
+    {
+      "id": "219",
+      "name": "Rasdhoo Lagoon Snorkel"
+    },
+    {
+      "id": "64",
+      "name": "Rasdhoo Madivaru"
+    },
+    {
+      "id": "157",
+      "name": "Rasdhoo Reef"
+    },
+    {
+      "id": "220",
+      "name": "Rasdhoo Reef Wall"
+    },
+    {
+      "id": "94",
+      "name": "Rinbudhoo"
+    },
+    {
+      "id": "124",
+      "name": "Thakandhoo"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo"
+    },
+    {
+      "id": "67",
+      "name": "Thulusdhoo"
+    },
+    {
+      "id": "211",
+      "name": "Thulusdhoo House Reef"
+    },
+    {
+      "id": "153",
+      "name": "Thulusdhoo Reef"
+    },
+    {
+      "id": "37",
+      "name": "Vaikaradhoo"
+    },
+    {
+      "id": "38",
+      "name": "Velidhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n17\tBandidhoo\n72\tBileddhoo\n18\tBodufolhudhoo\n19\tDharanboodhoo\n40\tDharavandhoo\n102\tDhiddhoo\n2\tEydhafushi\n76\tFeidhoo\n3\tFelidhoo\n228\tFelidhoo House Reef\n20\tFelidhoo Kandu\n229\tFelidhoo Lagoon Snorkel\n170\tFelidhoo Pass\n198\tFelidhoo Reef\n41\tFeridhoo\n77\tFeydhoo\n78\tFilladhoo\n22\tFodhdhoo\n108\tFulhadhoo\n109\tFulidhoo\n142\tFulidhoo House Reef\n42\tFulidhoo Kandu\n155\tFulidhoo Reef\n196\tFulidhoo Reef\n227\tFulidhoo Reef Snorkel\n79\tFunadhoo\n45\tGemendhoo\n111\tGodhdhoo\n81\tGuraidhoo\n82\tHimandhoo\n46\tHirimaradhoo\n25\tHithadhoo\n113\tHulhumeedhoo\n6\tIhavandhoo\n47\tInguraidhoo\n85\tIsdhoo\n7\tKaashidhoo\n116\tKadhoo\n48\tKalaidhoo\n49\tKandooma\n213\tKandooma House Reef\n208\tKandooma Kandu\n214\tKandooma Lagoon Snorkel\n176\tKandooma Reef\n209\tKandooma Reef\n215\tKandooma Reef Drift\n26\tKandooma Thila\n118\tKendhoo\n50\tKeyodhoo\n51\tKudahuvadhoo\n27\tKumundhoo\n86\tKurendhoo\n29\tMaaenboodhoo\n121\tMaarandhoo\n55\tMagoodhoo\n11\tMakunudhoo\n12\tMaradhoo\n136\tMaradhoo Kandu\n88\tMeedhoo\n57\tMeedhoo\n89\tMilandhoo\n32\tMulhadhoo\n91\tMuraidhoo\n14\tNaivaadhoo\n59\tNellaidhoo\n60\tNeykurendhoo\n61\tNilandhoo\n62\tNoomaraa\n34\tRaimmandhoo\n63\tRakeedhoo\n35\tRasdhoo\n218\tRasdhoo House Reef\n185\tRasdhoo Kandu\n219\tRasdhoo Lagoon Snorkel\n64\tRasdhoo Madivaru\n157\tRasdhoo Reef\n220\tRasdhoo Reef Wall\n94\tRinbudhoo\n124\tThakandhoo\n16\tThinadhoo\n67\tThulusdhoo\n211\tThulusdhoo House Reef\n153\tThulusdhoo Reef\n37\tVaikaradhoo\n38\tVelidhoo\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}
