@@ -350,15 +350,24 @@ export async function getMapLocationWithGuide(id: number): Promise<any> {
 }
 
 // Island Guides helpers
-export async function getIslandGuides(published?: boolean): Promise<IslandGuide[]> {
+export async function getIslandGuides(published?: boolean): Promise<any[]> {
   const db = await getDb();
   if (!db) return [];
 
-  const query = db.select().from(islandGuides);
+  let query = db
+    .select()
+    .from(islandGuides)
+    .leftJoin(places, eq(places.name, islandGuides.name));
+  
   if (published !== undefined) {
-    return query.where(eq(islandGuides.published, published ? 1 : 0)) as any;
+    query = query.where(eq(islandGuides.published, published ? 1 : 0)) as any;
   }
-  return query as any;
+  
+  const results = await query;
+  return results.map((row: any) => ({
+    ...row.island_guides,
+    placeId: row.places?.id,
+  }));
 }
 
 export async function getFeaturedIslandGuides(limit: number = 3): Promise<IslandGuide[]> {

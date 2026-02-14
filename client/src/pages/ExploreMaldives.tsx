@@ -398,7 +398,7 @@ export default function ExploreMaldives() {
               {filteredIslands.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredIslands.map((island: IslandWithSpots) => (
-                    <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                    <Link key={island.id} href={getIslandGuideUrl((island as any).placeId || island.id)}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
