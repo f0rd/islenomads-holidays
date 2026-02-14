@@ -153,7 +153,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-gray-100 to-white">
+      <section className="relative min-h-screen md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-20 bg-gradient-to-b from-gray-100 to-white">
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
@@ -163,17 +163,17 @@ export default function Home() {
         />
 
         {/* Hero Content */}
-        <div className="container relative z-10 text-center">
-          <div className="max-w-4xl mx-auto space-y-6">
+        <div className="container relative z-10 text-center px-4 md:px-6">
+          <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100 text-teal-700 text-sm font-medium">
-              <Sparkles size={16} />
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full bg-teal-100 text-teal-700 text-xs md:text-sm font-medium">
+              <Sparkles size={14} className="md:w-4 md:h-4" />
               Discover Your Paradise
             </div>
 
             {/* Main Title */}
             <h1
-              className={`text-5xl md:text-6xl lg:text-7xl text-gray-900 leading-tight font-bold transition-all duration-1000 ${
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-gray-900 leading-tight font-bold transition-all duration-1000 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
@@ -182,24 +182,24 @@ export default function Home() {
               <span className="text-teal-500">Maldives</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
               Experience luxury island living with pristine beaches, crystal-clear waters, and unforgettable moments. Your dream vacation awaits.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Link href="/packages">
+            <div className="flex flex-col gap-3 md:gap-4 justify-center items-center pt-2 md:pt-4">
+              <Link href="/packages" className="w-full md:w-auto">
                 <Button
                   size="lg"
-                  className="rounded-full px-8 py-6 text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105"
+                  className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   Plan Your Trip
                 </Button>
               </Link>
-              <Link href="#contact">
+              <Link href="#contact" className="w-full md:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full px-8 py-6 text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+                  className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   Contact Us
                 </Button>
@@ -209,9 +209,9 @@ export default function Home() {
         </div>
 
         {/* Statistics Overlay */}
-        <div className="absolute -bottom-24 left-0 right-0 z-20">
+        <div className="absolute -bottom-20 md:-bottom-24 left-0 right-0 z-20 px-4 md:px-6">
           <div className="container">
-            <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-2xl mx-auto">
               {[
                 { number: "500+", label: "Happy Travelers" },
                 { number: "50+", label: "Island Resorts" },
@@ -219,12 +219,12 @@ export default function Home() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white/80 backdrop-blur-md rounded-lg p-4 border border-gray-200 text-center shadow-sm"
+                  className="bg-white/80 backdrop-blur-md rounded-lg p-2 md:p-4 border border-gray-200 text-center shadow-sm"
                 >
-                  <div className="text-3xl md:text-4xl font-bold text-teal-500">
+                  <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-teal-500">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                  <div className="text-xs md:text-sm text-gray-600 mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -233,18 +233,18 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 bg-white pt-32">
+      <section className="py-12 md:py-20 bg-white pt-16 md:pt-32 px-4 md:px-6">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
               Why Choose Isle Nomads?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto">
               We craft personalized Maldives experiences that exceed expectations, combining luxury, adventure, and authentic island culture.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               {
                 icon: Anchor,
@@ -273,16 +273,16 @@ export default function Home() {
                   key={index}
                   className="border border-teal-200 shadow-sm hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-teal-50 hover:border-teal-400"
                 >
-                  <CardContent className="p-8 text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-teal-100 rounded-full">
-                        <IconComponent size={32} className="text-teal-500" />
+                  <CardContent className="p-4 md:p-8 text-center">
+                    <div className="flex justify-center mb-3 md:mb-4">
+                      <div className="p-2 md:p-3 bg-teal-100 rounded-full">
+                        <IconComponent size={24} className="md:w-8 md:h-8 text-teal-500" />
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-base md:text-xl font-bold text-gray-900 mb-2">
                       {benefit.title}
                     </h3>
-                    <p className="text-gray-600">{benefit.description}</p>
+                    <p className="text-sm md:text-base text-gray-600">{benefit.description}</p>
                   </CardContent>
                 </Card>
               );

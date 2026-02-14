@@ -225,18 +225,18 @@ export default function ContactFormEnhanced() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-primary-foreground/10 backdrop-blur-md rounded-lg p-8 border border-primary-foreground/20">
+      <form onSubmit={handleSubmit} className="bg-primary-foreground/10 backdrop-blur-md rounded-lg p-4 md:p-8 border border-primary-foreground/20">
         {/* Step 1: Basic Information */}
         {currentStep === 1 && (
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             <div>
-              <h2 className="text-2xl font-bold text-primary-foreground mb-2">Design Your Perfect Maldives Escape</h2>
-              <p className="text-primary-foreground/70">Let's start with your basic information</p>
+              <h2 className="text-xl md:text-2xl font-bold text-primary-foreground mb-2">Design Your Perfect Maldives Escape</h2>
+              <p className="text-sm md:text-base text-primary-foreground/70">Let's start with your basic information</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-primary-foreground font-semibold">
+                <Label htmlFor="name" className="text-xs md:text-sm text-primary-foreground font-semibold">
                   Full Name *
                 </Label>
                 <Input
@@ -246,13 +246,13 @@ export default function ContactFormEnhanced() {
                   placeholder="Your full name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`bg-background/80 border-border text-foreground ${errors.name ? "border-destructive" : ""}`}
+                  className={`bg-background/80 border-border text-foreground text-base md:text-sm py-3 md:py-2 ${errors.name ? "border-destructive" : ""}`}
                 />
-                {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+                {errors.name && <p className="text-xs md:text-sm text-destructive">{errors.name}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-primary-foreground font-semibold">
+                <Label htmlFor="email" className="text-xs md:text-sm text-primary-foreground font-semibold">
                   Email Address *
                 </Label>
                 <Input
@@ -262,13 +262,13 @@ export default function ContactFormEnhanced() {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`bg-background/80 border-border text-foreground ${errors.email ? "border-destructive" : ""}`}
+                  className={`bg-background/80 border-border text-foreground text-base md:text-sm py-3 md:py-2 ${errors.email ? "border-destructive" : ""}`}
                 />
-                {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
+                {errors.email && <p className="text-xs md:text-sm text-destructive">{errors.email}</p>}
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="phone" className="text-primary-foreground font-semibold">
+                <Label htmlFor="phone" className="text-xs md:text-sm text-primary-foreground font-semibold">
                   Phone Number *
                 </Label>
                 <Input
@@ -278,9 +278,9 @@ export default function ContactFormEnhanced() {
                   placeholder="+1 (555) 000-0000"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`bg-background/80 border-border text-foreground ${errors.phone ? "border-destructive" : ""}`}
+                  className={`bg-background/80 border-border text-foreground text-base md:text-sm py-3 md:py-2 ${errors.phone ? "border-destructive" : ""}`}
                 />
-                {errors.phone && <p className="text-sm text-destructive">{errors.phone}</p>}
+                {errors.phone && <p className="text-xs md:text-sm text-destructive">{errors.phone}</p>}
               </div>
             </div>
           </div>
@@ -296,25 +296,25 @@ export default function ContactFormEnhanced() {
 
             {/* Travel Style Selection */}
             <div className="space-y-3">
-              <Label className="text-primary-foreground font-semibold">What's your travel style? *</Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <Label className="text-xs md:text-sm text-primary-foreground font-semibold">What's your travel style? *</Label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
                 {TRAVEL_STYLES.map((style) => (
                   <button
                     key={style.id}
                     type="button"
                     onClick={() => setFormData((prev) => ({ ...prev, travelStyle: style.id }))}
-                    className={`p-4 rounded-lg border-2 transition-all text-left ${
+                    className={`p-3 md:p-4 rounded-lg border-2 transition-all text-left active:scale-95 ${
                       formData.travelStyle === style.id
                         ? "border-accent bg-accent/10"
                         : "border-border bg-background/50 hover:border-accent/50"
                     }`}
                   >
-                    <div className="font-semibold text-primary-foreground">{style.label}</div>
-                    <div className="text-sm text-primary-foreground/70">{style.description}</div>
+                    <div className="text-sm md:text-base font-semibold text-primary-foreground">{style.label}</div>
+                    <div className="text-xs md:text-sm text-primary-foreground/70">{style.description}</div>
                   </button>
                 ))}
               </div>
-              {errors.travelStyle && <p className="text-sm text-destructive">{errors.travelStyle}</p>}
+              {errors.travelStyle && <p className="text-xs md:text-sm text-destructive">{errors.travelStyle}</p>}
             </div>
 
             {/* Group Size */}
