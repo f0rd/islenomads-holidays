@@ -1,0 +1,1032 @@
+{
+  "query": "SELECT id, name, slug, atoll, contentType FROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll, contentType FROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120034",
+      "name": "Alifushi Island",
+      "slug": "alifushi-island",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120002",
+      "name": "Baarah Island",
+      "slug": "baarah-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90006",
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120080",
+      "name": "Bandidhoo Island",
+      "slug": "bandidhoo-island",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120075",
+      "name": "Bileddhoo Island",
+      "slug": "bileddhoo-island",
+      "atoll": "Faafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo Island",
+      "slug": "bodufolhudhoo-island",
+      "atoll": "Alifu Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120086",
+      "name": "Burunee Island",
+      "slug": "burunee-island",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120076",
+      "name": "Dharanboodhoo Island",
+      "slug": "dharanboodhoo-island",
+      "atoll": "Faafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60014",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120003",
+      "name": "Dhiddhoo Island",
+      "slug": "dhiddhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60004",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120048",
+      "name": "Dhiffushi Island",
+      "slug": "dhiffushi-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120067",
+      "name": "Dhiggaru Island",
+      "slug": "dhiggaru-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60008",
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "atoll": "Alif Dhaal Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90011",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef",
+      "atoll": "Alif Dhaal Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120061",
+      "name": "Dhigurah Island",
+      "slug": "dhigurah-island",
+      "atoll": "Alifu Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120087",
+      "name": "Dhiyamigili Island",
+      "slug": "dhiyamigili-island",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120038",
+      "name": "Dhonfanu Island",
+      "slug": "dhonfanu-island",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120035",
+      "name": "Dhuvaafaru Island",
+      "slug": "dhuvaafaru-island",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120039",
+      "name": "Eydhafushi Island",
+      "slug": "eydhafushi-island",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120077",
+      "name": "Feeali Island",
+      "slug": "feeali-island",
+      "atoll": "Faafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60021",
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60011",
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120062",
+      "name": "Felidhoo Island",
+      "slug": "felidhoo-island-vaavu",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90013",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120056",
+      "name": "Feridhoo Island",
+      "slug": "feridhoo-island",
+      "atoll": "Alifu Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120096",
+      "name": "Feydhoo Island",
+      "slug": "feydhoo-island",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120015",
+      "name": "Filladhoo Island",
+      "slug": "filladhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120016",
+      "name": "Finey Island",
+      "slug": "finey-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60017",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo",
+      "atoll": "Noonu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90009",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120040",
+      "name": "Fulhadhoo Island",
+      "slug": "fulhadhoo-island",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60010",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120063",
+      "name": "Fulidhoo Island",
+      "slug": "fulidhoo-island",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90012",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120027",
+      "name": "Funadhoo Island",
+      "slug": "funadhoo-island",
+      "atoll": "Shaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90001",
+      "name": "Fuvahmulah Island",
+      "slug": "fuvahmulah-island",
+      "atoll": "Gnaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120001",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark",
+      "atoll": "Gnaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150007",
+      "name": "Fuvamulah Island",
+      "slug": "fuvamulah-island",
+      "atoll": "Gnaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120049",
+      "name": "Gaafaru Island",
+      "slug": "gaafaru-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60020",
+      "name": "Gan",
+      "slug": "gan",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120088",
+      "name": "Gemendhoo Island",
+      "slug": "gemendhoo-island",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120041",
+      "name": "Godhdhoo Island",
+      "slug": "godhdhoo-island",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120050",
+      "name": "Gulhi Island",
+      "slug": "gulhi-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60015",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150004",
+      "name": "Guraidhoo Island",
+      "slug": "guraidhoo-island",
+      "atoll": "Kaafu",
+      "contentType": "island"
+    },
+    {
+      "id": "90008",
+      "name": "HP Reef",
+      "slug": "hp-reef",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo Island",
+      "slug": "himandhoo-island",
+      "atoll": "Alifu Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120052",
+      "name": "Himmafushi Island",
+      "slug": "himmafushi-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60013",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120044",
+      "name": "Hinnavaru Island",
+      "slug": "hinnavaru-island",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120017",
+      "name": "Hirimaradhoo Island",
+      "slug": "hirimaradhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60023",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120094",
+      "name": "Hithadhoo Island",
+      "slug": "hithadhoo-island",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120004",
+      "name": "Hoarafushi Island",
+      "slug": "hoarafushi-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120081",
+      "name": "Hulhudheli Island",
+      "slug": "hulhudheli-island",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90002",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120097",
+      "name": "Hulhumeedhoo Island",
+      "slug": "hulhumeedhoo-island",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120053",
+      "name": "Huraa Island",
+      "slug": "huraa-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120005",
+      "name": "Ihavandhoo Island",
+      "slug": "ihavandhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60026",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120036",
+      "name": "Innamaa Island",
+      "slug": "innamaa-island",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120090",
+      "name": "Isdhoo Island",
+      "slug": "isdhoo-island",
+      "atoll": "Laamu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120054",
+      "name": "Kaashidhoo Island",
+      "slug": "kaashidhoo-island",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120092",
+      "name": "Kadhoo Island",
+      "slug": "kadhoo-island",
+      "atoll": "Laamu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120091",
+      "name": "Kalaidhoo Island",
+      "slug": "kalaidhoo-island",
+      "atoll": "Laamu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma Island",
+      "slug": "kandooma-island",
+      "atoll": "Kaafu",
+      "contentType": "island"
+    },
+    {
+      "id": "90005",
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120006",
+      "name": "Kelaa Island",
+      "slug": "kelaa-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120042",
+      "name": "Kendhoo Island",
+      "slug": "kendhoo-island",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120064",
+      "name": "Keyodhoo Island",
+      "slug": "keyodhoo-island",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60019",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120068",
+      "name": "Kolhufushi Island",
+      "slug": "kolhufushi-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60016",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120082",
+      "name": "Kudahuvadhoo Island",
+      "slug": "kudahuvadhoo-island",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120018",
+      "name": "Kumundhoo Island",
+      "slug": "kumundhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120045",
+      "name": "Kurendhoo Island",
+      "slug": "kurendhoo-island",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120019",
+      "name": "Kurinbi Island",
+      "slug": "kurinbi-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120028",
+      "name": "Lhaimagu Island",
+      "slug": "lhaimagu-island",
+      "atoll": "Shaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120031",
+      "name": "Lhosfushi Island",
+      "slug": "lhosfushi-island",
+      "atoll": "Noonu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120083",
+      "name": "Maaenboodhoo Island",
+      "slug": "maaenboodhoo-island",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60002",
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150002",
+      "name": "Maafushi Island",
+      "slug": "maafushi-island",
+      "atoll": "Kaafu",
+      "contentType": "island"
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos Island",
+      "slug": "maalhos-island",
+      "atoll": "Alifu Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "atoll": "Alifu Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120007",
+      "name": "Maarandhoo Island",
+      "slug": "maarandhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120093",
+      "name": "Maavah Island",
+      "slug": "maavah-island",
+      "atoll": "Laamu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "slug": "maaya-thila",
+      "atoll": "Ari Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60025",
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120069",
+      "name": "Maduvvaree Island",
+      "slug": "maduvvaree-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120078",
+      "name": "Magoodhoo Island",
+      "slug": "magoodhoo-island",
+      "atoll": "Faafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120020",
+      "name": "Makunudhoo Island",
+      "slug": "makunudhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150001",
+      "name": "Malé City",
+      "slug": "male-guide",
+      "atoll": "Kaafu",
+      "contentType": "island"
+    },
+    {
+      "id": "60022",
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120095",
+      "name": "Maradhoo Island",
+      "slug": "maradhoo-island",
+      "atoll": "Seenu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120059",
+      "name": "Mathiveri Island",
+      "slug": "mathiveri-island",
+      "atoll": "Alifu Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120032",
+      "name": "Meedhoo Island",
+      "slug": "meedhoo-island-noonu",
+      "atoll": "Noonu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120084",
+      "name": "Meedhoo Island",
+      "slug": "meedhoo-island-dhaalu",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120029",
+      "name": "Milandhoo Island",
+      "slug": "milandhoo-island",
+      "atoll": "Shaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120070",
+      "name": "Mulah Island",
+      "slug": "mulah-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120008",
+      "name": "Mulhadhoo Island",
+      "slug": "mulhadhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60018",
+      "name": "Muli",
+      "slug": "muli",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120071",
+      "name": "Muli Island",
+      "slug": "muli-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120009",
+      "name": "Muraidhoo Island",
+      "slug": "muraidhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120072",
+      "name": "Naalaafushi Island",
+      "slug": "naalaafushi-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60012",
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120046",
+      "name": "Naifaru Island",
+      "slug": "naifaru-island",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90017",
+      "name": "Naifaru Kandu",
+      "slug": "naifaru-kandu",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120021",
+      "name": "Naivaadhoo Island",
+      "slug": "naivaadhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120022",
+      "name": "Nellaidhoo Island",
+      "slug": "nellaidhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120023",
+      "name": "Neykurendhoo Island",
+      "slug": "neykurendhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120079",
+      "name": "Nilandhoo Island",
+      "slug": "nilandhoo-island-faafu",
+      "atoll": "Faafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120024",
+      "name": "Nolhivaramu Island",
+      "slug": "nolhivaramu-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120025",
+      "name": "Nolhivaranfaru Island",
+      "slug": "nolhivaranfaru-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120030",
+      "name": "Noomaraa Island",
+      "slug": "noomaraa-island",
+      "atoll": "Shaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120047",
+      "name": "Olhuvelifushi Island",
+      "slug": "olhuvelifushi-island",
+      "atoll": "Lhaviyani Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120073",
+      "name": "Raimmandhoo Island",
+      "slug": "raimmandhoo-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120065",
+      "name": "Rakeedhoo Island",
+      "slug": "rakeedhoo-island",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60005",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90014",
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120085",
+      "name": "Rinbudhoo Island",
+      "slug": "rinbudhoo-island",
+      "atoll": "Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120010",
+      "name": "Thakandhoo Island",
+      "slug": "thakandhoo-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120066",
+      "name": "Thinadhoo Island",
+      "slug": "thinadhoo-island-vaavu",
+      "atoll": "Vaavu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60006",
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90015",
+      "name": "Thoddoo House Reef",
+      "slug": "thoddoo-house-reef",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo Island",
+      "slug": "thoddoo-island",
+      "atoll": "Baa",
+      "contentType": "island"
+    },
+    {
+      "id": "60003",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo",
+      "atoll": "Kaafu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "150005",
+      "name": "Thulusdhoo Island",
+      "slug": "thulusdhoo-island",
+      "atoll": "Kaafu",
+      "contentType": "island"
+    },
+    {
+      "id": "120011",
+      "name": "Thuraakunu Island",
+      "slug": "thuraakunu-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60007",
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90016",
+      "name": "Ukulhas House Reef",
+      "slug": "ukulhas-house-reef",
+      "atoll": "Alif Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120012",
+      "name": "Uligamu Island",
+      "slug": "uligamu-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60028",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120037",
+      "name": "Ungoofaaru Island",
+      "slug": "ungoofaaru-island",
+      "atoll": "Raa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120013",
+      "name": "Utheemu Island",
+      "slug": "utheemu-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120026",
+      "name": "Vaikaradhoo Island",
+      "slug": "vaikaradhoo-island",
+      "atoll": "Haa Dhaalu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120014",
+      "name": "Vashafaru Island",
+      "slug": "vashafaru-island",
+      "atoll": "Haa Alif Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120033",
+      "name": "Velidhoo Island",
+      "slug": "velidhoo-island-noonu",
+      "atoll": "Noonu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60009",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "atoll": "Alif Dhaal Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "90010",
+      "name": "Veligandu Reef",
+      "slug": "veligandu-reef",
+      "atoll": "Alif Dhaal Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "60024",
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120089",
+      "name": "Veymandoo Island",
+      "slug": "veymandoo-island",
+      "atoll": "Thaa Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120074",
+      "name": "Veyvah Island",
+      "slug": "veyvah-island",
+      "atoll": "Meemu Atoll",
+      "contentType": "island"
+    },
+    {
+      "id": "120043",
+      "name": "Villingili Island",
+      "slug": "villingili-island-baa",
+      "atoll": "Baa Atoll",
+      "contentType": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\tcontentType\n60027\tAlifushi\talifushi\tRaa Atoll\tisland\n120034\tAlifushi Island\talifushi-island\tRaa Atoll\tisland\n120002\tBaarah Island\tbaarah-island\tHaa Alif Atoll\tisland\n90006\tBanana Reef\tbanana-reef\tKaafu Atoll\tisland\n120080\tBandidhoo Island\tbandidhoo-island\tDhaalu Atoll\tisland\n120075\tBileddhoo Island\tbileddhoo-island\tFaafu Atoll\tisland\n120055\tBodufolhudhoo Island\tbodufolhudhoo-island\tAlifu Alif Atoll\tisland\n120086\tBurunee Island\tburunee-island\tThaa Atoll\tisland\n120076\tDharanboodhoo Island\tdharanboodhoo-island\tFaafu Atoll\tisland\n60014\tDharavandhoo\tdharavandhoo\tBaa Atoll\tisland\n120003\tDhiddhoo Island\tdhiddhoo-island\tHaa Alif Atoll\tisland\n60004\tDhiffushi\tdhiffushi\tKaafu Atoll\tisland\n120048\tDhiffushi Island\tdhiffushi-island\tKaafu Atoll\tisland\n120067\tDhiggaru Island\tdhiggaru-island\tMeemu Atoll\tisland\n60008\tDhigurah\tdhigurah\tAlif Dhaal Atoll\tisland\n90011\tDhigurah House Reef\tdhigurah-house-reef\tAlif Dhaal Atoll\tisland\n120061\tDhigurah Island\tdhigurah-island\tAlifu Dhaalu Atoll\tisland\n120087\tDhiyamigili Island\tdhiyamigili-island\tThaa Atoll\tisland\n120038\tDhonfanu Island\tdhonfanu-island\tBaa Atoll\tisland\n120035\tDhuvaafaru Island\tdhuvaafaru-island\tRaa Atoll\tisland\n120039\tEydhafushi Island\teydhafushi-island\tBaa Atoll\tisland\n120077\tFeeali Island\tfeeali-island\tFaafu Atoll\tisland\n60021\tFeidhoo\tfeidhoo\tSeenu Atoll\tisland\n60011\tFelidhoo\tfelidhoo\tVaavu Atoll\tisland\n120062\tFelidhoo Island\tfelidhoo-island-vaavu\tVaavu Atoll\tisland\n90013\tFelidhoo Kandu\tfelidhoo-kandu\tVaavu Atoll\tisland\n120056\tFeridhoo Island\tferidhoo-island\tAlifu Alif Atoll\tisland\n120096\tFeydhoo Island\tfeydhoo-island\tSeenu Atoll\tisland\n120015\tFilladhoo Island\tfilladhoo-island\tHaa Alif Atoll\tisland\n120016\tFiney Island\tfiney-island\tHaa Dhaalu Atoll\tisland\n60017\tFodhdhoo\tfodhdhoo\tNoonu Atoll\tisland\n90009\tFotteyo Kandu\tfotteyo-kandu\tBaa Atoll\tisland\n120040\tFulhadhoo Island\tfulhadhoo-island\tBaa Atoll\tisland\n60010\tFulidhoo\tfulidhoo\tVaavu Atoll\tisland\n120063\tFulidhoo Island\tfulidhoo-island\tVaavu Atoll\tisland\n90012\tFulidhoo Kandu\tfulidhoo-kandu\tVaavu Atoll\tisland\n120027\tFunadhoo Island\tfunadhoo-island\tShaviyani Atoll\tisland\n90001\tFuvahmulah Island\tfuvahmulah-island\tGnaviyani Atoll\tisland\n120001\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\tGnaviyani Atoll\tisland\n150007\tFuvamulah Island\tfuvamulah-island\tGnaviyani Atoll\tisland\n120049\tGaafaru Island\tgaafaru-island\tKaafu Atoll\tisland\n60020\tGan\tgan\tSeenu Atoll\tisland\n120088\tGemendhoo Island\tgemendhoo-island\tThaa Atoll\tisland\n120041\tGodhdhoo Island\tgodhdhoo-island\tBaa Atoll\tisland\n120050\tGulhi Island\tgulhi-island\tKaafu Atoll\tisland\n60015\tGuraidhoo\tguraidhoo\tKaafu Atoll\tisland\n150004\tGuraidhoo Island\tguraidhoo-island\tKaafu\tisland\n90008\tHP Reef\thp-reef\tLhaviyani Atoll\tisland\n120057\tHimandhoo Island\thimandhoo-island\tAlifu Alif Atoll\tisland\n120052\tHimmafushi Island\thimmafushi-island\tKaafu Atoll\tisland\n60013\tHinnavaru\thinnavaru\tLhaviyani Atoll\tisland\n120044\tHinnavaru Island\thinnavaru-island\tLhaviyani Atoll\tisland\n120017\tHirimaradhoo Island\thirimaradhoo-island\tHaa Dhaalu Atoll\tisland\n60023\tHithadhoo\thithadhoo\tSeenu Atoll\tisland\n120094\tHithadhoo Island\thithadhoo-island\tSeenu Atoll\tisland\n120004\tHoarafushi Island\thoarafushi-island\tHaa Alif Atoll\tisland\n120081\tHulhudheli Island\thulhudheli-island\tDhaalu Atoll\tisland\n90002\tHulhumalé\thulhumale\tKaafu Atoll\tisland\n120097\tHulhumeedhoo Island\thulhumeedhoo-island\tSeenu Atoll\tisland\n120053\tHuraa Island\thuraa-island\tKaafu Atoll\tisland\n120005\tIhavandhoo Island\tihavandhoo-island\tHaa Alif Atoll\tisland\n60026\tInguraidhoo\tinguraidhoo\tRaa Atoll\tisland\n120036\tInnamaa Island\tinnamaa-island\tRaa Atoll\tisland\n120090\tIsdhoo Island\tisdhoo-island\tLaamu Atoll\tisland\n120054\tKaashidhoo Island\tkaashidhoo-island\tKaafu Atoll\tisland\n120092\tKadhoo Island\tkadhoo-island\tLaamu Atoll\tisland\n120091\tKalaidhoo Island\tkalaidhoo-island\tLaamu Atoll\tisland\n150006\tKandooma Island\tkandooma-island\tKaafu\tisland\n90005\tKandooma Thila\tkandooma-thila\tKaafu Atoll\tisland\n120006\tKelaa Island\tkelaa-island\tHaa Alif Atoll\tisland\n120042\tKendhoo Island\tkendhoo-island\tBaa Atoll\tisland\n120064\tKeyodhoo Island\tkeyodhoo-island\tVaavu Atoll\tisland\n60019\tKolhufushi\tkolhufushi\tThaa Atoll\tisland\n120068\tKolhufushi Island\tkolhufushi-island\tMeemu Atoll\tisland\n60016\tKudahuvadhoo\tkudahuvadhoo\tDhaalu Atoll\tisland\n120082\tKudahuvadhoo Island\tkudahuvadhoo-island\tDhaalu Atoll\tisland\n120018\tKumundhoo Island\tkumundhoo-island\tHaa Dhaalu Atoll\tisland\n120045\tKurendhoo Island\tkurendhoo-island\tLhaviyani Atoll\tisland\n120019\tKurinbi Island\tkurinbi-island\tHaa Dhaalu Atoll\tisland\n120028\tLhaimagu Island\tlhaimagu-island\tShaviyani Atoll\tisland\n120031\tLhosfushi Island\tlhosfushi-island\tNoonu Atoll\tisland\n120083\tMaaenboodhoo Island\tmaaenboodhoo-island\tDhaalu Atoll\tisland\n60002\tMaafushi\tmaafushi\tKaafu Atoll\tisland\n150002\tMaafushi Island\tmaafushi-island\tKaafu\tisland\n120058\tMaalhos Island\tmaalhos-island\tAlifu Alif Atoll\tisland\n90004\tMaamigili\tmaamigili\tAlifu Dhaalu Atoll\tisland\n120007\tMaarandhoo Island\tmaarandhoo-island\tHaa Alif Atoll\tisland\n120093\tMaavah Island\tmaavah-island\tLaamu Atoll\tisland\n90007\tMaaya Thila\tmaaya-thila\tAri Atoll\tisland\n60025\tMadifushi\tmadifushi\tThaa Atoll\tisland\n120069\tMaduvvaree Island\tmaduvvaree-island\tMeemu Atoll\tisland\n120078\tMagoodhoo Island\tmagoodhoo-island\tFaafu Atoll\tisland\n120020\tMakunudhoo Island\tmakunudhoo-island\tHaa Dhaalu Atoll\tisland\n60001\tMalé\tmale\tKaafu Atoll\tisland\n150001\tMalé City\tmale-guide\tKaafu\tisland\n60022\tMaradhoo\tmaradhoo\tSeenu Atoll\tisland\n120095\tMaradhoo Island\tmaradhoo-island\tSeenu Atoll\tisland\n120059\tMathiveri Island\tmathiveri-island\tAlifu Alif Atoll\tisland\n120032\tMeedhoo Island\tmeedhoo-island-noonu\tNoonu Atoll\tisland\n120084\tMeedhoo Island\tmeedhoo-island-dhaalu\tDhaalu Atoll\tisland\n120029\tMilandhoo Island\tmilandhoo-island\tShaviyani Atoll\tisland\n120070\tMulah Island\tmulah-island\tMeemu Atoll\tisland\n120008\tMulhadhoo Island\tmulhadhoo-island\tHaa Alif Atoll\tisland\n60018\tMuli\tmuli\tMeemu Atoll\tisland\n120071\tMuli Island\tmuli-island\tMeemu Atoll\tisland\n120009\tMuraidhoo Island\tmuraidhoo-island\tHaa Alif Atoll\tisland\n120072\tNaalaafushi Island\tnaalaafushi-island\tMeemu Atoll\tisland\n60012\tNaifaru\tnaifaru\tLhaviyani Atoll\tisland\n120046\tNaifaru Island\tnaifaru-island\tLhaviyani Atoll\tisland\n90017\tNaifaru Kandu\tnaifaru-kandu\tLhaviyani Atoll\tisland\n120021\tNaivaadhoo Island\tnaivaadhoo-island\tHaa Dhaalu Atoll\tisland\n120022\tNellaidhoo Island\tnellaidhoo-island\tHaa Dhaalu Atoll\tisland\n120023\tNeykurendhoo Island\tneykurendhoo-island\tHaa Dhaalu Atoll\tisland\n120079\tNilandhoo Island\tnilandhoo-island-faafu\tFaafu Atoll\tisland\n120024\tNolhivaramu Island\tnolhivaramu-island\tHaa Dhaalu Atoll\tisland\n120025\tNolhivaranfaru Island\tnolhivaranfaru-island\tHaa Dhaalu Atoll\tisland\n120030\tNoomaraa Island\tnoomaraa-island\tShaviyani Atoll\tisland\n120047\tOlhuvelifushi Island\tolhuvelifushi-island\tLhaviyani Atoll\tisland\n120073\tRaimmandhoo Island\traimmandhoo-island\tMeemu Atoll\tisland\n120065\tRakeedhoo Island\trakeedhoo-island\tVaavu Atoll\tisland\n60005\tRasdhoo\trasdhoo\tAlif Alif Atoll\tisland\n90014\tRasdhoo Madivaru\trasdhoo-madivaru\tAlif Alif Atoll\tisland\n120085\tRinbudhoo Island\trinbudhoo-island\tDhaalu Atoll\tisland\n120010\tThakandhoo Island\tthakandhoo-island\tHaa Alif Atoll\tisland\n120066\tThinadhoo Island\tthinadhoo-island-vaavu\tVaavu Atoll\tisland\n60006\tThoddoo\tthoddoo\tAlif Alif Atoll\tisland\n90015\tThoddoo House Reef\tthoddoo-house-reef\tAlif Alif Atoll\tisland\n150003\tThoddoo Island\tthoddoo-island\tBaa\tisland\n60003\tThulusdhoo\tthulusdhoo\tKaafu Atoll\tisland\n150005\tThulusdhoo Island\tthulusdhoo-island\tKaafu\tisland\n120011\tThuraakunu Island\tthuraakunu-island\tHaa Alif Atoll\tisland\n60007\tUkulhas\tukulhas\tAlif Alif Atoll\tisland\n90016\tUkulhas House Reef\tukulhas-house-reef\tAlif Alif Atoll\tisland\n120012\tUligamu Island\tuligamu-island\tHaa Alif Atoll\tisland\n60028\tUngoofaaru\tungoofaaru\tRaa Atoll\tisland\n120037\tUngoofaaru Island\tungoofaaru-island\tRaa Atoll\tisland\n120013\tUtheemu Island\tutheemu-island\tHaa Alif Atoll\tisland\n120026\tVaikaradhoo Island\tvaikaradhoo-island\tHaa Dhaalu Atoll\tisland\n120014\tVashafaru Island\tvashafaru-island\tHaa Alif Atoll\tisland\n120033\tVelidhoo Island\tvelidhoo-island-noonu\tNoonu Atoll\tisland\n60009\tVeligandu\tveligandu\tAlif Dhaal Atoll\tisland\n90010\tVeligandu Reef\tveligandu-reef\tAlif Dhaal Atoll\tisland\n60024\tVeymandoo\tveymandoo\tThaa Atoll\tisland\n120089\tVeymandoo Island\tveymandoo-island\tThaa Atoll\tisland\n120074\tVeyvah Island\tveyvah-island\tMeemu Atoll\tisland\n120043\tVillingili Island\tvillingili-island-baa\tBaa Atoll\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}
