@@ -35,6 +35,7 @@ import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
 import ExploreMaldives from "./pages/ExploreMaldives";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -71,6 +72,7 @@ function Router() {
       <Route path={"/admin/branding"} component={AdminBranding} />
       <Route path={"\admin/transports"} component={AdminTransports} />
       <Route path={"\admin/map-locations"} component={AdminMapLocations} />
+      <Route path={"\admin/data-management"} component={AdminDashboard} />
       <Route path={"\admin"} component={StaffDashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
