@@ -1444,3 +1444,11 @@
 - [x] Improve formatting of guide content with better structure
 - [x] Add icons/emojis to all guide sections (Getting There, Practical, Itineraries)
 - [x] Apply emoji enhancements to remaining island guides (Maafushi, Dhiffushi, Omadhoo, Feridhoo, Dhangethi, Gulhi, Goidhoo, Fulhadhoo, Fehendhoo, Hanimadhoo, Ukulhas, Vilamendhoo)
+
+
+## Hero Images for All Islands
+- [ ] Research and identify hero images for all 132 islands
+- [ ] Generate or collect hero images for islands without existing images
+- [ ] Upload all hero images to S3 and get CDN URLs
+- [ ] Update island_guides and places tables with hero image URLs
+- [ ] Verify hero images display correctly on island pages
