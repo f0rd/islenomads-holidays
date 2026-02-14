@@ -18,6 +18,7 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  Ship,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
@@ -248,57 +249,66 @@ export default function IslandGuide() {
 
             {/* Getting There Tab */}
             <TabsContent value="getting-there" className="space-y-6 mt-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Plane className="w-5 h-5" />
-                    Transportation Options
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {guide.gettingThere || 'Various transportation options available to reach this island.'}
-                  </p>
-                  <div className="space-y-3">
-                    {Array.isArray(guide.boatRoutes) && guide.boatRoutes.length > 0 ? (
-                      guide.boatRoutes.map((route: any, idx: number) => (
-                        <div key={idx} className="p-4 border rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-sm mb-1">{route.name}</h4>
-                              <p className="text-xs text-muted-foreground mb-2">
-                                {route.type && `${route.type.charAt(0).toUpperCase() + route.type.slice(1)}`}
-                              </p>
-                              <div className="flex flex-wrap gap-4 text-xs">
-                                {route.duration && (
-                                  <div className="flex items-center gap-1">
-                                    <Clock className="w-3 h-3" />
-                                    <span>{route.duration}</span>
-                                  </div>
-                                )}
-                                {route.price && (
-                                  <div className="flex items-center gap-1">
-                                    <DollarSign className="w-3 h-3" />
-                                    <span>${route.price}</span>
-                                  </div>
-                                )}
-                                {route.capacity && (
-                                  <div className="flex items-center gap-1">
-                                    <Users className="w-3 h-3" />
-                                    <span>{route.capacity} passengers</span>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))
-                    ) : (
+              <div className="space-y-4">
+                {/* Flight Info */}
+                {guide.flightInfo && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Plane className="w-5 h-5" />
+                        Flight Information
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.flightInfo}</p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Speedboat Info */}
+                {guide.speedboatInfo && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Waves className="w-5 h-5" />
+                        Speedboat
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.speedboatInfo}</p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Ferry Info */}
+                {guide.ferryInfo && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Ship className="w-5 h-5" />
+                        Ferry
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.ferryInfo}</p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {!guide.flightInfo && !guide.speedboatInfo && !guide.ferryInfo && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <MapPin className="w-5 h-5" />
+                        Getting There
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
                       <p className="text-sm text-muted-foreground">Transportation information coming soon.</p>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
             </TabsContent>
 
             {/* Activities Tab */}
