@@ -1265,3 +1265,13 @@
 - [x] Update database with correct atoll assignment and overview text
 - [x] Update islandGuides.minimal.ts with correct atoll and distance information
 - [x] Test Thoddoo Island page - now correctly displays North Ari Atoll
+
+
+## Feature - Data Validation Layer for Geographical Data
+- [x] Create reference data file with valid atoll-island mappings (shared/geographicalData.ts)
+- [x] Create validation functions for island data (name, atoll, coordinates, distance)
+- [x] Implement server-side validation module (server/validation/geographicalValidation.ts)
+- [x] Create data audit script to check existing data (server/scripts/auditGeographicalData.mjs)
+- [x] Add comprehensive validation tests with vitest (21 tests created)
+- [x] Create comprehensive documentation (docs/GEOGRAPHICAL_DATA_VALIDATION.md)
+- [x] Implement validation helper functions for tRPC procedures
