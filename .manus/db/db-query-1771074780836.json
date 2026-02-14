@@ -1,0 +1,424 @@
+{
+  "query": "SELECT name, slug, \n  IF(overview IS NOT NULL AND overview != '', 'YES', 'NO') as has_overview,\n  IF(topThingsToDo IS NOT NULL AND topThingsToDo != '', 'YES', 'NO') as has_activities,\n  IF(attractions IS NOT NULL AND attractions != '', 'YES', 'NO') as has_attractions,\n  IF(foodCafes IS NOT NULL AND foodCafes != '', 'YES', 'NO') as has_food,\n  IF(threeDayItinerary IS NOT NULL AND threeDayItinerary != '', 'YES', 'NO') as has_itinerary\nFROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, slug, \n  IF(overview IS NOT NULL AND overview != '', 'YES', 'NO') as has_overview,\n  IF(topThingsToDo IS NOT NULL AND topThingsToDo != '', 'YES', 'NO') as has_activities,\n  IF(attractions IS NOT NULL AND attractions != '', 'YES', 'NO') as has_attractions,\n  IF(foodCafes IS NOT NULL AND foodCafes != '', 'YES', 'NO') as has_food,\n  IF(threeDayItinerary IS NOT NULL AND threeDayItinerary != '', 'YES', 'NO') as has_itinerary\nFROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo-island",
+      "has_overview": "NO",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Fehendhoo",
+      "slug": "fehendhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Feridhoo",
+      "slug": "feridhoo-island",
+      "has_overview": "NO",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Fuvahmulah",
+      "slug": "fuvahmulah",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Gan",
+      "slug": "gan",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Goidhoo",
+      "slug": "goidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Gulhi",
+      "slug": "gulhi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Guraidhoo",
+      "slug": "guraidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Himandhoo",
+      "slug": "himandhoo-island",
+      "has_overview": "NO",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Hithadhoo",
+      "slug": "hithadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Kandooma",
+      "slug": "kandooma-island",
+      "has_overview": "YES",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "YES",
+      "has_itinerary": "YES"
+    },
+    {
+      "name": "Kolhufushi",
+      "slug": "kolhufushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Maalhos",
+      "slug": "maalhos-island",
+      "has_overview": "NO",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "has_overview": "YES",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Maaya Thila",
+      "slug": "maaya-thila",
+      "has_overview": "YES",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Malé",
+      "slug": "male",
+      "has_overview": "YES",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Mathiveri",
+      "slug": "mathiveri-island",
+      "has_overview": "NO",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Muli",
+      "slug": "muli",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Omadhoo",
+      "slug": "omadhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Thoddoo",
+      "slug": "thoddoo-island",
+      "has_overview": "YES",
+      "has_activities": "YES",
+      "has_attractions": "NO",
+      "has_food": "YES",
+      "has_itinerary": "YES"
+    },
+    {
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    },
+    {
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "has_overview": "YES",
+      "has_activities": "NO",
+      "has_attractions": "NO",
+      "has_food": "NO",
+      "has_itinerary": "NO"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\thas_overview\thas_activities\thas_attractions\thas_food\thas_itinerary\nAlifushi\talifushi\tYES\tNO\tNO\tNO\tNO\nBodufolhudhoo\tbodufolhudhoo-island\tNO\tYES\tNO\tNO\tNO\nDhangethi\tdhangethi\tYES\tNO\tNO\tNO\tNO\nDharavandhoo\tdharavandhoo\tYES\tNO\tNO\tNO\tNO\nDhiffushi\tdhiffushi\tYES\tNO\tNO\tNO\tNO\nDhigurah\tdhigurah\tYES\tNO\tNO\tNO\tNO\nFehendhoo\tfehendhoo\tYES\tNO\tNO\tNO\tNO\nFeidhoo\tfeidhoo\tYES\tNO\tNO\tNO\tNO\nFelidhoo\tfelidhoo\tYES\tNO\tNO\tNO\tNO\nFeridhoo\tferidhoo-island\tNO\tYES\tNO\tNO\tNO\nFeridhoo\tferidhoo\tYES\tNO\tNO\tNO\tNO\nFodhdhoo\tfodhdhoo\tYES\tNO\tNO\tNO\tNO\nFulhadhoo\tfulhadhoo\tYES\tNO\tNO\tNO\tNO\nFulidhoo\tfulidhoo\tYES\tNO\tNO\tNO\tNO\nFuvahmulah\tfuvahmulah\tYES\tNO\tNO\tNO\tNO\nGan\tgan\tYES\tNO\tNO\tNO\tNO\nGoidhoo\tgoidhoo\tYES\tNO\tNO\tNO\tNO\nGulhi\tgulhi\tYES\tNO\tNO\tNO\tNO\nGuraidhoo\tguraidhoo\tYES\tNO\tNO\tNO\tNO\nHanimadhoo\thanimadhoo\tYES\tNO\tNO\tNO\tNO\nHimandhoo\thimandhoo-island\tNO\tYES\tNO\tNO\tNO\nHimmafushi\thimmafushi\tYES\tNO\tNO\tNO\tNO\nHithadhoo\thithadhoo\tYES\tNO\tNO\tNO\tNO\nHulhumalé\thulhumale\tYES\tNO\tNO\tNO\tNO\nInguraidhoo\tinguraidhoo\tYES\tNO\tNO\tNO\tNO\nKandooma\tkandooma-island\tYES\tYES\tNO\tYES\tYES\nKolhufushi\tkolhufushi\tYES\tNO\tNO\tNO\tNO\nKudahuvadhoo\tkudahuvadhoo\tYES\tNO\tNO\tNO\tNO\nMaafushi\tmaafushi\tYES\tNO\tNO\tNO\tNO\nMaalhos\tmaalhos-island\tNO\tYES\tNO\tNO\tNO\nMaamigili\tmaamigili\tYES\tYES\tNO\tNO\tNO\nMaaya Thila\tmaaya-thila\tYES\tYES\tNO\tNO\tNO\nMadifushi\tmadifushi\tYES\tNO\tNO\tNO\tNO\nMalé\tmale\tYES\tYES\tNO\tNO\tNO\nMaradhoo\tmaradhoo\tYES\tNO\tNO\tNO\tNO\nMathiveri\tmathiveri-island\tNO\tYES\tNO\tNO\tNO\nMathiveri\tmathiveri\tYES\tNO\tNO\tNO\tNO\nMuli\tmuli\tYES\tNO\tNO\tNO\tNO\nNaifaru\tnaifaru\tYES\tNO\tNO\tNO\tNO\nOmadhoo\tomadhoo\tYES\tNO\tNO\tNO\tNO\nRasdhoo\trasdhoo\tYES\tNO\tNO\tNO\tNO\nThoddoo\tthoddoo-island\tYES\tYES\tNO\tYES\tYES\nThoddoo\tthoddoo\tYES\tNO\tNO\tNO\tNO\nUkulhas\tukulhas\tYES\tNO\tNO\tNO\tNO\nUngoofaaru\tungoofaaru\tYES\tNO\tNO\tNO\tNO\nVeymandoo\tveymandoo\tYES\tNO\tNO\tNO\tNO\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

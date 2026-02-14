@@ -1,0 +1,21 @@
+{
+  "query": "SELECT id, name, slug, overview, topThingsToDo, attractions, foodCafes, bestTimeToVisit, published FROM island_guides WHERE name = 'Fuvahmulah'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, overview, topThingsToDo, attractions, foodCafes, bestTimeToVisit, published FROM island_guides WHERE name = 'Fuvahmulah'",
+  "rows": [
+    {
+      "id": "180037",
+      "name": "Fuvahmulah",
+      "slug": "fuvahmulah",
+      "overview": "Southernmost island famous for tiger shark diving and unique geological features",
+      "topThingsToDo": "NULL",
+      "attractions": "NULL",
+      "foodCafes": "NULL",
+      "bestTimeToVisit": "NULL",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\toverview\ttopThingsToDo\tattractions\tfoodCafes\tbestTimeToVisit\tpublished\n180037\tFuvahmulah\tfuvahmulah\tSouthernmost island famous for tiger shark diving and unique geological features\tNULL\tNULL\tNULL\tNULL\t1\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}
