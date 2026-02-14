@@ -1342,3 +1342,12 @@
 - [x] Verified on website - Dhigurah now appears only once in islands list
 - [x] Confirmed island count reduced from 142 to 141 after deletion
 - [x] All island names follow proper Maldivian naming conventions
+
+
+## Feature - Generate AI-Powered Things To Do Content for All Islands
+- [x] Create script to fetch all islands from database
+- [x] Generate unique things to do content for each island using LLM
+- [x] Format content as JSON array with activity name, description, and category
+- [x] Populate topThingsToDo field for all islands (129 islands in first batch, 38 in continuation = 167 total updates)
+- [x] Test islands pages to verify things to do displays correctly (verified on Dhigurah island)
+- [x] Verify content quality and relevance across different island types (AI-generated activities are contextual and well-formatted)
