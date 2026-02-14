@@ -1542,3 +1542,15 @@
 - [x] Update all transports with correct place IDs (28/28 transports mapped)
 - [x] Add Getting There tab to IslandGuide component
 - [ ] Test Getting There section displays transports correctly
+
+
+## Restore Thulusdhoo Island Guide
+- [x] Identify Thulusdhoo guide missing from database (Island Guide Not Found error)
+- [x] Check git history for Thulusdhoo guide backup data (commit 40d006c)
+- [x] Create restore-thulusdhoo-guide.ts script with comprehensive guide data
+- [x] Restore Thulusdhoo guide with all sections (activities, food, FAQ, itineraries, etc.)
+- [x] Populate places table from locations.ts (129 islands created)
+- [x] Verify Thulusdhoo guide loads correctly at /island/67
+- [x] Test all tabs display properly (Overview, Getting There, Activities, Food, Practical, Itineraries, FAQ)
+- [x] Verify transportation info displays correctly (Flight, Speedboat, Ferry)
+- [x] Confirm emoji-enhanced activities display with descriptions

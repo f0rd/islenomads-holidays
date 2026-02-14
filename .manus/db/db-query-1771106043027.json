@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, name, placeId FROM island_guides LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, placeId FROM island_guides LIMIT 10;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "placeId": "NULL"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "placeId": "NULL"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120056",
+      "name": "Feridhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120059",
+      "name": "Mathiveri",
+      "placeId": "NULL"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "placeId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tplaceId\n60001\tMalé\tNULL\n90004\tMaamigili\tNULL\n90007\tMaaya Thila\tNULL\n120055\tBodufolhudhoo\tNULL\n120056\tFeridhoo\tNULL\n120057\tHimandhoo\tNULL\n120058\tMaalhos\tNULL\n120059\tMathiveri\tNULL\n150003\tThoddoo\tNULL\n150006\tKandooma\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}
