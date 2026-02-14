@@ -25,6 +25,7 @@ import { Link } from "wouter";
 import ContactFormEnhanced from "@/components/ContactFormEnhanced";
 import { trpc } from "@/lib/trpc";
 import { Loader2 } from "lucide-react";
+import { getIslandGuideUrl } from "@shared/locations";
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -340,7 +341,7 @@ export default function Home() {
                       <p className="text-gray-600 mb-4 line-clamp-2">
                         {guide.overview || 'Discover the beauty of this island paradise'}
                       </p>
-                      <Link href={`/island/${guide.slug}`}>
+                      <Link href={getIslandGuideUrl(guide.id)}>
                         <Button
                           variant="outline"
                           className="w-full border-teal-500 text-teal-500 hover:bg-teal-50"

@@ -1490,9 +1490,10 @@
 - [x] Update App.tsx routing from /island/:slug to /island/:islandId
 - [x] Update IslandGuide.tsx component to use island IDs
 - [x] Add getByIslandId procedure to server routers
-- [x] Create getIslandGuideByIslandId function in db.ts
+- [x] Create getIslandGuideByIslandId function in server/db.ts
 - [x] Write comprehensive vitest tests for island navigation (31 tests passing)
-- [ ] Update Home.tsx island links to use island IDs
-- [ ] Update Map.tsx island links to use island IDs
-- [ ] Update all other components with island links to use IDs
-- [ ] Test all navigation links in browser and verify they work
+- [x] Update Home.tsx island links to use island IDs
+- [x] Update ExploreMaldives.tsx island links to use island IDs
+- [x] Update MaldivesMap.tsx island links to use island IDs
+- [x] Update MaldivesMapNew.tsx island links to use island IDs
+- [x] Test all navigation links in browser and verify they work

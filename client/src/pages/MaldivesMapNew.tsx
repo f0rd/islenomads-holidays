@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { getIslandGuideUrl } from "@shared/locations";
 
 // Set Mapbox token
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -993,8 +994,8 @@ export default function MaldivesMapNew() {
                 <CardContent className="space-y-3">
                   <p className="text-sm text-foreground">{selectedLocation.description}</p>
                   
-                  {(selectedLocation as any).guideSlug && (
-                    <Link href={`/island/${(selectedLocation as any).guideSlug}`}>
+                  {(selectedLocation as any).guideId && (
+                    <Link href={getIslandGuideUrl((selectedLocation as any).guideId)}>
                       <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
                         <BookOpen className="w-4 h-4 mr-2" />
                         View Full Island Guide
