@@ -36,12 +36,15 @@ import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import AdminDashboard from "./pages/AdminDashboard";
+import UnifiedCMS from "./pages/UnifiedCMS";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      {/* Unified CMS Interface - All admin sections consolidated */}
+      <Route path="/cms" component={UnifiedCMS} />
+      <Route path="/" component={Home} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogDetail} />
       <Route path={"/packages"} component={Packages} />
