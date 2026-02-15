@@ -1,0 +1,80 @@
+{
+  "query": "SELECT id, name, spotType, difficulty, islandGuideId FROM activity_spots LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, difficulty, islandGuideId FROM activity_spots LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "islandGuideId": "3"
+    },
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "spotType": "dive_site",
+      "difficulty": "beginner",
+      "islandGuideId": "60014"
+    },
+    {
+      "id": "3",
+      "name": "Fish Head",
+      "spotType": "dive_site",
+      "difficulty": "intermediate",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "4",
+      "name": "Maaya Thila",
+      "spotType": "dive_site",
+      "difficulty": "beginner",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "5",
+      "name": "Kuda Rah Thila",
+      "spotType": "dive_site",
+      "difficulty": "intermediate",
+      "islandGuideId": "60008"
+    },
+    {
+      "id": "6",
+      "name": "Fotteyo Kandu",
+      "spotType": "dive_site",
+      "difficulty": "advanced",
+      "islandGuideId": "60011"
+    },
+    {
+      "id": "7",
+      "name": "Bathala Thila",
+      "spotType": "dive_site",
+      "difficulty": "beginner",
+      "islandGuideId": "60005"
+    },
+    {
+      "id": "8",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "difficulty": "advanced",
+      "islandGuideId": "60023"
+    },
+    {
+      "id": "9",
+      "name": "Maradhoo Kandu",
+      "spotType": "dive_site",
+      "difficulty": "advanced",
+      "islandGuideId": "60022"
+    },
+    {
+      "id": "10",
+      "name": "Vaavu Kandu",
+      "spotType": "dive_site",
+      "difficulty": "intermediate",
+      "islandGuideId": "60010"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tdifficulty\tislandGuideId\n1\tCokes\tsurf_spot\tbeginner\t3\n2\tHanifaru Bay\tdive_site\tbeginner\t60014\n3\tFish Head\tdive_site\tintermediate\t60005\n4\tMaaya Thila\tdive_site\tbeginner\t60005\n5\tKuda Rah Thila\tdive_site\tintermediate\t60008\n6\tFotteyo Kandu\tdive_site\tadvanced\t60011\n7\tBathala Thila\tdive_site\tbeginner\t60005\n8\tMaradhoo Kandu\tdive_site\tadvanced\t60023\n9\tMaradhoo Kandu\tdive_site\tadvanced\t60022\n10\tVaavu Kandu\tdive_site\tintermediate\t60010\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

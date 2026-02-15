@@ -245,6 +245,56 @@ export default function IslandGuide() {
                   </p>
                 </CardContent>
               </Card>
+
+              {/* Nearby Dive Sites */}
+              {guide.nearbyDiveSites && guide.nearbyDiveSites.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Nearby Dive Sites</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {guide.nearbyDiveSites.map((site: any, idx: number) => (
+                        <div key={idx} className="border-l-4 border-accent pl-4 py-2">
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="font-semibold text-sm">{site.name}</h4>
+                            <span className="text-xs px-2 py-1 bg-accent/20 text-accent rounded capitalize">
+                              {site.difficulty || 'Intermediate'}
+                            </span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-1">{site.distance}</p>
+                          <p className="text-sm text-muted-foreground">{site.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Nearby Surf Spots */}
+              {guide.nearbySurfSpots && guide.nearbySurfSpots.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Nearby Surf Spots</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {guide.nearbySurfSpots.map((spot: any, idx: number) => (
+                        <div key={idx} className="border-l-4 border-accent pl-4 py-2">
+                          <div className="flex items-start justify-between mb-2">
+                            <h4 className="font-semibold text-sm">{spot.name}</h4>
+                            <span className="text-xs px-2 py-1 bg-accent/20 text-accent rounded capitalize">
+                              {spot.difficulty || 'Intermediate'}
+                            </span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-1">{spot.distance}</p>
+                          <p className="text-sm text-muted-foreground">{spot.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </TabsContent>
 
             {/* Getting There Tab */}

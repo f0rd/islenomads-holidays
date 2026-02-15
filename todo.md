@@ -1599,3 +1599,17 @@
 - [x] Regenerate nearby dive and surf spot data using LLM (129 guides regenerated successfully)
 - [x] Ensure all 129 islands have nearby dive sites and surf spots listed
 - [ ] Display nearby spots in IslandGuide UI (data is in database but not rendered in component)
+
+
+## Display Nearby Spots in IslandGuide UI
+- [x] Add "Nearby Dive Sites" section to IslandGuide component
+- [x] Add "Nearby Surf Spots" section to IslandGuide component
+- [x] Style nearby spots with difficulty badges and distance info
+- [x] Test nearby spots display on multiple islands (Dharavandhoo shows 5 dive sites, 3 surf spots)
+
+## Consolidate Redundant Location/Activity Data Tables
+- [x] Analyze places, locations, and activity_spots tables for data duplication (7 overlapping tables identified)
+- [x] Design unified geographical entities schema (documented in DATA_CONSOLIDATION_PLAN.md)
+- [ ] Migrate all data to single source of truth
+- [ ] Remove redundant tables and fields
+- [ ] Update all references to use consolidated structure
