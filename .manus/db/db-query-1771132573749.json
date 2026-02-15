@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, \n  IF(nearbyDiveSites IS NULL OR nearbyDiveSites = '', 'EMPTY', 'HAS DATA') as dive_status,\n  IF(nearbySurfSpots IS NULL OR nearbySurfSpots = '', 'EMPTY', 'HAS DATA') as surf_status\nFROM island_guides \nWHERE (nearbyDiveSites IS NULL OR nearbyDiveSites = '') \n   OR (nearbySurfSpots IS NULL OR nearbySurfSpots = '')\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, \n  IF(nearbyDiveSites IS NULL OR nearbyDiveSites = '', 'EMPTY', 'HAS DATA') as dive_status,\n  IF(nearbySurfSpots IS NULL OR nearbySurfSpots = '', 'EMPTY', 'HAS DATA') as surf_status\nFROM island_guides \nWHERE (nearbyDiveSites IS NULL OR nearbyDiveSites = '') \n   OR (nearbySurfSpots IS NULL OR nearbySurfSpots = '')\nLIMIT 10;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "dive_status": "EMPTY",
+      "surf_status": "EMPTY"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tdive_status\tsurf_status\n60001\tMalé\tEMPTY\tEMPTY\n90004\tMaamigili\tEMPTY\tEMPTY\n90007\tMaaya Thila\tEMPTY\tEMPTY\n120055\tBodufolhudhoo\tEMPTY\tEMPTY\n120057\tHimandhoo\tEMPTY\tEMPTY\n120058\tMaalhos\tEMPTY\tEMPTY\n150003\tThoddoo\tEMPTY\tEMPTY\n150006\tKandooma\tEMPTY\tEMPTY\n180001\tMaafushi\tEMPTY\tEMPTY\n180002\tFulidhoo\tEMPTY\tEMPTY\n",
+  "stderr": "",
+  "execution_time_ms": 96
+}

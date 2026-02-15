@@ -1591,3 +1591,11 @@
 - [x] Verify all guides have complete content (overview, activities, food, practical, itineraries, FAQ)
 - [x] Standardize guide format and structure across all 129 islands
 - [x] Test Dharavandhoo guide - now displays complete content with activities and food
+
+
+## Fix Missing Nearby Dive & Surf Spots Data
+- [x] Check database schema for nearbyDiveSites and nearbySurfSpots fields
+- [x] Identify which guides have empty nearby dive/surf spot data (all 129 guides were empty)
+- [x] Regenerate nearby dive and surf spot data using LLM (129 guides regenerated successfully)
+- [x] Ensure all 129 islands have nearby dive sites and surf spots listed
+- [ ] Display nearby spots in IslandGuide UI (data is in database but not rendered in component)
