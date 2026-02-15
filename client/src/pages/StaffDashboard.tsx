@@ -200,7 +200,15 @@ function StaffDashboardContent() {
   );
 }
 
-export default function StaffDashboard() {
+interface StaffDashboardProps {
+  disableLayout?: boolean;
+  [key: string]: any;
+}
+
+export default function StaffDashboard({ disableLayout = false, ...props }: StaffDashboardProps) {
+  if (disableLayout) {
+    return <StaffDashboardContent />;
+  }
   return (
     <DashboardLayout>
       <StaffDashboardContent />

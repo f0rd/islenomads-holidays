@@ -1703,3 +1703,12 @@
 - [x] Consolidate all admin routes under unified /cms path
 - [x] Verify no console errors in browser
 - [x] Test CMS navigation works correctly
+
+
+## Fix CMS Sidebar Navigation Two-Layer Issue
+- [x] Identify root cause: DashboardLayout and Navigation/Footer components rendering duplicate navigation
+- [x] Update StaffDashboard to accept disableLayout prop to hide DashboardLayout when used in UnifiedCMS
+- [x] Update AdminBlog to accept hideLayout prop to hide Navigation and Footer when used in UnifiedCMS
+- [x] Update UnifiedCMS to pass hideLayout/disableLayout props to components
+- [x] Verify clean single-layer navigation in sidebar
+- [x] Test navigation expand/collapse functionality

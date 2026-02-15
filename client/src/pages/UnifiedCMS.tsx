@@ -21,11 +21,6 @@ import {
   TrendingUp,
   ChevronDown,
 } from "lucide-react";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 
 // Import all admin components
 import AdminBlog from "./AdminBlog";
@@ -44,152 +39,137 @@ import AdminActivity from "./AdminActivity";
 import AdminDashboard from "./AdminDashboard";
 import StaffDashboard from "./StaffDashboard";
 
-interface MenuSection {
-  title: string;
-  icon: React.ComponentType<{ className?: string }>;
-  items: MenuItem[];
-}
-
 interface MenuItem {
   id: string;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
   component: React.FC<any>;
+  section?: string;
 }
 
-const menuSections: MenuSection[] = [
+const menuItems: MenuItem[] = [
+  // Dashboard Section
   {
-    title: "Dashboard",
+    id: "overview",
+    label: "Overview",
     icon: BarChart3,
-    items: [
-      {
-        id: "overview",
-        label: "Overview",
-        icon: BarChart3,
-        component: StaffDashboard,
-      },
-      {
-        id: "data-management",
-        label: "Data Management",
-        icon: TrendingUp,
-        component: AdminDashboard,
-      },
-      {
-        id: "activity-log",
-        label: "Activity Log",
-        icon: Activity,
-        component: AdminActivity,
-      },
-    ],
+    component: (props: any) => <StaffDashboard {...props} disableLayout={true} />,
+    section: "Dashboard",
   },
   {
-    title: "Content Management",
-    icon: FileText,
-    items: [
-      {
-        id: "blog",
-        label: "Blog Posts",
-        icon: BookOpen,
-        component: AdminBlog,
-      },
-      {
-        id: "island-guides",
-        label: "Island Guides",
-        icon: BookOpen,
-        component: AdminIslandGuides,
-      },
-      {
-        id: "packages",
-        label: "Packages",
-        icon: Package,
-        component: AdminPackages,
-      },
-    ],
+    id: "data-management",
+    label: "Data Management",
+    icon: TrendingUp,
+    component: AdminDashboard,
+    section: "Dashboard",
   },
   {
-    title: "Activity Management",
-    icon: Waves,
-    items: [
-      {
-        id: "activity-spots",
-        label: "Activity Spots",
-        icon: MapPin,
-        component: AdminActivitySpots,
-      },
-      {
-        id: "map-locations",
-        label: "Map Locations",
-        icon: MapPin,
-        component: AdminMapLocations,
-      },
-    ],
+    id: "activity-log",
+    label: "Activity Log",
+    icon: Activity,
+    component: AdminActivity,
+    section: "Dashboard",
+  },
+  // Content Management Section
+  {
+    id: "blog",
+    label: "Blog Posts",
+    icon: BookOpen,
+    component: (props: any) => <AdminBlog {...props} hideLayout={true} />,
+    section: "Content Management",
   },
   {
-    title: "Travel & Transportation",
+    id: "island-guides",
+    label: "Island Guides",
+    icon: BookOpen,
+    component: AdminIslandGuides,
+    section: "Content Management",
+  },
+  {
+    id: "packages",
+    label: "Packages",
+    icon: Package,
+    component: AdminPackages,
+    section: "Content Management",
+  },
+  // Activity Management Section
+  {
+    id: "activity-spots",
+    label: "Activity Spots",
+    icon: MapPin,
+    component: AdminActivitySpots,
+    section: "Activity Management",
+  },
+  {
+    id: "map-locations",
+    label: "Map Locations",
+    icon: MapPin,
+    component: AdminMapLocations,
+    section: "Activity Management",
+  },
+  // Travel & Transportation Section
+  {
+    id: "boat-routes",
+    label: "Boat Routes",
     icon: Ship,
-    items: [
-      {
-        id: "boat-routes",
-        label: "Boat Routes",
-        icon: Ship,
-        component: AdminBoatRoutes,
-      },
-      {
-        id: "transports",
-        label: "Transports",
-        icon: Ship,
-        component: AdminTransports,
-      },
-    ],
+    component: AdminBoatRoutes,
+    section: "Travel & Transportation",
   },
   {
-    title: "Business Management",
+    id: "transports",
+    label: "Transports",
+    icon: Ship,
+    component: AdminTransports,
+    section: "Travel & Transportation",
+  },
+  // Business Management Section
+  {
+    id: "crm",
+    label: "CRM Dashboard",
     icon: MessageSquare,
-    items: [
-      {
-        id: "crm",
-        label: "CRM Dashboard",
-        icon: MessageSquare,
-        component: AdminCRM,
-      },
-    ],
+    component: AdminCRM,
+    section: "Business Management",
   },
+  // Organization Section
   {
-    title: "Organization",
+    id: "staff",
+    label: "Staff Management",
     icon: Users,
-    items: [
-      {
-        id: "staff",
-        label: "Staff Management",
-        icon: Users,
-        component: AdminStaff,
-      },
-      {
-        id: "roles",
-        label: "Roles & Permissions",
-        icon: Settings,
-        component: AdminRoles,
-      },
-    ],
+    component: AdminStaff,
+    section: "Organization",
   },
   {
-    title: "Configuration",
+    id: "roles",
+    label: "Roles & Permissions",
     icon: Settings,
-    items: [
-      {
-        id: "seo",
-        label: "SEO Optimizer",
-        icon: FileText,
-        component: AdminSEOOptimizer,
-      },
-      {
-        id: "branding",
-        label: "Branding",
-        icon: Palette,
-        component: AdminBranding,
-      },
-    ],
+    component: AdminRoles,
+    section: "Organization",
   },
+  // Configuration Section
+  {
+    id: "seo",
+    label: "SEO Optimizer",
+    icon: FileText,
+    component: AdminSEOOptimizer,
+    section: "Configuration",
+  },
+  {
+    id: "branding",
+    label: "Branding",
+    icon: Palette,
+    component: AdminBranding,
+    section: "Configuration",
+  },
+];
+
+const sections = [
+  "Dashboard",
+  "Content Management",
+  "Activity Management",
+  "Travel & Transportation",
+  "Business Management",
+  "Organization",
+  "Configuration",
 ];
 
 export default function UnifiedCMS() {
@@ -197,7 +177,7 @@ export default function UnifiedCMS() {
   const [, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState<string>("overview");
-  const [expandedGroups, setExpandedGroups] = useState<Set<string>>(
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(["Dashboard", "Content Management"])
   );
 
@@ -206,25 +186,19 @@ export default function UnifiedCMS() {
     navigate("/");
   };
 
-  const toggleGroup = (groupTitle: string) => {
-    const newExpanded = new Set(expandedGroups);
-    if (newExpanded.has(groupTitle)) {
-      newExpanded.delete(groupTitle);
+  const toggleSection = (section: string) => {
+    const newExpanded = new Set(expandedSections);
+    if (newExpanded.has(section)) {
+      newExpanded.delete(section);
     } else {
-      newExpanded.add(groupTitle);
+      newExpanded.add(section);
     }
-    setExpandedGroups(newExpanded);
+    setExpandedSections(newExpanded);
   };
 
   // Find the current component to render
-  let CurrentComponent: React.FC<any> = StaffDashboard;
-  for (const section of menuSections) {
-    const item = section.items.find((i) => i.id === activeSection);
-    if (item) {
-      CurrentComponent = item.component as React.FC<any>;
-      break;
-    }
-  }
+  const currentItem = menuItems.find((item) => item.id === activeSection);
+  const CurrentComponent = currentItem?.component || ((props: any) => <StaffDashboard {...props} disableLayout={true} />);
 
   return (
     <div className="flex h-screen bg-background">
@@ -256,61 +230,75 @@ export default function UnifiedCMS() {
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
-          {menuSections.map((section) => {
-            const isExpanded = expandedGroups.has(section.title);
-            const hasActiveItem = section.items.some((item) => item.id === activeSection);
+        {/* Navigation - Clean single layer */}
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+          {sidebarOpen ? (
+            // Expanded view: Show sections with collapsible items
+            sections.map((section) => {
+              const sectionItems = menuItems.filter((item) => item.section === section);
+              const isExpanded = expandedSections.has(section);
+              const hasActiveItem = sectionItems.some((item) => item.id === activeSection);
 
-            return (
-              <Collapsible
-                key={section.title}
-                open={isExpanded}
-                onOpenChange={() => toggleGroup(section.title)}
-                className="group/collapsible"
-              >
-                <CollapsibleTrigger asChild>
+              return (
+                <div key={section}>
                   <Button
                     variant={hasActiveItem ? "secondary" : "ghost"}
-                    className="w-full justify-start gap-3 h-10"
-                    title={section.title}
+                    className="w-full justify-between gap-3 h-10 font-medium text-sm"
+                    onClick={() => toggleSection(section)}
                   >
-                    <section.icon className="w-5 h-5 flex-shrink-0" />
-                    {sidebarOpen && (
-                      <>
-                        <span className="flex-1 text-left text-sm">{section.title}</span>
-                        <ChevronDown className="w-4 h-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                      </>
-                    )}
+                    <span className="flex-1 text-left">{section}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform ${
+                        isExpanded ? "rotate-180" : ""
+                      }`}
+                    />
                   </Button>
-                </CollapsibleTrigger>
 
-                {sidebarOpen && (
-                  <CollapsibleContent className="ml-6 mt-1 space-y-1 border-l border-border pl-3">
-                    {section.items.map((item) => (
-                      <Button
-                        key={item.id}
-                        variant={activeSection === item.id ? "secondary" : "ghost"}
-                        className="w-full justify-start gap-2 h-9 text-sm"
-                        onClick={() => setActiveSection(item.id)}
-                      >
-                        <item.icon className="w-4 h-4 flex-shrink-0" />
-                        <span className="flex-1 text-left">{item.label}</span>
-                      </Button>
-                    ))}
-                  </CollapsibleContent>
-                )}
-              </Collapsible>
-            );
-          })}
+                  {isExpanded && (
+                    <div className="ml-6 mt-1 space-y-1 border-l border-border pl-3">
+                      {sectionItems.map((item) => (
+                        <Button
+                          key={item.id}
+                          variant={activeSection === item.id ? "secondary" : "ghost"}
+                          className="w-full justify-start gap-2 h-9 text-sm"
+                          onClick={() => setActiveSection(item.id)}
+                        >
+                          <item.icon className="w-4 h-4 flex-shrink-0" />
+                          <span className="flex-1 text-left">{item.label}</span>
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            // Collapsed view: Show only icons
+            menuItems.map((item) => (
+              <Button
+                key={item.id}
+                variant={activeSection === item.id ? "secondary" : "ghost"}
+                className="w-10 h-10 p-0 flex items-center justify-center"
+                onClick={() => setActiveSection(item.id)}
+                title={item.label}
+              >
+                <item.icon className="w-5 h-5" />
+              </Button>
+            ))
+          )}
         </nav>
 
         {/* Logout Button */}
         <div className="p-4 border-t border-border flex-shrink-0">
           <Button
             variant="ghost"
-            className="w-full justify-start gap-3 h-10 text-red-600 hover:text-red-700 hover:bg-red-50"
+            className={`${
+              sidebarOpen
+                ? "w-full justify-start gap-3 h-10 text-red-600 hover:text-red-700 hover:bg-red-50"
+                : "w-10 h-10 p-0 flex items-center justify-center text-red-600 hover:text-red-700 hover:bg-red-50"
+            }`}
             onClick={handleLogout}
+            title="Logout"
           >
             <LogOut className="w-5 h-5" />
             {sidebarOpen && <span className="text-sm">Logout</span>}
