@@ -1739,3 +1739,23 @@
 - [x] Verify redirect logic in App.tsx
 - [x] Update StaffLogin to redirect to /cms instead of /admin
 - [x] Test login page and verify it works correctly
+
+
+## Consolidate Boat Routes and Transports Tables
+- [ ] Create unified transports table schema combining both tables
+- [ ] Migrate data from boat_routes and transports to unified table
+- [ ] Add transportIds to island_guides table for linking
+- [ ] Update island guides to link to unified transports table
+- [ ] Update all tRPC procedures and database queries
+- [ ] Test consolidated transports and verify all links work
+- [ ] Remove deprecated boat_routes table
+
+
+## Gradual Migration: Boat Routes and Transports Consolidation
+- [x] Create island_guide_transports link table in schema
+- [x] Create database migration for new link table
+- [ ] Create helper functions for managing guide-transport relationships (in progress)
+- [ ] Update island guides admin to manage transport links
+- [ ] Test relationship linking and verify data integrity
+- [ ] Migrate existing boat routes data to transports table
+- [ ] Update island guides to use new transport links

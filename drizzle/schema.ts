@@ -1040,3 +1040,27 @@ export const entityMedia = mysqlTable(
 
 export type EntityMedia = typeof entityMedia.$inferSelect;
 export type InsertEntityMedia = typeof entityMedia.$inferInsert;
+
+
+// Island Guide to Transports Link Table
+// Allows many-to-many relationship between island guides and transport options
+export const islandGuideTransports = mysqlTable(
+  "island_guide_transports",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    islandGuideId: int("islandGuideId").notNull(),
+    transportId: int("transportId").notNull(),
+    // Optional: order/priority of transports for this island
+    displayOrder: int("displayOrder").default(0).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    islandGuideIdx: index("idx_island_guide_id").on(table.islandGuideId),
+    transportIdx: index("idx_transport_id").on(table.transportId),
+    uniqueLink: index("idx_unique_guide_transport").on(table.islandGuideId, table.transportId),
+  })
+);
+
+export type IslandGuideTransport = typeof islandGuideTransports.$inferSelect;
+export type InsertIslandGuideTransport = typeof islandGuideTransports.$inferInsert;

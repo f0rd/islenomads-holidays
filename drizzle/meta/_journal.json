@@ -260,6 +260,20 @@
       "when": 1771136838378,
       "tag": "0036_cool_korvac",
       "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "5",
+      "when": 1771156492108,
+      "tag": "0037_spotty_warstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "5",
+      "when": 1771156845132,
+      "tag": "0038_legal_doorman",
+      "breakpoints": true
     }
   ]
 }
