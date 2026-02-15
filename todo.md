@@ -1759,3 +1759,13 @@
 - [ ] Test relationship linking and verify data integrity
 - [ ] Migrate existing boat routes data to transports table
 - [ ] Update island guides to use new transport links
+
+
+## Develop Boat Routes Migration Script
+- [x] Analyze boat routes table structure and existing data
+- [x] Analyze island guides table structure and linking fields
+- [x] Create migration script with linking logic (migrate-boat-routes.mjs)
+- [x] Create rollback script for data safety (rollback-boat-routes.mjs)
+- [x] Document migration process and results (MIGRATION_GUIDE.md)
+- [ ] Execute migration on production database
+- [ ] Verify results and test island guide transport links
