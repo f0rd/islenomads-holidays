@@ -1712,3 +1712,13 @@
 - [x] Update UnifiedCMS to pass hideLayout/disableLayout props to components
 - [x] Verify clean single-layer navigation in sidebar
 - [x] Test navigation expand/collapse functionality
+
+
+## Fix /admin/data-management Route 404 Error
+- [x] Investigate why /admin/data-management returns 404
+- [x] Check if AdminActivity component exists and is properly imported
+- [x] Restore or redirect /admin/data-management to unified CMS /cms?section=data-management
+- [x] Verify route works correctly and displays data management content
+- [x] Add catch-all route in App.tsx to redirect legacy /admin/* paths
+- [x] Update UnifiedCMS to read section from URL query parameter
+- [x] Auto-expand sidebar section when section is loaded from URL

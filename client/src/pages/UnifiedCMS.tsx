@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -42,8 +42,8 @@ import StaffDashboard from "./StaffDashboard";
 interface MenuItem {
   id: string;
   label: string;
-  icon: React.ComponentType<{ className?: string }>;
-  component: React.FC<any>;
+  icon: any;
+  component: any;
   section?: string;
 }
 
@@ -162,7 +162,7 @@ const menuItems: MenuItem[] = [
   },
 ];
 
-const sections = [
+const sections: string[] = [
   "Dashboard",
   "Content Management",
   "Activity Management",
@@ -176,7 +176,14 @@ export default function UnifiedCMS() {
   const { user, logout } = useAuth();
   const [, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeSection, setActiveSection] = useState<string>("overview");
+  const [activeSection, setActiveSection] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const section = searchParams.get('section');
+      if (section) return section;
+    }
+    return "overview";
+  });
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(["Dashboard", "Content Management"])
   );
@@ -195,6 +202,18 @@ export default function UnifiedCMS() {
     }
     setExpandedSections(newExpanded);
   };
+
+  // Auto-expand section when activeSection changes
+  useEffect(() => {
+    const currentItem = menuItems.find((item) => item.id === activeSection);
+    if (currentItem && currentItem.section) {
+      setExpandedSections((prev) => {
+        const newExpanded = new Set(prev);
+        newExpanded.add(currentItem.section as string);
+        return newExpanded;
+      });
+    }
+  }, [activeSection]);
 
   // Find the current component to render
   const currentItem = menuItems.find((item) => item.id === activeSection);

@@ -53,6 +53,13 @@ function Router() {
       <Route path="/cms/dashboard" component={CMSDashboard} />
       
       {/* Fallback for legacy /admin routes - redirect to unified CMS */}
+      <Route path="/admin/:rest*" component={() => {
+        // Redirect legacy /admin/* routes to unified CMS
+        const path = window.location.pathname;
+        const section = path.replace('/admin/', '').split('/')[0];
+        window.location.href = `/cms?section=${section}`;
+        return null;
+      }} />
       <Route path="/admin" component={StaffDashboard} />
       
       {/* 404 Fallback */}
