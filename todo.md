@@ -1722,3 +1722,12 @@
 - [x] Add catch-all route in App.tsx to redirect legacy /admin/* paths
 - [x] Update UnifiedCMS to read section from URL query parameter
 - [x] Auto-expand sidebar section when section is loaded from URL
+
+
+## Consolidate Multiple CMS Entry Points
+- [x] Remove /admin route from App.tsx (redirect to /cms)
+- [x] Remove /cms/dashboard route from App.tsx
+- [x] Update all navigation links to point to /cms
+- [x] Test all CMS access paths and verify they work correctly
+- [x] Update CMSNavigation to use /cms?section=* paths
+- [x] Fix missing IslandGuides import in App.tsx

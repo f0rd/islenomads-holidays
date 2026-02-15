@@ -53,17 +53,17 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Overview",
-        path: "/admin",
+        path: "/cms",
         icon: BarChart3,
       },
       {
         label: "Data Management",
-        path: "/admin/data-management",
+        path: "/cms?section=data-management",
         icon: TrendingUp,
       },
       {
         label: "Activity Log",
-        path: "/admin/activity",
+        path: "/cms?section=activity",
         icon: Activity,
       },
     ],
@@ -74,17 +74,17 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Blog Posts",
-        path: "/admin/blog",
+        path: "/cms?section=blog",
         icon: BookOpen,
       },
       {
         label: "Island Guides",
-        path: "/admin/island-guides",
+        path: "/cms?section=island-guides",
         icon: Compass,
       },
       {
         label: "Packages",
-        path: "/admin/packages",
+        path: "/cms?section=packages",
         icon: Box,
       },
     ],
@@ -95,12 +95,12 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Activity Spots",
-        path: "/admin/activity-spots",
+        path: "/cms?section=activity-spots",
         icon: MapPin,
       },
       {
         label: "Map Locations",
-        path: "/admin/map-locations",
+        path: "/cms?section=map-locations",
         icon: MapPin,
       },
     ],
@@ -111,12 +111,12 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Boat Routes",
-        path: "/admin/boat-routes",
+        path: "/cms?section=boat-routes",
         icon: Ship,
       },
       {
         label: "Transports",
-        path: "/admin/transports",
+        path: "/cms?section=transports",
         icon: Ship,
       },
     ],
@@ -127,7 +127,7 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "CRM Dashboard",
-        path: "/admin/crm",
+        path: "/cms?section=crm",
         icon: MessageSquare,
       },
     ],
@@ -138,12 +138,12 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Staff Management",
-        path: "/admin/staff",
+        path: "/cms?section=staff",
         icon: Users,
       },
       {
         label: "Roles & Permissions",
-        path: "/admin/roles",
+        path: "/cms?section=roles",
         icon: Settings,
       },
     ],
@@ -154,7 +154,7 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "SEO Optimizer",
-        path: "/admin/seo",
+        path: "/cms?section=seo",
         icon: FileText,
       },
       {

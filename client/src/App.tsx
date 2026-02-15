@@ -12,8 +12,6 @@ import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import IslandGuide from "./pages/IslandGuide";
 import StaffLogin from "./pages/StaffLogin";
-import CMSDashboard from "./pages/CMSDashboard";
-import StaffDashboard from "./pages/StaffDashboard";
 import IslandDetail from "./pages/IslandDetail";
 import StaffProfile from "./pages/StaffProfile";
 import IslandGuides from "./pages/IslandGuides";
@@ -49,10 +47,7 @@ function Router() {
       <Route path="/staff-login" component={StaffLogin} />
       <Route path="/staff/profile" component={StaffProfile} />
       
-      {/* Legacy CMS Dashboard Route */}
-      <Route path="/cms/dashboard" component={CMSDashboard} />
-      
-      {/* Fallback for legacy /admin routes - redirect to unified CMS */}
+      {/* Fallback for legacy /admin and /cms/dashboard routes - redirect to unified CMS */}
       <Route path="/admin/:rest*" component={() => {
         // Redirect legacy /admin/* routes to unified CMS
         const path = window.location.pathname;
@@ -60,7 +55,14 @@ function Router() {
         window.location.href = `/cms?section=${section}`;
         return null;
       }} />
-      <Route path="/admin" component={StaffDashboard} />
+      <Route path="/admin" component={() => {
+        window.location.href = '/cms';
+        return null;
+      }} />
+      <Route path="/cms/dashboard" component={() => {
+        window.location.href = '/cms';
+        return null;
+      }} />
       
       {/* 404 Fallback */}
       <Route path="/404" component={NotFound} />
