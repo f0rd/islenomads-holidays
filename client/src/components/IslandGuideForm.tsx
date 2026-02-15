@@ -27,6 +27,13 @@ export interface ActivitySpot {
   tips?: string;
 }
 
+export interface NearbySpot {
+  name: string;
+  distance: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  description?: string;
+}
+
 export interface IslandGuideFormData {
   name: string;
   slug: string;
@@ -47,6 +54,8 @@ export interface IslandGuideFormData {
   itinerary5Day: string;
   faqs: Array<{ question: string; answer: string }>;
   activitySpots?: ActivitySpot[];
+  nearbyDiveSites?: NearbySpot[];
+  nearbySurfSpots?: NearbySpot[];
   published: boolean;
 }
 
@@ -69,6 +78,8 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
       topThingsToDo: typeof data.topThingsToDo === 'string' ? JSON.parse(data.topThingsToDo || '[]') : (data.topThingsToDo || []),
       faqs: typeof data.faqs === 'string' ? JSON.parse(data.faqs || '[]') : (data.faqs || []),
       activitySpots: typeof data.activitySpots === 'string' ? JSON.parse(data.activitySpots || '[]') : (data.activitySpots || []),
+      nearbyDiveSites: typeof data.nearbyDiveSites === 'string' ? JSON.parse(data.nearbyDiveSites || '[]') : (data.nearbyDiveSites || []),
+      nearbySurfSpots: typeof data.nearbySurfSpots === 'string' ? JSON.parse(data.nearbySurfSpots || '[]') : (data.nearbySurfSpots || []),
     };
   };
 
@@ -89,6 +100,8 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
       itinerary5Day: '',
       faqs: Array(6).fill({ question: '', answer: '' }),
       activitySpots: [],
+      nearbyDiveSites: [],
+      nearbySurfSpots: [],
       published: false,
     }
   );
@@ -165,15 +178,55 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     setFormData({ ...formData, activitySpots: updated });
   };
 
+  const addNearbySite = (type: 'dive' | 'surf') => {
+    const newSite: NearbySpot = {
+      name: '',
+      distance: '',
+      difficulty: 'intermediate',
+    };
+    if (type === 'dive') {
+      setFormData({
+        ...formData,
+        nearbyDiveSites: [...(formData.nearbyDiveSites || []), newSite],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        nearbySurfSpots: [...(formData.nearbySurfSpots || []), newSite],
+      });
+    }
+  };
+
+  const updateNearbySite = (type: 'dive' | 'surf', index: number, field: keyof NearbySpot, value: any) => {
+    const sites = type === 'dive' ? [...(formData.nearbyDiveSites || [])] : [...(formData.nearbySurfSpots || [])];
+    sites[index] = { ...sites[index], [field]: value };
+    if (type === 'dive') {
+      setFormData({ ...formData, nearbyDiveSites: sites });
+    } else {
+      setFormData({ ...formData, nearbySurfSpots: sites });
+    }
+  };
+
+  const removeNearbySite = (type: 'dive' | 'surf', index: number) => {
+    if (type === 'dive') {
+      const updated = (formData.nearbyDiveSites || []).filter((_, i) => i !== index);
+      setFormData({ ...formData, nearbyDiveSites: updated });
+    } else {
+      const updated = (formData.nearbySurfSpots || []).filter((_, i) => i !== index);
+      setFormData({ ...formData, nearbySurfSpots: updated });
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Tabs defaultValue="basic" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="basic">Basic Info</TabsTrigger>
           <TabsTrigger value="content">Content</TabsTrigger>
           <TabsTrigger value="guides">Guides</TabsTrigger>
           <TabsTrigger value="itineraries">Itineraries</TabsTrigger>
           <TabsTrigger value="activities">Activities</TabsTrigger>
+          <TabsTrigger value="nearby">Nearby Spots</TabsTrigger>
         </TabsList>
 
         {/* Basic Info Tab */}
@@ -632,6 +685,149 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 >
                   <Plus className="w-4 h-4" />
                   Add Activity Spot
+                </button>
+              </CardContent>
+            )}
+          </Card>
+        </TabsContent>
+
+        {/* Nearby Spots Tab */}
+        <TabsContent value="nearby" className="space-y-4">
+          {/* Nearby Dive Sites */}
+          <Card>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('nearbySites')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Nearby Dive Sites</CardTitle>
+                  <CardDescription>Popular dive sites near this island</CardDescription>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.nearbySites ? 'rotate-180' : ''}`} />
+              </div>
+            </CardHeader>
+            {expandedSections.nearbySites && (
+              <CardContent className="space-y-4">
+                {(formData.nearbyDiveSites || []).map((site, index) => (
+                  <div key={index} className="space-y-3 p-4 border rounded-lg bg-gray-50">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-medium">Dive Site {index + 1}</h4>
+                      <button
+                        type="button"
+                        onClick={() => removeNearbySite('dive', index)}
+                        className="p-1 text-red-600 hover:bg-red-50 rounded"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        value={site.name}
+                        onChange={(e) => updateNearbySite('dive', index, 'name', e.target.value)}
+                        className="col-span-2 px-3 py-2 border rounded-md"
+                        placeholder="Dive site name (e.g., Hanifaru Bay)"
+                      />
+                      <input
+                        type="text"
+                        value={site.distance}
+                        onChange={(e) => updateNearbySite('dive', index, 'distance', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                        placeholder="Distance (e.g., 2 km)"
+                      />
+                      <select
+                        value={site.difficulty}
+                        onChange={(e) => updateNearbySite('dive', index, 'difficulty', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                      >
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                      </select>
+                    </div>
+                    <textarea
+                      value={site.description || ''}
+                      onChange={(e) => updateNearbySite('dive', index, 'description', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md min-h-[60px]"
+                      placeholder="Description of the dive site..."
+                    />
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => addNearbySite('dive')}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Dive Site
+                </button>
+              </CardContent>
+            )}
+          </Card>
+
+          {/* Nearby Surf Spots */}
+          <Card>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('nearbySurf')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Nearby Surf Spots</CardTitle>
+                  <CardDescription>Popular surf spots near this island</CardDescription>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.nearbySurf ? 'rotate-180' : ''}`} />
+              </div>
+            </CardHeader>
+            {expandedSections.nearbySurf && (
+              <CardContent className="space-y-4">
+                {(formData.nearbySurfSpots || []).map((spot, index) => (
+                  <div key={index} className="space-y-3 p-4 border rounded-lg bg-gray-50">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="font-medium">Surf Spot {index + 1}</h4>
+                      <button
+                        type="button"
+                        onClick={() => removeNearbySite('surf', index)}
+                        className="p-1 text-red-600 hover:bg-red-50 rounded"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <input
+                        type="text"
+                        value={spot.name}
+                        onChange={(e) => updateNearbySite('surf', index, 'name', e.target.value)}
+                        className="col-span-2 px-3 py-2 border rounded-md"
+                        placeholder="Surf spot name (e.g., Pasta Point)"
+                      />
+                      <input
+                        type="text"
+                        value={spot.distance}
+                        onChange={(e) => updateNearbySite('surf', index, 'distance', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                        placeholder="Distance (e.g., 3 km)"
+                      />
+                      <select
+                        value={spot.difficulty}
+                        onChange={(e) => updateNearbySite('surf', index, 'difficulty', e.target.value)}
+                        className="px-3 py-2 border rounded-md"
+                      >
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                      </select>
+                    </div>
+                    <textarea
+                      value={spot.description || ''}
+                      onChange={(e) => updateNearbySite('surf', index, 'description', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md min-h-[60px]"
+                      placeholder="Description of the surf spot..."
+                    />
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => addNearbySite('surf')}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Surf Spot
                 </button>
               </CardContent>
             )}

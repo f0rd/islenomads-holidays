@@ -25,7 +25,7 @@ import {
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
-  upsertSeoMetadata, getIslandWithSpots, getIslandGuideByIslandIdUnified, getIslandGuidesUnified, getIslandGuidesWithActivitySpotsUnified
+  upsertSeoMetadata, getIslandWithSpots
 } from "./db";
 
 export const appRouter = router({
@@ -534,11 +534,7 @@ export const appRouter = router({
     getByIslandId: publicProcedure
       .input(z.object({ islandId: z.number() }))
       .query(async ({ input }) => {
-        // Try unified schema first, fall back to old schema
-        let guide = await getIslandGuideByIslandIdUnified(input.islandId);
-        if (!guide) {
-          guide = await getIslandGuideByIslandId(input.islandId);
-        }
+        const guide = await getIslandGuideByIslandId(input.islandId);
         // Return null explicitly instead of undefined to avoid React Query errors
         return guide || null;
       }),
@@ -602,10 +598,7 @@ export const appRouter = router({
 
     listWithActivitySpots: publicProcedure.query(async () => {
       // Try unified schema first, fall back to old schema
-      let guides = await getIslandGuidesWithActivitySpotsUnified();
-      if (!guides || guides.length === 0) {
-        guides = await getIslandGuidesWithActivitySpots();
-      }
+      const guides = await getIslandGuidesWithActivitySpots();
       return guides;
     }),
 

@@ -1628,3 +1628,15 @@
 - [ ] Gradually migrate remaining procedures to use new schema exclusively
 - [ ] Archive old tables (keep as backup)
 - [ ] Delete unused tables after full migration
+
+
+## Create Comprehensive Island Guides CMS
+- [x] Create AdminIslandGuides page component with list, create, edit, delete functionality
+- [x] Add island guide form component with all editable fields
+- [x] Implement nearby dive sites and surf spots management in CMS
+- [x] Add nearby dive sites and surf spots editor sections
+- [x] Test CMS functionality with nearby spots
+- [ ] Add image upload and management for island guides
+- [ ] Create geographical entities management interface
+- [ ] Implement bulk operations (publish, unpublish, delete)
+- [ ] Add CMS link to admin navigation
