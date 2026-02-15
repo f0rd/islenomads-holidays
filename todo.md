@@ -1769,3 +1769,15 @@
 - [x] Document migration process and results (MIGRATION_GUIDE.md)
 - [ ] Execute migration on production database
 - [ ] Verify results and test island guide transport links
+
+
+## Execute Migration and Build Transport Selector UI
+- [ ] Backup production database (requires production access)
+- [ ] Execute migrate-boat-routes.mjs on production (requires production access)
+- [ ] Verify migration results and data integrity (after migration)
+- [x] Create TransportSelector component with multi-select
+- [x] Add drag-and-drop reordering to TransportSelector
+- [x] Integrate TransportSelector into IslandGuideForm
+- [x] Add tRPC procedures for managing transport links
+- [x] Test transport linking in admin interface (UI verified)
+- [x] Verify display order is saved correctly

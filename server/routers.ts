@@ -607,6 +607,28 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return getExperiencesByIsland(input.islandId);
       }),
+
+    getLinkedTransports: protectedProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        // TODO: Implement getIslandGuideTransports from db.ts
+        // This will fetch transports linked to an island guide
+        return [];
+      }),
+
+    updateTransportLinks: protectedProcedure
+      .input(z.object({
+        islandGuideId: z.number(),
+        transports: z.array(z.object({
+          transportId: z.number(),
+          displayOrder: z.number(),
+        })),
+      }))
+      .mutation(async ({ input }) => {
+        // TODO: Implement updateIslandGuideTransports from db.ts
+        // This will update the links between island guides and transports
+        return { success: true };
+      }),
   }),
 
   seo: router({

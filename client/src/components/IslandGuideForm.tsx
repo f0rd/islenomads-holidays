@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 import { ImageUpload } from './ImageUpload';
+import { TransportSelector } from './TransportSelector';
 
 export interface Attraction {
   id?: string;
@@ -36,6 +37,7 @@ export interface NearbySpot {
 }
 
 export interface IslandGuideFormData {
+  id?: number;
   name: string;
   slug: string;
   overview: string;
@@ -222,7 +224,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Tabs defaultValue="basic" className="w-full">
-        <TabsList className="grid w-full grid-cols-7">
+        <TabsList className="grid w-full grid-cols-8">
           <TabsTrigger value="basic">Basic Info</TabsTrigger>
           <TabsTrigger value="content">Content</TabsTrigger>
           <TabsTrigger value="guides">Guides</TabsTrigger>
@@ -230,6 +232,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
           <TabsTrigger value="activities">Activities</TabsTrigger>
           <TabsTrigger value="nearby">Nearby Spots</TabsTrigger>
           <TabsTrigger value="media">Media</TabsTrigger>
+          <TabsTrigger value="transports">Transports</TabsTrigger>
         </TabsList>
 
         {/* Basic Info Tab */}
@@ -836,6 +839,17 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             )}
           </Card>
          </TabsContent>
+
+        {/* Transports Tab */}
+        <TabsContent value="transports" className="space-y-4">
+          <TransportSelector
+            islandGuideId={formData.id || 0}
+            onTransportsChange={(transports) => {
+              // Handle transport changes if needed
+              console.log('Transports updated:', transports);
+            }}
+          />
+        </TabsContent>
 
         {/* Media Tab */}
         <TabsContent value="media" className="space-y-4">
