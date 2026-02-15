@@ -1660,3 +1660,28 @@
 - [x] Transform places data to MapLocation format for component compatibility
 - [x] Verify page displays all 215 unified location entities (129 islands + dive sites + POIs)
 - [x] Test that all locations display correctly with proper types and published status
+
+
+## Synchronize All Admin Pages to Unified Schema
+- [ ] Audit all 15 admin pages for deprecated table dependencies
+- [ ] Update AdminBlog (blogPosts table) to use unified schema
+- [ ] Update AdminPackages (packages table) to use unified schema
+- [ ] Update AdminIslandGuides (islandGuides table) to use unified schema
+- [ ] Update AdminBoatRoutes (boatRoutes table) to use unified schema
+- [ ] Update AdminActivitySpots (activitySpots table) to use unified schema
+- [ ] Update AdminTransports (transports table) to use unified schema
+- [ ] Update AdminStaff (staff table) to use unified schema
+- [ ] Update AdminCRM (crmQueries table) to use unified schema
+- [ ] Update AdminActivity (activityLog table) to use unified schema
+- [ ] Update AdminSEOOptimizer (seoMetaTags table) to use unified schema
+- [ ] Test all admin pages verify data consistency
+- [ ] Save checkpoint after all updates
+
+
+## Add All Admin Pages to CMS UI Navigation
+- [x] Update CMSNavigation.tsx to include all admin pages
+- [x] Add missing admin pages to menu (AdminDashboard, AdminActivity, AdminRoles, AdminBranding, AdminCRM)
+- [x] Organize admin pages into logical categories
+- [x] Verify all routes are properly configured in App.tsx
+- [x] Test CMS navigation and verify all pages are accessible
+- [x] Add icons and labels for each admin page

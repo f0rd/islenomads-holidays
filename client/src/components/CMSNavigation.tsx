@@ -12,6 +12,11 @@ import {
   Settings,
   Ship,
   Waves,
+  Users,
+  Palette,
+  Activity,
+  LogOut,
+  TrendingUp,
 } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
@@ -51,6 +56,16 @@ const menuGroups: MenuGroup[] = [
         path: "/admin",
         icon: BarChart3,
       },
+      {
+        label: "Data Management",
+        path: "/admin/data-management",
+        icon: TrendingUp,
+      },
+      {
+        label: "Activity Log",
+        path: "/admin/activity",
+        icon: Activity,
+      },
     ],
   },
   {
@@ -84,9 +99,9 @@ const menuGroups: MenuGroup[] = [
         icon: MapPin,
       },
       {
-        label: "Activity Types",
-        path: "/admin/activity-types",
-        icon: Waves,
+        label: "Map Locations",
+        path: "/admin/map-locations",
+        icon: MapPin,
       },
     ],
   },
@@ -100,14 +115,9 @@ const menuGroups: MenuGroup[] = [
         icon: Ship,
       },
       {
-        label: "Transport Routes",
-        path: "/admin/transport-routes",
+        label: "Transports",
+        path: "/admin/transports",
         icon: Ship,
-      },
-      {
-        label: "Map Locations",
-        path: "/admin/map-locations",
-        icon: MapPin,
       },
     ],
   },
@@ -120,15 +130,26 @@ const menuGroups: MenuGroup[] = [
         path: "/admin/crm",
         icon: MessageSquare,
       },
+    ],
+  },
+  {
+    title: "Organization",
+    icon: Users,
+    items: [
       {
-        label: "Pricing Requests",
-        path: "/admin/pricing-requests",
-        icon: DollarSign,
+        label: "Staff Management",
+        path: "/admin/staff",
+        icon: Users,
+      },
+      {
+        label: "Roles & Permissions",
+        path: "/admin/roles",
+        icon: Settings,
       },
     ],
   },
   {
-    title: "Settings",
+    title: "Configuration",
     icon: Settings,
     items: [
       {
@@ -137,9 +158,9 @@ const menuGroups: MenuGroup[] = [
         icon: FileText,
       },
       {
-        label: "Staff Management",
-        path: "/admin/staff",
-        icon: Settings,
+        label: "Branding",
+        path: "/admin/branding",
+        icon: Palette,
       },
     ],
   },
@@ -148,7 +169,7 @@ const menuGroups: MenuGroup[] = [
 export function CMSNavigation() {
   const [location] = useLocation();
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(
-    new Set(["Dashboard", "Content Management"])
+    new Set(["Dashboard", "Content Management", "Activity Management"])
   );
 
   const toggleGroup = (groupTitle: string) => {
