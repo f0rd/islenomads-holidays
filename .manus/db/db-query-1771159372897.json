@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides LIMIT 5;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "slug": "maaya-thila"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "slug": "himandhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n60001\tMalé\tmale\n90004\tMaamigili\tmaamigili\n90007\tMaaya Thila\tmaaya-thila\n120055\tBodufolhudhoo\tbodufolhudhoo\n120057\tHimandhoo\thimandhoo\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

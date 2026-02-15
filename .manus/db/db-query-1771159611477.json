@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, name, published FROM island_guides LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, published FROM island_guides LIMIT 5;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "published": "1"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "published": "1"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "published": "1"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "published": "1"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tpublished\n60001\tMalé\t1\n90004\tMaamigili\t1\n90007\tMaaya Thila\t1\n120055\tBodufolhudhoo\t1\n120057\tHimandhoo\t1\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}

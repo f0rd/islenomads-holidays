@@ -1784,3 +1784,12 @@
 
 ## Bug Fixes
 - [x] Fix atoll pages showing island links from previous atolls instead of current atoll only
+
+## Bug Fixes (Current)
+- [ ] Fix Atolls page featured islands links going to old/incorrect island slugs
+
+
+## Bug Fixes - Island Links & Slugs
+- [x] Fix atoll pages showing island links from previous atolls (improved filtering logic)
+- [x] Fix island slug links - removed "-island" suffix from database slugs
+- [ ] Fix island detail pages not loading (guides not being fetched or displayed)

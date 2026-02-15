@@ -426,10 +426,10 @@ export default function AtollDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredIslands.map((island) => (
-                <Link key={island.id} href={`/island/${island.slug}`}>
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                <Link key={island.id} href={`/island/${island.id}`}>
+                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
-                      {island.slug ? (
+                      {island.id ? (
                         <>
                           <img
                             src={getIslandFeaturedImage(island.slug)}

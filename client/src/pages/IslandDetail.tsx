@@ -16,8 +16,8 @@ import ExcursionsInfo from '@/components/ExcursionsInfo';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
-  const [, params] = useRoute('/island/:slug');
-  const slug = params?.slug as string;
+  const [, params] = useRoute('/island/:id');
+  const id = params?.id ? parseInt(params.id as string, 10) : null;
   
   const [island, setIsland] = useState<any | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,18 +43,23 @@ export default function IslandDetail() {
   );
 
   useEffect(() => {
-    if (guides.length > 0 && slug) {
-      const foundIsland = guides.find((g: any) => g.slug === slug);
-      setIsland(foundIsland || null);
-      setIsLoading(false);
-      
-      // Filter activity spots linked to this island
-      if (foundIsland) {
-        const linked = activitySpots.filter((spot: any) => spot.islandGuideId === foundIsland.id);
-        setLinkedActivitySpots(linked);
+    console.log('IslandDetail useEffect - id:', id, 'guides.length:', guides.length);
+    if (id) {
+      if (guides.length > 0) {
+        console.log('Looking for island with id:', id, 'in guides:', guides.map((g: any) => ({ id: g.id, name: g.name })));
+        const foundIsland = guides.find((g: any) => g.id === id);
+        console.log('Found island:', foundIsland);
+        setIsland(foundIsland || null);
+        
+        // Filter activity spots linked to this island
+        if (foundIsland) {
+          const linked = activitySpots.filter((spot: any) => spot.islandGuideId === foundIsland.id);
+          setLinkedActivitySpots(linked);
+        }
       }
+      setIsLoading(false);
     }
-  }, [slug, guides.length, activitySpots]);
+  }, [id, guides.length, activitySpots]);
 
   // Update nearby spots when fetched
   useEffect(() => {
