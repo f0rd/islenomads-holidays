@@ -1,0 +1,67 @@
+{
+  "query": "SELECT DISTINCT atoll FROM island_guides WHERE atoll IS NOT NULL ORDER BY atoll;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT DISTINCT atoll FROM island_guides WHERE atoll IS NOT NULL ORDER BY atoll;",
+  "rows": [
+    {
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "atoll": "Alifu Alif Atoll"
+    },
+    {
+      "atoll": "Alifu Dhaalu Atoll"
+    },
+    {
+      "atoll": "Ari Atoll"
+    },
+    {
+      "atoll": "Baa Atoll"
+    },
+    {
+      "atoll": "Dhaalu Atoll"
+    },
+    {
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "atoll": "Maldives"
+    },
+    {
+      "atoll": "Meemu Atoll"
+    },
+    {
+      "atoll": "Noonu Atoll"
+    },
+    {
+      "atoll": "North Ari Atoll"
+    },
+    {
+      "atoll": "Raa Atoll"
+    },
+    {
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "atoll": "South Male Atoll"
+    },
+    {
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "atoll": "Vaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\nAlif Alif Atoll\nAlif Dhaal Atoll\nAlifu Alif Atoll\nAlifu Dhaalu Atoll\nAri Atoll\nBaa Atoll\nDhaalu Atoll\nHaa Alif Atoll\nKaafu Atoll\nLhaviyani Atoll\nMaldives\nMeemu Atoll\nNoonu Atoll\nNorth Ari Atoll\nRaa Atoll\nSeenu Atoll\nSouth Male Atoll\nThaa Atoll\nVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

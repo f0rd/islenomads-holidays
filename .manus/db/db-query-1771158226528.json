@@ -1,0 +1,526 @@
+{
+  "query": "SELECT name, atoll FROM island_guides WHERE atoll IS NOT NULL ORDER BY atoll, name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, atoll FROM island_guides WHERE atoll IS NOT NULL ORDER BY atoll, name;",
+  "rows": [
+    {
+      "name": "Feridhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "name": "Mathiveri",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "name": "Rasdhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "name": "Ukulhas",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "name": "Dhangethi",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "name": "Omadhoo",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "name": "Bodufolhudhoo",
+      "atoll": "Alifu Alif Atoll"
+    },
+    {
+      "name": "Himandhoo",
+      "atoll": "Alifu Alif Atoll"
+    },
+    {
+      "name": "Maalhos",
+      "atoll": "Alifu Alif Atoll"
+    },
+    {
+      "name": "Maamigili",
+      "atoll": "Alifu Dhaalu Atoll"
+    },
+    {
+      "name": "Maaya Thila",
+      "atoll": "Ari Atoll"
+    },
+    {
+      "name": "Thulusdhoo",
+      "atoll": "Ari Atoll"
+    },
+    {
+      "name": "Dharavandhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Godhdhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "atoll": "Dhaalu Atoll"
+    },
+    {
+      "name": "Hanimadhoo",
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Gulhi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Guraidhoo",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Himmafushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Hulhumalé",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Maafushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Malé",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "name": "Fehendhoo",
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "name": "Naifaru",
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "name": "Baarah",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Banana Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Bandidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Bileddhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Burunee",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dharanboodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhiddhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhiggaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhigurah House Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhiyamigili",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhonfanu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Dhuvaafaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Eydhafushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Feeali",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Felidhoo Kandu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Feydhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Filladhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Finey",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Fotteyo Kandu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Fulidhoo Kandu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Funadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Fuvahmulah Tiger Shark",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Gaafaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Gemendhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "HP Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hinnavaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hirimaradhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hoarafushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hulhudheli",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hulhumeedhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Huraa",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Ihavandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Innamaa",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Isdhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kaashidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kalaidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kandooma Thila",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kelaa",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kendhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Keyodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kumundhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kurendhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kurinbi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Lhaimagu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Lhosfushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maaenboodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maarandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maavah",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maduvvaree",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Magoodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Makunudhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Meedhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Milandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Mulah",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Mulhadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Muraidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Naalaafushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Naifaru Kandu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Naivaadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nellaidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Neykurendhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nilandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nolhivaramu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nolhivaranfaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Noomaraa",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Olhuvelifushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Raimmandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rakeedhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rasdhoo Madivaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rinbudhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Thakandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Thinadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Thoddoo House Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Thuraakunu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Ukulhas House Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Uligamu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Utheemu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Vaikaradhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Vashafaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Velidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Veligandu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Veligandu Reef",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Veyvah",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Villingili",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Muli",
+      "atoll": "Meemu Atoll"
+    },
+    {
+      "name": "Fodhdhoo",
+      "atoll": "Noonu Atoll"
+    },
+    {
+      "name": "Thoddoo",
+      "atoll": "North Ari Atoll"
+    },
+    {
+      "name": "Alifushi",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "name": "Inguraidhoo",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "name": "Ungoofaaru",
+      "atoll": "Raa Atoll"
+    },
+    {
+      "name": "Feidhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Fuvamulah",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Gan",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Hithadhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Kandooma",
+      "atoll": "South Male Atoll"
+    },
+    {
+      "name": "Kolhufushi",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "name": "Madifushi",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "name": "Felidhoo",
+      "atoll": "Vaavu Atoll"
+    },
+    {
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\nFeridhoo\tAlif Alif Atoll\nMathiveri\tAlif Alif Atoll\nRasdhoo\tAlif Alif Atoll\nUkulhas\tAlif Alif Atoll\nDhangethi\tAlif Dhaal Atoll\nDhigurah\tAlif Dhaal Atoll\nOmadhoo\tAlif Dhaal Atoll\nBodufolhudhoo\tAlifu Alif Atoll\nHimandhoo\tAlifu Alif Atoll\nMaalhos\tAlifu Alif Atoll\nMaamigili\tAlifu Dhaalu Atoll\nMaaya Thila\tAri Atoll\nThulusdhoo\tAri Atoll\nDharavandhoo\tBaa Atoll\nFulhadhoo\tBaa Atoll\nGodhdhoo\tBaa Atoll\nKudahuvadhoo\tDhaalu Atoll\nHanimadhoo\tHaa Alif Atoll\nDhiffushi\tKaafu Atoll\nGulhi\tKaafu Atoll\nGuraidhoo\tKaafu Atoll\nHimmafushi\tKaafu Atoll\nHulhumalé\tKaafu Atoll\nMaafushi\tKaafu Atoll\nMalé\tKaafu Atoll\nFehendhoo\tLhaviyani Atoll\nNaifaru\tLhaviyani Atoll\nBaarah\tMaldives\nBanana Reef\tMaldives\nBandidhoo\tMaldives\nBileddhoo\tMaldives\nBurunee\tMaldives\nDharanboodhoo\tMaldives\nDhiddhoo\tMaldives\nDhiggaru\tMaldives\nDhigurah House Reef\tMaldives\nDhiyamigili\tMaldives\nDhonfanu\tMaldives\nDhuvaafaru\tMaldives\nEydhafushi\tMaldives\nFeeali\tMaldives\nFelidhoo Kandu\tMaldives\nFeydhoo\tMaldives\nFilladhoo\tMaldives\nFiney\tMaldives\nFotteyo Kandu\tMaldives\nFulidhoo Kandu\tMaldives\nFunadhoo\tMaldives\nFuvahmulah Tiger Shark\tMaldives\nGaafaru\tMaldives\nGemendhoo\tMaldives\nHP Reef\tMaldives\nHinnavaru\tMaldives\nHirimaradhoo\tMaldives\nHoarafushi\tMaldives\nHulhudheli\tMaldives\nHulhumeedhoo\tMaldives\nHuraa\tMaldives\nIhavandhoo\tMaldives\nInnamaa\tMaldives\nIsdhoo\tMaldives\nKaashidhoo\tMaldives\nKadhoo\tMaldives\nKalaidhoo\tMaldives\nKandooma Thila\tMaldives\nKelaa\tMaldives\nKendhoo\tMaldives\nKeyodhoo\tMaldives\nKumundhoo\tMaldives\nKurendhoo\tMaldives\nKurinbi\tMaldives\nLhaimagu\tMaldives\nLhosfushi\tMaldives\nMaaenboodhoo\tMaldives\nMaarandhoo\tMaldives\nMaavah\tMaldives\nMaduvvaree\tMaldives\nMagoodhoo\tMaldives\nMakunudhoo\tMaldives\nMeedhoo\tMaldives\nMilandhoo\tMaldives\nMulah\tMaldives\nMulhadhoo\tMaldives\nMuraidhoo\tMaldives\nNaalaafushi\tMaldives\nNaifaru Kandu\tMaldives\nNaivaadhoo\tMaldives\nNellaidhoo\tMaldives\nNeykurendhoo\tMaldives\nNilandhoo\tMaldives\nNolhivaramu\tMaldives\nNolhivaranfaru\tMaldives\nNoomaraa\tMaldives\nOlhuvelifushi\tMaldives\nRaimmandhoo\tMaldives\nRakeedhoo\tMaldives\nRasdhoo Madivaru\tMaldives\nRinbudhoo\tMaldives\nThakandhoo\tMaldives\nThinadhoo\tMaldives\nThoddoo House Reef\tMaldives\nThuraakunu\tMaldives\nUkulhas House Reef\tMaldives\nUligamu\tMaldives\nUtheemu\tMaldives\nVaikaradhoo\tMaldives\nVashafaru\tMaldives\nVelidhoo\tMaldives\nVeligandu\tMaldives\nVeligandu Reef\tMaldives\nVeyvah\tMaldives\nVillingili\tMaldives\nMuli\tMeemu Atoll\nFodhdhoo\tNoonu Atoll\nThoddoo\tNorth Ari Atoll\nAlifushi\tRaa Atoll\nInguraidhoo\tRaa Atoll\nUngoofaaru\tRaa Atoll\nFeidhoo\tSeenu Atoll\nFuvamulah\tSeenu Atoll\nGan\tSeenu Atoll\nHithadhoo\tSeenu Atoll\nMaradhoo\tSeenu Atoll\nKandooma\tSouth Male Atoll\nKolhufushi\tThaa Atoll\nMadifushi\tThaa Atoll\nVeymandoo\tThaa Atoll\nFelidhoo\tVaavu Atoll\nFulidhoo\tVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

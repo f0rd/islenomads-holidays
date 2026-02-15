@@ -68,24 +68,36 @@ export default function AtollDetail() {
   const { data: allIslands = [] } = trpc.islandGuides.list.useQuery();
 
   useEffect(() => {
-    if (atollData) {
+    if (atollData && allIslands.length > 0) {
       setAtoll(atollData);
       
       // Filter islands by atoll, excluding dive sites and attractions
       const islands = allIslands.filter(
         (island: IslandGuideData) => {
+          // Ensure we have valid data
+          if (!island.atoll || !island.name) return false;
+          
           // Check if it's an actual island (not a dive site or attraction)
-          const isDiveSite = island.name?.toLowerCase().includes('reef') || 
-                            island.name?.toLowerCase().includes('thila') ||
-                            island.name?.toLowerCase().includes('kandu') ||
-                            island.name?.toLowerCase().includes('shark') ||
-                            island.name?.toLowerCase().includes('bay') ||
-                            island.name?.toLowerCase().includes('madivaru');
-          return island.atoll === atollData.name && island.published === 1 && !isDiveSite;
+          const isDiveSite = island.name.toLowerCase().includes('reef') || 
+                            island.name.toLowerCase().includes('thila') ||
+                            island.name.toLowerCase().includes('kandu') ||
+                            island.name.toLowerCase().includes('shark') ||
+                            island.name.toLowerCase().includes('bay') ||
+                            island.name.toLowerCase().includes('madivaru');
+          
+          // Strict matching: atoll name must match exactly
+          const atollMatches = island.atoll.trim() === atollData.name.trim();
+          const isPublished = island.published === 1;
+          
+          return atollMatches && isPublished && !isDiveSite;
         }
       );
+      
       setFeaturedIslands(islands);
       setIsLoading(false);
+    } else if (atollData && allIslands.length === 0) {
+      // Data is still loading
+      setAtoll(atollData);
     }
   }, [atollData, allIslands]);
 

@@ -1781,3 +1781,6 @@
 - [x] Add tRPC procedures for managing transport links
 - [x] Test transport linking in admin interface (UI verified)
 - [x] Verify display order is saved correctly
+
+## Bug Fixes
+- [x] Fix atoll pages showing island links from previous atolls instead of current atoll only
