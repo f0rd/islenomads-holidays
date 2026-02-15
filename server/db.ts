@@ -426,17 +426,11 @@ export async function getIslandGuideByIslandId(islandId: number): Promise<Island
   const db = await getDb();
   if (!db) return undefined;
 
-  // First, get the place by ID
-  const place = await db.select().from(places).where(eq(places.id, islandId)).limit(1);
-  if (!place || !place[0]) return undefined;
-
-  const placeData = place[0];
-  
-  // Find the island guide by matching the place name
+  // Query the island guide directly by ID
   const result = await db
     .select()
     .from(islandGuides)
-    .where(eq(islandGuides.name, placeData.name))
+    .where(eq(islandGuides.id, islandId))
     .limit(1);
   
   return result[0];
