@@ -1652,3 +1652,11 @@
 - [ ] Implement image cropping/resizing for consistent dimensions
 - [ ] Test image upload and display functionality
 - [ ] Verify S3 integration and CDN URLs work correctly
+
+
+## Fix Map Locations Admin Page to Use Unified Schema
+- [x] Identify that /admin/map-locations was querying old mapLocations table
+- [x] Update getMapLocations() function in server/db.ts to query from places table
+- [x] Transform places data to MapLocation format for component compatibility
+- [x] Verify page displays all 215 unified location entities (129 islands + dive sites + POIs)
+- [x] Test that all locations display correctly with proper types and published status

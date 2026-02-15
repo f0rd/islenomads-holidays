@@ -286,16 +286,42 @@ export async function getBoatRoutesToIsland(islandGuideId: number): Promise<Boat
   ) as any;
 }
 
-// Map Locations helpers
+// Map Locations helpers - Updated to use places table (unified schema)
 export async function getMapLocations(published?: boolean): Promise<MapLocation[]> {
   const db = await getDb();
   if (!db) return [];
 
-  const query = db.select().from(mapLocations);
-  if (published !== undefined) {
-    return query.where(eq(mapLocations.published, published ? 1 : 0)) as any;
-  }
-  return query as any;
+  // Query from places table which contains all unified location data
+  const results = await db.select().from(places);
+  
+  // Transform places data to MapLocation format for compatibility
+  return results.map((place: any) => ({
+    id: place.id,
+    placeId: place.id,
+    name: place.name,
+    slug: place.name.toLowerCase().replace(/\s+/g, '-'),
+    type: place.type,
+    latitude: 0,
+    longitude: 0,
+    description: '',
+    highlights: null,
+    amenities: null,
+    image: null,
+    icon: null,
+    color: null,
+    difficulty: null,
+    depth: null,
+    waveHeight: null,
+    rating: null,
+    reviews: 0,
+    population: null,
+    priceRange: null,
+    bestSeason: null,
+    guideId: null,
+    published: 1,
+    createdAt: place.createdAt,
+    updatedAt: place.updatedAt,
+  } as any)) as any;
 }
 
 export async function getMapLocationBySlug(slug: string): Promise<MapLocation | undefined> {
