@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, atoll FROM island_guides WHERE name IN ('Maalhos', 'Thoddoo');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll FROM island_guides WHERE name IN ('Maalhos', 'Thoddoo');",
+  "rows": [
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "atoll": "Alif Alif Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\n120058\tMaalhos\tAlif Alif Atoll\n150003\tThoddoo\tAlif Alif Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

@@ -1786,10 +1786,11 @@
 - [x] Fix atoll pages showing island links from previous atolls instead of current atoll only
 
 ## Bug Fixes (Current)
-- [ ] Fix Atolls page featured islands links going to old/incorrect island slugs
-
+- [x] Fix Atolls page featured islands links going to old/incorrect island slugs (changed to use IDs)
+- [x] Fix featured island links pointing to wrong IDs - Corrected atoll name standardization and Maalhos assignment
+- [ ] Fix island detail pages not loading (guides not being fetched or displayed)
 
 ## Bug Fixes - Island Links & Slugs
 - [x] Fix atoll pages showing island links from previous atolls (improved filtering logic)
 - [x] Fix island slug links - removed "-island" suffix from database slugs
-- [ ] Fix island detail pages not loading (guides not being fetched or displayed)
+- [x] Updated island links to use IDs instead of slugs
