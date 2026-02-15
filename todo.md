@@ -1613,3 +1613,18 @@
 - [ ] Migrate all data to single source of truth
 - [ ] Remove redundant tables and fields
 - [ ] Update all references to use consolidated structure
+
+
+## Implement Unified Geographical Entities Schema
+- [x] Create new tables in drizzle schema (geographical_entities, entity_details, entity_relationships, entity_media)
+- [x] Run database migration to create new tables (pnpm db:push successful)
+- [x] Migrate island data from places table to geographical_entities (215 entities)
+- [x] Migrate guide content from islandGuides to entity_details (86 details)
+- [x] Migrate nearby dive/surf sites from JSON to entity_relationships (129 relationships)
+- [x] Create new database helper functions (getIslandGuideByIslandIdUnified, getIslandGuidesUnified)
+- [x] Update tRPC procedures to use new functions with fallback (getByIslandId, listWithActivitySpots)
+- [x] Test all island guide pages with new schema (Thulusdhoo loads correctly)
+- [x] Verify data integrity and consistency (all guides displaying correctly)
+- [ ] Gradually migrate remaining procedures to use new schema exclusively
+- [ ] Archive old tables (keep as backup)
+- [ ] Delete unused tables after full migration

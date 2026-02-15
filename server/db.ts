@@ -1382,3 +1382,210 @@ export async function getIslandWithSpots(islandId: number) {
     transportRoutes: routes,
   };
 }
+
+
+// ============================================================================
+// UNIFIED SCHEMA HELPERS (New)
+// These functions query the new consolidated geographical_entities schema
+// ============================================================================
+
+/**
+ * Get island guide from unified schema by island ID
+ * Queries geographical_entities + entity_details tables
+ */
+export async function getIslandGuideByIslandIdUnified(islandId: number): Promise<any | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  try {
+    // Import tables
+    const { geographicalEntities, entityDetails, entityRelationships } = await import("../drizzle/schema");
+
+    // Get the entity
+    const entity = await db
+      .select()
+      .from(geographicalEntities)
+      .where(eq(geographicalEntities.id, islandId))
+      .limit(1);
+    
+    if (!entity || !entity[0]) return undefined;
+
+    const entityData = entity[0];
+    
+    // Get the entity details
+    const details = await db
+      .select()
+      .from(entityDetails)
+      .where(eq(entityDetails.entityId, islandId))
+      .limit(1);
+
+    const detailsData = details[0];
+
+    // Get nearby dive sites
+    const diveSites = await db
+      .select()
+      .from(entityRelationships)
+      .where(
+        and(
+          eq(entityRelationships.sourceEntityId, islandId),
+          eq(entityRelationships.relationshipType, "nearby_dive_site")
+        )
+      );
+
+    // Get nearby surf spots
+    const surfSpots = await db
+      .select()
+      .from(entityRelationships)
+      .where(
+        and(
+          eq(entityRelationships.sourceEntityId, islandId),
+          eq(entityRelationships.relationshipType, "nearby_surf_spot")
+        )
+      );
+
+    // Combine and return
+    return {
+      id: entityData.id,
+      name: entityData.name,
+      slug: entityData.slug,
+      description: entityData.description,
+      overview: entityData.overview,
+      published: entityData.published,
+      
+      // Details
+      bestTimeToVisit: detailsData?.bestTimeToVisit,
+      currency: detailsData?.currency,
+      language: detailsData?.language,
+      flightInfo: detailsData?.flightInfo,
+      speedboatInfo: detailsData?.speedboatInfo,
+      ferryInfo: detailsData?.ferryInfo,
+      activities: detailsData?.activities ? JSON.parse(detailsData.activities) : [],
+      restaurants: detailsData?.restaurants ? JSON.parse(detailsData.restaurants) : [],
+      whatToPack: detailsData?.whatToPack ? JSON.parse(detailsData.whatToPack) : [],
+      healthTips: detailsData?.healthTips ? JSON.parse(detailsData.healthTips) : [],
+      emergencyContacts: detailsData?.emergencyContacts ? JSON.parse(detailsData.emergencyContacts) : [],
+      attractions: detailsData?.attractions ? JSON.parse(detailsData.attractions) : [],
+      threeDayItinerary: detailsData?.threeDayItinerary ? JSON.parse(detailsData.threeDayItinerary) : [],
+      fiveDayItinerary: detailsData?.fiveDayItinerary ? JSON.parse(detailsData.fiveDayItinerary) : [],
+      faq: detailsData?.faq ? JSON.parse(detailsData.faq) : [],
+      quickFacts: detailsData?.quickFacts ? JSON.parse(detailsData.quickFacts) : [],
+      
+      // Relationships
+      nearbyDiveSites: diveSites,
+      nearbySurfSpots: surfSpots,
+    };
+  } catch (error) {
+    console.error('[getIslandGuideByIslandIdUnified] Error:', error);
+    return undefined;
+  }
+}
+
+/**
+ * Get all published island guides from unified schema
+ */
+export async function getIslandGuidesUnified(): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  try {
+    const { geographicalEntities, entityDetails } = await import("../drizzle/schema");
+
+    const entities = await db
+      .select()
+      .from(geographicalEntities)
+      .where(
+        and(
+          eq(geographicalEntities.entityType, "island"),
+          eq(geographicalEntities.published, 1)
+        )
+      );
+    
+    // Enrich with details
+    const enriched = await Promise.all(
+      entities.map(async (entity: any) => {
+        const details = await db
+          .select()
+          .from(entityDetails)
+          .where(eq(entityDetails.entityId, entity.id))
+          .limit(1);
+
+        return {
+          ...entity,
+          ...details[0],
+        };
+      })
+    );
+
+    return enriched;
+  } catch (error) {
+    console.error('[getIslandGuidesUnified] Error:', error);
+    return [];
+  }
+}
+
+/**
+ * Get island guides with activity spots from unified schema
+ */
+export async function getIslandGuidesWithActivitySpotsUnified(): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  try {
+    const { geographicalEntities, entityDetails, entityRelationships } = await import("../drizzle/schema");
+
+    // Get all published islands
+    const entities = await db
+      .select()
+      .from(geographicalEntities)
+      .where(
+        and(
+          eq(geographicalEntities.entityType, "island"),
+          eq(geographicalEntities.published, 1)
+        )
+      );
+
+    // Enrich with details and relationships
+    const enriched = await Promise.all(
+      entities.map(async (entity: any) => {
+        const details = await db
+          .select()
+          .from(entityDetails)
+          .where(eq(entityDetails.entityId, entity.id))
+          .limit(1);
+
+        const diveSites = await db
+          .select()
+          .from(entityRelationships)
+          .where(
+            and(
+              eq(entityRelationships.sourceEntityId, entity.id),
+              eq(entityRelationships.relationshipType, "nearby_dive_site")
+            )
+          );
+
+        const surfSpots = await db
+          .select()
+          .from(entityRelationships)
+          .where(
+            and(
+              eq(entityRelationships.sourceEntityId, entity.id),
+              eq(entityRelationships.relationshipType, "nearby_surf_spot")
+            )
+          );
+
+        return {
+          ...entity,
+          ...details[0],
+          nearbyDiveSites: diveSites,
+          nearbySurfSpots: surfSpots,
+          placeId: entity.id, // Use entity ID as placeId for compatibility
+        };
+      })
+    );
+
+    return enriched;
+  } catch (error) {
+    console.error('[getIslandGuidesWithActivitySpotsUnified] Error:', error);
+    return [];
+  }
+}

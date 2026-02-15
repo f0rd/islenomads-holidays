@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal, primaryKey, unique, index } from "drizzle-orm/mysql-core";
+import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal, primaryKey, unique, index, longtext } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -842,3 +842,201 @@ export const airportRoutes = mysqlTable("airport_routes", {
 
 export type AirportRoute = typeof airportRoutes.$inferSelect;
 export type InsertAirportRoute = typeof airportRoutes.$inferInsert;
+
+
+/**
+ * UNIFIED GEOGRAPHICAL ENTITIES SCHEMA
+ * Single source of truth for all geographical entities (islands, dive sites, surf spots, etc.)
+ * Replaces: places, mapLocations, activitySpots (consolidates into one structure)
+ */
+
+/**
+ * Geographical Entities: Core table for all locations
+ * Stores islands, dive sites, surf spots, snorkeling spots, and POIs
+ */
+export const geographicalEntities = mysqlTable(
+  "geographical_entities",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    
+    // Identity
+    name: varchar("name", { length: 255 }).notNull(),
+    slug: varchar("slug", { length: 255 }).notNull().unique(),
+    code: varchar("code", { length: 50 }).unique(),
+    
+    // Classification
+    entityType: mysqlEnum("entityType", [
+      "island",
+      "dive_site",
+      "surf_spot",
+      "snorkeling_spot",
+      "airport",
+      "resort",
+      "poi",
+    ]).notNull(),
+    
+    // Location
+    latitude: varchar("latitude", { length: 50 }),
+    longitude: varchar("longitude", { length: 50 }),
+    atollId: int("atollId"),
+    
+    // Basic Content
+    description: text("description"),
+    overview: text("overview"),
+    heroImage: varchar("heroImage", { length: 500 }),
+    
+    // Status
+    isActive: int("isActive").default(1).notNull(),
+    published: int("published").default(0).notNull(),
+    
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    slugIdx: index("idx_geo_entities_slug").on(table.slug),
+    typeIdx: index("idx_geo_entities_type").on(table.entityType),
+    atollIdx: index("idx_geo_entities_atoll").on(table.atollId),
+  })
+);
+
+export type GeographicalEntity = typeof geographicalEntities.$inferSelect;
+export type InsertGeographicalEntity = typeof geographicalEntities.$inferInsert;
+
+/**
+ * Entity Details: Extended content for geographical entities (1-to-1 relationship)
+ * Stores island-specific content: activities, food, itineraries, FAQ, etc.
+ */
+export const entityDetails = mysqlTable(
+  "entity_details",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    entityId: int("entityId")
+      .notNull()
+      .unique()
+      .references(() => geographicalEntities.id, { onDelete: "cascade" }),
+    
+    // Island-specific Fields
+    bestTimeToVisit: varchar("bestTimeToVisit", { length: 500 }),
+    currency: varchar("currency", { length: 255 }),
+    language: varchar("language", { length: 255 }),
+    
+    // Transportation
+    flightInfo: text("flightInfo"),
+    speedboatInfo: text("speedboatInfo"),
+    ferryInfo: text("ferryInfo"),
+    
+    // Content Sections (JSON arrays - using longtext for large content)
+    activities: longtext("activities"), // JSON: [{name, emoji, description}, ...]
+    restaurants: longtext("restaurants"), // JSON: [{name, type, description}, ...]
+    whatToPack: longtext("whatToPack"), // JSON: [{item, reason}, ...]
+    healthTips: longtext("healthTips"), // JSON: [{tip, details}, ...]
+    emergencyContacts: longtext("emergencyContacts"), // JSON: [{type, number, name}, ...]
+    attractions: longtext("attractions"), // JSON: [{name, description, location}, ...]
+    
+    // Itineraries
+    threeDayItinerary: longtext("threeDayItinerary"), // JSON: [{day, activities}, ...]
+    fiveDayItinerary: longtext("fiveDayItinerary"), // JSON: [{day, activities}, ...]
+    
+    // FAQ
+    faq: longtext("faq"), // JSON: [{question, answer}, ...]
+    
+    // Quick Facts
+    quickFacts: longtext("quickFacts"), // JSON: [{label, value}, ...]
+    
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    entityIdx: index("idx_entity_details_entity").on(table.entityId),
+  })
+);
+
+export type EntityDetail = typeof entityDetails.$inferSelect;
+export type InsertEntityDetail = typeof entityDetails.$inferInsert;
+
+/**
+ * Entity Relationships: Links between geographical entities
+ * Examples: island → nearby dive site, island → nearby surf spot, etc.
+ */
+export const entityRelationships = mysqlTable(
+  "entity_relationships",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    
+    sourceEntityId: int("sourceEntityId")
+      .notNull()
+      .references(() => geographicalEntities.id, { onDelete: "cascade" }),
+    
+    targetEntityId: int("targetEntityId")
+      .notNull()
+      .references(() => geographicalEntities.id, { onDelete: "cascade" }),
+    
+    // Relationship Type
+    relationshipType: mysqlEnum("relationshipType", [
+      "nearby_dive_site",
+      "nearby_surf_spot",
+      "nearby_snorkeling_spot",
+      "airport_access",
+      "resort_access",
+      "related_island",
+    ]).notNull(),
+    
+    // Metadata
+    distance: varchar("distance", { length: 50 }), // e.g., "2 km"
+    difficulty: varchar("difficulty", { length: 50 }), // e.g., "Beginner", "Intermediate", "Advanced"
+    notes: text("notes"),
+    sortOrder: int("sortOrder").default(0).notNull(),
+    
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    sourceIdx: index("idx_entity_rel_source").on(table.sourceEntityId),
+    targetIdx: index("idx_entity_rel_target").on(table.targetEntityId),
+    typeIdx: index("idx_entity_rel_type").on(table.relationshipType),
+    uniqueRel: unique("unique_entity_relationship").on(
+      table.sourceEntityId,
+      table.targetEntityId,
+      table.relationshipType
+    ),
+  })
+);
+
+export type EntityRelationship = typeof entityRelationships.$inferSelect;
+export type InsertEntityRelationship = typeof entityRelationships.$inferInsert;
+
+/**
+ * Entity Media: Images and media files for geographical entities
+ * Replaces scattered image URLs with proper asset management
+ */
+export const entityMedia = mysqlTable(
+  "entity_media",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    
+    entityId: int("entityId")
+      .notNull()
+      .references(() => geographicalEntities.id, { onDelete: "cascade" }),
+    
+    mediaType: mysqlEnum("mediaType", ["image", "video", "audio"]).notNull(),
+    url: varchar("url", { length: 500 }).notNull(),
+    
+    caption: text("caption"),
+    altText: varchar("altText", { length: 255 }),
+    displayOrder: int("displayOrder").default(0).notNull(),
+    
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    entityIdx: index("idx_entity_media_entity").on(table.entityId),
+    typeIdx: index("idx_entity_media_type").on(table.mediaType),
+  })
+);
+
+export type EntityMedia = typeof entityMedia.$inferSelect;
+export type InsertEntityMedia = typeof entityMedia.$inferInsert;
