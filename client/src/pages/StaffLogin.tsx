@@ -16,9 +16,9 @@ export default function StaffLogin() {
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    // If already logged in, redirect to admin dashboard
+    // If already logged in, redirect to CMS dashboard
     if (isAuthenticated && user) {
-      navigate("/admin");
+      navigate("/cms");
     }
   }, [isAuthenticated, user, navigate]);
 
@@ -37,7 +37,7 @@ export default function StaffLogin() {
           </div>
           <CardTitle className="text-3xl font-bold">Staff Login</CardTitle>
           <CardDescription className="text-base">
-            Access the Isle Nomads CMS dashboard
+            Access the Isle Nomads unified CMS dashboard
           </CardDescription>
         </CardHeader>
 
