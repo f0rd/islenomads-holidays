@@ -1,4 +1,4 @@
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, asc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -434,6 +434,47 @@ export async function getIslandGuideByIslandId(islandId: number): Promise<Island
     .limit(1);
   
   return result[0];
+}
+
+/**
+ * Get adjacent islands (previous and next) for navigation
+ * Returns the previous and next islands in the same atoll
+ */
+export async function getAdjacentIslandsFromDb(currentIslandId: number): Promise<{ previous: IslandGuide | null; next: IslandGuide | null }> {
+  const db = await getDb();
+  if (!db) return { previous: null, next: null };
+
+  // Get the current island to find its atoll
+  const currentIsland = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.id, currentIslandId))
+    .limit(1);
+  
+  if (!currentIsland || !currentIsland[0]) {
+    return { previous: null, next: null };
+  }
+
+  const currentAtoll = currentIsland[0].atoll;
+  
+  if (!currentAtoll) {
+    return { previous: null, next: null };
+  }
+
+  // Get all islands in the same atoll, ordered by ID
+  const islandsInAtoll = await db
+    .select()
+    .from(islandGuides)
+    .where(eq(islandGuides.atoll, currentAtoll))
+    .orderBy(asc(islandGuides.id));
+
+  // Find the current island's position in the list
+  const currentIndex = islandsInAtoll.findIndex(i => i.id === currentIslandId);
+  
+  return {
+    previous: currentIndex > 0 ? islandsInAtoll[currentIndex - 1] : null,
+    next: currentIndex < islandsInAtoll.length - 1 ? islandsInAtoll[currentIndex + 1] : null,
+  };
 }
 
 /**

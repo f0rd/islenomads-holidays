@@ -21,7 +21,7 @@ import {
   Ship,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
+import { getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
 
 /**
  * UPDATED: IslandGuide component now uses island ID instead of slug
@@ -86,8 +86,13 @@ export default function IslandGuide() {
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
   const [activeTab, setActiveTab] = useState("overview");
   
-  // Get adjacent islands for navigation (previous/next)
-  const adjacentIslands = useMemo(() => getAdjacentIslands(numericIslandId), [numericIslandId]);
+  // Get adjacent islands for navigation (previous/next) from database
+  const { data: adjacentIslandsData } = trpc.islandGuides.getAdjacentIslands.useQuery(
+    { islandId: numericIslandId },
+    { enabled: !isNaN(numericIslandId) }
+  );
+  
+  const adjacentIslands = adjacentIslandsData || { previous: null, next: null };
 
   if (isLoading) {
     return (

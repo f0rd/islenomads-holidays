@@ -1794,3 +1794,6 @@
 - [x] Fix atoll pages showing island links from previous atolls (improved filtering logic)
 - [x] Fix island slug links - removed "-island" suffix from database slugs
 - [x] Updated island links to use IDs instead of slugs
+
+## Bug Fixes - Navigation
+- [x] Fix island navigation to use actual database guides instead of hardcoded ALL_ISLANDS array
