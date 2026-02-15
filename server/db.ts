@@ -1383,9 +1383,3 @@ export async function getIslandWithSpots(islandId: number) {
   };
 }
 
-
-// ============================================================================
-// UNIFIED SCHEMA HELPERS (New)
-// These functions query the new consolidated geographical_entities schema
-// ============================================================================
-

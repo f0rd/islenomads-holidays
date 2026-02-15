@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
+import { ImageUpload } from './ImageUpload';
 
 export interface Attraction {
   id?: string;
@@ -56,6 +57,7 @@ export interface IslandGuideFormData {
   activitySpots?: ActivitySpot[];
   nearbyDiveSites?: NearbySpot[];
   nearbySurfSpots?: NearbySpot[];
+  heroImage?: string;
   published: boolean;
 }
 
@@ -220,13 +222,14 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Tabs defaultValue="basic" className="w-full">
-        <TabsList className="grid w-full grid-cols-6">
+        <TabsList className="grid w-full grid-cols-7">
           <TabsTrigger value="basic">Basic Info</TabsTrigger>
           <TabsTrigger value="content">Content</TabsTrigger>
           <TabsTrigger value="guides">Guides</TabsTrigger>
           <TabsTrigger value="itineraries">Itineraries</TabsTrigger>
           <TabsTrigger value="activities">Activities</TabsTrigger>
           <TabsTrigger value="nearby">Nearby Spots</TabsTrigger>
+          <TabsTrigger value="media">Media</TabsTrigger>
         </TabsList>
 
         {/* Basic Info Tab */}
@@ -832,9 +835,26 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
               </CardContent>
             )}
           </Card>
+         </TabsContent>
+
+        {/* Media Tab */}
+        <TabsContent value="media" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Hero Image</CardTitle>
+              <CardDescription>Upload a hero image for this island guide</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ImageUpload
+                currentImage={formData.heroImage}
+                onImageUpload={(url) => setFormData({ ...formData, heroImage: url })}
+                label="Island Hero Image"
+                maxSizeMB={5}
+              />
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
-
       {/* Submit Buttons */}
       <div className="flex gap-3 justify-end">
         <Button type="button" variant="outline" disabled={isLoading}>

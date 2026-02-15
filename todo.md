@@ -1640,3 +1640,15 @@
 - [ ] Create geographical entities management interface
 - [ ] Implement bulk operations (publish, unpublish, delete)
 - [ ] Add CMS link to admin navigation
+
+
+## Add Hero Image Upload Feature for Island Guides
+- [x] Update database schema to add heroImage field to island_guides table
+- [x] Create image upload component with S3 integration
+- [x] Add image upload field to IslandGuideForm in CMS
+- [x] Create tRPC procedure to handle image uploads and S3 storage
+- [ ] Display hero images on island guide pages
+- [ ] Add image preview in CMS form
+- [ ] Implement image cropping/resizing for consistent dimensions
+- [ ] Test image upload and display functionality
+- [ ] Verify S3 integration and CDN URLs work correctly
