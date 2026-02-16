@@ -18,9 +18,10 @@ import {
   Star,
   X
 } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import { getIslandGuideUrl } from '@shared/locations';
+import { getAttractionGuideUrl } from '@/const';
 
 interface IslandGuideData {
   id: number;
@@ -60,6 +61,7 @@ interface IslandWithSpots extends IslandGuideData {
 }
 
 export default function ExploreMaldives() {
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi'>('atolls');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -523,7 +525,11 @@ export default function ExploreMaldives() {
 
                   {/* Render Activity Spots */}
                   {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
-                    <Card key={spot.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
+                    <Card
+                      key={spot.id}
+                      className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group cursor-pointer"
+                      onClick={() => setLocation(getAttractionGuideUrl(spot.slug))}
+                    >
                       {/* Hero Image */}
                       <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
                         <div className="text-center">
