@@ -1,0 +1,19 @@
+{
+  "query": "SELECT COUNT(*) as places_count FROM places WHERE type = 'island'; SELECT COUNT(*) as island_guides_count FROM island_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as places_count FROM places WHERE type = 'island'; SELECT COUNT(*) as island_guides_count FROM island_guides;",
+  "rows": [
+    {
+      "places_count": "126"
+    },
+    {
+      "places_count": "island_guides_count"
+    },
+    {
+      "places_count": "129"
+    }
+  ],
+  "messages": [],
+  "stdout": "places_count\n126\nisland_guides_count\n129\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

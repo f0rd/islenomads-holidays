@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total_islands, \n       SUM(CASE WHEN nearbyAirports IS NOT NULL AND JSON_LENGTH(nearbyAirports) > 0 THEN 1 ELSE 0 END) as with_airports,\n       SUM(CASE WHEN nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0 THEN 1 ELSE 0 END) as without_airports\nFROM island_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_islands, \n       SUM(CASE WHEN nearbyAirports IS NOT NULL AND JSON_LENGTH(nearbyAirports) > 0 THEN 1 ELSE 0 END) as with_airports,\n       SUM(CASE WHEN nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0 THEN 1 ELSE 0 END) as without_airports\nFROM island_guides;",
+  "rows": [
+    {
+      "total_islands": "129",
+      "with_airports": "129",
+      "without_airports": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_islands\twith_airports\twithout_airports\n129\t129\t0\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

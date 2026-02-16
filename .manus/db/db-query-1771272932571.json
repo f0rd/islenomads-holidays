@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, slug, type FROM places WHERE name LIKE '%aafushi%' OR slug LIKE '%aafushi%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, type FROM places WHERE name LIKE '%aafushi%' OR slug LIKE '%aafushi%';",
+  "rows": [
+    {
+      "id": "33",
+      "name": "Naalaafushi",
+      "slug": "naalaafushi",
+      "type": "island"
+    },
+    {
+      "id": "87",
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "type": "island"
+    },
+    {
+      "id": "30107",
+      "name": "Maafushi House Reef",
+      "slug": "maafushi-house-reef",
+      "type": "snorkeling_spot"
+    },
+    {
+      "id": "30128",
+      "name": "Maafushi Reef",
+      "slug": "maafushi-reef",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30170",
+      "name": "Maafushi Lagoon Snorkel",
+      "slug": "maafushi-lagoon-snorkel",
+      "type": "snorkeling_spot"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttype\n33\tNaalaafushi\tnaalaafushi\tisland\n87\tMaafushi\tmaafushi\tisland\n30107\tMaafushi House Reef\tmaafushi-house-reef\tsnorkeling_spot\n30128\tMaafushi Reef\tmaafushi-reef\tsurf_spot\n30170\tMaafushi Lagoon Snorkel\tmaafushi-lagoon-snorkel\tsnorkeling_spot\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

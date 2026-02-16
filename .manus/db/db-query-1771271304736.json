@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Dharavandhoo Airport\",\"code\":\"DRV\",\"transferType\":\"domestic flight\",\"duration\":\"30 minutes flight\",\"distance\":\"Direct flight\",\"description\":\"Domestic flights from Malé. Direct airport access.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"2 hours\",\"distance\":\"90 km\",\"description\":\"Alternative: International flights to Malé, then speedboat or domestic flight.\"}]' WHERE slug = 'dharavandhoo';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Dharavandhoo Airport\",\"code\":\"DRV\",\"transferType\":\"domestic flight\",\"duration\":\"30 minutes flight\",\"distance\":\"Direct flight\",\"description\":\"Domestic flights from Malé. Direct airport access.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"2 hours\",\"distance\":\"90 km\",\"description\":\"Alternative: International flights to Malé, then speedboat or domestic flight.\"}]' WHERE slug = 'dharavandhoo';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 61
+}

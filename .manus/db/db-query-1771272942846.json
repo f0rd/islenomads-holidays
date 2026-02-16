@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, slug, type FROM places WHERE name = 'Maafushi' AND type = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, type FROM places WHERE name = 'Maafushi' AND type = 'island';",
+  "rows": [
+    {
+      "id": "87",
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttype\n87\tMaafushi\tmaafushi\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

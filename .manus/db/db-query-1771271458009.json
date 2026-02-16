@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, name, nearbyAirports FROM island_guides WHERE slug = 'maafushi';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, nearbyAirports FROM island_guides WHERE slug = 'maafushi';",
+  "rows": [
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "nearbyAirports": "[{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"45 minutes\",\"distance\":\"45 km\",\"description\":\"International flights arrive here. Take a speedboat to Maafushi.\"}]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tnearbyAirports\n180001\tMaafushi\t[{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"45 minutes\",\"distance\":\"45 km\",\"description\":\"International flights arrive here. Take a speedboat to Maafushi.\"}]\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}

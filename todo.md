@@ -1591,3 +1591,11 @@
 - [x] Verify all guides have complete content (overview, activities, food, practical, itineraries, FAQ)
 - [x] Standardize guide format and structure across all 129 islands
 - [x] Test Dharavandhoo guide - now displays complete content with activities and food
+
+## Airport Integration Refinement
+- [ ] Create island_airports relationship table linking islands to their nearby airports
+- [ ] Add transfer type and details (speedboat, domestic flight, etc.) to relationship
+- [ ] Populate island_airports with correct airport assignments for each island
+- [ ] Update API endpoint to return only relevant airports for each island
+- [ ] Update AirportInfo component to display transfer method and journey details
+- [ ] Test nearby airport display on island guides

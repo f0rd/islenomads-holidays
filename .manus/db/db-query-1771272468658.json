@@ -1,0 +1,847 @@
+{
+  "query": "SELECT id, name, slug, flightInfo, speedboatInfo, ferryInfo, nearbyAirports FROM island_guides WHERE flightInfo IS NOT NULL OR speedboatInfo IS NOT NULL OR ferryInfo IS NOT NULL ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, flightInfo, speedboatInfo, ferryInfo, nearbyAirports FROM island_guides WHERE flightInfo IS NOT NULL OR speedboatInfo IS NOT NULL OR ferryInfo IS NOT NULL ORDER BY name;",
+  "rows": [
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "slug": "baarah",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210066",
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "slug": "burunee",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210070",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Eydhafushi.\", \"distance\": \"120 km\", \"duration\": \"2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}, {\"code\": \"DRV\", \"description\": \"Domestic flight to Dharavandhoo, then speedboat to Eydhafushi.\", \"distance\": \"45 km\", \"duration\": \"20 minutes\", \"name\": \"Dharavandhoo Airport\", \"transferType\": \"Domestic Flight\"}]"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "slug": "feeali",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "flightInfo": "NULL",
+      "speedboatInfo": "$45-60 from Male, journey time varies by operator",
+      "ferryInfo": "NULL",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "slug": "feydhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "slug": "filladhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "slug": "finey",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "slug": "funadhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "slug": "gaafaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "slug": "gemendhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210004",
+      "name": "HP Reef",
+      "slug": "hp-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "flightInfo": "NULL",
+      "speedboatInfo": "Scheduled speedboat from Male: $10, 20 minutes. Departures: Male to Himmafushi (11:45, 15:00, 16:45, 22:00), Himmafushi to Male (8:00, 12:45, 16:00, 18:15)",
+      "ferryInfo": "Local ferry from Vilingili ferry terminal: $2, departs 14:30 daily except Friday",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "slug": "hoarafushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "slug": "hulhudheli",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210075",
+      "name": "Hulhumeedhoo",
+      "slug": "hulhumeedhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "slug": "huraa",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210005",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210077",
+      "name": "Innamaa",
+      "slug": "innamaa",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210053",
+      "name": "Isdhoo",
+      "slug": "isdhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210006",
+      "name": "Kaashidhoo",
+      "slug": "kaashidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210078",
+      "name": "Kadhoo",
+      "slug": "kadhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210031",
+      "name": "Kalaidhoo",
+      "slug": "kalaidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "slug": "kandooma",
+      "flightInfo": "NULL",
+      "speedboatInfo": "Speedboat from Male. Journey: 50-60 min.",
+      "ferryInfo": "Public ferry available from Male.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210017",
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "slug": "kelaa",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210080",
+      "name": "Kendhoo",
+      "slug": "kendhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "slug": "keyodhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210018",
+      "name": "Kumundhoo",
+      "slug": "kumundhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "slug": "kurendhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210081",
+      "name": "Kurinbi",
+      "slug": "kurinbi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210019",
+      "name": "Lhosfushi",
+      "slug": "lhosfushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210020",
+      "name": "Maaenboodhoo",
+      "slug": "maaenboodhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.",
+      "speedboatInfo": "Speedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.",
+      "ferryInfo": "Public ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210082",
+      "name": "Maarandhoo",
+      "slug": "maarandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210021",
+      "name": "Maavah",
+      "slug": "maavah",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "slug": "maaya-thila",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.",
+      "speedboatInfo": "Speedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.",
+      "ferryInfo": "Public ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210007",
+      "name": "Maduvvaree",
+      "slug": "maduvvaree",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "slug": "magoodhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210008",
+      "name": "Makunudhoo",
+      "slug": "makunudhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.",
+      "speedboatInfo": "Speedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.",
+      "ferryInfo": "Public ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210035",
+      "name": "Meedhoo",
+      "slug": "meedhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210055",
+      "name": "Milandhoo",
+      "slug": "milandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "slug": "mulah",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210022",
+      "name": "Mulhadhoo",
+      "slug": "mulhadhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210057",
+      "name": "Muraidhoo",
+      "slug": "muraidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210023",
+      "name": "Naalaafushi",
+      "slug": "naalaafushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210058",
+      "name": "Naifaru Kandu",
+      "slug": "naifaru-kandu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210009",
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210036",
+      "name": "Nellaidhoo",
+      "slug": "nellaidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210037",
+      "name": "Neykurendhoo",
+      "slug": "neykurendhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210059",
+      "name": "Nolhivaramu",
+      "slug": "nolhivaramu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210083",
+      "name": "Nolhivaranfaru",
+      "slug": "nolhivaranfaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "slug": "noomaraa",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210010",
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210024",
+      "name": "Raimmandhoo",
+      "slug": "raimmandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210040",
+      "name": "Rakeedhoo",
+      "slug": "rakeedhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210041",
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210060",
+      "name": "Rinbudhoo",
+      "slug": "rinbudhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210084",
+      "name": "Thakandhoo",
+      "slug": "thakandhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "slug": "thinadhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "flightInfo": "NULL",
+      "speedboatInfo": "Speedboat from nearby islands. Journey: 45-60 min.",
+      "ferryInfo": "Public ferry from Male. Most economical option.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210042",
+      "name": "Thoddoo House Reef",
+      "slug": "thoddoo-house-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo",
+      "flightInfo": "Domestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1.5-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 3-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210061",
+      "name": "Thuraakunu",
+      "slug": "thuraakunu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210043",
+      "name": "Ukulhas House Reef",
+      "slug": "ukulhas-house-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210085",
+      "name": "Uligamu",
+      "slug": "uligamu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "slug": "utheemu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210025",
+      "name": "Vaikaradhoo",
+      "slug": "vaikaradhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210063",
+      "name": "Vashafaru",
+      "slug": "vashafaru",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "slug": "velidhoo",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210044",
+      "name": "Veligandu Reef",
+      "slug": "veligandu-reef",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210065",
+      "name": "Veyvah",
+      "slug": "veyvah",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "210086",
+      "name": "Villingili",
+      "slug": "villingili",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.",
+      "speedboatInfo": "Speedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.",
+      "ferryInfo": "Ferry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.",
+      "nearbyAirports": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tflightInfo\tspeedboatInfo\tferryInfo\tnearbyAirports\n210045\tBaarah\tbaarah\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210066\tBanana Reef\tbanana-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210012\tBandidhoo\tbandidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210046\tBileddhoo\tbileddhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210067\tBurunee\tburunee\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210013\tDharanboodhoo\tdharanboodhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210068\tDhiddhoo\tdhiddhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210069\tDhiggaru\tdhiggaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210070\tDhigurah House Reef\tdhigurah-house-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210071\tDhiyamigili\tdhiyamigili\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210002\tDhonfanu\tdhonfanu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210072\tDhuvaafaru\tdhuvaafaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210003\tEydhafushi\teydhafushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\t[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Eydhafushi.\", \"distance\": \"120 km\", \"duration\": \"2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}, {\"code\": \"DRV\", \"description\": \"Domestic flight to Dharavandhoo, then speedboat to Eydhafushi.\", \"distance\": \"45 km\", \"duration\": \"20 minutes\", \"name\": \"Dharavandhoo Airport\", \"transferType\": \"Domestic Flight\"}]\n210047\tFeeali\tfeeali\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210014\tFelidhoo Kandu\tfelidhoo-kandu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n180028\tFeridhoo\tferidhoo\tNULL\t$45-60 from Male, journey time varies by operator\tNULL\tNULL\n210048\tFeydhoo\tfeydhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210049\tFilladhoo\tfilladhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210015\tFiney\tfiney\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210073\tFotteyo Kandu\tfotteyo-kandu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210027\tFulidhoo Kandu\tfulidhoo-kandu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210050\tFunadhoo\tfunadhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210074\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210028\tGaafaru\tgaafaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210029\tGemendhoo\tgemendhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210004\tHP Reef\thp-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n180026\tHimmafushi\thimmafushi\tNULL\tScheduled speedboat from Male: $10, 20 minutes. Departures: Male to Himmafushi (11:45, 15:00, 16:45, 22:00), Himmafushi to Male (8:00, 12:45, 16:00, 18:15)\tLocal ferry from Vilingili ferry terminal: $2, departs 14:30 daily except Friday\tNULL\n210016\tHinnavaru\thinnavaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210030\tHirimaradhoo\thirimaradhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210051\tHoarafushi\thoarafushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210052\tHulhudheli\thulhudheli\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210075\tHulhumeedhoo\thulhumeedhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210076\tHuraa\thuraa\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210005\tIhavandhoo\tihavandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210077\tInnamaa\tinnamaa\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210053\tIsdhoo\tisdhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210006\tKaashidhoo\tkaashidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210078\tKadhoo\tkadhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210031\tKalaidhoo\tkalaidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n150006\tKandooma\tkandooma\tNULL\tSpeedboat from Male. Journey: 50-60 min.\tPublic ferry available from Male.\tNULL\n210017\tKandooma Thila\tkandooma-thila\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210079\tKelaa\tkelaa\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210080\tKendhoo\tkendhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210032\tKeyodhoo\tkeyodhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210018\tKumundhoo\tkumundhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210054\tKurendhoo\tkurendhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210081\tKurinbi\tkurinbi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210033\tLhaimagu\tlhaimagu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210019\tLhosfushi\tlhosfushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210020\tMaaenboodhoo\tmaaenboodhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n90004\tMaamigili\tmaamigili\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\tSpeedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.\tPublic ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.\tNULL\n210082\tMaarandhoo\tmaarandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210021\tMaavah\tmaavah\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n90007\tMaaya Thila\tmaaya-thila\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\tSpeedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.\tPublic ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.\tNULL\n210007\tMaduvvaree\tmaduvvaree\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210034\tMagoodhoo\tmagoodhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210008\tMakunudhoo\tmakunudhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n60001\tMalé\tmale\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\tSpeedboat transfers available from Male to this island. Journey time varies from 15-45 minutes depending on distance. Speedboat capacity: 30-50 passengers. Cost: USD $15-$50 per person.\tPublic ferry service available with multiple daily departures. Ferry journey time: 30 minutes to 2 hours. Capacity: 100-200 passengers. Cost: USD $1-$5 per person. Schedules vary by season.\tNULL\n210035\tMeedhoo\tmeedhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210055\tMilandhoo\tmilandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210056\tMulah\tmulah\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210022\tMulhadhoo\tmulhadhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210057\tMuraidhoo\tmuraidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210023\tNaalaafushi\tnaalaafushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210058\tNaifaru Kandu\tnaifaru-kandu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210009\tNaivaadhoo\tnaivaadhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210036\tNellaidhoo\tnellaidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210037\tNeykurendhoo\tneykurendhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210038\tNilandhoo\tnilandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210059\tNolhivaramu\tnolhivaramu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210083\tNolhivaranfaru\tnolhivaranfaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210039\tNoomaraa\tnoomaraa\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210010\tOlhuvelifushi\tolhuvelifushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210024\tRaimmandhoo\traimmandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210040\tRakeedhoo\trakeedhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210041\tRasdhoo Madivaru\trasdhoo-madivaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210060\tRinbudhoo\trinbudhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210084\tThakandhoo\tthakandhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210011\tThinadhoo\tthinadhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n150003\tThoddoo\tthoddoo\tNULL\tSpeedboat from nearby islands. Journey: 45-60 min.\tPublic ferry from Male. Most economical option.\tNULL\n210042\tThoddoo House Reef\tthoddoo-house-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210001\tThulusdhoo\tthulusdhoo\tDomestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1.5-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 3-4 hours. Most economical option for budget travelers.\tNULL\n210061\tThuraakunu\tthuraakunu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210043\tUkulhas House Reef\tukulhas-house-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210085\tUligamu\tuligamu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210062\tUtheemu\tutheemu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210025\tVaikaradhoo\tvaikaradhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210063\tVashafaru\tvashafaru\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210026\tVelidhoo\tvelidhoo\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210064\tVeligandu\tveligandu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210044\tVeligandu Reef\tveligandu-reef\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210065\tVeyvah\tveyvah\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n210086\tVillingili\tvillingili\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\tSpeedboat transfer from Malé takes approximately 1-2 hours. Comfortable and scenic journey across the Indian Ocean.\tFerry service available from Malé with journey time of approximately 2-4 hours. Most economical option for budget travelers.\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}

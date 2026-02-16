@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Malé International Airport',\n    'code', 'MLE',\n    'transferType', 'Speedboat',\n    'duration', '1 hour',\n    'distance', '60 km',\n    'description', 'International flights to Malé, then speedboat to Dharavandhoo.'\n  ),\n  JSON_OBJECT(\n    'name', 'Dharavandhoo Airport',\n    'code', 'DRV',\n    'transferType', 'Domestic Flight',\n    'duration', '25 minutes',\n    'distance', '50 km',\n    'description', 'Domestic flight directly to Dharavandhoo.'\n  )\n) WHERE slug = 'dharavandhoo';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Malé International Airport',\n    'code', 'MLE',\n    'transferType', 'Speedboat',\n    'duration', '1 hour',\n    'distance', '60 km',\n    'description', 'International flights to Malé, then speedboat to Dharavandhoo.'\n  ),\n  JSON_OBJECT(\n    'name', 'Dharavandhoo Airport',\n    'code', 'DRV',\n    'transferType', 'Domestic Flight',\n    'duration', '25 minutes',\n    'distance', '50 km',\n    'description', 'Domestic flight directly to Dharavandhoo.'\n  )\n) WHERE slug = 'dharavandhoo';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 69
+}

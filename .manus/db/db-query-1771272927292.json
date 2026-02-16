@@ -1,0 +1,130 @@
+{
+  "query": "SELECT id, name, slug, type FROM places WHERE type = 'island' LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, type FROM places WHERE type = 'island' LIMIT 20;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu",
+      "type": "island"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi",
+      "type": "island"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "type": "island"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "type": "island"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo",
+      "type": "island"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "slug": "kaashidhoo",
+      "type": "island"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi",
+      "type": "island"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "slug": "maduvvaree",
+      "type": "island"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "slug": "makunudhoo",
+      "type": "island"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "type": "island"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "type": "island"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo",
+      "type": "island"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi",
+      "type": "island"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo",
+      "slug": "thinadhoo",
+      "type": "island"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo",
+      "type": "island"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo",
+      "type": "island"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo",
+      "type": "island"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu",
+      "type": "island"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "slug": "finey",
+      "type": "island"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\ttype\n1\tDhonfanu\tdhonfanu\tisland\n2\tEydhafushi\teydhafushi\tisland\n3\tFelidhoo\tfelidhoo\tisland\n5\tHimmafushi\thimmafushi\tisland\n6\tIhavandhoo\tihavandhoo\tisland\n7\tKaashidhoo\tkaashidhoo\tisland\n8\tKolhufushi\tkolhufushi\tisland\n10\tMaduvvaree\tmaduvvaree\tisland\n11\tMakunudhoo\tmakunudhoo\tisland\n12\tMaradhoo\tmaradhoo\tisland\n13\tMathiveri\tmathiveri\tisland\n14\tNaivaadhoo\tnaivaadhoo\tisland\n15\tOlhuvelifushi\tolhuvelifushi\tisland\n16\tThinadhoo\tthinadhoo\tisland\n17\tBandidhoo\tbandidhoo\tisland\n18\tBodufolhudhoo\tbodufolhudhoo\tisland\n19\tDharanboodhoo\tdharanboodhoo\tisland\n20\tFelidhoo Kandu\tfelidhoo-kandu\tisland\n21\tFiney\tfiney\tisland\n22\tFodhdhoo\tfodhdhoo\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

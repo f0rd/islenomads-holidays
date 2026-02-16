@@ -1,0 +1,640 @@
+{
+  "query": "SELECT id, name, slug FROM places WHERE type = 'island' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM places WHERE type = 'island' ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "slug": "himmafushi"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "slug": "kaashidhoo"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "slug": "maduvvaree"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "slug": "makunudhoo"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "slug": "maradhoo"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri",
+      "slug": "mathiveri"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo",
+      "slug": "thinadhoo"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "slug": "finey"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo"
+    },
+    {
+      "id": "23",
+      "name": "Gulhi",
+      "slug": "gulhi"
+    },
+    {
+      "id": "24",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru"
+    },
+    {
+      "id": "25",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo"
+    },
+    {
+      "id": "27",
+      "name": "Kumundhoo",
+      "slug": "kumundhoo"
+    },
+    {
+      "id": "28",
+      "name": "Lhosfushi",
+      "slug": "lhosfushi"
+    },
+    {
+      "id": "29",
+      "name": "Maaenboodhoo",
+      "slug": "maaenboodhoo"
+    },
+    {
+      "id": "30",
+      "name": "Maavah",
+      "slug": "maavah"
+    },
+    {
+      "id": "31",
+      "name": "Madifushi",
+      "slug": "madifushi"
+    },
+    {
+      "id": "32",
+      "name": "Mulhadhoo",
+      "slug": "mulhadhoo"
+    },
+    {
+      "id": "33",
+      "name": "Naalaafushi",
+      "slug": "naalaafushi"
+    },
+    {
+      "id": "34",
+      "name": "Raimmandhoo",
+      "slug": "raimmandhoo"
+    },
+    {
+      "id": "35",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo"
+    },
+    {
+      "id": "36",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru"
+    },
+    {
+      "id": "37",
+      "name": "Vaikaradhoo",
+      "slug": "vaikaradhoo"
+    },
+    {
+      "id": "38",
+      "name": "Velidhoo",
+      "slug": "velidhoo"
+    },
+    {
+      "id": "39",
+      "name": "Alifushi",
+      "slug": "alifushi"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo",
+      "slug": "feridhoo"
+    },
+    {
+      "id": "42",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu"
+    },
+    {
+      "id": "43",
+      "name": "Gaafaru",
+      "slug": "gaafaru"
+    },
+    {
+      "id": "44",
+      "name": "Gan",
+      "slug": "gan"
+    },
+    {
+      "id": "45",
+      "name": "Gemendhoo",
+      "slug": "gemendhoo"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo"
+    },
+    {
+      "id": "47",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo"
+    },
+    {
+      "id": "48",
+      "name": "Kalaidhoo",
+      "slug": "kalaidhoo"
+    },
+    {
+      "id": "49",
+      "name": "Kandooma",
+      "slug": "kandooma"
+    },
+    {
+      "id": "50",
+      "name": "Keyodhoo",
+      "slug": "keyodhoo"
+    },
+    {
+      "id": "51",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo"
+    },
+    {
+      "id": "52",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu"
+    },
+    {
+      "id": "53",
+      "name": "Maalhos",
+      "slug": "maalhos"
+    },
+    {
+      "id": "54",
+      "name": "Maamigili",
+      "slug": "maamigili"
+    },
+    {
+      "id": "55",
+      "name": "Magoodhoo",
+      "slug": "magoodhoo"
+    },
+    {
+      "id": "56",
+      "name": "Malé",
+      "slug": "mal"
+    },
+    {
+      "id": "57",
+      "name": "Meedhoo",
+      "slug": "meedhoo"
+    },
+    {
+      "id": "58",
+      "name": "Naifaru",
+      "slug": "naifaru"
+    },
+    {
+      "id": "59",
+      "name": "Nellaidhoo",
+      "slug": "nellaidhoo"
+    },
+    {
+      "id": "60",
+      "name": "Neykurendhoo",
+      "slug": "neykurendhoo"
+    },
+    {
+      "id": "61",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo"
+    },
+    {
+      "id": "62",
+      "name": "Noomaraa",
+      "slug": "noomaraa"
+    },
+    {
+      "id": "63",
+      "name": "Rakeedhoo",
+      "slug": "rakeedhoo"
+    },
+    {
+      "id": "64",
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru"
+    },
+    {
+      "id": "65",
+      "name": "Thoddoo",
+      "slug": "thoddoo"
+    },
+    {
+      "id": "66",
+      "name": "Thoddoo House Reef",
+      "slug": "thoddoo-house-reef"
+    },
+    {
+      "id": "67",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo"
+    },
+    {
+      "id": "68",
+      "name": "Ukulhas",
+      "slug": "ukulhas"
+    },
+    {
+      "id": "69",
+      "name": "Ukulhas House Reef",
+      "slug": "ukulhas-house-reef"
+    },
+    {
+      "id": "70",
+      "name": "Veligandu Reef",
+      "slug": "veligandu-reef"
+    },
+    {
+      "id": "71",
+      "name": "Baarah",
+      "slug": "baarah"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "slug": "dhigurah"
+    },
+    {
+      "id": "75",
+      "name": "Feeali",
+      "slug": "feeali"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo",
+      "slug": "feidhoo"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo",
+      "slug": "feydhoo"
+    },
+    {
+      "id": "78",
+      "name": "Filladhoo",
+      "slug": "filladhoo"
+    },
+    {
+      "id": "79",
+      "name": "Funadhoo",
+      "slug": "funadhoo"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "slug": "fuvamulah"
+    },
+    {
+      "id": "81",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo",
+      "slug": "himandhoo"
+    },
+    {
+      "id": "83",
+      "name": "Hoarafushi",
+      "slug": "hoarafushi"
+    },
+    {
+      "id": "84",
+      "name": "Hulhudheli",
+      "slug": "hulhudheli"
+    },
+    {
+      "id": "85",
+      "name": "Isdhoo",
+      "slug": "isdhoo"
+    },
+    {
+      "id": "86",
+      "name": "Kurendhoo",
+      "slug": "kurendhoo"
+    },
+    {
+      "id": "87",
+      "name": "Maafushi",
+      "slug": "maafushi"
+    },
+    {
+      "id": "89",
+      "name": "Milandhoo",
+      "slug": "milandhoo"
+    },
+    {
+      "id": "90",
+      "name": "Mulah",
+      "slug": "mulah"
+    },
+    {
+      "id": "91",
+      "name": "Muraidhoo",
+      "slug": "muraidhoo"
+    },
+    {
+      "id": "92",
+      "name": "Naifaru Kandu",
+      "slug": "naifaru-kandu"
+    },
+    {
+      "id": "93",
+      "name": "Nolhivaramu",
+      "slug": "nolhivaramu"
+    },
+    {
+      "id": "94",
+      "name": "Rinbudhoo",
+      "slug": "rinbudhoo"
+    },
+    {
+      "id": "95",
+      "name": "Thuraakunu",
+      "slug": "thuraakunu"
+    },
+    {
+      "id": "96",
+      "name": "Utheemu",
+      "slug": "utheemu"
+    },
+    {
+      "id": "97",
+      "name": "Vashafaru",
+      "slug": "vashafaru"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "slug": "veligandu"
+    },
+    {
+      "id": "99",
+      "name": "Veyvah",
+      "slug": "veyvah"
+    },
+    {
+      "id": "100",
+      "name": "Banana Reef",
+      "slug": "banana-reef"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "slug": "burunee"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru"
+    },
+    {
+      "id": "104",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili"
+    },
+    {
+      "id": "106",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru"
+    },
+    {
+      "id": "107",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo",
+      "slug": "godhdhoo"
+    },
+    {
+      "id": "112",
+      "name": "Hulhumalé",
+      "slug": "hulhumal"
+    },
+    {
+      "id": "113",
+      "name": "Hulhumeedhoo",
+      "slug": "hulhumeedhoo"
+    },
+    {
+      "id": "114",
+      "name": "Huraa",
+      "slug": "huraa"
+    },
+    {
+      "id": "115",
+      "name": "Innamaa",
+      "slug": "innamaa"
+    },
+    {
+      "id": "116",
+      "name": "Kadhoo",
+      "slug": "kadhoo"
+    },
+    {
+      "id": "117",
+      "name": "Kelaa",
+      "slug": "kelaa"
+    },
+    {
+      "id": "118",
+      "name": "Kendhoo",
+      "slug": "kendhoo"
+    },
+    {
+      "id": "120",
+      "name": "Kurinbi",
+      "slug": "kurinbi"
+    },
+    {
+      "id": "121",
+      "name": "Maarandhoo",
+      "slug": "maarandhoo"
+    },
+    {
+      "id": "122",
+      "name": "Muli",
+      "slug": "muli"
+    },
+    {
+      "id": "123",
+      "name": "Nolhivaranfaru",
+      "slug": "nolhivaranfaru"
+    },
+    {
+      "id": "124",
+      "name": "Thakandhoo",
+      "slug": "thakandhoo"
+    },
+    {
+      "id": "126",
+      "name": "Uligamu",
+      "slug": "uligamu"
+    },
+    {
+      "id": "127",
+      "name": "Veymandoo",
+      "slug": "veymandoo"
+    },
+    {
+      "id": "128",
+      "name": "Villingili",
+      "slug": "villingili"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo",
+      "slug": "omadhoo"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo"
+    },
+    {
+      "id": "30004",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tDhonfanu\tdhonfanu\n2\tEydhafushi\teydhafushi\n3\tFelidhoo\tfelidhoo\n5\tHimmafushi\thimmafushi\n6\tIhavandhoo\tihavandhoo\n7\tKaashidhoo\tkaashidhoo\n8\tKolhufushi\tkolhufushi\n10\tMaduvvaree\tmaduvvaree\n11\tMakunudhoo\tmakunudhoo\n12\tMaradhoo\tmaradhoo\n13\tMathiveri\tmathiveri\n14\tNaivaadhoo\tnaivaadhoo\n15\tOlhuvelifushi\tolhuvelifushi\n16\tThinadhoo\tthinadhoo\n17\tBandidhoo\tbandidhoo\n18\tBodufolhudhoo\tbodufolhudhoo\n19\tDharanboodhoo\tdharanboodhoo\n20\tFelidhoo Kandu\tfelidhoo-kandu\n21\tFiney\tfiney\n22\tFodhdhoo\tfodhdhoo\n23\tGulhi\tgulhi\n24\tHinnavaru\thinnavaru\n25\tHithadhoo\thithadhoo\n27\tKumundhoo\tkumundhoo\n28\tLhosfushi\tlhosfushi\n29\tMaaenboodhoo\tmaaenboodhoo\n30\tMaavah\tmaavah\n31\tMadifushi\tmadifushi\n32\tMulhadhoo\tmulhadhoo\n33\tNaalaafushi\tnaalaafushi\n34\tRaimmandhoo\traimmandhoo\n35\tRasdhoo\trasdhoo\n36\tUngoofaaru\tungoofaaru\n37\tVaikaradhoo\tvaikaradhoo\n38\tVelidhoo\tvelidhoo\n39\tAlifushi\talifushi\n40\tDharavandhoo\tdharavandhoo\n41\tFeridhoo\tferidhoo\n42\tFulidhoo Kandu\tfulidhoo-kandu\n43\tGaafaru\tgaafaru\n44\tGan\tgan\n45\tGemendhoo\tgemendhoo\n46\tHirimaradhoo\thirimaradhoo\n47\tInguraidhoo\tinguraidhoo\n48\tKalaidhoo\tkalaidhoo\n49\tKandooma\tkandooma\n50\tKeyodhoo\tkeyodhoo\n51\tKudahuvadhoo\tkudahuvadhoo\n52\tLhaimagu\tlhaimagu\n53\tMaalhos\tmaalhos\n54\tMaamigili\tmaamigili\n55\tMagoodhoo\tmagoodhoo\n56\tMalé\tmal\n57\tMeedhoo\tmeedhoo\n58\tNaifaru\tnaifaru\n59\tNellaidhoo\tnellaidhoo\n60\tNeykurendhoo\tneykurendhoo\n61\tNilandhoo\tnilandhoo\n62\tNoomaraa\tnoomaraa\n63\tRakeedhoo\trakeedhoo\n64\tRasdhoo Madivaru\trasdhoo-madivaru\n65\tThoddoo\tthoddoo\n66\tThoddoo House Reef\tthoddoo-house-reef\n67\tThulusdhoo\tthulusdhoo\n68\tUkulhas\tukulhas\n69\tUkulhas House Reef\tukulhas-house-reef\n70\tVeligandu Reef\tveligandu-reef\n71\tBaarah\tbaarah\n72\tBileddhoo\tbileddhoo\n73\tDhiffushi\tdhiffushi\n74\tDhigurah\tdhigurah\n75\tFeeali\tfeeali\n76\tFeidhoo\tfeidhoo\n77\tFeydhoo\tfeydhoo\n78\tFilladhoo\tfilladhoo\n79\tFunadhoo\tfunadhoo\n80\tFuvamulah\tfuvamulah\n81\tGuraidhoo\tguraidhoo\n82\tHimandhoo\thimandhoo\n83\tHoarafushi\thoarafushi\n84\tHulhudheli\thulhudheli\n85\tIsdhoo\tisdhoo\n86\tKurendhoo\tkurendhoo\n87\tMaafushi\tmaafushi\n89\tMilandhoo\tmilandhoo\n90\tMulah\tmulah\n91\tMuraidhoo\tmuraidhoo\n92\tNaifaru Kandu\tnaifaru-kandu\n93\tNolhivaramu\tnolhivaramu\n94\tRinbudhoo\trinbudhoo\n95\tThuraakunu\tthuraakunu\n96\tUtheemu\tutheemu\n97\tVashafaru\tvashafaru\n98\tVeligandu\tveligandu\n99\tVeyvah\tveyvah\n100\tBanana Reef\tbanana-reef\n101\tBurunee\tburunee\n102\tDhiddhoo\tdhiddhoo\n103\tDhiggaru\tdhiggaru\n104\tDhigurah House Reef\tdhigurah-house-reef\n105\tDhiyamigili\tdhiyamigili\n106\tDhuvaafaru\tdhuvaafaru\n107\tFotteyo Kandu\tfotteyo-kandu\n108\tFulhadhoo\tfulhadhoo\n109\tFulidhoo\tfulidhoo\n110\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\n111\tGodhdhoo\tgodhdhoo\n112\tHulhumalé\thulhumal\n113\tHulhumeedhoo\thulhumeedhoo\n114\tHuraa\thuraa\n115\tInnamaa\tinnamaa\n116\tKadhoo\tkadhoo\n117\tKelaa\tkelaa\n118\tKendhoo\tkendhoo\n120\tKurinbi\tkurinbi\n121\tMaarandhoo\tmaarandhoo\n122\tMuli\tmuli\n123\tNolhivaranfaru\tnolhivaranfaru\n124\tThakandhoo\tthakandhoo\n126\tUligamu\tuligamu\n127\tVeymandoo\tveymandoo\n128\tVillingili\tvillingili\n30001\tOmadhoo\tomadhoo\n30002\tDhangethi\tdhangethi\n30003\tFehendhoo\tfehendhoo\n30004\tHanimadhoo\thanimadhoo\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

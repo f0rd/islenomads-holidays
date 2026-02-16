@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useParams, useLocation } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import AirportInfo from "@/components/AirportInfo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MapPin,
@@ -85,11 +86,17 @@ export default function IslandGuide() {
   const [activeTab, setActiveTab] = useState("overview");
   
   // Get adjacent islands for navigation (previous/next)
-  // Note: This uses the old ID-based system, should be updated to use slugs
+  // Uses slug-based navigation by finding the current guide in ALL_ISLANDS
   const adjacentIslands = useMemo(() => {
-    if (!guide?.id) return { previous: null, next: null };
-    return getAdjacentIslands(guide.id);
-  }, [guide?.id]);
+    if (!guide?.slug) return { previous: null, next: null };
+    const currentIndex = FEATURED_ISLANDS.findIndex(i => i.slug === guide.slug);
+    if (currentIndex === -1) return { previous: null, next: null };
+    
+    return {
+      previous: currentIndex > 0 ? FEATURED_ISLANDS[currentIndex - 1] : null,
+      next: currentIndex < FEATURED_ISLANDS.length - 1 ? FEATURED_ISLANDS[currentIndex + 1] : null,
+    };
+  }, [guide?.slug]);
 
   if (isLoading) {
     return (
@@ -134,7 +141,7 @@ export default function IslandGuide() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.id))}
+              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.slug))}
               className="flex items-center gap-2"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -150,7 +157,7 @@ export default function IslandGuide() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.id))}
+              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.slug))}
               className="flex items-center gap-2"
             >
               {adjacentIslands.next.name}
@@ -258,52 +265,10 @@ export default function IslandGuide() {
             {/* Getting There Tab */}
             <TabsContent value="getting-there" className="space-y-6 mt-6">
               <div className="space-y-4">
-                {/* Flight Info */}
-                {guide.flightInfo && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Plane className="w-5 h-5" />
-                        Flight Information
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.flightInfo}</p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Speedboat Info */}
-                {guide.speedboatInfo && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Waves className="w-5 h-5" />
-                        Speedboat
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.speedboatInfo}</p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Ferry Info */}
-                {guide.ferryInfo && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <Ship className="w-5 h-5" />
-                        Ferry
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground whitespace-pre-wrap">{guide.ferryInfo}</p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {!guide.flightInfo && !guide.speedboatInfo && !guide.ferryInfo && (
+                {/* Airport Information - Primary source for transportation */}
+                {guide.nearbyAirports && guide.nearbyAirports.length > 0 ? (
+                  <AirportInfo islandGuideId={guide.id} islandName={guide.name} nearbyAirports={guide.nearbyAirports} />
+                ) : (
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
@@ -421,7 +386,7 @@ export default function IslandGuide() {
             {adjacentIslands.previous ? (
               <Button
                 variant="outline"
-                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.id))}
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.slug))}
                 className="flex items-center gap-2"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -441,7 +406,7 @@ export default function IslandGuide() {
             {adjacentIslands.next ? (
               <Button
                 variant="outline"
-                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.id))}
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.slug))}
                 className="flex items-center gap-2"
               >
                 Next: {adjacentIslands.next.name}

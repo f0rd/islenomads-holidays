@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides \nSET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Malé International Airport',\n    'code', 'MLE',\n    'transferType', 'Speedboat',\n    'duration', '1-2 hours',\n    'distance', '50-100 km',\n    'description', COALESCE(flightInfo, speedboatInfo, ferryInfo, CONCAT('International flights to Malé, then speedboat to ', name))\n  )\n)\nWHERE nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides \nSET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Malé International Airport',\n    'code', 'MLE',\n    'transferType', 'Speedboat',\n    'duration', '1-2 hours',\n    'distance', '50-100 km',\n    'description', COALESCE(flightInfo, speedboatInfo, ferryInfo, CONCAT('International flights to Malé, then speedboat to ', name))\n  )\n)\nWHERE nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 80
+}

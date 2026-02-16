@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as count FROM island_guides WHERE nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as count FROM island_guides WHERE nearbyAirports IS NULL OR JSON_LENGTH(nearbyAirports) = 0;",
+  "rows": [
+    {
+      "count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\n0\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

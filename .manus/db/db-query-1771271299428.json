@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Maamigili Airport\",\"code\":\"VAM\",\"transferType\":\"speedboat\",\"duration\":\"30 minutes\",\"distance\":\"25 km\",\"description\":\"Domestic flights to Maamigili, then speedboat to Dhigurah.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"1.5 hours\",\"distance\":\"75 km\",\"description\":\"International flights to Malé, then speedboat to Dhigurah.\"}]' WHERE slug = 'dhigurah';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Maamigili Airport\",\"code\":\"VAM\",\"transferType\":\"speedboat\",\"duration\":\"30 minutes\",\"distance\":\"25 km\",\"description\":\"Domestic flights to Maamigili, then speedboat to Dhigurah.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"speedboat\",\"duration\":\"1.5 hours\",\"distance\":\"75 km\",\"description\":\"International flights to Malé, then speedboat to Dhigurah.\"}]' WHERE slug = 'dhigurah';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 64
+}

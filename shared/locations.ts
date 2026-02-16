@@ -27,12 +27,12 @@ export interface IslandLocation {
  * Update this array to change which islands appear in navigation
  */
 export const FEATURED_ISLANDS: IslandLocation[] = [
-  { id: 87, name: 'Maafushi', slug: 'maafushi-island', atoll: '', type: 'island' },
-  { id: 65, name: 'Thoddoo', slug: 'thoddoo-island', atoll: '', type: 'island' },
-  { id: 81, name: 'Guraidhoo', slug: 'guraidhoo-island', atoll: '', type: 'island' },
-  { id: 67, name: 'Thulusdhoo', slug: 'thulusdhoo-island', atoll: '', type: 'island' },
-  { id: 49, name: 'Kandooma', slug: 'kandooma-island', atoll: '', type: 'island' },
-  { id: 80, name: 'Fuvamulah', slug: 'fuvamulah-island', atoll: '', type: 'island' },
+  { id: 87, name: 'Maafushi', slug: 'maafushi', atoll: '', type: 'island' },
+  { id: 65, name: 'Thoddoo', slug: 'thoddoo', atoll: '', type: 'island' },
+  { id: 81, name: 'Guraidhoo', slug: 'guraidhoo', atoll: '', type: 'island' },
+  { id: 67, name: 'Thulusdhoo', slug: 'thulusdhoo', atoll: '', type: 'island' },
+  { id: 49, name: 'Kandooma', slug: 'kandooma', atoll: '', type: 'island' },
+  { id: 80, name: 'Fuvamulah', slug: 'fuvamulah', atoll: '', type: 'island' },
 ];
 
 /**
