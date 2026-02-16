@@ -17,7 +17,7 @@ export default function Navigation() {
     { label: "Trip Planner", href: "/trip-planner" },
     { label: "Packages", href: "/packages" },
     { label: "Blog", href: "/blog" },
-    { label: "About", href: "#about" },
+    { label: "About", href: "/about" },
   ];
 
   return (

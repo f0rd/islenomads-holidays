@@ -1797,3 +1797,7 @@
 
 ## Bug Fixes - Navigation
 - [x] Fix island navigation to use actual database guides instead of hardcoded ALL_ISLANDS array
+
+## New Features - About Page
+- [x] Create About page with company information and team
+- [x] Link About page to navigation menu
