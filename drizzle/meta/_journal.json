@@ -274,6 +274,20 @@
       "when": 1771156845132,
       "tag": "0038_legal_doorman",
       "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "5",
+      "when": 1771223971692,
+      "tag": "0039_rapid_ted_forrester",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "5",
+      "when": 1771224643450,
+      "tag": "0040_spotty_master_mold",
+      "breakpoints": true
     }
   ]
 }

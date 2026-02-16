@@ -512,6 +512,12 @@ export default function ExploreMaldives() {
                             {poi.overview || 'Discover this amazing point of interest.'}
                           </p>
 
+                          {(poi as any).poiType && (
+                            <Badge variant="secondary" className="mb-4 w-fit text-xs capitalize">
+                              {(poi as any).poiType.replace('_', ' ')}
+                            </Badge>
+                          )}
+
                           <Button variant="outline" className="w-full gap-2 group/btn">
                             Learn More
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

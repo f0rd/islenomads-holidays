@@ -1,0 +1,1 @@
+ALTER TABLE `island_guides` ADD `poiType` enum('thila','reef','channel','dive_site','attraction','landmark');
