@@ -1435,3 +1435,32 @@ export async function getIslandWithSpots(islandId: number) {
     transportRoutes: routes,
   };
 }
+
+
+/**
+ * Get regular (non-featured) islands for a specific atoll
+ * Returns islands that are not marked as featured
+ */
+export async function getRegularIslandsByAtollId(atollId: number): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(places)
+    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(places.type, 'island'),
+      eq(islandGuides.published, 1)
+    ))
+    .orderBy(places.name);
+  
+  return result
+    .filter((row: any) => !row.island_guides || row.island_guides.featured !== 1)
+    .map((row: any) => ({
+      ...row.places,
+      ...row.island_guides,
+      id: row.island_guides?.id || row.places.id,
+    }));
+}

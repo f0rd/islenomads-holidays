@@ -6,6 +6,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Compass, Waves, ArrowRight } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { getIslandGuideUrl } from '@shared/locations';
+import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
 import { useState, useEffect } from 'react';
 
 interface AtollData {
@@ -27,10 +29,21 @@ interface AtollData {
   updatedAt: Date;
 }
 
+interface IslandData {
+  id: number;
+  name: string;
+  slug: string;
+  atoll: string | null;
+  overview: string | null;
+  featured: number;
+  published: number;
+}
+
 export default function Atolls() {
   const [atolls, setAtolls] = useState<AtollData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [atollFeaturedIslands, setAtollFeaturedIslands] = useState<Record<number, IslandData[]>>({});
 
   // Fetch atolls from tRPC
   const { data: atollsData = [] } = trpc.atolls.list.useQuery();
@@ -39,6 +52,28 @@ export default function Atolls() {
     if (atollsData && atollsData.length > 0) {
       setAtolls(atollsData);
       setIsLoading(false);
+      
+      // Fetch featured islands for each atoll
+      const fetchFeaturedIslands = async () => {
+        const islandsMap: Record<number, IslandData[]> = {};
+        
+        for (const atoll of atollsData) {
+          try {
+            // Fetch featured islands for this atoll
+            const response = await fetch(`/api/trpc/atolls.getFeaturedIslands?input=${encodeURIComponent(JSON.stringify({ atollId: atoll.id, limit: 3 }))}`)
+              .then(res => res.json());
+            
+            islandsMap[atoll.id] = response.result?.data || [];
+          } catch (error) {
+            console.error(`Failed to fetch featured islands for atoll ${atoll.id}:`, error);
+            islandsMap[atoll.id] = [];
+          }
+        }
+        
+        setAtollFeaturedIslands(islandsMap);
+      };
+      
+      fetchFeaturedIslands();
     }
   }, [atollsData]);
 
@@ -131,73 +166,120 @@ export default function Atolls() {
         </div>
       </section>
 
-      {/* Atolls Grid */}
+      {/* Atolls with Featured Islands */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="space-y-16">
             {filteredAtolls.map((atoll) => {
               const highlights = parseJSON(atoll.highlights);
-              const activities = parseJSON(atoll.activities);
+              const featuredIslands = atollFeaturedIslands[atoll.id] || [];
 
               return (
-                <Link key={atoll.id} href={`/atoll/${atoll.slug}`}>
-                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                    {/* Hero Image */}
-                    <div className="relative h-48 overflow-hidden bg-muted">
-                      <img
-                        src={getHeroImage(atoll)}
-                        alt={atoll.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                        {atoll.region}
-                      </Badge>
-                    </div>
-
-                    {/* Content */}
-                    <CardContent className="flex-1 p-6 flex flex-col">
-                      <h3 className="text-xl font-bold text-foreground mb-2">{atoll.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 flex-1">
-                        {atoll.description || 'Discover this beautiful atoll region'}
-                      </p>
-
-                      {/* Quick Info */}
-                      <div className="space-y-2 mb-4 text-sm">
-                        {atoll.bestFor && (
-                          <div className="flex items-start gap-2">
-                            <Compass className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                            <span className="text-muted-foreground">{atoll.bestFor}</span>
-                          </div>
-                        )}
-                        {atoll.bestSeason && (
-                          <div className="flex items-start gap-2">
-                            <Waves className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                            <span className="text-muted-foreground">{atoll.bestSeason}</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Highlights */}
-                      {highlights.length > 0 && (
-                        <div className="mb-4">
-                          <div className="flex flex-wrap gap-2">
-                            {highlights.slice(0, 3).map((highlight: string, idx: number) => (
-                              <Badge key={idx} variant="secondary" className="text-xs">
-                                {highlight}
-                              </Badge>
-                            ))}
-                          </div>
+                <div key={atoll.id} className="space-y-8">
+                  {/* Atoll Card */}
+                  <Link href={`/atoll/${atoll.slug}`}>
+                    <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+                        {/* Hero Image */}
+                        <div className="relative h-64 md:h-full overflow-hidden bg-muted">
+                          <img
+                            src={getHeroImage(atoll)}
+                            alt={atoll.name}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                          <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
+                            {atoll.region}
+                          </Badge>
                         </div>
-                      )}
 
-                      {/* CTA */}
-                      <Button className="w-full gap-2 group/btn">
-                        Explore Atoll
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
+                        {/* Content */}
+                        <div className="md:col-span-2 p-8">
+                          <h3 className="text-3xl font-bold text-foreground mb-3">{atoll.name}</h3>
+                          <p className="text-base text-muted-foreground mb-6">
+                            {atoll.description || 'Discover this beautiful atoll region'}
+                          </p>
+
+                          {/* Quick Info */}
+                          <div className="space-y-2 mb-6 text-sm">
+                            {atoll.bestFor && (
+                              <div className="flex items-start gap-2">
+                                <Compass className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                                <span className="text-muted-foreground">{atoll.bestFor}</span>
+                              </div>
+                            )}
+                            {atoll.bestSeason && (
+                              <div className="flex items-start gap-2">
+                                <Waves className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                                <span className="text-muted-foreground">{atoll.bestSeason}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Highlights */}
+                          {highlights.length > 0 && (
+                            <div className="mb-6">
+                              <div className="flex flex-wrap gap-2">
+                                {highlights.slice(0, 3).map((highlight: string, idx: number) => (
+                                  <Badge key={idx} variant="secondary" className="text-xs">
+                                    {highlight}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* CTA */}
+                          <Button className="gap-2 group/btn">
+                            Explore Atoll
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+
+                  {/* Featured Islands */}
+                  {featuredIslands.length > 0 && (
+                    <div className="ml-0 md:ml-8">
+                      <h4 className="text-xl font-bold text-foreground mb-4">Featured Islands</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {featuredIslands.map((island) => (
+                          <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                            <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                              <div className="h-40 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden relative">
+                                {island.slug ? (
+                                  <>
+                                    <img
+                                      src={getIslandFeaturedImage(island.slug)}
+                                      alt={island.name}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                                  </>
+                                ) : null}
+                              </div>
+
+                              <CardContent className="flex-1 flex flex-col p-4">
+                                <h5 className="font-semibold text-foreground group-hover:text-accent transition-colors mb-2">
+                                  {island.name}
+                                </h5>
+                                {island.overview && (
+                                  <p className="text-xs text-muted-foreground line-clamp-2 flex-1 mb-3">
+                                    {island.overview}
+                                  </p>
+                                )}
+                                <Button variant="outline" size="sm" className="w-full gap-1 group/btn">
+                                  View Guide
+                                  <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
+                                </Button>
+                              </CardContent>
+                            </Card>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>

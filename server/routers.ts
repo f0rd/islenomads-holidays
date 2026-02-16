@@ -20,8 +20,7 @@ import {
   getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
-  deleteAtoll, getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
-  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
+  deleteAtoll,  getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getRegularIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
@@ -999,6 +998,12 @@ export const appRouter = router({
       .input(z.object({ atollId: z.number(), limit: z.number().optional() }))
       .query(async ({ input }) => {
         return getFeaturedIslandsByAtollId(input.atollId, input.limit || 5);
+      }),
+
+    getRegularIslands: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return getRegularIslandsByAtollId(input.atollId);
       }),
   }),
 

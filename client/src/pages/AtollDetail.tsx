@@ -57,6 +57,7 @@ export default function AtollDetail() {
   const params = paramsExplore || paramsAtoll;
   const [atoll, setAtoll] = useState<AtollData | null>(null);
   const [featuredIslands, setFeaturedIslands] = useState<IslandGuideData[]>([]);
+  const [regularIslands, setRegularIslands] = useState<IslandGuideData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Fetch atoll by slug
@@ -66,7 +67,7 @@ export default function AtollDetail() {
   );
 
   // Fetch islands for this atoll from the database
-  const { data: islandsData = [] } = trpc.atolls.getIslands.useQuery(
+  const { data: featuredIslandsData = [] } = trpc.atolls.getFeaturedIslands.useQuery(
     { atollId: atollData?.id || 0 },
     { enabled: !!atollData?.id }
   );
@@ -74,10 +75,11 @@ export default function AtollDetail() {
   useEffect(() => {
     if (atollData) {
       setAtoll(atollData);
-      setFeaturedIslands(islandsData);
+      setFeaturedIslands(featuredIslandsData);
+      setRegularIslands(regularIslandsData);
       setIsLoading(false);
     }
-  }, [atollData, islandsData]);
+  }, [atollData, featuredIslandsData, regularIslandsData]);
 
   // Parse JSON fields safely
   const parseJSON = (data: string | null) => {
@@ -114,6 +116,53 @@ export default function AtollDetail() {
             <Button>Back to Atolls</Button>
           </Link>
         </div>
+      {/* Regular Islands Section */}
+      {regularIslands.length > 0 && (
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container">
+            <div className="mb-12">
+              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll.name}</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
+                Browse all islands available in this atoll region.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {regularIslands.map((island: IslandGuideData) => (
+                <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                  <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                    <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
+                      {island.slug ? (
+                        <>
+                          <img
+                            src={getIslandFeaturedImage(island.slug)}
+                            alt={island.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        </>
+                      ) : null}
+                    </div>
+
+                    <CardContent className="flex-1 flex flex-col p-4">
+                      <h3 className="text-base font-bold mb-1 group-hover:text-accent transition-colors line-clamp-2">
+                        {island.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground line-clamp-2 flex-1">
+                        {island.overview || 'Discover this beautiful island.'}
+                      </p>
+                      <Button variant="ghost" size="sm" className="w-full gap-1 mt-2 group/btn">
+                        View
+                        <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
         <Footer />
       </div>
     );
@@ -447,6 +496,53 @@ export default function AtollDetail() {
         </section>
       )}
 
+      {/* Regular Islands Section */}
+      {regularIslands.length > 0 && (
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container">
+            <div className="mb-12">
+              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll.name}</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
+                Browse all islands available in this atoll region.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {regularIslands.map((island: IslandGuideData) => (
+                <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                  <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                    <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
+                      {island.slug ? (
+                        <>
+                          <img
+                            src={getIslandFeaturedImage(island.slug)}
+                            alt={island.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                        </>
+                      ) : null}
+                    </div>
+
+                    <CardContent className="flex-1 flex flex-col p-4">
+                      <h3 className="text-base font-bold mb-1 group-hover:text-accent transition-colors line-clamp-2">
+                        {island.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground line-clamp-2 flex-1">
+                        {island.overview || 'Discover this beautiful island.'}
+                      </p>
+                      <Button variant="ghost" size="sm" className="w-full gap-1 mt-2 group/btn">
+                        View
+                        <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <Footer />
     </div>
   );
