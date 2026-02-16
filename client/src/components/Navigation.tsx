@@ -14,6 +14,8 @@ export default function Navigation() {
     { label: "Home", href: "/" },
     { label: "Map", href: "/map" },
     { label: "Explore Maldives", href: "/explore-maldives" },
+    { label: "Diving", href: "/diving-destinations" },
+    { label: "Luxury Resorts", href: "/luxury-resorts" },
     { label: "Trip Planner", href: "/trip-planner" },
     { label: "Packages", href: "/packages" },
     { label: "Blog", href: "/blog" },

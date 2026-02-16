@@ -21,6 +21,8 @@ import AtollGuides from "./pages/AtollGuides";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import UnifiedCMS from "./pages/UnifiedCMS";
 import About from "./pages/About";
+import DivingDestinations from "./pages/DivingDestinations";
+import LuxuryResorts from "./pages/LuxuryResorts";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -46,6 +48,8 @@ function Router() {
       <Route path="/atoll-guides" component={AtollGuides} />
       <Route path="/atoll/:slug" component={AtollDetail} />
       <Route path="/about" component={About} />
+      <Route path="/diving-destinations" component={DivingDestinations} />
+      <Route path="/luxury-resorts" component={LuxuryResorts} />
       
       {/* Staff Routes */}
       <Route path="/staff-login" component={StaffLogin} />

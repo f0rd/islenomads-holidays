@@ -1894,3 +1894,16 @@
 - [x] Add contextual links within guide content (activities, accommodations)
 - [x] Create link schema markup for search engines
 - [x] Test internal linking and verify navigation flow
+
+
+## Activity-Based Landing Pages
+- [x] Design and plan Diving landing page with SEO optimization
+- [x] Design and plan Luxury Resorts landing page with curated experiences
+- [x] Create Diving landing page component with destination guides
+- [x] Create Luxury Resorts landing page component with resort features
+- [x] Implement activity pages in routing (App.tsx)
+- [x] Add activity pages to main navigation menu
+- [x] Create internal links from atoll guides to activity pages
+- [x] Implement call-to-action sections for user engagement
+- [x] Add schema markup for activity pages
+- [x] Test user flow and internal linking
