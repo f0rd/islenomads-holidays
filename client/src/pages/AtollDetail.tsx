@@ -55,35 +55,24 @@ export default function AtollDetail() {
   const [matchExplore, paramsExplore] = useRoute('/explore-maldives/atoll/:slug');
   const [matchAtoll, paramsAtoll] = useRoute('/atoll/:slug');
   const params = paramsExplore || paramsAtoll;
-  const [atoll, setAtoll] = useState<AtollData | null>(null);
-  const [featuredIslands, setFeaturedIslands] = useState<IslandGuideData[]>([]);
-  const [regularIslands, setRegularIslands] = useState<IslandGuideData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Fetch atoll by slug
-  const { data: atollData } = trpc.atolls.getBySlug.useQuery(
+  const { data: atollData, isLoading: atollLoading } = trpc.atolls.getBySlug.useQuery(
     { slug: params?.slug || '' },
     { enabled: !!params?.slug && (!!matchExplore || !!matchAtoll) }
   );
 
   // Fetch islands for this atoll from the database
-  const { data: regularIslandsData = [] } = trpc.atolls.getRegularIslands.useQuery(
+  const { data: regularIslandsData = [], isLoading: regularLoading } = trpc.atolls.getRegularIslands.useQuery(
     { atollId: atollData?.id || 0 },
     { enabled: !!atollData?.id }
   );
-  const { data: featuredIslandsData = [] } = trpc.atolls.getFeaturedIslands.useQuery(
+  const { data: featuredIslandsData = [], isLoading: featuredLoading } = trpc.atolls.getFeaturedIslands.useQuery(
     { atollId: atollData?.id || 0 },
     { enabled: !!atollData?.id }
   );
 
-  useEffect(() => {
-    if (atollData) {
-      setAtoll(atollData);
-      setFeaturedIslands(featuredIslandsData);
-      setRegularIslands(regularIslandsData);
-      setIsLoading(false);
-    }
-  }, [atollData, featuredIslandsData, regularIslandsData]);
+  const isLoading = atollLoading || regularLoading || featuredLoading;
 
   // Parse JSON fields safely
   const parseJSON = (data: string | null) => {
@@ -109,7 +98,7 @@ export default function AtollDetail() {
     );
   }
 
-  if (!atoll) {
+  if (!atollData) {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
@@ -120,61 +109,14 @@ export default function AtollDetail() {
             <Button>Back to Atolls</Button>
           </Link>
         </div>
-      {/* Regular Islands Section */}
-      {regularIslands.length > 0 && (
-        <section className="py-16 md:py-24 bg-background">
-          <div className="container">
-            <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll ? atoll.name : "Atoll"}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl">
-                Browse all islands available in this atoll region.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {regularIslands.map((island: IslandGuideData) => (
-                <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
-                  <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                    <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
-                      {island.slug ? (
-                        <>
-                          <img
-                            src={getIslandFeaturedImage(island.slug)}
-                            alt={island.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        </>
-                      ) : null}
-                    </div>
-
-                    <CardContent className="flex-1 flex flex-col p-4">
-                      <h3 className="text-base font-bold mb-1 group-hover:text-accent transition-colors line-clamp-2">
-                        {island.name}
-                      </h3>
-                      <p className="text-xs text-muted-foreground line-clamp-2 flex-1">
-                        {island.overview || 'Discover this beautiful island.'}
-                      </p>
-                      <Button variant="ghost" size="sm" className="w-full gap-1 mt-2 group/btn">
-                        View
-                        <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
         <Footer />
       </div>
     );
   }
 
-  const highlights = parseJSON(atoll.highlights);
-  const activities = parseJSON(atoll.activities);
-  const accommodation = parseJSON(atoll.accommodation);
+  const highlights = parseJSON(atollData.highlights);
+  const activities = parseJSON(atollData.activities);
+  const accommodation = parseJSON(atollData.accommodation);
 
   return (
     <div className="min-h-screen bg-background">
@@ -183,8 +125,8 @@ export default function AtollDetail() {
       {/* Hero Section */}
       <section className="relative h-96 overflow-hidden">
         <img
-          src={getHeroImage(atoll)}
-          alt={atoll ? atoll.name : "Atoll"}
+          src={getHeroImage(atollData)}
+          alt={atollData.name}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
@@ -207,11 +149,11 @@ export default function AtollDetail() {
             <div className="flex items-end justify-between">
               <div>
                 <Badge className="mb-4 bg-accent text-accent-foreground">
-                  {atoll.region} Region
+                  {atollData.region} Region
                 </Badge>
-                <h1 className="text-5xl font-bold text-white mb-2">{atoll ? atoll.name : "Atoll"}</h1>
+                <h1 className="text-5xl font-bold text-white mb-2">{atollData.name}</h1>
                 <p className="text-lg text-white/90 max-w-2xl">
-                  {atoll.description}
+                  {atollData.description}
                 </p>
               </div>
             </div>
@@ -236,9 +178,9 @@ export default function AtollDetail() {
                 {/* Overview Tab */}
                 <TabsContent value="overview" className="space-y-6">
                   <div>
-                    <h2 className="text-3xl font-bold mb-4">About {atoll ? atoll.name : "Atoll"}</h2>
+                    <h2 className="text-3xl font-bold mb-4">About {atollData.name}</h2>
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                      {atoll.overview}
+                      {atollData.overview}
                     </p>
                   </div>
 
@@ -269,40 +211,17 @@ export default function AtollDetail() {
                 <TabsContent value="activities" className="space-y-6">
                   <div>
                     <h2 className="text-3xl font-bold mb-4">Activities & Experiences</h2>
-                    <p className="text-muted-foreground mb-6">
-                      Discover the diverse activities and experiences available in {atoll ? atoll.name : "Atoll"}.
-                    </p>
-                  </div>
-
-                  {activities && activities.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {activities.map((activity: any, idx: number) => {
-                        const icons: Record<string, any> = {
-                          diving: <Fish className="w-5 h-5" />,
-                          snorkeling: <Waves className="w-5 h-5" />,
-                          photography: <Camera className="w-5 h-5" />,
-                          default: <Compass className="w-5 h-5" />,
-                        };
-
-                        const activityType = typeof activity === 'string' 
-                          ? activity.toLowerCase() 
-                          : activity.name?.toLowerCase() || 'default';
-                        
-                        const icon = Object.keys(icons).some(key => activityType.includes(key))
-                          ? icons[Object.keys(icons).find(key => activityType.includes(key)) || 'default']
-                          : icons.default;
-
-                        return (
-                          <Card key={idx}>
+                    {activities && activities.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {activities.map((activity: any, idx: number) => (
+                          <Card key={idx} className="hover:shadow-md transition-shadow">
                             <CardContent className="p-6">
                               <div className="flex items-start gap-4">
-                                <div className="text-accent mt-1">{icon}</div>
-                                <div>
-                                  <h4 className="font-semibold text-foreground mb-1">
-                                    {typeof activity === 'string' ? activity : activity.name}
-                                  </h4>
+                                <div className="text-4xl">{activity.emoji || '🏝️'}</div>
+                                <div className="flex-1">
+                                  <h3 className="text-xl font-bold mb-2">{activity.title || activity}</h3>
                                   {activity.description && (
-                                    <p className="text-sm text-muted-foreground">
+                                    <p className="text-muted-foreground">
                                       {activity.description}
                                     </p>
                                   )}
@@ -310,92 +229,71 @@ export default function AtollDetail() {
                               </div>
                             </CardContent>
                           </Card>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <p className="text-muted-foreground">Activities information coming soon.</p>
-                  )}
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-muted-foreground">No activities listed for this atoll.</p>
+                    )}
+                  </div>
                 </TabsContent>
 
                 {/* Accommodation Tab */}
                 <TabsContent value="accommodation" className="space-y-6">
                   <div>
-                    <h2 className="text-3xl font-bold mb-4">Where to Stay</h2>
-                    <p className="text-muted-foreground mb-6">
-                      {atoll ? atoll.name : "Atoll"} offers various accommodation options to suit every budget and preference.
-                    </p>
-                  </div>
-
-                  {accommodation && accommodation.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {accommodation.map((option: any, idx: number) => (
-                        <Card key={idx}>
-                          <CardContent className="p-6">
-                            <div className="flex items-start gap-4">
-                              <Hotel className="w-5 h-5 text-accent mt-1" />
-                              <div>
-                                <h4 className="font-semibold text-foreground mb-1">
-                                  {typeof option === 'string' ? option : option.name}
-                                </h4>
-                                {option.description && (
-                                  <p className="text-sm text-muted-foreground">
-                                    {option.description}
-                                  </p>
-                                )}
+                    <h2 className="text-3xl font-bold mb-4">Accommodation Options</h2>
+                    {accommodation && accommodation.length > 0 ? (
+                      <div className="space-y-4">
+                        {accommodation.map((option: any, idx: number) => (
+                          <Card key={idx} className="hover:shadow-md transition-shadow">
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4">
+                                <Hotel className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                                <div>
+                                  <h3 className="text-lg font-bold mb-2">{option.type || option}</h3>
+                                  {option.description && (
+                                    <p className="text-muted-foreground">
+                                      {option.description}
+                                    </p>
+                                  )}
+                                  {option.priceRange && (
+                                    <p className="text-sm font-semibold text-accent mt-2">
+                                      {option.priceRange}
+                                    </p>
+                                  )}
+                                </div>
                               </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-muted-foreground">Accommodation information coming soon.</p>
-                  )}
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-muted-foreground">No accommodation information available.</p>
+                    )}
+                  </div>
                 </TabsContent>
 
                 {/* Info Tab */}
                 <TabsContent value="info" className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {atoll.bestSeason && (
+                    {atollData.bestSeason && (
                       <Card>
                         <CardContent className="p-6">
-                          <div className="flex items-start gap-4">
-                            <Compass className="w-5 h-5 text-accent mt-1" />
-                            <div>
-                              <h4 className="font-semibold text-foreground mb-1">Best Season</h4>
-                              <p className="text-sm text-muted-foreground">{atoll.bestSeason}</p>
-                            </div>
-                          </div>
+                          <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
+                            <Compass className="w-5 h-5 text-accent" />
+                            Best Season
+                          </h3>
+                          <p className="text-muted-foreground">{atollData.bestSeason}</p>
                         </CardContent>
                       </Card>
                     )}
-
-                    {atoll.transportation && (
+                    {atollData.transportation && (
                       <Card>
                         <CardContent className="p-6">
-                          <div className="flex items-start gap-4">
-                            <MapPin className="w-5 h-5 text-accent mt-1" />
-                            <div>
-                              <h4 className="font-semibold text-foreground mb-1">Getting There</h4>
-                              <p className="text-sm text-muted-foreground">{atoll.transportation}</p>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    )}
-
-                    {atoll.bestFor && (
-                      <Card className="md:col-span-2">
-                        <CardContent className="p-6">
-                          <h4 className="font-semibold text-foreground mb-3">Perfect For</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {atoll.bestFor.split(',').map((tag, idx) => (
-                              <Badge key={idx} variant="secondary">
-                                {tag.trim()}
-                              </Badge>
-                            ))}
-                          </div>
+                          <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
+                            <MapPin className="w-5 h-5 text-accent" />
+                            Getting There
+                          </h3>
+                          <p className="text-muted-foreground">{atollData.transportation}</p>
                         </CardContent>
                       </Card>
                     )}
@@ -404,38 +302,30 @@ export default function AtollDetail() {
               </Tabs>
             </div>
 
-            {/* Right Column - Sidebar */}
+            {/* Right Column - Quick Facts */}
             <div className="lg:col-span-1">
-              <Card className="sticky top-24 border-2 border-accent/20">
+              <Card className="sticky top-24">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4">Quick Facts</h3>
-                  
+                  <h3 className="text-xl font-bold mb-6">Quick Facts</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">Region</p>
-                      <p className="font-semibold">{atoll.region}</p>
+                      <p className="text-sm text-muted-foreground mb-1">REGION</p>
+                      <p className="font-semibold">{atollData.region}</p>
                     </div>
-
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">Featured Islands</p>
-                      <p className="font-semibold">{featuredIslands.length}</p>
+                      <p className="text-sm text-muted-foreground mb-1">FEATURED ISLANDS</p>
+                      <p className="font-semibold">{featuredIslandsData.length}</p>
                     </div>
-
-                    {atoll.bestSeason && (
-                      <div>
-                        <p className="text-xs font-semibold text-muted-foreground uppercase mb-1">Best Time</p>
-                        <p className="font-semibold text-sm">{atoll.bestSeason}</p>
-                      </div>
-                    )}
-
-                    <div className="pt-4 border-t border-border">
-                      <Link href="/trip-planner">
-                        <Button className="w-full gap-2">
-                          Plan Your Trip
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </Link>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">BEST TIME</p>
+                      <p className="font-semibold text-sm">{atollData.bestSeason || 'Year-round'}</p>
                     </div>
+                    <Link href="/trip-planner">
+                      <Button className="w-full gap-2 mt-4">
+                        Plan Your Trip
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -445,74 +335,66 @@ export default function AtollDetail() {
       </section>
 
       {/* Featured Islands Section */}
-      {featuredIslands.length > 0 && (
+      {featuredIslandsData.length > 0 && (
         <section className="py-16 md:py-24 bg-muted/50">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Islands in {atoll ? atoll.name : "Atoll"}</h2>
+              <h2 className="text-4xl font-bold mb-4">Featured Islands</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
-                Explore the islands within this atoll and discover unique experiences, activities, and accommodations.
+                Discover the most popular islands in {atollData.name}.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredIslands.map((island: IslandGuideData) => (
-                    <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredIslandsData.map((island: IslandGuideData) => (
+                <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                    <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
+                    <div className="h-48 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
                       {island.slug ? (
                         <>
                           <img
                             src={getIslandFeaturedImage(island.slug)}
                             alt={island.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         </>
                       ) : null}
                     </div>
 
                     <CardContent className="flex-1 flex flex-col p-6">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                      <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors">
                         {island.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
-                        {island.overview || 'Discover this beautiful island in the Maldives.'}
+                      <p className="text-sm text-muted-foreground line-clamp-3 flex-1">
+                        {island.overview || 'Discover this beautiful island.'}
                       </p>
-                      <Button variant="outline" className="w-full gap-2 group/btn">
+                      <Button variant="ghost" size="sm" className="w-full gap-1 mt-4 group/btn">
                         View Guide
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                       </Button>
                     </CardContent>
                   </Card>
                 </Link>
               ))}
             </div>
-
-            {featuredIslands.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">
-                  Island guides for {atoll ? atoll.name : "Atoll"} coming soon.
-                </p>
-              </div>
-            )}
           </div>
         </section>
       )}
 
       {/* Regular Islands Section */}
-      {regularIslands.length > 0 && (
+      {regularIslandsData.length > 0 && (
         <section className="py-16 md:py-24 bg-background">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll ? atoll.name : "Atoll"}</h2>
+              <h2 className="text-4xl font-bold mb-4">All Islands in {atollData.name}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Browse all islands available in this atoll region.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {regularIslands.map((island: IslandGuideData) => (
+              {regularIslandsData.map((island: IslandGuideData) => (
                 <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
@@ -547,6 +429,7 @@ export default function AtollDetail() {
           </div>
         </section>
       )}
+
       <Footer />
     </div>
   );
