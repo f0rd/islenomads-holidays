@@ -1248,6 +1248,119 @@ export const appRouter = router({
         const guides = await getAttractionGuidesByType(input.type, input.limit || 50);
         return guides || [];
       }),
+
+    listAdmin: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user.role !== 'admin') {
+        throw new TRPCError({
+          code: 'FORBIDDEN',
+          message: 'Only admins can access this',
+        });
+      }
+      const guides = await getAllAttractionGuides();
+      return guides || [];
+    }),
+
+    create: protectedProcedure
+      .input(z.object({
+        name: z.string().min(1),
+        slug: z.string().min(1),
+        attractionType: z.enum(['dive_site', 'surf_spot', 'snorkeling_spot', 'poi']),
+        overview: z.string().min(1),
+        difficulty: z.string().optional(),
+        bestSeason: z.string().optional(),
+        depthRange: z.string().optional(),
+        waveHeight: z.string().optional(),
+        marineLife: z.string().optional(),
+        facilities: z.string().optional(),
+        safetyTips: z.string().optional(),
+        localRules: z.string().optional(),
+        accessInfo: z.string().optional(),
+        typicalCost: z.string().optional(),
+        heroImage: z.string().optional(),
+        nearestIsland: z.string().optional(),
+        distanceFromIsland: z.string().optional(),
+        published: z.number().default(1),
+        featured: z.number().default(0),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== 'admin') {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Only admins can create attractions',
+          });
+        }
+        return await createAttractionGuide(input);
+      }),
+
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        name: z.string().min(1).optional(),
+        slug: z.string().min(1).optional(),
+        attractionType: z.enum(['dive_site', 'surf_spot', 'snorkeling_spot', 'poi']).optional(),
+        overview: z.string().min(1).optional(),
+        difficulty: z.string().optional(),
+        bestSeason: z.string().optional(),
+        depthRange: z.string().optional(),
+        waveHeight: z.string().optional(),
+        marineLife: z.string().optional(),
+        facilities: z.string().optional(),
+        safetyTips: z.string().optional(),
+        localRules: z.string().optional(),
+        accessInfo: z.string().optional(),
+        typicalCost: z.string().optional(),
+        heroImage: z.string().optional(),
+        nearestIsland: z.string().optional(),
+        distanceFromIsland: z.string().optional(),
+        published: z.number().optional(),
+        featured: z.number().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== 'admin') {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Only admins can update attractions',
+          });
+        }
+        const { id, ...data } = input;
+        return await updateAttractionGuide(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== 'admin') {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Only admins can delete attractions',
+          });
+        }
+        return await deleteAttractionGuide(input.id);
+      }),
+
+    togglePublish: protectedProcedure
+      .input(z.object({ id: z.number(), published: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== 'admin') {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Only admins can publish attractions',
+          });
+        }
+        return await updateAttractionGuide(input.id, { published: input.published });
+      }),
+
+    toggleFeature: protectedProcedure
+      .input(z.object({ id: z.number(), featured: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== 'admin') {
+          throw new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Only admins can feature attractions',
+          });
+        }
+        return await updateAttractionGuide(input.id, { featured: input.featured });
+      }),
   }),
 });
 

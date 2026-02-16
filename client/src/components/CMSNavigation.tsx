@@ -12,6 +12,7 @@ import {
   Settings,
   Ship,
   Waves,
+  Anchor,
 } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
@@ -66,6 +67,11 @@ const menuGroups: MenuGroup[] = [
         label: "Island Guides",
         path: "/admin/island-guides",
         icon: Compass,
+      },
+      {
+        label: "Attraction Guides",
+        path: "/admin/attraction-guides",
+        icon: Anchor,
       },
       {
         label: "Packages",
