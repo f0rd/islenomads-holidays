@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, name, type FROM places LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type FROM places LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "type": "island"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "type": "island"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "type": "island"
+    },
+    {
+      "id": "4",
+      "name": "HP Reef",
+      "type": "dive_site"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\n1\tDhonfanu\tisland\n2\tEydhafushi\tisland\n3\tFelidhoo\tisland\n4\tHP Reef\tdive_site\n5\tHimmafushi\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}
