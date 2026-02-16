@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { MapPin, Search, ArrowRight, Filter } from "lucide-react";
 import { updateMetaTags } from "@/lib/seo";
 import { SEO_CONFIG } from "@shared/seo-config";
+import RelatedAtolls from "@/components/RelatedAtolls";
 
 interface AtollData {
   id: number;

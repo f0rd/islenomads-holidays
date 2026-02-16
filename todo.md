@@ -1881,3 +1881,16 @@
 - [ ] Add atoll guides to XML sitemap for better indexing
 - [ ] Create internal links between related atolls and islands
 - [ ] Optimize atoll guide pages for local search keywords
+
+
+## Internal Linking Strategy for SEO
+- [x] Create internal linking relationship mappings (atolls to islands, islands to atolls)
+- [x] Build RelatedAtolls component for displaying related atolls
+- [x] Build RelatedIslands component for displaying related islands
+- [x] Create linking utility functions for generating contextual links
+- [x] Add related atolls section to atoll detail pages
+- [x] Add related islands section to island guide pages
+- [x] Implement breadcrumb navigation with internal links
+- [x] Add contextual links within guide content (activities, accommodations)
+- [x] Create link schema markup for search engines
+- [x] Test internal linking and verify navigation flow
