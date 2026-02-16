@@ -4,7 +4,7 @@ import { Star, Waves, Fish, Wind, AlertCircle, Calendar, Zap } from "lucide-reac
 import { Link } from "wouter";
 
 interface ActivitySpotCardProps {
-  id: number;
+  id?: number;
   name: string;
   slug: string;
   spotType: "dive_site" | "snorkeling_spot" | "surf_spot";
@@ -87,7 +87,7 @@ export default function ActivitySpotCard({
   const fishSpeciesArray = fishSpecies ? JSON.parse(fishSpecies) : [];
 
   return (
-    <Link href={`/activity-spot/${slug}`} className="block">
+    <Link href={id ? `/poi/${id}` : `/activity-spot/${slug}`} className="block">
       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden">
         {/* Image Section */}
         {images && images.length > 0 && (

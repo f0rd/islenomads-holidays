@@ -1950,3 +1950,15 @@
 - [x] Update locations.ts with correct POI categorizations (14 items fixed)
 - [x] Verify all POIs display in Attractions tab
 - [x] Test filtering and search functionality
+
+
+## POI Detail Guides with Images
+- [x] Create POI detail page component (POIGuide.tsx)
+- [x] Add POI routing to App.tsx
+- [x] Generate or source images for all 14 POIs
+- [x] Create comprehensive guide content for each POI
+- [x] Integrate POI guides into Explore Maldives navigation
+- [x] Add "Learn More" links from POI cards to detail pages
+- [x] Test all POI detail pages
+- [x] Verify images load correctly
+- [x] Test responsive design on mobile

@@ -21,6 +21,7 @@ import AtollGuides from "./pages/AtollGuides";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import UnifiedCMS from "./pages/UnifiedCMS";
 import About from "./pages/About";
+import POIGuide from "./pages/POIGuide";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -46,6 +47,7 @@ function Router() {
       <Route path="/atoll-guides" component={AtollGuides} />
       <Route path="/atoll/:slug" component={AtollDetail} />
       <Route path="/about" component={About} />
+      <Route path="/poi/:id" component={POIGuide} />
       
       {/* Staff Routes */}
       <Route path="/staff-login" component={StaffLogin} />
