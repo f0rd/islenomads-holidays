@@ -12,7 +12,7 @@ import {
   updatePackage, deletePackage, getAllPackagesAdmin, getAllBlogPostsAdmin, getBoatRoutes, getBoatRouteBySlug,
   getBoatRouteById, createBoatRoute, updateBoatRoute, deleteBoatRoute, getBoatRoutesWithIslands, getBoatRoutesFromIsland, getBoatRoutesToIsland, getMapLocations, getMapLocationBySlug,
   getMapLocationById, createMapLocation, updateMapLocation, deleteMapLocation, getMapLocationWithGuide, getIslandGuides,
-  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, getIslandGuideByIslandId, getAdjacentIslandsFromDb, getPlaceWithGuide, createIslandGuide, updateIslandGuide,
+  getFeaturedIslandGuides, getIslandGuideBySlug, getIslandGuideById, getIslandGuideByIslandId, getPlaceWithGuide, createIslandGuide, updateIslandGuide,
   deleteIslandGuide, getAllIslandGuidesAdmin, updateDisplayOrder, getSeoMetaTags, getApprovedSeoMetaTags, createSeoMetaTags,
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
   deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
@@ -545,12 +545,6 @@ export const appRouter = router({
         return getPlaceWithGuide(input.placeId);
       }),
 
-    getAdjacentIslands: publicProcedure
-      .input(z.object({ islandId: z.number() }))
-      .query(async ({ input }) => {
-        return getAdjacentIslandsFromDb(input.islandId);
-      }),
-
     create: protectedProcedure
       .input(
         z.object({
@@ -603,37 +597,13 @@ export const appRouter = router({
       }),
 
     listWithActivitySpots: publicProcedure.query(async () => {
-      // Try unified schema first, fall back to old schema
-      const guides = await getIslandGuidesWithActivitySpots();
-      return guides;
+      return getIslandGuidesWithActivitySpots();
     }),
 
     getExperiences: publicProcedure
       .input(z.object({ islandId: z.number() }))
       .query(async ({ input }) => {
         return getExperiencesByIsland(input.islandId);
-      }),
-
-    getLinkedTransports: protectedProcedure
-      .input(z.object({ islandGuideId: z.number() }))
-      .query(async ({ input }) => {
-        // TODO: Implement getIslandGuideTransports from db.ts
-        // This will fetch transports linked to an island guide
-        return [];
-      }),
-
-    updateTransportLinks: protectedProcedure
-      .input(z.object({
-        islandGuideId: z.number(),
-        transports: z.array(z.object({
-          transportId: z.number(),
-          displayOrder: z.number(),
-        })),
-      }))
-      .mutation(async ({ input }) => {
-        // TODO: Implement updateIslandGuideTransports from db.ts
-        // This will update the links between island guides and transports
-        return { success: true };
       }),
   }),
 

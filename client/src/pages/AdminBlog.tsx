@@ -8,12 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOEditor from "@/components/SEOEditor";
 
-interface AdminBlogProps {
-  hideLayout?: boolean;
-  [key: string]: any;
-}
-
-export default function AdminBlog({ hideLayout = false, ...props }: AdminBlogProps) {
+export default function AdminBlog() {
   const { user } = useAuth();
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -52,11 +47,11 @@ export default function AdminBlog({ hideLayout = false, ...props }: AdminBlogPro
   if (!user || user.role !== "admin") {
     return (
       <div className="min-h-screen">
-        {!hideLayout && <Navigation />}
+        <Navigation />
         <div className="container py-20 text-center">
           <p className="text-muted-foreground">You do not have permission to access this page.</p>
         </div>
-        {!hideLayout && <Footer />}
+        <Footer />
       </div>
     );
   }
@@ -152,8 +147,8 @@ export default function AdminBlog({ hideLayout = false, ...props }: AdminBlogPro
   };
 
   return (
-    <div className={hideLayout ? "" : "min-h-screen"}>
-      {!hideLayout && <Navigation />}
+    <div className="min-h-screen">
+      <Navigation />
 
       <section className="py-12 bg-background">
         <div className="container max-w-6xl mx-auto px-4">
@@ -417,7 +412,7 @@ export default function AdminBlog({ hideLayout = false, ...props }: AdminBlogPro
         </div>
       </section>
 
-      {!hideLayout && <Footer />}
+      <Footer />
     </div>
   );
 }

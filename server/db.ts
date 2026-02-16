@@ -1,4 +1,4 @@
-import { eq, and, desc, asc } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -286,42 +286,16 @@ export async function getBoatRoutesToIsland(islandGuideId: number): Promise<Boat
   ) as any;
 }
 
-// Map Locations helpers - Updated to use places table (unified schema)
+// Map Locations helpers
 export async function getMapLocations(published?: boolean): Promise<MapLocation[]> {
   const db = await getDb();
   if (!db) return [];
 
-  // Query from places table which contains all unified location data
-  const results = await db.select().from(places);
-  
-  // Transform places data to MapLocation format for compatibility
-  return results.map((place: any) => ({
-    id: place.id,
-    placeId: place.id,
-    name: place.name,
-    slug: place.name.toLowerCase().replace(/\s+/g, '-'),
-    type: place.type,
-    latitude: 0,
-    longitude: 0,
-    description: '',
-    highlights: null,
-    amenities: null,
-    image: null,
-    icon: null,
-    color: null,
-    difficulty: null,
-    depth: null,
-    waveHeight: null,
-    rating: null,
-    reviews: 0,
-    population: null,
-    priceRange: null,
-    bestSeason: null,
-    guideId: null,
-    published: 1,
-    createdAt: place.createdAt,
-    updatedAt: place.updatedAt,
-  } as any)) as any;
+  const query = db.select().from(mapLocations);
+  if (published !== undefined) {
+    return query.where(eq(mapLocations.published, published ? 1 : 0)) as any;
+  }
+  return query as any;
 }
 
 export async function getMapLocationBySlug(slug: string): Promise<MapLocation | undefined> {
@@ -426,55 +400,20 @@ export async function getIslandGuideByIslandId(islandId: number): Promise<Island
   const db = await getDb();
   if (!db) return undefined;
 
-  // Query the island guide directly by ID
+  // First, get the place by ID
+  const place = await db.select().from(places).where(eq(places.id, islandId)).limit(1);
+  if (!place || !place[0]) return undefined;
+
+  const placeData = place[0];
+  
+  // Find the island guide by matching the place name
   const result = await db
     .select()
     .from(islandGuides)
-    .where(eq(islandGuides.id, islandId))
+    .where(eq(islandGuides.name, placeData.name))
     .limit(1);
   
   return result[0];
-}
-
-/**
- * Get adjacent islands (previous and next) for navigation
- * Returns the previous and next islands in the same atoll
- */
-export async function getAdjacentIslandsFromDb(currentIslandId: number): Promise<{ previous: IslandGuide | null; next: IslandGuide | null }> {
-  const db = await getDb();
-  if (!db) return { previous: null, next: null };
-
-  // Get the current island to find its atoll
-  const currentIsland = await db
-    .select()
-    .from(islandGuides)
-    .where(eq(islandGuides.id, currentIslandId))
-    .limit(1);
-  
-  if (!currentIsland || !currentIsland[0]) {
-    return { previous: null, next: null };
-  }
-
-  const currentAtoll = currentIsland[0].atoll;
-  
-  if (!currentAtoll) {
-    return { previous: null, next: null };
-  }
-
-  // Get all islands in the same atoll, ordered by ID
-  const islandsInAtoll = await db
-    .select()
-    .from(islandGuides)
-    .where(eq(islandGuides.atoll, currentAtoll))
-    .orderBy(asc(islandGuides.id));
-
-  // Find the current island's position in the list
-  const currentIndex = islandsInAtoll.findIndex(i => i.id === currentIslandId);
-  
-  return {
-    previous: currentIndex > 0 ? islandsInAtoll[currentIndex - 1] : null,
-    next: currentIndex < islandsInAtoll.length - 1 ? islandsInAtoll[currentIndex + 1] : null,
-  };
 }
 
 /**
@@ -1443,4 +1382,3 @@ export async function getIslandWithSpots(islandId: number) {
     transportRoutes: routes,
   };
 }
-

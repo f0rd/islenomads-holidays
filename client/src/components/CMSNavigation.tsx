@@ -12,11 +12,6 @@ import {
   Settings,
   Ship,
   Waves,
-  Users,
-  Palette,
-  Activity,
-  LogOut,
-  TrendingUp,
 } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
@@ -53,18 +48,8 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Overview",
-        path: "/cms",
+        path: "/admin",
         icon: BarChart3,
-      },
-      {
-        label: "Data Management",
-        path: "/cms?section=data-management",
-        icon: TrendingUp,
-      },
-      {
-        label: "Activity Log",
-        path: "/cms?section=activity",
-        icon: Activity,
       },
     ],
   },
@@ -74,17 +59,17 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Blog Posts",
-        path: "/cms?section=blog",
+        path: "/admin/blog",
         icon: BookOpen,
       },
       {
         label: "Island Guides",
-        path: "/cms?section=island-guides",
+        path: "/admin/island-guides",
         icon: Compass,
       },
       {
         label: "Packages",
-        path: "/cms?section=packages",
+        path: "/admin/packages",
         icon: Box,
       },
     ],
@@ -95,13 +80,13 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Activity Spots",
-        path: "/cms?section=activity-spots",
+        path: "/admin/activity-spots",
         icon: MapPin,
       },
       {
-        label: "Map Locations",
-        path: "/cms?section=map-locations",
-        icon: MapPin,
+        label: "Activity Types",
+        path: "/admin/activity-types",
+        icon: Waves,
       },
     ],
   },
@@ -111,13 +96,18 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "Boat Routes",
-        path: "/cms?section=boat-routes",
+        path: "/admin/boat-routes",
         icon: Ship,
       },
       {
-        label: "Transports",
-        path: "/cms?section=transports",
+        label: "Transport Routes",
+        path: "/admin/transport-routes",
         icon: Ship,
+      },
+      {
+        label: "Map Locations",
+        path: "/admin/map-locations",
+        icon: MapPin,
       },
     ],
   },
@@ -127,40 +117,29 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "CRM Dashboard",
-        path: "/cms?section=crm",
+        path: "/admin/crm",
         icon: MessageSquare,
       },
-    ],
-  },
-  {
-    title: "Organization",
-    icon: Users,
-    items: [
       {
-        label: "Staff Management",
-        path: "/cms?section=staff",
-        icon: Users,
-      },
-      {
-        label: "Roles & Permissions",
-        path: "/cms?section=roles",
-        icon: Settings,
+        label: "Pricing Requests",
+        path: "/admin/pricing-requests",
+        icon: DollarSign,
       },
     ],
   },
   {
-    title: "Configuration",
+    title: "Settings",
     icon: Settings,
     items: [
       {
         label: "SEO Optimizer",
-        path: "/cms?section=seo",
+        path: "/admin/seo",
         icon: FileText,
       },
       {
-        label: "Branding",
-        path: "/admin/branding",
-        icon: Palette,
+        label: "Staff Management",
+        path: "/admin/staff",
+        icon: Settings,
       },
     ],
   },
@@ -169,7 +148,7 @@ const menuGroups: MenuGroup[] = [
 export function CMSNavigation() {
   const [location] = useLocation();
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(
-    new Set(["Dashboard", "Content Management", "Activity Management"])
+    new Set(["Dashboard", "Content Management"])
   );
 
   const toggleGroup = (groupTitle: string) => {

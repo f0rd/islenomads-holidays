@@ -246,48 +246,6 @@
       "when": 1771105883188,
       "tag": "0034_colorful_moira_mactaggert",
       "breakpoints": true
-    },
-    {
-      "idx": 35,
-      "version": "5",
-      "when": 1771136694675,
-      "tag": "0035_condemned_salo",
-      "breakpoints": true
-    },
-    {
-      "idx": 36,
-      "version": "5",
-      "when": 1771136838378,
-      "tag": "0036_cool_korvac",
-      "breakpoints": true
-    },
-    {
-      "idx": 37,
-      "version": "5",
-      "when": 1771156492108,
-      "tag": "0037_spotty_warstar",
-      "breakpoints": true
-    },
-    {
-      "idx": 38,
-      "version": "5",
-      "when": 1771156845132,
-      "tag": "0038_legal_doorman",
-      "breakpoints": true
-    },
-    {
-      "idx": 39,
-      "version": "5",
-      "when": 1771223971692,
-      "tag": "0039_rapid_ted_forrester",
-      "breakpoints": true
-    },
-    {
-      "idx": 40,
-      "version": "5",
-      "when": 1771224643450,
-      "tag": "0040_spotty_master_mold",
-      "breakpoints": true
     }
   ]
 }
