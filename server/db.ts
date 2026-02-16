@@ -1,6 +1,6 @@
 import { eq, and, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -1491,4 +1491,78 @@ export async function getIslandBySlug(slug: string): Promise<any | undefined> {
     ...row.island_guides,
     id: row.island_guides?.id || row.places.id,
   };
+}
+
+// Attraction Guides - for dive sites, surf spots, snorkeling spots, and POIs
+export async function getAttractionGuideBySlug(slug: string): Promise<any | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db.select().from(attractionGuides).where(eq(attractionGuides.slug, slug)).limit(1);
+  return result[0];
+}
+
+export async function getAttractionGuidesByType(attractionType: string, limit: number = 50): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select()
+    .from(attractionGuides)
+    .where(and(
+      eq(attractionGuides.attractionType, attractionType as any),
+      eq(attractionGuides.published, 1)
+    ))
+    .limit(limit);
+}
+
+export async function getAllAttractionGuides(limit: number = 100): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select()
+    .from(attractionGuides)
+    .where(eq(attractionGuides.published, 1))
+    .limit(limit);
+}
+
+export async function getFeaturedAttractionGuides(limit: number = 6): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select()
+    .from(attractionGuides)
+    .where(and(
+      eq(attractionGuides.published, 1),
+      eq(attractionGuides.featured, 1)
+    ))
+    .limit(limit);
+}
+
+export async function createAttractionGuide(data: any): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(attractionGuides).values(data);
+  const id = (result as any).insertId;
+  return getAttractionGuideById(id);
+}
+
+export async function getAttractionGuideById(id: number): Promise<any | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(attractionGuides).where(eq(attractionGuides.id, id)).limit(1);
+  return result[0];
+}
+
+export async function updateAttractionGuide(id: number, data: Partial<any>): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(attractionGuides).set(data).where(eq(attractionGuides.id, id));
+  return getAttractionGuideById(id);
+}
+
+export async function deleteAttractionGuide(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(attractionGuides).where(eq(attractionGuides.id, id));
+  return true;
 }

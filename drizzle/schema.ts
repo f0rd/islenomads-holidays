@@ -493,7 +493,7 @@ export const places = mysqlTable("places", {
   id: int("id").autoincrement().primaryKey(),
   atollId: int("atollId"), // Foreign key to atolls (optional for non-island places)
   name: varchar("name", { length: 255 }).notNull(), // Place name
-  slug: varchar("slug", { length: 255 }), // URL-friendly identifier
+  slug: varchar("slug", { length: 255 }).unique(), // URL-friendly identifier
   code: varchar("code", { length: 50 }).notNull().unique(), // Unique place code
   type: mysqlEnum("type", ["island", "dive_site", "surf_spot", "snorkeling_spot", "poi"]).notNull(), // Type of place
   latitude: decimal("latitude", { precision: 10, scale: 6 }), // Geographical latitude
@@ -845,3 +845,61 @@ export const airportRoutes = mysqlTable("airport_routes", {
 
 export type AirportRoute = typeof airportRoutes.$inferSelect;
 export type InsertAirportRoute = typeof airportRoutes.$inferInsert;
+
+
+// Attraction Guides table for dive sites, surf spots, snorkeling spots, and POIs
+export const attractionGuides = mysqlTable("attraction_guides", {
+  id: int("id").autoincrement().primaryKey(),
+  placeId: int("placeId").notNull(), // Reference to places table
+  name: varchar("name", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  attractionType: mysqlEnum("attractionType", ["dive_site", "surf_spot", "snorkeling_spot", "poi"]).notNull(),
+  overview: text("overview"), // 80-200 words description
+  quickFacts: text("quickFacts"), // JSON array of facts
+  // Difficulty & Conditions
+  difficulty: mysqlEnum("difficulty", ["beginner", "intermediate", "advanced", "expert"]),
+  waterConditions: text("waterConditions"), // JSON object with current conditions
+  bestSeason: varchar("bestSeason", { length: 255 }), // e.g., "November to March"
+  seasonalInfo: text("seasonalInfo"), // JSON array of seasonal details
+  // Activity-specific info
+  depthRange: varchar("depthRange", { length: 100 }), // For dive sites: "20-40m"
+  waveHeight: varchar("waveHeight", { length: 100 }), // For surf spots: "2-6ft"
+  marineLife: text("marineLife"), // JSON array of marine species found here
+  // Access & Getting There
+  accessInfo: text("accessInfo"),
+  nearestIsland: varchar("nearestIsland", { length: 255 }),
+  distanceFromIsland: varchar("distanceFromIsland", { length: 100 }), // e.g., "15 mins by speedboat"
+  // Facilities & Services
+  facilities: text("facilities"), // JSON array of available facilities
+  amenities: text("amenities"), // JSON array of amenities
+  // Safety & Rules
+  safetyTips: text("safetyTips"), // JSON array
+  localRules: text("localRules"), // JSON array
+  restrictions: text("restrictions"), // JSON array of restrictions
+  // Pricing & Bookings
+  typicalCost: varchar("typicalCost", { length: 100 }), // e.g., "$80-120 per person"
+  bookingInfo: text("bookingInfo"),
+  // Media
+  heroImage: varchar("heroImage", { length: 500 }),
+  images: text("images"), // JSON array of image URLs
+  videos: text("videos"), // JSON array of video URLs
+  // Coordinates
+  latitude: varchar("latitude", { length: 50 }),
+  longitude: varchar("longitude", { length: 50 }),
+  // SEO Fields
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  metaKeywords: varchar("metaKeywords", { length: 500 }),
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  seoScore: int("seoScore"),
+  // Status
+  published: int("published").default(0).notNull(),
+  featured: int("featured").default(0).notNull(),
+  displayOrder: int("displayOrder").default(0).notNull(),
+  viewCount: int("viewCount").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AttractionGuide = typeof attractionGuides.$inferSelect;
+export type InsertAttractionGuide = typeof attractionGuides.$inferInsert;

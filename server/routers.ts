@@ -24,7 +24,7 @@ import {
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
-  upsertSeoMetadata, getIslandWithSpots
+  upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById
 } from "./db";
 
 export const appRouter = router({
@@ -1200,6 +1200,36 @@ export const appRouter = router({
       .input(z.object({ islandId: z.number() }))
       .query(async ({ input }) => {
         return getIslandWithSpots(input.islandId);
+      }),
+  }),
+
+  attractionGuides: router({
+    list: publicProcedure.query(async () => {
+      return getAllAttractionGuides();
+    }),
+
+    featured: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getFeaturedAttractionGuides(input.limit || 6);
+      }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getAttractionGuideBySlug(input.slug);
+      }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getAttractionGuideById(input.id);
+      }),
+
+    getByType: publicProcedure
+      .input(z.object({ type: z.enum(['dive_site', 'surf_spot', 'snorkeling_spot', 'poi']), limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getAttractionGuidesByType(input.type, input.limit || 50);
       }),
   }),
 });

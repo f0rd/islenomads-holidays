@@ -36,6 +36,7 @@ import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import AdminDashboard from "./pages/AdminDashboard";
+import AttractionGuide from "./pages/AttractionGuide";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -60,6 +61,7 @@ function Router() {
       <Route path={"/explore-maldives"} component={ExploreMaldives} />
       <Route path={"/explore-maldives/:slug"} component={IslandGuide} />
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
+      <Route path={"/attraction/:slug"} component={AttractionGuide} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
       <Route path={"/admin/activity-spots"} component={AdminActivitySpots} />

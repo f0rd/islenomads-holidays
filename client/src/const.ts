@@ -15,3 +15,16 @@ export const getLoginUrl = () => {
 
   return url.toString();
 };
+
+// Attraction Guide URL helpers
+export const getAttractionGuideUrl = (slug: string) => {
+  return `/attraction/${slug}`;
+};
+
+export const getAttractionGuideUrlFromId = (id: number, name: string) => {
+  const slug = name
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
+  return `/attraction/${slug}`;
+};
