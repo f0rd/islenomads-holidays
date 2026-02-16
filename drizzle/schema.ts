@@ -496,6 +496,8 @@ export const places = mysqlTable("places", {
   slug: varchar("slug", { length: 255 }), // URL-friendly identifier
   code: varchar("code", { length: 50 }).notNull().unique(), // Unique place code
   type: mysqlEnum("type", ["island", "dive_site", "surf_spot", "snorkeling_spot", "poi"]).notNull(), // Type of place
+  latitude: decimal("latitude", { precision: 10, scale: 6 }), // Geographical latitude
+  longitude: decimal("longitude", { precision: 10, scale: 6 }), // Geographical longitude
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
