@@ -1,0 +1,70 @@
+{
+  "query": "SELECT p.id, p.name, p.slug, a.name as atoll_name FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE a.name = 'Alif Dhaal Atoll' AND p.type = 'island' ORDER BY p.name LIMIT 50",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, p.slug, a.name as atoll_name FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE a.name = 'Alif Dhaal Atoll' AND p.type = 'island' ORDER BY p.name LIMIT 50",
+  "rows": [
+    {
+      "id": "101",
+      "name": "Burunee",
+      "slug": "burunee",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "79",
+      "name": "Funadhoo",
+      "slug": "funadhoo",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "52",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "62",
+      "name": "Noomaraa",
+      "slug": "noomaraa",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "36",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "atoll_name": "Alif Dhaal Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll_name\n101\tBurunee\tburunee\tAlif Dhaal Atoll\n30002\tDhangethi\tdhangethi\tAlif Dhaal Atoll\n74\tDhigurah\tdhigurah\tAlif Dhaal Atoll\n41\tFeridhoo\tferidhoo\tAlif Dhaal Atoll\n79\tFunadhoo\tfunadhoo\tAlif Dhaal Atoll\n6\tIhavandhoo\tihavandhoo\tAlif Dhaal Atoll\n52\tLhaimagu\tlhaimagu\tAlif Dhaal Atoll\n62\tNoomaraa\tnoomaraa\tAlif Dhaal Atoll\n36\tUngoofaaru\tungoofaaru\tAlif Dhaal Atoll\n98\tVeligandu\tveligandu\tAlif Dhaal Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 112
+}
