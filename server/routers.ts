@@ -2,10 +2,10 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { COOKIE_NAME } from "../shared/const";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
-import { z } from "zod";
+import { z } from 'zod';
+import { TRPCError } from '@trpc/server';
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
-import { TRPCError } from "@trpc/server";
 import {
   getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost,
   getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage,
@@ -1205,31 +1205,48 @@ export const appRouter = router({
 
   attractionGuides: router({
     list: publicProcedure.query(async () => {
-      return getAllAttractionGuides();
+      const guides = await getAllAttractionGuides();
+      return guides || [];
     }),
 
     featured: publicProcedure
       .input(z.object({ limit: z.number().optional() }))
       .query(async ({ input }) => {
-        return getFeaturedAttractionGuides(input.limit || 6);
+        const guides = await getFeaturedAttractionGuides(input.limit || 6);
+        return guides || [];
       }),
 
     getBySlug: publicProcedure
       .input(z.object({ slug: z.string() }))
       .query(async ({ input }) => {
-        return getAttractionGuideBySlug(input.slug);
+        const guide = await getAttractionGuideBySlug(input.slug);
+        if (!guide) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: `Attraction guide with slug "${input.slug}" not found`,
+          });
+        }
+        return guide;
       }),
 
     getById: publicProcedure
       .input(z.object({ id: z.number() }))
       .query(async ({ input }) => {
-        return getAttractionGuideById(input.id);
+        const guide = await getAttractionGuideById(input.id);
+        if (!guide) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: `Attraction guide with ID ${input.id} not found`,
+          });
+        }
+        return guide;
       }),
 
     getByType: publicProcedure
       .input(z.object({ type: z.enum(['dive_site', 'surf_spot', 'snorkeling_spot', 'poi']), limit: z.number().optional() }))
       .query(async ({ input }) => {
-        return getAttractionGuidesByType(input.type, input.limit || 50);
+        const guides = await getAttractionGuidesByType(input.type, input.limit || 50);
+        return guides || [];
       }),
   }),
 });
