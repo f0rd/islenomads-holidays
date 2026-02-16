@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -20,7 +21,6 @@ import {
 import { Link } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import { getIslandGuideUrl } from '@shared/locations';
-import { useMemo, useState } from 'react';
 
 interface IslandGuideData {
   id: number;
@@ -32,7 +32,6 @@ interface IslandGuideData {
   published: number;
   heroImage?: string | null;
   contentType?: 'island' | 'point_of_interest';
-  poiType?: 'thila' | 'reef' | 'channel' | 'dive_site' | 'attraction' | 'landmark' | null;
 }
 
 interface AtollData {
@@ -61,7 +60,7 @@ interface IslandWithSpots extends IslandGuideData {
 }
 
 export default function ExploreMaldives() {
-  const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi' | 'dive-sites'>('atolls');
+  const [activeTab, setActiveTab] = useState<'atolls' | 'islands' | 'poi'>('atolls');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedActivities, setSelectedActivities] = useState<Set<string>>(new Set());
@@ -152,33 +151,22 @@ export default function ExploreMaldives() {
     });
   }, [islandsWithSpots, searchQuery, selectedActivities]);
 
-  // Filter and search points of interest (POIs only, excluding dive sites)
+  // Filter and search points of interest (combine POIs and activity spots)
   const filteredPointsOfInterest = useMemo(() => {
     const pois = islands.filter((island: IslandGuideData) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
       const isPOI = island.contentType === 'point_of_interest';
-      // Exclude dive sites and thilas from general POI tab
-      const isDiveSite = island.poiType === 'dive_site' || island.poiType === 'thila';
-      return matchesSearch && isPublished && isPOI && !isDiveSite;
+      return matchesSearch && isPublished && isPOI;
     });
-    return { pois };
-  }, [islands, searchQuery]);
-
-  // Filter and search dive sites (thilas and dive sites)
-  const filteredDiveSites = useMemo(() => {
-    const diveSites = islands.filter((island: IslandGuideData) => {
-      const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
-      const isPublished = island.published === 1;
-      const isPOI = island.contentType === 'point_of_interest';
-      // Include only dive sites and thilas
-      const isDiveSite = island.poiType === 'dive_site' || island.poiType === 'thila';
-      return matchesSearch && isPublished && isPOI && isDiveSite;
+    const spots = activitySpots.filter((spot: ActivitySpotData) => {
+      const matchesSearch = spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
+      return matchesSearch;
     });
-    return { diveSites };
-  }, [islands, searchQuery]);
+    return { pois, spots };
+  }, [islands, activitySpots, searchQuery]);
 
   const toggleActivity = (activity: string) => {
     const newActivities = new Set(selectedActivities);
@@ -209,16 +197,16 @@ export default function ExploreMaldives() {
 
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 opacity-10"></div>
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        </div>
 
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">Explore the Maldives</h1>
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8">
-              Discover pristine atolls, beautiful islands, and world-class dive sites. Browse by region or search for your perfect destination.
+              Discover pristine atolls and beautiful islands. Browse by region or search for your perfect destination.
             </p>
 
             {/* Enhanced Search Bar */}
@@ -242,7 +230,7 @@ export default function ExploreMaldives() {
               </div>
               {searchQuery && (
                 <div className="mt-3 text-sm text-muted-foreground text-center">
-                  {filteredAtolls.length + filteredIslands.length + filteredPointsOfInterest.pois.length + filteredDiveSites.diveSites.length} results found
+                  {filteredAtolls.length + filteredIslands.length + filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length} results found
                 </div>
               )}
             </div>
@@ -253,10 +241,10 @@ export default function ExploreMaldives() {
       {/* Main Content */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands' | 'poi' | 'dive-sites')} className="w-full">
+          <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'atolls' | 'islands' | 'poi')} className="w-full">
             {/* Tab Navigation */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
-              <TabsList className="grid w-full md:w-auto grid-cols-4">
+              <TabsList className="grid w-full md:w-auto grid-cols-3">
                 <TabsTrigger value="atolls" className="gap-2">
                   <Waves className="w-4 h-4" />
                   Atolls
@@ -264,10 +252,6 @@ export default function ExploreMaldives() {
                 <TabsTrigger value="islands" className="gap-2">
                   <MapPin className="w-4 h-4" />
                   Islands
-                </TabsTrigger>
-                <TabsTrigger value="dive-sites" className="gap-2">
-                  <Fish className="w-4 h-4" />
-                  Dive Sites
                 </TabsTrigger>
                 <TabsTrigger value="poi" className="gap-2">
                   <Star className="w-4 h-4" />
@@ -341,6 +325,7 @@ export default function ExploreMaldives() {
                   {filteredAtolls.map((atoll: AtollData) => (
                     <Link key={atoll.id} href={`/explore-maldives/atoll/${atoll.slug}`}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                        {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 overflow-hidden relative">
                           {atoll.heroImage ? (
                             <img
@@ -357,14 +342,27 @@ export default function ExploreMaldives() {
                             {atoll.region}
                           </Badge>
                         </div>
+
+                        {/* Content */}
                         <CardContent className="flex-1 flex flex-col p-6">
                           <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
                             {atoll.name}
                           </h3>
-                          <p className="text-sm text-muted-foreground mb-4 flex-1">
-                            {atoll.description}
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-2 flex-1">
+                            {atoll.description || 'Discover this beautiful atoll in the Maldives.'}
                           </p>
-                          <Button variant="ghost" className="w-full justify-between group/btn">
+
+                          {atoll.bestFor && (
+                            <div className="flex flex-wrap gap-1 mb-4">
+                              {atoll.bestFor.split(',').slice(0, 2).map((tag, idx) => (
+                                <Badge key={idx} variant="secondary" className="text-xs">
+                                  {tag.trim()}
+                                </Badge>
+                              ))}
+                            </div>
+                          )}
+
+                          <Button variant="outline" className="w-full gap-2 group/btn">
                             Explore Atoll
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                           </Button>
@@ -375,7 +373,10 @@ export default function ExploreMaldives() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-muted-foreground">No atolls found matching your search.</p>
+                  <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-lg text-muted-foreground">
+                    No atolls found matching your search.
+                  </p>
                 </div>
               )}
             </TabsContent>
@@ -383,7 +384,12 @@ export default function ExploreMaldives() {
             {/* Islands Tab */}
             <TabsContent value="islands" className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold mb-2">All Islands</h2>
+                <h2 className="text-3xl font-bold mb-2">
+                  {selectedActivities.size > 0 
+                    ? `Islands with ${Array.from(selectedActivities).join(', ')}`
+                    : 'Featured Islands'
+                  }
+                </h2>
                 <p className="text-muted-foreground">
                   {filteredIslands.length} island{filteredIslands.length !== 1 ? 's' : ''} found
                 </p>
@@ -392,9 +398,10 @@ export default function ExploreMaldives() {
               {filteredIslands.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredIslands.map((island: IslandWithSpots) => (
-                    <Link key={island.id} href={getIslandGuideUrl(island as any)}>
+                    <Link key={island.id} href={getIslandGuideUrl((island as any).placeId || island.id)}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 overflow-hidden relative">
+                        {/* Hero Image */}
+                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
                           {island.heroImage ? (
                             <img
                               src={island.heroImage}
@@ -402,87 +409,48 @@ export default function ExploreMaldives() {
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              <MapPin className="w-12 h-12 text-accent/50" />
+                            <div className="text-center">
+                              <MapPin className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                              <p className="text-sm text-primary-foreground/80 font-semibold">Island Guide</p>
                             </div>
                           )}
+
+                          {island.atoll && (
+                            <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
+                              {island.atoll}
+                            </Badge>
+                          )}
                         </div>
+
+                        {/* Content */}
                         <CardContent className="flex-1 flex flex-col p-6">
-                          <h3 className="text-xl font-bold mb-1 group-hover:text-accent transition-colors">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
                             {island.name}
                           </h3>
-                          {island.atoll && (
-                            <p className="text-xs text-muted-foreground mb-3">{island.atoll}</p>
-                          )}
-                          <p className="text-sm text-muted-foreground mb-4 flex-1 line-clamp-2">
-                            {island.overview}
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                            {island.overview || 'Discover this beautiful island in the Maldives.'}
                           </p>
+
+                          {/* Activity Badges */}
                           {island.activitySpots && island.activitySpots.length > 0 && (
                             <div className="flex flex-wrap gap-1 mb-4">
-                              {Array.from(new Set(island.activitySpots.map((s) => s.spotType))).map((type) => (
-                                <Badge key={type} variant="secondary" className="text-xs">
-                                  {type === 'dive_site' ? 'Diving' : type === 'snorkeling_spot' ? 'Snorkeling' : 'Surfing'}
+                              {Array.from(new Set(
+                                island.activitySpots.map(spot => {
+                                  if (spot.spotType === 'dive_site') return 'diving';
+                                  if (spot.spotType === 'snorkeling_spot') return 'snorkeling';
+                                  if (spot.spotType === 'surf_spot') return 'surfing';
+                                  return '';
+                                }).filter(Boolean)
+                              )).map((activity) => (
+                                <Badge key={activity} variant="secondary" className="text-xs capitalize gap-1">
+                                  {getActivityIcon(activity)}
+                                  {activity}
                                 </Badge>
                               ))}
                             </div>
                           )}
-                          <Button variant="ghost" className="w-full justify-between group/btn">
-                            Learn More
-                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground">No islands found matching your search.</p>
-                </div>
-              )}
-            </TabsContent>
 
-            {/* Dive Sites Tab */}
-            <TabsContent value="dive-sites" className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold mb-2">Dive Sites & Thilas</h2>
-                <p className="text-muted-foreground">
-                  {filteredDiveSites.diveSites.length} dive site{filteredDiveSites.diveSites.length !== 1 ? 's' : ''} found
-                </p>
-              </div>
-
-              {filteredDiveSites.diveSites.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredDiveSites.diveSites.map((site: IslandGuideData) => (
-                    <Link key={site.id} href={`/poi/${site.id}`}>
-                      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 overflow-hidden relative">
-                          {site.heroImage ? (
-                            <img
-                              src={site.heroImage}
-                              alt={site.name}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              <Fish className="w-12 h-12 text-accent/50" />
-                            </div>
-                          )}
-                          <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground capitalize">
-                            {site.poiType || 'Dive Site'}
-                          </Badge>
-                        </div>
-                        <CardContent className="flex-1 flex flex-col p-6">
-                          <h3 className="text-xl font-bold mb-1 group-hover:text-accent transition-colors">
-                            {site.name}
-                          </h3>
-                          {site.atoll && (
-                            <p className="text-xs text-muted-foreground mb-3">{site.atoll}</p>
-                          )}
-                          <p className="text-sm text-muted-foreground mb-4 flex-1 line-clamp-2">
-                            {site.overview}
-                          </p>
-                          <Button variant="ghost" className="w-full justify-between group/btn">
+                          <Button variant="outline" className="w-full gap-2 group/btn">
                             View Guide
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                           </Button>
@@ -493,26 +461,34 @@ export default function ExploreMaldives() {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-muted-foreground">No dive sites found matching your search.</p>
+                  <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-lg text-muted-foreground">
+                    {selectedActivities.size > 0 
+                      ? `No islands found with ${Array.from(selectedActivities).join(', ')}.`
+                      : 'No islands found matching your search.'
+                    }
+                  </p>
                 </div>
               )}
             </TabsContent>
 
-            {/* Attractions Tab */}
+            {/* Points of Interest Tab */}
             <TabsContent value="poi" className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold mb-2">Attractions & Points of Interest</h2>
                 <p className="text-muted-foreground">
-                  {filteredPointsOfInterest.pois.length} attraction{filteredPointsOfInterest.pois.length !== 1 ? 's' : ''} found
+                  {filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length} attraction{(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) !== 1 ? 's' : ''} found
                 </p>
               </div>
 
-              {filteredPointsOfInterest.pois.length > 0 ? (
+              {(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {/* Render POIs */}
                   {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => (
-                    <Link key={poi.id} href={`/poi/${poi.id}`}>
+                    <Link key={poi.id} href={getIslandGuideUrl(poi.id)}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
-                        <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 overflow-hidden relative">
+                        {/* Hero Image */}
+                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
                           {poi.heroImage ? (
                             <img
                               src={poi.heroImage}
@@ -520,25 +496,23 @@ export default function ExploreMaldives() {
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center">
-                              <Star className="w-12 h-12 text-accent/50" />
+                            <div className="text-center">
+                              <Star className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                              <p className="text-sm text-primary-foreground/80 font-semibold">Point of Interest</p>
                             </div>
                           )}
-                          <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground">
-                            Point of Interest
-                          </Badge>
                         </div>
+
+                        {/* Content */}
                         <CardContent className="flex-1 flex flex-col p-6">
-                          <h3 className="text-xl font-bold mb-1 group-hover:text-accent transition-colors">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
                             {poi.name}
                           </h3>
-                          {poi.atoll && (
-                            <p className="text-xs text-muted-foreground mb-3">{poi.atoll}</p>
-                          )}
-                          <p className="text-sm text-muted-foreground mb-4 flex-1 line-clamp-2">
-                            {poi.overview}
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                            {poi.overview || 'Discover this amazing point of interest.'}
                           </p>
-                          <Button variant="ghost" className="w-full justify-between group/btn">
+
+                          <Button variant="outline" className="w-full gap-2 group/btn">
                             Learn More
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                           </Button>
@@ -546,10 +520,49 @@ export default function ExploreMaldives() {
                       </Card>
                     </Link>
                   ))}
+
+                  {/* Render Activity Spots */}
+                  {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
+                    <Card key={spot.id} className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group">
+                      {/* Hero Image */}
+                      <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
+                        <div className="text-center">
+                          {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                          <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType.replace('_', ' ')}</p>
+                        </div>
+                        {spot.difficulty && (
+                          <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
+                            {spot.difficulty}
+                          </Badge>
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <CardContent className="flex-1 flex flex-col p-6">
+                        <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                          {spot.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                          {spot.description || 'Discover this amazing activity spot.'}
+                        </p>
+
+                        {spot.bestSeason && (
+                          <Badge variant="secondary" className="mb-4 w-fit text-xs">
+                            Best: {spot.bestSeason}
+                          </Badge>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-muted-foreground">No attractions found matching your search.</p>
+                  <Star className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-lg text-muted-foreground">
+                    No attractions found matching your search.
+                  </p>
                 </div>
               )}
             </TabsContent>
