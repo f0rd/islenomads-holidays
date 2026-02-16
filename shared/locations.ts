@@ -49,7 +49,7 @@ export const ALL_ISLANDS: IslandLocation[] = [
   { id: 6, name: 'Ihavandhoo', slug: 'ihavandhoo', type: 'island' },
   { id: 7, name: 'Kaashidhoo', slug: 'kaashidhoo', type: 'island' },
   { id: 8, name: 'Kolhufushi', slug: 'kolhufushi', type: 'island' },
-  { id: 9, name: 'Maaya Thila', slug: 'maaya-thila', type: 'island' },
+  { id: 9, name: 'Maaya Thila', slug: 'maaya-thila', type: 'poi' },
   { id: 10, name: 'Maduvvaree', slug: 'maduvvaree', type: 'island' },
   { id: 11, name: 'Makunudhoo', slug: 'makunudhoo', type: 'island' },
   { id: 12, name: 'Maradhoo', slug: 'maradhoo', type: 'island' },

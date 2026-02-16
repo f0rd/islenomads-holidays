@@ -1930,3 +1930,12 @@
 - [x] Update activity spot display components
 - [x] Test activity filtering by difficulty and season
 - [x] Verify marine life information displays correctly
+
+
+## Data Categorization Fix - Dive Sites vs Islands
+- [x] Identify all dive sites incorrectly categorized as islands
+- [x] Audit Maaya Thila and similar dive sites in database
+- [x] Update database to properly mark dive sites with correct content type
+- [x] Update Explore Maldives component to filter by content type
+- [x] Verify dive sites appear in Attractions tab, not Islands tab
+- [x] Test Explore Maldives filtering and display
