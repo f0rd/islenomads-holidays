@@ -225,6 +225,7 @@ export const islandGuides = mysqlTable("island_guides", {
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   contentType: mysqlEnum("contentType", ["island", "point_of_interest"]).default("island").notNull(), // Distinguish between islands and POIs like Hanifaru Bay
+  poiType: mysqlEnum("poiType", ["thila", "reef", "channel", "dive_site", "attraction", "landmark"]), // Specific POI type for better categorization
   atoll: varchar("atoll", { length: 255 }),
   overview: text("overview"), // 80-200 words description
   quickFacts: text("quickFacts"), // JSON array of 8 facts
@@ -283,6 +284,7 @@ export const islandGuides = mysqlTable("island_guides", {
 export type IslandGuide = typeof islandGuides.$inferSelect;
 export type InsertIslandGuide = typeof islandGuides.$inferInsert;
 export type IslandGuideContentType = 'island' | 'point_of_interest';
+export type PoiType = 'thila' | 'reef' | 'channel' | 'dive_site' | 'attraction' | 'landmark';
 
 // SEO Meta Tags Management table - stores AI-generated and approved meta tags
 export const seoMetaTags = mysqlTable("seo_meta_tags", {

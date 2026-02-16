@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET poiType = 'thila' WHERE name IN ('Maaya Thila', 'Kandooma Thila');\nUPDATE island_guides SET poiType = 'dive_site' WHERE name IN ('Fuvahmulah Tiger Shark');\nUPDATE island_guides SET poiType = 'reef' WHERE name IN ('HP Reef', 'Thoddoo House Reef', 'Ukulhas House Reef', 'Veligandu Reef', 'Banana Reef', 'Dhigurah House Reef');\nUPDATE island_guides SET poiType = 'channel' WHERE name IN ('Felidhoo Kandu', 'Fulidhoo Kandu', 'Naifaru Kandu', 'Fotteyo Kandu');\nUPDATE island_guides SET poiType = 'attraction' WHERE name = 'Rasdhoo Madivaru';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET poiType = 'thila' WHERE name IN ('Maaya Thila', 'Kandooma Thila');\nUPDATE island_guides SET poiType = 'dive_site' WHERE name IN ('Fuvahmulah Tiger Shark');\nUPDATE island_guides SET poiType = 'reef' WHERE name IN ('HP Reef', 'Thoddoo House Reef', 'Ukulhas House Reef', 'Veligandu Reef', 'Banana Reef', 'Dhigurah House Reef');\nUPDATE island_guides SET poiType = 'channel' WHERE name IN ('Felidhoo Kandu', 'Fulidhoo Kandu', 'Naifaru Kandu', 'Fotteyo Kandu');\nUPDATE island_guides SET poiType = 'attraction' WHERE name = 'Rasdhoo Madivaru';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 139
+}
