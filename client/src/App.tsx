@@ -17,6 +17,7 @@ import StaffProfile from "./pages/StaffProfile";
 import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
+import AtollGuides from "./pages/AtollGuides";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import UnifiedCMS from "./pages/UnifiedCMS";
 import About from "./pages/About";
@@ -42,6 +43,7 @@ function Router() {
       <Route path="/explore-maldives" component={ExploreMaldives} />
       <Route path="/explore-maldives/atoll/:slug" component={AtollDetail} />
       <Route path="/atolls" component={Atolls} />
+      <Route path="/atoll-guides" component={AtollGuides} />
       <Route path="/atoll/:slug" component={AtollDetail} />
       <Route path="/about" component={About} />
       
