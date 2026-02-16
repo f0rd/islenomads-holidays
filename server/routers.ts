@@ -24,7 +24,8 @@ import {
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
-  upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById
+  upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
+  getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland
 } from "./db";
 
 export const appRouter = router({
@@ -1360,6 +1361,52 @@ export const appRouter = router({
           });
         }
         return await updateAttractionGuide(input.id, { featured: input.featured });
+      }),
+
+    getRelatedIslands: publicProcedure
+      .input(z.object({ attractionGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return await getAttractionIslandLinks(input.attractionGuideId);
+      }),
+
+    linkToIsland: protectedProcedure
+      .input(z.object({
+        attractionGuideId: z.number(),
+        islandGuideId: z.number(),
+        distance: z.string().optional(),
+        travelTime: z.string().optional(),
+        transportMethod: z.string().optional(),
+        notes: z.string().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== "admin") {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "Only admins can link attractions to islands",
+          });
+        }
+        return await linkAttractionToIsland(input);
+      }),
+
+    unlinkFromIsland: protectedProcedure
+      .input(z.object({
+        attractionGuideId: z.number(),
+        islandGuideId: z.number(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (ctx.user.role !== "admin") {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "Only admins can unlink attractions from islands",
+          });
+        }
+        return await unlinkAttractionFromIsland(input.attractionGuideId, input.islandGuideId);
+      }),
+
+    getNearbyAttractions: publicProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return await getAttractionsNearIsland(input.islandGuideId);
       }),
   }),
 });

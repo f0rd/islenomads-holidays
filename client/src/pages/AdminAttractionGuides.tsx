@@ -1,11 +1,12 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2, Star } from "lucide-react";
+import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2, Star, Link2, Unlink2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { AdminPageLayout } from "@/components/AdminPageLayout";
+import { AttractionIslandLinksManager } from "@/components/AttractionIslandLinksManager";
 import {
   Dialog,
   DialogContent,
@@ -432,6 +433,15 @@ export default function AdminAttractionGuides() {
                     placeholder="How to get there"
                     rows={2}
                   />
+
+                {!isCreating && selectedGuide.id && (
+                  <div className="border-t pt-4">
+                    <AttractionIslandLinksManager
+                      attractionGuideId={selectedGuide.id}
+                      onUpdate={() => refetch()}
+                    />
+                  </div>
+                )}
                 </div>
 
                 <div className="flex gap-2 pt-4">

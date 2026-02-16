@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "185cc139-e9b6-47b0-9515-398a725a1702",
-  "prevId": "9bccf745-22e1-4d5c-b64a-205c9469e8cb",
+  "id": "53612f8e-2671-495c-a670-3011eee8c600",
+  "prevId": "185cc139-e9b6-47b0-9515-398a725a1702",
   "tables": {
     "activity_log": {
       "name": "activity_log",
@@ -951,6 +951,408 @@
           ]
         }
       },
+      "checkConstraint": {}
+    },
+    "attraction_guides": {
+      "name": "attraction_guides",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "placeId": {
+          "name": "placeId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "attractionType": {
+          "name": "attractionType",
+          "type": "enum('dive_site','surf_spot','snorkeling_spot','poi')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "overview": {
+          "name": "overview",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "quickFacts": {
+          "name": "quickFacts",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "difficulty": {
+          "name": "difficulty",
+          "type": "enum('beginner','intermediate','advanced','expert')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "waterConditions": {
+          "name": "waterConditions",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "bestSeason": {
+          "name": "bestSeason",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "seasonalInfo": {
+          "name": "seasonalInfo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "depthRange": {
+          "name": "depthRange",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "waveHeight": {
+          "name": "waveHeight",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "marineLife": {
+          "name": "marineLife",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "accessInfo": {
+          "name": "accessInfo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "nearestIsland": {
+          "name": "nearestIsland",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "distanceFromIsland": {
+          "name": "distanceFromIsland",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "facilities": {
+          "name": "facilities",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "amenities": {
+          "name": "amenities",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "safetyTips": {
+          "name": "safetyTips",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "localRules": {
+          "name": "localRules",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "restrictions": {
+          "name": "restrictions",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "typicalCost": {
+          "name": "typicalCost",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "bookingInfo": {
+          "name": "bookingInfo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "heroImage": {
+          "name": "heroImage",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "images": {
+          "name": "images",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "videos": {
+          "name": "videos",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "latitude": {
+          "name": "latitude",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "longitude": {
+          "name": "longitude",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "metaTitle": {
+          "name": "metaTitle",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "metaDescription": {
+          "name": "metaDescription",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "metaKeywords": {
+          "name": "metaKeywords",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "focusKeyword": {
+          "name": "focusKeyword",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "seoScore": {
+          "name": "seoScore",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "published": {
+          "name": "published",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "featured": {
+          "name": "featured",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "displayOrder": {
+          "name": "displayOrder",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "viewCount": {
+          "name": "viewCount",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "attraction_guides_id": {
+          "name": "attraction_guides_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "attraction_guides_slug_unique": {
+          "name": "attraction_guides_slug_unique",
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "attraction_island_links": {
+      "name": "attraction_island_links",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "attractionGuideId": {
+          "name": "attractionGuideId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "islandGuideId": {
+          "name": "islandGuideId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "distance": {
+          "name": "distance",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "travelTime": {
+          "name": "travelTime",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "transportMethod": {
+          "name": "transportMethod",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "displayOrder": {
+          "name": "displayOrder",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "attraction_island_links_id": {
+          "name": "attraction_island_links_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
       "checkConstraint": {}
     },
     "blog_comments": {
@@ -3235,6 +3637,13 @@
           "notNull": true,
           "autoincrement": false
         },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
         "code": {
           "name": "code",
           "type": "varchar(50)",
@@ -3247,6 +3656,20 @@
           "type": "enum('island','dive_site','surf_spot','snorkeling_spot','poi')",
           "primaryKey": false,
           "notNull": true,
+          "autoincrement": false
+        },
+        "latitude": {
+          "name": "latitude",
+          "type": "decimal(10,6)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "longitude": {
+          "name": "longitude",
+          "type": "decimal(10,6)",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         },
         "createdAt": {
@@ -3278,6 +3701,12 @@
         }
       },
       "uniqueConstraints": {
+        "places_slug_unique": {
+          "name": "places_slug_unique",
+          "columns": [
+            "slug"
+          ]
+        },
         "places_code_unique": {
           "name": "places_code_unique",
           "columns": [
@@ -4208,118 +4637,6 @@
         }
       },
       "checkConstraint": {}
-    },
-    "attraction_guides": {
-      "name": "attraction_guides",
-      "columns": [
-        {
-          "name": "id",
-          "type": "int",
-          "typeSchema": "int",
-          "columnType": "int",
-          "data": "",
-          "generated": false,
-          "precision": 0,
-          "scale": 0,
-          "isJson": false,
-          "isArray": false,
-          "enum": [],
-          "enumName": "",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": true,
-          "onUpdate": false,
-          "isUnique": false,
-          "uniqueName": "",
-          "default": null,
-          "isExpression": false,
-          "exprGen": "",
-          "generatedIdentity": null,
-          "nullsFirst": false,
-          "comment": ""
-        },
-        {
-          "name": "placeId",
-          "type": "int",
-          "typeSchema": "int",
-          "columnType": "int",
-          "data": "",
-          "generated": false,
-          "precision": 0,
-          "scale": 0,
-          "isJson": false,
-          "isArray": false,
-          "enum": [],
-          "enumName": "",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "onUpdate": false,
-          "isUnique": false,
-          "uniqueName": "",
-          "default": null,
-          "isExpression": false,
-          "exprGen": "",
-          "generatedIdentity": null,
-          "nullsFirst": false,
-          "comment": ""
-        },
-        {
-          "name": "name",
-          "type": "varchar",
-          "typeSchema": "varchar(255)",
-          "columnType": "varchar",
-          "data": "",
-          "generated": false,
-          "precision": 255,
-          "scale": 0,
-          "isJson": false,
-          "isArray": false,
-          "enum": [],
-          "enumName": "",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "onUpdate": false,
-          "isUnique": false,
-          "uniqueName": "",
-          "default": null,
-          "isExpression": false,
-          "exprGen": "",
-          "generatedIdentity": null,
-          "nullsFirst": false,
-          "comment": ""
-        },
-        {
-          "name": "slug",
-          "type": "varchar",
-          "typeSchema": "varchar(255)",
-          "columnType": "varchar",
-          "data": "",
-          "generated": false,
-          "precision": 255,
-          "scale": 0,
-          "isJson": false,
-          "isArray": false,
-          "enum": [],
-          "enumName": "",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false,
-          "onUpdate": false,
-          "isUnique": true,
-          "uniqueName": "attraction_guides_slug_unique",
-          "default": null,
-          "isExpression": false,
-          "exprGen": "",
-          "generatedIdentity": null,
-          "nullsFirst": false,
-          "comment": ""
-        }
-      ],
-      "indexes": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
     }
   },
   "views": {},

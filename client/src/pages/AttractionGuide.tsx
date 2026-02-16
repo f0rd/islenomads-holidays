@@ -1,6 +1,6 @@
 import { useParams, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { Loader2, MapPin, Calendar, AlertCircle, ArrowLeft, Share2 } from "lucide-react";
+import { Loader2, MapPin, Calendar, AlertCircle, ArrowLeft, Share2, Link as LinkIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -99,6 +99,40 @@ export default function AttractionGuide() {
     return labels[type] || type;
   };
 
+  const NearbyIslandsSection = ({ attractionGuideId }: { attractionGuideId: number }) => {
+    const { data: relatedIslands = [] } = trpc.attractionGuides.getRelatedIslands.useQuery({
+      attractionGuideId,
+    });
+
+    if (relatedIslands.length === 0) return null;
+
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <LinkIcon className="w-5 h-5" />
+            Nearby Islands
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {relatedIslands.map((link: any) => (
+              <div key={link.id} className="flex items-start justify-between pb-3 border-b last:border-b-0">
+                <div className="flex-1">
+                  <p className="font-semibold text-primary hover:underline cursor-pointer">
+                    {link.island?.name}
+                  </p>
+                  {link.distance && <p className="text-sm text-gray-600">Distance: {link.distance}</p>}
+                  {link.travelTime && <p className="text-sm text-gray-600">Travel Time: {link.travelTime}</p>}
+                  {link.transportMethod && <p className="text-sm text-gray-600">Transport: {link.transportMethod}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
   const getDifficultyColor = (difficulty: string) => {
     const colors: Record<string, string> = {
       beginner: "bg-green-100 text-green-800",
@@ -381,6 +415,9 @@ export default function AttractionGuide() {
                   )}
                 </CardContent>
               </Card>
+
+              {/* Nearby Islands */}
+              <NearbyIslandsSection attractionGuideId={guide.id} />
 
               {/* CTA Button */}
               <Button className="w-full" size="lg">

@@ -903,3 +903,20 @@ export const attractionGuides = mysqlTable("attraction_guides", {
 
 export type AttractionGuide = typeof attractionGuides.$inferSelect;
 export type InsertAttractionGuide = typeof attractionGuides.$inferInsert;
+
+// Attraction-Island relationship table for linking attractions to nearby islands
+export const attractionIslandLinks = mysqlTable("attraction_island_links", {
+  id: int("id").autoincrement().primaryKey(),
+  attractionGuideId: int("attractionGuideId").notNull(), // Reference to attraction_guides
+  islandGuideId: int("islandGuideId").notNull(), // Reference to island_guides
+  distance: varchar("distance", { length: 100 }), // e.g., "5 km", "10 mins by boat"
+  travelTime: varchar("travelTime", { length: 100 }), // e.g., "15 minutes", "1 hour"
+  transportMethod: varchar("transportMethod", { length: 100 }), // e.g., "speedboat", "dhoni", "walk"
+  notes: text("notes"), // Additional context about the link
+  displayOrder: int("displayOrder").default(0).notNull(), // For sorting related islands
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AttractionIslandLink = typeof attractionIslandLinks.$inferSelect;
+export type InsertAttractionIslandLink = typeof attractionIslandLinks.$inferInsert;

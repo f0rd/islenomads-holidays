@@ -1,6 +1,6 @@
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, asc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -1565,4 +1565,87 @@ export async function deleteAttractionGuide(id: number): Promise<boolean> {
   if (!db) return false;
   await db.delete(attractionGuides).where(eq(attractionGuides.id, id));
   return true;
+}
+
+// Attraction-Island Link helpers
+export async function getAttractionIslandLinks(attractionGuideId: number): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  const links = await db
+    .select({
+      id: attractionIslandLinks.id,
+      attractionGuideId: attractionIslandLinks.attractionGuideId,
+      islandGuideId: attractionIslandLinks.islandGuideId,
+      distance: attractionIslandLinks.distance,
+      travelTime: attractionIslandLinks.travelTime,
+      transportMethod: attractionIslandLinks.transportMethod,
+      notes: attractionIslandLinks.notes,
+      displayOrder: attractionIslandLinks.displayOrder,
+      island: islandGuides,
+    })
+    .from(attractionIslandLinks)
+    .leftJoin(islandGuides, eq(attractionIslandLinks.islandGuideId, islandGuides.id))
+    .where(eq(attractionIslandLinks.attractionGuideId, attractionGuideId))
+    .orderBy(asc(attractionIslandLinks.displayOrder));
+  return links;
+}
+
+export async function linkAttractionToIsland(data: InsertAttractionIslandLink): Promise<AttractionIslandLink | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(attractionIslandLinks).values(data);
+  const id = (result as any).insertId;
+  const link = await db.select().from(attractionIslandLinks).where(eq(attractionIslandLinks.id, id)).limit(1);
+  return link[0] || null;
+}
+
+export async function unlinkAttractionFromIsland(attractionGuideId: number, islandGuideId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db
+    .delete(attractionIslandLinks)
+    .where(
+      and(
+        eq(attractionIslandLinks.attractionGuideId, attractionGuideId),
+        eq(attractionIslandLinks.islandGuideId, islandGuideId)
+      )
+    );
+  return true;
+}
+
+export async function updateAttractionIslandLink(id: number, data: Partial<InsertAttractionIslandLink>): Promise<AttractionIslandLink | null> {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(attractionIslandLinks).set(data).where(eq(attractionIslandLinks.id, id));
+  const link = await db.select().from(attractionIslandLinks).where(eq(attractionIslandLinks.id, id)).limit(1);
+  return link[0] || null;
+}
+
+export async function deleteAttractionIslandLink(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(attractionIslandLinks).where(eq(attractionIslandLinks.id, id));
+  return true;
+}
+
+export async function getAttractionsNearIsland(islandGuideId: number): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  const attractions = await db
+    .select({
+      id: attractionGuides.id,
+      name: attractionGuides.name,
+      slug: attractionGuides.slug,
+      attractionType: attractionGuides.attractionType,
+      heroImage: attractionGuides.heroImage,
+      overview: attractionGuides.overview,
+      distance: attractionIslandLinks.distance,
+      travelTime: attractionIslandLinks.travelTime,
+      transportMethod: attractionIslandLinks.transportMethod,
+    })
+    .from(attractionIslandLinks)
+    .innerJoin(attractionGuides, eq(attractionIslandLinks.attractionGuideId, attractionGuides.id))
+    .where(eq(attractionIslandLinks.islandGuideId, islandGuideId))
+    .orderBy(asc(attractionIslandLinks.displayOrder));
+  return attractions;
 }
