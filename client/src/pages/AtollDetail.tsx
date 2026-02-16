@@ -125,7 +125,7 @@ export default function AtollDetail() {
         <section className="py-16 md:py-24 bg-background">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll ? atoll.name : "Atoll"}</h2>
+              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll?.name || "Atoll"}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Browse all islands available in this atoll region.
               </p>
@@ -184,7 +184,7 @@ export default function AtollDetail() {
       <section className="relative h-96 overflow-hidden">
         <img
           src={getHeroImage(atoll)}
-          alt={atoll ? atoll.name : "Atoll"}
+          alt={atoll?.name || "Atoll"}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
@@ -209,7 +209,7 @@ export default function AtollDetail() {
                 <Badge className="mb-4 bg-accent text-accent-foreground">
                   {atoll.region} Region
                 </Badge>
-                <h1 className="text-5xl font-bold text-white mb-2">{atoll ? atoll.name : "Atoll"}</h1>
+                <h1 className="text-5xl font-bold text-white mb-2">{atoll?.name || "Atoll"}</h1>
                 <p className="text-lg text-white/90 max-w-2xl">
                   {atoll.description}
                 </p>
@@ -236,7 +236,7 @@ export default function AtollDetail() {
                 {/* Overview Tab */}
                 <TabsContent value="overview" className="space-y-6">
                   <div>
-                    <h2 className="text-3xl font-bold mb-4">About {atoll ? atoll.name : "Atoll"}</h2>
+                    <h2 className="text-3xl font-bold mb-4">About {atoll?.name || "Atoll"}</h2>
                     <p className="text-muted-foreground text-lg leading-relaxed">
                       {atoll.overview}
                     </p>
@@ -270,7 +270,7 @@ export default function AtollDetail() {
                   <div>
                     <h2 className="text-3xl font-bold mb-4">Activities & Experiences</h2>
                     <p className="text-muted-foreground mb-6">
-                      Discover the diverse activities and experiences available in {atoll ? atoll.name : "Atoll"}.
+                      Discover the diverse activities and experiences available in {atoll?.name || "Atoll"}.
                     </p>
                   </div>
 
@@ -323,7 +323,7 @@ export default function AtollDetail() {
                   <div>
                     <h2 className="text-3xl font-bold mb-4">Where to Stay</h2>
                     <p className="text-muted-foreground mb-6">
-                      {atoll ? atoll.name : "Atoll"} offers various accommodation options to suit every budget and preference.
+                      {atoll?.name || "Atoll"} offers various accommodation options to suit every budget and preference.
                     </p>
                   </div>
 
@@ -449,7 +449,7 @@ export default function AtollDetail() {
         <section className="py-16 md:py-24 bg-muted/50">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">Featured Islands in {atoll ? atoll.name : "Atoll"}</h2>
+              <h2 className="text-4xl font-bold mb-4">Featured Islands in {atoll?.name || "Atoll"}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Explore the islands within this atoll and discover unique experiences, activities, and accommodations.
               </p>
@@ -492,7 +492,7 @@ export default function AtollDetail() {
             {featuredIslands.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-lg text-muted-foreground">
-                  Island guides for {atoll ? atoll.name : "Atoll"} coming soon.
+                  Island guides for {atoll?.name || "Atoll"} coming soon.
                 </p>
               </div>
             )}
@@ -505,7 +505,7 @@ export default function AtollDetail() {
         <section className="py-16 md:py-24 bg-background">
           <div className="container">
             <div className="mb-12">
-              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll ? atoll.name : "Atoll"}</h2>
+              <h2 className="text-4xl font-bold mb-4">All Islands in {atoll?.name || "Atoll"}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Browse all islands available in this atoll region.
               </p>
