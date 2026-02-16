@@ -1939,3 +1939,14 @@
 - [x] Update Explore Maldives component to filter by content type
 - [x] Verify dive sites appear in Attractions tab, not Islands tab
 - [x] Test Explore Maldives filtering and display
+
+
+## Location Categorization Audit
+- [x] Audit all locations in database for correct categorization
+- [x] Identify all dive sites, thilas, and reefs that should be POIs
+- [x] Identify all channels and underwater features that should be POIs
+- [x] Create comprehensive list of items needing recategorization
+- [x] Update database contentType for all incorrectly categorized items
+- [x] Update locations.ts with correct POI categorizations (14 items fixed)
+- [x] Verify all POIs display in Attractions tab
+- [x] Test filtering and search functionality
