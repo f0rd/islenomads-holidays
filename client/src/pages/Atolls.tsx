@@ -244,7 +244,7 @@ export default function Atolls() {
                       <h4 className="text-xl font-bold text-foreground mb-4">Featured Islands</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {featuredIslands.map((island) => (
-                          <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                          <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                             <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
                               <div className="h-40 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden relative">
                                 {island.slug ? (

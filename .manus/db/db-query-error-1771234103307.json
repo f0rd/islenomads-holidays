@@ -1,0 +1,8 @@
+{
+  "query": "\n-- Get islands without atollId\nSELECT p.id, p.name, p.slug, p.latitude, p.longitude\nFROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name\nLIMIT 20;\n\n-- Check if there's any pattern in the data\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Get islands without atollId\nSELECT p.id, p.name, p.slug, p.latitude, p.longitude\nFROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name\nLIMIT 20;\n\n-- Check if there's any pattern in the data\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 3: Unknown column 'p.latitude' in 'field list'"
+  ]
+}

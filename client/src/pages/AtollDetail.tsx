@@ -133,7 +133,7 @@ export default function AtollDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {regularIslands.map((island: IslandGuideData) => (
-                <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
                       {island.slug ? (
@@ -457,7 +457,7 @@ export default function AtollDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredIslands.map((island: IslandGuideData) => (
-                    <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                    <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
                       {island.slug ? (
@@ -513,7 +513,7 @@ export default function AtollDetail() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {regularIslands.map((island: IslandGuideData) => (
-                <Link key={island.id} href={getIslandGuideUrl(island.id)}>
+                <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
                       {island.slug ? (

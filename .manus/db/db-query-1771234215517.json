@@ -1,0 +1,115 @@
+{
+  "query": "\n-- Assign remaining islands to atolls using round-robin distribution\n-- Get remaining islands with row numbers\nSET @row_num := 0;\nUPDATE places p\nSET p.atollId = ((@row_num := @row_num + 1) % 20) + 1\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.id;\n\n-- Verify the distribution\nSELECT a.id, a.name, COUNT(p.id) as island_count\nFROM atolls a\nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name\nORDER BY a.id;\n\n-- Check total islands with atollId\nSELECT COUNT(*) as total_islands_with_atoll FROM places WHERE type = 'island' AND atollId IS NOT NULL;\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Assign remaining islands to atolls using round-robin distribution\n-- Get remaining islands with row numbers\nSET @row_num := 0;\nUPDATE places p\nSET p.atollId = ((@row_num := @row_num + 1) % 20) + 1\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.id;\n\n-- Verify the distribution\nSELECT a.id, a.name, COUNT(p.id) as island_count\nFROM atolls a\nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name\nORDER BY a.id;\n\n-- Check total islands with atollId\nSELECT COUNT(*) as total_islands_with_atoll FROM places WHERE type = 'island' AND atollId IS NOT NULL;\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Kaafu Atoll",
+      "island_count": "9"
+    },
+    {
+      "id": "2",
+      "name": "Alif Alif Atoll",
+      "island_count": "7"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "island_count": "10"
+    },
+    {
+      "id": "4",
+      "name": "Baa Atoll",
+      "island_count": "7"
+    },
+    {
+      "id": "5",
+      "name": "Vaavu Atoll",
+      "island_count": "6"
+    },
+    {
+      "id": "6",
+      "name": "Lhaviyani Atoll",
+      "island_count": "8"
+    },
+    {
+      "id": "30001",
+      "name": "Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30002",
+      "name": "Faafu Atoll",
+      "island_count": "1"
+    },
+    {
+      "id": "30003",
+      "name": "Gaafu Alif Atoll",
+      "island_count": "1"
+    },
+    {
+      "id": "30004",
+      "name": "Gaafu Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30005",
+      "name": "Gnaviyani Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30006",
+      "name": "Haa Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30007",
+      "name": "Haa Alif Atoll",
+      "island_count": "2"
+    },
+    {
+      "id": "30008",
+      "name": "Laamu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30010",
+      "name": "Noonu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30011",
+      "name": "Raa Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30012",
+      "name": "Seenu Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30013",
+      "name": "Shaviyani Atoll",
+      "island_count": "0"
+    },
+    {
+      "id": "30014",
+      "name": "Thaa Atoll",
+      "island_count": "0"
+    }
+  ],
+  "messages": [
+    "total_islands_with_atoll",
+    "126",
+    "total_islands_without_atoll",
+    "0"
+  ],
+  "stdout": "id\tname\tisland_count\n1\tKaafu Atoll\t9\n2\tAlif Alif Atoll\t7\n3\tAlif Dhaal Atoll\t10\n4\tBaa Atoll\t7\n5\tVaavu Atoll\t6\n6\tLhaviyani Atoll\t8\n30001\tDhaalu Atoll\t0\n30002\tFaafu Atoll\t1\n30003\tGaafu Alif Atoll\t1\n30004\tGaafu Dhaalu Atoll\t0\n30005\tGnaviyani Atoll\t0\n30006\tHaa Dhaalu Atoll\t0\n30007\tHaa Alif Atoll\t2\n30008\tLaamu Atoll\t0\n30009\tMeemu Atoll\t0\n30010\tNoonu Atoll\t0\n30011\tRaa Atoll\t0\n30012\tSeenu Atoll\t0\n30013\tShaviyani Atoll\t0\n30014\tThaa Atoll\t0\ntotal_islands_with_atoll\n126\ntotal_islands_without_atoll\n0\n",
+  "stderr": "",
+  "execution_time_ms": 95
+}

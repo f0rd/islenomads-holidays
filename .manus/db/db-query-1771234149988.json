@@ -1,0 +1,342 @@
+{
+  "query": "\n-- Get all island names without atollId\nSELECT p.id, p.name FROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Get all island names without atollId\nSELECT p.id, p.name FROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name;\n",
+  "rows": [
+    {
+      "id": "100",
+      "name": "Banana Reef"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo"
+    },
+    {
+      "id": "101",
+      "name": "Burunee"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah"
+    },
+    {
+      "id": "104",
+      "name": "Dhigurah House Reef"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili"
+    },
+    {
+      "id": "1",
+      "name": "Dhonfanu"
+    },
+    {
+      "id": "75",
+      "name": "Feeali"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo"
+    },
+    {
+      "id": "21",
+      "name": "Finey"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo"
+    },
+    {
+      "id": "107",
+      "name": "Fotteyo Kandu"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo"
+    },
+    {
+      "id": "42",
+      "name": "Fulidhoo Kandu"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah"
+    },
+    {
+      "id": "43",
+      "name": "Gaafaru"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo"
+    },
+    {
+      "id": "23",
+      "name": "Gulhi"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo"
+    },
+    {
+      "id": "83",
+      "name": "Hoarafushi"
+    },
+    {
+      "id": "84",
+      "name": "Hulhudheli"
+    },
+    {
+      "id": "112",
+      "name": "Hulhumalé"
+    },
+    {
+      "id": "113",
+      "name": "Hulhumeedhoo"
+    },
+    {
+      "id": "114",
+      "name": "Huraa"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo"
+    },
+    {
+      "id": "47",
+      "name": "Inguraidhoo"
+    },
+    {
+      "id": "115",
+      "name": "Innamaa"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo"
+    },
+    {
+      "id": "116",
+      "name": "Kadhoo"
+    },
+    {
+      "id": "48",
+      "name": "Kalaidhoo"
+    },
+    {
+      "id": "118",
+      "name": "Kendhoo"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi"
+    },
+    {
+      "id": "27",
+      "name": "Kumundhoo"
+    },
+    {
+      "id": "86",
+      "name": "Kurendhoo"
+    },
+    {
+      "id": "120",
+      "name": "Kurinbi"
+    },
+    {
+      "id": "28",
+      "name": "Lhosfushi"
+    },
+    {
+      "id": "29",
+      "name": "Maaenboodhoo"
+    },
+    {
+      "id": "87",
+      "name": "Maafushi"
+    },
+    {
+      "id": "53",
+      "name": "Maalhos"
+    },
+    {
+      "id": "54",
+      "name": "Maamigili"
+    },
+    {
+      "id": "121",
+      "name": "Maarandhoo"
+    },
+    {
+      "id": "30",
+      "name": "Maavah"
+    },
+    {
+      "id": "31",
+      "name": "Madifushi"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo"
+    },
+    {
+      "id": "56",
+      "name": "Malé"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri"
+    },
+    {
+      "id": "89",
+      "name": "Milandhoo"
+    },
+    {
+      "id": "90",
+      "name": "Mulah"
+    },
+    {
+      "id": "32",
+      "name": "Mulhadhoo"
+    },
+    {
+      "id": "122",
+      "name": "Muli"
+    },
+    {
+      "id": "91",
+      "name": "Muraidhoo"
+    },
+    {
+      "id": "92",
+      "name": "Naifaru Kandu"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo"
+    },
+    {
+      "id": "60",
+      "name": "Neykurendhoo"
+    },
+    {
+      "id": "93",
+      "name": "Nolhivaramu"
+    },
+    {
+      "id": "123",
+      "name": "Nolhivaranfaru"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo"
+    },
+    {
+      "id": "34",
+      "name": "Raimmandhoo"
+    },
+    {
+      "id": "63",
+      "name": "Rakeedhoo"
+    },
+    {
+      "id": "64",
+      "name": "Rasdhoo Madivaru"
+    },
+    {
+      "id": "94",
+      "name": "Rinbudhoo"
+    },
+    {
+      "id": "124",
+      "name": "Thakandhoo"
+    },
+    {
+      "id": "66",
+      "name": "Thoddoo House Reef"
+    },
+    {
+      "id": "95",
+      "name": "Thuraakunu"
+    },
+    {
+      "id": "68",
+      "name": "Ukulhas"
+    },
+    {
+      "id": "69",
+      "name": "Ukulhas House Reef"
+    },
+    {
+      "id": "36",
+      "name": "Ungoofaaru"
+    },
+    {
+      "id": "96",
+      "name": "Utheemu"
+    },
+    {
+      "id": "37",
+      "name": "Vaikaradhoo"
+    },
+    {
+      "id": "97",
+      "name": "Vashafaru"
+    },
+    {
+      "id": "70",
+      "name": "Veligandu Reef"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n100\tBanana Reef\n72\tBileddhoo\n18\tBodufolhudhoo\n101\tBurunee\n30002\tDhangethi\n19\tDharanboodhoo\n40\tDharavandhoo\n73\tDhiffushi\n103\tDhiggaru\n74\tDhigurah\n104\tDhigurah House Reef\n105\tDhiyamigili\n1\tDhonfanu\n75\tFeeali\n30003\tFehendhoo\n76\tFeidhoo\n20\tFelidhoo Kandu\n77\tFeydhoo\n21\tFiney\n22\tFodhdhoo\n107\tFotteyo Kandu\n109\tFulidhoo\n42\tFulidhoo Kandu\n110\tFuvahmulah Tiger Shark\n80\tFuvamulah\n43\tGaafaru\n111\tGodhdhoo\n23\tGulhi\n82\tHimandhoo\n46\tHirimaradhoo\n83\tHoarafushi\n84\tHulhudheli\n112\tHulhumalé\n113\tHulhumeedhoo\n114\tHuraa\n6\tIhavandhoo\n47\tInguraidhoo\n115\tInnamaa\n7\tKaashidhoo\n116\tKadhoo\n48\tKalaidhoo\n118\tKendhoo\n8\tKolhufushi\n27\tKumundhoo\n86\tKurendhoo\n120\tKurinbi\n28\tLhosfushi\n29\tMaaenboodhoo\n87\tMaafushi\n53\tMaalhos\n54\tMaamigili\n121\tMaarandhoo\n30\tMaavah\n31\tMadifushi\n10\tMaduvvaree\n11\tMakunudhoo\n56\tMalé\n13\tMathiveri\n89\tMilandhoo\n90\tMulah\n32\tMulhadhoo\n122\tMuli\n91\tMuraidhoo\n92\tNaifaru Kandu\n14\tNaivaadhoo\n60\tNeykurendhoo\n93\tNolhivaramu\n123\tNolhivaranfaru\n30001\tOmadhoo\n34\tRaimmandhoo\n63\tRakeedhoo\n64\tRasdhoo Madivaru\n94\tRinbudhoo\n124\tThakandhoo\n66\tThoddoo House Reef\n95\tThuraakunu\n68\tUkulhas\n69\tUkulhas House Reef\n36\tUngoofaaru\n96\tUtheemu\n37\tVaikaradhoo\n97\tVashafaru\n70\tVeligandu Reef\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

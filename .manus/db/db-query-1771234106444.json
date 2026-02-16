@@ -1,0 +1,163 @@
+{
+  "query": "\n-- Get islands without atollId\nSELECT p.id, p.name, p.slug\nFROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name\nLIMIT 30;\n\n-- Count total\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Get islands without atollId\nSELECT p.id, p.name, p.slug\nFROM places p\nWHERE p.type = 'island' AND p.atollId IS NULL\nORDER BY p.name\nLIMIT 30;\n\n-- Count total\nSELECT COUNT(*) as total_islands_without_atoll FROM places WHERE type = 'island' AND atollId IS NULL;\n",
+  "rows": [
+    {
+      "id": "39",
+      "name": "Alifushi",
+      "slug": "alifushi"
+    },
+    {
+      "id": "100",
+      "name": "Banana Reef",
+      "slug": "banana-reef"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "slug": "burunee"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "slug": "dhigurah"
+    },
+    {
+      "id": "104",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili"
+    },
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu"
+    },
+    {
+      "id": "106",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "id": "75",
+      "name": "Feeali",
+      "slug": "feeali"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo",
+      "slug": "feidhoo"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo",
+      "slug": "feridhoo"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo",
+      "slug": "feydhoo"
+    },
+    {
+      "id": "78",
+      "name": "Filladhoo",
+      "slug": "filladhoo"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "slug": "finey"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo"
+    },
+    {
+      "id": "107",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo"
+    }
+  ],
+  "messages": [
+    "total_islands_without_atoll",
+    "119"
+  ],
+  "stdout": "id\tname\tslug\n39\tAlifushi\talifushi\n100\tBanana Reef\tbanana-reef\n17\tBandidhoo\tbandidhoo\n72\tBileddhoo\tbileddhoo\n18\tBodufolhudhoo\tbodufolhudhoo\n101\tBurunee\tburunee\n30002\tDhangethi\tdhangethi\n19\tDharanboodhoo\tdharanboodhoo\n40\tDharavandhoo\tdharavandhoo\n73\tDhiffushi\tdhiffushi\n103\tDhiggaru\tdhiggaru\n74\tDhigurah\tdhigurah\n104\tDhigurah House Reef\tdhigurah-house-reef\n105\tDhiyamigili\tdhiyamigili\n1\tDhonfanu\tdhonfanu\n106\tDhuvaafaru\tdhuvaafaru\n2\tEydhafushi\teydhafushi\n75\tFeeali\tfeeali\n30003\tFehendhoo\tfehendhoo\n76\tFeidhoo\tfeidhoo\n3\tFelidhoo\tfelidhoo\n20\tFelidhoo Kandu\tfelidhoo-kandu\n41\tFeridhoo\tferidhoo\n77\tFeydhoo\tfeydhoo\n78\tFilladhoo\tfilladhoo\n21\tFiney\tfiney\n22\tFodhdhoo\tfodhdhoo\n107\tFotteyo Kandu\tfotteyo-kandu\n108\tFulhadhoo\tfulhadhoo\n109\tFulidhoo\tfulidhoo\ntotal_islands_without_atoll\n119\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}
