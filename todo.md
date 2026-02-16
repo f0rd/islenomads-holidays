@@ -1907,3 +1907,13 @@
 - [x] Implement call-to-action sections for user engagement
 - [x] Add schema markup for activity pages
 - [x] Test user flow and internal linking
+
+
+## Content Consolidation - Explore Maldives
+- [x] Remove separate DivingDestinations page
+- [x] Remove separate LuxuryResorts page
+- [x] Remove diving and luxury resort links from navigation
+- [x] Integrate diving activities section into Explore Maldives page
+- [x] Integrate surfing activities section into Explore Maldives page
+- [x] Integrate luxury resort section into Explore Maldives page
+- [x] Test consolidated Explore Maldives page
