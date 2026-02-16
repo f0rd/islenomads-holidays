@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
+import { NearbyAttractionsSection } from "@/components/NearbyAttractionsSection";
 
 /**
  * UPDATED: IslandGuide component now uses slug-based URLs for SEO
@@ -246,6 +247,12 @@ export default function IslandGuide() {
                   </p>
                 </CardContent>
               </Card>
+              
+              {/* Nearby Attractions */}
+              <NearbyAttractionsSection 
+                islandGuideId={guide.id} 
+                islandName={guide.name}
+              />
             </TabsContent>
 
             {/* Getting There Tab */}
