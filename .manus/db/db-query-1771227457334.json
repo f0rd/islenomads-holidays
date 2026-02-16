@@ -1,0 +1,70 @@
+{
+  "query": "SELECT p.id, p.name, p.atollId, a.name as atollName FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.type = 'island' LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, p.atollId, a.name as atollName FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.type = 'island' LIMIT 10",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "atollId": "NULL",
+      "atollName": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\tatollName\n1\tDhonfanu\tNULL\tNULL\n2\tEydhafushi\tNULL\tNULL\n3\tFelidhoo\tNULL\tNULL\n5\tHimmafushi\tNULL\tNULL\n6\tIhavandhoo\tNULL\tNULL\n7\tKaashidhoo\tNULL\tNULL\n8\tKolhufushi\tNULL\tNULL\n10\tMaduvvaree\tNULL\tNULL\n11\tMakunudhoo\tNULL\tNULL\n12\tMaradhoo\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

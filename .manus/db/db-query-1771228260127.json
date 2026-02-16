@@ -1,0 +1,14 @@
+{
+  "query": "SELECT id, name FROM atolls WHERE name = 'Kaafu Atoll' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM atolls WHERE name = 'Kaafu Atoll' LIMIT 1;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Kaafu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tKaafu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

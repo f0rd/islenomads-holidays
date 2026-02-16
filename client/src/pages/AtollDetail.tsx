@@ -20,6 +20,7 @@ import {
 import { trpc } from '@/lib/trpc';
 import { getAtollHeroImage, getAttractionImage } from '@shared/atollImages';
 import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
+import { getIslandGuideUrl } from '@shared/locations';
 
 interface AtollData {
   id: number;
@@ -64,30 +65,19 @@ export default function AtollDetail() {
     { enabled: !!params?.slug && (!!matchExplore || !!matchAtoll) }
   );
 
-  // Fetch all islands to find those in this atoll
-  const { data: allIslands = [] } = trpc.islandGuides.list.useQuery();
+  // Fetch islands for this atoll from the database
+  const { data: islandsData = [] } = trpc.atolls.getIslands.useQuery(
+    { atollId: atollData?.id || 0 },
+    { enabled: !!atollData?.id }
+  );
 
   useEffect(() => {
     if (atollData) {
       setAtoll(atollData);
-      
-      // Filter islands by atoll, excluding dive sites and attractions
-      const islands = allIslands.filter(
-        (island: IslandGuideData) => {
-          // Check if it's an actual island (not a dive site or attraction)
-          const isDiveSite = island.name?.toLowerCase().includes('reef') || 
-                            island.name?.toLowerCase().includes('thila') ||
-                            island.name?.toLowerCase().includes('kandu') ||
-                            island.name?.toLowerCase().includes('shark') ||
-                            island.name?.toLowerCase().includes('bay') ||
-                            island.name?.toLowerCase().includes('madivaru');
-          return island.atoll === atollData.name && island.published === 1 && !isDiveSite;
-        }
-      );
-      setFeaturedIslands(islands);
+      setFeaturedIslands(islandsData);
       setIsLoading(false);
     }
-  }, [atollData, allIslands]);
+  }, [atollData, islandsData]);
 
   // Parse JSON fields safely
   const parseJSON = (data: string | null) => {
@@ -413,8 +403,8 @@ export default function AtollDetail() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredIslands.map((island) => (
-                <Link key={island.id} href={`/island/${island.slug}`}>
+              {featuredIslands.map((island: IslandGuideData) => (
+                    <Link key={island.id} href={getIslandGuideUrl(island.id)}>
                   <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-48 bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center overflow-hidden relative">
                       {island.slug ? (

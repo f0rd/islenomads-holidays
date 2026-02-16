@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, type, atollId FROM places WHERE type = 'island' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, atollId FROM places WHERE type = 'island' LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "type": "island",
+      "atollId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tatollId\n1\tDhonfanu\tisland\tNULL\n2\tEydhafushi\tisland\tNULL\n3\tFelidhoo\tisland\tNULL\n5\tHimmafushi\tisland\tNULL\n6\tIhavandhoo\tisland\tNULL\n7\tKaashidhoo\tisland\tNULL\n8\tKolhufushi\tisland\tNULL\n10\tMaduvvaree\tisland\tNULL\n11\tMakunudhoo\tisland\tNULL\n12\tMaradhoo\tisland\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 236
+}

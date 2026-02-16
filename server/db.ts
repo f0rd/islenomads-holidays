@@ -996,6 +996,59 @@ export async function getAtollsByRegion(region: string): Promise<Atoll[]> {
   return db.select().from(atolls).where(and(eq(atolls.region, region), eq(atolls.published, 1))).orderBy(atolls.name);
 }
 
+/**
+ * Get all islands for a specific atoll from the database
+ * Joins places table with island_guides to get complete island data
+ */
+export async function getIslandsByAtollId(atollId: number): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(places)
+    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(places.type, 'island')
+    ))
+    .orderBy(places.name);
+  
+  return result.map((row: any) => ({
+    ...row.places,
+    ...row.island_guides,
+    id: row.island_guides?.id || row.places.id,
+  }));
+}
+
+/**
+ * Get featured islands for a specific atoll
+ * Returns only islands marked as featured
+ */
+export async function getFeaturedIslandsByAtollId(atollId: number, limit: number = 5): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db
+    .select()
+    .from(places)
+    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(places.type, 'island'),
+      eq(islandGuides.featured, 1),
+      eq(islandGuides.published, 1)
+    ))
+    .orderBy(islandGuides.displayOrder)
+    .limit(limit);
+  
+  return result.map((row: any) => ({
+    ...row.places,
+    ...row.island_guides,
+    id: row.island_guides?.id || row.places.id,
+  }));
+}
+
 
 // Activity Spots helpers
 export async function getActivitySpotsByIslandId(islandGuideId: number): Promise<ActivitySpot[]> {

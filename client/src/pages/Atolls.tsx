@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -7,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MapPin, Compass, Waves, ArrowRight } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { useState, useEffect } from 'react';
 
 interface AtollData {
   id: number;
@@ -149,69 +149,49 @@ export default function Atolls() {
                         alt={atoll.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      
-                      {/* Region Badge */}
-                      <div className="absolute top-4 right-4">
-                        <Badge variant="secondary" className="bg-accent text-accent-foreground">
-                          {atoll.region}
-                        </Badge>
-                      </div>
-
-                      {/* Title Overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <h3 className="text-2xl font-bold text-white">{atoll.name}</h3>
-                      </div>
+                      <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
+                        {atoll.region}
+                      </Badge>
                     </div>
 
                     {/* Content */}
-                    <CardContent className="flex-1 flex flex-col p-6">
-                      {/* Description */}
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {atoll.description || atoll.overview}
+                    <CardContent className="flex-1 p-6 flex flex-col">
+                      <h3 className="text-xl font-bold text-foreground mb-2">{atoll.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-4 flex-1">
+                        {atoll.description || 'Discover this beautiful atoll region'}
                       </p>
 
-                      {/* Best For Tags */}
-                      {atoll.bestFor && (
+                      {/* Quick Info */}
+                      <div className="space-y-2 mb-4 text-sm">
+                        {atoll.bestFor && (
+                          <div className="flex items-start gap-2">
+                            <Compass className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                            <span className="text-muted-foreground">{atoll.bestFor}</span>
+                          </div>
+                        )}
+                        {atoll.bestSeason && (
+                          <div className="flex items-start gap-2">
+                            <Waves className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                            <span className="text-muted-foreground">{atoll.bestSeason}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Highlights */}
+                      {highlights.length > 0 && (
                         <div className="mb-4">
-                          <p className="text-xs font-semibold text-foreground mb-2">Best For:</p>
                           <div className="flex flex-wrap gap-2">
-                            {atoll.bestFor.split(',').slice(0, 2).map((tag, idx) => (
-                              <Badge key={idx} variant="outline" className="text-xs">
-                                {tag.trim()}
+                            {highlights.slice(0, 3).map((highlight: string, idx: number) => (
+                              <Badge key={idx} variant="secondary" className="text-xs">
+                                {highlight}
                               </Badge>
                             ))}
                           </div>
                         </div>
                       )}
 
-                      {/* Quick Info */}
-                      <div className="space-y-2 mb-6 text-sm">
-                        {atoll.bestSeason && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Compass className="w-4 h-4 text-accent" />
-                            <span>Best: {atoll.bestSeason}</span>
-                          </div>
-                        )}
-                        {activities && activities.length > 0 && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Waves className="w-4 h-4 text-accent" />
-                            <span>{activities.length} activities</span>
-                          </div>
-                        )}
-                        {atoll.transportation && (
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <MapPin className="w-4 h-4 text-accent" />
-                            <span>Easy access</span>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Explore Button */}
-                      <Button
-                        className="w-full mt-auto gap-2 group/btn"
-                        variant="default"
-                      >
+                      {/* CTA */}
+                      <Button className="w-full gap-2 group/btn">
                         Explore Atoll
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                       </Button>
@@ -220,63 +200,6 @@ export default function Atolls() {
                 </Link>
               );
             })}
-          </div>
-
-          {/* Empty State */}
-          {filteredAtolls.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                No atolls found for the selected region.
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-16 md:py-24 bg-muted/50">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8 text-center">About Maldives Atolls</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">26</div>
-                  <p className="text-sm text-muted-foreground">
-                    Natural atolls in the Maldives
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">1,190</div>
-                  <p className="text-sm text-muted-foreground">
-                    Coral islands across all atolls
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">3</div>
-                  <p className="text-sm text-muted-foreground">
-                    Geographic regions to explore
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="mt-12 p-8 bg-background rounded-lg border border-border">
-              <h3 className="text-xl font-semibold mb-4">Atolls Overview</h3>
-              <p className="text-muted-foreground mb-4">
-                The Maldives consists of 26 natural atolls arranged in a north-south chain. Each atoll is a ring-shaped coral reef with a lagoon in the center, creating unique ecosystems and diving opportunities. Our featured atolls showcase the best destinations across three geographic regions: North, Central, and South.
-              </p>
-              <p className="text-muted-foreground">
-                Whether you're seeking luxury resort experiences, budget-friendly local island stays, world-class diving, or pristine snorkeling, each atoll offers distinct characteristics and attractions tailored to different travel styles and preferences.
-              </p>
-            </div>
           </div>
         </div>
       </section>

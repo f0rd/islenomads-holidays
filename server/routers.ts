@@ -20,7 +20,7 @@ import {
   getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
-  deleteAtoll, getAtollsByRegion, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
+  deleteAtoll, getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,
   getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
@@ -987,6 +987,18 @@ export const appRouter = router({
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteAtoll(input.id);
+      }),
+
+    getIslands: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return getIslandsByAtollId(input.atollId);
+      }),
+
+    getFeaturedIslands: publicProcedure
+      .input(z.object({ atollId: z.number(), limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getFeaturedIslandsByAtollId(input.atollId, input.limit || 5);
       }),
   }),
 
