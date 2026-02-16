@@ -486,8 +486,12 @@ export default function ExploreMaldives() {
               {(filteredPointsOfInterest.pois.length + filteredPointsOfInterest.spots.length) > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {/* Render POIs */}
-                  {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => (
-                    <Link key={poi.id} href={getIslandGuideUrl((poi as any).slug || poi.id)}>
+                  {filteredPointsOfInterest.pois.map((poi: IslandGuideData) => {
+                    // Check if this POI is actually an attraction guide (has an attraction_guides record)
+                    const isAttractionGuide = (poi as any).isAttractionGuide === true;
+                    const href = isAttractionGuide ? getAttractionGuideUrl(poi.slug || String(poi.id)) : getIslandGuideUrl(poi.slug || poi.id);
+                    return (
+                    <Link key={poi.id} href={href}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
@@ -521,54 +525,54 @@ export default function ExploreMaldives() {
                         </CardContent>
                       </Card>
                     </Link>
-                  ))}
-
+                    );
+                  })}
                   {/* Render Activity Spots */}
                   {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
-                    <Card
-                      key={spot.id}
-                      className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col group cursor-pointer"
-                      onClick={() => setLocation(getAttractionGuideUrl(spot.slug))}
-                    >
-                      {/* Hero Image */}
-                      <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
-                        <div className="text-center">
-                          {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                          {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                          {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                          <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType.replace('_', ' ')}</p>
+                    <Link key={spot.id} href={getAttractionGuideUrl(spot.slug || String(spot.id))}>
+                      <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
+                        {/* Hero Image */}
+                        <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
+                          <div className="text-center">
+                            {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType.replace(/_/g, ' ')}</p>
+                          </div>
+                          {spot.difficulty && (
+                            <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
+                              {spot.difficulty}
+                            </Badge>
+                          )}
                         </div>
-                        {spot.difficulty && (
-                          <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
-                            {spot.difficulty}
-                          </Badge>
-                        )}
-                      </div>
 
-                      {/* Content */}
-                      <CardContent className="flex-1 flex flex-col p-6">
-                        <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
-                          {spot.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
-                          {spot.description || 'Discover this amazing activity spot.'}
-                        </p>
+                        {/* Content */}
+                        <CardContent className="flex-1 flex flex-col p-6">
+                          <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                            {spot.name}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-4 line-clamp-3 flex-1">
+                            {spot.description || 'Discover this amazing activity spot.'}
+                          </p>
 
-                        {spot.bestSeason && (
-                          <Badge variant="secondary" className="mb-4 w-fit text-xs">
-                            Best: {spot.bestSeason}
-                          </Badge>
-                        )}
-                      </CardContent>
-                    </Card>
+                          {spot.bestSeason && (
+                            <Badge variant="secondary" className="mb-4 w-fit text-xs">
+                              Best: {spot.bestSeason}
+                            </Badge>
+                          )}
+
+                          <Button variant="outline" className="w-full gap-2 group/btn">
+                            Learn More
+                            <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   ))}
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <Star className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                  <p className="text-lg text-muted-foreground">
-                    No attractions found matching your search.
-                  </p>
+                  <p className="text-muted-foreground">No attractions found matching your search.</p>
                 </div>
               )}
             </TabsContent>

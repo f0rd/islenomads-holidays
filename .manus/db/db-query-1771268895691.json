@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE name IN ('Maaya Thila', 'Thulusdhoo', 'Maamigili') LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE name IN ('Maaya Thila', 'Thulusdhoo', 'Maamigili') LIMIT 5;",
+  "rows": [
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili"
+    },
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "slug": "maaya-thila"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n90004\tMaamigili\tmaamigili\n90007\tMaaya Thila\tmaaya-thila\n210001\tThulusdhoo\tthulusdhoo\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

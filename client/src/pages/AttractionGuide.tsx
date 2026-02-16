@@ -83,11 +83,21 @@ export default function AttractionGuide() {
   }
 
   // Parse JSON fields if they exist
-  const quickFacts = guide.quickFacts ? JSON.parse(guide.quickFacts) : [];
-  const marineLife = guide.marineLife ? JSON.parse(guide.marineLife) : [];
-  const facilities = guide.facilities ? JSON.parse(guide.facilities) : [];
-  const safetyTips = guide.safetyTips ? JSON.parse(guide.safetyTips) : [];
-  const localRules = guide.localRules ? JSON.parse(guide.localRules) : [];
+  const parseJSON = (data: string | null | undefined) => {
+    if (!data) return [];
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      console.error('Failed to parse JSON:', e, 'Data:', data);
+      return [];
+    }
+  };
+
+  const quickFacts = parseJSON(guide.quickFacts);
+  const marineLife = parseJSON(guide.marineLife);
+  const facilities = parseJSON(guide.facilities);
+  const safetyTips = parseJSON(guide.safetyTips);
+  const localRules = parseJSON(guide.localRules);
 
   const getAttractionTypeLabel = (type: string) => {
     const labels: Record<string, string> = {

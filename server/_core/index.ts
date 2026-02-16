@@ -7,7 +7,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { getDb } from "../db";
-import { boatRoutes } from "../../drizzle/schema";
+import { boatRoutes, places } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -38,19 +38,23 @@ async function startServer() {
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   
-  // Airport routes API endpoint
+  // Airport routes API endpoint - fetch airports from places table
   app.get('/api/airport-routes', async (req, res) => {
     try {
-      const { islandGuideId } = req.query;
-      if (!islandGuideId) {
-        return res.status(400).json({ error: 'islandGuideId is required' });
+      const db = await getDb();
+      if (!db) {
+        return res.status(500).json({ error: 'Database connection failed' });
       }
       
-      // Return empty array for now - will be implemented with database query
-      res.json([]);
+      // Fetch all airports from places table
+      const airports = await db.select().from(places).where(
+        eq(places.type, 'airport')
+      );
+      
+      res.json(airports);
     } catch (error) {
-      console.error('Error fetching airport routes:', error);
-      res.status(500).json({ error: 'Failed to fetch airport routes' });
+      console.error('Error fetching airports:', error);
+      res.status(500).json({ error: 'Failed to fetch airports' });
     }
   });
   

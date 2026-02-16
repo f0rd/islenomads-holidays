@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/maaya-thila.jpg\"]' WHERE name = 'Maaya Thila'; UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/thulusdhoo.jpg\"]' WHERE name = 'Thulusdhoo'; UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/maamigili.jpg\"]' WHERE name = 'Maamigili';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/maaya-thila.jpg\"]' WHERE name = 'Maaya Thila'; UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/thulusdhoo.jpg\"]' WHERE name = 'Thulusdhoo'; UPDATE island_guides SET images = '[\"https://3000-isiog5j7c54af079ne6p3-0ebcd05b.us2.manus.computer/images/maamigili.jpg\"]' WHERE name = 'Maamigili';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 85
+}

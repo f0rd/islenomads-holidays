@@ -1,0 +1,1 @@
+ALTER TABLE `places` MODIFY COLUMN `type` enum('island','dive_site','surf_spot','snorkeling_spot','poi','airport') NOT NULL;

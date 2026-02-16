@@ -1,0 +1,106 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "activity_log"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "activity_spots"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "activity_types"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "airport_routes"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "airports"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "atolls"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "attraction_guides"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "attraction_island_links"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "blog_comments"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "blog_posts"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "boat_routes"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "branding"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "crm_customers"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "crm_interactions"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "crm_queries"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "experiences"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "island_experiences"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "island_guides"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "island_spot_access"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "map_locations"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "media"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "packages"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "places"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "seo_meta_tags"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "seo_metadata"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "spot_types"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "staff"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "staff_roles"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "transport_routes"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "transports"
+    },
+    {
+      "Tables_in_JUCCYykxYWxAcNny3wop55": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_JUCCYykxYWxAcNny3wop55\n__drizzle_migrations\nactivity_log\nactivity_spots\nactivity_types\nairport_routes\nairports\natolls\nattraction_guides\nattraction_island_links\nblog_comments\nblog_posts\nboat_routes\nbranding\ncrm_customers\ncrm_interactions\ncrm_queries\nexperiences\nisland_experiences\nisland_guides\nisland_spot_access\nmap_locations\nmedia\npackages\nplaces\nseo_meta_tags\nseo_metadata\nspot_types\nstaff\nstaff_roles\ntransport_routes\ntransports\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 173
+}

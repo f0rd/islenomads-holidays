@@ -309,6 +309,13 @@
       "when": 1771241684089,
       "tag": "0046_careful_swordsman",
       "breakpoints": true
+    },
+    {
+      "idx": 47,
+      "version": "5",
+      "when": 1771270611863,
+      "tag": "0047_brainy_nova",
+      "breakpoints": true
     }
   ]
 }
