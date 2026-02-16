@@ -1464,3 +1464,31 @@ export async function getRegularIslandsByAtollId(atollId: number): Promise<any[]
       id: row.island_guides?.id || row.places.id,
     }));
 }
+
+/**
+ * Get island data by slug (from places table with joined island guide)
+ * This is the preferred method for slug-based routing
+ */
+export async function getIslandBySlug(slug: string): Promise<any | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+
+  const result = await db
+    .select()
+    .from(places)
+    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .where(and(
+      eq(places.slug, slug),
+      eq(places.type, 'island')
+    ))
+    .limit(1);
+
+  if (!result || !result[0]) return undefined;
+
+  const row = result[0];
+  return {
+    ...row.places,
+    ...row.island_guides,
+    id: row.island_guides?.id || row.places.id,
+  };
+}

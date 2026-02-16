@@ -24,15 +24,15 @@ import { trpc } from "@/lib/trpc";
 import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
 
 /**
- * UPDATED: IslandGuide component now uses island ID instead of slug
+ * UPDATED: IslandGuide component now uses slug-based URLs for SEO
  * 
- * Route: /island/:islandId (e.g., /island/1, /island/5)
- * Navigation: Uses FEATURED_ISLANDS array with island IDs
+ * Route: /island/:slug (e.g., /island/dhigurah, /island/malé)
+ * Navigation: Uses slug-based URLs for better SEO and user-friendly URLs
  * 
  * Key Changes:
- * - Fetches guide by island ID using trpc.islandGuides.getByIslandId
+ * - Fetches guide by slug using trpc.islandGuides.getByPlaceSlug
  * - Navigation uses getAdjacentIslands() helper for previous/next
- * - All links use getIslandGuideUrl() to build URLs with IDs
+ * - All links use getIslandGuideUrl(slug) to build slug-based URLs
  */
 
 function normalizeGuideData(guide: any) {
@@ -71,23 +71,24 @@ function normalizeGuideData(guide: any) {
 
 export default function IslandGuide() {
   // Get island ID from URL params (e.g., /island/1)
-  const { islandId = "1" } = useParams();
+  const { slug = "" } = useParams();
   const [, navigate] = useLocation();
   
-  // Convert string ID to number
-  const numericIslandId = parseInt(islandId, 10);
-  
-  // Fetch guide by island ID (using the new getByIslandId procedure)
-  const { data: rawGuide, isLoading, error } = trpc.islandGuides.getByIslandId.useQuery(
-    { islandId: numericIslandId },
-    { enabled: !isNaN(numericIslandId) }
+  // Fetch guide by slug (using the new getByPlaceSlug procedure)
+  const { data: rawGuide, isLoading, error } = trpc.islandGuides.getByPlaceSlug.useQuery(
+    { slug },
+    { enabled: !!slug }
   );
   
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
   const [activeTab, setActiveTab] = useState("overview");
   
   // Get adjacent islands for navigation (previous/next)
-  const adjacentIslands = useMemo(() => getAdjacentIslands(numericIslandId), [numericIslandId]);
+  // Note: This uses the old ID-based system, should be updated to use slugs
+  const adjacentIslands = useMemo(() => {
+    if (!guide?.id) return { previous: null, next: null };
+    return getAdjacentIslands(guide.id);
+  }, [guide?.id]);
 
   if (isLoading) {
     return (
@@ -111,8 +112,8 @@ export default function IslandGuide() {
             <h2 className="text-xl font-semibold mb-2">Island Guide Not Found</h2>
             <p className="text-muted-foreground mb-4">
               The island guide you're looking for doesn't exist or could not be loaded.
-              {isNaN(numericIslandId) && <br />}
-              {isNaN(numericIslandId) && `(Invalid island ID: ${islandId})`}
+              {!slug && <br />}
+              {!slug && `(Invalid island slug: ${slug})`}
             </p>
             <Button variant="outline" onClick={() => navigate('/explore-maldives')}>
               Back to Explore

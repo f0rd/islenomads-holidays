@@ -1,0 +1,52 @@
+{
+  "query": "\n-- Check islands with guides\nSELECT COUNT(*) as islands_with_guides FROM places p\nWHERE p.type = 'island' AND EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Check islands without guides\nSELECT COUNT(*) as islands_without_guides FROM places p\nWHERE p.type = 'island' AND NOT EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Sample islands without guides\nSELECT p.id, p.name, p.slug FROM places p\nWHERE p.type = 'island' AND NOT EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n)\nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Check islands with guides\nSELECT COUNT(*) as islands_with_guides FROM places p\nWHERE p.type = 'island' AND EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Check islands without guides\nSELECT COUNT(*) as islands_without_guides FROM places p\nWHERE p.type = 'island' AND NOT EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Sample islands without guides\nSELECT p.id, p.name, p.slug FROM places p\nWHERE p.type = 'island' AND NOT EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n)\nLIMIT 10;\n",
+  "rows": [
+    {
+      "islands_with_guides": "84"
+    },
+    {
+      "islands_with_guides": "islands_without_guides"
+    },
+    {
+      "islands_with_guides": "42"
+    },
+    {
+      "islands_with_guides": "id\tname\tslug"
+    },
+    {
+      "islands_with_guides": "3\tFelidhoo\tfelidhoo"
+    },
+    {
+      "islands_with_guides": "8\tKolhufushi\tkolhufushi"
+    },
+    {
+      "islands_with_guides": "12\tMaradhoo\tmaradhoo"
+    },
+    {
+      "islands_with_guides": "13\tMathiveri\tmathiveri"
+    },
+    {
+      "islands_with_guides": "18\tBodufolhudhoo\tbodufolhudhoo"
+    },
+    {
+      "islands_with_guides": "22\tFodhdhoo\tfodhdhoo"
+    },
+    {
+      "islands_with_guides": "23\tGulhi\tgulhi"
+    },
+    {
+      "islands_with_guides": "25\tHithadhoo\thithadhoo"
+    },
+    {
+      "islands_with_guides": "31\tMadifushi\tmadifushi"
+    },
+    {
+      "islands_with_guides": "35\tRasdhoo\trasdhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "islands_with_guides\n84\nislands_without_guides\n42\nid\tname\tslug\n3\tFelidhoo\tfelidhoo\n8\tKolhufushi\tkolhufushi\n12\tMaradhoo\tmaradhoo\n13\tMathiveri\tmathiveri\n18\tBodufolhudhoo\tbodufolhudhoo\n22\tFodhdhoo\tfodhdhoo\n23\tGulhi\tgulhi\n25\tHithadhoo\thithadhoo\n31\tMadifushi\tmadifushi\n35\tRasdhoo\trasdhoo\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

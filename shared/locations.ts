@@ -190,16 +190,31 @@ export function getIslandBySlug(slug: string): IslandLocation | undefined {
 /**
  * Helper function to build island guide URL
  */
-export function getIslandGuideUrl(islandId: number): string {
-  return `/island/${islandId}`;
+/**
+ * Build island guide URL by slug (preferred method for SEO)
+ */
+export function getIslandGuideUrl(slugOrId: string | number): string {
+  // If it's a string, treat it as a slug
+  if (typeof slugOrId === 'string') {
+    return `/island/${slugOrId}`;
+  }
+  // Fallback for ID-based URLs (deprecated)
+  return `/island/${slugOrId}`;
 }
 
 /**
- * Helper function to build island guide URL by slug (deprecated)
+ * Helper function to build island guide URL by slug (alias for getIslandGuideUrl)
  */
 export function getIslandGuideUrlBySlug(slug: string): string {
-  const island = getIslandBySlug(slug);
-  return island ? getIslandGuideUrl(island.id) : '/explore-maldives';
+  return getIslandGuideUrl(slug);
+}
+
+/**
+ * Get island guide URL by ID (for backward compatibility)
+ * @deprecated Use getIslandGuideUrl(slug) instead
+ */
+export function getIslandGuideUrlById(islandId: number): string {
+  return `/island/${islandId}`;
 }
 
 /**

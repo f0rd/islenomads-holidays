@@ -52,14 +52,13 @@ function Router() {
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
-      {/* Island Guide Routes - UPDATED to use island IDs */}
-      {/* Primary route: /island/:islandId (e.g., /island/1, /island/5) */}
-      <Route path={"/island/:islandId"} component={IslandGuide} />
-      {/* Fallback route for backward compatibility with slug-based URLs */}
-      <Route path={"/island-detail/:slug"} component={IslandDetail} />
+      {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
+      {/* Primary route: /island/:slug (e.g., /island/dhigurah, /island/malé) */}
+      <Route path={"/island/:slug"} component={IslandGuide} />
       
       <Route path={"/island-guides"} component={IslandGuides} />
       <Route path={"/explore-maldives"} component={ExploreMaldives} />
+      <Route path={"/explore-maldives/:slug"} component={IslandGuide} />
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />

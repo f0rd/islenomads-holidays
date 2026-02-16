@@ -1,0 +1,52 @@
+{
+  "query": "\nSELECT p.id, p.name, p.slug, a.name as atoll_name\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nWHERE p.type = 'island' AND p.atollId IS NOT NULL\nORDER BY a.name;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \nSELECT p.id, p.name, p.slug, a.name as atoll_name\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nWHERE p.type = 'island' AND p.atollId IS NOT NULL\nORDER BY a.name;\n",
+  "rows": [
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "atoll_name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "61",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo",
+      "atoll_name": "Faafu Atoll"
+    },
+    {
+      "id": "128",
+      "name": "Villingili",
+      "slug": "villingili",
+      "atoll_name": "Gaafu Alif Atoll"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo",
+      "atoll_name": "Haa Alif Atoll"
+    },
+    {
+      "id": "71",
+      "name": "Baarah",
+      "slug": "baarah",
+      "atoll_name": "Haa Alif Atoll"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "atoll_name": "Kaafu Atoll"
+    },
+    {
+      "id": "24",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru",
+      "atoll_name": "Lhaviyani Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll_name\n98\tVeligandu\tveligandu\tAlif Dhaal Atoll\n61\tNilandhoo\tnilandhoo\tFaafu Atoll\n128\tVillingili\tvillingili\tGaafu Alif Atoll\n102\tDhiddhoo\tdhiddhoo\tHaa Alif Atoll\n71\tBaarah\tbaarah\tHaa Alif Atoll\n5\tHimmafushi\thimmafushi\tKaafu Atoll\n24\tHinnavaru\thinnavaru\tLhaviyani Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 65
+}

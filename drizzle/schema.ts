@@ -493,6 +493,7 @@ export const places = mysqlTable("places", {
   id: int("id").autoincrement().primaryKey(),
   atollId: int("atollId"), // Foreign key to atolls (optional for non-island places)
   name: varchar("name", { length: 255 }).notNull(), // Place name
+  slug: varchar("slug", { length: 255 }), // URL-friendly identifier
   code: varchar("code", { length: 50 }).notNull().unique(), // Unique place code
   type: mysqlEnum("type", ["island", "dive_site", "surf_spot", "snorkeling_spot", "poi"]).notNull(), // Type of place
   createdAt: timestamp("createdAt").defaultNow().notNull(),

@@ -1,0 +1,52 @@
+{
+  "query": "\n-- Update places table with atollId by matching island_guides.atoll with atolls.name\nUPDATE places p\nSET p.atollId = (\n  SELECT a.id \n  FROM atolls a\n  WHERE a.name = (\n    SELECT ig.atoll \n    FROM island_guides ig \n    WHERE ig.placeId = p.id \n    LIMIT 1\n  )\n)\nWHERE p.type = 'island' \nAND p.atollId IS NULL\nAND EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Verify the update\nSELECT COUNT(*) as islands_with_atoll_id FROM places WHERE type = 'island' AND atollId IS NOT NULL;\nSELECT COUNT(*) as islands_without_atoll_id FROM places WHERE type = 'island' AND atollId IS NULL;\n\n-- Show sample of updated data\nSELECT p.id, p.name, p.slug, a.name as atoll_name \nFROM places p \nLEFT JOIN atolls a ON p.atollId = a.id \nWHERE p.type = 'island' \nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Update places table with atollId by matching island_guides.atoll with atolls.name\nUPDATE places p\nSET p.atollId = (\n  SELECT a.id \n  FROM atolls a\n  WHERE a.name = (\n    SELECT ig.atoll \n    FROM island_guides ig \n    WHERE ig.placeId = p.id \n    LIMIT 1\n  )\n)\nWHERE p.type = 'island' \nAND p.atollId IS NULL\nAND EXISTS (\n  SELECT 1 FROM island_guides ig WHERE ig.placeId = p.id\n);\n\n-- Verify the update\nSELECT COUNT(*) as islands_with_atoll_id FROM places WHERE type = 'island' AND atollId IS NOT NULL;\nSELECT COUNT(*) as islands_without_atoll_id FROM places WHERE type = 'island' AND atollId IS NULL;\n\n-- Show sample of updated data\nSELECT p.id, p.name, p.slug, a.name as atoll_name \nFROM places p \nLEFT JOIN atolls a ON p.atollId = a.id \nWHERE p.type = 'island' \nLIMIT 10;\n",
+  "rows": [
+    {
+      "islands_with_atoll_id": "7"
+    },
+    {
+      "islands_with_atoll_id": "islands_without_atoll_id"
+    },
+    {
+      "islands_with_atoll_id": "119"
+    },
+    {
+      "islands_with_atoll_id": "id\tname\tslug\tatoll_name"
+    },
+    {
+      "islands_with_atoll_id": "1\tDhonfanu\tdhonfanu\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "2\tEydhafushi\teydhafushi\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "3\tFelidhoo\tfelidhoo\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "5\tHimmafushi\thimmafushi\tKaafu Atoll"
+    },
+    {
+      "islands_with_atoll_id": "6\tIhavandhoo\tihavandhoo\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "7\tKaashidhoo\tkaashidhoo\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "8\tKolhufushi\tkolhufushi\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "10\tMaduvvaree\tmaduvvaree\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "11\tMakunudhoo\tmakunudhoo\tNULL"
+    },
+    {
+      "islands_with_atoll_id": "12\tMaradhoo\tmaradhoo\tNULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "islands_with_atoll_id\n7\nislands_without_atoll_id\n119\nid\tname\tslug\tatoll_name\n1\tDhonfanu\tdhonfanu\tNULL\n2\tEydhafushi\teydhafushi\tNULL\n3\tFelidhoo\tfelidhoo\tNULL\n5\tHimmafushi\thimmafushi\tKaafu Atoll\n6\tIhavandhoo\tihavandhoo\tNULL\n7\tKaashidhoo\tkaashidhoo\tNULL\n8\tKolhufushi\tkolhufushi\tNULL\n10\tMaduvvaree\tmaduvvaree\tNULL\n11\tMakunudhoo\tmakunudhoo\tNULL\n12\tMaradhoo\tmaradhoo\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 172
+}

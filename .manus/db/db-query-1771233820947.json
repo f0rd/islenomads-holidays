@@ -1,0 +1,49 @@
+{
+  "query": "\n-- First, let's see what we're working with\nSELECT COUNT(*) as total_islands FROM places WHERE type = 'island';\n\n-- Get a sample of islands and their corresponding atoll names from island_guides\nSELECT p.id, p.name, p.slug, ig.atoll \nFROM places p \nLEFT JOIN island_guides ig ON p.id = ig.placeId \nWHERE p.type = 'island' \nLIMIT 5;\n\n-- Get atoll mapping\nSELECT a.id, a.name FROM atolls a LIMIT 5;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- First, let's see what we're working with\nSELECT COUNT(*) as total_islands FROM places WHERE type = 'island';\n\n-- Get a sample of islands and their corresponding atoll names from island_guides\nSELECT p.id, p.name, p.slug, ig.atoll \nFROM places p \nLEFT JOIN island_guides ig ON p.id = ig.placeId \nWHERE p.type = 'island' \nLIMIT 5;\n\n-- Get atoll mapping\nSELECT a.id, a.name FROM atolls a LIMIT 5;\n",
+  "rows": [
+    {
+      "total_islands": "126"
+    },
+    {
+      "total_islands": "id\tname\tslug\tatoll"
+    },
+    {
+      "total_islands": "5\tHimmafushi\thimmafushi\tKaafu Atoll"
+    },
+    {
+      "total_islands": "1\tDhonfanu\tdhonfanu\tMaldives"
+    },
+    {
+      "total_islands": "2\tEydhafushi\teydhafushi\tMaldives"
+    },
+    {
+      "total_islands": "6\tIhavandhoo\tihavandhoo\tMaldives"
+    },
+    {
+      "total_islands": "3\tFelidhoo\tfelidhoo\tNULL"
+    },
+    {
+      "total_islands": "id\tname"
+    },
+    {
+      "total_islands": "1\tKaafu Atoll"
+    },
+    {
+      "total_islands": "2\tAlif Alif Atoll"
+    },
+    {
+      "total_islands": "3\tAlif Dhaal Atoll"
+    },
+    {
+      "total_islands": "4\tBaa Atoll"
+    },
+    {
+      "total_islands": "5\tVaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_islands\n126\nid\tname\tslug\tatoll\n5\tHimmafushi\thimmafushi\tKaafu Atoll\n1\tDhonfanu\tdhonfanu\tMaldives\n2\tEydhafushi\teydhafushi\tMaldives\n6\tIhavandhoo\tihavandhoo\tMaldives\n3\tFelidhoo\tfelidhoo\tNULL\nid\tname\n1\tKaafu Atoll\n2\tAlif Alif Atoll\n3\tAlif Dhaal Atoll\n4\tBaa Atoll\n5\tVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 125
+}
