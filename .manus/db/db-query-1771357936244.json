@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total, COUNT(CASE WHEN published = 1 THEN 1 END) as published FROM blog_posts;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total, COUNT(CASE WHEN published = 1 THEN 1 END) as published FROM blog_posts;",
+  "rows": [
+    {
+      "total": "0",
+      "published": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tpublished\n0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 89
+}

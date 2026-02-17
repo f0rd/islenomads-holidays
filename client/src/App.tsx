@@ -32,28 +32,37 @@ import AdminBranding from "./pages/AdminBranding";
 import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
 import AdminActivitySpots from "./pages/AdminActivitySpots";
+import AdminAtolls from "./pages/AdminAtolls";
 import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
 import ExploreMaldives from "./pages/ExploreMaldives";
 import AdminDashboard from "./pages/AdminDashboard";
 import AttractionGuide from "./pages/AttractionGuide";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import AdminPages from "./pages/AdminPages";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/about"} component={About} />
+      <Route path={"/contact"} component={Contact} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogDetail} />
       <Route path={"/packages"} component={Packages} />
+      <Route path={"/admin/pages"} component={AdminPages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
       <Route path={"/map"} component={MaldivesMap} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
+      <Route path={"/admin/atolls"} component={AdminAtolls} />
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
+      <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
       {/* Primary route: /island/:slug (e.g., /island/dhigurah, /island/malé) */}

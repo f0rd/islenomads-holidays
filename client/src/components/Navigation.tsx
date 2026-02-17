@@ -17,7 +17,7 @@ export default function Navigation() {
     { label: "Trip Planner", href: "/trip-planner" },
     { label: "Packages", href: "/packages" },
     { label: "Blog", href: "/blog" },
-    { label: "About", href: "#about" },
+    { label: "About", href: "/about" },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function Navigation() {
               Staff Login
             </button>
           </Link>
-          <Link href="#contact">
+          <Link href="/contact">
             <button className="px-6 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 hover:scale-105">
               Contact Us
             </button>
@@ -92,7 +92,7 @@ export default function Navigation() {
                 Staff Login
               </button>
             </Link>
-            <Link href="#contact">
+            <Link href="/contact">
               <button className="w-full px-4 py-2 bg-accent text-primary font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 mt-2" onClick={() => setIsOpen(false)}>
                 Contact Us
               </button>

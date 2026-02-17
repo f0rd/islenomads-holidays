@@ -920,3 +920,37 @@ export const attractionIslandLinks = mysqlTable("attraction_island_links", {
 
 export type AttractionIslandLink = typeof attractionIslandLinks.$inferSelect;
 export type InsertAttractionIslandLink = typeof attractionIslandLinks.$inferInsert;
+
+// CMS Pages table for managing About, Contact, and other static pages
+export const cmsPages = mysqlTable("cms_pages", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(), // e.g., "about", "contact"
+  title: varchar("title", { length: 255 }).notNull(),
+  content: text("content").notNull(), // Rich text content
+  sections: text("sections"), // JSON array of page sections for complex layouts
+  heroTitle: varchar("heroTitle", { length: 255 }),
+  heroSubtitle: varchar("heroSubtitle", { length: 500 }),
+  heroImage: varchar("heroImage", { length: 500 }),
+  // SEO Fields
+  metaTitle: varchar("metaTitle", { length: 255 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  metaKeywords: varchar("metaKeywords", { length: 500 }),
+  focusKeyword: varchar("focusKeyword", { length: 255 }),
+  // Social Media
+  ogTitle: varchar("ogTitle", { length: 255 }),
+  ogDescription: varchar("ogDescription", { length: 500 }),
+  ogImage: varchar("ogImage", { length: 500 }),
+  // Status
+  published: int("published").default(0).notNull(),
+  featured: int("featured").default(0).notNull(),
+  viewCount: int("viewCount").default(0).notNull(),
+  // Author tracking
+  authorId: int("authorId"),
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  publishedAt: timestamp("publishedAt"),
+});
+
+export type CMSPage = typeof cmsPages.$inferSelect;
+export type InsertCMSPage = typeof cmsPages.$inferInsert;

@@ -316,6 +316,13 @@
       "when": 1771270611863,
       "tag": "0047_brainy_nova",
       "breakpoints": true
+    },
+    {
+      "idx": 48,
+      "version": "5",
+      "when": 1771357083423,
+      "tag": "0048_smiling_goblin_queen",
+      "breakpoints": true
     }
   ]
 }

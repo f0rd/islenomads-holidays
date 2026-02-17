@@ -2,6 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLocation } from "wouter";
+import { trpc } from "@/lib/trpc";
 import {
   BarChart3,
   FileText,
@@ -16,13 +17,19 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const menuItems = [
   {
     title: "Dashboard",
     icon: BarChart3,
     href: "/cms/dashboard",
+    badge: null,
+  },
+  {
+    title: "Pages",
+    icon: FileText,
+    href: "/admin/pages",
     badge: null,
   },
   {
@@ -38,9 +45,21 @@ const menuItems = [
     badge: null,
   },
   {
+    title: "Atolls",
+    icon: MapPin,
+    href: "/admin/atolls",
+    badge: null,
+  },
+  {
     title: "Island Guides",
     icon: BookOpen,
     href: "/admin/island-guides",
+    badge: null,
+  },
+  {
+    title: "Attractions",
+    icon: Anchor,
+    href: "/admin/attractions",
     badge: null,
   },
   {
@@ -53,6 +72,12 @@ const menuItems = [
     title: "Boat Routes",
     icon: Anchor,
     href: "/admin/boat-routes",
+    badge: null,
+  },
+  {
+    title: "Transports",
+    icon: Anchor,
+    href: "/admin/transports",
     badge: null,
   },
   {
@@ -80,16 +105,22 @@ export default function CMSDashboard() {
   const [, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  // Fetch real data from database
+  const { data: blogPosts = [] } = trpc.blog.list.useQuery();
+  const { data: packages = [] } = trpc.packages.list.useQuery();
+  const { data: islandGuides = [] } = trpc.islandGuides.list.useQuery();
+  const { data: mapLocations = [] } = trpc.mapLocations.list.useQuery();
+
   const handleLogout = async () => {
     await logout();
     navigate("/");
   };
 
   const stats = [
-    { label: "Total Blog Posts", value: "24", icon: FileText, color: "bg-blue-50" },
-    { label: "Active Packages", value: "12", icon: Package, color: "bg-green-50" },
-    { label: "Island Guides", value: "8", icon: BookOpen, color: "bg-purple-50" },
-    { label: "Map Locations", value: "35", icon: MapPin, color: "bg-orange-50" },
+    { label: "Total Blog Posts", value: String(blogPosts.length), icon: FileText, color: "bg-blue-50" },
+    { label: "Active Packages", value: String(packages.filter((p: any) => p.published).length), icon: Package, color: "bg-green-50" },
+    { label: "Island Guides", value: String(islandGuides.length), icon: BookOpen, color: "bg-purple-50" },
+    { label: "Map Locations", value: String(mapLocations.length), icon: MapPin, color: "bg-orange-50" },
   ];
 
   return (

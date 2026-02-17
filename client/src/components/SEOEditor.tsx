@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -70,6 +70,9 @@ export default function SEOEditor({
     }
   }, [content, metaDescription]);
 
+  // Memoize the callback to prevent infinite loops
+  const memoizedOnSEOChange = useCallback(onSEOChange, []);
+
   // Analyze SEO whenever relevant fields change
   useEffect(() => {
     const seoAnalysis = analyzeSEO({
@@ -83,7 +86,7 @@ export default function SEOEditor({
     setAnalysis(seoAnalysis);
 
     // Notify parent of changes
-    onSEOChange({
+    memoizedOnSEOChange({
       metaTitle,
       metaDescription,
       focusKeyword,
@@ -91,7 +94,7 @@ export default function SEOEditor({
       ogTitle,
       ogDescription,
     });
-  }, [metaTitle, metaDescription, focusKeyword, slug, ogTitle, ogDescription, title, content, onSEOChange]);
+  }, [metaTitle, metaDescription, focusKeyword, slug, ogTitle, ogDescription, title, content, memoizedOnSEOChange]);
 
   if (!analysis) return null;
 
