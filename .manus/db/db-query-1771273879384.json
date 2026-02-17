@@ -1,0 +1,130 @@
+{
+  "query": "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'attraction_guides';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'attraction_guides';",
+  "rows": [
+    {
+      "COLUMN_NAME": "id"
+    },
+    {
+      "COLUMN_NAME": "placeId"
+    },
+    {
+      "COLUMN_NAME": "name"
+    },
+    {
+      "COLUMN_NAME": "slug"
+    },
+    {
+      "COLUMN_NAME": "attractionType"
+    },
+    {
+      "COLUMN_NAME": "overview"
+    },
+    {
+      "COLUMN_NAME": "quickFacts"
+    },
+    {
+      "COLUMN_NAME": "difficulty"
+    },
+    {
+      "COLUMN_NAME": "waterConditions"
+    },
+    {
+      "COLUMN_NAME": "bestSeason"
+    },
+    {
+      "COLUMN_NAME": "seasonalInfo"
+    },
+    {
+      "COLUMN_NAME": "depthRange"
+    },
+    {
+      "COLUMN_NAME": "waveHeight"
+    },
+    {
+      "COLUMN_NAME": "marineLife"
+    },
+    {
+      "COLUMN_NAME": "accessInfo"
+    },
+    {
+      "COLUMN_NAME": "nearestIsland"
+    },
+    {
+      "COLUMN_NAME": "distanceFromIsland"
+    },
+    {
+      "COLUMN_NAME": "facilities"
+    },
+    {
+      "COLUMN_NAME": "amenities"
+    },
+    {
+      "COLUMN_NAME": "safetyTips"
+    },
+    {
+      "COLUMN_NAME": "localRules"
+    },
+    {
+      "COLUMN_NAME": "restrictions"
+    },
+    {
+      "COLUMN_NAME": "typicalCost"
+    },
+    {
+      "COLUMN_NAME": "bookingInfo"
+    },
+    {
+      "COLUMN_NAME": "heroImage"
+    },
+    {
+      "COLUMN_NAME": "images"
+    },
+    {
+      "COLUMN_NAME": "videos"
+    },
+    {
+      "COLUMN_NAME": "latitude"
+    },
+    {
+      "COLUMN_NAME": "longitude"
+    },
+    {
+      "COLUMN_NAME": "metaTitle"
+    },
+    {
+      "COLUMN_NAME": "metaDescription"
+    },
+    {
+      "COLUMN_NAME": "metaKeywords"
+    },
+    {
+      "COLUMN_NAME": "focusKeyword"
+    },
+    {
+      "COLUMN_NAME": "seoScore"
+    },
+    {
+      "COLUMN_NAME": "published"
+    },
+    {
+      "COLUMN_NAME": "featured"
+    },
+    {
+      "COLUMN_NAME": "displayOrder"
+    },
+    {
+      "COLUMN_NAME": "viewCount"
+    },
+    {
+      "COLUMN_NAME": "createdAt"
+    },
+    {
+      "COLUMN_NAME": "updatedAt"
+    }
+  ],
+  "messages": [],
+  "stdout": "COLUMN_NAME\nid\nplaceId\nname\nslug\nattractionType\noverview\nquickFacts\ndifficulty\nwaterConditions\nbestSeason\nseasonalInfo\ndepthRange\nwaveHeight\nmarineLife\naccessInfo\nnearestIsland\ndistanceFromIsland\nfacilities\namenities\nsafetyTips\nlocalRules\nrestrictions\ntypicalCost\nbookingInfo\nheroImage\nimages\nvideos\nlatitude\nlongitude\nmetaTitle\nmetaDescription\nmetaKeywords\nfocusKeyword\nseoScore\npublished\nfeatured\ndisplayOrder\nviewCount\ncreatedAt\nupdatedAt\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}

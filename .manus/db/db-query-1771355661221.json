@@ -1,0 +1,9 @@
+{
+  "query": "\n-- Replace local paths with CDN URLs for large image files\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/MyFVsZXILQaZWOcH.jpg'\nWHERE heroImage = '/images/attractions/e8ZpYOPqvFRK.jpg';\n\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/zknBEUrrvVLltexe.png'\nWHERE heroImage = '/images/attractions/0ce5ngGA8fwM.png';\n\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/htJUrBVjvrchBJqn.png'\nWHERE heroImage = '/images/attractions/b8K0lWBu3svO.png';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- Replace local paths with CDN URLs for large image files\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/MyFVsZXILQaZWOcH.jpg'\nWHERE heroImage = '/images/attractions/e8ZpYOPqvFRK.jpg';\n\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/zknBEUrrvVLltexe.png'\nWHERE heroImage = '/images/attractions/0ce5ngGA8fwM.png';\n\nUPDATE attraction_guides \nSET heroImage = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/htJUrBVjvrchBJqn.png'\nWHERE heroImage = '/images/attractions/b8K0lWBu3svO.png';\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 127
+}

@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total_attractions, \n       SUM(CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 1 ELSE 0 END) as with_images,\n       SUM(CASE WHEN heroImage IS NULL OR heroImage = '' THEN 1 ELSE 0 END) as without_images\nFROM attraction_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_attractions, \n       SUM(CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 1 ELSE 0 END) as with_images,\n       SUM(CASE WHEN heroImage IS NULL OR heroImage = '' THEN 1 ELSE 0 END) as without_images\nFROM attraction_guides;",
+  "rows": [
+    {
+      "total_attractions": "115",
+      "with_images": "41",
+      "without_images": "74"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_attractions\twith_images\twithout_images\n115\t41\t74\n",
+  "stderr": "",
+  "execution_time_ms": 71
+}
