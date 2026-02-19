@@ -39,7 +39,7 @@ export default function AdminBlog() {
   const [isLoading, setIsLoading] = useState(false);
 
   // Fetch blog posts
-  const { data: posts, isLoading: postsLoading, refetch } = trpc.blog.list.useQuery(undefined, {
+  const { data: posts, isLoading: postsLoading, refetch } = trpc.blog.listAdmin.useQuery(undefined, {
     enabled: !!user,
   });
 
