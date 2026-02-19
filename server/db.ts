@@ -1649,3 +1649,17 @@ export async function getAttractionsNearIsland(islandGuideId: number): Promise<a
     .orderBy(asc(attractionIslandLinks.displayOrder));
   return attractions;
 }
+
+// Get all activity spots for an island (including unpublished for admin selection)
+export async function getActivitySpotsForIslandSelector(islandGuideId: number): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).where(eq(activitySpots.islandGuideId, islandGuideId)).orderBy(activitySpots.spotType, activitySpots.displayOrder);
+}
+
+// Get all available activity spots by type (for linking to an island)
+export async function getActivitySpotsByType(spotType: string): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(activitySpots).where(eq(activitySpots.spotType, spotType as any)).orderBy(activitySpots.displayOrder);
+}

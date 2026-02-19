@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
+import { ActivitySpotSelector } from './ActivitySpotSelector';
 
 export interface Attraction {
   id?: string;
@@ -15,16 +16,18 @@ export interface Attraction {
 export interface ActivitySpot {
   id?: number;
   name: string;
+  slug?: string;
   spotType: 'surf_spot' | 'dive_site' | 'snorkeling_spot';
   category?: string;
   description?: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty?: string;
   bestSeason?: string;
   maxDepth?: number;
   minDepth?: number;
   waveHeight?: string;
   coralCoverage?: string;
   tips?: string;
+  [key: string]: any;
 }
 
 export interface IslandGuideFormData {
@@ -399,16 +402,14 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
 
         {/* Guides Tab */}
         <TabsContent value="guides" className="space-y-4">
-          {/* Activity Spots (Snorkeling, Diving, Surfing) are now managed separately in the Activity Spots CMS */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Activity Spots</CardTitle>
-              <CardDescription>Manage dive sites, snorkeling spots, and surf spots separately in the Activity Spots CMS module</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-gray-600">Link activity spots to this island using the Activity Spots CMS page</p>
-            </CardContent>
-          </Card>
+          {/* Activity Spots Selector */}
+          {(initialData as any)?.id && (
+            <ActivitySpotSelector
+              islandGuideId={(initialData as any).id}
+              selectedSpots={formData.activitySpots || []}
+              onSpotsChange={(spots) => setFormData({ ...formData, activitySpots: spots })}
+            />
+          )}
 
           {/* Beaches & Local Rules */}
           <Card>

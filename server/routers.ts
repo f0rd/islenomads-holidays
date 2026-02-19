@@ -21,7 +21,7 @@ import {
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll,  getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getRegularIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
-  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots,
+  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots, getActivitySpotsForIslandSelector, getActivitySpotsByType,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
@@ -1159,6 +1159,20 @@ export const appRouter = router({
       .input(z.object({ activityTypeId: z.number() }))
       .query(async ({ input }) => {
         return getSpotsByActivityType(input.activityTypeId);
+      }),
+
+    // Get all activity spots for an island (for selector UI)
+    forIslandSelector: publicProcedure
+      .input(z.object({ islandGuideId: z.number() }))
+      .query(async ({ input }) => {
+        return getActivitySpotsForIslandSelector(input.islandGuideId);
+      }),
+
+    // Get all activity spots by type (for filtering in selector)
+    byType: publicProcedure
+      .input(z.object({ spotType: z.enum(["surf_spot", "dive_site", "snorkeling_spot"]) }))
+      .query(async ({ input }) => {
+        return getActivitySpotsByType(input.spotType);
       }),
   }),
 
