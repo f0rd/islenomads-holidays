@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { trackCTA, trackMenuClick } from "@/lib/gtmTracking";
 import {
   Anchor,
   Award,
@@ -192,6 +193,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-teal-500 text-white hover:bg-teal-600 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+                  onClick={() => trackCTA('Plan Your Trip', 'hero')}
                 >
                   Plan Your Trip
                 </Button>
@@ -201,6 +203,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
+                  onClick={() => trackCTA('Contact Us', 'hero')}
                 >
                   Contact Us
                 </Button>

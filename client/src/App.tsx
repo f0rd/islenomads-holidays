@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { useGTMPageView } from "./_core/hooks/useGTMPageView";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
@@ -44,6 +45,9 @@ import Contact from "./pages/Contact";
 import AdminPages from "./pages/AdminPages";
 
 function Router() {
+  // Track page views in GTM
+  useGTMPageView();
+  
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>

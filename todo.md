@@ -1599,3 +1599,14 @@
 - [ ] Update API endpoint to return only relevant airports for each island
 - [ ] Update AirportInfo component to display transfer method and journey details
 - [ ] Test nearby airport display on island guides
+
+## Google Tag Manager (GTM) Integration
+- [x] Add GTM tracking code to HTML head and body
+- [x] Create GTM event tracking utility
+- [x] Set up page view tracking for all routes
+- [x] Configure click event tracking for buttons
+- [x] Configure form submission tracking
+- [x] Track package bookings and CTAs
+- [x] Track navigation interactions
+- [x] Test GTM data collection in GTM preview mode
+- [x] Verify events in Google Analytics

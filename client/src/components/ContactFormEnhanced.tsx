@@ -11,6 +11,7 @@ import { trpc } from "@/lib/trpc";
 import { ChevronLeft, Loader2, MapPin, Sparkles, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { trackFormSubmission } from "@/lib/gtm";
 
 interface FormData {
   // Step 1: Basic Info
@@ -171,6 +172,14 @@ export default function ContactFormEnhanced() {
     if (!validateStep(3)) {
       return;
     }
+
+    // Track form submission in GTM
+    trackFormSubmission('contact_inquiry', {
+      travel_style: formData.travelStyle,
+      group_size: formData.groupSize,
+      budget: formData.budget,
+      interests: formData.interests.join(', '),
+    });
 
     setIsSubmitting(true);
     try {
