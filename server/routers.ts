@@ -25,7 +25,8 @@ import {
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
-  getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland
+  getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland,
+  getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics
 } from "./db";
 
 export const appRouter = router({
@@ -1422,10 +1423,31 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return await getAttractionsNearIsland(input.islandGuideId);
       }),
+    }),
+
+  analytics: router({
+    dashboard: publicProcedure
+      .query(async () => {
+        return await getAnalyticsDashboardData();
+      }),
+    packagePerformance: publicProcedure
+      .query(async () => {
+        return await getPackagePerformanceMetrics();
+      }),
+    conversions: publicProcedure
+      .query(async () => {
+        return await getConversionMetrics();
+      }),
+    destinations: publicProcedure
+      .query(async () => {
+        return await getDestinationMetrics();
+      }),
+    engagement: publicProcedure
+      .query(async () => {
+        return await getUserEngagementMetrics();
+      }),
   }),
 });
-
 export type AppRouter = typeof appRouter;
-
 // Note: Airport routes will be added via API endpoint in Express server
 // The AirportInfo component fetches from /api/airport-routes?islandGuideId={id}

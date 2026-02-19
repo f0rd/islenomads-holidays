@@ -1663,3 +1663,229 @@ export async function getActivitySpotsByType(spotType: string): Promise<Activity
   if (!db) return [];
   return db.select().from(activitySpots).where(eq(activitySpots.spotType, spotType as any)).orderBy(activitySpots.displayOrder);
 }
+
+
+// Analytics helpers
+export async function getAnalyticsDashboardData() {
+  const db = await getDb();
+  if (!db) return null;
+
+  try {
+    // Get total packages
+    const totalPackages = await db.select().from(packages);
+    
+    // Get total island guides
+    const totalIslandGuides = await db.select().from(islandGuides);
+    
+    // Get total blog posts
+    const totalBlogPosts = await db.select().from(blogPosts);
+    
+    // Get total activity spots
+    const totalActivitySpots = await db.select().from(activitySpots);
+    
+    // Get total CRM queries (contact inquiries)
+    const totalCrmQueries = await db.select().from(crmQueries);
+    
+    // Get featured packages
+    const featuredPackages = await db.select().from(packages).where(eq(packages.featured, 1));
+    
+    // Get published blog posts
+    const publishedBlogPosts = await db.select().from(blogPosts).where(eq(blogPosts.published, 1));
+    
+    // Get published island guides
+    const publishedIslandGuides = await db.select().from(islandGuides).where(eq(islandGuides.published, 1));
+    
+    // Get CRM queries by status
+    const crmQueryStats = await db.select().from(crmQueries);
+    
+    // Calculate top packages by featured status
+    const topPackages = featuredPackages.slice(0, 5);
+    
+    // Calculate top destinations
+    const destinationCounts: Record<string, number> = {};
+    totalPackages.forEach((pkg: any) => {
+      destinationCounts[pkg.destination] = (destinationCounts[pkg.destination] || 0) + 1;
+    });
+    
+    const topDestinations = Object.entries(destinationCounts)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([name, count]) => ({ name, count }));
+    
+    // Get package categories distribution
+    const categoryDistribution: Record<string, number> = {};
+    totalPackages.forEach((pkg: any) => {
+      categoryDistribution[pkg.category] = (categoryDistribution[pkg.category] || 0) + 1;
+    });
+    
+    // Get blog post categories
+    const blogCategoryDistribution: Record<string, number> = {};
+    totalBlogPosts.forEach((post: any) => {
+      if (post.category) {
+        blogCategoryDistribution[post.category] = (blogCategoryDistribution[post.category] || 0) + 1;
+      }
+    });
+    
+    // Calculate engagement metrics
+    const totalBlogViews = totalBlogPosts.reduce((sum: number, post: any) => sum + (post.viewCount || 0), 0);
+    const avgBlogViews = totalBlogPosts.length > 0 ? Math.round(totalBlogViews / totalBlogPosts.length) : 0;
+    
+    // Get CRM query status breakdown
+    const crmStatusBreakdown: Record<string, number> = {};
+    crmQueryStats.forEach((query: any) => {
+      const status = query.status || 'pending';
+      crmStatusBreakdown[status] = (crmStatusBreakdown[status] || 0) + 1;
+    });
+    
+    return {
+      summary: {
+        totalPackages: totalPackages.length,
+        totalIslandGuides: totalIslandGuides.length,
+        totalBlogPosts: totalBlogPosts.length,
+        totalActivitySpots: totalActivitySpots.length,
+        totalCrmQueries: totalCrmQueries.length,
+        publishedBlogPosts: publishedBlogPosts.length,
+        publishedIslandGuides: publishedIslandGuides.length,
+        featuredPackages: featuredPackages.length,
+      },
+      engagement: {
+        totalBlogViews,
+        avgBlogViews,
+        blogPostsWithViews: totalBlogPosts.filter((p: any) => p.viewCount > 0).length,
+      },
+      distribution: {
+        packageCategories: categoryDistribution,
+        blogCategories: blogCategoryDistribution,
+        crmStatus: crmStatusBreakdown,
+      },
+      topData: {
+        topPackages,
+        topDestinations,
+      },
+      recentActivity: {
+        recentCrmQueries: crmQueryStats.slice(-10).reverse(),
+        recentBlogPosts: publishedBlogPosts.slice(-5).reverse(),
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching analytics data:', error);
+    return null;
+  }
+}
+
+export async function getPackagePerformanceMetrics() {
+  const db = await getDb();
+  if (!db) return null;
+
+  try {
+    const allPackages = await db.select().from(packages);
+    
+    return allPackages.map((pkg: any) => ({
+      id: pkg.id,
+      name: pkg.name,
+      destination: pkg.destination,
+      category: pkg.category,
+      price: pkg.price,
+      featured: pkg.featured,
+      createdAt: pkg.createdAt,
+    }));
+  } catch (error) {
+    console.error('Error fetching package performance metrics:', error);
+    return null;
+  }
+}
+
+export async function getConversionMetrics() {
+  const db = await getDb();
+  if (!db) return null;
+
+  try {
+    const totalCrmQueries = await db.select().from(crmQueries);
+    const totalPackages = await db.select().from(packages);
+    
+    // Calculate conversion rate (inquiries per package)
+    const conversionRate = totalPackages.length > 0 
+      ? Math.round((totalCrmQueries.length / totalPackages.length) * 100) 
+      : 0;
+    
+    // Get inquiries by date
+    const inquiriesByDate: Record<string, number> = {};
+    totalCrmQueries.forEach((query: any) => {
+      const date = new Date(query.createdAt).toISOString().split('T')[0];
+      inquiriesByDate[date] = (inquiriesByDate[date] || 0) + 1;
+    });
+    
+    return {
+      totalInquiries: totalCrmQueries.length,
+      totalPackages: totalPackages.length,
+      conversionRate,
+      inquiriesByDate,
+      recentInquiries: totalCrmQueries.slice(-20).reverse(),
+    };
+  } catch (error) {
+    console.error('Error fetching conversion metrics:', error);
+    return null;
+  }
+}
+
+export async function getDestinationMetrics() {
+  const db = await getDb();
+  if (!db) return null;
+
+  try {
+    const allIslandGuides = await db.select().from(islandGuides);
+    const allAtolls = await db.select().from(atolls);
+    
+    // Count island guides by atoll
+    const islandsByAtoll: Record<string, number> = {};
+    allIslandGuides.forEach((guide: any) => {
+      const atoll = guide.atoll || 'Unknown';
+      islandsByAtoll[atoll] = (islandsByAtoll[atoll] || 0) + 1;
+    });
+    
+    return {
+      totalIslands: allIslandGuides.length,
+      totalAtolls: allAtolls.length,
+      publishedIslands: allIslandGuides.filter((g: any) => g.published).length,
+      publishedAtolls: allAtolls.filter((a: any) => a.published).length,
+      islandsByAtoll,
+    };
+  } catch (error) {
+    console.error('Error fetching destination metrics:', error);
+    return null;
+  }
+}
+
+export async function getUserEngagementMetrics() {
+  const db = await getDb();
+  if (!db) return null;
+
+  try {
+    const allBlogPosts = await db.select().from(blogPosts);
+    const allActivitySpots = await db.select().from(activitySpots);
+    
+    // Calculate engagement metrics
+    const totalViews = allBlogPosts.reduce((sum: number, post: any) => sum + (post.viewCount || 0), 0);
+    const mostViewedPosts = allBlogPosts
+      .sort((a: any, b: any) => (b.viewCount || 0) - (a.viewCount || 0))
+      .slice(0, 5);
+    
+    // Activity spot engagement
+    const activitySpotsByType: Record<string, number> = {};
+    allActivitySpots.forEach((spot: any) => {
+      const type = spot.type || 'other';
+      activitySpotsByType[type] = (activitySpotsByType[type] || 0) + 1;
+    });
+    
+    return {
+      totalBlogViews: totalViews,
+      avgBlogViews: allBlogPosts.length > 0 ? Math.round(totalViews / allBlogPosts.length) : 0,
+      mostViewedPosts,
+      activitySpotsByType,
+      totalActivitySpots: allActivitySpots.length,
+    };
+  } catch (error) {
+    console.error('Error fetching user engagement metrics:', error);
+    return null;
+  }
+}

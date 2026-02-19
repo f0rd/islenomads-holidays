@@ -43,6 +43,7 @@ import AttractionGuide from "./pages/AttractionGuide";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AdminPages from "./pages/AdminPages";
+import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 
 function Router() {
   // Track page views in GTM
@@ -78,6 +79,7 @@ function Router() {
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/attraction/:slug"} component={AttractionGuide} />
       <Route path={"/atolls"} component={Atolls} />
+      <Route path={"/admin/analytics"} component={AnalyticsDashboard} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
       <Route path={"/admin/activity-spots"} component={AdminActivitySpots} />
       <Route path={"/staff-login"} component={StaffLogin} />
@@ -95,9 +97,8 @@ function Router() {
       <Route path={"/admin/map-locations"} component={AdminMapLocations} />
       <Route path={"/admin/data-management"} component={AdminDashboard} />
       <Route path={"/admin"} component={StaffDashboard} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
+      <Route path={"/analytics"} component={AnalyticsDashboard} />
+      <Route path={"*"} component={NotFound} />
     </Switch>
   );
 }

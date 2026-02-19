@@ -1610,3 +1610,14 @@
 - [x] Track navigation interactions
 - [x] Test GTM data collection in GTM preview mode
 - [x] Verify events in Google Analytics
+
+## Analytics Dashboard
+- [x] Create backend procedures to fetch analytics data (page views, clicks, conversions)
+- [x] Build AnalyticsDashboard page with key metrics visualization
+- [x] Add charts for user behavior trends and conversion funnels
+- [x] Implement real-time metrics display
+- [x] Add date range filtering for analytics
+- [x] Create package performance metrics
+- [x] Display top destinations and attractions
+- [x] Add user engagement heatmaps
+- [x] Test dashboard with real GTM data
