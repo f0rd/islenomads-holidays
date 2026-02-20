@@ -1,6 +1,6 @@
 import { eq, and, desc, asc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -1922,4 +1922,48 @@ export async function createHeroSettings(data: any) {
   const id = (result as any).insertId;
   const created = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
   return created[0];
+}
+
+
+// Hero Gallery functions
+export async function getHeroGalleryByPage(pageSlug: string) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(heroSettings).where(eq(heroSettings.pageSlug, pageSlug)).orderBy(asc(heroSettings.createdAt));
+}
+
+export async function addHeroGalleryImage(data: any) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(heroSettings).values(data);
+  const id = (result as any).insertId;
+  const created = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
+  return created[0];
+}
+
+export async function updateHeroGalleryImage(id: number, data: any) {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(heroSettings).set({
+    ...data,
+    updatedAt: new Date(),
+  }).where(eq(heroSettings.id, id));
+  const result = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
+  return result[0];
+}
+
+export async function deleteHeroGalleryImage(id: number) {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(heroSettings).where(eq(heroSettings.id, id));
+  return true;
+}
+
+export async function reorderHeroGalleryImages(pageSlug: string, images: Array<{ id: number }>) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  // Note: displayOrder not available in hero_settings table
+  // Images are ordered by createdAt
+  return getHeroGalleryByPage(pageSlug);
 }

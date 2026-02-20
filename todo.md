@@ -1629,3 +1629,11 @@
 - [x] Verify blog posts display on public blog page
 - [x] Create blog post categories and tagging system
 - [x] Add blog archive and search functionality
+## Hero Image Gallery Management
+- [ ] Create hero_gallery database table for storing multiple images per page
+- [ ] Add backend procedures for gallery CRUD operations
+- [ ] Create HeroGalleryManager component with upload functionality
+- [ ] Integrate gallery manager into HeroCustomizer
+- [ ] Add image rotation/carousel to hero preview
+- [ ] Test gallery upload and management
+- [ ] Enable automatic hero image rotation on page load

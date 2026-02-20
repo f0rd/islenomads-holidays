@@ -42,7 +42,7 @@ export default function HeroCustomizer({ pageSlug, onClose }: HeroCustomizerProp
   const { data: heroSettings, isLoading } = trpc.heroSettings.getByPageSlug.useQuery(
     { pageSlug },
     {
-      onSuccess: (data) => {
+      onSuccess: (data: any) => {
         if (data) {
           setFormData({
             heroTitle: data.heroTitle || '',
