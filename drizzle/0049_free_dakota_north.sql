@@ -1,0 +1,20 @@
+CREATE TABLE `hero_settings` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`pageSlug` varchar(255) NOT NULL,
+	`heroTitle` varchar(255) NOT NULL,
+	`heroSubtitle` varchar(500),
+	`heroImageUrl` varchar(500) NOT NULL,
+	`overlayOpacity` int NOT NULL DEFAULT 70,
+	`gradientColorStart` varchar(50) NOT NULL DEFAULT 'primary',
+	`gradientColorEnd` varchar(50) NOT NULL DEFAULT 'primary',
+	`gradientOpacityStart` int NOT NULL DEFAULT 85,
+	`gradientOpacityEnd` int NOT NULL DEFAULT 70,
+	`textColor` varchar(50) NOT NULL DEFAULT 'primary-foreground',
+	`subtitleColor` varchar(50) NOT NULL DEFAULT 'primary-foreground',
+	`minHeight` varchar(50) NOT NULL DEFAULT 'min-h-96',
+	`published` int NOT NULL DEFAULT 1,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `hero_settings_id` PRIMARY KEY(`id`),
+	CONSTRAINT `hero_settings_pageSlug_unique` UNIQUE(`pageSlug`)
+);

@@ -26,7 +26,8 @@ import {
   getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
   getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland,
-  getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics
+  getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics,
+  getHeroSettings, getAllHeroSettings, updateHeroSettings, createHeroSettings
 } from "./db";
 
 export const appRouter = router({
@@ -1445,6 +1446,64 @@ export const appRouter = router({
     engagement: publicProcedure
       .query(async () => {
         return await getUserEngagementMetrics();
+      }),
+  }),
+
+  heroSettings: router({
+    getByPageSlug: publicProcedure
+      .input(z.object({ pageSlug: z.string() }))
+      .query(async ({ input }) => {
+        return getHeroSettings(input.pageSlug);
+      }),
+
+    getAll: protectedProcedure.query(async () => {
+      return getAllHeroSettings();
+    }),
+
+    update: protectedProcedure
+      .input(z.object({
+        pageSlug: z.string(),
+        heroTitle: z.string().optional(),
+        heroSubtitle: z.string().optional(),
+        heroImageUrl: z.string().optional(),
+        overlayOpacity: z.number().min(0).max(100).optional(),
+        gradientColorStart: z.string().optional(),
+        gradientColorEnd: z.string().optional(),
+        gradientOpacityStart: z.number().min(0).max(100).optional(),
+        gradientOpacityEnd: z.number().min(0).max(100).optional(),
+        textColor: z.string().optional(),
+        subtitleColor: z.string().optional(),
+        minHeight: z.string().optional(),
+        published: z.number().optional(),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can update hero settings' });
+        }
+        const { pageSlug, ...data } = input;
+        return updateHeroSettings(pageSlug, data);
+      }),
+
+    create: protectedProcedure
+      .input(z.object({
+        pageSlug: z.string(),
+        heroTitle: z.string(),
+        heroSubtitle: z.string().optional(),
+        heroImageUrl: z.string(),
+        overlayOpacity: z.number().min(0).max(100).default(70),
+        gradientColorStart: z.string().default('primary'),
+        gradientColorEnd: z.string().default('primary'),
+        gradientOpacityStart: z.number().min(0).max(100).default(85),
+        gradientOpacityEnd: z.number().min(0).max(100).default(70),
+        textColor: z.string().default('primary-foreground'),
+        subtitleColor: z.string().default('primary-foreground'),
+        minHeight: z.string().default('min-h-96'),
+      }))
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user?.role !== 'admin') {
+          throw new TRPCError({ code: 'FORBIDDEN', message: 'Only admins can create hero settings' });
+        }
+        return createHeroSettings(input);
       }),
   }),
 });

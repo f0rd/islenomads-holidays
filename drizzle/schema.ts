@@ -954,3 +954,25 @@ export const cmsPages = mysqlTable("cms_pages", {
 
 export type CMSPage = typeof cmsPages.$inferSelect;
 export type InsertCMSPage = typeof cmsPages.$inferInsert;
+
+// Hero Settings table for customizing hero sections on each page
+export const heroSettings = mysqlTable("hero_settings", {
+  id: int("id").autoincrement().primaryKey(),
+  pageSlug: varchar("pageSlug", { length: 255 }).notNull().unique(), // e.g., "packages", "about", "trip-planner"
+  heroTitle: varchar("heroTitle", { length: 255 }).notNull(),
+  heroSubtitle: varchar("heroSubtitle", { length: 500 }),
+  heroImageUrl: varchar("heroImageUrl", { length: 500 }).notNull(),
+  overlayOpacity: int("overlayOpacity").default(70).notNull(), // 0-100 percentage
+  gradientColorStart: varchar("gradientColorStart", { length: 50 }).default("primary").notNull(), // Tailwind color
+  gradientColorEnd: varchar("gradientColorEnd", { length: 50 }).default("primary").notNull(),
+  gradientOpacityStart: int("gradientOpacityStart").default(85).notNull(), // 0-100
+  gradientOpacityEnd: int("gradientOpacityEnd").default(70).notNull(), // 0-100
+  textColor: varchar("textColor", { length: 50 }).default("primary-foreground").notNull(),
+  subtitleColor: varchar("subtitleColor", { length: 50 }).default("primary-foreground").notNull(),
+  minHeight: varchar("minHeight", { length: 50 }).default("min-h-96").notNull(), // Tailwind class
+  published: int("published").default(1).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type HeroSettings = typeof heroSettings.$inferSelect;
+export type InsertHeroSettings = typeof heroSettings.$inferInsert;

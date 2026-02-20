@@ -1889,3 +1889,37 @@ export async function getUserEngagementMetrics() {
     return null;
   }
 }
+
+
+// Hero Settings functions
+export async function getHeroSettings(pageSlug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(heroSettings).where(eq(heroSettings.pageSlug, pageSlug)).limit(1);
+  return result[0];
+}
+
+export async function getAllHeroSettings() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(heroSettings).orderBy(heroSettings.pageSlug);
+}
+
+export async function updateHeroSettings(pageSlug: string, data: any) {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(heroSettings).set({
+    ...data,
+    updatedAt: new Date(),
+  }).where(eq(heroSettings.pageSlug, pageSlug));
+  return getHeroSettings(pageSlug);
+}
+
+export async function createHeroSettings(data: any) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(heroSettings).values(data);
+  const id = (result as any).insertId;
+  const created = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
+  return created[0];
+}
