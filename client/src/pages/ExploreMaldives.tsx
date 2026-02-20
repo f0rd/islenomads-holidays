@@ -198,7 +198,7 @@ export default function ExploreMaldives() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-cover bg-center bg-no-repeat overflow-hidden" style={{
+      <section className="relative min-h-96 py-20 md:py-32 bg-cover bg-center bg-no-repeat overflow-hidden flex items-center" style={{
         backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/tDmPXYAqGyPlDQHm.jpg')"
       }}>
         <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/85" />
