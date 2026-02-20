@@ -131,12 +131,15 @@ export default function Packages() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground py-16">
-        <div className="container">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      <section className="relative py-20 bg-cover bg-center bg-no-repeat overflow-hidden" style={{
+        backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/niJLgfwCeGFAjnoD.jpg')"
+      }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/85" />
+        <div className="container relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-foreground">
             Vacation Packages
           </h1>
-          <p className="text-lg opacity-90">
+          <p className="text-lg text-primary-foreground/90">
             Discover our curated collection of unforgettable Maldives experiences
           </p>
         </div>

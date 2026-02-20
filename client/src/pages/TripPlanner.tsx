@@ -132,7 +132,13 @@ export default function TripPlanner() {
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="flex-1 py-12 bg-gradient-to-b from-background to-secondary/20 pt-24">
+      <section className="relative py-16 bg-cover bg-center bg-no-repeat overflow-hidden" style={{
+        backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/CDBYkgQqNlaehfeg.jpg')"
+      }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/85" />
+      </section>
+
+      <section className="flex-1 py-12 bg-gradient-to-b from-background to-secondary/20">
         <div className="container max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">

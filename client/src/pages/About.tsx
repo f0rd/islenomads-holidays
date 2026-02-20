@@ -61,13 +61,16 @@ export default function About() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/10 to-background">
-        <div className="container">
+      <section className="relative py-24 bg-cover bg-center bg-no-repeat overflow-hidden" style={{
+        backgroundImage: "url('https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/FzTxajRsSmMvDaPc.jpg')"
+      }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/75 to-primary/85" />
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground">
+            <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground">
               About Isle Nomads
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-primary-foreground/90">
               Your trusted partner in creating unforgettable Maldives experiences since 2009
             </p>
           </div>
