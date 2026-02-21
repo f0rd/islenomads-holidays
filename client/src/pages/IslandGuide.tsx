@@ -24,6 +24,7 @@ import {
 import { trpc } from "@/lib/trpc";
 import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
 import { NearbyAttractionsSection } from "@/components/NearbyAttractionsSection";
+import TransportComparison from "@/components/TransportComparison";
 
 /**
  * UPDATED: IslandGuide component now uses slug-based URLs for SEO
@@ -281,6 +282,39 @@ export default function IslandGuide() {
                     </CardContent>
                   </Card>
                 )}
+                
+                <TransportComparison
+                  fromLocation="Male"
+                  toLocation={guide.name}
+                  options={[
+                    {
+                      id: 1,
+                      name: "Public Ferry (MTCC)",
+                      type: "ferry",
+                      operator: "MTCC",
+                      vesselType: "Wooden Dhoni Ferry",
+                      duration: "45-120 minutes",
+                      price: 150,
+                      capacity: 50,
+                      description: "Government-operated public ferry. Most affordable option with authentic local experience.",
+                      amenities: ["Basic seating", "Toilets", "Shelter area"],
+                      schedule: "Daily except Friday (varies by route)"
+                    },
+                    {
+                      id: 2,
+                      name: "Speedboat",
+                      type: "speedboat",
+                      operator: "Private Operator",
+                      vesselType: "Modern Speedboat",
+                      duration: "35-60 minutes",
+                      price: 2000,
+                      capacity: 20,
+                      description: "Faster private speedboat service with modern amenities and comfortable seating.",
+                      amenities: ["Air conditioning", "Comfortable seating", "Life jackets"],
+                      schedule: "Daily departures"
+                    }
+                  ]}
+                />
               </div>
             </TabsContent>
 

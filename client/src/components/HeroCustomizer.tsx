@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,28 +40,28 @@ export default function HeroCustomizer({ pageSlug, onClose }: HeroCustomizerProp
 
   // Fetch existing hero settings
   const { data: heroSettings, isLoading } = trpc.heroSettings.getByPageSlug.useQuery(
-    { pageSlug },
-    {
-      onSuccess: (data: any) => {
-        if (data) {
-          setFormData({
-            heroTitle: data.heroTitle || '',
-            heroSubtitle: data.heroSubtitle || '',
-            heroImageUrl: data.heroImageUrl || '',
-            overlayOpacity: data.overlayOpacity || 70,
-            gradientColorStart: data.gradientColorStart || 'primary',
-            gradientColorEnd: data.gradientColorEnd || 'primary',
-            gradientOpacityStart: data.gradientOpacityStart || 85,
-            gradientOpacityEnd: data.gradientOpacityEnd || 70,
-            textColor: data.textColor || 'primary-foreground',
-            subtitleColor: data.subtitleColor || 'primary-foreground',
-            minHeight: data.minHeight || 'min-h-96',
-            published: data.published || 1,
-          });
-        }
-      },
-    }
+    { pageSlug }
   );
+
+  // Update form data when hero settings are loaded
+  useEffect(() => {
+    if (heroSettings) {
+      setFormData({
+        heroTitle: heroSettings.heroTitle || '',
+        heroSubtitle: heroSettings.heroSubtitle || '',
+        heroImageUrl: heroSettings.heroImageUrl || '',
+        overlayOpacity: heroSettings.overlayOpacity || 70,
+        gradientColorStart: heroSettings.gradientColorStart || 'primary',
+        gradientColorEnd: heroSettings.gradientColorEnd || 'primary',
+        gradientOpacityStart: heroSettings.gradientOpacityStart || 85,
+        gradientOpacityEnd: heroSettings.gradientOpacityEnd || 70,
+        textColor: heroSettings.textColor || 'primary-foreground',
+        subtitleColor: heroSettings.subtitleColor || 'primary-foreground',
+        minHeight: heroSettings.minHeight || 'min-h-96',
+        published: heroSettings.published || 1,
+      });
+    }
+  }, [heroSettings]);
 
   const updateMutation = trpc.heroSettings.update.useMutation();
   const createMutation = trpc.heroSettings.create.useMutation();

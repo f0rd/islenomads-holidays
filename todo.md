@@ -192,6 +192,12 @@
 - [x] Implement schedule filtering by time
 - [x] Add real-time availability indicators
 - [x] Test ferry schedule functionality
+- [x] Research MTCC ferry routes, schedules, and pricing
+- [x] Populate boat_routes table with 10 real ferry/speedboat routes
+- [x] Integrate TransportComparison component into island guides
+- [x] Fix TypeScript error in HeroCustomizer component
+- [ ] Create transport schedule widget for island pages
+- [ ] Add more ferry routes for other island destinations
 
 ## Island Guide Pages
 - [x] Create island guide data structure
