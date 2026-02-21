@@ -1637,3 +1637,12 @@
 - [ ] Add image rotation/carousel to hero preview
 - [ ] Test gallery upload and management
 - [ ] Enable automatic hero image rotation on page load
+
+
+## Transport & Boat Routes Enhancement
+- [x] Add vessel type and operator details to boat routes schema
+- [x] Create transport comparison component showing MTCC public ferry vs speedboat options
+- [ ] Update island guides with transport options (speed, duration, pricing, vessel type)
+- [ ] Add transport information to trip planner page
+- [x] Display MTCC public ferry and speedboat options with detailed descriptions
+- [x] Add vessel specifications (wooden boats for public ferry, speedboat for fast option)
