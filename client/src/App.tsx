@@ -34,6 +34,7 @@ import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
 import AdminActivitySpots from "./pages/AdminActivitySpots";
 import AdminAtolls from "./pages/AdminAtolls";
+import AdminFerryRoutes from "./pages/AdminFerryRoutes";
 import IslandGuides from "./pages/IslandGuides";
 import Atolls from "./pages/Atolls";
 import AtollDetail from "./pages/AtollDetail";
@@ -65,8 +66,9 @@ function Router() {
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
-      <Route path={"/admin/atolls"} component={AdminAtolls} />
-      <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
+      <Route path={"admin/atolls"} component={AdminAtolls} />
+      <Route path={"admin/ferry-routes"} component={AdminFerryRoutes} />
+      <Route path={"admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
