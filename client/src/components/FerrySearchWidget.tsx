@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Waves, MapPin, Clock, DollarSign, Users, ArrowRight } from "lucide-react";
+import { Waves, MapPin, Clock, DollarSign, Users, ArrowRight, Zap } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import TransportationDetails from "./TransportationDetails";
 
 interface FerryRoute {
   id: number;
@@ -34,9 +35,10 @@ export default function FerrySearchWidget({
   const [searchDate, setSearchDate] = useState(
     new Date().toISOString().split("T")[0]
   );
-  const [searchResults, setSearchResults] = useState<FerryRoute[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [selectedRoute, setSelectedRoute] = useState<any>(null);
+  const [optimization, setOptimization] = useState<'speed' | 'cost' | 'comfort' | 'balanced'>('balanced');
 
   // Fetch routes from location
   const { data: outgoingRoutes = [] } = trpc.boatRoutes.fromLocation.useQuery(
@@ -50,6 +52,12 @@ export default function FerrySearchWidget({
     { enabled: !!toLocation && toLocation.length > 0 }
   );
 
+  // Fetch optimized routes using routing system
+  const { data: routeOptions = [], isLoading: isLoadingRoutes } = trpc.boatRoutes.findOptimized.useQuery(
+    { from: fromLocation, to: toLocation, optimization: 'balanced' },
+    { enabled: !!fromLocation && !!toLocation && showResults }
+  );
+
   const handleSearch = () => {
     if (!fromLocation || !toLocation) {
       alert("Please select both origin and destination");
@@ -57,13 +65,6 @@ export default function FerrySearchWidget({
     }
 
     setIsSearching(true);
-
-    // Filter routes that match the search criteria
-    const matchingRoutes = outgoingRoutes.filter(
-      (route) => route.toLocation === toLocation
-    );
-
-    setSearchResults(matchingRoutes);
     setShowResults(true);
     setIsSearching(false);
   };
@@ -170,76 +171,20 @@ export default function FerrySearchWidget({
         {/* Search Results */}
         {showResults && (
           <div className="space-y-3 pt-4 border-t border-border">
-            <h4 className="font-semibold text-sm text-foreground">
-              Available Routes ({searchResults.length})
-            </h4>
-
-            {searchResults.length > 0 ? (
-              <div className="space-y-2 max-h-64 overflow-y-auto">
-                {searchResults.map((route) => (
-                  <button
-                    key={route.id}
-                    onClick={() => {
-                      onRouteSelect?.(route);
-                      setShowResults(false);
-                    }}
-                    className="w-full p-3 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors text-left border border-border hover:border-accent/30"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <p className="font-semibold text-sm text-foreground">
-                          {route.name}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {route.fromLocation} → {route.toLocation}
-                        </p>
-                      </div>
-                      <Badge
-                        variant={
-                          route.type === "ferry" ? "default" : "secondary"
-                        }
-                        className="text-xs"
-                      >
-                        {route.type === "ferry" ? "Ferry" : "Speedboat"}
-                      </Badge>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-2 text-xs">
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        {route.duration}
-                      </div>
-                      <div className="flex items-center gap-1 text-accent font-semibold">
-                        <DollarSign className="w-3 h-3" />
-                        ${(route.price / 100).toFixed(2)}
-                      </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <Users className="w-3 h-3" />
-                        {route.capacity}
-                      </div>
-                    </div>
-
-                    {route.schedule && (
-                      <p className="text-xs text-muted-foreground mt-2">
-                        Schedule: {route.schedule}
-                      </p>
-                    )}
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="p-4 bg-secondary rounded-lg text-center">
-                <p className="text-sm text-muted-foreground">
-                  No direct routes found between {fromLocation} and{" "}
-                  {toLocation}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Try different islands or check inter-island routes
-                </p>
-              </div>
-            )}
+            <TransportationDetails
+              routes={routeOptions}
+              selectedRoute={selectedRoute}
+              onRouteSelect={(route: any) => {
+                setSelectedRoute(route);
+                onRouteSelect?.(route);
+              }}
+              isLoading={isLoadingRoutes}
+              error={routeOptions.length === 0 && !isLoadingRoutes ? "No routes found between these islands" : undefined}
+            />
           </div>
         )}
+
+
 
         {/* Quick Links */}
         <div className="pt-4 border-t border-border">

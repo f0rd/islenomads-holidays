@@ -4,6 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
+import { findAllRoutes, findOptimizedRoutes, getRouteSuggestions } from "./routing";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
 import {
@@ -437,6 +438,32 @@ export const appRouter = router({
       .input(z.object({ location: z.string() }))
       .query(async ({ input }) => {
         return getBoatRoutesToLocation(input.location);
+      }),
+
+    findRoute: publicProcedure
+      .input(z.object({ from: z.string(), to: z.string() }))
+      .query(async ({ input }) => {
+        return findAllRoutes(input.from, input.to);
+      }),
+
+    findOptimized: publicProcedure
+      .input(z.object({
+        from: z.string(),
+        to: z.string(),
+        optimization: z.enum(['speed', 'cost', 'comfort', 'balanced']).optional(),
+      }))
+      .query(async ({ input }) => {
+        return findOptimizedRoutes(input.from, input.to, input.optimization);
+      }),
+
+    suggestions: publicProcedure
+      .input(z.object({
+        from: z.string(),
+        to: z.string(),
+        optimization: z.enum(['speed', 'cost', 'comfort', 'balanced']).optional(),
+      }))
+      .query(async ({ input }) => {
+        return getRouteSuggestions(input.from, input.to, input.optimization);
       }),
   }),
 

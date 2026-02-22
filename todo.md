@@ -1685,3 +1685,23 @@
 - [ ] Add transportation comparison matrix
 - [ ] Add testimonials and trip examples
 - [ ] Implement save/bookmark trip feature
+
+## Transportation Routing System - Multi-Leg Ferry Routing
+- [x] Design multi-leg routing algorithm
+- [x] Create backend routing procedures (findDirectRoutes, findOneStopRoutes, findAllRoutes)
+- [x] Implement optimization strategies (speed, cost, comfort, balanced)
+- [x] Add tRPC procedures for routing (findRoute, findOptimized, suggestions)
+- [x] Create TransportationDetails component for displaying routes
+- [x] Integrate routing into FerrySearchWidget
+- [x] Write and run unit tests (14 tests passing)
+- [x] Handle connecting routes with layover times
+- [x] Provide fallback messaging when no routes available
+
+- [ ] Add alternative transport options (speedboat, shared taxi, etc.)
+- [ ] Implement route optimization (shortest time, lowest cost)
+- [ ] Create routing visualization/timeline display
+- [ ] Integrate routing into Ferry Search widget
+- [ ] Integrate routing into Trip Planner
+- [ ] Add estimated total time and cost calculations
+- [ ] Handle edge cases (no route available, long layovers)
+- [ ] Test multi-leg routing with various island combinations

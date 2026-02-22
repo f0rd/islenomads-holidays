@@ -1,0 +1,85 @@
+{
+  "query": "SELECT fromLocation, toLocation, COUNT(*) as route_count FROM boat_routes GROUP BY fromLocation, toLocation ORDER BY fromLocation, toLocation;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT fromLocation, toLocation, COUNT(*) as route_count FROM boat_routes GROUP BY fromLocation, toLocation ORDER BY fromLocation, toLocation;",
+  "rows": [
+    {
+      "fromLocation": "Dhiffushi",
+      "toLocation": "Huraa",
+      "route_count": "2"
+    },
+    {
+      "fromLocation": "Gulhi",
+      "toLocation": "Maafushi",
+      "route_count": "2"
+    },
+    {
+      "fromLocation": "Himmafushi",
+      "toLocation": "Kaashidhoo",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Huraa",
+      "toLocation": "Dhiffushi",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Kaashidhoo",
+      "toLocation": "Himmafushi",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Maafushi",
+      "toLocation": "Gulhi",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Maafushi",
+      "toLocation": "Thulusdhoo",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Dhiffushi",
+      "route_count": "2"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Gulhi",
+      "route_count": "2"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Himmafushi",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Huraa",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Kaashidhoo",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Maafushi",
+      "route_count": "2"
+    },
+    {
+      "fromLocation": "Male",
+      "toLocation": "Thulusdhoo",
+      "route_count": "1"
+    },
+    {
+      "fromLocation": "Thulusdhoo",
+      "toLocation": "Maafushi",
+      "route_count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "fromLocation\ttoLocation\troute_count\nDhiffushi\tHuraa\t2\nGulhi\tMaafushi\t2\nHimmafushi\tKaashidhoo\t1\nHuraa\tDhiffushi\t1\nKaashidhoo\tHimmafushi\t1\nMaafushi\tGulhi\t1\nMaafushi\tThulusdhoo\t1\nMale\tDhiffushi\t2\nMale\tGulhi\t2\nMale\tHimmafushi\t1\nMale\tHuraa\t1\nMale\tKaashidhoo\t1\nMale\tMaafushi\t2\nMale\tThulusdhoo\t1\nThulusdhoo\tMaafushi\t1\n",
+  "stderr": "",
+  "execution_time_ms": 93
+}
