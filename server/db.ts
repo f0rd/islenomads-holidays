@@ -286,6 +286,32 @@ export async function getBoatRoutesToIsland(islandGuideId: number): Promise<Boat
   ) as any;
 }
 
+// Get boat routes from a specific location (by name)
+export async function getBoatRoutesFromLocation(location: string): Promise<BoatRoute[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(boatRoutes).where(
+    and(
+      eq(boatRoutes.fromLocation, location),
+      eq(boatRoutes.published, 1)
+    )
+  ) as any;
+}
+
+// Get boat routes to a specific location (by name)
+export async function getBoatRoutesToLocation(location: string): Promise<BoatRoute[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return db.select().from(boatRoutes).where(
+    and(
+      eq(boatRoutes.toLocation, location),
+      eq(boatRoutes.published, 1)
+    )
+  ) as any;
+}
+
 // Map Locations helpers
 export async function getMapLocations(published?: boolean): Promise<MapLocation[]> {
   const db = await getDb();

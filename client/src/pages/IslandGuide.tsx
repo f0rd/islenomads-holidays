@@ -25,6 +25,7 @@ import { trpc } from "@/lib/trpc";
 import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
 import { NearbyAttractionsSection } from "@/components/NearbyAttractionsSection";
 import TransportComparison from "@/components/TransportComparison";
+import InterIslandRoutes from "@/components/InterIslandRoutes";
 
 /**
  * UPDATED: IslandGuide component now uses slug-based URLs for SEO
@@ -85,6 +86,18 @@ export default function IslandGuide() {
   
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
   const [activeTab, setActiveTab] = useState("overview");
+  
+  // Fetch inter-island routes from this island
+  const { data: outgoingRoutes = [] } = trpc.boatRoutes.fromLocation.useQuery(
+    { location: guide?.name || "" },
+    { enabled: !!guide?.name }
+  );
+  
+  // Fetch inter-island routes to this island
+  const { data: incomingRoutes = [] } = trpc.boatRoutes.toLocation.useQuery(
+    { location: guide?.name || "" },
+    { enabled: !!guide?.name }
+  );
   
   // Get adjacent islands for navigation (previous/next)
   // Uses slug-based navigation by finding the current guide in ALL_ISLANDS
@@ -315,6 +328,15 @@ export default function IslandGuide() {
                     }
                   ]}
                 />
+                
+                {/* Inter-Island Routes - Island Hopping Options */}
+                {(outgoingRoutes && outgoingRoutes.length > 0) || (incomingRoutes && incomingRoutes.length > 0) ? (
+                  <InterIslandRoutes
+                    islandName={guide.name}
+                    outgoingRoutes={outgoingRoutes || []}
+                    incomingRoutes={incomingRoutes || []}
+                  />
+                ) : null}
               </div>
             </TabsContent>
 

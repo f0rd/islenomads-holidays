@@ -1652,3 +1652,14 @@
 - [ ] Add transport information to trip planner page
 - [x] Display MTCC public ferry and speedboat options with detailed descriptions
 - [x] Add vessel specifications (wooden boats for public ferry, speedboat for fast option)
+
+## Inter-Island Ferry Routes Expansion
+- [x] Add Gulhi to Maafushi ferry route
+- [x] Add Dhiffushi to Huraa ferry route
+- [x] Add Maafushi to Thulusdhoo ferry route
+- [x] Add Himmafushi to Kaashidhoo ferry route
+- [x] Add return routes for all inter-island connections
+- [x] Create location-based boat route query functions
+- [x] Update island guide pages to show inter-island routes
+- [x] Create InterIslandRoutes component for display
+- [x] Integrate inter-island routes into IslandGuide pages

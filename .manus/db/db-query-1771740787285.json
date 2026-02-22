@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, fromLocation, toLocation, type, operator, duration, price FROM boat_routes ORDER BY id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, fromLocation, toLocation, type, operator, duration, price FROM boat_routes ORDER BY id LIMIT 20;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Male to Maafushi Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Maafushi",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "90 minutes",
+      "price": "150"
+    },
+    {
+      "id": "2",
+      "name": "Male to Gulhi Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Gulhi",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "45 minutes",
+      "price": "200"
+    },
+    {
+      "id": "3",
+      "name": "Male to Dhiffushi Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Dhiffushi",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "90 minutes",
+      "price": "300"
+    },
+    {
+      "id": "4",
+      "name": "Male to Huraa Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Huraa",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "60 minutes",
+      "price": "250"
+    },
+    {
+      "id": "5",
+      "name": "Male to Thulusdhoo Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Thulusdhoo",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "60 minutes",
+      "price": "300"
+    },
+    {
+      "id": "6",
+      "name": "Male to Himmafushi Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Himmafushi",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "45 minutes",
+      "price": "200"
+    },
+    {
+      "id": "7",
+      "name": "Male to Kaashidhoo Ferry",
+      "fromLocation": "Male",
+      "toLocation": "Kaashidhoo",
+      "type": "ferry",
+      "operator": "NULL",
+      "duration": "120 minutes",
+      "price": "400"
+    },
+    {
+      "id": "8",
+      "name": "Male to Maafushi Speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Maafushi",
+      "type": "speedboat",
+      "operator": "NULL",
+      "duration": "60 minutes",
+      "price": "2500"
+    },
+    {
+      "id": "9",
+      "name": "Male to Gulhi Speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Gulhi",
+      "type": "speedboat",
+      "operator": "NULL",
+      "duration": "35 minutes",
+      "price": "2000"
+    },
+    {
+      "id": "10",
+      "name": "Male to Dhiffushi Speedboat",
+      "fromLocation": "Male",
+      "toLocation": "Dhiffushi",
+      "type": "speedboat",
+      "operator": "NULL",
+      "duration": "50 minutes",
+      "price": "2500"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfromLocation\ttoLocation\ttype\toperator\tduration\tprice\n1\tMale to Maafushi Ferry\tMale\tMaafushi\tferry\tNULL\t90 minutes\t150\n2\tMale to Gulhi Ferry\tMale\tGulhi\tferry\tNULL\t45 minutes\t200\n3\tMale to Dhiffushi Ferry\tMale\tDhiffushi\tferry\tNULL\t90 minutes\t300\n4\tMale to Huraa Ferry\tMale\tHuraa\tferry\tNULL\t60 minutes\t250\n5\tMale to Thulusdhoo Ferry\tMale\tThulusdhoo\tferry\tNULL\t60 minutes\t300\n6\tMale to Himmafushi Ferry\tMale\tHimmafushi\tferry\tNULL\t45 minutes\t200\n7\tMale to Kaashidhoo Ferry\tMale\tKaashidhoo\tferry\tNULL\t120 minutes\t400\n8\tMale to Maafushi Speedboat\tMale\tMaafushi\tspeedboat\tNULL\t60 minutes\t2500\n9\tMale to Gulhi Speedboat\tMale\tGulhi\tspeedboat\tNULL\t35 minutes\t2000\n10\tMale to Dhiffushi Speedboat\tMale\tDhiffushi\tspeedboat\tNULL\t50 minutes\t2500\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

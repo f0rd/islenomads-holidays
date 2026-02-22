@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total_routes FROM boat_routes WHERE fromLocation IN ('Gulhi', 'Dhiffushi', 'Maafushi', 'Himmafushi', 'Thulusdhoo', 'Kaashidhoo');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_routes FROM boat_routes WHERE fromLocation IN ('Gulhi', 'Dhiffushi', 'Maafushi', 'Himmafushi', 'Thulusdhoo', 'Kaashidhoo');",
+  "rows": [
+    {
+      "total_routes": "9"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_routes\n9\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}
