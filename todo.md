@@ -1705,3 +1705,17 @@
 - [ ] Add estimated total time and cost calculations
 - [ ] Handle edge cases (no route available, long layovers)
 - [ ] Test multi-leg routing with various island combinations
+
+## Admin Dashboard - Ferry Routes Management
+- [x] Create FerryRoutesAdmin component with table view
+- [x] Build route creation form with validation
+- [x] Build route editing form with pre-filled data
+- [x] Implement filtering by location, type, status
+- [x] Add sorting by price, duration, capacity
+- [x] Add CSV export for routes
+- [x] Implement search functionality
+- [x] Create route status toggle (published/draft)
+- [x] Write and run unit tests (16 tests passing)
+- [ ] Integrate FerryRoutesAdmin into admin dashboard page
+- [ ] Add bulk import from CSV
+- [ ] Add pagination for large datasets
