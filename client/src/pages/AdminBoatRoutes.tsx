@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
+import AdminNavigation from "@/components/AdminNavigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -210,8 +211,10 @@ export default function AdminBoatRoutes() {
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
+    <>
+      <AdminNavigation currentPage="Boat Routes" />
+      <div className="p-8 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Boat Routes Management</h1>
           <p className="text-gray-600 mt-2">Manage speedboat and ferry routes</p>
@@ -424,6 +427,7 @@ export default function AdminBoatRoutes() {
           </CardContent>
         </Card>
       )}
-    </div>
+      </div>
+    </>
   );
 }

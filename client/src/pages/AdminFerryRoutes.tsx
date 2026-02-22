@@ -6,6 +6,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
 import FerryRoutesAdmin from '@/components/FerryRoutesAdmin';
+import AdminNavigation from '@/components/AdminNavigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertTriangle, Ship } from 'lucide-react';
@@ -65,6 +66,9 @@ export default function AdminFerryRoutes() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Admin Navigation */}
+      <AdminNavigation currentPage="Ferry Routes" />
+
       {/* Header */}
       <div className="border-b border-border bg-card">
         <div className="container py-6">

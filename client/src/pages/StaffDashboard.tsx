@@ -164,6 +164,18 @@ function StaffDashboardContent() {
                 <ChevronRight className="w-4 h-4" />
               </Button>
             </Link>
+            <Link href="/admin/ferry-routes">
+              <Button className="w-full justify-between bg-cyan-50 text-cyan-700 hover:bg-cyan-100 border border-cyan-200">
+                <span>Ferry Routes</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </Link>
+            <Link href="/admin/island-guides">
+              <Button className="w-full justify-between bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200">
+                <span>Island Guides</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
