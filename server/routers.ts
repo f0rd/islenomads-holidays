@@ -1,12 +1,13 @@
 import { getSessionCookieOptions } from "./_core/cookies";
 import { COOKIE_NAME } from "../shared/const";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
+import { publicProcedure, router, protectedProcedure, adminProcedure } from "./_core/trpc";
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
 import { findAllRoutes, findOptimizedRoutes, getRouteSuggestions } from "./routing";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
+import { getAllUsers, getUserById, getAllAdminUsers, assignAdminRole, removeAdminRole, updateUserRole, getUserStatistics } from "./userManagement";
 import {
   getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost,
   getBlogComments, createBlogComment, getAllPackages, getPackageById, getPackageBySlug, createPackage,
@@ -42,6 +43,47 @@ export const appRouter = router({
       return {
         success: true,
       } as const;
+    }),
+  }),
+
+  users: router({
+    list: adminProcedure.query(async () => {
+      return getAllUsers();
+    }),
+
+    getById: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getUserById(input.id);
+      }),
+
+    listAdmins: adminProcedure.query(async () => {
+      return getAllAdminUsers();
+    }),
+
+    assignAdmin: adminProcedure
+      .input(z.object({ userId: z.number() }))
+      .mutation(async ({ input }) => {
+        await assignAdminRole(input.userId);
+        return { success: true, message: "User promoted to admin" };
+      }),
+
+    removeAdmin: adminProcedure
+      .input(z.object({ userId: z.number() }))
+      .mutation(async ({ input }) => {
+        await removeAdminRole(input.userId);
+        return { success: true, message: "User demoted to regular user" };
+      }),
+
+    updateRole: adminProcedure
+      .input(z.object({ userId: z.number(), role: z.enum(['user', 'admin']) }))
+      .mutation(async ({ input }) => {
+        await updateUserRole(input.userId, input.role);
+        return { success: true, message: "User role updated" };
+      }),
+
+    getStatistics: adminProcedure.query(async () => {
+      return getUserStatistics();
     }),
   }),
 
@@ -352,7 +394,7 @@ export const appRouter = router({
         return getBoatRouteById(input.id);
       }),
 
-    create: protectedProcedure
+    create: adminProcedure
       .input(
         z.object({
           name: z.string(),
@@ -379,7 +421,7 @@ export const appRouter = router({
         } as any);
       }),
 
-    update: protectedProcedure
+    update: adminProcedure
       .input(
         z.object({
           id: z.number(),
@@ -406,7 +448,7 @@ export const appRouter = router({
         return updateBoatRoute(id, updateData);
       }),
 
-    delete: protectedProcedure
+    delete: adminProcedure
       .input(z.object({ id: z.number() }))
       .mutation(async ({ input }) => {
         return deleteBoatRoute(input.id);

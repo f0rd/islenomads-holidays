@@ -1719,3 +1719,13 @@
 - [ ] Integrate FerryRoutesAdmin into admin dashboard page
 - [ ] Add bulk import from CSV
 - [ ] Add pagination for large datasets
+
+## Role-Based Access Control (RBAC) Implementation
+- [x] Update ferry route CRUD to use adminProcedure
+- [x] Create user management database functions
+- [x] Add user management tRPC router with 6 procedures
+- [x] Implement role assignment (admin/user)
+- [x] Create user statistics tracking
+- [x] Write and run RBAC tests (20 tests passing)
+- [x] Verify admin-only access to ferry management
+- [x] Verify public access to ferry listings
