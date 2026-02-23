@@ -1746,3 +1746,13 @@
 - [x] Test navigation across all admin pages
 - [ ] Add navigation buttons to remaining admin pages (Blog, Packages, etc.)
 - [ ] Add breadcrumb navigation to admin pages
+
+## Transport System Consolidation - boat_routes Unification (COMPLETED)
+- [x] Audit transport_routes table for any existing data (0 rows - no migration needed)
+- [x] Remove transport_routes table from database schema
+- [x] Remove transport_routes references from backend code
+- [x] Remove transport_routes type definitions from TypeScript
+- [x] Update all queries to use boat_routes exclusively
+- [x] Update getIslandWithSpots to use boat_routes
+- [x] Update test file to reference boatRoutes
+- [x] Verify all TypeScript errors resolved

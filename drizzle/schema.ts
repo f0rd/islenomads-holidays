@@ -675,46 +675,10 @@ export const islandExperiences = mysqlTable(
 export type IslandExperience = typeof islandExperiences.$inferSelect;
 export type InsertIslandExperience = typeof islandExperiences.$inferInsert;
 
-/**
- * Transport Routes: Public ferries, speedboats, private transfers
- * Stores schedule info and booking details for "How to Get There"
- */
-export const transportRoutes = mysqlTable(
-  "transport_routes",
-  {
-    id: int("id").autoincrement().primaryKey(),
-    fromIslandId: int("fromIslandId").notNull(),
-    toIslandId: int("toIslandId").notNull(),
-    routeType: mysqlEnum("routeType", [
-      "public_ferry",
-      "speedboat",
-      "private_transfer",
-    ]).notNull(),
-    operatorName: varchar("operatorName", { length: 255 }),
-    scheduleText: text("scheduleText"), // Simple CMS version (e.g., "Daily 8am, 2pm, 5pm")
-    durationMin: int("durationMin"),
-    priceMvr: decimal("priceMvr", { precision: 8, scale: 2 }),
-    priceUsd: decimal("priceUsd", { precision: 8, scale: 2 }),
-    bookingInfo: text("bookingInfo"),
-    sourceUrl: varchar("sourceUrl", { length: 500 }),
-    lastVerifiedAt: timestamp("lastVerifiedAt"),
-    isActive: int("isActive").default(1).notNull(),
-    createdAt: timestamp("createdAt").defaultNow().notNull(),
-    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-  },
-  (table) => ({
-    fromIslandIdx: index("idx_transport_from_island").on(table.fromIslandId),
-    toIslandIdx: index("idx_transport_to_island").on(table.toIslandId),
-    routeIdx: index("idx_transport_route_type").on(
-      table.fromIslandId,
-      table.toIslandId,
-      table.routeType
-    ),
-  })
-);
-
-export type TransportRoute = typeof transportRoutes.$inferSelect;
-export type InsertTransportRoute = typeof transportRoutes.$inferInsert;
+// DEPRECATED: transport_routes table consolidated into boat_routes
+// All transport data now uses boat_routes table exclusively
+// Migration: boat_routes provides all functionality with better data structure
+// See BOAT_ROUTES_VS_TRANSPORT_ROUTES.md for consolidation details
 
 /**
  * Media: Centralized media storage for all entities

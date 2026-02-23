@@ -1,6 +1,6 @@
 import { eq, and, desc, asc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, transportRoutes, TransportRoute, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -1304,26 +1304,8 @@ export async function getSpotsByActivityType(activityTypeId: number) {
   return result;
 }
 
-/**
- * Get transport routes between two islands
- */
-export async function getTransportRoutesBetweenIslands(fromIslandId: number, toIslandId: number) {
-  const db = await getDb();
-  if (!db) return [];
-  
-  const result = await db
-    .select()
-    .from(transportRoutes)
-    .where(
-      and(
-        eq(transportRoutes.fromIslandId, fromIslandId),
-        eq(transportRoutes.toIslandId, toIslandId),
-        eq(transportRoutes.isActive, 1)
-      )
-    );
-  
-  return result;
-}
+// DEPRECATED: getTransportRoutesBetweenIslands removed - use boat_routes instead
+// Use getBoatRoutesFromLocation() and getBoatRoutesToLocation() for route queries
 
 /**
  * Get all experiences for an island
@@ -1448,17 +1430,14 @@ export async function getIslandWithSpots(islandId: number) {
   // Get experiences available on this island
   const experienceData = await getExperiencesByIsland(islandId);
   
-  // Get transport routes from this island
-  const routes = await db
-    .select()
-    .from(transportRoutes)
-    .where(eq(transportRoutes.fromIslandId, islandId));
+  // Get boat routes from this island (consolidated transport system)
+  const routes = await getBoatRoutesFromLocation(island[0].name);
   
   return {
     island: island[0],
     spots,
     experiences: experienceData,
-    transportRoutes: routes,
+    boatRoutes: routes,
   };
 }
 

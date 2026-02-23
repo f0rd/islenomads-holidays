@@ -25,7 +25,7 @@ import {
   deleteAtoll,  getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getRegularIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
   getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots, getActivitySpotsForIslandSelector, getActivitySpotsByType,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
-  getTransportRoutesBetweenIslands, getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
+  getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
   getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland,
   getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics,
@@ -1285,13 +1285,7 @@ export const appRouter = router({
       }),
   }),
 
-  transportRoutes: router({
-    getBetweenIslands: publicProcedure
-      .input(z.object({ fromIslandId: z.number(), toIslandId: z.number() }))
-      .query(async ({ input }) => {
-        return getTransportRoutesBetweenIslands(input.fromIslandId, input.toIslandId);
-      }),
-  }),
+  // DEPRECATED: transportRoutes router removed - use boatRoutes instead
 
   islandData: router({
     getWithSpots: publicProcedure

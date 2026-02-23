@@ -5,7 +5,6 @@ import {
   getSpotsByIsland,
   getIslandsBySpot,
   getSpotsByActivityType,
-  getTransportRoutesBetweenIslands,
   getExperiencesByIsland,
   getExperiencesByActivityType,
   getIslandWithSpots,
@@ -73,18 +72,8 @@ describe("New Schema Database Functions", () => {
     });
   });
 
-  describe("Transport Routes", () => {
-    it("should retrieve transport routes between islands", async () => {
-      // Get routes from Malé (id: 1) to Thulusdhoo (id: 2)
-      const routes = await getTransportRoutesBetweenIslands(1, 2);
-      expect(Array.isArray(routes)).toBe(true);
-      if (routes.length > 0) {
-        expect(routes[0]).toHaveProperty("type");
-        expect(routes[0]).toHaveProperty("duration");
-        expect(routes[0]).toHaveProperty("price");
-      }
-    });
-  });
+  // Transport routes now consolidated into boat_routes
+  // See boatRoutes router for route queries
 
   describe("Experiences", () => {
     it("should retrieve experiences for an island", async () => {
@@ -112,10 +101,10 @@ describe("New Schema Database Functions", () => {
         expect(islandData).toHaveProperty("island");
         expect(islandData).toHaveProperty("spots");
         expect(islandData).toHaveProperty("experiences");
-        expect(islandData).toHaveProperty("transportRoutes");
+        expect(islandData).toHaveProperty("boatRoutes");
         expect(Array.isArray(islandData.spots)).toBe(true);
         expect(Array.isArray(islandData.experiences)).toBe(true);
-        expect(Array.isArray(islandData.transportRoutes)).toBe(true);
+        expect(Array.isArray(islandData.boatRoutes)).toBe(true);
       }
     });
 
