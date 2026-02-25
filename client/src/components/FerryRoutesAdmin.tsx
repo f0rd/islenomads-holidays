@@ -707,9 +707,7 @@ export default function FerryRoutesAdmin() {
                         </Badge>
                       </TableCell>
                       <TableCell>{route.duration}</TableCell>
-                      <TableCell className="font-semibold text-accent">
-                        ${(route.price / 100).toFixed(2)}
-                      </TableCell>
+
                       <TableCell>{route.capacity}</TableCell>
                       <TableCell>
                         <Badge

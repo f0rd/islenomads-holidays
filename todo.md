@@ -1756,3 +1756,13 @@
 - [x] Update getIslandWithSpots to use boat_routes
 - [x] Update test file to reference boatRoutes
 - [x] Verify all TypeScript errors resolved
+
+## Ferry UI Cleanup - Remove Pricing & Booking
+- [ ] Remove Book Now buttons from TransportComparison
+- [ ] Remove price display from TransportComparison
+- [ ] Remove Book Now buttons from TransportationDetails
+- [ ] Remove price display from TransportationDetails
+- [ ] Remove Book Now buttons from InterIslandRoutes
+- [ ] Remove price display from InterIslandRoutes
+- [ ] Remove Book Now buttons from FerryRoutesAdmin
+- [ ] Verify all ferry components display without prices

@@ -120,12 +120,7 @@ function TransportOptionCard({ option }: { option: TransportOption }) {
             </div>
             <CardDescription>{option.vesselType}</CardDescription>
           </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-primary">
-              MVR {(option.price / 100).toFixed(0)}
-            </div>
-            <p className="text-sm text-muted-foreground">per person</p>
-          </div>
+
         </div>
       </CardHeader>
 

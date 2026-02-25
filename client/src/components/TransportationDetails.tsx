@@ -119,14 +119,7 @@ export default function TransportationDetails({
             </p>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-br from-green-500/5 to-transparent">
-          <CardContent className="pt-4">
-            <p className="text-xs text-muted-foreground mb-1">Cheapest Route</p>
-            <p className="text-lg font-bold text-green-600">
-              ${(Math.min(...routes.map((r) => r.totalCost)) / 100).toFixed(2)}
-            </p>
-          </CardContent>
-        </Card>
+
         <Card className="bg-gradient-to-br from-blue-500/5 to-transparent">
           <CardContent className="pt-4">
             <p className="text-xs text-muted-foreground mb-1">
@@ -178,10 +171,7 @@ export default function TransportationDetails({
                       <Clock className="w-4 h-4" />
                       <span>{route.totalDuration}</span>
                     </div>
-                    <div className="flex items-center gap-1 text-accent font-semibold">
-                      <DollarSign className="w-4 h-4" />
-                      <span>${(route.totalCost / 100).toFixed(2)}</span>
-                    </div>
+
                     <div className="flex items-center gap-1 text-muted-foreground">
                       <Waves className="w-4 h-4" />
                       <span>{route.segments.length} Leg(s)</span>
@@ -235,12 +225,7 @@ export default function TransportationDetails({
                               {segment.duration}
                             </p>
                           </div>
-                          <div>
-                            <p className="text-muted-foreground">Price</p>
-                            <p className="font-semibold text-accent">
-                              ${(segment.price / 100).toFixed(2)}
-                            </p>
-                          </div>
+
                           <div>
                             <p className="text-muted-foreground">Schedule</p>
                             <p className="font-semibold text-foreground">
@@ -291,21 +276,13 @@ export default function TransportationDetails({
 
                 {/* Total Summary */}
                 <div className="p-3 bg-accent/10 rounded-lg border border-accent/20">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs text-muted-foreground">
-                        Total Journey
-                      </p>
-                      <p className="font-semibold text-foreground">
-                        {route.totalDuration}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs text-muted-foreground">Total Cost</p>
-                      <p className="text-lg font-bold text-accent">
-                        ${(route.totalCost / 100).toFixed(2)}
-                      </p>
-                    </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">
+                      Total Journey
+                    </p>
+                    <p className="font-semibold text-foreground">
+                      {route.totalDuration}
+                    </p>
                   </div>
                 </div>
 
