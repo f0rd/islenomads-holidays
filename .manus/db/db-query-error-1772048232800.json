@@ -1,0 +1,8 @@
+{
+  "query": "SELECT 'blogs' as table_name, COUNT(*) as count FROM blogs UNION ALL SELECT 'packages', COUNT(*) FROM packages UNION ALL SELECT 'island_guides', COUNT(*) FROM island_guides UNION ALL SELECT 'attraction_guides', COUNT(*) FROM attraction_guides UNION ALL SELECT 'boat_routes', COUNT(*) FROM boat_routes;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT 'blogs' as table_name, COUNT(*) as count FROM blogs UNION ALL SELECT 'packages', COUNT(*) FROM packages UNION ALL SELECT 'island_guides', COUNT(*) FROM island_guides UNION ALL SELECT 'attraction_guides', COUNT(*) FROM attraction_guides UNION ALL SELECT 'boat_routes', COUNT(*) FROM boat_routes;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 'juccyykxywxacnny3wop55.blogs' doesn't exist"
+  ]
+}

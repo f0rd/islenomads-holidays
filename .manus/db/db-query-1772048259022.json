@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, author, published FROM blog_posts LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, title, author, published FROM blog_posts LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "Ultimate Guide to Snorkeling in the Maldives: Best Spots and Tips for 2024",
+      "author": "Sarah Mitchell",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tauthor\tpublished\n1\tUltimate Guide to Snorkeling in the Maldives: Best Spots and Tips for 2024\tSarah Mitchell\t1\n",
+  "stderr": "",
+  "execution_time_ms": 50
+}

@@ -1,0 +1,115 @@
+{
+  "query": "SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() AND table_type = 'BASE TABLE' ORDER BY table_name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE() AND table_type = 'BASE TABLE' ORDER BY table_name;",
+  "rows": [
+    {
+      "table_name": "__drizzle_migrations"
+    },
+    {
+      "table_name": "activity_log"
+    },
+    {
+      "table_name": "activity_spots"
+    },
+    {
+      "table_name": "activity_types"
+    },
+    {
+      "table_name": "airport_routes"
+    },
+    {
+      "table_name": "airports"
+    },
+    {
+      "table_name": "atolls"
+    },
+    {
+      "table_name": "attraction_guides"
+    },
+    {
+      "table_name": "attraction_island_links"
+    },
+    {
+      "table_name": "blog_comments"
+    },
+    {
+      "table_name": "blog_posts"
+    },
+    {
+      "table_name": "boat_routes"
+    },
+    {
+      "table_name": "branding"
+    },
+    {
+      "table_name": "cms_pages"
+    },
+    {
+      "table_name": "crm_customers"
+    },
+    {
+      "table_name": "crm_interactions"
+    },
+    {
+      "table_name": "crm_queries"
+    },
+    {
+      "table_name": "experiences"
+    },
+    {
+      "table_name": "hero_gallery"
+    },
+    {
+      "table_name": "hero_settings"
+    },
+    {
+      "table_name": "island_experiences"
+    },
+    {
+      "table_name": "island_guides"
+    },
+    {
+      "table_name": "island_spot_access"
+    },
+    {
+      "table_name": "map_locations"
+    },
+    {
+      "table_name": "media"
+    },
+    {
+      "table_name": "packages"
+    },
+    {
+      "table_name": "places"
+    },
+    {
+      "table_name": "seo_meta_tags"
+    },
+    {
+      "table_name": "seo_metadata"
+    },
+    {
+      "table_name": "spot_types"
+    },
+    {
+      "table_name": "staff"
+    },
+    {
+      "table_name": "staff_roles"
+    },
+    {
+      "table_name": "transport_routes"
+    },
+    {
+      "table_name": "transports"
+    },
+    {
+      "table_name": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "table_name\n__drizzle_migrations\nactivity_log\nactivity_spots\nactivity_types\nairport_routes\nairports\natolls\nattraction_guides\nattraction_island_links\nblog_comments\nblog_posts\nboat_routes\nbranding\ncms_pages\ncrm_customers\ncrm_interactions\ncrm_queries\nexperiences\nhero_gallery\nhero_settings\nisland_experiences\nisland_guides\nisland_spot_access\nmap_locations\nmedia\npackages\nplaces\nseo_meta_tags\nseo_metadata\nspot_types\nstaff\nstaff_roles\ntransport_routes\ntransports\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 102
+}

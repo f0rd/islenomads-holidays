@@ -1,0 +1,19 @@
+{
+  "query": "SELECT COUNT(*) as boat_routes_count FROM boat_routes; SELECT COUNT(*) as island_guides_count FROM island_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as boat_routes_count FROM boat_routes; SELECT COUNT(*) as island_guides_count FROM island_guides;",
+  "rows": [
+    {
+      "boat_routes_count": "20"
+    },
+    {
+      "boat_routes_count": "island_guides_count"
+    },
+    {
+      "boat_routes_count": "129"
+    }
+  ],
+  "messages": [],
+  "stdout": "boat_routes_count\n20\nisland_guides_count\n129\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

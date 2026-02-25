@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, name, destination, category FROM packages LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, destination, category FROM packages LIMIT 10;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Test Package",
+      "destination": "Maldives",
+      "category": "adventure"
+    },
+    {
+      "id": "90012",
+      "name": "Test Package",
+      "destination": "Maldives",
+      "category": "adventure"
+    },
+    {
+      "id": "150008",
+      "name": "Romantic Escape",
+      "destination": "North Malé Atoll",
+      "category": "relaxation"
+    },
+    {
+      "id": "150009",
+      "name": "Ultimate Paradise",
+      "destination": "South Ari Atoll",
+      "category": "luxury"
+    },
+    {
+      "id": "150010",
+      "name": "Island Explorer",
+      "destination": "Baa Atoll",
+      "category": "island-hopping"
+    },
+    {
+      "id": "150011",
+      "name": "Honeymoon Bliss",
+      "destination": "Vaavu Atoll",
+      "category": "relaxation"
+    },
+    {
+      "id": "150012",
+      "name": "Adventure Seeker",
+      "destination": "Lhaviyani Atoll",
+      "category": "water-sports"
+    },
+    {
+      "id": "150013",
+      "name": "Family Fun Paradise",
+      "destination": "Meemu Atoll",
+      "category": "family-adventures"
+    },
+    {
+      "id": "150014",
+      "name": "Luxury Retreat",
+      "destination": "Dhaalu Atoll",
+      "category": "luxury"
+    },
+    {
+      "id": "150015",
+      "name": "Budget Beach Getaway",
+      "destination": "Addu Atoll",
+      "category": "adventure"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tdestination\tcategory\n1\tTest Package\tMaldives\tadventure\n90012\tTest Package\tMaldives\tadventure\n150008\tRomantic Escape\tNorth Malé Atoll\trelaxation\n150009\tUltimate Paradise\tSouth Ari Atoll\tluxury\n150010\tIsland Explorer\tBaa Atoll\tisland-hopping\n150011\tHoneymoon Bliss\tVaavu Atoll\trelaxation\n150012\tAdventure Seeker\tLhaviyani Atoll\twater-sports\n150013\tFamily Fun Paradise\tMeemu Atoll\tfamily-adventures\n150014\tLuxury Retreat\tDhaalu Atoll\tluxury\n150015\tBudget Beach Getaway\tAddu Atoll\tadventure\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}
