@@ -1,0 +1,80 @@
+{
+  "query": "SELECT id, name, category, price, duration FROM packages LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, category, price, duration FROM packages LIMIT 10;",
+  "rows": [
+    {
+      "id": "420001",
+      "name": "Luxury Island Escape",
+      "category": "luxury",
+      "price": "250000",
+      "duration": "5 days"
+    },
+    {
+      "id": "420002",
+      "name": "Diving Adventure",
+      "category": "diving-snorkeling",
+      "price": "180000",
+      "duration": "4 days"
+    },
+    {
+      "id": "420003",
+      "name": "Island Hopping Tour",
+      "category": "island-hopping",
+      "price": "150000",
+      "duration": "6 days"
+    },
+    {
+      "id": "420004",
+      "name": "Romantic Honeymoon Package",
+      "category": "luxury",
+      "price": "350000",
+      "duration": "7 days"
+    },
+    {
+      "id": "420005",
+      "name": "Budget Backpacker",
+      "category": "solo-travel",
+      "price": "60000",
+      "duration": "3 days"
+    },
+    {
+      "id": "420006",
+      "name": "Surfing Paradise",
+      "category": "water-sports",
+      "price": "120000",
+      "duration": "5 days"
+    },
+    {
+      "id": "420007",
+      "name": "Wellness Retreat",
+      "category": "relaxation",
+      "price": "200000",
+      "duration": "6 days"
+    },
+    {
+      "id": "420008",
+      "name": "Photography Expedition",
+      "category": "adventure",
+      "price": "160000",
+      "duration": "4 days"
+    },
+    {
+      "id": "420009",
+      "name": "Family Fun Package",
+      "category": "family-adventures",
+      "price": "140000",
+      "duration": "5 days"
+    },
+    {
+      "id": "420010",
+      "name": "Eco-Tourism Adventure",
+      "category": "adventure",
+      "price": "130000",
+      "duration": "4 days"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcategory\tprice\tduration\n420001\tLuxury Island Escape\tluxury\t250000\t5 days\n420002\tDiving Adventure\tdiving-snorkeling\t180000\t4 days\n420003\tIsland Hopping Tour\tisland-hopping\t150000\t6 days\n420004\tRomantic Honeymoon Package\tluxury\t350000\t7 days\n420005\tBudget Backpacker\tsolo-travel\t60000\t3 days\n420006\tSurfing Paradise\twater-sports\t120000\t5 days\n420007\tWellness Retreat\trelaxation\t200000\t6 days\n420008\tPhotography Expedition\tadventure\t160000\t4 days\n420009\tFamily Fun Package\tfamily-adventures\t140000\t5 days\n420010\tEco-Tourism Adventure\tadventure\t130000\t4 days\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}
