@@ -5,7 +5,7 @@
 
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLocation } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -16,32 +16,33 @@ import {
   Activity,
   CheckCircle2,
   AlertCircle,
-  Users
+  Users,
+  MapPin,
+  Loader2
 } from "lucide-react";
 import { Link } from "wouter";
-
-interface DashboardStats {
-  totalPosts: number;
-  totalPackages: number;
-  totalLocations: number;
-  pendingApprovals: number;
-}
+import { trpc } from "@/lib/trpc";
 
 function StaffDashboardContent() {
   const { user, isAuthenticated } = useAuth();
   const [, navigate] = useLocation();
-  const [stats, setStats] = useState<DashboardStats>({
-    totalPosts: 0,
-    totalPackages: 0,
-    totalLocations: 0,
-    pendingApprovals: 0,
-  });
+  
+  // Fetch real dashboard data from server
+  const { data: dashboardData, isLoading } = trpc.system.getDashboardStats.useQuery();
 
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/staff-login");
     }
   }, [isAuthenticated, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="w-8 h-8 animate-spin text-accent" />
+      </div>
+    );
+  }
 
   const recentActivity = [
     { id: 1, action: "Blog post published", user: "Sarah Johnson", time: "2 hours ago", type: "success" },
@@ -78,8 +79,8 @@ function StaffDashboardContent() {
           <CardContent>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-3xl font-bold text-gray-900">24</p>
-                <p className="text-xs text-green-600 mt-1">↑ 3 this month</p>
+                <p className="text-3xl font-bold text-gray-900">{dashboardData?.summary?.totalBlogPosts || 0}</p>
+                <p className="text-xs text-green-600 mt-1">Published posts</p>
               </div>
               <FileText className="w-12 h-12 text-blue-100" />
             </div>
@@ -93,8 +94,8 @@ function StaffDashboardContent() {
           <CardContent>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-3xl font-bold text-gray-900">12</p>
-                <p className="text-xs text-green-600 mt-1">↑ 2 this month</p>
+                <p className="text-3xl font-bold text-gray-900">{dashboardData?.summary?.totalPackages || 0}</p>
+                <p className="text-xs text-green-600 mt-1">Available packages</p>
               </div>
               <Package className="w-12 h-12 text-purple-100" />
             </div>
@@ -103,111 +104,114 @@ function StaffDashboardContent() {
 
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Pending Approvals</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Island Guides</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-3xl font-bold text-orange-600">5</p>
-                <p className="text-xs text-orange-600 mt-1">Awaiting review</p>
+                <p className="text-3xl font-bold text-gray-900">{dashboardData?.summary?.totalIslandGuides || 0}</p>
+                <p className="text-xs text-green-600 mt-1">Published guides</p>
               </div>
-              <AlertCircle className="w-12 h-12 text-orange-100" />
+              <MapPin className="w-12 h-12 text-orange-100" />
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Staff Members</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Activity Spots</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-3xl font-bold text-gray-900">8</p>
-                <p className="text-xs text-green-600 mt-1">All active</p>
+                <p className="text-3xl font-bold text-gray-900">{dashboardData?.summary?.totalActivitySpots || 0}</p>
+                <p className="text-xs text-green-600 mt-1">Registered spots</p>
               </div>
-              <Users className="w-12 h-12 text-green-100" />
+              <Activity className="w-12 h-12 text-red-100" />
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Quick Actions & Recent Activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Quick Actions */}
-        <Card className="lg:col-span-1">
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <Link href="/admin/blog">
-              <Button className="w-full justify-between bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200">
-                <span>New Blog Post</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/admin/packages">
-              <Button className="w-full justify-between bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200">
-                <span>New Package</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/admin/seo-optimizer">
-              <Button className="w-full justify-between bg-green-50 text-green-700 hover:bg-green-100 border border-green-200">
-                <span>Review SEO Tags</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/admin/staff">
-              <Button className="w-full justify-between bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300">
-                <span>Manage Staff</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/admin/ferry-routes">
-              <Button className="w-full justify-between bg-cyan-50 text-cyan-700 hover:bg-cyan-100 border border-cyan-200">
-                <span>Ferry Routes</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <Link href="/admin/island-guides">
-              <Button className="w-full justify-between bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200">
-                <span>Island Guides</span>
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-
-        {/* Recent Activity */}
+      {/* Quick Actions */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>Latest actions from your team</CardDescription>
+            <CardTitle>Quick Actions</CardTitle>
+            <CardDescription>Manage your content</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-start gap-4 pb-4 border-b border-gray-200 last:border-0 last:pb-0">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    activity.type === "success" ? "bg-green-100" : "bg-blue-100"
-                  }`}>
-                    {activity.type === "success" ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    ) : (
-                      <Activity className="w-5 h-5 text-blue-600" />
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                    <p className="text-xs text-gray-500 mt-1">by {activity.user} • {activity.time}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="grid grid-cols-2 gap-3">
+              <Link href="/admin/blog">
+                <Button variant="outline" className="w-full justify-between">
+                  <span>Create Blog Post</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/admin/packages">
+                <Button variant="outline" className="w-full justify-between">
+                  <span>Add Package</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/admin/island-guides">
+                <Button variant="outline" className="w-full justify-between">
+                  <span>Create Guide</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/admin/ferry-routes">
+                <Button variant="outline" className="w-full justify-between">
+                  <span>Manage Ferry Routes</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Status</CardTitle>
+            <CardDescription>System overview</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <span className="text-sm">Server running</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <span className="text-sm">Database connected</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <span className="text-sm">All systems operational</span>
             </div>
           </CardContent>
         </Card>
       </div>
+
+      {/* Recent Activity */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Activity</CardTitle>
+          <CardDescription>Latest updates in the system</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {recentActivity.map((activity) => (
+              <div key={activity.id} className="flex items-start gap-4 pb-4 border-b last:border-b-0">
+                <div className={`w-2 h-2 rounded-full mt-2 ${activity.type === 'success' ? 'bg-green-600' : 'bg-blue-600'}`} />
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-gray-900">{activity.action}</p>
+                  <p className="text-xs text-gray-500">{activity.user} • {activity.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

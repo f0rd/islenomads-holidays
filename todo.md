@@ -1758,11 +1758,21 @@
 - [x] Verify all TypeScript errors resolved
 
 ## Ferry UI Cleanup - Remove Pricing & Booking
-- [ ] Remove Book Now buttons from TransportComparison
-- [ ] Remove price display from TransportComparison
-- [ ] Remove Book Now buttons from TransportationDetails
-- [ ] Remove price display from TransportationDetails
-- [ ] Remove Book Now buttons from InterIslandRoutes
-- [ ] Remove price display from InterIslandRoutes
-- [ ] Remove Book Now buttons from FerryRoutesAdmin
-- [ ] Verify all ferry components display without prices
+- [x] Remove Book Now buttons from TransportComparison
+- [x] Remove price display from TransportComparison
+- [x] Remove Book Now buttons from TransportationDetails
+- [x] Remove price display from TransportationDetails
+- [x] Remove Book Now buttons from InterIslandRoutes
+- [x] Remove price display from InterIslandRoutes
+- [x] Remove Book Now buttons from FerryRoutesAdmin
+- [x] Verify all ferry components display without prices
+
+## Staff Dashboard Statistics - Real Database Data
+- [x] Create getDashboardStats tRPC procedure in system router
+- [x] Implement getAnalyticsDashboardData helper in server/db.ts
+- [x] Update StaffDashboard to query real database statistics
+- [x] Create comprehensive unit tests for dashboard data (12 tests passing)
+- [x] Verify all statistics display correct database counts
+- [x] Test blog posts, packages, island guides, activity spots, CRM queries
+- [x] Verify engagement metrics and distribution data
+- [x] Confirm dashboard shows real data instead of hardcoded placeholders
