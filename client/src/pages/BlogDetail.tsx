@@ -5,8 +5,9 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar, User, MessageCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Streamdown } from "streamdown";
+import { useSeoMeta, addStructuredData } from "@/_core/hooks/useSeoMeta";
 
 export default function BlogDetail() {
   const [, params] = useRoute("/blog/:slug");
@@ -29,6 +30,48 @@ export default function BlogDetail() {
   });
 
   const addCommentMutation = trpc.blog.comments.create.useMutation();
+
+  // Set SEO meta tags when post loads
+  useEffect(() => {
+    if (post) {
+      useSeoMeta({
+        title: `${post.title} | Isle Nomads Blog`,
+        description: post.excerpt || post.content?.substring(0, 160) || 'Read our latest travel blog posts about Maldives vacations and island experiences.',
+        keywords: post.category ? `Maldives, ${post.category}, travel, blog` : 'Maldives, travel, blog',
+        ogTitle: post.title,
+        ogDescription: post.excerpt || post.content?.substring(0, 160),
+        ogImage: post.featuredImage || undefined,
+        canonicalUrl: post.slug ? `https://islenomads.com/blog/${post.slug}` : undefined,
+      });
+
+      // Add BlogPosting schema
+      addStructuredData({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt || post.content?.substring(0, 160),
+        image: post.featuredImage,
+        datePublished: post.createdAt,
+        dateModified: post.updatedAt || post.createdAt,
+        author: {
+          '@type': 'Person',
+          name: post.author || 'Isle Nomads',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Isle Nomads',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/hTCJLfNBtwQlXnTa.svg',
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://islenomads.com/blog/${post.slug}`,
+        },
+      }, 'blog-schema');
+    }
+  }, [post]);
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,6 +124,8 @@ export default function BlogDetail() {
             src={post.featuredImage}
             alt={post.title}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/40" />
         </section>

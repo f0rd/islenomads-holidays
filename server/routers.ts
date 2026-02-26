@@ -1,6 +1,7 @@
 import { getSessionCookieOptions } from "./_core/cookies";
 import { COOKIE_NAME } from "../shared/const";
 import { systemRouter } from "./_core/systemRouter";
+import { sitemapRouter } from "./sitemapRouter";
 import { publicProcedure, router, protectedProcedure, adminProcedure } from "./_core/trpc";
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
@@ -1581,6 +1582,8 @@ export const appRouter = router({
         return createHeroSettings(input);
       }),
   }),
+
+  sitemap: sitemapRouter,
 });
 export type AppRouter = typeof appRouter;
 // Note: Airport routes will be added via API endpoint in Express server

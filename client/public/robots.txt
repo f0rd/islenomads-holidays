@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /packages
+Allow: /island-guides
+Allow: /explore-maldives
+Allow: /map
+Allow: /trip-planner
+Allow: /atolls
+Allow: /island/
+Allow: /atoll/
+Allow: /attraction/
+Allow: /about
+Allow: /contact
+
+Disallow: /admin/
+Disallow: /staff-login
+Disallow: /staff/
+Disallow: /cms/
+Disallow: /user/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+Crawl-delay: 1
+Request-rate: 1/1s
+
+Sitemap: https://islenomads.com/sitemap.xml

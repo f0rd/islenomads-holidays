@@ -186,6 +186,8 @@ export default function Atolls() {
                             src={getHeroImage(atoll)}
                             alt={atoll.name}
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
                             {atoll.region}
@@ -253,6 +255,8 @@ export default function Atolls() {
                                       src={getIslandFeaturedImage(island.slug)}
                                       alt={island.name}
                                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                                   </>

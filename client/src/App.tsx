@@ -66,9 +66,9 @@ function Router() {
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
-      <Route path={"admin/atolls"} component={AdminAtolls} />
-      <Route path={"admin/ferry-routes"} component={AdminFerryRoutes} />
-      <Route path={"admin/island-guides"} component={AdminIslandGuides} />
+      <Route path={"/admin/atolls"} component={AdminAtolls} />
+      <Route path={"/admin/ferry-routes"} component={AdminFerryRoutes} />
+      <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}

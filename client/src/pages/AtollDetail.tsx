@@ -128,6 +128,8 @@ export default function AtollDetail() {
           src={getHeroImage(atollData)}
           alt={atollData.name}
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
         
@@ -356,6 +358,8 @@ export default function AtollDetail() {
                             src={getIslandFeaturedImage(island.slug)}
                             alt={island.name}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                         </>
@@ -404,6 +408,8 @@ export default function AtollDetail() {
                             src={getIslandFeaturedImage(island.slug)}
                             alt={island.name}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                            decoding="async"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                         </>
