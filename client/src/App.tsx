@@ -89,6 +89,7 @@ function Router() {
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/admin/seo-optimizer"} component={AdminSEOOptimizer} />
       <Route path={"/admin/dashboard"} component={StaffDashboard} />
+      <Route path={"/user/dashboard"} component={StaffDashboard} />
       <Route path={"/admin/staff"} component={AdminStaff} />
       <Route path={"/admin/activity"} component={AdminActivity} />
       <Route path={"/admin/roles"} component={AdminRoles} />
