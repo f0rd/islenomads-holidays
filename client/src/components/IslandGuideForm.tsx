@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 import { ActivitySpotSelector } from './ActivitySpotSelector';
+import { useState } from 'react';
 
 export interface Attraction {
   id?: string;
@@ -61,39 +61,58 @@ interface IslandGuideFormProps {
 }
 
 export function IslandGuideForm({ initialData, onSubmit, isLoading = false, islandName }: IslandGuideFormProps) {
-  // Parse JSON strings from database into arrays
-  const parseInitialData = (data?: IslandGuideFormData): IslandGuideFormData => {
-    if (!data) return undefined as any;
-    
-    return {
-      ...data,
-      quickFacts: typeof data.quickFacts === 'string' ? JSON.parse(data.quickFacts || '[]') : (data.quickFacts || []),
-      attractions: typeof data.attractions === 'string' ? JSON.parse(data.attractions || '[]') : (data.attractions || []),
-      topThingsToDo: typeof data.topThingsToDo === 'string' ? JSON.parse(data.topThingsToDo || '[]') : (data.topThingsToDo || []),
-      faqs: typeof data.faqs === 'string' ? JSON.parse(data.faqs || '[]') : (data.faqs || []),
-      activitySpots: typeof data.activitySpots === 'string' ? JSON.parse(data.activitySpots || '[]') : (data.activitySpots || []),
-    };
+  // Helper to safely parse JSON strings
+  const safeJsonParse = (value: any, defaultValue: any = []): any => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string') {
+      try {
+        return JSON.parse(value || '[]');
+      } catch {
+        return defaultValue;
+      }
+    }
+    return defaultValue;
   };
 
-  const [formData, setFormData] = useState<IslandGuideFormData>(
-    parseInitialData(initialData) || {
-      name: islandName || '',
-      slug: '',
-      overview: '',
-      quickFacts: ['', '', '', '', '', '', '', ''],
-      attractions: [],
-      transportation: { flight: '', speedboat: '', ferry: '' },
-      topThingsToDo: Array(10).fill({ title: '', description: '' }),
-      // Activity spots managed separately
-      beachesLocalRules: '',
-      foodCafes: '',
-      practicalInfo: '',
-      itinerary3Day: '',
-      itinerary5Day: '',
-      faqs: Array(6).fill({ question: '', answer: '' }),
-      activitySpots: [],
-      published: false,
+  // Parse JSON strings from database into arrays
+  const parseInitialData = (data?: IslandGuideFormData): IslandGuideFormData | null => {
+    if (!data) return null;
+    
+    try {
+      return {
+        ...data,
+        quickFacts: safeJsonParse(data.quickFacts, []),
+        attractions: safeJsonParse(data.attractions, []),
+        topThingsToDo: safeJsonParse(data.topThingsToDo, []),
+        faqs: safeJsonParse(data.faqs, []),
+        activitySpots: safeJsonParse(data.activitySpots, []),
+      };
+    } catch (error) {
+      console.error('Error parsing initial data:', error);
+      return null;
     }
+  };
+
+  const getDefaultFormData = (): IslandGuideFormData => ({
+    name: islandName || '',
+    slug: '',
+    overview: '',
+    quickFacts: ['', '', '', '', '', '', '', ''],
+    attractions: [],
+    transportation: { flight: '', speedboat: '', ferry: '' },
+    topThingsToDo: Array(10).fill({ title: '', description: '' }),
+    beachesLocalRules: '',
+    foodCafes: '',
+    practicalInfo: '',
+    itinerary3Day: '',
+    itinerary5Day: '',
+    faqs: Array(6).fill({ question: '', answer: '' }),
+    activitySpots: [],
+    published: false,
+  });
+
+  const [formData, setFormData] = useState<IslandGuideFormData>(
+    parseInitialData(initialData) || getDefaultFormData()
   );
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -128,19 +147,19 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
   };
 
   const updateQuickFact = (index: number, value: string) => {
-    const updated = [...formData.quickFacts];
+    const updated = [...(formData.quickFacts || [])];
     updated[index] = value;
     setFormData({ ...formData, quickFacts: updated });
   };
 
   const updateThingToDo = (index: number, field: 'title' | 'description', value: string) => {
-    const updated = [...formData.topThingsToDo];
+    const updated = [...(formData.topThingsToDo || [])];
     updated[index] = { ...updated[index], [field]: value };
     setFormData({ ...formData, topThingsToDo: updated });
   };
 
   const updateFAQ = (index: number, field: 'question' | 'answer', value: string) => {
-    const updated = [...formData.faqs];
+    const updated = [...(formData.faqs || [])];
     updated[index] = { ...updated[index], [field]: value };
     setFormData({ ...formData, faqs: updated });
   };
@@ -149,7 +168,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     const newSpot: ActivitySpot = {
       name: '',
       spotType: 'dive_site',
-      difficulty: 'intermediate',
+      description: '',
     };
     setFormData({
       ...formData,
@@ -157,26 +176,43 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     });
   };
 
-  const updateActivitySpot = (index: number, field: keyof ActivitySpot, value: any) => {
+  const removeActivitySpot = (index: number) => {
+    const updated = formData.activitySpots?.filter((_, i) => i !== index) || [];
+    setFormData({ ...formData, activitySpots: updated });
+  };
+
+  const updateActivitySpot = (index: number, field: string, value: any) => {
     const updated = [...(formData.activitySpots || [])];
     updated[index] = { ...updated[index], [field]: value };
     setFormData({ ...formData, activitySpots: updated });
   };
 
-  const removeActivitySpot = (index: number) => {
-    const updated = (formData.activitySpots || []).filter((_, i) => i !== index);
-    setFormData({ ...formData, activitySpots: updated });
+  const addAttraction = () => {
+    setFormData({
+      ...formData,
+      attractions: [...(formData.attractions || []), { name: '', description: '' }],
+    });
+  };
+
+  const removeAttraction = (index: number) => {
+    const updated = formData.attractions?.filter((_, i) => i !== index) || [];
+    setFormData({ ...formData, attractions: updated });
+  };
+
+  const updateAttraction = (index: number, field: string, value: string) => {
+    const updated = [...(formData.attractions || [])];
+    updated[index] = { ...updated[index], [field]: value };
+    setFormData({ ...formData, attractions: updated });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Tabs defaultValue="basic" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="basic">Basic Info</TabsTrigger>
           <TabsTrigger value="content">Content</TabsTrigger>
-          <TabsTrigger value="guides">Guides</TabsTrigger>
-          <TabsTrigger value="itineraries">Itineraries</TabsTrigger>
           <TabsTrigger value="activities">Activities</TabsTrigger>
+          <TabsTrigger value="faq">FAQ</TabsTrigger>
         </TabsList>
 
         {/* Basic Info Tab */}
@@ -194,7 +230,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-3 py-2 border rounded-md"
-                  placeholder="e.g., Malé City"
+                  placeholder="e.g., Malé"
                 />
                 {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
@@ -256,7 +292,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                   <input
                     key={index}
                     type="text"
-                    value={fact}
+                    value={fact || ''}
                     onChange={(e) => updateQuickFact(index, e.target.value)}
                     className="w-full px-3 py-2 border rounded-md"
                     placeholder={`Quick fact ${index + 1}`}
@@ -321,28 +357,28 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
 
           {/* Top Things to Do */}
           <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('thingsToDo')}>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('topThingsToDo')}>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Top 10 Things To Do</CardTitle>
-                  <CardDescription>Activities and attractions</CardDescription>
+                  <CardTitle>Top 10 Things to Do</CardTitle>
+                  <CardDescription>Main attractions and activities</CardDescription>
                 </div>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.thingsToDo ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.topThingsToDo ? 'rotate-180' : ''}`} />
               </div>
             </CardHeader>
-            {expandedSections.thingsToDo && (
+            {expandedSections.topThingsToDo && (
               <CardContent className="space-y-4">
                 {(formData.topThingsToDo || []).map((item, index) => (
-                  <div key={index} className="space-y-2 p-3 border rounded-md bg-gray-50">
+                  <div key={index} className="space-y-2 pb-4 border-b last:border-b-0">
                     <input
                       type="text"
-                      value={item.title}
+                      value={item?.title || ''}
                       onChange={(e) => updateThingToDo(index, 'title', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md font-medium"
                       placeholder={`Activity ${index + 1} title`}
                     />
                     <textarea
-                      value={item.description}
+                      value={item?.description || ''}
                       onChange={(e) => updateThingToDo(index, 'description', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md min-h-[60px]"
                       placeholder="Description..."
@@ -353,69 +389,13 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             )}
           </Card>
 
-          {/* Food & Cafés */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('foodCafes')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle>Food & Cafés</CardTitle>
-                  <CardDescription>Dining recommendations</CardDescription>
-                </div>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.foodCafes ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.foodCafes && (
-              <CardContent>
-                <textarea
-                  value={formData.foodCafes}
-                  onChange={(e) => setFormData({ ...formData, foodCafes: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Food and café recommendations..."
-                />
-              </CardContent>
-            )}
-          </Card>
-
-          {/* Practical Info */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('practicalInfo')}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle>Practical Information</CardTitle>
-                  <CardDescription>Useful travel tips and information</CardDescription>
-                </div>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.practicalInfo ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.practicalInfo && (
-              <CardContent>
-                <textarea
-                  value={formData.practicalInfo}
-                  onChange={(e) => setFormData({ ...formData, practicalInfo: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Practical information..."
-                />
-              </CardContent>
-            )}
-          </Card>
-        </TabsContent>
-
-        {/* Guides Tab */}
-        <TabsContent value="guides" className="space-y-4">
-          {/* Activity Spots Selector */}
-          {(initialData as any)?.id && (
-            <ActivitySpotSelector
-              islandGuideId={(initialData as any).id}
-              selectedSpots={formData.activitySpots || []}
-              onSpotsChange={(spots) => setFormData({ ...formData, activitySpots: spots })}
-            />
-          )}
-
           {/* Beaches & Local Rules */}
           <Card>
             <CardHeader className="cursor-pointer" onClick={() => toggleSection('beaches')}>
               <div className="flex items-center justify-between">
-                <CardTitle>Beaches & Local Rules</CardTitle>
+                <div>
+                  <CardTitle>Beaches & Local Rules</CardTitle>
+                </div>
                 <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.beaches ? 'rotate-180' : ''}`} />
               </div>
             </CardHeader>
@@ -424,227 +404,240 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <textarea
                   value={formData.beachesLocalRules}
                   onChange={(e) => setFormData({ ...formData, beachesLocalRules: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="Beach information and local rules..."
-                />
-              </CardContent>
-            )}
-          </Card>
-        </TabsContent>
-
-        {/* Itineraries Tab */}
-        <TabsContent value="itineraries" className="space-y-4">
-          {/* 3-Day Itinerary */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('itinerary3')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>3-Day Itinerary</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.itinerary3 ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.itinerary3 && (
-              <CardContent>
-                <textarea
-                  value={formData.itinerary3Day}
-                  onChange={(e) => setFormData({ ...formData, itinerary3Day: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="3-day itinerary..."
+                  className="w-full px-3 py-2 border rounded-md min-h-[120px]"
+                  placeholder="Information about beaches and local rules..."
                 />
               </CardContent>
             )}
           </Card>
 
-          {/* 5-Day Itinerary */}
+          {/* Food & Cafes */}
           <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('itinerary5')}>
-              <div className="flex items-center justify-between">
-                <CardTitle>5-Day Itinerary</CardTitle>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.itinerary5 ? 'rotate-180' : ''}`} />
-              </div>
-            </CardHeader>
-            {expandedSections.itinerary5 && (
-              <CardContent>
-                <textarea
-                  value={formData.itinerary5Day}
-                  onChange={(e) => setFormData({ ...formData, itinerary5Day: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-md min-h-[150px]"
-                  placeholder="5-day itinerary..."
-                />
-              </CardContent>
-            )}
-          </Card>
-
-          {/* FAQs */}
-          <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('faqs')}>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('food')}>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Frequently Asked Questions</CardTitle>
-                  <CardDescription>6 common questions and answers</CardDescription>
+                  <CardTitle>Food & Cafes</CardTitle>
                 </div>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.faqs ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.food ? 'rotate-180' : ''}`} />
               </div>
             </CardHeader>
-            {expandedSections.faqs && (
-              <CardContent className="space-y-4">
-                {(formData.faqs || []).map((faq, index) => (
-                  <div key={index} className="space-y-2 p-3 border rounded-md bg-gray-50">
-                    <input
-                      type="text"
-                      value={faq.question}
-                      onChange={(e) => updateFAQ(index, 'question', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md font-medium"
-                      placeholder={`Question ${index + 1}`}
-                    />
-                    <textarea
-                      value={faq.answer}
-                      onChange={(e) => updateFAQ(index, 'answer', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md min-h-[80px]"
-                      placeholder="Answer..."
-                    />
-                  </div>
-                ))}
+            {expandedSections.food && (
+              <CardContent>
+                <textarea
+                  value={formData.foodCafes}
+                  onChange={(e) => setFormData({ ...formData, foodCafes: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-md min-h-[120px]"
+                  placeholder="Food and cafe recommendations..."
+                />
               </CardContent>
             )}
           </Card>
-        </TabsContent>
 
-        {/* Activity Spots Tab */}
-        <TabsContent value="activities" className="space-y-4">
+          {/* Practical Info */}
           <Card>
-            <CardHeader className="cursor-pointer" onClick={() => toggleSection('activities')}>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('practical')}>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Activity Spots</CardTitle>
-                  <CardDescription>Manage dive sites, surf spots, and snorkeling locations</CardDescription>
+                  <CardTitle>Practical Information</CardTitle>
                 </div>
-                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.activities ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.practical ? 'rotate-180' : ''}`} />
               </div>
             </CardHeader>
-            {expandedSections.activities && (
+            {expandedSections.practical && (
+              <CardContent>
+                <textarea
+                  value={formData.practicalInfo}
+                  onChange={(e) => setFormData({ ...formData, practicalInfo: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-md min-h-[120px]"
+                  placeholder="Practical information (ATM, hospital, etc.)..."
+                />
+              </CardContent>
+            )}
+          </Card>
+
+          {/* Itineraries */}
+          <Card>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('itineraries')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Sample Itineraries</CardTitle>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.itineraries ? 'rotate-180' : ''}`} />
+              </div>
+            </CardHeader>
+            {expandedSections.itineraries && (
               <CardContent className="space-y-4">
-                {(formData.activitySpots || []).map((spot, index) => (
-                  <div key={index} className="space-y-3 p-4 border rounded-lg bg-gray-50">
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="font-medium">Activity Spot {index + 1}</h4>
+                <div>
+                  <label className="block text-sm font-medium mb-2">3-Day Itinerary</label>
+                  <textarea
+                    value={formData.itinerary3Day}
+                    onChange={(e) => setFormData({ ...formData, itinerary3Day: e.target.value })}
+                    className="w-full px-3 py-2 border rounded-md min-h-[120px]"
+                    placeholder="3-day itinerary..."
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">5-Day Itinerary</label>
+                  <textarea
+                    value={formData.itinerary5Day}
+                    onChange={(e) => setFormData({ ...formData, itinerary5Day: e.target.value })}
+                    className="w-full px-3 py-2 border rounded-md min-h-[120px]"
+                    placeholder="5-day itinerary..."
+                  />
+                </div>
+              </CardContent>
+            )}
+          </Card>
+
+          {/* Attractions */}
+          <Card>
+            <CardHeader className="cursor-pointer" onClick={() => toggleSection('attractions')}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Attractions</CardTitle>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.attractions ? 'rotate-180' : ''}`} />
+              </div>
+            </CardHeader>
+            {expandedSections.attractions && (
+              <CardContent className="space-y-4">
+                {(formData.attractions || []).map((attraction, index) => (
+                  <div key={index} className="space-y-2 pb-4 border-b last:border-b-0">
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <input
+                          type="text"
+                          value={attraction?.name || ''}
+                          onChange={(e) => updateAttraction(index, 'name', e.target.value)}
+                          className="w-full px-3 py-2 border rounded-md font-medium"
+                          placeholder="Attraction name"
+                        />
+                      </div>
                       <button
                         type="button"
-                        onClick={() => removeActivitySpot(index)}
-                        className="p-1 text-red-600 hover:bg-red-50 rounded"
+                        onClick={() => removeAttraction(index)}
+                        className="ml-2 p-2 text-red-500 hover:bg-red-50 rounded"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <input
-                        type="text"
-                        value={spot.name}
-                        onChange={(e) => updateActivitySpot(index, 'name', e.target.value)}
-                        className="col-span-2 px-3 py-2 border rounded-md"
-                        placeholder="Spot name (e.g., Pasta Point, Blue Lagoon)"
-                      />
-                      <select
-                        value={spot.spotType}
-                        onChange={(e) => updateActivitySpot(index, 'spotType', e.target.value)}
-                        className="px-3 py-2 border rounded-md"
-                      >
-                        <option value="dive_site">Dive Site</option>
-                        <option value="surf_spot">Surf Spot</option>
-                        <option value="snorkeling_spot">Snorkeling Spot</option>
-                      </select>
-                      <select
-                        value={spot.difficulty}
-                        onChange={(e) => updateActivitySpot(index, 'difficulty', e.target.value)}
-                        className="px-3 py-2 border rounded-md"
-                      >
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                      </select>
-                    </div>
-                    <input
-                      type="text"
-                      value={spot.category || ''}
-                      onChange={(e) => updateActivitySpot(index, 'category', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md"
-                      placeholder="Category (e.g., Beginner Dive Sites, Manta Ray Spots)"
-                    />
                     <textarea
-                      value={spot.description || ''}
-                      onChange={(e) => updateActivitySpot(index, 'description', e.target.value)}
+                      value={attraction?.description || ''}
+                      onChange={(e) => updateAttraction(index, 'description', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md min-h-[60px]"
-                      placeholder="Description of the activity spot..."
-                    />
-                    <input
-                      type="text"
-                      value={spot.bestSeason || ''}
-                      onChange={(e) => updateActivitySpot(index, 'bestSeason', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md"
-                      placeholder="Best season (e.g., November - April)"
-                    />
-                    {spot.spotType === 'dive_site' && (
-                      <div className="grid grid-cols-2 gap-3">
-                        <input
-                          type="number"
-                          value={spot.minDepth || ''}
-                          onChange={(e) => updateActivitySpot(index, 'minDepth', parseInt(e.target.value))}
-                          className="px-3 py-2 border rounded-md"
-                          placeholder="Min depth (m)"
-                        />
-                        <input
-                          type="number"
-                          value={spot.maxDepth || ''}
-                          onChange={(e) => updateActivitySpot(index, 'maxDepth', parseInt(e.target.value))}
-                          className="px-3 py-2 border rounded-md"
-                          placeholder="Max depth (m)"
-                        />
-                      </div>
-                    )}
-                    {spot.spotType === 'surf_spot' && (
-                      <input
-                        type="text"
-                        value={spot.waveHeight || ''}
-                        onChange={(e) => updateActivitySpot(index, 'waveHeight', e.target.value)}
-                        className="w-full px-3 py-2 border rounded-md"
-                        placeholder="Wave height (e.g., 2-4 feet)"
-                      />
-                    )}
-                    {spot.spotType === 'snorkeling_spot' && (
-                      <input
-                        type="text"
-                        value={spot.coralCoverage || ''}
-                        onChange={(e) => updateActivitySpot(index, 'coralCoverage', e.target.value)}
-                        className="w-full px-3 py-2 border rounded-md"
-                        placeholder="Coral coverage (e.g., 90%, Excellent)"
-                      />
-                    )}
-                    <textarea
-                      value={spot.tips || ''}
-                      onChange={(e) => updateActivitySpot(index, 'tips', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md min-h-[50px]"
-                      placeholder="Tips and recommendations..."
+                      placeholder="Description..."
                     />
                   </div>
                 ))}
-                <button
+                <Button
                   type="button"
-                  onClick={addActivitySpot}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 border-2 border-dashed rounded-lg hover:bg-gray-50 transition-colors"
+                  onClick={addAttraction}
+                  variant="outline"
+                  className="w-full"
                 >
-                  <Plus className="w-4 h-4" />
-                  Add Activity Spot
-                </button>
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Attraction
+                </Button>
               </CardContent>
             )}
           </Card>
         </TabsContent>
+
+        {/* Activities Tab */}
+        <TabsContent value="activities" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Activity Spots</CardTitle>
+              <CardDescription>Diving, snorkeling, and surfing spots</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {(formData.activitySpots || []).map((spot, index) => (
+                <div key={index} className="space-y-3 pb-4 border-b last:border-b-0">
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <label className="block text-sm font-medium mb-1">Name</label>
+                      <input
+                        type="text"
+                        value={spot?.name || ''}
+                        onChange={(e) => updateActivitySpot(index, 'name', e.target.value)}
+                        className="w-full px-3 py-2 border rounded-md"
+                        placeholder="Spot name"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeActivitySpot(index)}
+                      className="ml-2 p-2 text-red-500 hover:bg-red-50 rounded"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium mb-1">Type</label>
+                    <select
+                      value={spot?.spotType || 'dive_site'}
+                      onChange={(e) => updateActivitySpot(index, 'spotType', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md"
+                    >
+                      <option value="dive_site">Dive Site</option>
+                      <option value="snorkeling_spot">Snorkeling Spot</option>
+                      <option value="surf_spot">Surf Spot</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Description</label>
+                    <textarea
+                      value={spot?.description || ''}
+                      onChange={(e) => updateActivitySpot(index, 'description', e.target.value)}
+                      className="w-full px-3 py-2 border rounded-md min-h-[60px]"
+                      placeholder="Description..."
+                    />
+                  </div>
+                </div>
+              ))}
+              <Button
+                type="button"
+                onClick={addActivitySpot}
+                variant="outline"
+                className="w-full"
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                Add Activity Spot
+              </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* FAQ Tab */}
+        <TabsContent value="faq" className="space-y-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Frequently Asked Questions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {(formData.faqs || []).map((faq, index) => (
+                <div key={index} className="space-y-2 pb-4 border-b last:border-b-0">
+                  <input
+                    type="text"
+                    value={faq?.question || ''}
+                    onChange={(e) => updateFAQ(index, 'question', e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md font-medium"
+                    placeholder={`Question ${index + 1}`}
+                  />
+                  <textarea
+                    value={faq?.answer || ''}
+                    onChange={(e) => updateFAQ(index, 'answer', e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md min-h-[80px]"
+                    placeholder="Answer..."
+                  />
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </TabsContent>
       </Tabs>
 
-      {/* Submit Buttons */}
-      <div className="flex gap-3 justify-end">
-        <Button type="button" variant="outline" disabled={isLoading}>
-          Cancel
-        </Button>
+      <div className="flex gap-2">
         <Button type="submit" disabled={isLoading}>
           {isLoading ? 'Saving...' : 'Save Island Guide'}
         </Button>
