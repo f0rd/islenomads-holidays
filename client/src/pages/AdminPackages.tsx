@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Plus, Edit2, Trash2, Loader2 } from "lucide-react";
+import { Plus, Edit2, Trash2, Loader2, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import SEOEditor from "@/components/SEOEditor";
 import Navigation from "@/components/Navigation";
@@ -249,6 +249,15 @@ export default function AdminPackages() {
       
       <section className="py-12 bg-background">
         <div className="container max-w-6xl mx-auto px-4">
+          {/* Back Button */}
+          <a
+            href="/admin/dashboard"
+            className="flex items-center gap-2 text-primary hover:text-primary/80 mb-6 w-fit"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Dashboard
+          </a>
+
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold text-foreground">Packages Management</h1>
             <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>

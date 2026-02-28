@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Plus, Edit2, Trash2, Search } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search, ArrowLeft } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import ActivitySpotForm from '@/components/ActivitySpotForm';
 import { AdminPageLayout } from '@/components/AdminPageLayout';
@@ -126,12 +126,20 @@ export default function AdminActivitySpots() {
       description="Manage dive sites, surf spots, and snorkeling locations"
       headerAction={headerAction}
       breadcrumbs={[
-        { label: "CMS", href: "/admin" },
-        { label: "Activity Management", href: "/admin/activity-spots" },
+        { label: "Dashboard", href: "/admin/dashboard" },
         { label: "Activity Spots", href: "/admin/activity-spots" },
       ]}
     >
       <div className="space-y-6">
+        {/* Back Button */}
+        <a
+          href="/admin/dashboard"
+          className="flex items-center gap-2 text-primary hover:text-primary/80 w-fit"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Dashboard
+        </a>
+
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <Card>

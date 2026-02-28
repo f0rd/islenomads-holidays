@@ -213,6 +213,15 @@ export default function AdminBlog() {
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
+        {/* Back Button */}
+        <a
+          href="/admin/dashboard"
+          className="flex items-center gap-2 text-primary hover:text-primary/80 mb-6 w-fit"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Dashboard
+        </a>
+
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>

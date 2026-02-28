@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { IslandGuideForm, type IslandGuideFormData } from '@/components/IslandGuideForm';
-import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2, GripVertical, Star } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Eye, EyeOff, Loader2, GripVertical, Star, ArrowLeft } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { useState, useMemo } from 'react';
 
@@ -196,6 +196,15 @@ export default function AdminIslandGuides() {
 
   return (
     <div className="container py-8">
+      {/* Back Button */}
+      <a
+        href="/admin/dashboard"
+        className="flex items-center gap-2 text-primary hover:text-primary/80 mb-6 w-fit"
+      >
+        <ArrowLeft className="w-4 h-4" />
+        Back to Dashboard
+      </a>
+
       {/* Featured Destinations Reordering Section */}
       {featuredGuides.length > 0 && (
         <div className="mb-12">

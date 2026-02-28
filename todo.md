@@ -1809,3 +1809,12 @@
   - Ensured all array fields default to empty arrays if undefined
 
 - [x] Fix textarea null value warning in IslandGuideForm
+
+
+## Navigation Improvements - Back Buttons
+- [x] Add back button to AdminBlogPosts page
+- [x] Add back button to AdminPackages page
+- [x] Add back button to AdminIslandGuides page
+- [x] Add back button to AdminActivitySpots page
+- [x] Add back button to AdminBranding page
+- [x] Add back button to AdminCRMQueries page

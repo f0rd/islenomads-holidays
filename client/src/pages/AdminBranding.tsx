@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLocation } from "wouter";
+import { ArrowLeft } from "lucide-react";
 
 export default function AdminBranding() {
   const { user } = useAuth();
@@ -59,6 +60,15 @@ export default function AdminBranding() {
     <div className="min-h-screen bg-background">
       <div className="container py-12">
         <div className="max-w-4xl mx-auto">
+          {/* Back Button */}
+          <a
+            href="/admin/dashboard"
+            className="flex items-center gap-2 text-primary hover:text-primary/80 mb-6 w-fit"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Dashboard
+          </a>
+
           <div className="mb-8">
             <h1 className="text-4xl font-bold text-foreground mb-2">Branding Management</h1>
             <p className="text-muted-foreground">

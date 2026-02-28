@@ -20,6 +20,7 @@ import {
   Inbox,
   TrendingUp,
   Filter,
+  ArrowLeft,
 } from "lucide-react";
 import { Link } from "wouter";
 
@@ -155,14 +156,14 @@ export default function AdminCRM() {
     <div className="min-h-screen bg-gray-50 p-8">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <Link href="/admin/dashboard">
-            <a className="text-gray-600 hover:text-gray-900">
-              <ChevronLeft className="w-5 h-5" />
-            </a>
-          </Link>
-          <h1 className="text-3xl font-bold text-gray-900">CRM - Query Management</h1>
-        </div>
+        <a
+          href="/admin/dashboard"
+          className="flex items-center gap-2 text-primary hover:text-primary/80 mb-4 w-fit"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Dashboard
+        </a>
+        <h1 className="text-3xl font-bold text-gray-900">CRM - Query Management</h1>
         <p className="text-gray-600">Manage customer queries and interactions</p>
       </div>
 
