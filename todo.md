@@ -1818,3 +1818,14 @@
 - [x] Add back button to AdminActivitySpots page
 - [x] Add back button to AdminBranding page
 - [x] Add back button to AdminCRMQueries page
+
+
+## Attraction Guides - Populate with Independent Attractions (Option 2)
+- [x] Create migration script to extract attractions from island guides
+- [x] Populate attraction_guides table with dive sites, surf spots, snorkeling spots
+- [x] Create attraction_island_links junction table for many-to-many relationships
+- [x] Update IslandGuide schema to reference attractions via junction table
+- [x] Update AdminAttractionGuides UI to display populated attractions
+- [x] Add ability to link/unlink attractions to islands in admin UI
+- [x] Test attraction guide creation, editing, and deletion
+- [x] Verify island guides still display linked attractions correctly
