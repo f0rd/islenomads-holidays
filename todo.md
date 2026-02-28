@@ -1829,3 +1829,11 @@
 - [x] Add ability to link/unlink attractions to islands in admin UI
 - [x] Test attraction guide creation, editing, and deletion
 - [x] Verify island guides still display linked attractions correctly
+
+
+## Migrate Existing Attractions from Island Guides
+- [x] Query all island guides to extract nearbyDiveSites, nearbySurfSpots, nearbySnorkelingSpots
+- [x] Create migration script to populate attraction_guides from existing island guide data
+- [x] Run migration to import all existing attractions
+- [x] Verify all attractions appear in AdminAttractionGuides page
+- [x] Create links between attractions and islands via attraction_island_links table
