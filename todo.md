@@ -1807,3 +1807,5 @@
   - Solution: Added safe JSON parsing with fallback to empty array, improved type safety
   - Added safeJsonParse helper function for robust data parsing
   - Ensured all array fields default to empty arrays if undefined
+
+- [x] Fix textarea null value warning in IslandGuideForm

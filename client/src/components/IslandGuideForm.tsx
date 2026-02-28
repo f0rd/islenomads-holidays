@@ -318,7 +318,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Flight Information</label>
                   <textarea
-                    value={formData.transportation?.flight || ''}
+                    value={formData.transportation?.flight ?? ''}
                     onChange={(e) => setFormData({
                       ...formData,
                       transportation: { ...(formData.transportation || {}), flight: e.target.value }
@@ -330,7 +330,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Speedboat Information</label>
                   <textarea
-                    value={formData.transportation?.speedboat || ''}
+                    value={formData.transportation?.speedboat ?? ''}
                     onChange={(e) => setFormData({
                       ...formData,
                       transportation: { ...(formData.transportation || {}), speedboat: e.target.value }
@@ -342,7 +342,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">Ferry Information</label>
                   <textarea
-                    value={formData.transportation?.ferry || ''}
+                    value={formData.transportation?.ferry ?? ''}
                     onChange={(e) => setFormData({
                       ...formData,
                       transportation: { ...(formData.transportation || {}), ferry: e.target.value }
@@ -378,7 +378,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                       placeholder={`Activity ${index + 1} title`}
                     />
                     <textarea
-                      value={item?.description || ''}
+                      value={item?.description ?? ''}
                       onChange={(e) => updateThingToDo(index, 'description', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md min-h-[60px]"
                       placeholder="Description..."
@@ -402,7 +402,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             {expandedSections.beaches && (
               <CardContent>
                 <textarea
-                  value={formData.beachesLocalRules}
+                  value={formData.beachesLocalRules ?? ''}
                   onChange={(e) => setFormData({ ...formData, beachesLocalRules: e.target.value })}
                   className="w-full px-3 py-2 border rounded-md min-h-[120px]"
                   placeholder="Information about beaches and local rules..."
@@ -424,7 +424,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             {expandedSections.food && (
               <CardContent>
                 <textarea
-                  value={formData.foodCafes}
+                  value={formData.foodCafes ?? ''}
                   onChange={(e) => setFormData({ ...formData, foodCafes: e.target.value })}
                   className="w-full px-3 py-2 border rounded-md min-h-[120px]"
                   placeholder="Food and cafe recommendations..."
@@ -446,7 +446,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             {expandedSections.practical && (
               <CardContent>
                 <textarea
-                  value={formData.practicalInfo}
+                  value={formData.practicalInfo ?? ''}
                   onChange={(e) => setFormData({ ...formData, practicalInfo: e.target.value })}
                   className="w-full px-3 py-2 border rounded-md min-h-[120px]"
                   placeholder="Practical information (ATM, hospital, etc.)..."
@@ -470,7 +470,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">3-Day Itinerary</label>
                   <textarea
-                    value={formData.itinerary3Day}
+                    value={formData.itinerary3Day ?? ''}
                     onChange={(e) => setFormData({ ...formData, itinerary3Day: e.target.value })}
                     className="w-full px-3 py-2 border rounded-md min-h-[120px]"
                     placeholder="3-day itinerary..."
@@ -479,7 +479,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                 <div>
                   <label className="block text-sm font-medium mb-2">5-Day Itinerary</label>
                   <textarea
-                    value={formData.itinerary5Day}
+                    value={formData.itinerary5Day ?? ''}
                     onChange={(e) => setFormData({ ...formData, itinerary5Day: e.target.value })}
                     className="w-full px-3 py-2 border rounded-md min-h-[120px]"
                     placeholder="5-day itinerary..."
@@ -522,7 +522,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                       </button>
                     </div>
                     <textarea
-                      value={attraction?.description || ''}
+                      value={attraction?.description ?? ''}
                       onChange={(e) => updateAttraction(index, 'description', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md min-h-[60px]"
                       placeholder="Description..."
@@ -587,7 +587,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                   <div>
                     <label className="block text-sm font-medium mb-1">Description</label>
                     <textarea
-                      value={spot?.description || ''}
+                      value={spot?.description ?? ''}
                       onChange={(e) => updateActivitySpot(index, 'description', e.target.value)}
                       className="w-full px-3 py-2 border rounded-md min-h-[60px]"
                       placeholder="Description..."
@@ -625,7 +625,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
                     placeholder={`Question ${index + 1}`}
                   />
                   <textarea
-                    value={faq?.answer || ''}
+                    value={faq?.answer ?? ''}
                     onChange={(e) => updateFAQ(index, 'answer', e.target.value)}
                     className="w-full px-3 py-2 border rounded-md min-h-[80px]"
                     placeholder="Answer..."
