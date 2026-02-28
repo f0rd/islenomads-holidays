@@ -228,9 +228,9 @@ export default function AdminActivitySpots() {
               </div>
             ) : filteredSpots.length > 0 ? (
               <div className="space-y-3">
-                {filteredSpots.map((spot: any) => (
+                {filteredSpots.map((spot: any, index: number) => (
                   <div
-                    key={spot.id}
+                    key={`${spot.id}-${index}`}
                     className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition"
                   >
                     <div className="flex-1">

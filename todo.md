@@ -1837,3 +1837,8 @@
 - [x] Run migration to import all existing attractions
 - [x] Verify all attractions appear in AdminAttractionGuides page
 - [x] Create links between attractions and islands via attraction_island_links table
+
+
+## Bug Fixes - Duplicate Key Warnings
+- [x] Fix duplicate key warnings in AdminActivitySpots (keys 210066, 210044)
+- [x] Ensure unique keys for all list items in activity spots rendering
