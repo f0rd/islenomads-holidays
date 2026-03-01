@@ -17,6 +17,7 @@ import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
 import AdminIslandGuides from "./pages/AdminIslandGuides";
 import AdminAttractionGuides from "./pages/AdminAttractionGuides";
+import AdminActivityTypes from "./pages/AdminActivityTypes";
 import IslandGuide from "./pages/IslandGuide";
 import StaffLogin from "./pages/StaffLogin";
 import CMSDashboard from "./pages/CMSDashboard";
@@ -72,6 +73,7 @@ function Router() {
       <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
       <Route path={"/admin/activity-spots"} component={AdminAttractionGuides} />
+      <Route path={"/admin/activity-types"} component={AdminActivityTypes} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
       {/* Primary route: /island/:slug (e.g., /island/dhigurah, /island/malé) */}
       <Route path={"/island/:slug"} component={IslandGuide} />

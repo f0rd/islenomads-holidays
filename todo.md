@@ -1858,3 +1858,5 @@
 
 ## Bug Fixes - Route 404 Errors
 - [x] Fix /admin/activity-spots route 404 error (redirect to /admin/attraction-guides)
+
+- [x] Fix /admin/activity-types route 404 error (create AdminActivityTypes page or add route)
