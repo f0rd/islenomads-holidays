@@ -47,9 +47,9 @@ export function ActivitySpotSelector({
   const [selectedType, setSelectedType] = useState<'all' | 'dive_site' | 'snorkeling_spot' | 'surf_spot'>('all');
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Fetch all activity spots for this island
-  const { data: availableSpots = [], isLoading } = trpc.activitySpots.forIslandSelector.useQuery(
-    { islandGuideId },
+  // Fetch all activity spots for this island (using attractionGuides)
+  const { data: availableSpots = [], isLoading } = trpc.attractionGuides.getRelatedIslands.useQuery(
+    { attractionGuideId: islandGuideId },
     { enabled: isExpanded }
   );
 

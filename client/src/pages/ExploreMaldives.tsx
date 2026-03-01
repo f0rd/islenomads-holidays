@@ -76,8 +76,8 @@ export default function ExploreMaldives() {
   // Fetch islands with activity spots
   const { data: islandsWithSpots = [] } = trpc.islandGuides.listWithActivitySpots.useQuery();
 
-  // Fetch activity spots
-  const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
+  // Fetch attraction guides (consolidated attractions management)
+  const { data: activitySpots = [] } = trpc.attractionGuides.list.useQuery();
 
   // Get unique regions from atolls
   const regions = useMemo(() => {

@@ -1842,3 +1842,15 @@
 ## Bug Fixes - Duplicate Key Warnings
 - [x] Fix duplicate key warnings in AdminActivitySpots (keys 210066, 210044)
 - [x] Ensure unique keys for all list items in activity spots rendering
+
+
+## Data Consolidation - Attraction Guides vs Activity Spots vs Activity Types
+- [x] Compare attraction_guides, activity_spots, and activity_types table schemas
+- [x] Check for duplicate data across the three tables
+- [x] Determine if these should be consolidated into a single table
+- [x] Identify which table should be the source of truth (attraction_guides)
+- [x] Remove AdminActivitySpots page from admin UI
+- [x] Update App.tsx to remove activity-spots route
+- [x] Delete activity_spots tRPC router
+- [x] Keep attraction_guides as the unified attractions management system
+- [x] Update documentation to reflect consolidated structure

@@ -32,7 +32,7 @@ import StaffProfile from "./pages/StaffProfile";
 import AdminBranding from "./pages/AdminBranding";
 import AdminTransports from "./pages/AdminTransports";
 import AdminMapLocations from "./pages/AdminMapLocations";
-import AdminActivitySpots from "./pages/AdminActivitySpots";
+
 import AdminAtolls from "./pages/AdminAtolls";
 import AdminFerryRoutes from "./pages/AdminFerryRoutes";
 import IslandGuides from "./pages/IslandGuides";
@@ -83,7 +83,7 @@ function Router() {
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/admin/analytics"} component={AnalyticsDashboard} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />
-      <Route path={"/admin/activity-spots"} component={AdminActivitySpots} />
+
       <Route path={"/staff-login"} component={StaffLogin} />
       <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />

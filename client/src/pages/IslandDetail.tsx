@@ -28,12 +28,12 @@ export default function IslandDetail() {
   // Fetch island guide
   const { data: guides = [] } = trpc.islandGuides.list.useQuery();
   const { data: packages = [] } = trpc.packages.list.useQuery();
-  const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
+  const { data: activitySpots = [] } = trpc.attractionGuides.list.useQuery();
   
-  // Fetch nearby activity spots when island coordinates are available
-  const { data: nearbySpots = [] } = trpc.activitySpots.getNearby.useQuery(
-    { latitude: island?.latitude || 0, longitude: island?.longitude || 0, radiusKm: 10 },
-    { enabled: !!island?.latitude && !!island?.longitude }
+  // Fetch nearby activity spots (attractions linked to this island)
+  const { data: nearbySpots = [] } = trpc.attractionGuides.getNearbyAttractions.useQuery(
+    { islandGuideId: island?.id || 0 },
+    { enabled: !!island?.id }
   );
 
   // Fetch experiences for this island

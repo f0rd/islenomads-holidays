@@ -23,7 +23,7 @@ export default function MaldivesMap() {
   // Fetch data from unified database
   const { data: atolls = [] } = trpc.atolls.list.useQuery();
   const { data: islands = [] } = trpc.islandGuides.list.useQuery();
-  const { data: activitySpots = [] } = trpc.activitySpots.list.useQuery();
+  const { data: activitySpots = [] } = trpc.attractionGuides.list.useQuery();
 
   interface Atoll {
     id: number;

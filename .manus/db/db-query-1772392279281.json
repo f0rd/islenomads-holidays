@@ -1,0 +1,25 @@
+{
+  "query": "SELECT COUNT(*) as activity_spots_count FROM activity_spots; SELECT COUNT(*) as activity_types_count FROM activity_types; SELECT COUNT(*) as attraction_guides_count FROM attraction_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as activity_spots_count FROM activity_spots; SELECT COUNT(*) as activity_types_count FROM activity_types; SELECT COUNT(*) as attraction_guides_count FROM attraction_guides;",
+  "rows": [
+    {
+      "activity_spots_count": "116"
+    },
+    {
+      "activity_spots_count": "activity_types_count"
+    },
+    {
+      "activity_spots_count": "3"
+    },
+    {
+      "activity_spots_count": "attraction_guides_count"
+    },
+    {
+      "activity_spots_count": "644"
+    }
+  ],
+  "messages": [],
+  "stdout": "activity_spots_count\n116\nactivity_types_count\n3\nattraction_guides_count\n644\n",
+  "stderr": "",
+  "execution_time_ms": 596
+}
