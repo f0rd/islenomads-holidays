@@ -1854,3 +1854,7 @@
 - [x] Delete activity_spots tRPC router
 - [x] Keep attraction_guides as the unified attractions management system
 - [x] Update documentation to reflect consolidated structure
+
+
+## Bug Fixes - Route 404 Errors
+- [x] Fix /admin/activity-spots route 404 error (redirect to /admin/attraction-guides)

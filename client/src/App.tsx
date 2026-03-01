@@ -71,6 +71,7 @@ function Router() {
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
+      <Route path={"/admin/activity-spots"} component={AdminAttractionGuides} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
       {/* Primary route: /island/:slug (e.g., /island/dhigurah, /island/malé) */}
       <Route path={"/island/:slug"} component={IslandGuide} />
