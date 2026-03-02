@@ -1867,3 +1867,7 @@
 - [x] Create cleanup script to merge duplicates (Not needed - no duplicates exist)
 - [x] Merge duplicate records and update island links (N/A)
 - [x] Verify no duplicate keys remain (Verified - database is clean)
+
+
+## UI/UX Improvements - Admin Pages
+- [x] Fix scrollable list in AdminIslandGuides (improved spacing and added 2-column layout)

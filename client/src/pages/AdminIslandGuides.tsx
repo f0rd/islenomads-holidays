@@ -195,7 +195,7 @@ export default function AdminIslandGuides() {
   }
 
   return (
-    <div className="container py-8">
+    <div className="container py-6 px-4 max-w-7xl mx-auto">
       {/* Back Button */}
       <a
         href="/admin/dashboard"
@@ -207,7 +207,7 @@ export default function AdminIslandGuides() {
 
       {/* Featured Destinations Reordering Section */}
       {featuredGuides.length > 0 && (
-        <div className="mb-12">
+        <div className="mb-8">
           <Card>
             <CardHeader>
               <div className="flex items-center gap-2">
@@ -256,7 +256,7 @@ export default function AdminIslandGuides() {
       )}
 
       {/* Island Guides Management Section */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-3xl font-bold">Island Guides Management</h1>
@@ -290,7 +290,7 @@ export default function AdminIslandGuides() {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-4">
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
           {filteredGuides.map((guide: any) => (
             <Card key={guide.id} className="hover:shadow-md transition-shadow">
               <CardHeader className="pb-3">
