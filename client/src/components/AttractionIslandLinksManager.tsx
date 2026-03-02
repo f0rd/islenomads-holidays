@@ -27,7 +27,7 @@ export function AttractionIslandLinksManager({ attractionGuideId, onUpdate }: At
   });
 
   // Fetch all islands for selection (use listAdmin to get all islands including unpublished)
-  const { data: allIslands = [] } = trpc.islandGuides.listAdmin.useQuery();
+  const { data: allIslands = [], isLoading: isLoadingIslands, error: islandsError } = trpc.islandGuides.listAdmin.useQuery();
 
   const linkMutation = trpc.attractionGuides.linkToIsland.useMutation();
   const unlinkMutation = trpc.attractionGuides.unlinkFromIsland.useMutation();
@@ -91,12 +91,16 @@ export function AttractionIslandLinksManager({ attractionGuideId, onUpdate }: At
             <div className="space-y-4">
               <div>
                 <Label htmlFor="island-select">Island *</Label>
-                <Select value={selectedIslandId} onValueChange={setSelectedIslandId}>
+                <Select value={selectedIslandId} onValueChange={setSelectedIslandId} disabled={isLoadingIslands}>
                   <SelectTrigger id="island-select">
-                    <SelectValue placeholder="Select an island" />
+                    <SelectValue placeholder={isLoadingIslands ? "Loading islands..." : "Select an island"} />
                   </SelectTrigger>
                   <SelectContent>
-                    {allIslands && allIslands.length > 0 ? (
+                    {isLoadingIslands ? (
+                      <div className="p-2 text-sm text-muted-foreground">Loading islands...</div>
+                    ) : islandsError ? (
+                      <div className="p-2 text-sm text-destructive">Error loading islands</div>
+                    ) : allIslands && allIslands.length > 0 ? (
                       allIslands.map((island: any) => (
                         <SelectItem key={island.id} value={island.id.toString()}>
                           {island.name || 'Unnamed Island'}
