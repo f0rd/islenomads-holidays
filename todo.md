@@ -1894,3 +1894,9 @@
 
 ## Bug Fixes - Island Linking
 - [x] Fix island selection button in attraction guides admin (missing Button import)
+
+## Bug Fix - ExploreMaldives spotType Error
+- [x] Fix "Cannot read properties of undefined (reading 'replace')" error on ExploreMaldives page
+- [x] Added null check for spot.spotType before calling .replace() method
+- [x] Updated line 543 to use ternary operator: spot.spotType ? spot.spotType.replace(/_/g, ' ') : 'Activity Spot'
+- [x] Verified fix resolves error when rendering activity spots with undefined spotType

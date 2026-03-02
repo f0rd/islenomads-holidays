@@ -540,7 +540,7 @@ export default function ExploreMaldives() {
                             {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
                             {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
                             {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                            <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType.replace(/_/g, ' ')}</p>
+                            <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType ? spot.spotType.replace(/_/g, ' ') : 'Activity Spot'}</p>
                           </div>
                           {spot.difficulty && (
                             <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
