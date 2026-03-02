@@ -498,8 +498,8 @@ export default function AdminAttractionGuides() {
           </Card>
         ) : (
           <div className="grid gap-4">
-            {filteredGuides.map((guide: any) => (
-              <Card key={guide.id} className="hover:shadow-md transition-shadow">
+            {filteredGuides.map((guide: any, index: number) => (
+              <Card key={`${guide.id}-${index}`} className="hover:shadow-md transition-shadow">
                 <CardContent className="pt-6">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
