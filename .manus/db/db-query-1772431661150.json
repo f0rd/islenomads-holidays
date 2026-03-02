@@ -1,0 +1,18 @@
+{
+  "query": "SELECT id, name, slug, overview, published, featured FROM island_guides WHERE name = 'Naifaru Kandu';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, overview, published, featured FROM island_guides WHERE name = 'Naifaru Kandu';",
+  "rows": [
+    {
+      "id": "210058",
+      "name": "Naifaru Kandu",
+      "slug": "naifaru-kandu",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.",
+      "published": "1",
+      "featured": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\toverview\tpublished\tfeatured\n210058\tNaifaru Kandu\tnaifaru-kandu\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\t1\t0\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

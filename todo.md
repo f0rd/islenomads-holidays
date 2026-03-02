@@ -1884,3 +1884,9 @@
 - [x] Identify misplaced attractions (found 20 duplicates)
 - [x] Move misplaced attractions to attraction_guides (already in attraction_guides)
 - [x] Verify all island guides contain only actual islands/atolls (cleaned up)
+
+
+## Data Migration - Move Naifaru Kandu
+- [x] Move Naifaru Kandu from island_guides to attraction_guides (it's a dive channel, not an island)
+- [x] Delete from island_guides
+- [x] Verify in attraction_guides (already exists)
