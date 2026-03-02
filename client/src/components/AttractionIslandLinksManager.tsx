@@ -26,8 +26,8 @@ export function AttractionIslandLinksManager({ attractionGuideId, onUpdate }: At
     attractionGuideId,
   });
 
-  // Fetch all islands for selection
-  const { data: allIslands = [] } = trpc.islandGuides.list.useQuery();
+  // Fetch all islands for selection (use listAdmin to get all islands including unpublished)
+  const { data: allIslands = [] } = trpc.islandGuides.listAdmin.useQuery();
 
   const linkMutation = trpc.attractionGuides.linkToIsland.useMutation();
   const unlinkMutation = trpc.attractionGuides.unlinkFromIsland.useMutation();
@@ -96,11 +96,15 @@ export function AttractionIslandLinksManager({ attractionGuideId, onUpdate }: At
                     <SelectValue placeholder="Select an island" />
                   </SelectTrigger>
                   <SelectContent>
-                    {allIslands.map((island: any) => (
-                      <SelectItem key={island.id} value={island.id.toString()}>
-                        {island.name}
-                      </SelectItem>
-                    ))}
+                    {allIslands && allIslands.length > 0 ? (
+                      allIslands.map((island: any) => (
+                        <SelectItem key={island.id} value={island.id.toString()}>
+                          {island.name || 'Unnamed Island'}
+                        </SelectItem>
+                      ))
+                    ) : (
+                      <div className="p-2 text-sm text-muted-foreground">No islands available</div>
+                    )}
                   </SelectContent>
                 </Select>
               </div>
