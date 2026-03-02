@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO attraction_guides (name, slug, overview, attractionType, difficulty, published, featured, createdAt, updatedAt) \nVALUES ('Maaya Thila', 'maaya-thila', 'Maaya Thila is one of the most famous dive sites in the Maldives, known for its unique rock formation and abundant marine life.', 'diving', 'intermediate', 1, 0, NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO attraction_guides (name, slug, overview, attractionType, difficulty, published, featured, createdAt, updatedAt) \nVALUES ('Maaya Thila', 'maaya-thila', 'Maaya Thila is one of the most famous dive sites in the Maldives, known for its unique rock formation and abundant marine life.', 'diving', 'intermediate', 1, 0, NOW(), NOW());",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1265 (01000) at line 1: Data truncated for column 'attractionType' at row 1"
+  ]
+}

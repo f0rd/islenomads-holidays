@@ -1871,3 +1871,9 @@
 
 ## UI/UX Improvements - Admin Pages
 - [x] Fix scrollable list in AdminIslandGuides (improved spacing and added 2-column layout)
+
+
+## Data Migration - Move Maaya Thila
+- [x] Move Maaya Thila from island_guides to attraction_guides (already exists in attraction_guides)
+- [x] Delete Maaya Thila from island_guides table
+- [x] Verify Maaya Thila appears in attraction_guides admin page

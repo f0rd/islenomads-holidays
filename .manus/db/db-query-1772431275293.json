@@ -1,0 +1,22 @@
+{
+  "query": "SELECT attractionType, COUNT(*) as count FROM attraction_guides GROUP BY attractionType;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT attractionType, COUNT(*) as count FROM attraction_guides GROUP BY attractionType;",
+  "rows": [
+    {
+      "attractionType": "surf_spot",
+      "count": "261"
+    },
+    {
+      "attractionType": "dive_site",
+      "count": "381"
+    },
+    {
+      "attractionType": "snorkeling_spot",
+      "count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "attractionType\tcount\nsurf_spot\t261\ndive_site\t381\nsnorkeling_spot\t2\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

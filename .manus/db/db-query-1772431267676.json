@@ -1,0 +1,19 @@
+{
+  "query": "SELECT DISTINCT attractionType FROM attraction_guides LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT DISTINCT attractionType FROM attraction_guides LIMIT 10;",
+  "rows": [
+    {
+      "attractionType": "surf_spot"
+    },
+    {
+      "attractionType": "snorkeling_spot"
+    },
+    {
+      "attractionType": "dive_site"
+    }
+  ],
+  "messages": [],
+  "stdout": "attractionType\nsurf_spot\nsnorkeling_spot\ndive_site\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

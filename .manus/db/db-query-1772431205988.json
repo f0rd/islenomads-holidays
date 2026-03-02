@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, name, slug, atoll, published FROM island_guides WHERE name LIKE '%Maaya%' OR slug LIKE '%maaya%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll, published FROM island_guides WHERE name LIKE '%Maaya%' OR slug LIKE '%maaya%';",
+  "rows": [
+    {
+      "id": "90007",
+      "name": "Maaya Thila",
+      "slug": "maaya-thila",
+      "atoll": "Ari Atoll",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\tpublished\n90007\tMaaya Thila\tmaaya-thila\tAri Atoll\t1\n",
+  "stderr": "",
+  "execution_time_ms": 88
+}
