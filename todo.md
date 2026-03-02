@@ -1890,3 +1890,7 @@
 - [x] Move Naifaru Kandu from island_guides to attraction_guides (it's a dive channel, not an island)
 - [x] Delete from island_guides
 - [x] Verify in attraction_guides (already exists)
+
+
+## Bug Fixes - Island Linking
+- [x] Fix island selection button in attraction guides admin (missing Button import)
