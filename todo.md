@@ -1877,3 +1877,10 @@
 - [x] Move Maaya Thila from island_guides to attraction_guides (already exists in attraction_guides)
 - [x] Delete Maaya Thila from island_guides table
 - [x] Verify Maaya Thila appears in attraction_guides admin page
+
+
+## Data Audit - Find Misplaced Attractions in Island Guides
+- [x] Scan all island guides for attraction keywords (dive, surf, snorkel, site, spot, reef)
+- [x] Identify misplaced attractions (found 20 duplicates)
+- [x] Move misplaced attractions to attraction_guides (already in attraction_guides)
+- [x] Verify all island guides contain only actual islands/atolls (cleaned up)

@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE \n  LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%'\nORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE \n  LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%'\nORDER BY name;",
+  "rows": [
+    {
+      "id": "210066",
+      "name": "Banana Reef",
+      "slug": "banana-reef"
+    },
+    {
+      "id": "180029",
+      "name": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "id": "180005",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo"
+    },
+    {
+      "id": "210070",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef"
+    },
+    {
+      "id": "180014",
+      "name": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "id": "180013",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo"
+    },
+    {
+      "id": "180017",
+      "name": "Gan",
+      "slug": "gan"
+    },
+    {
+      "id": "180032",
+      "name": "Gulhi",
+      "slug": "gulhi"
+    },
+    {
+      "id": "180007",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo"
+    },
+    {
+      "id": "210004",
+      "name": "HP Reef",
+      "slug": "hp-reef"
+    },
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "slug": "himandhoo"
+    },
+    {
+      "id": "180016",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi"
+    },
+    {
+      "id": "180011",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo"
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "slug": "maalhos"
+    },
+    {
+      "id": "180012",
+      "name": "Naifaru",
+      "slug": "naifaru"
+    },
+    {
+      "id": "180009",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo"
+    },
+    {
+      "id": "210042",
+      "name": "Thoddoo House Reef",
+      "slug": "thoddoo-house-reef"
+    },
+    {
+      "id": "210043",
+      "name": "Ukulhas House Reef",
+      "slug": "ukulhas-house-reef"
+    },
+    {
+      "id": "180025",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru"
+    },
+    {
+      "id": "210044",
+      "name": "Veligandu Reef",
+      "slug": "veligandu-reef"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n210066\tBanana Reef\tbanana-reef\n180029\tDhangethi\tdhangethi\n180005\tDharavandhoo\tdharavandhoo\n210070\tDhigurah House Reef\tdhigurah-house-reef\n180014\tFelidhoo\tfelidhoo\n180013\tFodhdhoo\tfodhdhoo\n180017\tGan\tgan\n180032\tGulhi\tgulhi\n180007\tGuraidhoo\tguraidhoo\n210004\tHP Reef\thp-reef\n120057\tHimandhoo\thimandhoo\n180016\tKolhufushi\tkolhufushi\n180011\tKudahuvadhoo\tkudahuvadhoo\n120058\tMaalhos\tmaalhos\n180012\tNaifaru\tnaifaru\n180009\tRasdhoo\trasdhoo\n210042\tThoddoo House Reef\tthoddoo-house-reef\n210043\tUkulhas House Reef\tukulhas-house-reef\n180025\tUngoofaaru\tungoofaaru\n210044\tVeligandu Reef\tveligandu-reef\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

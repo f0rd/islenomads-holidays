@@ -1,0 +1,130 @@
+{
+  "query": "SELECT id, name, slug, overview FROM island_guides WHERE \n  LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%'\nLIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, overview FROM island_guides WHERE \n  LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%'\nLIMIT 50;",
+  "rows": [
+    {
+      "id": "120057",
+      "name": "Himandhoo",
+      "slug": "himandhoo",
+      "overview": "Himandhoo is a charming local island nestled in the Alif Alif Atoll (Northern Ari Atoll) of the Maldives. Known for its pristine natural beauty, Himandhoo offers a genuine Maldivian experience away from the bustling resort islands. The island boasts soft white sandy beaches, crystal-clear turquoise lagoons, and vibrant coral reefs teeming with marine life, making it a paradise for snorkeling and diving enthusiasts. Visitors can immerse themselves in the local culture, interact with friendly residents, and enjoy a tranquil escape amidst stunning tropical scenery. It's an ideal destination for budget-conscious travelers seeking authentic island life and breathtaking underwater adventures."
+    },
+    {
+      "id": "120058",
+      "name": "Maalhos",
+      "slug": "maalhos",
+      "overview": "Maalhos is a charming local island nestled in the Baa Atoll, a UNESCO Biosphere Reserve in the Maldives. Known for its pristine natural beauty, tranquil atmosphere, and vibrant local culture, Maalhos offers an authentic Maldivian experience away from the bustling resort islands. The island boasts beautiful white-sand beaches, crystal-clear turquoise waters, and lush tropical vegetation. It's an ideal destination for travelers seeking relaxation, snorkeling, diving, and an immersion into the local way of life. Maalhos is committed to sustainable tourism, with guesthouses often run by local families, providing a warm and personal touch to your stay. Its proximity to Hanifaru Bay makes it a prime spot for manta ray and whale shark encounters during the right season."
+    },
+    {
+      "id": "180005",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo",
+      "overview": "Dharavandhoo is a charming local island located in the Baa Atoll, a UNESCO Biosphere Reserve in the Maldives. Renowned for its proximity to Hanifaru Bay, a world-famous seasonal feeding ground for manta rays and whale sharks, Dharavandhoo offers an authentic Maldivian experience away from the bustling resort islands. The island boasts a small domestic airport, making it easily accessible, and its crystal-clear waters are teeming with vibrant marine life, perfect for snorkeling and diving. Visitors can immerse themselves in local culture, enjoy pristine beaches, and embark on unforgettable marine excursions, making it an ideal destination for nature lovers and those seeking a genuine island getaway."
+    },
+    {
+      "id": "180007",
+      "name": "Guraidhoo",
+      "slug": "guraidhoo",
+      "overview": "Guraidhoo is a charming local island located in the South Malé Atoll of the Maldives, offering an authentic Maldivian experience away from the bustling resort islands. Known for its laid-back atmosphere, beautiful beaches, and vibrant local culture, it's a popular choice for budget-conscious travelers and those seeking a genuine insight into island life. The island boasts pristine white sands, clear turquoise waters perfect for snorkeling and diving, and a friendly community. It's also recognized for its surf breaks, attracting surfers from around the globe. Visitors can explore local shops, enjoy traditional Maldivian cuisine, and witness the daily rhythms of a fishing village, making Guraidhoo a perfect blend of relaxation, adventure, and cultural immersion."
+    },
+    {
+      "id": "180009",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "overview": "Rasdhoo is the capital island of the Alif Alif Atoll in the Maldives, offering a captivating blend of local culture and stunning natural beauty. Unlike the private resort islands, Rasdhoo provides an authentic Maldivian experience, allowing visitors to interact with locals, explore traditional life, and enjoy the breathtaking marine environment without the resort price tag. The island is renowned for its pristine bikini beaches, vibrant house reefs teeming with marine life, and proximity to world-class dive sites. With a laid-back atmosphere, guesthouses, local eateries, and easy access to excursions, Rasdhoo is an ideal destination for budget-conscious travelers and those seeking an immersive cultural and natural adventure in the Maldives."
+    },
+    {
+      "id": "180011",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "overview": "Kudahuvadhoo is a picturesque island located in the Dhaalu Atoll of the Maldives, serving as its capital. Known for its rich history and serene natural beauty, the island offers a unique blend of cultural heritage and pristine Maldivian charm. Unlike many resort-centric islands, Kudahuvadhoo provides an authentic glimpse into local island life, with friendly residents and a relaxed pace. It's particularly famous for its ancient Hawitta, mysterious mounds that hint at a pre-Islamic past, making it a fascinating destination for history enthusiasts. The surrounding waters are teeming with marine life, offering excellent opportunities for snorkeling, diving, and dolphin watching. With its untouched beaches and vibrant local culture, Kudahuvadhoo is an ideal escape for travelers seeking an immersive and tranquil Maldivian experience away from the bustling tourist hubs."
+    },
+    {
+      "id": "180012",
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "overview": "Naifaru is the vibrant capital island of the Lhaviyani Atoll in the Maldives, offering a unique blend of local Maldivian life and stunning natural beauty. Unlike many resort islands, Naifaru provides an authentic glimpse into the culture, traditions, and daily routines of a Maldivian community. It's a relatively large and densely populated island, boasting a friendly atmosphere, local guesthouses, and a range of services. Visitors can explore bustling streets, interact with locals, and discover pristine beaches. The island is also a gateway to the spectacular underwater world of the Lhaviyani Atoll, known for its rich marine biodiversity, making it an ideal spot for diving and snorkeling enthusiasts seeking an immersive cultural experience alongside tropical adventures."
+    },
+    {
+      "id": "180013",
+      "name": "Fodhdhoo",
+      "slug": "fodhdhoo",
+      "overview": "Fodhdhoo is a serene local island located in the Noonu Atoll of the Maldives, offering a glimpse into authentic Maldivian island life away from the bustling resorts. Known for its pristine natural beauty, including white sandy beaches and crystal-clear turquoise waters, Fodhdhoo is a haven for those seeking tranquility and cultural immersion. The island boasts a friendly local community, traditional guesthouses, and a laid-back atmosphere. It's an ideal destination for travelers looking to experience the Maldives on a budget, interact with locals, and enjoy unspoiled marine environments perfect for snorkeling and diving. While smaller in scale, Fodhdhoo provides a genuine Maldivian experience with its natural charm and warm hospitality."
+    },
+    {
+      "id": "180014",
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "overview": "Felidhoo is the inhabited island and administrative capital of Vaavu Atoll (Felidhoo Atoll) in the Maldives. This small, tranquil island offers an authentic Maldivian experience away from the bustling resort islands. Known for its pristine natural beauty, including white sandy beaches and crystal-clear turquoise waters, Felidhoo is a haven for those seeking peace and a glimpse into local island life. The island's reef is teeming with marine life, making it a prime spot for snorkeling and diving. Visitors can immerse themselves in the local culture, interact with friendly residents, and enjoy the serene pace of island living. It's an ideal destination for budget travelers and adventurers looking for an unspoiled Maldivian escape."
+    },
+    {
+      "id": "180016",
+      "name": "Kolhufushi",
+      "slug": "kolhufushi",
+      "overview": "Kolhufushi is a serene local island nestled in the Meemu Atoll of the Maldives, offering an authentic glimpse into Maldivian island life away from the bustling resort scene. Known for its pristine natural beauty, including soft white sand beaches and vibrant coral reefs, it's a perfect destination for travelers seeking tranquility and cultural immersion. The island is relatively untouched by mass tourism, providing a peaceful escape where visitors can experience local customs, enjoy traditional cuisine, and witness the daily rhythms of islanders. Its surrounding waters are teeming with marine life, making it an excellent spot for snorkeling and diving enthusiasts. Kolhufushi promises an idyllic Maldivian experience with a focus on nature and local charm."
+    },
+    {
+      "id": "180017",
+      "name": "Gan",
+      "slug": "gan",
+      "overview": "Gan Island, located in the Addu Atoll, is one of the southernmost islands of the Maldives and holds a unique place in the country's history and geography. Unlike many resort islands, Gan offers a glimpse into local Maldivian life, connected by a series of causeways to other inhabited islands like Feydhoo, Maradhoo, and Hithadhoo, forming the longest continuous stretch of land in the Maldives. This connectivity allows for exploration by bicycle or scooter, revealing local villages, schools, and shops. Gan was formerly a British Royal Air Force base (RAF Gan) until 1976, and remnants of this era, such as old barracks and an airstrip, are still visible, adding a historical dimension to its tropical charm. The island is less developed for tourism compared to the central atolls, offering a more authentic and tranquil experience, with opportunities for diving, snorkeling, and interacting with local communities."
+    },
+    {
+      "id": "180025",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "overview": "Ungoofaaru is the capital island of the Raa Atoll in the Maldives, a vibrant local island that offers a genuine glimpse into Maldivian life away from the typical resort experience. As an administrative hub, it boasts more infrastructure and services than many smaller local islands, including schools, a hospital, and government offices. While not a primary tourist destination in the same vein as resort islands, Ungoofaaru provides a unique opportunity for travelers interested in cultural immersion, interacting with locals, and experiencing the authentic rhythm of island living. Its surrounding waters are teeming with marine life, offering excellent opportunities for snorkeling and diving, and its local guesthouses provide a comfortable base for exploring the atoll's natural beauty and community spirit."
+    },
+    {
+      "id": "180029",
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "overview": "Water sports and diving paradise with multiple dive sites and excellent reef access"
+    },
+    {
+      "id": "180032",
+      "name": "Gulhi",
+      "slug": "gulhi",
+      "overview": "Local island with authentic Maldivian culture and excellent house reef for snorkeling"
+    },
+    {
+      "id": "210004",
+      "name": "HP Reef",
+      "slug": "hp-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    },
+    {
+      "id": "210042",
+      "name": "Thoddoo House Reef",
+      "slug": "thoddoo-house-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    },
+    {
+      "id": "210043",
+      "name": "Ukulhas House Reef",
+      "slug": "ukulhas-house-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    },
+    {
+      "id": "210044",
+      "name": "Veligandu Reef",
+      "slug": "veligandu-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    },
+    {
+      "id": "210066",
+      "name": "Banana Reef",
+      "slug": "banana-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    },
+    {
+      "id": "210070",
+      "name": "Dhigurah House Reef",
+      "slug": "dhigurah-house-reef",
+      "overview": "Welcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\toverview\n120057\tHimandhoo\thimandhoo\tHimandhoo is a charming local island nestled in the Alif Alif Atoll (Northern Ari Atoll) of the Maldives. Known for its pristine natural beauty, Himandhoo offers a genuine Maldivian experience away from the bustling resort islands. The island boasts soft white sandy beaches, crystal-clear turquoise lagoons, and vibrant coral reefs teeming with marine life, making it a paradise for snorkeling and diving enthusiasts. Visitors can immerse themselves in the local culture, interact with friendly residents, and enjoy a tranquil escape amidst stunning tropical scenery. It's an ideal destination for budget-conscious travelers seeking authentic island life and breathtaking underwater adventures.\n120058\tMaalhos\tmaalhos\tMaalhos is a charming local island nestled in the Baa Atoll, a UNESCO Biosphere Reserve in the Maldives. Known for its pristine natural beauty, tranquil atmosphere, and vibrant local culture, Maalhos offers an authentic Maldivian experience away from the bustling resort islands. The island boasts beautiful white-sand beaches, crystal-clear turquoise waters, and lush tropical vegetation. It's an ideal destination for travelers seeking relaxation, snorkeling, diving, and an immersion into the local way of life. Maalhos is committed to sustainable tourism, with guesthouses often run by local families, providing a warm and personal touch to your stay. Its proximity to Hanifaru Bay makes it a prime spot for manta ray and whale shark encounters during the right season.\n180005\tDharavandhoo\tdharavandhoo\tDharavandhoo is a charming local island located in the Baa Atoll, a UNESCO Biosphere Reserve in the Maldives. Renowned for its proximity to Hanifaru Bay, a world-famous seasonal feeding ground for manta rays and whale sharks, Dharavandhoo offers an authentic Maldivian experience away from the bustling resort islands. The island boasts a small domestic airport, making it easily accessible, and its crystal-clear waters are teeming with vibrant marine life, perfect for snorkeling and diving. Visitors can immerse themselves in local culture, enjoy pristine beaches, and embark on unforgettable marine excursions, making it an ideal destination for nature lovers and those seeking a genuine island getaway.\n180007\tGuraidhoo\tguraidhoo\tGuraidhoo is a charming local island located in the South Malé Atoll of the Maldives, offering an authentic Maldivian experience away from the bustling resort islands. Known for its laid-back atmosphere, beautiful beaches, and vibrant local culture, it's a popular choice for budget-conscious travelers and those seeking a genuine insight into island life. The island boasts pristine white sands, clear turquoise waters perfect for snorkeling and diving, and a friendly community. It's also recognized for its surf breaks, attracting surfers from around the globe. Visitors can explore local shops, enjoy traditional Maldivian cuisine, and witness the daily rhythms of a fishing village, making Guraidhoo a perfect blend of relaxation, adventure, and cultural immersion.\n180009\tRasdhoo\trasdhoo\tRasdhoo is the capital island of the Alif Alif Atoll in the Maldives, offering a captivating blend of local culture and stunning natural beauty. Unlike the private resort islands, Rasdhoo provides an authentic Maldivian experience, allowing visitors to interact with locals, explore traditional life, and enjoy the breathtaking marine environment without the resort price tag. The island is renowned for its pristine bikini beaches, vibrant house reefs teeming with marine life, and proximity to world-class dive sites. With a laid-back atmosphere, guesthouses, local eateries, and easy access to excursions, Rasdhoo is an ideal destination for budget-conscious travelers and those seeking an immersive cultural and natural adventure in the Maldives.\n180011\tKudahuvadhoo\tkudahuvadhoo\tKudahuvadhoo is a picturesque island located in the Dhaalu Atoll of the Maldives, serving as its capital. Known for its rich history and serene natural beauty, the island offers a unique blend of cultural heritage and pristine Maldivian charm. Unlike many resort-centric islands, Kudahuvadhoo provides an authentic glimpse into local island life, with friendly residents and a relaxed pace. It's particularly famous for its ancient Hawitta, mysterious mounds that hint at a pre-Islamic past, making it a fascinating destination for history enthusiasts. The surrounding waters are teeming with marine life, offering excellent opportunities for snorkeling, diving, and dolphin watching. With its untouched beaches and vibrant local culture, Kudahuvadhoo is an ideal escape for travelers seeking an immersive and tranquil Maldivian experience away from the bustling tourist hubs.\n180012\tNaifaru\tnaifaru\tNaifaru is the vibrant capital island of the Lhaviyani Atoll in the Maldives, offering a unique blend of local Maldivian life and stunning natural beauty. Unlike many resort islands, Naifaru provides an authentic glimpse into the culture, traditions, and daily routines of a Maldivian community. It's a relatively large and densely populated island, boasting a friendly atmosphere, local guesthouses, and a range of services. Visitors can explore bustling streets, interact with locals, and discover pristine beaches. The island is also a gateway to the spectacular underwater world of the Lhaviyani Atoll, known for its rich marine biodiversity, making it an ideal spot for diving and snorkeling enthusiasts seeking an immersive cultural experience alongside tropical adventures.\n180013\tFodhdhoo\tfodhdhoo\tFodhdhoo is a serene local island located in the Noonu Atoll of the Maldives, offering a glimpse into authentic Maldivian island life away from the bustling resorts. Known for its pristine natural beauty, including white sandy beaches and crystal-clear turquoise waters, Fodhdhoo is a haven for those seeking tranquility and cultural immersion. The island boasts a friendly local community, traditional guesthouses, and a laid-back atmosphere. It's an ideal destination for travelers looking to experience the Maldives on a budget, interact with locals, and enjoy unspoiled marine environments perfect for snorkeling and diving. While smaller in scale, Fodhdhoo provides a genuine Maldivian experience with its natural charm and warm hospitality.\n180014\tFelidhoo\tfelidhoo\tFelidhoo is the inhabited island and administrative capital of Vaavu Atoll (Felidhoo Atoll) in the Maldives. This small, tranquil island offers an authentic Maldivian experience away from the bustling resort islands. Known for its pristine natural beauty, including white sandy beaches and crystal-clear turquoise waters, Felidhoo is a haven for those seeking peace and a glimpse into local island life. The island's reef is teeming with marine life, making it a prime spot for snorkeling and diving. Visitors can immerse themselves in the local culture, interact with friendly residents, and enjoy the serene pace of island living. It's an ideal destination for budget travelers and adventurers looking for an unspoiled Maldivian escape.\n180016\tKolhufushi\tkolhufushi\tKolhufushi is a serene local island nestled in the Meemu Atoll of the Maldives, offering an authentic glimpse into Maldivian island life away from the bustling resort scene. Known for its pristine natural beauty, including soft white sand beaches and vibrant coral reefs, it's a perfect destination for travelers seeking tranquility and cultural immersion. The island is relatively untouched by mass tourism, providing a peaceful escape where visitors can experience local customs, enjoy traditional cuisine, and witness the daily rhythms of islanders. Its surrounding waters are teeming with marine life, making it an excellent spot for snorkeling and diving enthusiasts. Kolhufushi promises an idyllic Maldivian experience with a focus on nature and local charm.\n180017\tGan\tgan\tGan Island, located in the Addu Atoll, is one of the southernmost islands of the Maldives and holds a unique place in the country's history and geography. Unlike many resort islands, Gan offers a glimpse into local Maldivian life, connected by a series of causeways to other inhabited islands like Feydhoo, Maradhoo, and Hithadhoo, forming the longest continuous stretch of land in the Maldives. This connectivity allows for exploration by bicycle or scooter, revealing local villages, schools, and shops. Gan was formerly a British Royal Air Force base (RAF Gan) until 1976, and remnants of this era, such as old barracks and an airstrip, are still visible, adding a historical dimension to its tropical charm. The island is less developed for tourism compared to the central atolls, offering a more authentic and tranquil experience, with opportunities for diving, snorkeling, and interacting with local communities.\n180025\tUngoofaaru\tungoofaaru\tUngoofaaru is the capital island of the Raa Atoll in the Maldives, a vibrant local island that offers a genuine glimpse into Maldivian life away from the typical resort experience. As an administrative hub, it boasts more infrastructure and services than many smaller local islands, including schools, a hospital, and government offices. While not a primary tourist destination in the same vein as resort islands, Ungoofaaru provides a unique opportunity for travelers interested in cultural immersion, interacting with locals, and experiencing the authentic rhythm of island living. Its surrounding waters are teeming with marine life, offering excellent opportunities for snorkeling and diving, and its local guesthouses provide a comfortable base for exploring the atoll's natural beauty and community spirit.\n180029\tDhangethi\tdhangethi\tWater sports and diving paradise with multiple dive sites and excellent reef access\n180032\tGulhi\tgulhi\tLocal island with authentic Maldivian culture and excellent house reef for snorkeling\n210004\tHP Reef\thp-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n210042\tThoddoo House Reef\tthoddoo-house-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n210043\tUkulhas House Reef\tukulhas-house-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n210044\tVeligandu Reef\tveligandu-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n210066\tBanana Reef\tbanana-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n210070\tDhigurah House Reef\tdhigurah-house-reef\tWelcome to this beautiful Maldivian island. Discover pristine beaches, crystal-clear waters, and authentic island experiences.\n",
+  "stderr": "",
+  "execution_time_ms": 225
+}

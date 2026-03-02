@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO attraction_guides (name, slug, overview, difficulty, published, featured, createdAt, updatedAt)\nSELECT name, slug, overview, 'beginner', published, featured, createdAt, updatedAt \nFROM island_guides \nWHERE (LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%')\nAND slug NOT IN (SELECT slug FROM attraction_guides);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO attraction_guides (name, slug, overview, difficulty, published, featured, createdAt, updatedAt)\nSELECT name, slug, overview, 'beginner', published, featured, createdAt, updatedAt \nFROM island_guides \nWHERE (LOWER(name) LIKE '%dive%' OR LOWER(name) LIKE '%surf%' OR LOWER(name) LIKE '%snorkel%' OR \n  LOWER(name) LIKE '%reef%' OR LOWER(name) LIKE '%site%' OR LOWER(name) LIKE '%spot%' OR\n  LOWER(overview) LIKE '%dive site%' OR LOWER(overview) LIKE '%surf spot%' OR LOWER(overview) LIKE '%snorkeling%')\nAND slug NOT IN (SELECT slug FROM attraction_guides);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 78
+}
