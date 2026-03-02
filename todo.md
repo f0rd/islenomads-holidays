@@ -1860,3 +1860,10 @@
 - [x] Fix /admin/activity-spots route 404 error (redirect to /admin/attraction-guides)
 
 - [x] Fix /admin/activity-types route 404 error (create AdminActivityTypes page or add route)
+
+
+## Database Cleanup - Duplicate Attractions
+- [x] Identify duplicate attractions in attraction_guides table (No duplicates found)
+- [x] Create cleanup script to merge duplicates (Not needed - no duplicates exist)
+- [x] Merge duplicate records and update island links (N/A)
+- [x] Verify no duplicate keys remain (Verified - database is clean)
