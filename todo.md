@@ -1965,8 +1965,8 @@
 
 
 ## Feature - User Setup & Navigation Improvements
-- [ ] Create Ahmed Fuaadh as staff member in database
-- [ ] Assign Ahmed Fuaadh as admin role
+- [x] Create Ahmed Fuaadh as staff member in database
+- [x] Assign Ahmed Fuaadh as admin role
 - [x] Add breadcrumb navigation component to show page hierarchy
 - [x] Integrate breadcrumbs into all admin pages
 - [x] Restore previous sidebar behavior (always visible, not collapsible)

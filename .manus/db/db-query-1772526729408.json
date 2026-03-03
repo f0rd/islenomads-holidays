@@ -1,0 +1,19 @@
+{
+  "query": "\n-- First, create the admin role if it doesn't exist\nINSERT IGNORE INTO staff_roles (name, description, permissions, createdAt, updatedAt)\nVALUES ('admin', 'Administrator with full access', '[\"read\",\"write\",\"delete\",\"manage_staff\"]', NOW(), NOW());\n\n-- Get the admin role ID\nSET @roleId = (SELECT id FROM staff_roles WHERE name = 'admin' LIMIT 1);\n\n-- Get Ahmed's user ID\nSET @userId = (SELECT id FROM users WHERE email = 'ah.fuadh@gmail.com' LIMIT 1);\n\n-- Create or update Ahmed's staff record\nINSERT INTO staff (userId, roleId, department, position, isActive, createdAt, updatedAt)\nVALUES (@userId, @roleId, 'Management', 'Administrator', 1, NOW(), NOW())\nON DUPLICATE KEY UPDATE \n  roleId = @roleId,\n  department = 'Management',\n  position = 'Administrator',\n  isActive = 1,\n  updatedAt = NOW();\n\n-- Verify the staff record\nSELECT s.id, u.name, u.email, sr.name as role, s.department, s.position, s.isActive\nFROM staff s\nJOIN users u ON s.userId = u.id\nJOIN staff_roles sr ON s.roleId = sr.id\nWHERE u.email = 'ah.fuadh@gmail.com';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute \n-- First, create the admin role if it doesn't exist\nINSERT IGNORE INTO staff_roles (name, description, permissions, createdAt, updatedAt)\nVALUES ('admin', 'Administrator with full access', '[\"read\",\"write\",\"delete\",\"manage_staff\"]', NOW(), NOW());\n\n-- Get the admin role ID\nSET @roleId = (SELECT id FROM staff_roles WHERE name = 'admin' LIMIT 1);\n\n-- Get Ahmed's user ID\nSET @userId = (SELECT id FROM users WHERE email = 'ah.fuadh@gmail.com' LIMIT 1);\n\n-- Create or update Ahmed's staff record\nINSERT INTO staff (userId, roleId, department, position, isActive, createdAt, updatedAt)\nVALUES (@userId, @roleId, 'Management', 'Administrator', 1, NOW(), NOW())\nON DUPLICATE KEY UPDATE \n  roleId = @roleId,\n  department = 'Management',\n  position = 'Administrator',\n  isActive = 1,\n  updatedAt = NOW();\n\n-- Verify the staff record\nSELECT s.id, u.name, u.email, sr.name as role, s.department, s.position, s.isActive\nFROM staff s\nJOIN users u ON s.userId = u.id\nJOIN staff_roles sr ON s.roleId = sr.id\nWHERE u.email = 'ah.fuadh@gmail.com';\n",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Ahmed Fuaadh",
+      "email": "ah.fuadh@gmail.com",
+      "role": "admin",
+      "department": "Management",
+      "position": "Administrator",
+      "isActive": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\temail\trole\tdepartment\tposition\tisActive\n1\tAhmed Fuaadh\tah.fuadh@gmail.com\tadmin\tManagement\tAdministrator\t1\n",
+  "stderr": "",
+  "execution_time_ms": 250
+}
