@@ -188,16 +188,15 @@ export function CMSNavigation() {
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton
-                  tooltip={group.title}
-                  className={`h-10 transition-all font-normal ${
+                <button
+                  className={`text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-10 w-full min-w-0 items-center gap-2 overflow-hidden rounded-md px-2 outline-hidden focus-visible:ring-2 transition-all font-normal ${
                     hasActiveItem ? "bg-accent/50" : ""
                   }`}
                 >
                   <group.icon className="h-4 w-4" />
                   <span className="flex-1 text-left">{group.title}</span>
                   <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                </SidebarMenuButton>
+                </button>
               </CollapsibleTrigger>
 
               <CollapsibleContent>
