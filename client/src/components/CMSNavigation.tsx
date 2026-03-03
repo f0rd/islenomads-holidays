@@ -207,16 +207,14 @@ export function CMSNavigation() {
                     return (
                       <SidebarMenuSubItem key={item.path}>
                         <SidebarMenuSubButton
-                          asChild
                           isActive={isActive}
                           className={`h-9 transition-all ${
                             isActive ? "font-semibold" : "font-normal"
                           }`}
+                          onClick={() => window.location.href = item.path}
                         >
-                          <a href={item.path}>
-                            <item.icon className="h-4 w-4" />
-                            <span>{item.label}</span>
-                          </a>
+                          <item.icon className="h-4 w-4" />
+                          <span>{item.label}</span>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     );

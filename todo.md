@@ -1921,3 +1921,10 @@
 - [x] Fixed by replacing Link+Button pattern with Button onClick navigation
 - [x] Updated Quick Actions section to use navigate() function for routing
 - [x] Verified no nested anchor tag errors in console
+
+## Bug Fix - Remaining Nested Anchor Tags in CMSNavigation
+- [x] Identified nested anchor tags in CMSNavigation.tsx sidebar menu
+- [x] Root cause: SidebarMenuSubButton with asChild prop wrapping <a> tag created nested anchors
+- [x] Fixed by removing asChild prop and using onClick handler for navigation
+- [x] Updated sidebar menu items to use button click navigation instead of nested anchors
+- [x] Verified no nested anchor tag errors in console after fix
