@@ -1935,3 +1935,9 @@
 - [x] SidebarMenuSubButton renders as <a> tag by default, creating nested anchor conflict
 - [x] Replaced SidebarMenuButton with plain <button> element in CMSNavigation group headers
 - [x] Verified no nested anchor tag errors in console after final fix
+
+## Bug Fix - Staff Management Page Navigation
+- [x] Identified nested anchor tags in AdminStaff.tsx back button
+- [x] Root cause: Link component wrapping <a> tag created nested anchors
+- [x] Fixed by replacing Link+<a> pattern with button onClick navigation
+- [x] Staff Management page now loads and navigates properly

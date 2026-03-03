@@ -113,11 +113,12 @@ export default function AdminStaff() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Link href="/admin/dashboard">
-            <a className="text-gray-600 hover:text-gray-900">
-              <ChevronLeft className="w-5 h-5" />
-            </a>
-          </Link>
+          <button
+            onClick={() => navigate('/admin/dashboard')}
+            className="text-gray-600 hover:text-gray-900 bg-transparent border-none cursor-pointer p-0"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
           <h1 className="text-3xl font-bold text-gray-900">Staff Management</h1>
         </div>
         <p className="text-gray-600">Manage team members, roles, and permissions</p>
