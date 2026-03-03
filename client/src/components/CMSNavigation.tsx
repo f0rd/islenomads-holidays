@@ -139,7 +139,7 @@ const menuGroups: MenuGroup[] = [
     items: [
       {
         label: "SEO Optimizer",
-        path: "/admin/seo",
+        path: "/admin/seo-optimizer",
         icon: FileText,
       },
       {
