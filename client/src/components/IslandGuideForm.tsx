@@ -119,6 +119,8 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     overview: true,
     quickFacts: true,
+    transportation: true,
+    attractions: true,
   });
 
   const toggleSection = (section: string) => {

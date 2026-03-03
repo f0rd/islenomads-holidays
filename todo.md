@@ -1900,3 +1900,10 @@
 - [x] Added null check for spot.spotType before calling .replace() method
 - [x] Updated line 543 to use ternary operator: spot.spotType ? spot.spotType.replace(/_/g, ' ') : 'Activity Spot'
 - [x] Verified fix resolves error when rendering activity spots with undefined spotType
+
+## Bug Fix - Island Guide CMS Form Sections Not Visible
+- [x] Investigate why "How to Get There" and "Attractions" sections weren't visible in Island Guide CMS form
+- [x] Identified root cause: sections were collapsed by default (expandedSections state only had overview and quickFacts)
+- [x] Fixed by adding transportation and attractions to default expandedSections state
+- [x] Both sections now display expanded when editing island guides, matching frontend display
+- [x] Verified form now shows all editable content sections (transportation, attractions, etc.)
