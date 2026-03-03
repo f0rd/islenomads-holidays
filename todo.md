@@ -1962,3 +1962,12 @@
 - [x] Add staff creation form with role selection (placeholder button added)
 - [x] Write vitest tests for staff procedures
 - [x] Verify all CRUD operations work end-to-end
+
+
+## Feature - User Setup & Navigation Improvements
+- [ ] Create Ahmed Fuaadh as staff member in database
+- [ ] Assign Ahmed Fuaadh as admin role
+- [x] Add breadcrumb navigation component to show page hierarchy
+- [x] Integrate breadcrumbs into all admin pages
+- [x] Restore previous sidebar behavior (always visible, not collapsible)
+- [x] Update DashboardLayout to remove collapse functionality
