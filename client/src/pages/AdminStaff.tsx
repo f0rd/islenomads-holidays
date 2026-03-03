@@ -16,13 +16,27 @@ import {
   Edit2,
   Trash2,
   Search,
-  ChevronLeft,
   Mail,
   Shield,
-  Calendar,
-  MoreVertical,
+  X,
 } from "lucide-react";
-import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface StaffMember {
   id: number;
@@ -39,48 +53,34 @@ function AdminStaffContent() {
   const { user, isAuthenticated } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [staffMembers, setStaffMembers] = useState<StaffMember[]>([
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      email: "sarah@islenomads.com",
-      role: "Editor",
-      department: "Content",
-      status: "active",
-      joinedDate: "2024-01-15",
-      lastLogin: "2 hours ago",
+  const [selectedStaff, setSelectedStaff] = useState<StaffMember | null>(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [editFormData, setEditFormData] = useState({
+    department: "",
+    position: "",
+    role: "",
+  });
+
+  // Fetch staff list
+  const { data: staffList = [], isLoading, refetch } = trpc.staff.list.useQuery();
+
+  // Staff mutations
+  const updateMutation = trpc.staff.update.useMutation({
+    onSuccess: () => {
+      refetch();
+      setIsEditModalOpen(false);
+      setSelectedStaff(null);
     },
-    {
-      id: 2,
-      name: "Mike Chen",
-      email: "mike@islenomads.com",
-      role: "Manager",
-      department: "Operations",
-      status: "active",
-      joinedDate: "2023-11-20",
-      lastLogin: "1 day ago",
+  });
+
+  const deleteMutation = trpc.staff.delete.useMutation({
+    onSuccess: () => {
+      refetch();
+      setIsDeleteModalOpen(false);
+      setSelectedStaff(null);
     },
-    {
-      id: 3,
-      name: "Emma Davis",
-      email: "emma@islenomads.com",
-      role: "Admin",
-      department: "Management",
-      status: "active",
-      joinedDate: "2023-06-10",
-      lastLogin: "30 minutes ago",
-    },
-    {
-      id: 4,
-      name: "Alex Rodriguez",
-      email: "alex@islenomads.com",
-      role: "Contributor",
-      department: "Content",
-      status: "inactive",
-      joinedDate: "2024-02-01",
-      lastLogin: "1 week ago",
-    },
-  ]);
+  });
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -88,25 +88,57 @@ function AdminStaffContent() {
     }
   }, [isAuthenticated, navigate]);
 
-  const filteredStaff = staffMembers.filter(
-    (member) =>
-      member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      member.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredStaff = (staffList || []).filter(
+    (member: any) =>
+      (member.user?.name?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
+      (member.user?.email?.toLowerCase() || "").includes(searchTerm.toLowerCase())
   );
 
-  const getRoleColor = (role: string) => {
-    switch (role) {
-      case "Admin":
-        return "bg-red-100 text-red-800";
-      case "Manager":
-        return "bg-blue-100 text-blue-800";
-      case "Editor":
-        return "bg-green-100 text-green-800";
-      case "Contributor":
-        return "bg-gray-100 text-gray-800";
-      default:
-        return "bg-gray-100 text-gray-800";
-    }
+  const handleEditClick = (staff: any) => {
+    setSelectedStaff({
+      id: staff.id,
+      name: staff.user?.name || "",
+      email: staff.user?.email || "",
+      role: staff.role?.name || "",
+      department: staff.department || "",
+      status: staff.isActive ? "active" : "inactive",
+      joinedDate: new Date(staff.createdAt).toLocaleDateString(),
+      lastLogin: staff.lastLogin ? new Date(staff.lastLogin).toLocaleDateString() : "Never",
+    });
+    setEditFormData({
+      department: staff.department || "",
+      position: staff.position || "",
+      role: staff.role?.name || "",
+    });
+    setIsEditModalOpen(true);
+  };
+
+  const handleDeleteClick = (staff: any) => {
+    setSelectedStaff({
+      id: staff.id,
+      name: staff.user?.name || "",
+      email: staff.user?.email || "",
+      role: staff.role?.name || "",
+      department: staff.department || "",
+      status: staff.isActive ? "active" : "inactive",
+      joinedDate: new Date(staff.createdAt).toLocaleDateString(),
+      lastLogin: staff.lastLogin ? new Date(staff.lastLogin).toLocaleDateString() : "Never",
+    });
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!selectedStaff) return;
+    await updateMutation.mutateAsync({
+      id: selectedStaff.id,
+      department: editFormData.department,
+      position: editFormData.position,
+    });
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!selectedStaff) return;
+    await deleteMutation.mutateAsync({ id: selectedStaff.id });
   };
 
   return (
@@ -114,12 +146,6 @@ function AdminStaffContent() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <button
-            onClick={() => navigate('/admin/dashboard')}
-            className="text-gray-600 hover:text-gray-900 bg-transparent border-none cursor-pointer p-0"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
           <h1 className="text-3xl font-bold text-gray-900">Staff Management</h1>
         </div>
         <p className="text-gray-600">Manage team members, roles, and permissions</p>
@@ -150,103 +176,206 @@ function AdminStaffContent() {
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Name</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Email</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Role</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Department</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Last Login</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredStaff.map((member) => (
-                  <tr key={member.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                    <td className="py-4 px-4">
-                      <div>
-                        <p className="font-medium text-gray-900">{member.name}</p>
-                        <p className="text-xs text-gray-500">Joined {member.joinedDate}</p>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-2 text-gray-600 text-sm">
-                        <Mail className="w-4 h-4" />
-                        {member.email}
-                      </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${getRoleColor(member.role)}`}>
-                        <Shield className="w-3 h-3" />
-                        {member.role}
-                      </span>
-                    </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">{member.department}</td>
-                    <td className="py-4 px-4">
-                      <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
-                        member.status === "active"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-gray-100 text-gray-800"
-                      }`}>
-                        {member.status === "active" ? "● Active" : "● Inactive"}
-                      </span>
-                    </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">{member.lastLogin}</td>
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-2">
-                        <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-                          <Edit2 className="w-4 h-4 text-blue-600" />
-                        </button>
-                        <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-                          <Trash2 className="w-4 h-4 text-red-600" />
-                        </button>
-                        <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
-                          <MoreVertical className="w-4 h-4 text-gray-600" />
-                        </button>
-                      </div>
-                    </td>
+            {isLoading ? (
+              <div className="text-center py-8 text-gray-500">Loading staff members...</div>
+            ) : filteredStaff.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">No staff members found</div>
+            ) : (
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Name</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Email</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Role</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Department</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Status</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filteredStaff.map((member: any) => (
+                    <tr key={member.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                      <td className="py-4 px-4">
+                        <div>
+                          <p className="font-medium text-gray-900">{member.user?.name || "N/A"}</p>
+                          <p className="text-xs text-gray-500">
+                            Joined {new Date(member.createdAt).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <div className="flex items-center gap-2 text-gray-600 text-sm">
+                          <Mail className="w-4 h-4" />
+                          {member.user?.email || "N/A"}
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                          <Shield className="w-3 h-3" />
+                          {member.role?.name || "N/A"}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4 text-sm text-gray-600">{member.department || "N/A"}</td>
+                      <td className="py-4 px-4">
+                        <span
+                          className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
+                            member.isActive
+                              ? "bg-green-100 text-green-800"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {member.isActive ? "● Active" : "● Inactive"}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4">
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => handleEditClick(member)}
+                            className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+                          >
+                            <Edit2 className="w-4 h-4 text-blue-600" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteClick(member)}
+                            className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+                          >
+                            <Trash2 className="w-4 h-4 text-red-600" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </CardContent>
       </Card>
+
+      {/* Edit Modal */}
+      <Dialog open={isEditModalOpen} onOpenChange={setIsEditModalOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Edit Staff Member</DialogTitle>
+            <DialogDescription>Update staff member details</DialogDescription>
+          </DialogHeader>
+          {selectedStaff && (
+            <div className="space-y-4">
+              <div>
+                <Label>Name</Label>
+                <Input value={selectedStaff.name} disabled className="mt-1" />
+              </div>
+              <div>
+                <Label>Email</Label>
+                <Input value={selectedStaff.email} disabled className="mt-1" />
+              </div>
+              <div>
+                <Label>Department</Label>
+                <Input
+                  value={editFormData.department}
+                  onChange={(e) =>
+                    setEditFormData({ ...editFormData, department: e.target.value })
+                  }
+                  placeholder="e.g., Content, Operations"
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label>Position</Label>
+                <Input
+                  value={editFormData.position}
+                  onChange={(e) =>
+                    setEditFormData({ ...editFormData, position: e.target.value })
+                  }
+                  placeholder="e.g., Senior Editor"
+                  className="mt-1"
+                />
+              </div>
+              <div className="flex gap-2 justify-end pt-4">
+                <Button
+                  variant="outline"
+                  onClick={() => setIsEditModalOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleSaveEdit}
+                  disabled={updateMutation.isPending}
+                  className="bg-accent hover:bg-accent/90"
+                >
+                  {updateMutation.isPending ? "Saving..." : "Save Changes"}
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete Confirmation Modal */}
+      <Dialog open={isDeleteModalOpen} onOpenChange={setIsDeleteModalOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Delete Staff Member</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to delete {selectedStaff?.name}? This action cannot be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex gap-2 justify-end pt-4">
+            <Button
+              variant="outline"
+              onClick={() => setIsDeleteModalOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleConfirmDelete}
+              disabled={deleteMutation.isPending}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              {deleteMutation.isPending ? "Deleting..." : "Delete"}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Role Summary */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Admins</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Total Staff</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-gray-900">1</p>
+            <p className="text-2xl font-bold text-gray-900">{filteredStaff.length}</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Managers</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Active</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-gray-900">1</p>
+            <p className="text-2xl font-bold text-gray-900">
+              {filteredStaff.filter((s: any) => s.isActive).length}
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Editors</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Inactive</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-gray-900">1</p>
+            <p className="text-2xl font-bold text-gray-900">
+              {filteredStaff.filter((s: any) => !s.isActive).length}
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-600">Contributors</CardTitle>
+            <CardTitle className="text-sm font-medium text-gray-600">Departments</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-gray-900">1</p>
+            <p className="text-2xl font-bold text-gray-900">
+              {new Set(filteredStaff.map((s: any) => s.department)).size}
+            </p>
           </CardContent>
         </Card>
       </div>

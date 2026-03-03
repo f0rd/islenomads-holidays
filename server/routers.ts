@@ -8,6 +8,7 @@ import { TRPCError } from '@trpc/server';
 import { findAllRoutes, findOptimizedRoutes, getRouteSuggestions } from "./routing";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
+import { staffManagementRouter } from "./staffManagement";
 import { getAllUsers, getUserById, getAllAdminUsers, assignAdminRole, removeAdminRole, updateUserRole, getUserStatistics } from "./userManagement";
 import {
   getAllBlogPosts, getBlogPostBySlug, getBlogPostById, createBlogPost, updateBlogPost, deleteBlogPost,
@@ -952,6 +953,11 @@ export const appRouter = router({
         
         return getStaffById(staffMember.id);
       }),
+    
+    // Admin CRUD operations
+    create: staffManagementRouter._def.procedures.create,
+    update: staffManagementRouter._def.procedures.update,
+    delete: staffManagementRouter._def.procedures.delete,
     
     roles: router({
       list: protectedProcedure.query(async () => {

@@ -1948,3 +1948,17 @@
 - [x] Refactored AdminStaff to use DashboardLayout wrapper
 - [x] Extracted content into AdminStaffContent component for cleaner structure
 - [x] Staff table with all details (name, email, role, department, status, last login) now displays properly
+
+
+## Feature - Staff Management Backend Integration
+- [x] Create staff database schema (staff and staffRoles tables already exist)
+- [x] Create tRPC procedures for staff CRUD operations (create, update, delete)
+- [x] Implement staff edit modal with form validation
+- [x] Implement staff delete confirmation dialog
+- [x] Add role-based access control for staff operations
+- [x] Create adminProcedure wrapper for staff-only operations
+- [x] Connect frontend staff table to backend tRPC queries
+- [x] Implement optimistic updates for staff mutations
+- [x] Add staff creation form with role selection (placeholder button added)
+- [x] Write vitest tests for staff procedures
+- [x] Verify all CRUD operations work end-to-end
