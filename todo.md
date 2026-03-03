@@ -1914,3 +1914,10 @@
 - [x] Fixed CMSNavigation.tsx to use correct path /admin/seo-optimizer
 - [x] Verified route now resolves correctly and AdminSEOOptimizer component loads
 - [x] Confirmed no TypeScript errors after fix
+
+## Bug Fix - Nested Anchor Tags Error on /admin Page
+- [x] Investigate nested anchor tag error on StaffDashboard (/admin route)
+- [x] Identified root cause: Link component wrapping Button components created nested <a> tags
+- [x] Fixed by replacing Link+Button pattern with Button onClick navigation
+- [x] Updated Quick Actions section to use navigate() function for routing
+- [x] Verified no nested anchor tag errors in console

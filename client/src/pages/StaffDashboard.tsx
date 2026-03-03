@@ -142,30 +142,22 @@ function StaffDashboardContent() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 gap-3">
-              <Link href="/admin/blog">
-                <Button variant="outline" className="w-full justify-between">
-                  <span>Create Blog Post</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link href="/admin/packages">
-                <Button variant="outline" className="w-full justify-between">
-                  <span>Add Package</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link href="/admin/island-guides">
-                <Button variant="outline" className="w-full justify-between">
-                  <span>Create Guide</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </Link>
-              <Link href="/admin/ferry-routes">
-                <Button variant="outline" className="w-full justify-between">
-                  <span>Manage Ferry Routes</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </Link>
+              <Button variant="outline" className="w-full justify-between" onClick={() => navigate('/admin/blog')}>
+                <span>Create Blog Post</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" className="w-full justify-between" onClick={() => navigate('/admin/packages')}>
+                <span>Add Package</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" className="w-full justify-between" onClick={() => navigate('/admin/island-guides')}>
+                <span>Create Guide</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" className="w-full justify-between" onClick={() => navigate('/admin/ferry-routes')}>
+                <span>Manage Ferry Routes</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
             </div>
           </CardContent>
         </Card>
