@@ -1941,3 +1941,10 @@
 - [x] Root cause: Link component wrapping <a> tag created nested anchors
 - [x] Fixed by replacing Link+<a> pattern with button onClick navigation
 - [x] Staff Management page now loads and navigates properly
+
+## Bug Fix - Staff Management Page Display
+- [x] Identified that AdminStaff was not wrapped in DashboardLayout
+- [x] Staff details were not visible because page lacked proper admin layout context
+- [x] Refactored AdminStaff to use DashboardLayout wrapper
+- [x] Extracted content into AdminStaffContent component for cleaner structure
+- [x] Staff table with all details (name, email, role, department, status, last login) now displays properly

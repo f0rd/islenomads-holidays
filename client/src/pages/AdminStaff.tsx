@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import DashboardLayout from "@/components/DashboardLayout";
 import {
   Users,
   Plus,
@@ -34,7 +35,7 @@ interface StaffMember {
   lastLogin: string;
 }
 
-export default function AdminStaff() {
+function AdminStaffContent() {
   const { user, isAuthenticated } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
@@ -109,7 +110,7 @@ export default function AdminStaff() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="space-y-8">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
@@ -250,5 +251,13 @@ export default function AdminStaff() {
         </Card>
       </div>
     </div>
+  );
+}
+
+export default function AdminStaff() {
+  return (
+    <DashboardLayout>
+      <AdminStaffContent />
+    </DashboardLayout>
   );
 }
