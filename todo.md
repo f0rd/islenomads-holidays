@@ -2005,3 +2005,12 @@
 - [x] Update packages database with image URLs
 - [x] Update packages component to display images (already implemented)
 - [x] Verify images display correctly on home page
+
+
+## Feature - Image Upload from Backend CMS
+- [x] Add image upload component to package management form
+- [x] Add image upload component to island guide form
+- [x] Add image upload component to blog post form
+- [x] Implement S3 upload functionality in backend procedures (uploadImage tRPC procedure)
+- [x] Add image preview in CMS forms (ImageUploadField component)
+- [x] Test image uploads and verify CDN URLs

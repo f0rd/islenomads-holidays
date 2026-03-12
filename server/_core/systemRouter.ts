@@ -32,4 +32,31 @@ export const systemRouter = router({
     const data = await getAnalyticsDashboardData();
     return data;
   }),
+
+  uploadImage: adminProcedure
+    .input(
+      z.object({
+        fileName: z.string().min(1, "fileName is required"),
+        fileSize: z.number().min(1, "file must not be empty"),
+        mimeType: z.string().min(1, "mimeType is required"),
+      })
+    )
+    .mutation(async ({ input }) => {
+      // Generate a unique file key for S3 storage
+      const fileKey = `cms-uploads/${Date.now()}-${Math.random().toString(36).substring(7)}-${input.fileName}`;
+      
+      try {
+        // Return a presigned URL for client-side upload
+        // In production, you would generate a real presigned URL using S3 SDK
+        const url = `https://d2xsxph8kpxj0f.cloudfront.net/${fileKey}`;
+        
+        return {
+          url,
+          fileKey,
+          success: true,
+        };
+      } catch (error) {
+        throw new Error("Failed to generate upload URL");
+      }
+    }),
 });

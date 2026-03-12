@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ImageUploadField } from "@/components/ImageUploadField";
 import { trpc } from "@/lib/trpc";
 import { Loader2 } from "lucide-react";
 
@@ -24,6 +25,7 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
     destination: initialPackage?.destination || "",
     price: initialPackage?.price || 0,
     duration: initialPackage?.duration || "",
+    image: initialPackage?.image || "",
     highlights: Array.isArray(initialPackage?.highlights)
       ? initialPackage.highlights.join(", ")
       : initialPackage?.highlights || "",
@@ -31,6 +33,7 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
     published: initialPackage?.published || false,
   });
 
+  const [uploadError, setUploadError] = useState<string>("");
   const createMutation = trpc.packages.create.useMutation();
   const updateMutation = trpc.packages.update.useMutation();
 
@@ -48,6 +51,7 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
           description: formData.description,
           price: formData.price,
           duration: formData.duration,
+          image: formData.image,
           highlights: formData.highlights
             .split(",")
             .map((h: string) => h.trim())
@@ -64,6 +68,7 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
           destination: formData.destination || '',
           price: formData.price,
           duration: formData.duration,
+          image: formData.image,
           highlights: formData.highlights
             .split(",")
             .map((h: string) => h.trim())
@@ -128,6 +133,19 @@ export default function PackageForm({ package: initialPackage, onSuccess, onCanc
             required
           />
         </div>
+      </div>
+
+      {/* Package Image */}
+      <div>
+        <ImageUploadField
+          label="Package Image"
+          value={formData.image}
+          onChange={(url) => setFormData({ ...formData, image: url })}
+          onError={(error) => setUploadError(error)}
+        />
+        {uploadError && (
+          <p className="text-sm text-red-500 mt-2">{uploadError}</p>
+        )}
       </div>
 
       {/* Highlights */}

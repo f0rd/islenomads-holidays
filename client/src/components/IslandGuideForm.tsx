@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, Plus, Trash2, AlertCircle } from 'lucide-react';
 import { ActivitySpotSelector } from './ActivitySpotSelector';
+import { ImageUploadField } from './ImageUploadField';
 import { useState } from 'react';
 
 export interface Attraction {
@@ -33,6 +34,7 @@ export interface ActivitySpot {
 export interface IslandGuideFormData {
   name: string;
   slug: string;
+  heroImage?: string;
   overview: string;
   quickFacts: string[];
   attractions?: Attraction[];

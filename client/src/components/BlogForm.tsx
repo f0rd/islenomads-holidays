@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChevronDown, AlertCircle } from 'lucide-react';
+import { ImageUploadField } from './ImageUploadField';
 import SEOEditor from './SEOEditor';
 
 export interface BlogPostFormData {
@@ -33,6 +34,7 @@ interface BlogFormProps {
 }
 
 export function BlogForm({ initialData, onSave, onCancel, isLoading = false }: BlogFormProps) {
+  const [uploadError, setUploadError] = useState<string>('');
   const [formData, setFormData] = useState<BlogPostFormData>(
     initialData || {
       title: '',
@@ -213,14 +215,15 @@ export function BlogForm({ initialData, onSave, onCancel, isLoading = false }: B
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Featured Image URL</label>
-                <input
-                  type="text"
-                  placeholder="https://example.com/image.jpg"
+                <ImageUploadField
+                  label="Featured Image"
                   value={formData.featuredImage}
-                  onChange={(e) => handleChange('featuredImage', e.target.value)}
-                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  onChange={(url) => handleChange('featuredImage', url)}
+                  onError={(error) => setUploadError(error)}
                 />
+                {uploadError && (
+                  <p className="text-sm text-red-500 mt-2">{uploadError}</p>
+                )}
               </div>
 
               <div>
