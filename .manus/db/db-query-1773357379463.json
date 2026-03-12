@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total_featured FROM island_guides WHERE featured = 1",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_featured FROM island_guides WHERE featured = 1",
+  "rows": [
+    {
+      "total_featured": "19"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_featured\n19\n",
+  "stderr": "",
+  "execution_time_ms": 353
+}

@@ -1,0 +1,38 @@
+{
+  "query": "SELECT name, atoll FROM island_guides WHERE name LIKE '%Dharav%' OR name LIKE '%Fulha%' OR name LIKE '%Goidh%' OR name LIKE '%Maalh%' OR name LIKE '%Kela%' OR name LIKE '%Uthe%' OR name LIKE '%Hanim%' OR name LIKE '%Fuva%' OR name LIKE '%Hitha%' OR name LIKE '%Gan%' OR name LIKE '%Dhang%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, atoll FROM island_guides WHERE name LIKE '%Dharav%' OR name LIKE '%Fulha%' OR name LIKE '%Goidh%' OR name LIKE '%Maalh%' OR name LIKE '%Kela%' OR name LIKE '%Uthe%' OR name LIKE '%Hanim%' OR name LIKE '%Fuva%' OR name LIKE '%Hitha%' OR name LIKE '%Gan%' OR name LIKE '%Dhang%'",
+  "rows": [
+    {
+      "name": "Hithadhoo",
+      "atoll": "Addu Atoll"
+    },
+    {
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Hanimadhoo",
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "name": "Fuvamulah",
+      "atoll": "Seenu Atoll"
+    },
+    {
+      "name": "Utheemu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Fuvahmulah Tiger Shark",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kelaa",
+      "atoll": "Maldives"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\nHithadhoo\tAddu Atoll\nFulhadhoo\tBaa Atoll\nHanimadhoo\tHaa Alif Atoll\nFuvamulah\tSeenu Atoll\nUtheemu\tMaldives\nFuvahmulah Tiger Shark\tMaldives\nKelaa\tMaldives\n",
+  "stderr": "",
+  "execution_time_ms": 343
+}

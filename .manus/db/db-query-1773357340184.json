@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, atoll FROM island_guides WHERE atoll LIKE '%Haa Alif%' OR atoll LIKE '%Haa%' ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll FROM island_guides WHERE atoll LIKE '%Haa Alif%' OR atoll LIKE '%Haa%' ORDER BY name",
+  "rows": [
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "atoll": "Haa Alif Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\n210045\tBaarah\tHaa Alif Atoll\n210068\tDhiddhoo\tHaa Alif Atoll\n180036\tHanimadhoo\tHaa Alif Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 341
+}

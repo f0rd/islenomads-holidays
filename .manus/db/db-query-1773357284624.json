@@ -1,0 +1,331 @@
+{
+  "query": "SELECT name FROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name FROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "name": "Alifushi"
+    },
+    {
+      "name": "Baarah"
+    },
+    {
+      "name": "Bandidhoo"
+    },
+    {
+      "name": "Bileddhoo"
+    },
+    {
+      "name": "Bodufolhudhoo"
+    },
+    {
+      "name": "Burunee"
+    },
+    {
+      "name": "Dharanboodhoo"
+    },
+    {
+      "name": "Dhiddhoo"
+    },
+    {
+      "name": "Dhiffushi"
+    },
+    {
+      "name": "Dhiggaru"
+    },
+    {
+      "name": "Dhigurah"
+    },
+    {
+      "name": "Dhiyamigili"
+    },
+    {
+      "name": "Dhonfanu"
+    },
+    {
+      "name": "Dhuvaafaru"
+    },
+    {
+      "name": "Eydhafushi"
+    },
+    {
+      "name": "Feeali"
+    },
+    {
+      "name": "Fehendhoo"
+    },
+    {
+      "name": "Feidhoo"
+    },
+    {
+      "name": "Felidhoo Kandu"
+    },
+    {
+      "name": "Feridhoo"
+    },
+    {
+      "name": "Feydhoo"
+    },
+    {
+      "name": "Filladhoo"
+    },
+    {
+      "name": "Finey"
+    },
+    {
+      "name": "Fotteyo Kandu"
+    },
+    {
+      "name": "Fulhadhoo"
+    },
+    {
+      "name": "Fulidhoo"
+    },
+    {
+      "name": "Fulidhoo Kandu"
+    },
+    {
+      "name": "Funadhoo"
+    },
+    {
+      "name": "Fuvahmulah Tiger Shark"
+    },
+    {
+      "name": "Fuvamulah"
+    },
+    {
+      "name": "Gaafaru"
+    },
+    {
+      "name": "Gemendhoo"
+    },
+    {
+      "name": "Godhdhoo"
+    },
+    {
+      "name": "Hanimadhoo"
+    },
+    {
+      "name": "Himmafushi"
+    },
+    {
+      "name": "Hinnavaru"
+    },
+    {
+      "name": "Hirimaradhoo"
+    },
+    {
+      "name": "Hithadhoo"
+    },
+    {
+      "name": "Hoarafushi"
+    },
+    {
+      "name": "Hulhudheli"
+    },
+    {
+      "name": "Hulhumalé"
+    },
+    {
+      "name": "Hulhumeedhoo"
+    },
+    {
+      "name": "Huraa"
+    },
+    {
+      "name": "Ihavandhoo"
+    },
+    {
+      "name": "Inguraidhoo"
+    },
+    {
+      "name": "Innamaa"
+    },
+    {
+      "name": "Isdhoo"
+    },
+    {
+      "name": "Kaashidhoo"
+    },
+    {
+      "name": "Kadhoo"
+    },
+    {
+      "name": "Kalaidhoo"
+    },
+    {
+      "name": "Kandooma"
+    },
+    {
+      "name": "Kandooma Thila"
+    },
+    {
+      "name": "Kelaa"
+    },
+    {
+      "name": "Kendhoo"
+    },
+    {
+      "name": "Keyodhoo"
+    },
+    {
+      "name": "Kumundhoo"
+    },
+    {
+      "name": "Kurendhoo"
+    },
+    {
+      "name": "Kurinbi"
+    },
+    {
+      "name": "Lhaimagu"
+    },
+    {
+      "name": "Lhosfushi"
+    },
+    {
+      "name": "Maaenboodhoo"
+    },
+    {
+      "name": "Maafushi"
+    },
+    {
+      "name": "Maamigili"
+    },
+    {
+      "name": "Maarandhoo"
+    },
+    {
+      "name": "Maavah"
+    },
+    {
+      "name": "Madifushi"
+    },
+    {
+      "name": "Maduvvaree"
+    },
+    {
+      "name": "Magoodhoo"
+    },
+    {
+      "name": "Makunudhoo"
+    },
+    {
+      "name": "Malé"
+    },
+    {
+      "name": "Maradhoo"
+    },
+    {
+      "name": "Mathiveri"
+    },
+    {
+      "name": "Meedhoo"
+    },
+    {
+      "name": "Milandhoo"
+    },
+    {
+      "name": "Mulah"
+    },
+    {
+      "name": "Mulhadhoo"
+    },
+    {
+      "name": "Muli"
+    },
+    {
+      "name": "Muraidhoo"
+    },
+    {
+      "name": "Naalaafushi"
+    },
+    {
+      "name": "Naivaadhoo"
+    },
+    {
+      "name": "Nellaidhoo"
+    },
+    {
+      "name": "Neykurendhoo"
+    },
+    {
+      "name": "Nilandhoo"
+    },
+    {
+      "name": "Nolhivaramu"
+    },
+    {
+      "name": "Nolhivaranfaru"
+    },
+    {
+      "name": "Noomaraa"
+    },
+    {
+      "name": "Olhuvelifushi"
+    },
+    {
+      "name": "Omadhoo"
+    },
+    {
+      "name": "Raimmandhoo"
+    },
+    {
+      "name": "Rakeedhoo"
+    },
+    {
+      "name": "Rasdhoo Madivaru"
+    },
+    {
+      "name": "Rinbudhoo"
+    },
+    {
+      "name": "Thakandhoo"
+    },
+    {
+      "name": "Thinadhoo"
+    },
+    {
+      "name": "Thoddoo"
+    },
+    {
+      "name": "Thulusdhoo"
+    },
+    {
+      "name": "Thuraakunu"
+    },
+    {
+      "name": "Ukulhas"
+    },
+    {
+      "name": "Uligamu"
+    },
+    {
+      "name": "Utheemu"
+    },
+    {
+      "name": "Vaikaradhoo"
+    },
+    {
+      "name": "Vashafaru"
+    },
+    {
+      "name": "Velidhoo"
+    },
+    {
+      "name": "Veligandu"
+    },
+    {
+      "name": "Veymandoo"
+    },
+    {
+      "name": "Veyvah"
+    },
+    {
+      "name": "Villingili"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\nAlifushi\nBaarah\nBandidhoo\nBileddhoo\nBodufolhudhoo\nBurunee\nDharanboodhoo\nDhiddhoo\nDhiffushi\nDhiggaru\nDhigurah\nDhiyamigili\nDhonfanu\nDhuvaafaru\nEydhafushi\nFeeali\nFehendhoo\nFeidhoo\nFelidhoo Kandu\nFeridhoo\nFeydhoo\nFilladhoo\nFiney\nFotteyo Kandu\nFulhadhoo\nFulidhoo\nFulidhoo Kandu\nFunadhoo\nFuvahmulah Tiger Shark\nFuvamulah\nGaafaru\nGemendhoo\nGodhdhoo\nHanimadhoo\nHimmafushi\nHinnavaru\nHirimaradhoo\nHithadhoo\nHoarafushi\nHulhudheli\nHulhumalé\nHulhumeedhoo\nHuraa\nIhavandhoo\nInguraidhoo\nInnamaa\nIsdhoo\nKaashidhoo\nKadhoo\nKalaidhoo\nKandooma\nKandooma Thila\nKelaa\nKendhoo\nKeyodhoo\nKumundhoo\nKurendhoo\nKurinbi\nLhaimagu\nLhosfushi\nMaaenboodhoo\nMaafushi\nMaamigili\nMaarandhoo\nMaavah\nMadifushi\nMaduvvaree\nMagoodhoo\nMakunudhoo\nMalé\nMaradhoo\nMathiveri\nMeedhoo\nMilandhoo\nMulah\nMulhadhoo\nMuli\nMuraidhoo\nNaalaafushi\nNaivaadhoo\nNellaidhoo\nNeykurendhoo\nNilandhoo\nNolhivaramu\nNolhivaranfaru\nNoomaraa\nOlhuvelifushi\nOmadhoo\nRaimmandhoo\nRakeedhoo\nRasdhoo Madivaru\nRinbudhoo\nThakandhoo\nThinadhoo\nThoddoo\nThulusdhoo\nThuraakunu\nUkulhas\nUligamu\nUtheemu\nVaikaradhoo\nVashafaru\nVelidhoo\nVeligandu\nVeymandoo\nVeyvah\nVillingili\n",
+  "stderr": "",
+  "execution_time_ms": 345
+}
