@@ -798,6 +798,15 @@ export async function getUserById(id: number): Promise<User | undefined> {
   return result[0];
 }
 
+export async function updateUser(id: number, data: Partial<InsertUser>): Promise<User | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  await db.update(users).set(data).where(eq(users.id, id));
+  const user = await getUserById(id);
+  return user || null;
+}
+
 
 // CRM Query helpers
 export async function getCrmQueries(status?: string): Promise<CrmQuery[]> {

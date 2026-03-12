@@ -57,6 +57,7 @@ function AdminStaffContent() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editFormData, setEditFormData] = useState({
+    name: "",
     department: "",
     position: "",
     role: "",
@@ -106,6 +107,7 @@ function AdminStaffContent() {
       lastLogin: staff.lastLogin ? new Date(staff.lastLogin).toLocaleDateString() : "Never",
     });
     setEditFormData({
+      name: staff.user?.name || "",
       department: staff.department || "",
       position: staff.position || "",
       role: staff.role?.name || "",
@@ -131,6 +133,7 @@ function AdminStaffContent() {
     if (!selectedStaff) return;
     await updateMutation.mutateAsync({
       id: selectedStaff.id,
+      name: editFormData.name,
       department: editFormData.department,
       position: editFormData.position,
     });
@@ -263,7 +266,14 @@ function AdminStaffContent() {
             <div className="space-y-4">
               <div>
                 <Label>Name</Label>
-                <Input value={selectedStaff.name} disabled className="mt-1" />
+                <Input
+                  value={editFormData.name}
+                  onChange={(e) =>
+                    setEditFormData({ ...editFormData, name: e.target.value })
+                  }
+                  placeholder="e.g., John Doe"
+                  className="mt-1"
+                />
               </div>
               <div>
                 <Label>Email</Label>

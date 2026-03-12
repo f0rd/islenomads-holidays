@@ -6,7 +6,9 @@ import {
   updateStaff, 
   deleteStaff, 
   getStaffByUserId,
-  logActivity 
+  logActivity,
+  getStaffById,
+  updateUser
 } from './db';
 
 export const staffManagementRouter = router({
@@ -49,6 +51,7 @@ export const staffManagementRouter = router({
   update: adminProcedure
     .input(z.object({
       id: z.number(),
+      name: z.string().optional(),
       roleId: z.number().optional(),
       department: z.string().optional(),
       position: z.string().optional(),
@@ -59,6 +62,14 @@ export const staffManagementRouter = router({
       const currentStaff = await getStaffByUserId(ctx.user.id);
       if (!currentStaff || currentStaff.role.name !== 'admin') {
         throw new TRPCError({ code: 'FORBIDDEN' });
+      }
+      
+      // If name is being updated, update the user record
+      if (input.name) {
+        const staff = await getStaffById(input.id);
+        if (staff) {
+          await updateUser(staff.userId, { name: input.name });
+        }
       }
       
       const updated = await updateStaff(input.id, {
