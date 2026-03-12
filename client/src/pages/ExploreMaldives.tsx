@@ -132,6 +132,7 @@ export default function ExploreMaldives() {
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
       const isActualIsland = island.contentType !== 'point_of_interest';
+      const isFeatured = island.featured === 1; // Only show featured islands
       
       // Activity filtering
       let matchesActivities = true;
@@ -149,7 +150,7 @@ export default function ExploreMaldives() {
         );
       }
       
-      return matchesSearch && isPublished && isActualIsland && matchesActivities;
+      return matchesSearch && isPublished && isActualIsland && isFeatured && matchesActivities;
     });
   }, [islandsWithSpots, searchQuery, selectedActivities]);
 
@@ -391,7 +392,7 @@ export default function ExploreMaldives() {
               <div>
                 <h2 className="text-3xl font-bold mb-2">
                   {selectedActivities.size > 0 
-                    ? `Islands with ${Array.from(selectedActivities).join(', ')}`
+                    ? `Featured Islands with ${Array.from(selectedActivities).join(', ')}`
                     : 'Featured Islands'
                   }
                 </h2>

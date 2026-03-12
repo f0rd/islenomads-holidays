@@ -2014,3 +2014,19 @@
 - [x] Implement S3 upload functionality in backend procedures (uploadImage tRPC procedure)
 - [x] Add image preview in CMS forms (ImageUploadField component)
 - [x] Test image uploads and verify CDN URLs
+
+
+## Bug Fix - Featured Islands Mismatch
+- [ ] Check featured islands in database
+- [ ] Check featured islands in CMS admin panel
+- [ ] Check featured islands display logic on frontend
+- [ ] Identify the mismatch source
+- [ ] Fix the mismatch
+
+
+## Bug Fix - Featured Islands Mismatch
+- [x] Check featured islands in database (3 featured islands)
+- [x] Check featured islands in CMS admin (AdminIslandGuides shows featured destinations)
+- [x] Check featured islands on explore-maldives page (was showing all islands)
+- [x] Identify the mismatch (ExploreMaldives was not filtering by featured = 1)
+- [x] Fix the featured islands filter logic (added isFeatured check to filteredIslands)
