@@ -14,6 +14,9 @@ export const sitemapRouter = router({
     const guides = await getIslandGuides();
     const atolls = await getAllAtolls();
     const attractions = await getAllAttractionGuides();
+    
+    // Use the domain from environment variable or fallback to production domain
+    const domain = process.env.VITE_SITE_URL || 'https://holidays.islenomads.com';
 
     const entries: Array<{
       loc: string;
@@ -22,75 +25,75 @@ export const sitemapRouter = router({
       priority?: number;
     }> = [
       {
-        loc: "https://islenomads.com/",
+        loc: `${domain}/`,
         priority: 1.0,
         changefreq: "weekly",
       },
       {
-        loc: "https://islenomads.com/about",
+        loc: `${domain}/about`,
         priority: 0.8,
         changefreq: "monthly",
       },
       {
-        loc: "https://islenomads.com/contact",
+        loc: `${domain}/contact`,
         priority: 0.8,
         changefreq: "monthly",
       },
       {
-        loc: "https://islenomads.com/blog",
+        loc: `${domain}/blog`,
         priority: 0.9,
         changefreq: "daily",
       },
       {
-        loc: "https://islenomads.com/packages",
+        loc: `${domain}/packages`,
         priority: 0.9,
         changefreq: "weekly",
       },
       {
-        loc: "https://islenomads.com/explore-maldives",
+        loc: `${domain}/explore-maldives`,
         priority: 0.9,
         changefreq: "weekly",
       },
       {
-        loc: "https://islenomads.com/island-guides",
+        loc: `${domain}/island-guides`,
         priority: 0.8,
         changefreq: "weekly",
       },
       {
-        loc: "https://islenomads.com/atolls",
+        loc: `${domain}/atolls`,
         priority: 0.8,
         changefreq: "weekly",
       },
       {
-        loc: "https://islenomads.com/map",
+        loc: `${domain}/map`,
         priority: 0.7,
         changefreq: "monthly",
       },
       {
-        loc: "https://islenomads.com/trip-planner",
+        loc: `${domain}/trip-planner`,
         priority: 0.7,
         changefreq: "monthly",
       },
       ...blogs.map((b) => ({
-        loc: `https://islenomads.com/blog/${b.slug}`,
+        loc: `${domain}/blog/${b.slug}`,
         lastmod: b.updatedAt?.toISOString().split("T")[0],
         priority: 0.8,
         changefreq: "monthly" as const,
       })),
       ...guides.map((g) => ({
-        loc: `https://islenomads.com/island/${g.slug || g.id}`,
+        loc: `${domain}/island/${g.slug || g.id}`,
         lastmod: g.updatedAt?.toISOString().split("T")[0],
         priority: 0.8,
         changefreq: "monthly" as const,
       })),
       ...atolls.map((a) => ({
-        loc: `https://islenomads.com/atoll/${a.slug}`,
+        loc: `${domain}/atoll/${a.slug}`,
         lastmod: a.updatedAt?.toISOString().split("T")[0],
         priority: 0.7,
         changefreq: "monthly" as const,
       })),
       ...attractions.map((a) => ({
-        loc: `https://islenomads.com/attraction/${a.slug}`,
+        loc: `${domain}/attraction/${a.slug}`,
         lastmod: a.updatedAt?.toISOString().split("T")[0],
         priority: 0.7,
         changefreq: "monthly" as const,

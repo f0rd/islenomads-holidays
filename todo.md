@@ -1971,3 +1971,14 @@
 - [x] Integrate breadcrumbs into all admin pages
 - [x] Restore previous sidebar behavior (always visible, not collapsible)
 - [x] Update DashboardLayout to remove collapse functionality
+
+
+## Feature - Google Search Visibility
+- [x] Create XML sitemap with all pages and content (dynamic generation with domain support)
+- [x] Add robots.txt file to allow search engine crawling (already configured)
+- [ ] Verify meta tags and Open Graph tags on all pages
+- [ ] Submit sitemap to Google Search Console
+- [ ] Verify domain ownership in Google Search Console
+- [ ] Monitor search performance and indexing status
+- [ ] Optimize page titles and meta descriptions for SEO
+- [ ] Add structured data (schema.org) for travel content
