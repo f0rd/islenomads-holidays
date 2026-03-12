@@ -1,0 +1,105 @@
+{
+  "query": "SELECT id, name, atoll FROM island_guides WHERE name IN ('Maafushi', 'Thulusdhoo', 'Gulhi', 'Dhiffushi', 'Huraa', 'Himmafushi', 'Guraidhoo', 'Rasdhoo', 'Ukulhas', 'Thoddoo', 'Mathiveri', 'Feridhoo', 'Bodufolhudhoo', 'Dhigurah', 'Dhangethi', 'Maamigili', 'Omadhoo', 'Fulidhoo', 'Thinadhoo', 'Dharavandhoo', 'Fulhadhoo', 'Goidhoo', 'Maalhos', 'Kelaa', 'Utheemu', 'Hanimaadhoo', 'Fuvahmulah', 'Hithadhoo', 'Gan') ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll FROM island_guides WHERE name IN ('Maafushi', 'Thulusdhoo', 'Gulhi', 'Dhiffushi', 'Huraa', 'Himmafushi', 'Guraidhoo', 'Rasdhoo', 'Ukulhas', 'Thoddoo', 'Mathiveri', 'Feridhoo', 'Bodufolhudhoo', 'Dhigurah', 'Dhangethi', 'Maamigili', 'Omadhoo', 'Fulidhoo', 'Thinadhoo', 'Dharavandhoo', 'Fulhadhoo', 'Goidhoo', 'Maalhos', 'Kelaa', 'Utheemu', 'Hanimaadhoo', 'Fuvahmulah', 'Hithadhoo', 'Gan') ORDER BY name",
+  "rows": [
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "180034",
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "atoll": "Addu Atoll"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "atoll": "Alifu Dhaalu Atoll"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "atoll": "Maldives"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\n120055\tBodufolhudhoo\tAlif Alif Atoll\n180008\tDhiffushi\tKaafu Atoll\n180003\tDhigurah\tAlif Dhaal Atoll\n180028\tFeridhoo\tAlif Alif Atoll\n180034\tFulhadhoo\tBaa Atoll\n180002\tFulidhoo\tVaavu Atoll\n180026\tHimmafushi\tKaafu Atoll\n180020\tHithadhoo\tAddu Atoll\n210076\tHuraa\tMaldives\n210079\tKelaa\tMaldives\n180001\tMaafushi\tKaafu Atoll\n90004\tMaamigili\tAlifu Dhaalu Atoll\n180030\tMathiveri\tAlif Alif Atoll\n180027\tOmadhoo\tAlif Dhaal Atoll\n210011\tThinadhoo\tMaldives\n150003\tThoddoo\tAlif Alif Atoll\n210001\tThulusdhoo\tKaafu Atoll\n180004\tUkulhas\tAlif Alif Atoll\n210062\tUtheemu\tMaldives\n",
+  "stderr": "",
+  "execution_time_ms": 380
+}
