@@ -314,13 +314,21 @@ export default function Home() {
               </div>
             ) : featuredIslandGuides.length > 0 ? (
               featuredIslandGuides.map((guide: any) => {
-                let images = [];
-                try {
-                  images = typeof guide.images === 'string' ? JSON.parse(guide.images || '[]') : (guide.images || []);
-                } catch (e) {
-                  images = [];
+                // Use heroImage if available, otherwise try images array, fallback to default
+                let displayImage = guide.heroImage || '/images/default-island.jpg';
+                
+                if (!displayImage || displayImage === '/images/default-island.jpg') {
+                  let images = [];
+                  try {
+                    images = typeof guide.images === 'string' ? JSON.parse(guide.images || '[]') : (guide.images || []);
+                  } catch (e) {
+                    images = [];
+                  }
+                  if (images.length > 0) {
+                    displayImage = images[0];
+                  }
                 }
-                const firstImage = images.length > 0 ? images[0] : '/images/default-island.jpg';
+                const firstImage = displayImage;
 
                 return (
                   <Card
