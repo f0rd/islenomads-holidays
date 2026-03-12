@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/RUVTzMp9dIZI_76eebc20.jpg' WHERE slug = 'romantic-escape' OR name LIKE '%Romantic%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/ERcGVeRM4AGw_8abc1b26.jpg' WHERE slug = 'adventure-seeker' OR name LIKE '%Adventure%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/ALn47oL5vvZG_026b6635.jpg' WHERE slug = 'family-fun' OR name LIKE '%Family%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/F6WKIPeG65TD_f278325d.jpg' WHERE slug = 'luxury-retreat' OR name LIKE '%Luxury%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/RUVTzMp9dIZI_76eebc20.jpg' WHERE slug = 'romantic-escape' OR name LIKE '%Romantic%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/ERcGVeRM4AGw_8abc1b26.jpg' WHERE slug = 'adventure-seeker' OR name LIKE '%Adventure%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/ALn47oL5vvZG_026b6635.jpg' WHERE slug = 'family-fun' OR name LIKE '%Family%'; UPDATE packages SET image = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663326824110/JUCCYykxYWxAcNny3wop55/F6WKIPeG65TD_f278325d.jpg' WHERE slug = 'luxury-retreat' OR name LIKE '%Luxury%';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 534
+}
