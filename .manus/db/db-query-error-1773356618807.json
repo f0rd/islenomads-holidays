@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE island_guides SET featured = 1, display_order = CASE \n  WHEN name = 'Maafushi' THEN 1\n  WHEN name = 'Hulhumale' THEN 2\n  WHEN name = 'Dhiffushi' THEN 3\n  WHEN name = 'Biyadoo' THEN 4\n  WHEN name = 'Alimatha' THEN 5\n  ELSE display_order\nEND\nWHERE name IN ('Maafushi', 'Hulhumale', 'Dhiffushi', 'Biyadoo', 'Alimatha')",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET featured = 1, display_order = CASE \n  WHEN name = 'Maafushi' THEN 1\n  WHEN name = 'Hulhumale' THEN 2\n  WHEN name = 'Dhiffushi' THEN 3\n  WHEN name = 'Biyadoo' THEN 4\n  WHEN name = 'Alimatha' THEN 5\n  ELSE display_order\nEND\nWHERE name IN ('Maafushi', 'Hulhumale', 'Dhiffushi', 'Biyadoo', 'Alimatha')",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'display_order' in 'field list'"
+  ]
+}
