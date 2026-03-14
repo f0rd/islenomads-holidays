@@ -27,6 +27,7 @@ import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS, ALL_ISLANDS } 
 import { NearbyAttractionsSection } from "@/components/NearbyAttractionsSection";
 import TransportComparison from "@/components/TransportComparison";
 import InterIslandRoutes from "@/components/InterIslandRoutes";
+import Navigation from "@/components/Navigation";
 
 /**
  * UPDATED: IslandGuide component now uses slug-based URLs for SEO
@@ -155,6 +156,7 @@ export default function IslandGuide() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       {/* Navigation Bar with Previous/Next Island Links and Mode Toggle */}
       <div className="bg-background border-b">
         <div className="container py-4">
