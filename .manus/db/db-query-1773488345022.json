@@ -1,0 +1,163 @@
+{
+  "query": "SELECT \n  atoll,\n  COUNT(*) as total_islands,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as with_overview,\n  SUM(CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 1 ELSE 0 END) as with_hero_image,\n  SUM(CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 1 ELSE 0 END) as with_quick_facts,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_activities,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as with_faq\nFROM island_guides\nGROUP BY atoll\nORDER BY atoll",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  atoll,\n  COUNT(*) as total_islands,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as with_overview,\n  SUM(CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 1 ELSE 0 END) as with_hero_image,\n  SUM(CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 1 ELSE 0 END) as with_quick_facts,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_activities,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as with_faq\nFROM island_guides\nGROUP BY atoll\nORDER BY atoll",
+  "rows": [
+    {
+      "atoll": "Addu Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "1",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "total_islands": "5",
+      "with_overview": "5",
+      "with_hero_image": "5",
+      "with_quick_facts": "4",
+      "with_activities": "5",
+      "with_faq": "4"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "total_islands": "3",
+      "with_overview": "3",
+      "with_hero_image": "3",
+      "with_quick_facts": "3",
+      "with_activities": "3",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "Alifu Dhaalu Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "1",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "total_islands": "3",
+      "with_overview": "3",
+      "with_hero_image": "2",
+      "with_quick_facts": "2",
+      "with_activities": "2",
+      "with_faq": "2"
+    },
+    {
+      "atoll": "Faafu Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "0",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Gaafu Alif Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "0",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "total_islands": "3",
+      "with_overview": "3",
+      "with_hero_image": "1",
+      "with_quick_facts": "3",
+      "with_activities": "3",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "total_islands": "6",
+      "with_overview": "6",
+      "with_hero_image": "6",
+      "with_quick_facts": "4",
+      "with_activities": "6",
+      "with_faq": "4"
+    },
+    {
+      "atoll": "Lhaviyani Atoll",
+      "total_islands": "2",
+      "with_overview": "2",
+      "with_hero_image": "1",
+      "with_quick_facts": "2",
+      "with_activities": "2",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "Maldives",
+      "total_islands": "72",
+      "with_overview": "72",
+      "with_hero_image": "0",
+      "with_quick_facts": "72",
+      "with_activities": "72",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Meemu Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "1",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Raa Atoll",
+      "total_islands": "2",
+      "with_overview": "2",
+      "with_hero_image": "2",
+      "with_quick_facts": "2",
+      "with_activities": "2",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "total_islands": "3",
+      "with_overview": "3",
+      "with_hero_image": "3",
+      "with_quick_facts": "3",
+      "with_activities": "3",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "South Male Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "1",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "1"
+    },
+    {
+      "atoll": "Thaa Atoll",
+      "total_islands": "2",
+      "with_overview": "2",
+      "with_hero_image": "2",
+      "with_quick_facts": "2",
+      "with_activities": "2",
+      "with_faq": "0"
+    },
+    {
+      "atoll": "Vaavu Atoll",
+      "total_islands": "1",
+      "with_overview": "1",
+      "with_hero_image": "1",
+      "with_quick_facts": "1",
+      "with_activities": "1",
+      "with_faq": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\ttotal_islands\twith_overview\twith_hero_image\twith_quick_facts\twith_activities\twith_faq\nAddu Atoll\t1\t1\t1\t1\t1\t0\nAlif Alif Atoll\t5\t5\t5\t4\t5\t4\nAlif Dhaal Atoll\t3\t3\t3\t3\t3\t1\nAlifu Dhaalu Atoll\t1\t1\t1\t1\t1\t1\nBaa Atoll\t3\t3\t2\t2\t2\t2\nFaafu Atoll\t1\t1\t0\t1\t1\t0\nGaafu Alif Atoll\t1\t1\t0\t1\t1\t0\nHaa Alif Atoll\t3\t3\t1\t3\t3\t1\nKaafu Atoll\t6\t6\t6\t4\t6\t4\nLhaviyani Atoll\t2\t2\t1\t2\t2\t1\nMaldives\t72\t72\t0\t72\t72\t0\nMeemu Atoll\t1\t1\t1\t1\t1\t0\nRaa Atoll\t2\t2\t2\t2\t2\t0\nSeenu Atoll\t3\t3\t3\t3\t3\t1\nSouth Male Atoll\t1\t1\t1\t1\t1\t1\nThaa Atoll\t2\t2\t2\t2\t2\t0\nVaavu Atoll\t1\t1\t1\t1\t1\t0\n",
+  "stderr": "",
+  "execution_time_ms": 82
+}

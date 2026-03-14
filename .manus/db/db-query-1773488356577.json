@@ -1,0 +1,982 @@
+{
+  "query": "SELECT \n  atoll,\n  name,\n  CASE WHEN overview IS NOT NULL AND overview != '' THEN 'YES' ELSE 'NO' END as has_overview,\n  CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 'YES' ELSE 'NO' END as has_hero,\n  CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 'YES' ELSE 'NO' END as has_facts,\n  CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 'YES' ELSE 'NO' END as has_activities,\n  CASE WHEN faq IS NOT NULL AND faq != '' THEN 'YES' ELSE 'NO' END as has_faq\nFROM island_guides\nORDER BY atoll, name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  atoll,\n  name,\n  CASE WHEN overview IS NOT NULL AND overview != '' THEN 'YES' ELSE 'NO' END as has_overview,\n  CASE WHEN heroImage IS NOT NULL AND heroImage != '' THEN 'YES' ELSE 'NO' END as has_hero,\n  CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 'YES' ELSE 'NO' END as has_facts,\n  CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 'YES' ELSE 'NO' END as has_activities,\n  CASE WHEN faq IS NOT NULL AND faq != '' THEN 'YES' ELSE 'NO' END as has_faq\nFROM island_guides\nORDER BY atoll, name",
+  "rows": [
+    {
+      "atoll": "Addu Atoll",
+      "name": "Hithadhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "name": "Bodufolhudhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "name": "Feridhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "name": "Mathiveri",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "name": "Thoddoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "name": "Ukulhas",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "NO",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "name": "Dhigurah",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "name": "Omadhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "name": "Veligandu",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Alifu Dhaalu Atoll",
+      "name": "Maamigili",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "name": "Dharavandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "NO",
+      "has_activities": "NO",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "name": "Fulhadhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "name": "Godhdhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Faafu Atoll",
+      "name": "Nilandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Gaafu Alif Atoll",
+      "name": "Villingili",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "name": "Baarah",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "name": "Dhiddhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "name": "Hanimadhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Dhiffushi",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "NO",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Himmafushi",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Hulhumalé",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Maafushi",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "NO",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Malé",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "name": "Thulusdhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Lhaviyani Atoll",
+      "name": "Fehendhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Lhaviyani Atoll",
+      "name": "Hinnavaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Bandidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Bileddhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Burunee",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Dharanboodhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Dhiggaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Dhiyamigili",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Dhonfanu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Dhuvaafaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Eydhafushi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Feeali",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Felidhoo Kandu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Feydhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Filladhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Finey",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Fotteyo Kandu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Fulidhoo Kandu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Funadhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Fuvahmulah Tiger Shark",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Gaafaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Gemendhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Hirimaradhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Hoarafushi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Hulhudheli",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Hulhumeedhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Huraa",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Ihavandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Innamaa",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Isdhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kaashidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kadhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kalaidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kandooma Thila",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kelaa",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kendhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Keyodhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kumundhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kurendhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Kurinbi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Lhaimagu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Lhosfushi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Maaenboodhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Maarandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Maavah",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Maduvvaree",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Magoodhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Makunudhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Meedhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Milandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Mulah",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Mulhadhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Muraidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Naalaafushi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Naivaadhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Nellaidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Neykurendhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Nolhivaramu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Nolhivaranfaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Noomaraa",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Olhuvelifushi",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Raimmandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Rakeedhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Rasdhoo Madivaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Rinbudhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Thakandhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Thinadhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Thuraakunu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Uligamu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Utheemu",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Vaikaradhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Vashafaru",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Velidhoo",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Maldives",
+      "name": "Veyvah",
+      "has_overview": "YES",
+      "has_hero": "NO",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Meemu Atoll",
+      "name": "Muli",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Raa Atoll",
+      "name": "Alifushi",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Raa Atoll",
+      "name": "Inguraidhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "name": "Feidhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "name": "Fuvamulah",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "name": "Maradhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "South Male Atoll",
+      "name": "Kandooma",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "YES"
+    },
+    {
+      "atoll": "Thaa Atoll",
+      "name": "Madifushi",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Thaa Atoll",
+      "name": "Veymandoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    },
+    {
+      "atoll": "Vaavu Atoll",
+      "name": "Fulidhoo",
+      "has_overview": "YES",
+      "has_hero": "YES",
+      "has_facts": "YES",
+      "has_activities": "YES",
+      "has_faq": "NO"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\tname\thas_overview\thas_hero\thas_facts\thas_activities\thas_faq\nAddu Atoll\tHithadhoo\tYES\tYES\tYES\tYES\tNO\nAlif Alif Atoll\tBodufolhudhoo\tYES\tYES\tYES\tYES\tNO\nAlif Alif Atoll\tFeridhoo\tYES\tYES\tYES\tYES\tYES\nAlif Alif Atoll\tMathiveri\tYES\tYES\tYES\tYES\tYES\nAlif Alif Atoll\tThoddoo\tYES\tYES\tYES\tYES\tYES\nAlif Alif Atoll\tUkulhas\tYES\tYES\tNO\tYES\tYES\nAlif Dhaal Atoll\tDhigurah\tYES\tYES\tYES\tYES\tNO\nAlif Dhaal Atoll\tOmadhoo\tYES\tYES\tYES\tYES\tYES\nAlif Dhaal Atoll\tVeligandu\tYES\tYES\tYES\tYES\tNO\nAlifu Dhaalu Atoll\tMaamigili\tYES\tYES\tYES\tYES\tYES\nBaa Atoll\tDharavandhoo\tYES\tNO\tNO\tNO\tNO\nBaa Atoll\tFulhadhoo\tYES\tYES\tYES\tYES\tYES\nBaa Atoll\tGodhdhoo\tYES\tYES\tYES\tYES\tYES\nFaafu Atoll\tNilandhoo\tYES\tNO\tYES\tYES\tNO\nGaafu Alif Atoll\tVillingili\tYES\tNO\tYES\tYES\tNO\nHaa Alif Atoll\tBaarah\tYES\tNO\tYES\tYES\tNO\nHaa Alif Atoll\tDhiddhoo\tYES\tNO\tYES\tYES\tNO\nHaa Alif Atoll\tHanimadhoo\tYES\tYES\tYES\tYES\tYES\nKaafu Atoll\tDhiffushi\tYES\tYES\tNO\tYES\tYES\nKaafu Atoll\tHimmafushi\tYES\tYES\tYES\tYES\tYES\nKaafu Atoll\tHulhumalé\tYES\tYES\tYES\tYES\tNO\nKaafu Atoll\tMaafushi\tYES\tYES\tNO\tYES\tYES\nKaafu Atoll\tMalé\tYES\tYES\tYES\tYES\tNO\nKaafu Atoll\tThulusdhoo\tYES\tYES\tYES\tYES\tYES\nLhaviyani Atoll\tFehendhoo\tYES\tYES\tYES\tYES\tYES\nLhaviyani Atoll\tHinnavaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tBandidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tBileddhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tBurunee\tYES\tNO\tYES\tYES\tNO\nMaldives\tDharanboodhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tDhiggaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tDhiyamigili\tYES\tNO\tYES\tYES\tNO\nMaldives\tDhonfanu\tYES\tNO\tYES\tYES\tNO\nMaldives\tDhuvaafaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tEydhafushi\tYES\tNO\tYES\tYES\tNO\nMaldives\tFeeali\tYES\tNO\tYES\tYES\tNO\nMaldives\tFelidhoo Kandu\tYES\tNO\tYES\tYES\tNO\nMaldives\tFeydhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tFilladhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tFiney\tYES\tNO\tYES\tYES\tNO\nMaldives\tFotteyo Kandu\tYES\tNO\tYES\tYES\tNO\nMaldives\tFulidhoo Kandu\tYES\tNO\tYES\tYES\tNO\nMaldives\tFunadhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tFuvahmulah Tiger Shark\tYES\tNO\tYES\tYES\tNO\nMaldives\tGaafaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tGemendhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tHirimaradhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tHoarafushi\tYES\tNO\tYES\tYES\tNO\nMaldives\tHulhudheli\tYES\tNO\tYES\tYES\tNO\nMaldives\tHulhumeedhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tHuraa\tYES\tNO\tYES\tYES\tNO\nMaldives\tIhavandhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tInnamaa\tYES\tNO\tYES\tYES\tNO\nMaldives\tIsdhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKaashidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKadhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKalaidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKandooma Thila\tYES\tNO\tYES\tYES\tNO\nMaldives\tKelaa\tYES\tNO\tYES\tYES\tNO\nMaldives\tKendhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKeyodhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKumundhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKurendhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tKurinbi\tYES\tNO\tYES\tYES\tNO\nMaldives\tLhaimagu\tYES\tNO\tYES\tYES\tNO\nMaldives\tLhosfushi\tYES\tNO\tYES\tYES\tNO\nMaldives\tMaaenboodhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMaarandhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMaavah\tYES\tNO\tYES\tYES\tNO\nMaldives\tMaduvvaree\tYES\tNO\tYES\tYES\tNO\nMaldives\tMagoodhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMakunudhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMeedhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMilandhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMulah\tYES\tNO\tYES\tYES\tNO\nMaldives\tMulhadhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tMuraidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tNaalaafushi\tYES\tNO\tYES\tYES\tNO\nMaldives\tNaivaadhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tNellaidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tNeykurendhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tNolhivaramu\tYES\tNO\tYES\tYES\tNO\nMaldives\tNolhivaranfaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tNoomaraa\tYES\tNO\tYES\tYES\tNO\nMaldives\tOlhuvelifushi\tYES\tNO\tYES\tYES\tNO\nMaldives\tRaimmandhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tRakeedhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tRasdhoo Madivaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tRinbudhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tThakandhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tThinadhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tThuraakunu\tYES\tNO\tYES\tYES\tNO\nMaldives\tUligamu\tYES\tNO\tYES\tYES\tNO\nMaldives\tUtheemu\tYES\tNO\tYES\tYES\tNO\nMaldives\tVaikaradhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tVashafaru\tYES\tNO\tYES\tYES\tNO\nMaldives\tVelidhoo\tYES\tNO\tYES\tYES\tNO\nMaldives\tVeyvah\tYES\tNO\tYES\tYES\tNO\nMeemu Atoll\tMuli\tYES\tYES\tYES\tYES\tNO\nRaa Atoll\tAlifushi\tYES\tYES\tYES\tYES\tNO\nRaa Atoll\tInguraidhoo\tYES\tYES\tYES\tYES\tNO\nSeenu Atoll\tFeidhoo\tYES\tYES\tYES\tYES\tNO\nSeenu Atoll\tFuvamulah\tYES\tYES\tYES\tYES\tYES\nSeenu Atoll\tMaradhoo\tYES\tYES\tYES\tYES\tNO\nSouth Male Atoll\tKandooma\tYES\tYES\tYES\tYES\tYES\nThaa Atoll\tMadifushi\tYES\tYES\tYES\tYES\tNO\nThaa Atoll\tVeymandoo\tYES\tYES\tYES\tYES\tNO\nVaavu Atoll\tFulidhoo\tYES\tYES\tYES\tYES\tNO\n",
+  "stderr": "",
+  "execution_time_ms": 71
+}
