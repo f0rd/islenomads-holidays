@@ -1,0 +1,310 @@
+{
+  "query": "SELECT id, name, atoll, flightInfo FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 50",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, flightInfo FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 50",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "atoll": "Kaafu Atoll",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "atoll": "Alifu Dhaalu Atoll",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "atoll": "Kaafu Atoll",
+      "flightInfo": "Domestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210005",
+      "name": "Ihavandhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210006",
+      "name": "Kaashidhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210007",
+      "name": "Maduvvaree",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210008",
+      "name": "Makunudhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210009",
+      "name": "Naivaadhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210010",
+      "name": "Olhuvelifushi",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210017",
+      "name": "Kandooma Thila",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210018",
+      "name": "Kumundhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210019",
+      "name": "Lhosfushi",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210020",
+      "name": "Maaenboodhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210021",
+      "name": "Maavah",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210022",
+      "name": "Mulhadhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210023",
+      "name": "Naalaafushi",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210024",
+      "name": "Raimmandhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210025",
+      "name": "Vaikaradhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210031",
+      "name": "Kalaidhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210035",
+      "name": "Meedhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210036",
+      "name": "Nellaidhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210037",
+      "name": "Neykurendhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "atoll": "Faafu Atoll",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210040",
+      "name": "Rakeedhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210041",
+      "name": "Rasdhoo Madivaru",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "atoll": "Haa Alif Atoll",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "atoll": "Maldives",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tflightInfo\n60001\tMalé\tKaafu Atoll\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\n90004\tMaamigili\tAlifu Dhaalu Atoll\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\n210001\tThulusdhoo\tKaafu Atoll\tDomestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights.\n210002\tDhonfanu\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210003\tEydhafushi\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210005\tIhavandhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210006\tKaashidhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210007\tMaduvvaree\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210008\tMakunudhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210009\tNaivaadhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210010\tOlhuvelifushi\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210011\tThinadhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210012\tBandidhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210013\tDharanboodhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210014\tFelidhoo Kandu\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210015\tFiney\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210016\tHinnavaru\tLhaviyani Atoll\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210017\tKandooma Thila\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210018\tKumundhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210019\tLhosfushi\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210020\tMaaenboodhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210021\tMaavah\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210022\tMulhadhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210023\tNaalaafushi\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210024\tRaimmandhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210025\tVaikaradhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210026\tVelidhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210027\tFulidhoo Kandu\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210028\tGaafaru\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210029\tGemendhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210030\tHirimaradhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210031\tKalaidhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210032\tKeyodhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210033\tLhaimagu\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210034\tMagoodhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210035\tMeedhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210036\tNellaidhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210037\tNeykurendhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210038\tNilandhoo\tFaafu Atoll\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210039\tNoomaraa\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210040\tRakeedhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210041\tRasdhoo Madivaru\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210045\tBaarah\tHaa Alif Atoll\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210046\tBileddhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210047\tFeeali\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210048\tFeydhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210049\tFilladhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210050\tFunadhoo\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210051\tHoarafushi\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210052\tHulhudheli\tMaldives\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

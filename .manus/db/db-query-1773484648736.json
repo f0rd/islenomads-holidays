@@ -1,0 +1,25 @@
+{
+  "query": "SELECT name, LENGTH(flightInfo) as info_length, SUBSTRING(flightInfo, 1, 200) as info_sample FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 3",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, LENGTH(flightInfo) as info_length, SUBSTRING(flightInfo, 1, 200) as info_sample FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 3",
+  "rows": [
+    {
+      "name": "Malé",
+      "info_length": "174",
+      "info_sample": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "name": "Maamigili",
+      "info_length": "174",
+      "info_sample": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "name": "Thulusdhoo",
+      "info_length": "135",
+      "info_sample": "Domestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights."
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tinfo_length\tinfo_sample\nMalé\t174\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\nMaamigili\t174\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\nThulusdhoo\t135\tDomestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights.\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

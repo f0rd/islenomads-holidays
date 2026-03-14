@@ -1,0 +1,652 @@
+{
+  "query": "SELECT id, name, atoll, featured FROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, featured FROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "atoll": "Raa Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "atoll": "Haa Alif Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "atoll": "Alif Alif Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "atoll": "Maldives",
+      "featured": "1"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "atoll": "Haa Alif Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "atoll": "Lhaviyani Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "atoll": "Seenu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "atoll": "Alif Alif Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180034",
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180037",
+      "name": "Fuvamulah",
+      "atoll": "Seenu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180033",
+      "name": "Godhdhoo",
+      "atoll": "Baa Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "atoll": "Haa Alif Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "atoll": "Kaafu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "atoll": "Lhaviyani Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "atoll": "Addu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "atoll": "Kaafu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210075",
+      "name": "Hulhumeedhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "atoll": "Maldives",
+      "featured": "1"
+    },
+    {
+      "id": "210005",
+      "name": "Ihavandhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180023",
+      "name": "Inguraidhoo",
+      "atoll": "Raa Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210077",
+      "name": "Innamaa",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210053",
+      "name": "Isdhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210006",
+      "name": "Kaashidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210078",
+      "name": "Kadhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210031",
+      "name": "Kalaidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "atoll": "South Male Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210017",
+      "name": "Kandooma Thila",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "atoll": "Maldives",
+      "featured": "1"
+    },
+    {
+      "id": "210080",
+      "name": "Kendhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210018",
+      "name": "Kumundhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210081",
+      "name": "Kurinbi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210019",
+      "name": "Lhosfushi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210020",
+      "name": "Maaenboodhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "atoll": "Kaafu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "atoll": "Alifu Dhaalu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210082",
+      "name": "Maarandhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210021",
+      "name": "Maavah",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180022",
+      "name": "Madifushi",
+      "atoll": "Thaa Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210007",
+      "name": "Maduvvaree",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210008",
+      "name": "Makunudhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "atoll": "Kaafu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "atoll": "Seenu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "atoll": "Alif Alif Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210035",
+      "name": "Meedhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210055",
+      "name": "Milandhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210022",
+      "name": "Mulhadhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180015",
+      "name": "Muli",
+      "atoll": "Meemu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210057",
+      "name": "Muraidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210023",
+      "name": "Naalaafushi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210009",
+      "name": "Naivaadhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210036",
+      "name": "Nellaidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210037",
+      "name": "Neykurendhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "atoll": "Faafu Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210059",
+      "name": "Nolhivaramu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210083",
+      "name": "Nolhivaranfaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210010",
+      "name": "Olhuvelifushi",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "atoll": "Alif Dhaal Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210024",
+      "name": "Raimmandhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210040",
+      "name": "Rakeedhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210041",
+      "name": "Rasdhoo Madivaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210060",
+      "name": "Rinbudhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210084",
+      "name": "Thakandhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "atoll": "Maldives",
+      "featured": "1"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "atoll": "Alif Alif Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "atoll": "Kaafu Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210061",
+      "name": "Thuraakunu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "atoll": "Alif Alif Atoll",
+      "featured": "1"
+    },
+    {
+      "id": "210085",
+      "name": "Uligamu",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "atoll": "Maldives",
+      "featured": "1"
+    },
+    {
+      "id": "210025",
+      "name": "Vaikaradhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210063",
+      "name": "Vashafaru",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "atoll": "Alif Dhaal Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "atoll": "Thaa Atoll",
+      "featured": "0"
+    },
+    {
+      "id": "210065",
+      "name": "Veyvah",
+      "atoll": "Maldives",
+      "featured": "0"
+    },
+    {
+      "id": "210086",
+      "name": "Villingili",
+      "atoll": "Gaafu Alif Atoll",
+      "featured": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tfeatured\n180024\tAlifushi\tRaa Atoll\t0\n210045\tBaarah\tHaa Alif Atoll\t0\n210012\tBandidhoo\tMaldives\t0\n210046\tBileddhoo\tMaldives\t0\n120055\tBodufolhudhoo\tAlif Alif Atoll\t1\n210067\tBurunee\tMaldives\t0\n210013\tDharanboodhoo\tMaldives\t1\n210068\tDhiddhoo\tHaa Alif Atoll\t0\n180008\tDhiffushi\tKaafu Atoll\t1\n210069\tDhiggaru\tMaldives\t0\n180003\tDhigurah\tAlif Dhaal Atoll\t1\n210071\tDhiyamigili\tMaldives\t0\n210002\tDhonfanu\tMaldives\t0\n210072\tDhuvaafaru\tMaldives\t0\n210003\tEydhafushi\tMaldives\t0\n210047\tFeeali\tMaldives\t0\n180035\tFehendhoo\tLhaviyani Atoll\t0\n180018\tFeidhoo\tSeenu Atoll\t0\n210014\tFelidhoo Kandu\tMaldives\t0\n180028\tFeridhoo\tAlif Alif Atoll\t1\n210048\tFeydhoo\tMaldives\t0\n210049\tFilladhoo\tMaldives\t0\n210015\tFiney\tMaldives\t0\n210073\tFotteyo Kandu\tMaldives\t0\n180034\tFulhadhoo\tBaa Atoll\t1\n180002\tFulidhoo\tVaavu Atoll\t1\n210027\tFulidhoo Kandu\tMaldives\t0\n210050\tFunadhoo\tMaldives\t0\n210074\tFuvahmulah Tiger Shark\tMaldives\t0\n180037\tFuvamulah\tSeenu Atoll\t0\n210028\tGaafaru\tMaldives\t0\n210029\tGemendhoo\tMaldives\t0\n180033\tGodhdhoo\tBaa Atoll\t0\n180036\tHanimadhoo\tHaa Alif Atoll\t0\n180026\tHimmafushi\tKaafu Atoll\t1\n210016\tHinnavaru\tLhaviyani Atoll\t0\n210030\tHirimaradhoo\tMaldives\t0\n180020\tHithadhoo\tAddu Atoll\t1\n210051\tHoarafushi\tMaldives\t0\n210052\tHulhudheli\tMaldives\t0\n180010\tHulhumalé\tKaafu Atoll\t0\n210075\tHulhumeedhoo\tMaldives\t0\n210076\tHuraa\tMaldives\t1\n210005\tIhavandhoo\tMaldives\t0\n180023\tInguraidhoo\tRaa Atoll\t0\n210077\tInnamaa\tMaldives\t0\n210053\tIsdhoo\tMaldives\t0\n210006\tKaashidhoo\tMaldives\t0\n210078\tKadhoo\tMaldives\t0\n210031\tKalaidhoo\tMaldives\t0\n150006\tKandooma\tSouth Male Atoll\t0\n210017\tKandooma Thila\tMaldives\t0\n210079\tKelaa\tMaldives\t1\n210080\tKendhoo\tMaldives\t0\n210032\tKeyodhoo\tMaldives\t0\n210018\tKumundhoo\tMaldives\t0\n210054\tKurendhoo\tMaldives\t0\n210081\tKurinbi\tMaldives\t0\n210033\tLhaimagu\tMaldives\t0\n210019\tLhosfushi\tMaldives\t0\n210020\tMaaenboodhoo\tMaldives\t0\n180001\tMaafushi\tKaafu Atoll\t1\n90004\tMaamigili\tAlifu Dhaalu Atoll\t1\n210082\tMaarandhoo\tMaldives\t0\n210021\tMaavah\tMaldives\t0\n180022\tMadifushi\tThaa Atoll\t0\n210007\tMaduvvaree\tMaldives\t0\n210034\tMagoodhoo\tMaldives\t0\n210008\tMakunudhoo\tMaldives\t0\n60001\tMalé\tKaafu Atoll\t0\n180019\tMaradhoo\tSeenu Atoll\t0\n180030\tMathiveri\tAlif Alif Atoll\t1\n210035\tMeedhoo\tMaldives\t0\n210055\tMilandhoo\tMaldives\t0\n210056\tMulah\tMaldives\t0\n210022\tMulhadhoo\tMaldives\t0\n180015\tMuli\tMeemu Atoll\t0\n210057\tMuraidhoo\tMaldives\t0\n210023\tNaalaafushi\tMaldives\t0\n210009\tNaivaadhoo\tMaldives\t0\n210036\tNellaidhoo\tMaldives\t0\n210037\tNeykurendhoo\tMaldives\t0\n210038\tNilandhoo\tFaafu Atoll\t0\n210059\tNolhivaramu\tMaldives\t0\n210083\tNolhivaranfaru\tMaldives\t0\n210039\tNoomaraa\tMaldives\t0\n210010\tOlhuvelifushi\tMaldives\t0\n180027\tOmadhoo\tAlif Dhaal Atoll\t1\n210024\tRaimmandhoo\tMaldives\t0\n210040\tRakeedhoo\tMaldives\t0\n210041\tRasdhoo Madivaru\tMaldives\t0\n210060\tRinbudhoo\tMaldives\t0\n210084\tThakandhoo\tMaldives\t0\n210011\tThinadhoo\tMaldives\t1\n150003\tThoddoo\tAlif Alif Atoll\t1\n210001\tThulusdhoo\tKaafu Atoll\t1\n210061\tThuraakunu\tMaldives\t0\n180004\tUkulhas\tAlif Alif Atoll\t1\n210085\tUligamu\tMaldives\t0\n210062\tUtheemu\tMaldives\t1\n210025\tVaikaradhoo\tMaldives\t0\n210063\tVashafaru\tMaldives\t0\n210026\tVelidhoo\tMaldives\t0\n210064\tVeligandu\tAlif Dhaal Atoll\t0\n180021\tVeymandoo\tThaa Atoll\t0\n210065\tVeyvah\tMaldives\t0\n210086\tVillingili\tGaafu Alif Atoll\t0\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

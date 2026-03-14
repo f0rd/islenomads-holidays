@@ -1,0 +1,50 @@
+{
+  "query": "SELECT id, name, atoll FROM island_guides WHERE name LIKE 'D%' ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll FROM island_guides WHERE name LIKE 'D%' ORDER BY name",
+  "rows": [
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "atoll": "Haa Alif Atoll"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "atoll": "Maldives"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "atoll": "Maldives"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\n210013\tDharanboodhoo\tMaldives\n210068\tDhiddhoo\tHaa Alif Atoll\n180008\tDhiffushi\tKaafu Atoll\n210069\tDhiggaru\tMaldives\n180003\tDhigurah\tAlif Dhaal Atoll\n210071\tDhiyamigili\tMaldives\n210002\tDhonfanu\tMaldives\n210072\tDhuvaafaru\tMaldives\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

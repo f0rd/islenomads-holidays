@@ -1,0 +1,110 @@
+{
+  "query": "SELECT name, atoll, displayOrder FROM island_guides WHERE featured = 1 ORDER BY displayOrder",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, atoll, displayOrder FROM island_guides WHERE featured = 1 ORDER BY displayOrder",
+  "rows": [
+    {
+      "name": "Maafushi",
+      "atoll": "Kaafu Atoll",
+      "displayOrder": "1"
+    },
+    {
+      "name": "Thulusdhoo",
+      "atoll": "Kaafu Atoll",
+      "displayOrder": "2"
+    },
+    {
+      "name": "Dhiffushi",
+      "atoll": "Kaafu Atoll",
+      "displayOrder": "4"
+    },
+    {
+      "name": "Huraa",
+      "atoll": "Maldives",
+      "displayOrder": "5"
+    },
+    {
+      "name": "Himmafushi",
+      "atoll": "Kaafu Atoll",
+      "displayOrder": "6"
+    },
+    {
+      "name": "Ukulhas",
+      "atoll": "Alif Alif Atoll",
+      "displayOrder": "9"
+    },
+    {
+      "name": "Thoddoo",
+      "atoll": "Alif Alif Atoll",
+      "displayOrder": "10"
+    },
+    {
+      "name": "Mathiveri",
+      "atoll": "Alif Alif Atoll",
+      "displayOrder": "11"
+    },
+    {
+      "name": "Feridhoo",
+      "atoll": "Alif Alif Atoll",
+      "displayOrder": "12"
+    },
+    {
+      "name": "Bodufolhudhoo",
+      "atoll": "Alif Alif Atoll",
+      "displayOrder": "13"
+    },
+    {
+      "name": "Dhigurah",
+      "atoll": "Alif Dhaal Atoll",
+      "displayOrder": "14"
+    },
+    {
+      "name": "Maamigili",
+      "atoll": "Alifu Dhaalu Atoll",
+      "displayOrder": "16"
+    },
+    {
+      "name": "Omadhoo",
+      "atoll": "Alif Dhaal Atoll",
+      "displayOrder": "17"
+    },
+    {
+      "name": "Fulidhoo",
+      "atoll": "Vaavu Atoll",
+      "displayOrder": "18"
+    },
+    {
+      "name": "Thinadhoo",
+      "atoll": "Maldives",
+      "displayOrder": "19"
+    },
+    {
+      "name": "Dharanboodhoo",
+      "atoll": "Maldives",
+      "displayOrder": "20"
+    },
+    {
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll",
+      "displayOrder": "21"
+    },
+    {
+      "name": "Utheemu",
+      "atoll": "Maldives",
+      "displayOrder": "24"
+    },
+    {
+      "name": "Hithadhoo",
+      "atoll": "Addu Atoll",
+      "displayOrder": "27"
+    },
+    {
+      "name": "Kelaa",
+      "atoll": "Maldives",
+      "displayOrder": "29"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\tdisplayOrder\nMaafushi\tKaafu Atoll\t1\nThulusdhoo\tKaafu Atoll\t2\nDhiffushi\tKaafu Atoll\t4\nHuraa\tMaldives\t5\nHimmafushi\tKaafu Atoll\t6\nUkulhas\tAlif Alif Atoll\t9\nThoddoo\tAlif Alif Atoll\t10\nMathiveri\tAlif Alif Atoll\t11\nFeridhoo\tAlif Alif Atoll\t12\nBodufolhudhoo\tAlif Alif Atoll\t13\nDhigurah\tAlif Dhaal Atoll\t14\nMaamigili\tAlifu Dhaalu Atoll\t16\nOmadhoo\tAlif Dhaal Atoll\t17\nFulidhoo\tVaavu Atoll\t18\nThinadhoo\tMaldives\t19\nDharanboodhoo\tMaldives\t20\nFulhadhoo\tBaa Atoll\t21\nUtheemu\tMaldives\t24\nHithadhoo\tAddu Atoll\t27\nKelaa\tMaldives\t29\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

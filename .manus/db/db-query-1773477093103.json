@@ -1,0 +1,331 @@
+{
+  "query": "SELECT CONCAT(id, ' | ', name, ' | ', atoll, ' | Featured:', featured) as island_info FROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT CONCAT(id, ' | ', name, ' | ', atoll, ' | Featured:', featured) as island_info FROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "island_info": "180024 | Alifushi | Raa Atoll | Featured:0"
+    },
+    {
+      "island_info": "210045 | Baarah | Haa Alif Atoll | Featured:0"
+    },
+    {
+      "island_info": "210012 | Bandidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210046 | Bileddhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "120055 | Bodufolhudhoo | Alif Alif Atoll | Featured:1"
+    },
+    {
+      "island_info": "210067 | Burunee | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210013 | Dharanboodhoo | Maldives | Featured:1"
+    },
+    {
+      "island_info": "210068 | Dhiddhoo | Haa Alif Atoll | Featured:0"
+    },
+    {
+      "island_info": "180008 | Dhiffushi | Kaafu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210069 | Dhiggaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180003 | Dhigurah | Alif Dhaal Atoll | Featured:1"
+    },
+    {
+      "island_info": "210071 | Dhiyamigili | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210002 | Dhonfanu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210072 | Dhuvaafaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210003 | Eydhafushi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210047 | Feeali | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180035 | Fehendhoo | Lhaviyani Atoll | Featured:0"
+    },
+    {
+      "island_info": "180018 | Feidhoo | Seenu Atoll | Featured:0"
+    },
+    {
+      "island_info": "210014 | Felidhoo Kandu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180028 | Feridhoo | Alif Alif Atoll | Featured:1"
+    },
+    {
+      "island_info": "210048 | Feydhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210049 | Filladhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210015 | Finey | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210073 | Fotteyo Kandu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180034 | Fulhadhoo | Baa Atoll | Featured:1"
+    },
+    {
+      "island_info": "180002 | Fulidhoo | Vaavu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210027 | Fulidhoo Kandu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210050 | Funadhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210074 | Fuvahmulah Tiger Shark | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180037 | Fuvamulah | Seenu Atoll | Featured:0"
+    },
+    {
+      "island_info": "210028 | Gaafaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210029 | Gemendhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180033 | Godhdhoo | Baa Atoll | Featured:0"
+    },
+    {
+      "island_info": "180036 | Hanimadhoo | Haa Alif Atoll | Featured:0"
+    },
+    {
+      "island_info": "180026 | Himmafushi | Kaafu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210016 | Hinnavaru | Lhaviyani Atoll | Featured:0"
+    },
+    {
+      "island_info": "210030 | Hirimaradhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180020 | Hithadhoo | Addu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210051 | Hoarafushi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210052 | Hulhudheli | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180010 | Hulhumalé | Kaafu Atoll | Featured:0"
+    },
+    {
+      "island_info": "210075 | Hulhumeedhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210076 | Huraa | Maldives | Featured:1"
+    },
+    {
+      "island_info": "210005 | Ihavandhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180023 | Inguraidhoo | Raa Atoll | Featured:0"
+    },
+    {
+      "island_info": "210077 | Innamaa | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210053 | Isdhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210006 | Kaashidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210078 | Kadhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210031 | Kalaidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "150006 | Kandooma | South Male Atoll | Featured:0"
+    },
+    {
+      "island_info": "210017 | Kandooma Thila | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210079 | Kelaa | Maldives | Featured:1"
+    },
+    {
+      "island_info": "210080 | Kendhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210032 | Keyodhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210018 | Kumundhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210054 | Kurendhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210081 | Kurinbi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210033 | Lhaimagu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210019 | Lhosfushi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210020 | Maaenboodhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180001 | Maafushi | Kaafu Atoll | Featured:1"
+    },
+    {
+      "island_info": "90004 | Maamigili | Alifu Dhaalu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210082 | Maarandhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210021 | Maavah | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180022 | Madifushi | Thaa Atoll | Featured:0"
+    },
+    {
+      "island_info": "210007 | Maduvvaree | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210034 | Magoodhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210008 | Makunudhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "60001 | Malé | Kaafu Atoll | Featured:0"
+    },
+    {
+      "island_info": "180019 | Maradhoo | Seenu Atoll | Featured:0"
+    },
+    {
+      "island_info": "180030 | Mathiveri | Alif Alif Atoll | Featured:1"
+    },
+    {
+      "island_info": "210035 | Meedhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210055 | Milandhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210056 | Mulah | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210022 | Mulhadhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180015 | Muli | Meemu Atoll | Featured:0"
+    },
+    {
+      "island_info": "210057 | Muraidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210023 | Naalaafushi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210009 | Naivaadhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210036 | Nellaidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210037 | Neykurendhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210038 | Nilandhoo | Faafu Atoll | Featured:0"
+    },
+    {
+      "island_info": "210059 | Nolhivaramu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210083 | Nolhivaranfaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210039 | Noomaraa | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210010 | Olhuvelifushi | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180027 | Omadhoo | Alif Dhaal Atoll | Featured:1"
+    },
+    {
+      "island_info": "210024 | Raimmandhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210040 | Rakeedhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210041 | Rasdhoo Madivaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210060 | Rinbudhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210084 | Thakandhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210011 | Thinadhoo | Maldives | Featured:1"
+    },
+    {
+      "island_info": "150003 | Thoddoo | Alif Alif Atoll | Featured:1"
+    },
+    {
+      "island_info": "210001 | Thulusdhoo | Kaafu Atoll | Featured:1"
+    },
+    {
+      "island_info": "210061 | Thuraakunu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "180004 | Ukulhas | Alif Alif Atoll | Featured:1"
+    },
+    {
+      "island_info": "210085 | Uligamu | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210062 | Utheemu | Maldives | Featured:1"
+    },
+    {
+      "island_info": "210025 | Vaikaradhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210063 | Vashafaru | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210026 | Velidhoo | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210064 | Veligandu | Alif Dhaal Atoll | Featured:0"
+    },
+    {
+      "island_info": "180021 | Veymandoo | Thaa Atoll | Featured:0"
+    },
+    {
+      "island_info": "210065 | Veyvah | Maldives | Featured:0"
+    },
+    {
+      "island_info": "210086 | Villingili | Gaafu Alif Atoll | Featured:0"
+    }
+  ],
+  "messages": [],
+  "stdout": "island_info\n180024 | Alifushi | Raa Atoll | Featured:0\n210045 | Baarah | Haa Alif Atoll | Featured:0\n210012 | Bandidhoo | Maldives | Featured:0\n210046 | Bileddhoo | Maldives | Featured:0\n120055 | Bodufolhudhoo | Alif Alif Atoll | Featured:1\n210067 | Burunee | Maldives | Featured:0\n210013 | Dharanboodhoo | Maldives | Featured:1\n210068 | Dhiddhoo | Haa Alif Atoll | Featured:0\n180008 | Dhiffushi | Kaafu Atoll | Featured:1\n210069 | Dhiggaru | Maldives | Featured:0\n180003 | Dhigurah | Alif Dhaal Atoll | Featured:1\n210071 | Dhiyamigili | Maldives | Featured:0\n210002 | Dhonfanu | Maldives | Featured:0\n210072 | Dhuvaafaru | Maldives | Featured:0\n210003 | Eydhafushi | Maldives | Featured:0\n210047 | Feeali | Maldives | Featured:0\n180035 | Fehendhoo | Lhaviyani Atoll | Featured:0\n180018 | Feidhoo | Seenu Atoll | Featured:0\n210014 | Felidhoo Kandu | Maldives | Featured:0\n180028 | Feridhoo | Alif Alif Atoll | Featured:1\n210048 | Feydhoo | Maldives | Featured:0\n210049 | Filladhoo | Maldives | Featured:0\n210015 | Finey | Maldives | Featured:0\n210073 | Fotteyo Kandu | Maldives | Featured:0\n180034 | Fulhadhoo | Baa Atoll | Featured:1\n180002 | Fulidhoo | Vaavu Atoll | Featured:1\n210027 | Fulidhoo Kandu | Maldives | Featured:0\n210050 | Funadhoo | Maldives | Featured:0\n210074 | Fuvahmulah Tiger Shark | Maldives | Featured:0\n180037 | Fuvamulah | Seenu Atoll | Featured:0\n210028 | Gaafaru | Maldives | Featured:0\n210029 | Gemendhoo | Maldives | Featured:0\n180033 | Godhdhoo | Baa Atoll | Featured:0\n180036 | Hanimadhoo | Haa Alif Atoll | Featured:0\n180026 | Himmafushi | Kaafu Atoll | Featured:1\n210016 | Hinnavaru | Lhaviyani Atoll | Featured:0\n210030 | Hirimaradhoo | Maldives | Featured:0\n180020 | Hithadhoo | Addu Atoll | Featured:1\n210051 | Hoarafushi | Maldives | Featured:0\n210052 | Hulhudheli | Maldives | Featured:0\n180010 | Hulhumalé | Kaafu Atoll | Featured:0\n210075 | Hulhumeedhoo | Maldives | Featured:0\n210076 | Huraa | Maldives | Featured:1\n210005 | Ihavandhoo | Maldives | Featured:0\n180023 | Inguraidhoo | Raa Atoll | Featured:0\n210077 | Innamaa | Maldives | Featured:0\n210053 | Isdhoo | Maldives | Featured:0\n210006 | Kaashidhoo | Maldives | Featured:0\n210078 | Kadhoo | Maldives | Featured:0\n210031 | Kalaidhoo | Maldives | Featured:0\n150006 | Kandooma | South Male Atoll | Featured:0\n210017 | Kandooma Thila | Maldives | Featured:0\n210079 | Kelaa | Maldives | Featured:1\n210080 | Kendhoo | Maldives | Featured:0\n210032 | Keyodhoo | Maldives | Featured:0\n210018 | Kumundhoo | Maldives | Featured:0\n210054 | Kurendhoo | Maldives | Featured:0\n210081 | Kurinbi | Maldives | Featured:0\n210033 | Lhaimagu | Maldives | Featured:0\n210019 | Lhosfushi | Maldives | Featured:0\n210020 | Maaenboodhoo | Maldives | Featured:0\n180001 | Maafushi | Kaafu Atoll | Featured:1\n90004 | Maamigili | Alifu Dhaalu Atoll | Featured:1\n210082 | Maarandhoo | Maldives | Featured:0\n210021 | Maavah | Maldives | Featured:0\n180022 | Madifushi | Thaa Atoll | Featured:0\n210007 | Maduvvaree | Maldives | Featured:0\n210034 | Magoodhoo | Maldives | Featured:0\n210008 | Makunudhoo | Maldives | Featured:0\n60001 | Malé | Kaafu Atoll | Featured:0\n180019 | Maradhoo | Seenu Atoll | Featured:0\n180030 | Mathiveri | Alif Alif Atoll | Featured:1\n210035 | Meedhoo | Maldives | Featured:0\n210055 | Milandhoo | Maldives | Featured:0\n210056 | Mulah | Maldives | Featured:0\n210022 | Mulhadhoo | Maldives | Featured:0\n180015 | Muli | Meemu Atoll | Featured:0\n210057 | Muraidhoo | Maldives | Featured:0\n210023 | Naalaafushi | Maldives | Featured:0\n210009 | Naivaadhoo | Maldives | Featured:0\n210036 | Nellaidhoo | Maldives | Featured:0\n210037 | Neykurendhoo | Maldives | Featured:0\n210038 | Nilandhoo | Faafu Atoll | Featured:0\n210059 | Nolhivaramu | Maldives | Featured:0\n210083 | Nolhivaranfaru | Maldives | Featured:0\n210039 | Noomaraa | Maldives | Featured:0\n210010 | Olhuvelifushi | Maldives | Featured:0\n180027 | Omadhoo | Alif Dhaal Atoll | Featured:1\n210024 | Raimmandhoo | Maldives | Featured:0\n210040 | Rakeedhoo | Maldives | Featured:0\n210041 | Rasdhoo Madivaru | Maldives | Featured:0\n210060 | Rinbudhoo | Maldives | Featured:0\n210084 | Thakandhoo | Maldives | Featured:0\n210011 | Thinadhoo | Maldives | Featured:1\n150003 | Thoddoo | Alif Alif Atoll | Featured:1\n210001 | Thulusdhoo | Kaafu Atoll | Featured:1\n210061 | Thuraakunu | Maldives | Featured:0\n180004 | Ukulhas | Alif Alif Atoll | Featured:1\n210085 | Uligamu | Maldives | Featured:0\n210062 | Utheemu | Maldives | Featured:1\n210025 | Vaikaradhoo | Maldives | Featured:0\n210063 | Vashafaru | Maldives | Featured:0\n210026 | Velidhoo | Maldives | Featured:0\n210064 | Veligandu | Alif Dhaal Atoll | Featured:0\n180021 | Veymandoo | Thaa Atoll | Featured:0\n210065 | Veyvah | Maldives | Featured:0\n210086 | Villingili | Gaafu Alif Atoll | Featured:0\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

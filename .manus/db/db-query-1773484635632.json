@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, name, flightInfo FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, flightInfo FROM island_guides WHERE flightInfo IS NOT NULL AND flightInfo != '' LIMIT 5",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "flightInfo": "Accessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport."
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "flightInfo": "Domestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "flightInfo": "Domestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tflightInfo\n60001\tMalé\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\n90004\tMaamigili\tAccessible via Velana International Airport (MLE) or regional airports. Domestic flights available to nearby airports. Transfer time: 15-45 minutes by speedboat from airport.\n210001\tThulusdhoo\tDomestic flight from Malé International Airport to Ari Atoll takes approximately 45 minutes. Several airlines operate regular flights.\n210002\tDhonfanu\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n210003\tEydhafushi\tDomestic flight from Malé International Airport takes approximately 30-45 minutes. Several airlines operate regular flights.\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
