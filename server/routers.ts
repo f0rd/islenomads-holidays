@@ -5,7 +5,10 @@ import { sitemapRouter } from "./sitemapRouter";
 import { publicProcedure, router, protectedProcedure, adminProcedure } from "./_core/trpc";
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
+import { and, eq, like, or } from 'drizzle-orm';
 import { findAllRoutes, findOptimizedRoutes, getRouteSuggestions } from "./routing";
+import { getDb } from "./db";
+import { islandGuides } from "../drizzle/schema";
 import { notifyOwner } from "./_core/notification";
 import { invokeLLM } from "./_core/llm";
 import { staffManagementRouter } from "./staffManagement";
@@ -594,6 +597,27 @@ export const appRouter = router({
       .input(z.object({ limit: z.number().optional() }))
       .query(async ({ input }) => {
         return getFeaturedIslandGuides(input.limit || 3);
+      }),
+
+    search: publicProcedure
+      .input(z.object({ query: z.string().min(1), limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        const searchTerm = `%${input.query}%`;
+        const results = await db.select().from(islandGuides).where(
+          and(
+            or(
+              like(islandGuides.name, searchTerm),
+              like(islandGuides.overview, searchTerm),
+              like(islandGuides.atoll, searchTerm),
+              like(islandGuides.quickFacts, searchTerm),
+              like(islandGuides.topThingsToDo, searchTerm)
+            ),
+            eq(islandGuides.published, 1)
+          )
+        ).limit(input.limit || 20);
+        return results;
       }),
 
     listAdmin: protectedProcedure.query(async () => {

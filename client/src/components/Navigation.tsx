@@ -6,6 +6,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+import { IslandSearch } from "./IslandSearch";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8 flex-1 ml-8">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -46,8 +47,13 @@ export default function Navigation() {
           ))}
         </div>
 
+        {/* Search Bar - Desktop */}
+        <div className="hidden lg:block w-64 mx-4">
+          <IslandSearch placeholder="Search islands..." />
+        </div>
+
         {/* CTA Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 ml-auto">
           <Link href="/staff-login">
             <button className="px-4 py-2 text-sm font-medium text-primary-foreground hover:text-accent transition-colors duration-300 border border-primary-foreground/30 rounded-md hover:border-accent">
               Staff Login
@@ -77,6 +83,10 @@ export default function Navigation() {
       {isOpen && (
         <div className="lg:hidden bg-primary/95 backdrop-blur-sm border-t border-primary-foreground/10">
           <div className="container py-4 space-y-3">
+            {/* Mobile Search */}
+            <div className="px-4 py-2 mb-3">
+              <IslandSearch placeholder="Search islands..." />
+            </div>
             {navItems.map((item) => (
               <Link
                 key={item.label}
