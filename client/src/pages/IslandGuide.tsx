@@ -20,9 +20,10 @@ import {
   ChevronLeft,
   ChevronRight,
   Ship,
+  Star,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS } from "@shared/locations";
+import { getAdjacentIslands, getIslandGuideUrl, FEATURED_ISLANDS, ALL_ISLANDS } from "@shared/locations";
 import { NearbyAttractionsSection } from "@/components/NearbyAttractionsSection";
 import TransportComparison from "@/components/TransportComparison";
 import InterIslandRoutes from "@/components/InterIslandRoutes";
@@ -78,6 +79,9 @@ export default function IslandGuide() {
   const { slug = "" } = useParams();
   const [, navigate] = useLocation();
   
+  // Navigation mode state: 'featured' or 'all'
+  const [navMode, setNavMode] = useState<'featured' | 'all'>('featured');
+  
   // Fetch guide by slug (using the new getByPlaceSlug procedure)
   const { data: rawGuide, isLoading, error } = trpc.islandGuides.getByPlaceSlug.useQuery(
     { slug },
@@ -85,7 +89,7 @@ export default function IslandGuide() {
   );
   
   const guide = useMemo(() => normalizeGuideData(rawGuide), [rawGuide]);
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState<string>("overview");
   
   // Fetch inter-island routes from this island
   const { data: outgoingRoutes = [] } = trpc.boatRoutes.fromLocation.useQuery(
@@ -100,17 +104,20 @@ export default function IslandGuide() {
   );
   
   // Get adjacent islands for navigation (previous/next)
-  // Uses slug-based navigation by finding the current guide in ALL_ISLANDS
+  // Uses slug-based navigation by finding the current guide in selected island list
   const adjacentIslands = useMemo(() => {
     if (!guide?.slug) return { previous: null, next: null };
-    const currentIndex = FEATURED_ISLANDS.findIndex(i => i.slug === guide.slug);
+    
+    // Choose island list based on navigation mode
+    const islandList = navMode === 'featured' ? FEATURED_ISLANDS : ALL_ISLANDS;
+    const currentIndex = islandList.findIndex(i => i.slug === guide.slug);
     if (currentIndex === -1) return { previous: null, next: null };
     
     return {
-      previous: currentIndex > 0 ? FEATURED_ISLANDS[currentIndex - 1] : null,
-      next: currentIndex < FEATURED_ISLANDS.length - 1 ? FEATURED_ISLANDS[currentIndex + 1] : null,
+      previous: currentIndex > 0 ? islandList[currentIndex - 1] : null,
+      next: currentIndex < islandList.length - 1 ? islandList[currentIndex + 1] : null,
     };
-  }, [guide?.slug]);
+  }, [guide?.slug, navMode]);
 
   if (isLoading) {
     return (
@@ -148,38 +155,61 @@ export default function IslandGuide() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation Bar with Previous/Next Island Links */}
+      {/* Navigation Bar with Previous/Next Island Links and Mode Toggle */}
       <div className="bg-background border-b">
-        <div className="container py-4 flex items-center justify-between">
-          {adjacentIslands.previous ? (
+        <div className="container py-4">
+          {/* Navigation Mode Toggle */}
+          <div className="flex items-center justify-center gap-2 mb-4">
             <Button
-              variant="ghost"
+              variant={navMode === 'featured' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.slug))}
+              onClick={() => setNavMode('featured')}
               className="flex items-center gap-2"
             >
-              <ChevronLeft className="w-4 h-4" />
-              {adjacentIslands.previous.name}
+              <Star className="w-4 h-4" />
+              Featured Islands
             </Button>
-          ) : (
-            <div />
-          )}
-          
-          <h2 className="text-lg font-semibold">{guide.name}</h2>
-          
-          {adjacentIslands.next ? (
             <Button
-              variant="ghost"
+              variant={navMode === 'all' ? 'default' : 'outline'}
               size="sm"
-              onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.slug))}
-              className="flex items-center gap-2"
+              onClick={() => setNavMode('all')}
             >
-              {adjacentIslands.next.name}
-              <ChevronRight className="w-4 h-4" />
+              All Islands
             </Button>
-          ) : (
-            <div />
-          )}
+          </div>
+          
+          {/* Previous/Next Navigation */}
+          <div className="flex items-center justify-between">
+            {adjacentIslands.previous ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.previous!.slug))}
+                className="flex items-center gap-2"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                {adjacentIslands.previous.name}
+              </Button>
+            ) : (
+              <div />
+            )}
+            
+            <h2 className="text-lg font-semibold text-center flex-1">{guide.name}</h2>
+            
+            {adjacentIslands.next ? (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate(getIslandGuideUrl(adjacentIslands.next!.slug))}
+                className="flex items-center gap-2"
+              >
+                {adjacentIslands.next.name}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            ) : (
+              <div />
+            )}
+          </div>
         </div>
       </div>
 
