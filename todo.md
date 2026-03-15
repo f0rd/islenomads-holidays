@@ -2181,3 +2181,26 @@
 - [x] Verified Laamu Atoll displays all islands with descriptions
 - [x] All 17 atolls now have complete island guide content
 - [x] Total islands across all atolls: 126 with full descriptions
+
+
+## Island Activity Tags & Filtering System
+- [ ] Update island_guides schema to support activity tags
+- [ ] Add activities column to island_guides table
+- [ ] Tag all 126 islands with relevant activities (diving, snorkeling, surfing, fishing, etc.)
+- [ ] Create activity filter UI component for atoll pages
+- [ ] Implement filtering logic in AtollDetail component
+- [ ] Test activity filtering on multiple atolls
+- [ ] Verify all islands display correct activity tags
+
+
+## COMPLETED - Island Activity Filtering System
+- [x] Added activity tags to all 126 islands in database
+- [x] Created ActivityFilter.tsx component with 12 activity types
+- [x] Integrated activity filter into AtollDetail component
+- [x] Implemented island filtering logic based on selected activities
+- [x] Added "Clear All" button for filter reset
+- [x] Added filter status message showing selected activities
+- [x] Tested filtering on Baa Atoll - works correctly
+- [x] All activity badges are clickable and toggle selection
+- [x] Islands display/hide based on activity selection
+- [x] Activity types: Diving, Snorkeling, Surfing, Fishing, Beach Relaxation, Local Culture, Water Sports, Island Hopping, Photography, Local Cuisine, Beach Activities, Local Exploration

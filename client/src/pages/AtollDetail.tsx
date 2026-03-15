@@ -21,6 +21,7 @@ import { trpc } from '@/lib/trpc';
 import { getAtollHeroImage, getAttractionImage } from '@shared/atollImages';
 import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
 import { getIslandGuideUrl } from '@shared/locations';
+import { ActivityFilter, type Activity } from '@/components/ActivityFilter';
 
 interface AtollData {
   id: number;
@@ -47,11 +48,13 @@ interface IslandGuideData {
   slug: string;
   atoll: string | null;
   overview: string | null;
+  topThingsToDo: string | null;
   featured: number;
   published: number;
 }
 
 export default function AtollDetail() {
+  const [selectedActivities, setSelectedActivities] = useState<Activity[]>([]);
   const [matchExplore, paramsExplore] = useRoute('/explore-maldives/atoll/:slug');
   const [matchAtoll, paramsAtoll] = useRoute('/atoll/:slug');
   const params = paramsExplore || paramsAtoll;
@@ -117,6 +120,23 @@ export default function AtollDetail() {
   const highlights = parseJSON(atollData.highlights);
   const activities = parseJSON(atollData.activities);
   const accommodation = parseJSON(atollData.accommodation);
+
+  // Filter islands by selected activities
+  const filteredRegularIslands = regularIslandsData.filter((island: IslandGuideData) => {
+    if (selectedActivities.length === 0) return true;
+    const islandActivities = parseJSON(island.topThingsToDo);
+    return selectedActivities.some((activity) =>
+      islandActivities.includes(activity)
+    );
+  });
+
+  const filteredFeaturedIslands = featuredIslandsData.filter((island: IslandGuideData) => {
+    if (selectedActivities.length === 0) return true;
+    const islandActivities = parseJSON(island.topThingsToDo);
+    return selectedActivities.some((activity) =>
+      islandActivities.includes(activity)
+    );
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -395,10 +415,23 @@ export default function AtollDetail() {
               <p className="text-lg text-muted-foreground max-w-2xl">
                 Browse all islands available in this atoll region.
               </p>
+              
+              {/* Activity Filter */}
+              <div className="mt-8 p-6 bg-muted rounded-lg">
+                <ActivityFilter
+                  selectedActivities={selectedActivities}
+                  onActivityChange={setSelectedActivities}
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {regularIslandsData.map((island: IslandGuideData) => (
+            {filteredRegularIslands.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-lg">No islands found with the selected activities.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filteredRegularIslands.map((island: IslandGuideData) => (
                 <Link key={island.id} href={getIslandGuideUrl(island.slug)}>
                   <Card className="overflow-hidden hover:shadow-md transition-all duration-300 cursor-pointer h-full flex flex-col group">
                     <div className="h-32 bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center overflow-hidden relative">
@@ -431,7 +464,8 @@ export default function AtollDetail() {
                   </Card>
                 </Link>
               ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       )}
