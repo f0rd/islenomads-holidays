@@ -1,0 +1,38 @@
+{
+  "query": "SELECT id, name FROM places WHERE atollId = 3 AND type = 'island' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM places WHERE atollId = 3 AND type = 'island' ORDER BY name;",
+  "rows": [
+    {
+      "id": "30002",
+      "name": "Dhangethi"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah"
+    },
+    {
+      "id": "57",
+      "name": "Meedhoo"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n30002\tDhangethi\n102\tDhiddhoo\n73\tDhiffushi\n74\tDhigurah\n57\tMeedhoo\n30001\tOmadhoo\n98\tVeligandu\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}
