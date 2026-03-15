@@ -1,0 +1,20 @@
+{
+  "query": "SELECT DISTINCT ig.name, ig.atoll, a.id as atoll_id\nFROM island_guides ig\nLEFT JOIN places p ON ig.name = p.name AND p.type = 'island'\nLEFT JOIN atolls a ON a.name = ig.atoll\nWHERE ig.contentType = 'island' AND p.id IS NULL\nORDER BY ig.atoll, ig.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT DISTINCT ig.name, ig.atoll, a.id as atoll_id\nFROM island_guides ig\nLEFT JOIN places p ON ig.name = p.name AND p.type = 'island'\nLEFT JOIN atolls a ON a.name = ig.atoll\nWHERE ig.contentType = 'island' AND p.id IS NULL\nORDER BY ig.atoll, ig.name;",
+  "rows": [
+    {
+      "name": "Goidhoo",
+      "atoll": "Baa Atoll",
+      "atoll_id": "4"
+    },
+    {
+      "name": "Kamadhoo",
+      "atoll": "Baa Atoll",
+      "atoll_id": "4"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\tatoll_id\nGoidhoo\tBaa Atoll\t4\nKamadhoo\tBaa Atoll\t4\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

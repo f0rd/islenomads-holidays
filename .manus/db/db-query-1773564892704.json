@@ -1,0 +1,90 @@
+{
+  "query": "SELECT a.name as atoll, COUNT(p.id) as island_count \nFROM atolls a \nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name \nORDER BY a.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT a.name as atoll, COUNT(p.id) as island_count \nFROM atolls a \nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name \nORDER BY a.name;",
+  "rows": [
+    {
+      "atoll": "Alif Alif Atoll",
+      "island_count": "8"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island_count": "8"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Faafu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Gaafu Alif Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Gaafu Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Gnaviyani Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Haa Dhaalu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island_count": "17"
+    },
+    {
+      "atoll": "Laamu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Lhaviyani Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Meemu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Noonu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Raa Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Shaviyani Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Thaa Atoll",
+      "island_count": "0"
+    },
+    {
+      "atoll": "Vaavu Atoll",
+      "island_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\tisland_count\nAlif Alif Atoll\t8\nAlif Dhaal Atoll\t8\nBaa Atoll\t0\nDhaalu Atoll\t0\nFaafu Atoll\t0\nGaafu Alif Atoll\t0\nGaafu Dhaalu Atoll\t0\nGnaviyani Atoll\t0\nHaa Alif Atoll\t0\nHaa Dhaalu Atoll\t0\nKaafu Atoll\t17\nLaamu Atoll\t0\nLhaviyani Atoll\t0\nMeemu Atoll\t0\nNoonu Atoll\t0\nRaa Atoll\t0\nSeenu Atoll\t0\nShaviyani Atoll\t0\nThaa Atoll\t0\nVaavu Atoll\t0\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

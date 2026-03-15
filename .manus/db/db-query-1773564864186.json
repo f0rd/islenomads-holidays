@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO places (name, slug, type, atollId, latitude, longitude, code)\nVALUES ('Eydhafushi', 'eydhafushi', 'island', 3, 5.0, 72.9, 'EYD');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO places (name, slug, type, atollId, latitude, longitude, code)\nVALUES ('Eydhafushi', 'eydhafushi', 'island', 3, 5.0, 72.9, 'EYD');",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 62
+}

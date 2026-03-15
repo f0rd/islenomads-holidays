@@ -1,0 +1,23 @@
+{
+  "query": "SELECT * FROM places WHERE atollId = 3 LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT * FROM places WHERE atollId = 3 LIMIT 1;",
+  "rows": [
+    {
+      "id": "57",
+      "atollId": "3",
+      "name": "Meedhoo",
+      "code": "meedhoo",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:16",
+      "updatedAt": "2026-02-16 10:06:11",
+      "slug": "meedhoo",
+      "heroImage": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tatollId\tname\tcode\ttype\tcreatedAt\tupdatedAt\tslug\theroImage\tlatitude\tlongitude\n57\t3\tMeedhoo\tmeedhoo\tisland\t2026-02-14 21:55:16\t2026-02-16 10:06:11\tmeedhoo\tNULL\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

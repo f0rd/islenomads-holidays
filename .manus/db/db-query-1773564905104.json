@@ -1,0 +1,18 @@
+{
+  "query": "SELECT ig.name, ig.atoll FROM island_guides ig\nLEFT JOIN places p ON ig.name = p.name AND p.type = 'island'\nWHERE ig.contentType = 'island' AND p.id IS NULL\nORDER BY ig.atoll, ig.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.name, ig.atoll FROM island_guides ig\nLEFT JOIN places p ON ig.name = p.name AND p.type = 'island'\nWHERE ig.contentType = 'island' AND p.id IS NULL\nORDER BY ig.atoll, ig.name;",
+  "rows": [
+    {
+      "name": "Goidhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Kamadhoo",
+      "atoll": "Baa Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tatoll\nGoidhoo\tBaa Atoll\nKamadhoo\tBaa Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

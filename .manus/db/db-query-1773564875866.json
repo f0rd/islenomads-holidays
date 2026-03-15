@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO island_guides (name, slug, contentType, atoll, overview, published, featured, displayOrder)\nVALUES ('Eydhafushi', 'eydhafushi-baa', 'island', 'Baa Atoll', 'Eydhafushi is an island in Baa Atoll known for its local charm and authentic Maldivian experience.', 1, 0, 0);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO island_guides (name, slug, contentType, atoll, overview, published, featured, displayOrder)\nVALUES ('Eydhafushi', 'eydhafushi-baa', 'island', 'Baa Atoll', 'Eydhafushi is an island in Baa Atoll known for its local charm and authentic Maldivian experience.', 1, 0, 0);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 65
+}
