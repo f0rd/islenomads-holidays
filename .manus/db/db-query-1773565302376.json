@@ -1,0 +1,175 @@
+{
+  "query": "SELECT a.name as atoll, p.name as island, p.slug\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nWHERE p.type = 'island' AND a.name NOT IN ('Baa Atoll')\nORDER BY a.name, p.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT a.name as atoll, p.name as island, p.slug\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nWHERE p.type = 'island' AND a.name NOT IN ('Baa Atoll')\nORDER BY a.name, p.name;",
+  "rows": [
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Himandhoo",
+      "slug": "himandhoo"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Kandooma",
+      "slug": "kandooma"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Maalhos",
+      "slug": "maalhos"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Naifaru",
+      "slug": "naifaru"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Thoddoo",
+      "slug": "thoddoo"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Ukulhas",
+      "slug": "ukulhas"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "island": "Velidhoo",
+      "slug": "velidhoo"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Dhiddhoo",
+      "slug": "dhiddhoo"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Dhiffushi",
+      "slug": "dhiffushi"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Dhigurah",
+      "slug": "dhigurah"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Meedhoo",
+      "slug": "meedhoo"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Omadhoo",
+      "slug": "omadhoo"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "island": "Veligandu",
+      "slug": "veligandu"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Baarah",
+      "slug": "baarah"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Bileddhoo",
+      "slug": "bileddhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Dharavandhoo",
+      "slug": "dharavandhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Filladhoo",
+      "slug": "filladhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Fulhadhoo",
+      "slug": "fulhadhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Himmafushi",
+      "slug": "himmafushi"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Hoarafushi",
+      "slug": "hoarafushi"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Hulhumalé",
+      "slug": "hulhumal"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Kelaa",
+      "slug": "kelaa"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Maafushi",
+      "slug": "maafushi"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Malé",
+      "slug": "mal"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Mulhadhoo",
+      "slug": "mulhadhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Thakandhoo",
+      "slug": "thakandhoo"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Uligamu",
+      "slug": "uligamu"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "island": "Vashafaru",
+      "slug": "vashafaru"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\tisland\tslug\nAlif Alif Atoll\tBodufolhudhoo\tbodufolhudhoo\nAlif Alif Atoll\tHimandhoo\thimandhoo\nAlif Alif Atoll\tKandooma\tkandooma\nAlif Alif Atoll\tMaalhos\tmaalhos\nAlif Alif Atoll\tNaifaru\tnaifaru\nAlif Alif Atoll\tThoddoo\tthoddoo\nAlif Alif Atoll\tUkulhas\tukulhas\nAlif Alif Atoll\tVelidhoo\tvelidhoo\nAlif Dhaal Atoll\tDhangethi\tdhangethi\nAlif Dhaal Atoll\tDhiddhoo\tdhiddhoo\nAlif Dhaal Atoll\tDhiffushi\tdhiffushi\nAlif Dhaal Atoll\tDhigurah\tdhigurah\nAlif Dhaal Atoll\tEydhafushi\teydhafushi\nAlif Dhaal Atoll\tMeedhoo\tmeedhoo\nAlif Dhaal Atoll\tOmadhoo\tomadhoo\nAlif Dhaal Atoll\tVeligandu\tveligandu\nKaafu Atoll\tBaarah\tbaarah\nKaafu Atoll\tBileddhoo\tbileddhoo\nKaafu Atoll\tDharavandhoo\tdharavandhoo\nKaafu Atoll\tEydhafushi\teydhafushi\nKaafu Atoll\tFelidhoo\tfelidhoo\nKaafu Atoll\tFilladhoo\tfilladhoo\nKaafu Atoll\tFulhadhoo\tfulhadhoo\nKaafu Atoll\tHimmafushi\thimmafushi\nKaafu Atoll\tHoarafushi\thoarafushi\nKaafu Atoll\tHulhumalé\thulhumal\nKaafu Atoll\tKelaa\tkelaa\nKaafu Atoll\tMaafushi\tmaafushi\nKaafu Atoll\tMalé\tmal\nKaafu Atoll\tMulhadhoo\tmulhadhoo\nKaafu Atoll\tThakandhoo\tthakandhoo\nKaafu Atoll\tUligamu\tuligamu\nKaafu Atoll\tVashafaru\tvashafaru\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}

@@ -1,0 +1,130 @@
+{
+  "query": "SELECT a.id, a.name, COUNT(p.id) as places_count, \n       (SELECT COUNT(*) FROM island_guides ig WHERE ig.atoll = a.name AND ig.contentType = 'island') as guides_count\nFROM atolls a\nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name\nORDER BY a.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT a.id, a.name, COUNT(p.id) as places_count, \n       (SELECT COUNT(*) FROM island_guides ig WHERE ig.atoll = a.name AND ig.contentType = 'island') as guides_count\nFROM atolls a\nLEFT JOIN places p ON a.id = p.atollId AND p.type = 'island'\nGROUP BY a.id, a.name\nORDER BY a.name;",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Alif Alif Atoll",
+      "places_count": "8",
+      "guides_count": "8"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "places_count": "8",
+      "guides_count": "4"
+    },
+    {
+      "id": "4",
+      "name": "Baa Atoll",
+      "places_count": "2",
+      "guides_count": "8"
+    },
+    {
+      "id": "30001",
+      "name": "Dhaalu Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "30002",
+      "name": "Faafu Atoll",
+      "places_count": "0",
+      "guides_count": "1"
+    },
+    {
+      "id": "30003",
+      "name": "Gaafu Alif Atoll",
+      "places_count": "0",
+      "guides_count": "1"
+    },
+    {
+      "id": "30004",
+      "name": "Gaafu Dhaalu Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "30005",
+      "name": "Gnaviyani Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "30007",
+      "name": "Haa Alif Atoll",
+      "places_count": "0",
+      "guides_count": "3"
+    },
+    {
+      "id": "30006",
+      "name": "Haa Dhaalu Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "1",
+      "name": "Kaafu Atoll",
+      "places_count": "17",
+      "guides_count": "7"
+    },
+    {
+      "id": "30008",
+      "name": "Laamu Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "6",
+      "name": "Lhaviyani Atoll",
+      "places_count": "0",
+      "guides_count": "2"
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll",
+      "places_count": "0",
+      "guides_count": "1"
+    },
+    {
+      "id": "30010",
+      "name": "Noonu Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "30011",
+      "name": "Raa Atoll",
+      "places_count": "0",
+      "guides_count": "2"
+    },
+    {
+      "id": "30012",
+      "name": "Seenu Atoll",
+      "places_count": "0",
+      "guides_count": "3"
+    },
+    {
+      "id": "30013",
+      "name": "Shaviyani Atoll",
+      "places_count": "0",
+      "guides_count": "0"
+    },
+    {
+      "id": "30014",
+      "name": "Thaa Atoll",
+      "places_count": "0",
+      "guides_count": "2"
+    },
+    {
+      "id": "5",
+      "name": "Vaavu Atoll",
+      "places_count": "0",
+      "guides_count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tplaces_count\tguides_count\n2\tAlif Alif Atoll\t8\t8\n3\tAlif Dhaal Atoll\t8\t4\n4\tBaa Atoll\t2\t8\n30001\tDhaalu Atoll\t0\t0\n30002\tFaafu Atoll\t0\t1\n30003\tGaafu Alif Atoll\t0\t1\n30004\tGaafu Dhaalu Atoll\t0\t0\n30005\tGnaviyani Atoll\t0\t0\n30007\tHaa Alif Atoll\t0\t3\n30006\tHaa Dhaalu Atoll\t0\t0\n1\tKaafu Atoll\t17\t7\n30008\tLaamu Atoll\t0\t0\n6\tLhaviyani Atoll\t0\t2\n30009\tMeemu Atoll\t0\t1\n30010\tNoonu Atoll\t0\t0\n30011\tRaa Atoll\t0\t2\n30012\tSeenu Atoll\t0\t3\n30013\tShaviyani Atoll\t0\t0\n30014\tThaa Atoll\t0\t2\n5\tVaavu Atoll\t0\t1\n",
+  "stderr": "",
+  "execution_time_ms": 83
+}
