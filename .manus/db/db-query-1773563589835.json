@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO island_guides (placeId, name, slug, contentType, atoll, overview, published, featured, displayOrder)\nSELECT \n  p.id,\n  p.name,\n  LOWER(REPLACE(p.name, ' ', '-')),\n  'island',\n  a.name,\n  CONCAT(p.name, ' is a beautiful island in ', a.name, '.'),\n  1,\n  0,\n  0\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nLEFT JOIN island_guides ig ON p.name = ig.name\nWHERE p.type = 'island' AND ig.id IS NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO island_guides (placeId, name, slug, contentType, atoll, overview, published, featured, displayOrder)\nSELECT \n  p.id,\n  p.name,\n  LOWER(REPLACE(p.name, ' ', '-')),\n  'island',\n  a.name,\n  CONCAT(p.name, ' is a beautiful island in ', a.name, '.'),\n  1,\n  0,\n  0\nFROM places p\nJOIN atolls a ON p.atollId = a.id\nLEFT JOIN island_guides ig ON p.name = ig.name\nWHERE p.type = 'island' AND ig.id IS NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 69
+}

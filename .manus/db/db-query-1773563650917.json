@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, name, featured, published, heroImage FROM island_guides WHERE atoll = 'Baa Atoll' ORDER BY featured DESC, name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, featured, published, heroImage FROM island_guides WHERE atoll = 'Baa Atoll' ORDER BY featured DESC, name;",
+  "rows": [
+    {
+      "id": "240001",
+      "name": "Dharavandhoo",
+      "featured": "1",
+      "published": "1",
+      "heroImage": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80"
+    },
+    {
+      "id": "180034",
+      "name": "Fulhadhoo",
+      "featured": "1",
+      "published": "1",
+      "heroImage": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/bFRVAEQMmhdxQvLI.jpg"
+    },
+    {
+      "id": "180033",
+      "name": "Godhdhoo",
+      "featured": "0",
+      "published": "1",
+      "heroImage": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/wjrjMGZRJAczySdT.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfeatured\tpublished\theroImage\n240001\tDharavandhoo\t1\t1\thttps://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80\n180034\tFulhadhoo\t1\t1\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/bFRVAEQMmhdxQvLI.jpg\n180033\tGodhdhoo\t0\t1\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/wjrjMGZRJAczySdT.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

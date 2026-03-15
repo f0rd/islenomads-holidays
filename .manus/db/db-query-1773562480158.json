@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, name, atoll, featured, published FROM island_guides WHERE atoll = 'Baa Atoll' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atoll, featured, published FROM island_guides WHERE atoll = 'Baa Atoll' LIMIT 10;",
+  "rows": [
+    {
+      "id": "180033",
+      "name": "Godhdhoo",
+      "atoll": "Baa Atoll",
+      "featured": "0",
+      "published": "1"
+    },
+    {
+      "id": "180034",
+      "name": "Fulhadhoo",
+      "atoll": "Baa Atoll",
+      "featured": "1",
+      "published": "1"
+    },
+    {
+      "id": "240001",
+      "name": "Dharavandhoo",
+      "atoll": "Baa Atoll",
+      "featured": "1",
+      "published": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll\tfeatured\tpublished\n180033\tGodhdhoo\tBaa Atoll\t0\t1\n180034\tFulhadhoo\tBaa Atoll\t1\t1\n240001\tDharavandhoo\tBaa Atoll\t1\t1\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

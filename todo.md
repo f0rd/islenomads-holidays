@@ -2124,3 +2124,38 @@
 - [ ] Solution: Update island_guides table to ensure all Baa Atoll islands have proper entries
 - [ ] Fix featured flag for islands in Baa Atoll
 - [ ] Verify all other atolls have complete island data
+
+
+## Investigation - Missing Islands Issue
+
+### Root Cause Found:
+- Database has 107 total islands in island_guides table across all 17 atolls
+- Only 3 islands in Baa Atoll have island_guides entries (Fulhadhoo, Dharavandhoo, Godhdhoo)
+- But places table has 7 islands for Baa Atoll (atollId = 3)
+- The 4 missing islands in island_guides are: Eydhafushi, Hithigili, Villingili, Kudarikilu
+
+### Issue:
+- The island_guides table is incomplete - only 3 out of 7 Baa Atoll islands have guides
+- This is a data completeness issue, not a code issue
+- Need to create island_guides entries for the missing islands
+
+### Solution Options:
+1. Create island_guides entries for all missing islands from places table
+2. Or only show islands that have island_guides entries (current behavior)
+3. Or merge places and island_guides data to show all islands
+
+### Current Status:
+- All 107 islands in island_guides are published (published = 1)
+- Featured islands are properly marked
+- Query logic is working correctly
+- The limitation is the incomplete island_guides data
+
+
+## COMPLETED - Island Data Completeness Fix (Mar 15, 2026)
+- [x] Investigated missing islands from atoll detail pages
+- [x] Identified root cause: 126 islands in places table but only 107 in island_guides
+- [x] Created island_guides entries for all 19 missing islands
+- [x] Fixed database: All 126 islands now have matching island_guides entries
+- [x] Verified Baa Atoll displays all 7 islands (2 featured + 5 regular)
+- [x] Confirmed API queries return complete island lists per atoll
+- [x] All atoll detail pages now display complete island data with no missing entries

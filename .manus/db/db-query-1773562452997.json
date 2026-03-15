@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total, SUM(CASE WHEN published = 1 THEN 1 ELSE 0 END) as published FROM island_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total, SUM(CASE WHEN published = 1 THEN 1 ELSE 0 END) as published FROM island_guides;",
+  "rows": [
+    {
+      "total": "108",
+      "published": "108"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tpublished\n108\t108\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

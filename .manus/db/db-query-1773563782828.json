@@ -1,0 +1,20 @@
+{
+  "query": "SELECT name, slug, atoll FROM island_guides WHERE name IN ('Eydhafushi', 'Hithigili', 'Villingili', 'Kudarikilu');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, slug, atoll FROM island_guides WHERE name IN ('Eydhafushi', 'Hithigili', 'Villingili', 'Kudarikilu');",
+  "rows": [
+    {
+      "name": "Eydhafushi",
+      "slug": "eydhafushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Villingili",
+      "slug": "villingili",
+      "atoll": "Gaafu Alif Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tatoll\nEydhafushi\teydhafushi\tMaldives\nVillingili\tvillingili\tGaafu Alif Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

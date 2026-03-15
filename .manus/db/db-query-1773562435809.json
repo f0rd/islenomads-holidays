@@ -1,0 +1,112 @@
+{
+  "query": "SELECT atoll, COUNT(*) as total, SUM(CASE WHEN published = 1 THEN 1 ELSE 0 END) as published, SUM(CASE WHEN published = 0 THEN 1 ELSE 0 END) as unpublished FROM island_guides GROUP BY atoll ORDER BY atoll;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT atoll, COUNT(*) as total, SUM(CASE WHEN published = 1 THEN 1 ELSE 0 END) as published, SUM(CASE WHEN published = 0 THEN 1 ELSE 0 END) as unpublished FROM island_guides GROUP BY atoll ORDER BY atoll;",
+  "rows": [
+    {
+      "atoll": "Addu Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Alif Alif Atoll",
+      "total": "5",
+      "published": "5",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Alif Dhaal Atoll",
+      "total": "3",
+      "published": "3",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Alifu Dhaalu Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Baa Atoll",
+      "total": "3",
+      "published": "3",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Faafu Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Gaafu Alif Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Haa Alif Atoll",
+      "total": "3",
+      "published": "3",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Kaafu Atoll",
+      "total": "6",
+      "published": "6",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Lhaviyani Atoll",
+      "total": "2",
+      "published": "2",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Maldives",
+      "total": "72",
+      "published": "72",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Meemu Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Raa Atoll",
+      "total": "2",
+      "published": "2",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Seenu Atoll",
+      "total": "3",
+      "published": "3",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "South Male Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Thaa Atoll",
+      "total": "2",
+      "published": "2",
+      "unpublished": "0"
+    },
+    {
+      "atoll": "Vaavu Atoll",
+      "total": "1",
+      "published": "1",
+      "unpublished": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "atoll\ttotal\tpublished\tunpublished\nAddu Atoll\t1\t1\t0\nAlif Alif Atoll\t5\t5\t0\nAlif Dhaal Atoll\t3\t3\t0\nAlifu Dhaalu Atoll\t1\t1\t0\nBaa Atoll\t3\t3\t0\nFaafu Atoll\t1\t1\t0\nGaafu Alif Atoll\t1\t1\t0\nHaa Alif Atoll\t3\t3\t0\nKaafu Atoll\t6\t6\t0\nLhaviyani Atoll\t2\t2\t0\nMaldives\t72\t72\t0\nMeemu Atoll\t1\t1\t0\nRaa Atoll\t2\t2\t0\nSeenu Atoll\t3\t3\t0\nSouth Male Atoll\t1\t1\t0\nThaa Atoll\t2\t2\t0\nVaavu Atoll\t1\t1\t0\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

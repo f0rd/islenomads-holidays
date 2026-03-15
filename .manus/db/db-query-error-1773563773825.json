@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO island_guides (placeId, name, slug, contentType, atoll, overview, published, featured, displayOrder)\nVALUES \n  (1, 'Eydhafushi', 'eydhafushi', 'island', 'Baa Atoll', 'Eydhafushi is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (2, 'Hithigili', 'hithigili', 'island', 'Baa Atoll', 'Hithigili is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (3, 'Villingili', 'villingili', 'island', 'Baa Atoll', 'Villingili is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (4, 'Kudarikilu', 'kudarikilu', 'island', 'Baa Atoll', 'Kudarikilu is a beautiful island in Baa Atoll.', 1, 0, 0);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO island_guides (placeId, name, slug, contentType, atoll, overview, published, featured, displayOrder)\nVALUES \n  (1, 'Eydhafushi', 'eydhafushi', 'island', 'Baa Atoll', 'Eydhafushi is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (2, 'Hithigili', 'hithigili', 'island', 'Baa Atoll', 'Hithigili is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (3, 'Villingili', 'villingili', 'island', 'Baa Atoll', 'Villingili is a beautiful island in Baa Atoll.', 1, 0, 0),\n  (4, 'Kudarikilu', 'kudarikilu', 'island', 'Baa Atoll', 'Kudarikilu is a beautiful island in Baa Atoll.', 1, 0, 0);",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1062 (23000) at line 1: Duplicate entry '?' for key 'island_guides.island_guides_slug_unique'"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as baa_island_count, COUNT(CASE WHEN featured = 1 THEN 1 END) as featured_count FROM island_guides WHERE atoll = 'Baa Atoll';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as baa_island_count, COUNT(CASE WHEN featured = 1 THEN 1 END) as featured_count FROM island_guides WHERE atoll = 'Baa Atoll';",
+  "rows": [
+    {
+      "baa_island_count": "3",
+      "featured_count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "baa_island_count\tfeatured_count\n3\t2\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

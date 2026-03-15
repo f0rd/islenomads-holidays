@@ -1,0 +1,22 @@
+{
+  "query": "SELECT atolls.name, COUNT(places.id) as island_count FROM places JOIN atolls ON places.atollId = atolls.id WHERE places.type = 'island' GROUP BY places.atollId, atolls.name ORDER BY island_count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT atolls.name, COUNT(places.id) as island_count FROM places JOIN atolls ON places.atollId = atolls.id WHERE places.type = 'island' GROUP BY places.atollId, atolls.name ORDER BY island_count DESC;",
+  "rows": [
+    {
+      "name": "Kaafu Atoll",
+      "island_count": "17"
+    },
+    {
+      "name": "Alif Alif Atoll",
+      "island_count": "8"
+    },
+    {
+      "name": "Alif Dhaal Atoll",
+      "island_count": "7"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tisland_count\nKaafu Atoll\t17\nAlif Alif Atoll\t8\nAlif Dhaal Atoll\t7\n",
+  "stderr": "",
+  "execution_time_ms": 110
+}

@@ -1,0 +1,40 @@
+{
+  "query": "SELECT p.id, p.name, a.id as atollId, a.name as atollName \nFROM places p \nJOIN atolls a ON p.atollId = a.id\nLEFT JOIN island_guides ig ON p.name = ig.name\nWHERE p.type = 'island' AND ig.id IS NULL\nORDER BY a.name, p.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, a.id as atollId, a.name as atollName \nFROM places p \nJOIN atolls a ON p.atollId = a.id\nLEFT JOIN island_guides ig ON p.name = ig.name\nWHERE p.type = 'island' AND ig.id IS NULL\nORDER BY a.name, p.name;",
+  "rows": [
+    {
+      "id": "82",
+      "name": "Himandhoo",
+      "atollId": "2",
+      "atollName": "Alif Alif Atoll"
+    },
+    {
+      "id": "53",
+      "name": "Maalhos",
+      "atollId": "2",
+      "atollName": "Alif Alif Atoll"
+    },
+    {
+      "id": "58",
+      "name": "Naifaru",
+      "atollId": "2",
+      "atollName": "Alif Alif Atoll"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "atollId": "3",
+      "atollName": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "atollId": "1",
+      "atollName": "Kaafu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\tatollName\n82\tHimandhoo\t2\tAlif Alif Atoll\n53\tMaalhos\t2\tAlif Alif Atoll\n58\tNaifaru\t2\tAlif Alif Atoll\n30002\tDhangethi\t3\tAlif Dhaal Atoll\n3\tFelidhoo\t1\tKaafu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 65
+}
