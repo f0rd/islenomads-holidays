@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides \nSET overview = 'Offering an ultimate Maldives experience on budget prices, Dharavandhoo is a populated island of Baa Atoll with world-class diving sites where the clean waters of Hanifaru Bay and Dharavandhoo Thila are home to incredible marine life.'\nWHERE name = 'Dharavandhoo' AND atoll = 'Baa Atoll';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides \nSET overview = 'Offering an ultimate Maldives experience on budget prices, Dharavandhoo is a populated island of Baa Atoll with world-class diving sites where the clean waters of Hanifaru Bay and Dharavandhoo Thila are home to incredible marine life.'\nWHERE name = 'Dharavandhoo' AND atoll = 'Baa Atoll';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 101
+}
