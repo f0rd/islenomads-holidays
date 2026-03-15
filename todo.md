@@ -1425,6 +1425,10 @@
 - [x] Identify the issue with featured islands query or component
 - [x] Fix the featured islands section on atoll pages
 - [x] Test atoll pages to verify featured islands display correctly
+- [x] Fixed getFeaturedIslandsByAtollId to query island_guides directly by atoll name
+- [x] Fixed getRegularIslandsByAtollId to query island_guides directly by atoll name
+- [x] Tested Baa Atoll - now displays 2 featured islands (Fulhadhoo, Dharavandhoo)
+- [x] Tested Baa Atoll - all islands section displays regular islands (Godhdhoo, etc.)
 
 ## Atoll Detail Pages Implementation
 - [x] Verified AtollDetail component exists and is properly implemented
@@ -2111,3 +2115,12 @@
 - [ ] Add island info popups with details and links
 - [ ] Test map functionality across browsers
 - [ ] Populate atoll descriptions with detailed content
+
+
+## Bug Investigation - Missing Island Data on Atoll Pages
+- [ ] Root cause: Places table has 7 islands for Baa Atoll (atollId=3), but island_guides has only 3 with Baa Atoll name
+- [ ] Issue: Join between places and island_guides by name is not matching all islands
+- [ ] Need to check if island names match exactly between tables
+- [ ] Solution: Update island_guides table to ensure all Baa Atoll islands have proper entries
+- [ ] Fix featured flag for islands in Baa Atoll
+- [ ] Verify all other atolls have complete island data

@@ -1,0 +1,50 @@
+{
+  "query": "SELECT 'PLACES' as source, p.name FROM places p WHERE p.atollId = 3 AND p.type = 'island' UNION ALL SELECT 'ISLAND_GUIDES' as source, ig.name FROM island_guides ig WHERE ig.atoll LIKE '%Baa%' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT 'PLACES' as source, p.name FROM places p WHERE p.atollId = 3 AND p.type = 'island' UNION ALL SELECT 'ISLAND_GUIDES' as source, ig.name FROM island_guides ig WHERE ig.atoll LIKE '%Baa%' ORDER BY name;",
+  "rows": [
+    {
+      "source": "PLACES",
+      "name": "Dhangethi"
+    },
+    {
+      "source": "ISLAND_GUIDES",
+      "name": "Dharavandhoo"
+    },
+    {
+      "source": "PLACES",
+      "name": "Dhiddhoo"
+    },
+    {
+      "source": "PLACES",
+      "name": "Dhiffushi"
+    },
+    {
+      "source": "PLACES",
+      "name": "Dhigurah"
+    },
+    {
+      "source": "ISLAND_GUIDES",
+      "name": "Fulhadhoo"
+    },
+    {
+      "source": "ISLAND_GUIDES",
+      "name": "Godhdhoo"
+    },
+    {
+      "source": "PLACES",
+      "name": "Meedhoo"
+    },
+    {
+      "source": "PLACES",
+      "name": "Omadhoo"
+    },
+    {
+      "source": "PLACES",
+      "name": "Veligandu"
+    }
+  ],
+  "messages": [],
+  "stdout": "source\tname\nPLACES\tDhangethi\nISLAND_GUIDES\tDharavandhoo\nPLACES\tDhiddhoo\nPLACES\tDhiffushi\nPLACES\tDhigurah\nISLAND_GUIDES\tFulhadhoo\nISLAND_GUIDES\tGodhdhoo\nPLACES\tMeedhoo\nPLACES\tOmadhoo\nPLACES\tVeligandu\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

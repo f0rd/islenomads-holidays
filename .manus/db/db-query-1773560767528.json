@@ -1,0 +1,52 @@
+{
+  "query": "SELECT id, name, atollId, type FROM places WHERE atollId = 3 AND type = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atollId, type FROM places WHERE atollId = 3 AND type = 'island';",
+  "rows": [
+    {
+      "id": "57",
+      "name": "Meedhoo",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo",
+      "atollId": "3",
+      "type": "island"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "atollId": "3",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\ttype\n57\tMeedhoo\t3\tisland\n73\tDhiffushi\t3\tisland\n74\tDhigurah\t3\tisland\n98\tVeligandu\t3\tisland\n102\tDhiddhoo\t3\tisland\n30001\tOmadhoo\t3\tisland\n30002\tDhangethi\t3\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

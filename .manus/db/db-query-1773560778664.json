@@ -1,0 +1,38 @@
+{
+  "query": "SELECT p.name as places_name, ig.name as guide_name FROM places p LEFT JOIN island_guides ig ON p.name = ig.name WHERE p.atollId = 3 AND p.type = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.name as places_name, ig.name as guide_name FROM places p LEFT JOIN island_guides ig ON p.name = ig.name WHERE p.atollId = 3 AND p.type = 'island';",
+  "rows": [
+    {
+      "places_name": "Dhigurah",
+      "guide_name": "Dhigurah"
+    },
+    {
+      "places_name": "Dhiffushi",
+      "guide_name": "Dhiffushi"
+    },
+    {
+      "places_name": "Omadhoo",
+      "guide_name": "Omadhoo"
+    },
+    {
+      "places_name": "Meedhoo",
+      "guide_name": "Meedhoo"
+    },
+    {
+      "places_name": "Veligandu",
+      "guide_name": "Veligandu"
+    },
+    {
+      "places_name": "Dhiddhoo",
+      "guide_name": "Dhiddhoo"
+    },
+    {
+      "places_name": "Dhangethi",
+      "guide_name": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "places_name\tguide_name\nDhigurah\tDhigurah\nDhiffushi\tDhiffushi\nOmadhoo\tOmadhoo\nMeedhoo\tMeedhoo\nVeligandu\tVeligandu\nDhiddhoo\tDhiddhoo\nDhangethi\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

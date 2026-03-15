@@ -1064,24 +1064,23 @@ export async function getFeaturedIslandsByAtollId(atollId: number, limit: number
   const db = await getDb();
   if (!db) return [];
   
+  // First get the atoll name from the atolls table
+  const atoll = await getAtollById(atollId);
+  if (!atoll) return [];
+  
+  // Query island_guides directly by atoll name
   const result = await db
     .select()
-    .from(places)
-    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .from(islandGuides)
     .where(and(
-      eq(places.atollId, atollId),
-      eq(places.type, 'island'),
+      eq(islandGuides.atoll, atoll.name),
       eq(islandGuides.featured, 1),
       eq(islandGuides.published, 1)
     ))
     .orderBy(islandGuides.displayOrder)
     .limit(limit);
   
-  return result.map((row: any) => ({
-    ...row.places,
-    ...row.island_guides,
-    id: row.island_guides?.id || row.places.id,
-  }));
+  return result;
 }
 
 
@@ -1459,24 +1458,22 @@ export async function getRegularIslandsByAtollId(atollId: number): Promise<any[]
   const db = await getDb();
   if (!db) return [];
   
+  // First get the atoll name from the atolls table
+  const atoll = await getAtollById(atollId);
+  if (!atoll) return [];
+  
+  // Query island_guides directly by atoll name, excluding featured islands
   const result = await db
     .select()
-    .from(places)
-    .leftJoin(islandGuides, eq(places.name, islandGuides.name))
+    .from(islandGuides)
     .where(and(
-      eq(places.atollId, atollId),
-      eq(places.type, 'island'),
+      eq(islandGuides.atoll, atoll.name),
+      eq(islandGuides.featured, 0),
       eq(islandGuides.published, 1)
     ))
-    .orderBy(places.name);
+    .orderBy(islandGuides.name);
   
-  return result
-    .filter((row: any) => !row.island_guides || row.island_guides.featured !== 1)
-    .map((row: any) => ({
-      ...row.places,
-      ...row.island_guides,
-      id: row.island_guides?.id || row.places.id,
-    }));
+  return result;
 }
 
 /**

@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as count, atoll FROM island_guides WHERE atoll LIKE '%Baa%' GROUP BY atoll;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as count, atoll FROM island_guides WHERE atoll LIKE '%Baa%' GROUP BY atoll;",
+  "rows": [
+    {
+      "count": "3",
+      "atoll": "Baa Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\tatoll\n3\tBaa Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

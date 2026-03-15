@@ -1,0 +1,38 @@
+{
+  "query": "SELECT p.id, p.name FROM places p WHERE p.atollId = 3 AND p.type = 'island' AND p.name NOT IN (SELECT name FROM island_guides WHERE atoll LIKE '%Baa%');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name FROM places p WHERE p.atollId = 3 AND p.type = 'island' AND p.name NOT IN (SELECT name FROM island_guides WHERE atoll LIKE '%Baa%');",
+  "rows": [
+    {
+      "id": "57",
+      "name": "Meedhoo"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n57\tMeedhoo\n73\tDhiffushi\n74\tDhigurah\n98\tVeligandu\n102\tDhiddhoo\n30001\tOmadhoo\n30002\tDhangethi\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}
