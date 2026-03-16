@@ -2388,3 +2388,9 @@
   - Issue: <a> cannot contain a nested <a> error in split-screen map component
   - Solution: Removed inner <a> tag and applied className directly to Link component
   - Status: FIXED - No React errors in console
+- [x] Redesign map page with full-screen map and floating overlay
+  - Replaced split-screen layout with full-screen map - COMPLETE
+  - Implemented floating search/filters overlay panel - COMPLETE
+  - Added smooth animations and transitions - COMPLETE
+  - Panel can be collapsed/expanded with hamburger menu - COMPLETE
+  - All 27 island markers display correctly on map - VERIFIED
