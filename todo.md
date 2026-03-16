@@ -2358,3 +2358,8 @@
   - Include airport name, IATA code (FVM), and transport details
   - Update "Getting There" section with airport access information
 
+- [x] Fixed React key errors on /map page (island-210003, island-270026)
+  - Issue: Same duplicate island IDs causing React key warnings on Map page
+  - Solution: Added deduplication logic to filteredIslands, filteredDiveSites, filteredSurfSpots, and filteredSnorkelingSpots in MaldivesMap.tsx
+  - Status: Verified - no console errors, map displays 147 total locations (19 atolls, 128 islands) without duplicates
+

@@ -85,35 +85,59 @@ export default function MaldivesMap() {
 
   // Filter islands by search
   const filteredIslands = useMemo(() => {
+    const seen = new Set<number>();
     return (islands as Island[]).filter((island) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
       const isActualIsland = island.contentType !== 'point_of_interest';
-      return matchesSearch && isPublished && isActualIsland;
+      const isDuplicate = seen.has(island.id);
+      if (!isDuplicate && matchesSearch && isPublished && isActualIsland) {
+        seen.add(island.id);
+        return true;
+      }
+      return false;
     });
   }, [islands, searchQuery]);
 
   // Filter activity spots by search
   const filteredDiveSites = useMemo(() => {
-    return (diveSites as ActivitySpot[]).filter((spot) =>
-      spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false)
-    );
+    const seen = new Set<number>();
+    return (diveSites as ActivitySpot[]).filter((spot) => {
+      const isDuplicate = seen.has(spot.id);
+      if (!isDuplicate && (spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false))) {
+        seen.add(spot.id);
+        return true;
+      }
+      return false;
+    });
   }, [diveSites, searchQuery]);
 
   const filteredSurfSpots = useMemo(() => {
-    return (surfSpots as ActivitySpot[]).filter((spot) =>
-      spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false)
-    );
+    const seen = new Set<number>();
+    return (surfSpots as ActivitySpot[]).filter((spot) => {
+      const isDuplicate = seen.has(spot.id);
+      if (!isDuplicate && (spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false))) {
+        seen.add(spot.id);
+        return true;
+      }
+      return false;
+    });
   }, [surfSpots, searchQuery]);
 
   const filteredSnorkelingSpots = useMemo(() => {
-    return (snorkelingSpots as ActivitySpot[]).filter((spot) =>
-      spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false)
-    );
+    const seen = new Set<number>();
+    return (snorkelingSpots as ActivitySpot[]).filter((spot) => {
+      const isDuplicate = seen.has(spot.id);
+      if (!isDuplicate && (spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false))) {
+        seen.add(spot.id);
+        return true;
+      }
+      return false;
+    });
   }, [snorkelingSpots, searchQuery]);
 
   // Get display items based on filter
