@@ -2400,3 +2400,25 @@
   - Implement search and filter functionality in right panel - COMPLETE
   - Add click interactions between map markers and list items - COMPLETE (verified)
   - Test layout and verify all features work correctly - VERIFIED
+- [x] Add numbered location markers (1-27) to map and list
+  - Display number badges on map markers - COMPLETE
+  - Show matching numbers in location list items - COMPLETE
+  - Sync numbers between map and list - COMPLETE
+- [x] Implement featured location carousel with images
+  - Display top 5-10 featured islands in carousel at top of panel - COMPLETE
+  - Show island images, names, and descriptions - COMPLETE
+  - Add carousel navigation (prev/next buttons) - COMPLETE
+- [x] Add "Mark as Visited" checkbox functionality
+  - Add checkbox to each location in the list - COMPLETE
+  - Store visited status in user preferences/database - COMPLETE
+  - Show visual indicator for visited locations - COMPLETE
+- [x] Implement category color-coding
+  - Color code markers by type (Islands, Atolls, Dive Sites, Surf Spots) - COMPLETE
+  - Update filter buttons with matching colors - COMPLETE
+  - Apply colors to list items and markers - COMPLETE
+- [x] Add location images to detail cards
+  - Fetch island images from database - COMPLETE
+  - Display images in carousel and list items - COMPLETE
+  - Show images in map marker popups - COMPLETE
+- [x] Test all advanced features and verify functionality - VERIFIED
+- [x] Save checkpoint with all features implemented - READY
