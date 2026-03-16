@@ -51,39 +51,39 @@ export default function AdminMapLocations() {
   });
 
   // Fetch map locations
-  const { data: locations = [], isLoading, refetch } = trpc.mapLocations.list.useQuery();
+  const { data: locations = [], isLoading, refetch } = trpc.places.list.useQuery();
   
   // Mutations
-  const createMutation = trpc.mapLocations.create.useMutation({
+  const createMutation = trpc.places.create.useMutation({
     onSuccess: () => {
       toast.success("Location created successfully");
       refetch();
       setIsCreateOpen(false);
       resetForm();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Error: ${error.message}`);
     },
   });
 
-  const updateMutation = trpc.mapLocations.update.useMutation({
+  const updateMutation = trpc.places.update.useMutation({
     onSuccess: () => {
       toast.success("Location updated successfully");
       refetch();
       setIsCreateOpen(false);
       resetForm();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Error: ${error.message}`);
     },
   });
 
-  const deleteMutation = trpc.mapLocations.delete.useMutation({
+  const deleteMutation = trpc.places.delete.useMutation({
     onSuccess: () => {
       toast.success("Location deleted successfully");
       refetch();
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Error: ${error.message}`);
     },
   });

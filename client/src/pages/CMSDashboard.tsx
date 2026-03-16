@@ -109,7 +109,7 @@ export default function CMSDashboard() {
   const { data: blogPosts = [] } = trpc.blog.list.useQuery();
   const { data: packages = [] } = trpc.packages.list.useQuery();
   const { data: islandGuides = [] } = trpc.islandGuides.list.useQuery();
-  const { data: mapLocations = [] } = trpc.mapLocations.list.useQuery();
+  const { data: mapLocations = [] } = trpc.places.list.useQuery();
 
   const handleLogout = async () => {
     await logout();
