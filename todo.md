@@ -2337,3 +2337,10 @@
 - [ ] Search for and download high-quality surfing spot images (32 images)
 - [ ] Upload surfing spot hero images to S3 and get CDN URLs
 - [ ] Test all surfing features and verify functionality with real data
+
+
+## Bug Fixes (Mar 16, 2026)
+- [x] Fixed React key warning on /explore-maldives Attractions tab
+  - Issue: Duplicate keys when rendering POIs and Activity Spots together
+  - Solution: Changed keys to use composite format (poi-${id} and spot-${id})
+  - Status: Verified - no console errors, all 101 attractions displaying correctly

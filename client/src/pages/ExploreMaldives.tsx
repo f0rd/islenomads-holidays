@@ -481,7 +481,7 @@ export default function ExploreMaldives() {
                     const isAttractionGuide = (poi as any).isAttractionGuide === true;
                     const href = isAttractionGuide ? getAttractionGuideUrl(poi.slug || String(poi.id)) : getIslandGuideUrl(poi.slug || poi.id);
                     return (
-                    <Link key={poi.id} href={href}>
+                    <Link key={`poi-${poi.id}`} href={href}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
@@ -519,7 +519,7 @@ export default function ExploreMaldives() {
                   })}
                   {/* Render Activity Spots */}
                   {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
-                    <Link key={spot.id} href={getAttractionGuideUrl(spot.slug || String(spot.id))}>
+                    <Link key={`spot-${spot.id}`} href={getAttractionGuideUrl(spot.slug || String(spot.id))}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
