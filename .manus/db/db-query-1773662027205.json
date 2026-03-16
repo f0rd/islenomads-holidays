@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total_islands, SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as islands_with_coords, SUM(CASE WHEN latitude IS NULL OR longitude IS NULL THEN 1 ELSE 0 END) as islands_without_coords FROM places WHERE type = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_islands, SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as islands_with_coords, SUM(CASE WHEN latitude IS NULL OR longitude IS NULL THEN 1 ELSE 0 END) as islands_without_coords FROM places WHERE type = 'island';",
+  "rows": [
+    {
+      "total_islands": "122",
+      "islands_with_coords": "39",
+      "islands_without_coords": "83"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_islands\tislands_with_coords\tislands_without_coords\n122\t39\t83\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}
