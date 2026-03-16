@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { MapView } from "@/components/Map";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Search, X } from "lucide-react";
+import { MapPin, Search, X, ChevronDown, ChevronUp } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
 import { getIslandGuideUrl } from "@shared/locations";
@@ -31,6 +30,7 @@ export default function MaldivesMapGoogle() {
   const [selectedMarker, setSelectedMarker] = useState<Marker | null>(null);
   const [activeFilter, setActiveFilter] = useState("all");
   const [showDetails, setShowDetails] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Fetch data
   const { data: atolls = [] } = trpc.atolls.list.useQuery();
@@ -104,25 +104,35 @@ export default function MaldivesMapGoogle() {
     return markers;
   }, [atolls, islands, activitySpots]);
 
-  // Filter markers based on search and filter
+  // Filter markers
   const filteredMarkers = useMemo(() => {
-    return allMarkers.filter((marker) => {
-      const matchesSearch = marker.name
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      const matchesFilter =
-        activeFilter === "all" ||
-        (activeFilter === "atolls" && marker.type === "atoll") ||
-        (activeFilter === "islands" && marker.type === "island") ||
-        (activeFilter === "dive" && marker.type === "dive_site") ||
-        (activeFilter === "surf" && marker.type === "surf_spot") ||
-        (activeFilter === "snorkel" && marker.type === "snorkeling_spot");
+    let filtered = allMarkers;
 
-      return matchesSearch && matchesFilter;
-    });
-  }, [allMarkers, searchQuery, activeFilter]);
+    // Filter by type
+    if (activeFilter === "atolls") {
+      filtered = filtered.filter((m) => m.type === "atoll");
+    } else if (activeFilter === "islands") {
+      filtered = filtered.filter((m) => m.type === "island");
+    } else if (activeFilter === "dive") {
+      filtered = filtered.filter((m) => m.type === "dive_site");
+    } else if (activeFilter === "surf") {
+      filtered = filtered.filter((m) => m.type === "surf_spot");
+    } else if (activeFilter === "snorkel") {
+      filtered = filtered.filter((m) => m.type === "snorkeling_spot");
+    }
 
-  // Get marker icon based on type
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter((m) =>
+        m.name.toLowerCase().includes(query) ||
+        m.description?.toLowerCase().includes(query)
+      );
+    }
+
+    return filtered;
+  }, [allMarkers, activeFilter, searchQuery]);
+
   const getMarkerIcon = (type: string) => {
     const icons: Record<string, string> = {
       atoll: "🏝️",
@@ -134,30 +144,12 @@ export default function MaldivesMapGoogle() {
     return icons[type] || "📍";
   };
 
-  // Get marker color based on type
-  const getMarkerColor = (type: string) => {
-    const colors: Record<string, string> = {
-      atoll: "#0d9488",
-      island: "#22c55e",
-      dive_site: "#3b82f6",
-      surf_spot: "#f97316",
-      snorkeling_spot: "#8b5cf6",
-    };
-    return colors[type] || "#6b7280";
-  };
-
-  // Handle map ready
   const handleMapReady = (map: google.maps.Map) => {
     mapRef.current = map;
-    infoWindowRef.current = new google.maps.InfoWindow();
-
-    // Set initial center to Maldives
-    map.setCenter({ lat: 4.1694, lng: 73.5093 });
-    map.setZoom(8);
+    addMarkers();
   };
 
-  // Add markers to map
-  useEffect(() => {
+  const addMarkers = () => {
     if (!mapRef.current) return;
 
     // Clear existing markers
@@ -170,38 +162,32 @@ export default function MaldivesMapGoogle() {
 
     // Add new markers
     filteredMarkers.forEach((markerData) => {
-      const content = document.createElement("div");
-      content.innerHTML = getMarkerIcon(markerData.type);
-      content.style.fontSize = "24px";
-      content.style.cursor = "pointer";
-      content.style.display = "flex";
-      content.style.alignItems = "center";
-      content.style.justifyContent = "center";
-      content.style.width = "32px";
-      content.style.height = "32px";
-
       const marker = new google.maps.marker.AdvancedMarkerElement({
         map: mapRef.current,
         position: { lat: markerData.lat, lng: markerData.lng },
-        content,
+        title: markerData.name,
+        content: createMarkerContent(markerData),
       });
 
-      // Create click handler
-      const handleMarkerClick = () => {
+      marker.addEventListener("gmp-click", () => {
         setSelectedMarker(markerData);
         setShowDetails(true);
-      };
-
-      // Add click listener to content element
-      content.addEventListener("click", handleMarkerClick);
-
-      // Also add listener to marker element if available
-      if (marker.element) {
-        marker.element.addEventListener("click", handleMarkerClick);
-      }
+      });
 
       markersRef.current.set(markerData.id, { ...markerData, marker });
     });
+  };
+
+  const createMarkerContent = (marker: Marker) => {
+    const div = document.createElement("div");
+    div.innerHTML = getMarkerIcon(marker.type);
+    div.style.fontSize = "24px";
+    div.style.cursor = "pointer";
+    return div;
+  };
+
+  useEffect(() => {
+    addMarkers();
   }, [filteredMarkers]);
 
   const getDetailLink = () => {
@@ -225,93 +211,98 @@ export default function MaldivesMapGoogle() {
 
   return (
     <div className="h-screen flex flex-col bg-background">
-      <div className="flex-1 flex flex-col">
-        {/* Header */}
-        <div className="bg-card border-b border-border p-6">
-          <div className="container mx-auto">
-            <h1 className="text-3xl font-bold mb-2">Maldives Interactive Map</h1>
-            <p className="text-muted-foreground">
-              Explore atolls, islands, dive sites, and surf spots across the Maldives
-            </p>
+      {/* Compact Header */}
+      <div className="bg-card border-b border-border px-4 py-2 flex items-center justify-between">
+        <div className="flex-1">
+          <h1 className="text-lg font-bold">Maldives Map</h1>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setShowFilters(!showFilters)}
+          className="gap-2"
+        >
+          {showFilters ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          Filters
+        </Button>
+      </div>
+
+      {/* Collapsible Filters */}
+      {showFilters && (
+        <div className="bg-card border-b border-border p-3 space-y-3">
+          {/* Search */}
+          <div className="relative">
+            <Search className="absolute left-3 top-2.5 w-4 h-4 text-muted-foreground" />
+            <Input
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 h-9"
+            />
+          </div>
+
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap gap-1">
+            <Button
+              variant={activeFilter === "all" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("all")}
+              className="text-xs"
+            >
+              All ({filteredMarkers.length})
+            </Button>
+            <Button
+              variant={activeFilter === "atolls" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("atolls")}
+              className="text-xs"
+            >
+              🏝️ Atolls
+            </Button>
+            <Button
+              variant={activeFilter === "islands" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("islands")}
+              className="text-xs"
+            >
+              🏖️ Islands
+            </Button>
+            <Button
+              variant={activeFilter === "dive" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("dive")}
+              className="text-xs"
+            >
+              🤿 Dive
+            </Button>
+            <Button
+              variant={activeFilter === "surf" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("surf")}
+              className="text-xs"
+            >
+              🏄 Surf
+            </Button>
+            <Button
+              variant={activeFilter === "snorkel" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setActiveFilter("snorkel")}
+              className="text-xs"
+            >
+              🤽 Snorkel
+            </Button>
           </div>
         </div>
+      )}
 
-        {/* Search and Filters */}
-        <div className="bg-card border-b border-border p-4 sticky top-0 z-10">
-          <div className="container mx-auto space-y-4">
-            {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
-              <Input
-                placeholder="Search atolls, islands, dive sites, surf spots..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap gap-2">
-              <Button
-                variant={activeFilter === "all" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("all")}
-              >
-                All Locations ({filteredMarkers.length})
-              </Button>
-              <Button
-                variant={activeFilter === "atolls" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("atolls")}
-              >
-                🏝️ Atolls (
-                {filteredMarkers.filter((m) => m.type === "atoll").length})
-              </Button>
-              <Button
-                variant={activeFilter === "islands" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("islands")}
-              >
-                🏖️ Islands (
-                {filteredMarkers.filter((m) => m.type === "island").length})
-              </Button>
-              <Button
-                variant={activeFilter === "dive" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("dive")}
-              >
-                🤿 Dive Sites (
-                {filteredMarkers.filter((m) => m.type === "dive_site").length})
-              </Button>
-              <Button
-                variant={activeFilter === "surf" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("surf")}
-              >
-                🏄 Surf Spots (
-                {filteredMarkers.filter((m) => m.type === "surf_spot").length})
-              </Button>
-              <Button
-                variant={activeFilter === "snorkel" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveFilter("snorkel")}
-              >
-                🤽 Snorkeling (
-                {filteredMarkers.filter((m) => m.type === "snorkeling_spot").length})
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Map Container */}
-        <div className="flex-1 w-full h-full">
-          <MapView
-            initialCenter={{ lat: 4.1694, lng: 73.5093 }}
-            initialZoom={8}
-            onMapReady={handleMapReady}
-            className="w-full h-full"
-          />
-        </div>
+      {/* Map Container - Takes up most of the space */}
+      <div className="flex-1 w-full overflow-hidden">
+        <MapView
+          initialCenter={{ lat: 4.1694, lng: 73.5093 }}
+          initialZoom={8}
+          onMapReady={handleMapReady}
+          className="w-full h-full"
+        />
       </div>
 
       {/* Details Dialog */}

@@ -2373,7 +2373,8 @@
   - Details dialog opens on marker click with island information and "View Island Guide" button
 
 - [x] Fix Google Maps container size on /map page
-  - Issue: Map was displaying too small with min-h-[500px] constraint
-  - Solution: Removed min-h constraint and added h-full to map container
-  - Result: Map now fills entire viewport between header and footer
-  - Status: Verified - map displays at full size with all 27 island markers visible
+  - Issue: Map was displaying too small - only 1/3 of viewport
+  - Solution: Redesigned layout with compact header and collapsible filters
+  - Result: Map now takes up 80%+ of viewport with full visibility
+  - Features: Collapsible filter panel (hidden by default), compact header, full-size map
+  - Status: Verified - map displays at maximum size with all 27 island markers clearly visible
