@@ -1502,9 +1502,9 @@ export async function getRegularIslandsByAtollId(atollId: number): Promise<any[]
  * Get island data by slug (from places table with joined island guide)
  * This is the preferred method for slug-based routing
  */
-export async function getIslandBySlug(slug: string): Promise<any | undefined> {
+export async function getIslandBySlug(slug: string): Promise<any | null> {
   const db = await getDb();
-  if (!db) return undefined;
+  if (!db) return null;
 
   const result = await db
     .select()
@@ -1516,7 +1516,7 @@ export async function getIslandBySlug(slug: string): Promise<any | undefined> {
     ))
     .limit(1);
 
-  if (!result || !result[0]) return undefined;
+  if (!result || !result[0]) return null;
 
   const row = result[0];
   return {
@@ -1527,12 +1527,12 @@ export async function getIslandBySlug(slug: string): Promise<any | undefined> {
 }
 
 // Attraction Guides - for dive sites, surf spots, snorkeling spots, and POIs
-export async function getAttractionGuideBySlug(slug: string): Promise<any | undefined> {
+export async function getAttractionGuideBySlug(slug: string): Promise<any | null> {
   const db = await getDb();
-  if (!db) return undefined;
+  if (!db) return null;
 
   const result = await db.select().from(attractionGuides).where(eq(attractionGuides.slug, slug)).limit(1);
-  return result[0];
+  return result[0] || null;
 }
 
 export async function getAttractionGuidesByType(attractionType: string, limit: number = 50): Promise<any[]> {
