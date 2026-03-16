@@ -1,0 +1,39 @@
+{
+  "query": "SELECT * FROM places WHERE name = 'Dhigurah' LIMIT 1",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT * FROM places WHERE name = 'Dhigurah' LIMIT 1",
+  "rows": [
+    {
+      "id": "74",
+      "atollId": "3",
+      "name": "Dhigurah",
+      "code": "dhigurah",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:16",
+      "updatedAt": "2026-03-16 11:34:01",
+      "slug": "dhigurah",
+      "heroImage": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/ZwHrOXkLDnINpmPJ.webp",
+      "latitude": "5.732586",
+      "longitude": "73.359238",
+      "description": "Dhigurah is a local island in Vaavu Atoll known for its long sandy beaches and vibrant local culture. The island is famous for whale shark and manta ray encounters, making it a popular destination for marine enthusiasts. It offers a more authentic Maldivian experience compared to resort islands.",
+      "highlights": "[\"Whale Shark Encounters\", \"Manta Ray Watching\", \"Local Culture\", \"Beautiful Beaches\"]",
+      "amenities": "[\"Guesthouses\", \"Local Restaurants\", \"Dive Centers\", \"Shops\"]",
+      "image": "NULL",
+      "icon": "island",
+      "color": "#4ECDC4",
+      "difficulty": "NULL",
+      "depth": "NULL",
+      "waveHeight": "NULL",
+      "rating": "4.5",
+      "reviews": "856",
+      "population": "NULL",
+      "priceRange": "NULL",
+      "bestSeason": "NULL",
+      "guideId": "NULL",
+      "published": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tatollId\tname\tcode\ttype\tcreatedAt\tupdatedAt\tslug\theroImage\tlatitude\tlongitude\tdescription\thighlights\tamenities\timage\ticon\tcolor\tdifficulty\tdepth\twaveHeight\trating\treviews\tpopulation\tpriceRange\tbestSeason\tguideId\tpublished\n74\t3\tDhigurah\tdhigurah\tisland\t2026-02-14 21:55:16\t2026-03-16 11:34:01\tdhigurah\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663326824110/ZwHrOXkLDnINpmPJ.webp\t5.732586\t73.359238\tDhigurah is a local island in Vaavu Atoll known for its long sandy beaches and vibrant local culture. The island is famous for whale shark and manta ray encounters, making it a popular destination for marine enthusiasts. It offers a more authentic Maldivian experience compared to resort islands.\t[\"Whale Shark Encounters\", \"Manta Ray Watching\", \"Local Culture\", \"Beautiful Beaches\"]\t[\"Guesthouses\", \"Local Restaurants\", \"Dive Centers\", \"Shops\"]\tNULL\tisland\t#4ECDC4\tNULL\tNULL\tNULL\t4.5\t856\tNULL\tNULL\tNULL\tNULL\t0\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}
