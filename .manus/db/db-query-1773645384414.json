@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total, GROUP_CONCAT(CONCAT(name, ' (', slug, ')') SEPARATOR ', ') as atolls FROM atolls ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total, GROUP_CONCAT(CONCAT(name, ' (', slug, ')') SEPARATOR ', ') as atolls FROM atolls ORDER BY name;",
+  "rows": [
+    {
+      "total": "19",
+      "atolls": "Alif Alif Atoll (alif-alif-atoll), Alif Dhaal Atoll (alif-dhaal-atoll), Baa Atoll (baa-atoll), Dhaalu Atoll (dhaalu-atoll), Faafu Atoll (faafu-atoll), Gaafu Alif Atoll (gaafu-alif-atoll), Gaafu Dhaalu Atoll (gaafu-dhaalu-atoll), Gnaviyani Atoll (gnaviyani-atoll), Haa Alif Atoll (haa-alif-atoll), Haa Dhaalu Atoll (haa-dhaalu-atoll), Kaafu Atoll (kaafu-atoll), Laamu Atoll (laamu-atoll), Meemu Atoll (meemu-atoll), Noonu Atoll (noonu-atoll), Raa Atoll (raa-atoll), Seenu Atoll (seenu-atoll), Shaviyani Atoll (shaviyani-atoll), Thaa Atoll (thaa-atoll), Vaavu Atoll (vaavu-atoll)"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tatolls\n19\tAlif Alif Atoll (alif-alif-atoll), Alif Dhaal Atoll (alif-dhaal-atoll), Baa Atoll (baa-atoll), Dhaalu Atoll (dhaalu-atoll), Faafu Atoll (faafu-atoll), Gaafu Alif Atoll (gaafu-alif-atoll), Gaafu Dhaalu Atoll (gaafu-dhaalu-atoll), Gnaviyani Atoll (gnaviyani-atoll), Haa Alif Atoll (haa-alif-atoll), Haa Dhaalu Atoll (haa-dhaalu-atoll), Kaafu Atoll (kaafu-atoll), Laamu Atoll (laamu-atoll), Meemu Atoll (meemu-atoll), Noonu Atoll (noonu-atoll), Raa Atoll (raa-atoll), Seenu Atoll (seenu-atoll), Shaviyani Atoll (shaviyani-atoll), Thaa Atoll (thaa-atoll), Vaavu Atoll (vaavu-atoll)\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

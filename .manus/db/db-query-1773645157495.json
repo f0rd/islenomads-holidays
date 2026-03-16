@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, slug FROM atolls WHERE name IN ('Kaafu Atoll', 'Vaavu Atoll', 'Meemu Atoll') ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls WHERE name IN ('Kaafu Atoll', 'Vaavu Atoll', 'Meemu Atoll') ORDER BY name;",
+  "rows": [
+    {
+      "id": "5",
+      "name": "Meemu Atoll",
+      "slug": "temp-5"
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll",
+      "slug": "temp-30009"
+    },
+    {
+      "id": "4",
+      "name": "Vaavu Atoll",
+      "slug": "temp-4"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n5\tMeemu Atoll\ttemp-5\n30009\tMeemu Atoll\ttemp-30009\n4\tVaavu Atoll\ttemp-4\n",
+  "stderr": "",
+  "execution_time_ms": 109
+}

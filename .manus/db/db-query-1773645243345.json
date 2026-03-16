@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, slug FROM atolls ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls ORDER BY name;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Alif Alif Atoll",
+      "slug": "alif-alif-atoll"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll"
+    },
+    {
+      "id": "2",
+      "name": "Baa Atoll",
+      "slug": "baa-atoll"
+    },
+    {
+      "id": "30001",
+      "name": "Dhaalu Atoll",
+      "slug": "dhaalu-atoll"
+    },
+    {
+      "id": "6",
+      "name": "Faafu Atoll",
+      "slug": "temp-6"
+    },
+    {
+      "id": "30002",
+      "name": "Faafu Atoll",
+      "slug": "temp-30002"
+    },
+    {
+      "id": "30003",
+      "name": "Gaafu Alif Atoll",
+      "slug": "temp-30003"
+    },
+    {
+      "id": "30004",
+      "name": "Gaafu Dhaalu Atoll",
+      "slug": "temp-30004"
+    },
+    {
+      "id": "30005",
+      "name": "Gnaviyani Atoll",
+      "slug": "temp-30005"
+    },
+    {
+      "id": "30007",
+      "name": "Haa Alif Atoll",
+      "slug": "temp-30007"
+    },
+    {
+      "id": "30006",
+      "name": "Haa Dhaalu Atoll",
+      "slug": "temp-30006"
+    },
+    {
+      "id": "30008",
+      "name": "Laamu Atoll",
+      "slug": "temp-30008"
+    },
+    {
+      "id": "5",
+      "name": "Meemu Atoll",
+      "slug": "temp-5"
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll",
+      "slug": "temp-30009"
+    },
+    {
+      "id": "30010",
+      "name": "Noonu Atoll",
+      "slug": "temp-30010"
+    },
+    {
+      "id": "30011",
+      "name": "Raa Atoll",
+      "slug": "temp-30011"
+    },
+    {
+      "id": "30012",
+      "name": "Seenu Atoll",
+      "slug": "temp-30012"
+    },
+    {
+      "id": "30013",
+      "name": "Shaviyani Atoll",
+      "slug": "temp-30013"
+    },
+    {
+      "id": "30014",
+      "name": "Thaa Atoll",
+      "slug": "temp-30014"
+    },
+    {
+      "id": "4",
+      "name": "Vaavu Atoll",
+      "slug": "temp-4"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tAlif Alif Atoll\talif-alif-atoll\n3\tAlif Dhaal Atoll\talif-dhaal-atoll\n2\tBaa Atoll\tbaa-atoll\n30001\tDhaalu Atoll\tdhaalu-atoll\n6\tFaafu Atoll\ttemp-6\n30002\tFaafu Atoll\ttemp-30002\n30003\tGaafu Alif Atoll\ttemp-30003\n30004\tGaafu Dhaalu Atoll\ttemp-30004\n30005\tGnaviyani Atoll\ttemp-30005\n30007\tHaa Alif Atoll\ttemp-30007\n30006\tHaa Dhaalu Atoll\ttemp-30006\n30008\tLaamu Atoll\ttemp-30008\n5\tMeemu Atoll\ttemp-5\n30009\tMeemu Atoll\ttemp-30009\n30010\tNoonu Atoll\ttemp-30010\n30011\tRaa Atoll\ttemp-30011\n30012\tSeenu Atoll\ttemp-30012\n30013\tShaviyani Atoll\ttemp-30013\n30014\tThaa Atoll\ttemp-30014\n4\tVaavu Atoll\ttemp-4\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}
