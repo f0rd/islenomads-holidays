@@ -186,42 +186,10 @@ export type BoatRoute = typeof boatRoutes.$inferSelect;
 export type InsertBoatRoute = typeof boatRoutes.$inferInsert;
 
 // Map Locations table (islands, resorts, dive sites, etc.)
-export const mapLocations = mysqlTable("map_locations", {
-  id: int("id").autoincrement().primaryKey(),
-  placeId: int("placeId"), // Reference to places table
-  name: varchar("name", { length: 255 }).notNull(),
-  slug: varchar("slug", { length: 255 }).notNull().unique(),
-  type: mysqlEnum("type", ["island", "resort", "dive_site", "surf_spot", "atoll", "city"]).notNull(),
-  latitude: decimal("latitude", { precision: 10, scale: 6 }).notNull(),
-  longitude: decimal("longitude", { precision: 10, scale: 6 }).notNull(),
-  description: text("description"),
-  highlights: text("highlights"), // JSON array
-  amenities: text("amenities"), // JSON array
-  image: varchar("image", { length: 500 }),
-  icon: varchar("icon", { length: 50 }), // Icon name for map display
-  color: varchar("color", { length: 20 }), // Color for marker
-  difficulty: varchar("difficulty", { length: 50 }), // For dive/surf sites
-  depth: varchar("depth", { length: 50 }), // For dive sites
-  waveHeight: varchar("waveHeight", { length: 50 }), // For surf spots
-  rating: varchar("rating", { length: 10 }), // 0-5 rating
-  reviews: int("reviews").default(0),
-  population: int("population"), // For islands/cities
-  priceRange: varchar("priceRange", { length: 50 }), // For resorts
-  bestSeason: varchar("bestSeason", { length: 100 }),
-  guideId: int("guideId"), // Reference to island_guides
-  published: int("published").default(0).notNull(),
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-});
-
-export type MapLocation = typeof mapLocations.$inferSelect;
-export type InsertMapLocation = typeof mapLocations.$inferInsert;
-
 // Island Guides table - comprehensive guides for islands with editable content
 export const islandGuides = mysqlTable("island_guides", {
   id: int("id").autoincrement().primaryKey(),
   placeId: int("placeId"), // Reference to places table
-  locationId: int("locationId"), // Reference to mapLocations
   name: varchar("name", { length: 255 }).notNull(),
   slug: varchar("slug", { length: 255 }).notNull().unique(),
   contentType: mysqlEnum("contentType", ["island", "point_of_interest"]).default("island").notNull(), // Distinguish between islands and POIs like Hanifaru Bay

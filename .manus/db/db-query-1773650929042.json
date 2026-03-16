@@ -1,0 +1,60 @@
+{
+  "query": "SELECT ml.id, ml.placeId, ml.name, p.id, p.name FROM map_locations ml LEFT JOIN places p ON ml.placeId = p.id LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ml.id, ml.placeId, ml.name, p.id, p.name FROM map_locations ml LEFT JOIN places p ON ml.placeId = p.id LIMIT 10;",
+  "rows": [
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    },
+    {
+      "id": "NULL",
+      "placeId": "NULL",
+      "name": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tplaceId\tname\tid\tname\n1\tNULL\tMalé\tNULL\tNULL\n2\tNULL\tHulhumalé\tNULL\tNULL\n3\tNULL\tVeligandu Island\tNULL\tNULL\n4\tNULL\tMaafushi Island\tNULL\tNULL\n5\tNULL\tDhigurah Island\tNULL\tNULL\n6\tNULL\tUkulhas Island\tNULL\tNULL\n7\tNULL\tKandooma Island\tNULL\tNULL\n8\tNULL\tThulusdhoo Island\tNULL\tNULL\n9\tNULL\tFihalhohi Island\tNULL\tNULL\n10\tNULL\tBiyadhoo Island\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE places p JOIN map_locations ml ON p.slug = ml.slug SET p.description = ml.description, p.highlights = ml.highlights, p.amenities = ml.amenities, p.image = ml.image, p.icon = ml.icon, p.color = ml.color, p.difficulty = ml.difficulty, p.depth = ml.depth, p.waveHeight = ml.waveHeight, p.rating = ml.rating, p.reviews = ml.reviews, p.population = ml.population, p.priceRange = ml.priceRange, p.bestSeason = ml.bestSeason, p.guideId = ml.guideId, p.published = ml.published;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE places p JOIN map_locations ml ON p.slug = ml.slug SET p.description = ml.description, p.highlights = ml.highlights, p.amenities = ml.amenities, p.image = ml.image, p.icon = ml.icon, p.color = ml.color, p.difficulty = ml.difficulty, p.depth = ml.depth, p.waveHeight = ml.waveHeight, p.rating = ml.rating, p.reviews = ml.reviews, p.population = ml.population, p.priceRange = ml.priceRange, p.bestSeason = ml.bestSeason, p.guideId = ml.guideId, p.published = ml.published;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 66
+}

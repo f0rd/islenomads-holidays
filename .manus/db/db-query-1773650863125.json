@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE places ADD COLUMN description TEXT, ADD COLUMN highlights TEXT, ADD COLUMN amenities TEXT, ADD COLUMN image VARCHAR(500), ADD COLUMN icon VARCHAR(50), ADD COLUMN color VARCHAR(20), ADD COLUMN difficulty VARCHAR(50), ADD COLUMN depth VARCHAR(50), ADD COLUMN waveHeight VARCHAR(50), ADD COLUMN rating VARCHAR(10), ADD COLUMN reviews INT DEFAULT 0, ADD COLUMN population INT, ADD COLUMN priceRange VARCHAR(50), ADD COLUMN bestSeason VARCHAR(100), ADD COLUMN guideId INT, ADD COLUMN published INT DEFAULT 0;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute ALTER TABLE places ADD COLUMN description TEXT, ADD COLUMN highlights TEXT, ADD COLUMN amenities TEXT, ADD COLUMN image VARCHAR(500), ADD COLUMN icon VARCHAR(50), ADD COLUMN color VARCHAR(20), ADD COLUMN difficulty VARCHAR(50), ADD COLUMN depth VARCHAR(50), ADD COLUMN waveHeight VARCHAR(50), ADD COLUMN rating VARCHAR(10), ADD COLUMN reviews INT DEFAULT 0, ADD COLUMN population INT, ADD COLUMN priceRange VARCHAR(50), ADD COLUMN bestSeason VARCHAR(100), ADD COLUMN guideId INT, ADD COLUMN published INT DEFAULT 0;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2032
+}

@@ -514,7 +514,7 @@ export const appRouter = router({
       }),
   }),
 
-  mapLocations: router({
+  places: router({
     list: publicProcedure.query(async () => {
       return getMapLocations();
     }),

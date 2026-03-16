@@ -1,0 +1,30 @@
+{
+  "query": "SELECT slug, name FROM places WHERE slug IS NOT NULL LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT slug, name FROM places WHERE slug IS NOT NULL LIMIT 5;",
+  "rows": [
+    {
+      "slug": "dhonfanu",
+      "name": "Dhonfanu"
+    },
+    {
+      "slug": "eydhafushi",
+      "name": "Eydhafushi"
+    },
+    {
+      "slug": "felidhoo",
+      "name": "Felidhoo"
+    },
+    {
+      "slug": "hp-reef",
+      "name": "HP Reef"
+    },
+    {
+      "slug": "himmafushi",
+      "name": "Himmafushi"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\tname\ndhonfanu\tDhonfanu\neydhafushi\tEydhafushi\nfelidhoo\tFelidhoo\nhp-reef\tHP Reef\nhimmafushi\tHimmafushi\n",
+  "stderr": "",
+  "execution_time_ms": 204
+}

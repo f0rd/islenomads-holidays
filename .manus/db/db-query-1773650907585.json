@@ -1,0 +1,30 @@
+{
+  "query": "SELECT slug, name FROM map_locations WHERE slug IS NOT NULL LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT slug, name FROM map_locations WHERE slug IS NOT NULL LIMIT 5;",
+  "rows": [
+    {
+      "slug": "male",
+      "name": "Malé"
+    },
+    {
+      "slug": "hulhumale",
+      "name": "Hulhumalé"
+    },
+    {
+      "slug": "veligandu-island",
+      "name": "Veligandu Island"
+    },
+    {
+      "slug": "maafushi-island",
+      "name": "Maafushi Island"
+    },
+    {
+      "slug": "dhigurah-island",
+      "name": "Dhigurah Island"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\tname\nmale\tMalé\nhulhumale\tHulhumalé\nveligandu-island\tVeligandu Island\nmaafushi-island\tMaafushi Island\ndhigurah-island\tDhigurah Island\n",
+  "stderr": "",
+  "execution_time_ms": 108
+}

@@ -1,6 +1,6 @@
 import { eq, and, desc, asc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, mapLocations, InsertMapLocation, MapLocation, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -313,66 +313,88 @@ export async function getBoatRoutesToLocation(location: string): Promise<BoatRou
 }
 
 // Map Locations helpers
-export async function getMapLocations(published?: boolean): Promise<MapLocation[]> {
+// Places helpers (consolidated from mapLocations)
+export async function getPlaces(published?: boolean): Promise<Place[]> {
   const db = await getDb();
   if (!db) return [];
 
-  const query = db.select().from(mapLocations);
+  const query = db.select().from(places);
   if (published !== undefined) {
-    return query.where(eq(mapLocations.published, published ? 1 : 0)) as any;
+    return query.where(eq(places.published, published ? 1 : 0)) as any;
   }
   return query as any;
 }
 
-export async function getMapLocationBySlug(slug: string): Promise<MapLocation | undefined> {
+export async function getPlaceBySlug(slug: string): Promise<Place | undefined> {
   const db = await getDb();
   if (!db) return undefined;
 
-  const result = await db.select().from(mapLocations).where(eq(mapLocations.slug, slug)).limit(1);
+  const result = await db.select().from(places).where(eq(places.slug, slug)).limit(1);
   return result[0];
 }
 
-export async function createMapLocation(data: InsertMapLocation): Promise<MapLocation | null> {
+export async function createPlace(data: InsertPlace): Promise<Place | null> {
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(mapLocations).values(data);
+  const result = await db.insert(places).values(data);
   const id = (result as any).insertId;
-  const location = await getMapLocationById(id);
-  return location || null;
+  const place = await getPlaceById(id);
+  return place || null;
 }
 
-export async function getMapLocationById(id: number): Promise<MapLocation | undefined> {
+export async function getPlaceById(id: number): Promise<Place | undefined> {
   const db = await getDb();
   if (!db) return undefined;
 
-  const result = await db.select().from(mapLocations).where(eq(mapLocations.id, id)).limit(1);
+  const result = await db.select().from(places).where(eq(places.id, id)).limit(1);
   return result[0];
 }
 
-export async function updateMapLocation(id: number, data: Partial<InsertMapLocation>): Promise<MapLocation | null> {
+export async function updatePlace(id: number, data: Partial<InsertPlace>): Promise<Place | null> {
   const db = await getDb();
   if (!db) return null;
 
-  await db.update(mapLocations).set(data).where(eq(mapLocations.id, id));
-  const location = await getMapLocationById(id);
-  return location || null;
+  await db.update(places).set(data).where(eq(places.id, id));
+  const place = await getPlaceById(id);
+  return place || null;
 }
 
-export async function deleteMapLocation(id: number): Promise<boolean> {
+export async function deletePlace(id: number): Promise<boolean> {
   const db = await getDb();
   if (!db) return false;
 
-  await db.delete(mapLocations).where(eq(mapLocations.id, id));
+  await db.delete(places).where(eq(places.id, id));
   return true;
 }
 
-export async function getMapLocationWithGuide(id: number): Promise<any> {
-  const location = await getMapLocationById(id);
-  if (!location || !location.guideId) return location;
+// Legacy aliases for backward compatibility
+export async function getMapLocations(published?: boolean): Promise<Place[]> {
+  return getPlaces(published);
+}
 
-  const guide = await getIslandGuideById(location.guideId);
-  return { ...location, guide };
+export async function getMapLocationBySlug(slug: string): Promise<Place | undefined> {
+  return getPlaceBySlug(slug);
+}
+
+export async function createMapLocation(data: InsertPlace): Promise<Place | null> {
+  return createPlace(data);
+}
+
+export async function getMapLocationById(id: number): Promise<Place | undefined> {
+  return getPlaceById(id);
+}
+
+export async function updateMapLocation(id: number, data: Partial<InsertPlace>): Promise<Place | null> {
+  return updatePlace(id, data);
+}
+
+export async function deleteMapLocation(id: number): Promise<boolean> {
+  return deletePlace(id);
+}
+
+export async function getMapLocationWithGuide(id: number): Promise<any> {
+  return getPlaceWithGuide(id);
 }
 
 // Island Guides helpers

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO places (name, slug, code, type, latitude, longitude, description, highlights, amenities, image, icon, color, difficulty, depth, waveHeight, rating, reviews, population, priceRange, bestSeason, guideId, published) SELECT name, slug, CONCAT('ML-', id), type, latitude, longitude, description, highlights, amenities, image, icon, color, difficulty, depth, waveHeight, rating, reviews, population, priceRange, bestSeason, guideId, published FROM map_locations WHERE placeId NOT IN (SELECT id FROM places);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO places (name, slug, code, type, latitude, longitude, description, highlights, amenities, image, icon, color, difficulty, depth, waveHeight, rating, reviews, population, priceRange, bestSeason, guideId, published) SELECT name, slug, CONCAT('ML-', id), type, latitude, longitude, description, highlights, amenities, image, icon, color, difficulty, depth, waveHeight, rating, reviews, population, priceRange, bestSeason, guideId, published FROM map_locations WHERE placeId NOT IN (SELECT id FROM places);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 58
+}
