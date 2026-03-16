@@ -2363,3 +2363,12 @@
   - Solution: Added deduplication logic to filteredIslands, filteredDiveSites, filteredSurfSpots, and filteredSnorkelingSpots in MaldivesMap.tsx
   - Status: Verified - no console errors, map displays 147 total locations (19 atolls, 128 islands) without duplicates
 
+- [x] Replace SVG map with Google Maps integration
+  - Replaced current MaldivesMap.tsx with Google Maps-based implementation (MaldivesMapGoogle.tsx)
+  - Implemented location markers for atolls, islands, and activity spots with emoji icons
+  - Added search and filter functionality to Google Maps
+  - Verified all map features work correctly (zoom, pan, satellite view, marker click handlers)
+  - Map displays 27 island markers with proper deduplication
+  - Search functionality filters markers in real-time
+  - Details dialog opens on marker click with island information and "View Island Guide" button
+
