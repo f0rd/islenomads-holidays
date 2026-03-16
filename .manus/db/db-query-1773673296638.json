@@ -1,0 +1,18 @@
+{
+  "query": "SELECT id, name FROM atolls WHERE name LIKE '%Gha%' OR name LIKE '%Gaa%' OR name LIKE '%Ga%' ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM atolls WHERE name LIKE '%Gha%' OR name LIKE '%Gaa%' OR name LIKE '%Ga%' ORDER BY name",
+  "rows": [
+    {
+      "id": "60025",
+      "name": "Gaafu Alif Atoll"
+    },
+    {
+      "id": "60026",
+      "name": "Gaafu Dhaalu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n60025\tGaafu Alif Atoll\n60026\tGaafu Dhaalu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

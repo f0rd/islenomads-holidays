@@ -2344,3 +2344,7 @@
   - Issue: Duplicate keys when rendering POIs and Activity Spots together
   - Solution: Changed keys to use composite format (poi-${id} and spot-${id})
   - Status: Verified - no console errors, all 101 attractions displaying correctly
+
+
+## Geographical Corrections (Mar 16, 2026)
+- [x] Move Fuvamulah from Seenu Atoll to Gnaviyani Atoll (correct geographical location)

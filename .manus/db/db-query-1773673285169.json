@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, slug, atoll FROM island_guides WHERE name = 'Fuvamulah'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll FROM island_guides WHERE name = 'Fuvamulah'",
+  "rows": [
+    {
+      "id": "180037",
+      "name": "Fuvamulah",
+      "slug": "fuvahmulah",
+      "atoll": "Seenu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\n180037\tFuvamulah\tfuvahmulah\tSeenu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 65
+}

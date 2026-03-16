@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, type, slug FROM places WHERE name LIKE '%Fuvamulah%' OR slug LIKE '%fuvamulah%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, slug FROM places WHERE name LIKE '%Fuvamulah%' OR slug LIKE '%fuvamulah%'",
+  "rows": [
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "type": "island",
+      "slug": "fuvamulah"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tslug\n80\tFuvamulah\tisland\tfuvamulah\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}
