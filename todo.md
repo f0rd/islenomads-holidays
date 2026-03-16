@@ -2384,3 +2384,7 @@
   - Click list item highlights on map, click map marker highlights in list - COMPLETE
   - Implement search and filter functionality - COMPLETE (real-time search works)
   - Test interactions and verify layout works on desktop - VERIFIED
+- [x] Fix nested anchor tag error on /map page
+  - Issue: <a> cannot contain a nested <a> error in split-screen map component
+  - Solution: Removed inner <a> tag and applied className directly to Link component
+  - Status: FIXED - No React errors in console

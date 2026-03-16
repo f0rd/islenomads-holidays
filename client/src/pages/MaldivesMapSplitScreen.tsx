@@ -339,10 +339,8 @@ export default function MaldivesMapSplitScreen() {
                         </p>
                       )}
                       {marker.type === "island" && marker.slug && (
-                        <Link href={getDetailLink(marker)}>
-                          <a className="text-xs text-primary hover:underline mt-1 block">
-                            View Guide →
-                          </a>
+                        <Link href={getDetailLink(marker)} className="text-xs text-primary hover:underline mt-1 block inline-block">
+                          View Guide →
                         </Link>
                       )}
                     </div>
