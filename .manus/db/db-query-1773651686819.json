@@ -1,0 +1,13 @@
+{
+  "query": "SELECT id FROM atolls WHERE name = 'Fuvahmulah Atoll';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id FROM atolls WHERE name = 'Fuvahmulah Atoll';",
+  "rows": [
+    {
+      "id": "60039"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\n60039\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

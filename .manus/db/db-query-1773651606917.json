@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, slug FROM atolls WHERE name LIKE '%Fuva%' OR name LIKE '%Gnavi%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls WHERE name LIKE '%Fuva%' OR name LIKE '%Gnavi%';",
+  "rows": [
+    {
+      "id": "60027",
+      "name": "Gnaviyani Atoll",
+      "slug": "gnaviyani-atoll"
+    },
+    {
+      "id": "60039",
+      "name": "Fuvahmulah Atoll",
+      "slug": "fuvahmulah-atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n60027\tGnaviyani Atoll\tgnaviyani-atoll\n60039\tFuvahmulah Atoll\tfuvahmulah-atoll\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

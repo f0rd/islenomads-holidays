@@ -1,0 +1,73 @@
+{
+  "query": "SELECT name, type, description, rating, reviews, icon, color FROM places WHERE description IS NOT NULL LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, type, description, rating, reviews, icon, color FROM places WHERE description IS NOT NULL LIMIT 10;",
+  "rows": [
+    {
+      "name": "Maaya Thila",
+      "type": "dive_site",
+      "description": "Maaya Thila is a spectacular dive site in Ari Atoll featuring a submerged mountain with caves and overhangs. The site is famous for its abundance of marine life including reef sharks, groupers, snappers, and fusiliers. Night dives here are particularly spectacular with nocturnal creatures emerging.",
+      "rating": "4.8",
+      "reviews": "567",
+      "icon": "diving",
+      "color": "#2E86DE"
+    },
+    {
+      "name": "Kandooma Thila",
+      "type": "dive_site",
+      "description": "Kandooma Thila is one of the most famous dive sites in the Maldives, located in Kaafu Atoll. This underwater mountain rises from 60m to 20m and is surrounded by a rich ecosystem. Divers can expect to see reef sharks, tuna, jacks, and various reef fish. The site is suitable for experienced divers due to strong currents.",
+      "rating": "4.7",
+      "reviews": "432",
+      "icon": "diving",
+      "color": "#2E86DE"
+    },
+    {
+      "name": "Malé",
+      "type": "island",
+      "description": "Malé is the capital and largest city of the Maldives, located in Kaafu Atoll. It serves as the political, economic, and cultural center of the nation. The city is known for its colorful buildings, bustling markets, mosques, and vibrant street life. Malé International Airport is the main gateway to the Maldives.",
+      "rating": "4.2",
+      "reviews": "1250",
+      "icon": "city",
+      "color": "#FF6B6B"
+    },
+    {
+      "name": "Thulusdhoo",
+      "type": "island",
+      "description": "Thulusdhoo is a local island in Kaafu Atoll famous for its coral manufacturing and diving opportunities. The island has a strong local community and offers authentic Maldivian experiences. It is known for its house reef and proximity to excellent dive sites.",
+      "rating": "4.2",
+      "reviews": "445",
+      "icon": "island",
+      "color": "#4ECDC4"
+    },
+    {
+      "name": "Dhigurah",
+      "type": "island",
+      "description": "Dhigurah is a local island in Vaavu Atoll known for its long sandy beaches and vibrant local culture. The island is famous for whale shark and manta ray encounters, making it a popular destination for marine enthusiasts. It offers a more authentic Maldivian experience compared to resort islands.",
+      "rating": "4.5",
+      "reviews": "856",
+      "icon": "island",
+      "color": "#4ECDC4"
+    },
+    {
+      "name": "Maafushi",
+      "type": "island",
+      "description": "Maafushi is a popular local island in Kaafu Atoll offering budget-friendly accommodation and authentic Maldivian experiences. The island is known for its coral reef diving, house reef snorkeling, and friendly local community. It is an ideal destination for backpackers and budget travelers.",
+      "rating": "4.3",
+      "reviews": "1050",
+      "icon": "island",
+      "color": "#4ECDC4"
+    },
+    {
+      "name": "Hulhumalé",
+      "type": "island",
+      "description": "Hulhumalé is an artificial island in Kaafu Atoll developed as a modern residential and tourism hub. It is home to Malé International Airport and offers modern amenities, shopping centers, and water sports facilities. The island provides easy access to the capital and nearby dive sites.",
+      "rating": "4.1",
+      "reviews": "623",
+      "icon": "island",
+      "color": "#4ECDC4"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\ttype\tdescription\trating\treviews\ticon\tcolor\nMaaya Thila\tdive_site\tMaaya Thila is a spectacular dive site in Ari Atoll featuring a submerged mountain with caves and overhangs. The site is famous for its abundance of marine life including reef sharks, groupers, snappers, and fusiliers. Night dives here are particularly spectacular with nocturnal creatures emerging.\t4.8\t567\tdiving\t#2E86DE\nKandooma Thila\tdive_site\tKandooma Thila is one of the most famous dive sites in the Maldives, located in Kaafu Atoll. This underwater mountain rises from 60m to 20m and is surrounded by a rich ecosystem. Divers can expect to see reef sharks, tuna, jacks, and various reef fish. The site is suitable for experienced divers due to strong currents.\t4.7\t432\tdiving\t#2E86DE\nMalé\tisland\tMalé is the capital and largest city of the Maldives, located in Kaafu Atoll. It serves as the political, economic, and cultural center of the nation. The city is known for its colorful buildings, bustling markets, mosques, and vibrant street life. Malé International Airport is the main gateway to the Maldives.\t4.2\t1250\tcity\t#FF6B6B\nThulusdhoo\tisland\tThulusdhoo is a local island in Kaafu Atoll famous for its coral manufacturing and diving opportunities. The island has a strong local community and offers authentic Maldivian experiences. It is known for its house reef and proximity to excellent dive sites.\t4.2\t445\tisland\t#4ECDC4\nDhigurah\tisland\tDhigurah is a local island in Vaavu Atoll known for its long sandy beaches and vibrant local culture. The island is famous for whale shark and manta ray encounters, making it a popular destination for marine enthusiasts. It offers a more authentic Maldivian experience compared to resort islands.\t4.5\t856\tisland\t#4ECDC4\nMaafushi\tisland\tMaafushi is a popular local island in Kaafu Atoll offering budget-friendly accommodation and authentic Maldivian experiences. The island is known for its coral reef diving, house reef snorkeling, and friendly local community. It is an ideal destination for backpackers and budget travelers.\t4.3\t1050\tisland\t#4ECDC4\nHulhumalé\tisland\tHulhumalé is an artificial island in Kaafu Atoll developed as a modern residential and tourism hub. It is home to Malé International Airport and offers modern amenities, shopping centers, and water sports facilities. The island provides easy access to the capital and nearby dive sites.\t4.1\t623\tisland\t#4ECDC4\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}

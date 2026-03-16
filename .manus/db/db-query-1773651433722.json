@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, type, atollId FROM places WHERE name LIKE '%fuva%' OR name LIKE '%Fuva%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, atollId FROM places WHERE name LIKE '%fuva%' OR name LIKE '%Fuva%';",
+  "rows": [
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "type": "island",
+      "atollId": "NULL"
+    },
+    {
+      "id": "60103",
+      "name": "Fuvahmulah Airport",
+      "type": "airport",
+      "atollId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tatollId\n80\tFuvamulah\tisland\tNULL\n110\tFuvahmulah Tiger Shark\tisland\tNULL\n60103\tFuvahmulah Airport\tairport\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

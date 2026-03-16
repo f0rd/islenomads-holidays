@@ -1,0 +1,28 @@
+{
+  "query": "SELECT p.id, p.name, p.atollId, a.name as atollName FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.name LIKE '%Fuva%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, p.atollId, a.name as atollName FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.name LIKE '%Fuva%';",
+  "rows": [
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "atollId": "30",
+      "atollName": "NULL"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "atollId": "30",
+      "atollName": "NULL"
+    },
+    {
+      "id": "60103",
+      "name": "Fuvahmulah Airport",
+      "atollId": "30",
+      "atollName": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\tatollName\n80\tFuvamulah\t30\tNULL\n110\tFuvahmulah Tiger Shark\t30\tNULL\n60103\tFuvahmulah Airport\t30\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 48
+}

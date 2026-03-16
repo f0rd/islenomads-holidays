@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total_places, COUNT(DISTINCT type) as types FROM places;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_places, COUNT(DISTINCT type) as types FROM places;",
+  "rows": [
+    {
+      "total_places": "246",
+      "types": "5"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_places\ttypes\n246\t5\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

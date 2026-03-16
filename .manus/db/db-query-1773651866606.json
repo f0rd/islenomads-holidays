@@ -1,0 +1,45 @@
+{
+  "query": "SELECT id, name, type, latitude, longitude FROM places LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, latitude, longitude FROM places LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "type": "island",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "type": "island",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "type": "island",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    },
+    {
+      "id": "4",
+      "name": "HP Reef",
+      "type": "dive_site",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "type": "island",
+      "latitude": "NULL",
+      "longitude": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tlatitude\tlongitude\n1\tDhonfanu\tisland\tNULL\tNULL\n2\tEydhafushi\tisland\tNULL\tNULL\n3\tFelidhoo\tisland\tNULL\tNULL\n4\tHP Reef\tdive_site\tNULL\tNULL\n5\tHimmafushi\tisland\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

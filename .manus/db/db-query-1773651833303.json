@@ -1,0 +1,16 @@
+{
+  "query": "SELECT COUNT(*) as total_places, COUNT(CASE WHEN description IS NOT NULL THEN 1 END) as with_description, COUNT(CASE WHEN highlights IS NOT NULL THEN 1 END) as with_highlights, COUNT(CASE WHEN amenities IS NOT NULL THEN 1 END) as with_amenities FROM places;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_places, COUNT(CASE WHEN description IS NOT NULL THEN 1 END) as with_description, COUNT(CASE WHEN highlights IS NOT NULL THEN 1 END) as with_highlights, COUNT(CASE WHEN amenities IS NOT NULL THEN 1 END) as with_amenities FROM places;",
+  "rows": [
+    {
+      "total_places": "246",
+      "with_description": "0",
+      "with_highlights": "0",
+      "with_amenities": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_places\twith_description\twith_highlights\twith_amenities\n246\t0\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}
