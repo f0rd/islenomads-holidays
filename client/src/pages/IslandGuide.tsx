@@ -437,14 +437,73 @@ export default function IslandGuide() {
 
             {/* Practical Tab */}
             <TabsContent value="practical" className="space-y-6 mt-6">
+              {/* What to Pack */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Practical Information</CardTitle>
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5" />
+                    What to Pack
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Getting There</h4>
-                    <p className="text-sm text-muted-foreground">{guide.gettingThere || 'Information not available'}</p>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {Array.isArray(guide.whatToPack) && guide.whatToPack.length > 0 ? (
+                      guide.whatToPack.map((item: any, idx: number) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <CheckCircle className="w-4 h-4 mt-0.5 text-green-600 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Packing recommendations coming soon</p>
+                    )}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Health Tips */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5" />
+                    Health & Safety
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {Array.isArray(guide.healthTips) && guide.healthTips.length > 0 ? (
+                      guide.healthTips.map((tip: any, idx: number) => (
+                        <li key={idx} className="text-sm text-muted-foreground">
+                          {typeof tip === 'string' ? tip : tip.tip || tip}
+                        </li>
+                      ))
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Health tips coming soon</p>
+                    )}
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Emergency Contacts */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5" />
+                    Emergency Contacts
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {Array.isArray(guide.emergencyContacts) && guide.emergencyContacts.length > 0 ? (
+                      guide.emergencyContacts.map((contact: any, idx: number) => (
+                        <div key={idx} className="p-3 bg-muted rounded-lg">
+                          <p className="font-semibold text-sm">{contact.name || contact.type}</p>
+                          <p className="text-sm text-muted-foreground">{contact.number || contact.phone}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Emergency contact information coming soon</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
