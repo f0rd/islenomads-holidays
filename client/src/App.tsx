@@ -44,6 +44,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AttractionGuide from "./pages/AttractionGuide";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Surfing from "./pages/Surfing";
 import AdminPages from "./pages/AdminPages";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 
@@ -83,6 +84,7 @@ function Router() {
       <Route path={"/explore-maldives/:slug"} component={IslandGuide} />
       <Route path={"/explore-maldives/atoll/:slug"} component={AtollDetail} />
       <Route path={"/attraction/:slug"} component={AttractionGuide} />
+      <Route path={"/surfing"} component={Surfing} />
       <Route path={"/atolls"} component={Atolls} />
       <Route path={"/admin/analytics"} component={AnalyticsDashboard} />
       <Route path={"/atoll/:slug"} component={AtollDetail} />

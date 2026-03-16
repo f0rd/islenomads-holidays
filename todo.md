@@ -2310,3 +2310,30 @@
 - [ ] Remove mapLocations table from database schema
 - [ ] Test all map, island, and location functionality with consolidated table
 - [ ] Verify data integrity and no data loss after consolidation
+
+
+## IN PROGRESS - Populate Remaining 142 Locations with Rich Data
+- [ ] Identify and categorize remaining 142 locations by type (islands, dive sites, resorts, POIs)
+- [ ] Research rich data for all remaining locations
+- [ ] Batch update islands with descriptions and amenities
+- [ ] Batch update dive sites with descriptions, marine life, and difficulty levels
+- [ ] Batch update resorts with descriptions and amenities
+- [ ] Batch update POIs with descriptions and highlights
+- [ ] Verify all 150 locations have complete data populated
+- [ ] Ensure all locations have icons, colors, ratings, and best season information
+
+
+## Surfing Spots Enhancement (NEW - Mar 16, 2026)
+- [x] Enhance surfing spot descriptions with wave characteristics, crowd levels, and facilities
+- [x] Create enhanced surfing spots data structure with detailed information
+- [x] Create comprehensive surfing guides for each spot with tips and techniques
+- [x] Create dedicated Surfing page component with filters and maps
+- [x] Add surfing spot filtering by difficulty, season, wave height, crowd level
+- [x] Add Surfing link to Navigation component
+- [x] Add Surfing route to App.tsx
+- [ ] Integrate Mapbox into Surfing page to show all spots with markers
+- [ ] Add surfing school/rental information links
+- [ ] Create surfing season calendar showing best times for each spot
+- [ ] Search for and download high-quality surfing spot images (32 images)
+- [ ] Upload surfing spot hero images to S3 and get CDN URLs
+- [ ] Test all surfing features and verify functionality with real data

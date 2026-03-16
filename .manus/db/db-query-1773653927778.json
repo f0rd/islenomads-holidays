@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as total_surf_spots, SUM(CASE WHEN rating IS NOT NULL AND rating > 0 THEN 1 ELSE 0 END) as with_rating FROM activity_spots WHERE spotType = 'surf_spot'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_surf_spots, SUM(CASE WHEN rating IS NOT NULL AND rating > 0 THEN 1 ELSE 0 END) as with_rating FROM activity_spots WHERE spotType = 'surf_spot'",
+  "rows": [
+    {
+      "total_surf_spots": "32",
+      "with_rating": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_surf_spots\twith_rating\n32\t3\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}

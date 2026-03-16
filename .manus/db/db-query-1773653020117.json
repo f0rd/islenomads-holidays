@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, name, type, description, rating, icon FROM places WHERE type IN ('island', 'activity_spot') ORDER BY type, name LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, description, rating, icon FROM places WHERE type IN ('island', 'activity_spot') ORDER BY type, name LIMIT 10",
+  "rows": [
+    {
+      "id": "39",
+      "name": "Alifushi",
+      "type": "island",
+      "description": "Discover the charm of Alifushi, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "71",
+      "name": "Baarah",
+      "type": "island",
+      "description": "Discover the charm of Baarah, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "100",
+      "name": "Banana Reef",
+      "type": "island",
+      "description": "Discover the charm of Banana Reef, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "type": "island",
+      "description": "Discover the charm of Bandidhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "type": "island",
+      "description": "Discover the charm of Bileddhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "type": "island",
+      "description": "Discover the charm of Bodufolhudhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "type": "island",
+      "description": "Discover the charm of Burunee, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "type": "island",
+      "description": "Discover the charm of Dhangethi, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "type": "island",
+      "description": "Discover the charm of Dharanboodhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "type": "island",
+      "description": "Discover the charm of Dharavandhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.",
+      "rating": "4.5",
+      "icon": "🏝️"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tdescription\trating\ticon\n39\tAlifushi\tisland\tDiscover the charm of Alifushi, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n71\tBaarah\tisland\tDiscover the charm of Baarah, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n100\tBanana Reef\tisland\tDiscover the charm of Banana Reef, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n17\tBandidhoo\tisland\tDiscover the charm of Bandidhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n72\tBileddhoo\tisland\tDiscover the charm of Bileddhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n18\tBodufolhudhoo\tisland\tDiscover the charm of Bodufolhudhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n101\tBurunee\tisland\tDiscover the charm of Burunee, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n30002\tDhangethi\tisland\tDiscover the charm of Dhangethi, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n19\tDharanboodhoo\tisland\tDiscover the charm of Dharanboodhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n40\tDharavandhoo\tisland\tDiscover the charm of Dharavandhoo, a beautiful island in the Maldives offering pristine beaches, crystal-clear waters, and authentic local experiences. Perfect for travelers seeking genuine island life, water sports, and cultural immersion.\t4.5\t🏝️\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

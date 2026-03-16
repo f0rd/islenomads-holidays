@@ -1,0 +1,250 @@
+{
+  "query": "SELECT id, name, spotType, difficulty, rating, description FROM activity_spots WHERE spotType LIKE '%surf%' OR name LIKE '%surf%' ORDER BY name LIMIT 30",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, difficulty, rating, description FROM activity_spots WHERE spotType LIKE '%surf%' OR name LIKE '%surf%' ORDER BY name LIMIT 30",
+  "rows": [
+    {
+      "id": "90005",
+      "name": "Artificial Beach Break",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Sandy beach break near Male city. Inconsistent but fun when it fires. Good for learning basics."
+    },
+    {
+      "id": "120012",
+      "name": "Arugambe",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "4.7",
+      "description": "Powerful reef break with heavy waves for advanced surfers. One of the most challenging and rewarding breaks in the Maldives."
+    },
+    {
+      "id": "120011",
+      "name": "Chickens",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "4.6",
+      "description": "Consistent reef break with quality waves for intermediate surfers. Named for the local chickens that roam the area."
+    },
+    {
+      "id": "90004",
+      "name": "Chickens",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Mellow right-hand reef break. Forgiving waves with plenty of shoulder. Ideal for learning and progression."
+    },
+    {
+      "id": "1",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Fast right-hand reef break"
+    },
+    {
+      "id": "90001",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Fast right-hand reef break with consistent waves. Perfect for beginners and intermediate surfers. Mellow and forgiving."
+    },
+    {
+      "id": "90008",
+      "name": "Dhiffushi Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Left-hand reef break with consistent shape. Good walls and fun sections. Popular spot with reliable waves."
+    },
+    {
+      "id": "90011",
+      "name": "Dhigurah Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Mellow right-hand reef break. Forgiving waves perfect for beginners and intermediate surfers. Consistent and fun."
+    },
+    {
+      "id": "90013",
+      "name": "Felidhoo Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful pass break with strong currents. Hollow waves and fast sections. For advanced surfers with experience."
+    },
+    {
+      "id": "60005",
+      "name": "Foxys",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Fun and forgiving wave"
+    },
+    {
+      "id": "90012",
+      "name": "Fulidhoo Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Left-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers."
+    },
+    {
+      "id": "90016",
+      "name": "Haa Alifu Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Consistent reef break with good shape. Fun waves for intermediate surfers. Less crowded than southern atolls."
+    },
+    {
+      "id": "90017",
+      "name": "Hanifaru Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Mellow reef break with forgiving waves. Perfect for beginners and progression. Less crowded spot with consistent shape."
+    },
+    {
+      "id": "90015",
+      "name": "Hinnavaru Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful pass break with strong currents and hollow sections. Fast walls and challenging conditions. For experienced surfers."
+    },
+    {
+      "id": "90018",
+      "name": "Hulhumale Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Sandy beach break near Hulhumale. Inconsistent but fun when waves are good. Convenient for tourists near airport."
+    },
+    {
+      "id": "60004",
+      "name": "Jailbreaks",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Consistent right"
+    },
+    {
+      "id": "90003",
+      "name": "Jails",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful right-hand reef break with hollow sections. Requires experience and good paddling fitness. Heavy water movement."
+    },
+    {
+      "id": "90019",
+      "name": "Kandooma Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Right-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers."
+    },
+    {
+      "id": "90021",
+      "name": "Maafushi Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "description": "Mellow reef break with forgiving waves. Perfect for beginners and intermediate surfers. Consistent and fun."
+    },
+    {
+      "id": "90006",
+      "name": "Madivaru Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful pass break with strong currents. Consistent waves but requires experience and caution. Best for advanced surfers."
+    },
+    {
+      "id": "90014",
+      "name": "Naifaru Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Right-hand reef break with consistent waves. Good shape and fun sections. Suitable for intermediate surfers."
+    },
+    {
+      "id": "90002",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Excellent left-hand reef break with long, peeling waves. Named after the Italian restaurant nearby. Great for intermediate surfers."
+    },
+    {
+      "id": "120010",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "4.8",
+      "description": "One of the most famous and consistent beginner-friendly surf breaks in the Maldives. Perfect for learning to surf."
+    },
+    {
+      "id": "60001",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Fun and playful wave"
+    },
+    {
+      "id": "90007",
+      "name": "Rasdhoo Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Consistent right-hand reef break. Good quality waves with fun sections. Suitable for intermediate to advanced surfers."
+    },
+    {
+      "id": "60002",
+      "name": "Riptide",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful barrel section"
+    },
+    {
+      "id": "60003",
+      "name": "Sultans",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "User-friendly reef break"
+    },
+    {
+      "id": "90009",
+      "name": "Thoddoo Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Powerful pass break with strong currents. Hollow sections and fast walls. For experienced surfers only."
+    },
+    {
+      "id": "60007",
+      "name": "Two Ways",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "description": "Left and right options"
+    },
+    {
+      "id": "90010",
+      "name": "Ukulhas Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "description": "Right-hand reef break with long rides. Consistent waves and good shape. Fun for intermediate surfers."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tdifficulty\trating\tdescription\n90005\tArtificial Beach Break\tsurf_spot\tbeginner\tNULL\tSandy beach break near Male city. Inconsistent but fun when it fires. Good for learning basics.\n120012\tArugambe\tsurf_spot\tadvanced\t4.7\tPowerful reef break with heavy waves for advanced surfers. One of the most challenging and rewarding breaks in the Maldives.\n120011\tChickens\tsurf_spot\tintermediate\t4.6\tConsistent reef break with quality waves for intermediate surfers. Named for the local chickens that roam the area.\n90004\tChickens\tsurf_spot\tbeginner\tNULL\tMellow right-hand reef break. Forgiving waves with plenty of shoulder. Ideal for learning and progression.\n1\tCokes\tsurf_spot\tbeginner\tNULL\tFast right-hand reef break\n90001\tCokes\tsurf_spot\tbeginner\tNULL\tFast right-hand reef break with consistent waves. Perfect for beginners and intermediate surfers. Mellow and forgiving.\n90008\tDhiffushi Reef\tsurf_spot\tintermediate\tNULL\tLeft-hand reef break with consistent shape. Good walls and fun sections. Popular spot with reliable waves.\n90011\tDhigurah Reef\tsurf_spot\tbeginner\tNULL\tMellow right-hand reef break. Forgiving waves perfect for beginners and intermediate surfers. Consistent and fun.\n90013\tFelidhoo Pass\tsurf_spot\tadvanced\tNULL\tPowerful pass break with strong currents. Hollow waves and fast sections. For advanced surfers with experience.\n60005\tFoxys\tsurf_spot\tintermediate\tNULL\tFun and forgiving wave\n90012\tFulidhoo Reef\tsurf_spot\tintermediate\tNULL\tLeft-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers.\n90016\tHaa Alifu Reef\tsurf_spot\tintermediate\tNULL\tConsistent reef break with good shape. Fun waves for intermediate surfers. Less crowded than southern atolls.\n90017\tHanifaru Reef\tsurf_spot\tbeginner\tNULL\tMellow reef break with forgiving waves. Perfect for beginners and progression. Less crowded spot with consistent shape.\n90015\tHinnavaru Pass\tsurf_spot\tadvanced\tNULL\tPowerful pass break with strong currents and hollow sections. Fast walls and challenging conditions. For experienced surfers.\n90018\tHulhumale Reef\tsurf_spot\tbeginner\tNULL\tSandy beach break near Hulhumale. Inconsistent but fun when waves are good. Convenient for tourists near airport.\n60004\tJailbreaks\tsurf_spot\tintermediate\tNULL\tConsistent right\n90003\tJails\tsurf_spot\tadvanced\tNULL\tPowerful right-hand reef break with hollow sections. Requires experience and good paddling fitness. Heavy water movement.\n90019\tKandooma Reef\tsurf_spot\tintermediate\tNULL\tRight-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers.\n90021\tMaafushi Reef\tsurf_spot\tbeginner\tNULL\tMellow reef break with forgiving waves. Perfect for beginners and intermediate surfers. Consistent and fun.\n90006\tMadivaru Pass\tsurf_spot\tadvanced\tNULL\tPowerful pass break with strong currents. Consistent waves but requires experience and caution. Best for advanced surfers.\n90014\tNaifaru Reef\tsurf_spot\tintermediate\tNULL\tRight-hand reef break with consistent waves. Good shape and fun sections. Suitable for intermediate surfers.\n90002\tPasta Point\tsurf_spot\tintermediate\tNULL\tExcellent left-hand reef break with long, peeling waves. Named after the Italian restaurant nearby. Great for intermediate surfers.\n120010\tPasta Point\tsurf_spot\tbeginner\t4.8\tOne of the most famous and consistent beginner-friendly surf breaks in the Maldives. Perfect for learning to surf.\n60001\tPasta Point\tsurf_spot\tintermediate\tNULL\tFun and playful wave\n90007\tRasdhoo Reef\tsurf_spot\tintermediate\tNULL\tConsistent right-hand reef break. Good quality waves with fun sections. Suitable for intermediate to advanced surfers.\n60002\tRiptide\tsurf_spot\tadvanced\tNULL\tPowerful barrel section\n60003\tSultans\tsurf_spot\tintermediate\tNULL\tUser-friendly reef break\n90009\tThoddoo Pass\tsurf_spot\tadvanced\tNULL\tPowerful pass break with strong currents. Hollow sections and fast walls. For experienced surfers only.\n60007\tTwo Ways\tsurf_spot\tadvanced\tNULL\tLeft and right options\n90010\tUkulhas Reef\tsurf_spot\tintermediate\tNULL\tRight-hand reef break with long rides. Consistent waves and good shape. Fun for intermediate surfers.\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

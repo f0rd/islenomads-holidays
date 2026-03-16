@@ -1,0 +1,330 @@
+{
+  "query": "SELECT id, name, spotType, difficulty, rating, waveHeight, bestSeason, description FROM activity_spots WHERE spotType = 'surf_spot' ORDER BY rating DESC LIMIT 50",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, difficulty, rating, waveHeight, bestSeason, description FROM activity_spots WHERE spotType = 'surf_spot' ORDER BY rating DESC LIMIT 50",
+  "rows": [
+    {
+      "id": "120010",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "4.8",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October (SW monsoon)",
+      "description": "One of the most famous and consistent beginner-friendly surf breaks in the Maldives. Perfect for learning to surf."
+    },
+    {
+      "id": "120012",
+      "name": "Arugambe",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "4.7",
+      "waveHeight": "5-8 feet",
+      "bestSeason": "March to October (SW monsoon)",
+      "description": "Powerful reef break with heavy waves for advanced surfers. One of the most challenging and rewarding breaks in the Maldives."
+    },
+    {
+      "id": "120011",
+      "name": "Chickens",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "4.6",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October (SW monsoon)",
+      "description": "Consistent reef break with quality waves for intermediate surfers. Named for the local chickens that roam the area."
+    },
+    {
+      "id": "90010",
+      "name": "Ukulhas Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Right-hand reef break with long rides. Consistent waves and good shape. Fun for intermediate surfers."
+    },
+    {
+      "id": "90016",
+      "name": "Haa Alifu Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Consistent reef break with good shape. Fun waves for intermediate surfers. Less crowded than southern atolls."
+    },
+    {
+      "id": "90005",
+      "name": "Artificial Beach Break",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-3 feet",
+      "bestSeason": "March to October",
+      "description": "Sandy beach break near Male city. Inconsistent but fun when it fires. Good for learning basics."
+    },
+    {
+      "id": "60007",
+      "name": "Two Ways",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Left and right options"
+    },
+    {
+      "id": "1",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Fast right-hand reef break"
+    },
+    {
+      "id": "90002",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Excellent left-hand reef break with long, peeling waves. Named after the Italian restaurant nearby. Great for intermediate surfers."
+    },
+    {
+      "id": "90003",
+      "name": "Jails",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "4-6 feet",
+      "bestSeason": "March to October",
+      "description": "Powerful right-hand reef break with hollow sections. Requires experience and good paddling fitness. Heavy water movement."
+    },
+    {
+      "id": "90004",
+      "name": "Chickens",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October",
+      "description": "Mellow right-hand reef break. Forgiving waves with plenty of shoulder. Ideal for learning and progression."
+    },
+    {
+      "id": "90017",
+      "name": "Hanifaru Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October",
+      "description": "Mellow reef break with forgiving waves. Perfect for beginners and progression. Less crowded spot with consistent shape."
+    },
+    {
+      "id": "60005",
+      "name": "Foxys",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Fun and forgiving wave"
+    },
+    {
+      "id": "90020",
+      "name": "Veligandu Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Left-hand reef break with consistent waves. Good shape and fun sections. Less crowded than northern breaks."
+    },
+    {
+      "id": "90008",
+      "name": "Dhiffushi Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Left-hand reef break with consistent shape. Good walls and fun sections. Popular spot with reliable waves."
+    },
+    {
+      "id": "90009",
+      "name": "Thoddoo Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "4-7 feet",
+      "bestSeason": "March to October",
+      "description": "Powerful pass break with strong currents. Hollow sections and fast walls. For experienced surfers only."
+    },
+    {
+      "id": "60003",
+      "name": "Sultans",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "User-friendly reef break"
+    },
+    {
+      "id": "60004",
+      "name": "Jailbreaks",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Consistent right"
+    },
+    {
+      "id": "90013",
+      "name": "Felidhoo Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "4-7 feet",
+      "bestSeason": "March to October",
+      "description": "Powerful pass break with strong currents. Hollow waves and fast sections. For advanced surfers with experience."
+    },
+    {
+      "id": "90011",
+      "name": "Dhigurah Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October",
+      "description": "Mellow right-hand reef break. Forgiving waves perfect for beginners and intermediate surfers. Consistent and fun."
+    },
+    {
+      "id": "90014",
+      "name": "Naifaru Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Right-hand reef break with consistent waves. Good shape and fun sections. Suitable for intermediate surfers."
+    },
+    {
+      "id": "90015",
+      "name": "Hinnavaru Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "4-7 feet",
+      "bestSeason": "March to October",
+      "description": "Powerful pass break with strong currents and hollow sections. Fast walls and challenging conditions. For experienced surfers."
+    },
+    {
+      "id": "90012",
+      "name": "Fulidhoo Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Left-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers."
+    },
+    {
+      "id": "60001",
+      "name": "Pasta Point",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Fun and playful wave"
+    },
+    {
+      "id": "90018",
+      "name": "Hulhumale Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-3 feet",
+      "bestSeason": "March to October",
+      "description": "Sandy beach break near Hulhumale. Inconsistent but fun when waves are good. Convenient for tourists near airport."
+    },
+    {
+      "id": "90019",
+      "name": "Kandooma Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Right-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers."
+    },
+    {
+      "id": "90021",
+      "name": "Maafushi Reef",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October",
+      "description": "Mellow reef break with forgiving waves. Perfect for beginners and intermediate surfers. Consistent and fun."
+    },
+    {
+      "id": "90006",
+      "name": "Madivaru Pass",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "4-7 feet",
+      "bestSeason": "March to October",
+      "description": "Powerful pass break with strong currents. Consistent waves but requires experience and caution. Best for advanced surfers."
+    },
+    {
+      "id": "90007",
+      "name": "Rasdhoo Reef",
+      "spotType": "surf_spot",
+      "difficulty": "intermediate",
+      "rating": "NULL",
+      "waveHeight": "3-5 feet",
+      "bestSeason": "March to October",
+      "description": "Consistent right-hand reef break. Good quality waves with fun sections. Suitable for intermediate to advanced surfers."
+    },
+    {
+      "id": "60006",
+      "name": "Yeyye",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Heavy southern reef break"
+    },
+    {
+      "id": "60002",
+      "name": "Riptide",
+      "spotType": "surf_spot",
+      "difficulty": "advanced",
+      "rating": "NULL",
+      "waveHeight": "NULL",
+      "bestSeason": "Mar-Oct",
+      "description": "Powerful barrel section"
+    },
+    {
+      "id": "90001",
+      "name": "Cokes",
+      "spotType": "surf_spot",
+      "difficulty": "beginner",
+      "rating": "NULL",
+      "waveHeight": "2-4 feet",
+      "bestSeason": "March to October",
+      "description": "Fast right-hand reef break with consistent waves. Perfect for beginners and intermediate surfers. Mellow and forgiving."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tdifficulty\trating\twaveHeight\tbestSeason\tdescription\n120010\tPasta Point\tsurf_spot\tbeginner\t4.8\t2-4 feet\tMarch to October (SW monsoon)\tOne of the most famous and consistent beginner-friendly surf breaks in the Maldives. Perfect for learning to surf.\n120012\tArugambe\tsurf_spot\tadvanced\t4.7\t5-8 feet\tMarch to October (SW monsoon)\tPowerful reef break with heavy waves for advanced surfers. One of the most challenging and rewarding breaks in the Maldives.\n120011\tChickens\tsurf_spot\tintermediate\t4.6\t3-5 feet\tMarch to October (SW monsoon)\tConsistent reef break with quality waves for intermediate surfers. Named for the local chickens that roam the area.\n90010\tUkulhas Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tRight-hand reef break with long rides. Consistent waves and good shape. Fun for intermediate surfers.\n90016\tHaa Alifu Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tConsistent reef break with good shape. Fun waves for intermediate surfers. Less crowded than southern atolls.\n90005\tArtificial Beach Break\tsurf_spot\tbeginner\tNULL\t2-3 feet\tMarch to October\tSandy beach break near Male city. Inconsistent but fun when it fires. Good for learning basics.\n60007\tTwo Ways\tsurf_spot\tadvanced\tNULL\tNULL\tMar-Oct\tLeft and right options\n1\tCokes\tsurf_spot\tbeginner\tNULL\tNULL\tMar-Oct\tFast right-hand reef break\n90002\tPasta Point\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tExcellent left-hand reef break with long, peeling waves. Named after the Italian restaurant nearby. Great for intermediate surfers.\n90003\tJails\tsurf_spot\tadvanced\tNULL\t4-6 feet\tMarch to October\tPowerful right-hand reef break with hollow sections. Requires experience and good paddling fitness. Heavy water movement.\n90004\tChickens\tsurf_spot\tbeginner\tNULL\t2-4 feet\tMarch to October\tMellow right-hand reef break. Forgiving waves with plenty of shoulder. Ideal for learning and progression.\n90017\tHanifaru Reef\tsurf_spot\tbeginner\tNULL\t2-4 feet\tMarch to October\tMellow reef break with forgiving waves. Perfect for beginners and progression. Less crowded spot with consistent shape.\n60005\tFoxys\tsurf_spot\tintermediate\tNULL\tNULL\tMar-Oct\tFun and forgiving wave\n90020\tVeligandu Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tLeft-hand reef break with consistent waves. Good shape and fun sections. Less crowded than northern breaks.\n90008\tDhiffushi Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tLeft-hand reef break with consistent shape. Good walls and fun sections. Popular spot with reliable waves.\n90009\tThoddoo Pass\tsurf_spot\tadvanced\tNULL\t4-7 feet\tMarch to October\tPowerful pass break with strong currents. Hollow sections and fast walls. For experienced surfers only.\n60003\tSultans\tsurf_spot\tintermediate\tNULL\tNULL\tMar-Oct\tUser-friendly reef break\n60004\tJailbreaks\tsurf_spot\tintermediate\tNULL\tNULL\tMar-Oct\tConsistent right\n90013\tFelidhoo Pass\tsurf_spot\tadvanced\tNULL\t4-7 feet\tMarch to October\tPowerful pass break with strong currents. Hollow waves and fast sections. For advanced surfers with experience.\n90011\tDhigurah Reef\tsurf_spot\tbeginner\tNULL\t2-4 feet\tMarch to October\tMellow right-hand reef break. Forgiving waves perfect for beginners and intermediate surfers. Consistent and fun.\n90014\tNaifaru Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tRight-hand reef break with consistent waves. Good shape and fun sections. Suitable for intermediate surfers.\n90015\tHinnavaru Pass\tsurf_spot\tadvanced\tNULL\t4-7 feet\tMarch to October\tPowerful pass break with strong currents and hollow sections. Fast walls and challenging conditions. For experienced surfers.\n90012\tFulidhoo Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tLeft-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers.\n60001\tPasta Point\tsurf_spot\tintermediate\tNULL\tNULL\tMar-Oct\tFun and playful wave\n90018\tHulhumale Reef\tsurf_spot\tbeginner\tNULL\t2-3 feet\tMarch to October\tSandy beach break near Hulhumale. Inconsistent but fun when waves are good. Convenient for tourists near airport.\n90019\tKandooma Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tRight-hand reef break with consistent waves. Good quality shape and fun sections. Popular with intermediate surfers.\n90021\tMaafushi Reef\tsurf_spot\tbeginner\tNULL\t2-4 feet\tMarch to October\tMellow reef break with forgiving waves. Perfect for beginners and intermediate surfers. Consistent and fun.\n90006\tMadivaru Pass\tsurf_spot\tadvanced\tNULL\t4-7 feet\tMarch to October\tPowerful pass break with strong currents. Consistent waves but requires experience and caution. Best for advanced surfers.\n90007\tRasdhoo Reef\tsurf_spot\tintermediate\tNULL\t3-5 feet\tMarch to October\tConsistent right-hand reef break. Good quality waves with fun sections. Suitable for intermediate to advanced surfers.\n60006\tYeyye\tsurf_spot\tadvanced\tNULL\tNULL\tMar-Oct\tHeavy southern reef break\n60002\tRiptide\tsurf_spot\tadvanced\tNULL\tNULL\tMar-Oct\tPowerful barrel section\n90001\tCokes\tsurf_spot\tbeginner\tNULL\t2-4 feet\tMarch to October\tFast right-hand reef break with consistent waves. Perfect for beginners and intermediate surfers. Mellow and forgiving.\n",
+  "stderr": "",
+  "execution_time_ms": 188
+}
