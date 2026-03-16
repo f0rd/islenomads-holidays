@@ -128,7 +128,7 @@ export default function ExploreMaldives() {
 
   // Filter and search islands with activity filtering
   const filteredIslands = useMemo(() => {
-    return islandsWithSpots.filter((island: IslandWithSpots) => {
+    const filtered = islandsWithSpots.filter((island: IslandWithSpots) => {
       const matchesSearch = island.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
@@ -152,6 +152,16 @@ export default function ExploreMaldives() {
       }
       
       return matchesSearch && isPublished && isActualIsland && isFeatured && matchesActivities;
+    });
+    
+    // Deduplicate by ID to prevent duplicate key errors
+    const seenIds = new Set<number>();
+    return filtered.filter((island: IslandWithSpots) => {
+      if (seenIds.has(island.id)) {
+        return false;
+      }
+      seenIds.add(island.id);
+      return true;
     });
   }, [islandsWithSpots, searchQuery, selectedActivities]);
 
@@ -390,7 +400,7 @@ export default function ExploreMaldives() {
               {filteredIslands.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredIslands.map((island: IslandWithSpots) => (
-                    <Link key={island.id} href={getIslandGuideUrl(island.slug || island.id)}>
+                    <Link key={`island-${island.id}-${island.featured}`} href={getIslandGuideUrl(island.slug || island.id)}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">

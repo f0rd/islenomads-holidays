@@ -2348,3 +2348,9 @@
 
 ## Geographical Corrections (Mar 16, 2026)
 - [x] Move Fuvamulah from Seenu Atoll to Gnaviyani Atoll (correct geographical location)
+- [x] Fixed React key errors on /explore-maldives Islands tab (island-270026, island-210003)
+  - Issue: Duplicate island IDs in filteredIslands array due to duplicate records in island_guides table
+  - Root Cause: 3 islands had duplicate entries (6 total duplicate records)
+  - Solution: Added deduplication logic to filteredIslands useMemo using Set to track seen IDs
+  - Status: Verified - no console errors, 44 islands displaying correctly without duplicates
+

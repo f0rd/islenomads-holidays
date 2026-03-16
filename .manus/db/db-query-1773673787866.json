@@ -1,0 +1,274 @@
+{
+  "query": "SELECT id, name, featured, placeId FROM island_guides WHERE featured = 1 AND contentType = 'island' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, featured, placeId FROM island_guides WHERE featured = 1 AND contentType = 'island' ORDER BY id;",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "featured": "1",
+      "placeId": "5"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "featured": "1",
+      "placeId": "2"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "featured": "1",
+      "placeId": "16"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "featured": "1",
+      "placeId": "19"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "featured": "1",
+      "placeId": "38"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "featured": "1",
+      "placeId": "50"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "featured": "1",
+      "placeId": "52"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "featured": "1",
+      "placeId": "55"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "featured": "1",
+      "placeId": "61"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "featured": "1",
+      "placeId": "79"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "featured": "1",
+      "placeId": "86"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "featured": "1",
+      "placeId": "90"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "featured": "1",
+      "placeId": "96"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "featured": "1",
+      "placeId": "98"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "featured": "1",
+      "placeId": "102"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "featured": "1",
+      "placeId": "114"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "featured": "1",
+      "placeId": "117"
+    },
+    {
+      "id": "270003",
+      "name": "Naifaru",
+      "featured": "1",
+      "placeId": "58"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270030",
+      "name": "Gan",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270033",
+      "name": "Kudahuvadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270049",
+      "name": "Fonadhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270051",
+      "name": "Kadhdhoo",
+      "featured": "1",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270053",
+      "name": "Ungoofaaru",
+      "featured": "1",
+      "placeId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfeatured\tplaceId\n60001\tMalé\t1\tNULL\n90004\tMaamigili\t1\tNULL\n120055\tBodufolhudhoo\t1\tNULL\n150003\tThoddoo\t1\tNULL\n180001\tMaafushi\t1\tNULL\n180002\tFulidhoo\t1\tNULL\n180003\tDhigurah\t1\tNULL\n180004\tUkulhas\t1\tNULL\n180008\tDhiffushi\t1\tNULL\n180010\tHulhumalé\t1\tNULL\n180019\tMaradhoo\t1\tNULL\n180020\tHithadhoo\t1\tNULL\n180021\tVeymandoo\t1\tNULL\n180024\tAlifushi\t1\tNULL\n180026\tHimmafushi\t1\tNULL\n180027\tOmadhoo\t1\tNULL\n180028\tFeridhoo\t1\tNULL\n180030\tMathiveri\t1\tNULL\n180036\tHanimadhoo\t1\tNULL\n210001\tThulusdhoo\t1\t5\n210003\tEydhafushi\t1\t2\n210011\tThinadhoo\t1\t16\n210013\tDharanboodhoo\t1\t19\n210026\tVelidhoo\t1\t38\n210032\tKeyodhoo\t1\t50\n210033\tLhaimagu\t1\t52\n210034\tMagoodhoo\t1\t55\n210038\tNilandhoo\t1\t61\n210050\tFunadhoo\t1\t79\n210054\tKurendhoo\t1\t86\n210056\tMulah\t1\t90\n210062\tUtheemu\t1\t96\n210064\tVeligandu\t1\t98\n210068\tDhiddhoo\t1\t102\n210076\tHuraa\t1\t114\n210079\tKelaa\t1\t117\n270003\tNaifaru\t1\t58\n270019\tDharavandhoo\t1\tNULL\n270020\tFulhadhoo\t1\tNULL\n270030\tGan\t1\tNULL\n270033\tKudahuvadhoo\t1\tNULL\n270049\tFonadhoo\t1\tNULL\n270051\tKadhdhoo\t1\tNULL\n270053\tUngoofaaru\t1\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

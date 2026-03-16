@@ -1,0 +1,46 @@
+{
+  "query": "SELECT id, name, featured, contentType FROM island_guides WHERE name IN (SELECT name FROM island_guides GROUP BY name HAVING COUNT(*) > 1) ORDER BY name, id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, featured, contentType FROM island_guides WHERE name IN (SELECT name FROM island_guides GROUP BY name HAVING COUNT(*) > 1) ORDER BY name, id;",
+  "rows": [
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "featured": "1",
+      "contentType": "island"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "featured": "0",
+      "contentType": "island"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "featured": "0",
+      "contentType": "island"
+    },
+    {
+      "id": "270023",
+      "name": "Fehendhoo",
+      "featured": "0",
+      "contentType": "island"
+    },
+    {
+      "id": "270002",
+      "name": "Maalhos",
+      "featured": "0",
+      "contentType": "island"
+    },
+    {
+      "id": "270021",
+      "name": "Maalhos",
+      "featured": "0",
+      "contentType": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tfeatured\tcontentType\n210003\tEydhafushi\t1\tisland\n270026\tEydhafushi\t0\tisland\n180035\tFehendhoo\t0\tisland\n270023\tFehendhoo\t0\tisland\n270002\tMaalhos\t0\tisland\n270021\tMaalhos\t0\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
