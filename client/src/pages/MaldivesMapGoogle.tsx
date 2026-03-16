@@ -304,12 +304,12 @@ export default function MaldivesMapGoogle() {
         </div>
 
         {/* Map Container */}
-        <div className="flex-1 w-full">
+        <div className="flex-1 w-full h-full">
           <MapView
             initialCenter={{ lat: 4.1694, lng: 73.5093 }}
             initialZoom={8}
             onMapReady={handleMapReady}
-            className="w-full h-full min-h-[500px]"
+            className="w-full h-full"
           />
         </div>
       </div>
