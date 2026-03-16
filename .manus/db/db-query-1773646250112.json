@@ -1,0 +1,22 @@
+{
+  "query": "SELECT COUNT(*) as count, spotType FROM activity_spots GROUP BY spotType;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as count, spotType FROM activity_spots GROUP BY spotType;",
+  "rows": [
+    {
+      "count": "54",
+      "spotType": "dive_site"
+    },
+    {
+      "count": "32",
+      "spotType": "surf_spot"
+    },
+    {
+      "count": "30",
+      "spotType": "snorkeling_spot"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\tspotType\n54\tdive_site\n32\tsurf_spot\n30\tsnorkeling_spot\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, name, spotType, difficulty, maxDepth, minDepth, description, marineLife FROM activity_spots WHERE spotType = 'dive_site' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, difficulty, maxDepth, minDepth, description, marineLife FROM activity_spots WHERE spotType = 'dive_site' LIMIT 5;",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "spotType": "dive_site",
+      "difficulty": "beginner",
+      "maxDepth": "30",
+      "minDepth": "5",
+      "description": "Manta ray aggregation site",
+      "marineLife": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Fish Head",
+      "spotType": "dive_site",
+      "difficulty": "intermediate",
+      "maxDepth": "30",
+      "minDepth": "10",
+      "description": "Sharks and large pelagics",
+      "marineLife": "NULL"
+    },
+    {
+      "id": "4",
+      "name": "Maaya Thila",
+      "spotType": "dive_site",
+      "difficulty": "beginner",
+      "maxDepth": "30",
+      "minDepth": "8",
+      "description": "Night dive hotspot",
+      "marineLife": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Kuda Rah Thila",
+      "spotType": "dive_site",
+      "difficulty": "intermediate",
+      "maxDepth": "35",
+      "minDepth": "10",
+      "description": "Turtles and eagle rays",
+      "marineLife": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Fotteyo Kandu",
+      "spotType": "dive_site",
+      "difficulty": "advanced",
+      "maxDepth": "40",
+      "minDepth": "15",
+      "description": "Channel with strong currents",
+      "marineLife": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tspotType\tdifficulty\tmaxDepth\tminDepth\tdescription\tmarineLife\n2\tHanifaru Bay\tdive_site\tbeginner\t30\t5\tManta ray aggregation site\tNULL\n3\tFish Head\tdive_site\tintermediate\t30\t10\tSharks and large pelagics\tNULL\n4\tMaaya Thila\tdive_site\tbeginner\t30\t8\tNight dive hotspot\tNULL\n5\tKuda Rah Thila\tdive_site\tintermediate\t35\t10\tTurtles and eagle rays\tNULL\n6\tFotteyo Kandu\tdive_site\tadvanced\t40\t15\tChannel with strong currents\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

@@ -1,0 +1,130 @@
+{
+  "query": "SELECT \n  id, \n  name, \n  atollId,\n  difficulty,\n  maxDepth,\n  minDepth,\n  SUBSTRING(description, 1, 100) as description_preview,\n  marineLife,\n  bestSeason,\n  rating\nFROM activity_spots \nWHERE spotType = 'dive_site' \nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  id, \n  name, \n  atollId,\n  difficulty,\n  maxDepth,\n  minDepth,\n  SUBSTRING(description, 1, 100) as description_preview,\n  marineLife,\n  bestSeason,\n  rating\nFROM activity_spots \nWHERE spotType = 'dive_site' \nLIMIT 10;",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "atollId": "NULL",
+      "difficulty": "beginner",
+      "maxDepth": "30",
+      "minDepth": "5",
+      "description_preview": "Manta ray aggregation site",
+      "marineLife": "NULL",
+      "bestSeason": "Jun-Nov",
+      "rating": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Fish Head",
+      "atollId": "NULL",
+      "difficulty": "intermediate",
+      "maxDepth": "30",
+      "minDepth": "10",
+      "description_preview": "Sharks and large pelagics",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "4",
+      "name": "Maaya Thila",
+      "atollId": "NULL",
+      "difficulty": "beginner",
+      "maxDepth": "30",
+      "minDepth": "8",
+      "description_preview": "Night dive hotspot",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Kuda Rah Thila",
+      "atollId": "NULL",
+      "difficulty": "intermediate",
+      "maxDepth": "35",
+      "minDepth": "10",
+      "description_preview": "Turtles and eagle rays",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Fotteyo Kandu",
+      "atollId": "NULL",
+      "difficulty": "advanced",
+      "maxDepth": "40",
+      "minDepth": "15",
+      "description_preview": "Channel with strong currents",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "7",
+      "name": "Bathala Thila",
+      "atollId": "NULL",
+      "difficulty": "beginner",
+      "maxDepth": "30",
+      "minDepth": "10",
+      "description_preview": "Colorful reef life",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "8",
+      "name": "Maradhoo Kandu",
+      "atollId": "NULL",
+      "difficulty": "advanced",
+      "maxDepth": "40",
+      "minDepth": "12",
+      "description_preview": "Deep channel dive",
+      "marineLife": "NULL",
+      "bestSeason": "All Year",
+      "rating": "NULL"
+    },
+    {
+      "id": "9",
+      "name": "Maradhoo Kandu",
+      "atollId": "NULL",
+      "difficulty": "advanced",
+      "maxDepth": "NULL",
+      "minDepth": "NULL",
+      "description_preview": "Deep channel dive with strong currents and large pelagics",
+      "marineLife": "NULL",
+      "bestSeason": "Mar-Oct",
+      "rating": "NULL"
+    },
+    {
+      "id": "10",
+      "name": "Vaavu Kandu",
+      "atollId": "NULL",
+      "difficulty": "intermediate",
+      "maxDepth": "NULL",
+      "minDepth": "NULL",
+      "description_preview": "Channel dive with reef sharks and turtles",
+      "marineLife": "NULL",
+      "bestSeason": "Mar-Oct",
+      "rating": "NULL"
+    },
+    {
+      "id": "11",
+      "name": "Miyaru Kandu",
+      "atollId": "NULL",
+      "difficulty": "advanced",
+      "maxDepth": "NULL",
+      "minDepth": "NULL",
+      "description_preview": "Fast-moving channel with sharks and rays",
+      "marineLife": "NULL",
+      "bestSeason": "Mar-Oct",
+      "rating": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\tdifficulty\tmaxDepth\tminDepth\tdescription_preview\tmarineLife\tbestSeason\trating\n2\tHanifaru Bay\tNULL\tbeginner\t30\t5\tManta ray aggregation site\tNULL\tJun-Nov\tNULL\n3\tFish Head\tNULL\tintermediate\t30\t10\tSharks and large pelagics\tNULL\tAll Year\tNULL\n4\tMaaya Thila\tNULL\tbeginner\t30\t8\tNight dive hotspot\tNULL\tAll Year\tNULL\n5\tKuda Rah Thila\tNULL\tintermediate\t35\t10\tTurtles and eagle rays\tNULL\tAll Year\tNULL\n6\tFotteyo Kandu\tNULL\tadvanced\t40\t15\tChannel with strong currents\tNULL\tAll Year\tNULL\n7\tBathala Thila\tNULL\tbeginner\t30\t10\tColorful reef life\tNULL\tAll Year\tNULL\n8\tMaradhoo Kandu\tNULL\tadvanced\t40\t12\tDeep channel dive\tNULL\tAll Year\tNULL\n9\tMaradhoo Kandu\tNULL\tadvanced\tNULL\tNULL\tDeep channel dive with strong currents and large pelagics\tNULL\tMar-Oct\tNULL\n10\tVaavu Kandu\tNULL\tintermediate\tNULL\tNULL\tChannel dive with reef sharks and turtles\tNULL\tMar-Oct\tNULL\n11\tMiyaru Kandu\tNULL\tadvanced\tNULL\tNULL\tFast-moving channel with sharks and rays\tNULL\tMar-Oct\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

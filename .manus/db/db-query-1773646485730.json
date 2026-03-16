@@ -1,0 +1,43 @@
+{
+  "query": "SELECT \n  id,\n  name,\n  difficulty,\n  maxDepth,\n  minDepth,\n  SUBSTRING(description, 1, 80) as description_preview,\n  marineLife,\n  bestSeason,\n  rating\nFROM activity_spots \nWHERE spotType = 'dive_site' AND name IN ('Kandooma Thila', 'Hanifaru Bay', 'Kuredu Express', 'Tiger Zoo')\nORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  id,\n  name,\n  difficulty,\n  maxDepth,\n  minDepth,\n  SUBSTRING(description, 1, 80) as description_preview,\n  marineLife,\n  bestSeason,\n  rating\nFROM activity_spots \nWHERE spotType = 'dive_site' AND name IN ('Kandooma Thila', 'Hanifaru Bay', 'Kuredu Express', 'Tiger Zoo')\nORDER BY name;",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Hanifaru Bay",
+      "difficulty": "beginner",
+      "maxDepth": "12",
+      "minDepth": "1",
+      "description_preview": "A UNESCO Biosphere Reserve world-famous for its seasonal aggregation of manta ra",
+      "marineLife": "[\"Manta rays\", \"Whale sharks\", \"Reef fish\", \"Coral polyps\", \"Plankton feeders\"]",
+      "bestSeason": "June-November",
+      "rating": "4.8"
+    },
+    {
+      "id": "120004",
+      "name": "Hanifaru Bay",
+      "difficulty": "beginner",
+      "maxDepth": "12",
+      "minDepth": "1",
+      "description_preview": "A UNESCO Biosphere Reserve world-famous for its seasonal aggregation of manta ra",
+      "marineLife": "[\"Manta rays\", \"Whale sharks\", \"Reef fish\", \"Coral polyps\", \"Plankton feeders\"]",
+      "bestSeason": "June-November",
+      "rating": "4.8"
+    },
+    {
+      "id": "120002",
+      "name": "Kandooma Thila",
+      "difficulty": "intermediate",
+      "maxDepth": "35",
+      "minDepth": "5",
+      "description_preview": "A submerged pinnacle known for its striking topography and fast currents. Kandoo",
+      "marineLife": "[\"Grey reef sharks\", \"Schools of snapper\", \"Soft corals\", \"Jacks\", \"Groupers\"]",
+      "bestSeason": "March to May, September to November",
+      "rating": "4.8"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tdifficulty\tmaxDepth\tminDepth\tdescription_preview\tmarineLife\tbestSeason\trating\n2\tHanifaru Bay\tbeginner\t12\t1\tA UNESCO Biosphere Reserve world-famous for its seasonal aggregation of manta ra\t[\"Manta rays\", \"Whale sharks\", \"Reef fish\", \"Coral polyps\", \"Plankton feeders\"]\tJune-November\t4.8\n120004\tHanifaru Bay\tbeginner\t12\t1\tA UNESCO Biosphere Reserve world-famous for its seasonal aggregation of manta ra\t[\"Manta rays\", \"Whale sharks\", \"Reef fish\", \"Coral polyps\", \"Plankton feeders\"]\tJune-November\t4.8\n120002\tKandooma Thila\tintermediate\t35\t5\tA submerged pinnacle known for its striking topography and fast currents. Kandoo\t[\"Grey reef sharks\", \"Schools of snapper\", \"Soft corals\", \"Jacks\", \"Groupers\"]\tMarch to May, September to November\t4.8\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}

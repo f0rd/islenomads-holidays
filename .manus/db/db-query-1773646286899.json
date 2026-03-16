@@ -1,0 +1,19 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN description IS NULL THEN 1 ELSE 0 END) as missing_description,\n  SUM(CASE WHEN maxDepth IS NULL THEN 1 ELSE 0 END) as missing_maxDepth,\n  SUM(CASE WHEN minDepth IS NULL THEN 1 ELSE 0 END) as missing_minDepth,\n  SUM(CASE WHEN marineLife IS NULL THEN 1 ELSE 0 END) as missing_marineLife,\n  SUM(CASE WHEN bestSeason IS NULL THEN 1 ELSE 0 END) as missing_bestSeason,\n  SUM(CASE WHEN rating IS NULL THEN 1 ELSE 0 END) as missing_rating\nFROM activity_spots WHERE spotType = 'dive_site';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN description IS NULL THEN 1 ELSE 0 END) as missing_description,\n  SUM(CASE WHEN maxDepth IS NULL THEN 1 ELSE 0 END) as missing_maxDepth,\n  SUM(CASE WHEN minDepth IS NULL THEN 1 ELSE 0 END) as missing_minDepth,\n  SUM(CASE WHEN marineLife IS NULL THEN 1 ELSE 0 END) as missing_marineLife,\n  SUM(CASE WHEN bestSeason IS NULL THEN 1 ELSE 0 END) as missing_bestSeason,\n  SUM(CASE WHEN rating IS NULL THEN 1 ELSE 0 END) as missing_rating\nFROM activity_spots WHERE spotType = 'dive_site';",
+  "rows": [
+    {
+      "total": "54",
+      "missing_description": "0",
+      "missing_maxDepth": "7",
+      "missing_minDepth": "7",
+      "missing_marineLife": "14",
+      "missing_bestSeason": "1",
+      "missing_rating": "47"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tmissing_description\tmissing_maxDepth\tmissing_minDepth\tmissing_marineLife\tmissing_bestSeason\tmissing_rating\n54\t0\t7\t7\t14\t1\t47\n",
+  "stderr": "",
+  "execution_time_ms": 66
+}
