@@ -12,6 +12,7 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminPackages from "./pages/AdminPackages";
 import Packages from "./pages/Packages";
 import MaldivesMapGoogle from "./pages/MaldivesMapGoogle";
+import MaldivesMapSplitScreen from "./pages/MaldivesMapSplitScreen";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
@@ -64,7 +65,7 @@ function Router() {
       <Route path={"/admin/pages"} component={AdminPages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
-      <Route path={"/map"} component={MaldivesMapGoogle} />
+      <Route path={"/map"} component={MaldivesMapSplitScreen} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />

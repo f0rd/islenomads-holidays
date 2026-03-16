@@ -2378,3 +2378,9 @@
   - Result: Map now takes up 80%+ of viewport with full visibility
   - Features: Collapsible filter panel (hidden by default), compact header, full-size map
   - Status: Verified - map displays at maximum size with all 27 island markers clearly visible
+- [x] Redesign map page with split-screen layout
+  - Left side: Full Google Map (80% width) - COMPLETE
+  - Right side: Scrollable location list with search/filters (20% width) - COMPLETE
+  - Click list item highlights on map, click map marker highlights in list - COMPLETE
+  - Implement search and filter functionality - COMPLETE (real-time search works)
+  - Test interactions and verify layout works on desktop - VERIFIED
