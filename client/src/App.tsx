@@ -14,6 +14,7 @@ import Packages from "./pages/Packages";
 import MaldivesMapGoogle from "./pages/MaldivesMapGoogle";
 import MaldivesMapSplitScreen from "./pages/MaldivesMapSplitScreen";
 import MaldivesMapFullScreen from "./pages/MaldivesMapFullScreen";
+import MaldivesMapHalfHalf from "./pages/MaldivesMapHalfHalf";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
@@ -66,7 +67,7 @@ function Router() {
       <Route path={"/admin/pages"} component={AdminPages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
-        <Route path="/map" component={MaldivesMapFullScreen} />
+        <Route path="/map" component={MaldivesMapHalfHalf} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />
