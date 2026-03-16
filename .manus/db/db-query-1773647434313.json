@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, slug, atoll FROM island_guides WHERE atoll = 'Shaviyani Atoll' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll FROM island_guides WHERE atoll = 'Shaviyani Atoll' ORDER BY name;",
+  "rows": [
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "slug": "funadhoo",
+      "atoll": "Shaviyani Atoll"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "atoll": "Shaviyani Atoll"
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "slug": "noomaraa",
+      "atoll": "Shaviyani Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\n210050\tFunadhoo\tfunadhoo\tShaviyani Atoll\n210033\tLhaimagu\tlhaimagu\tShaviyani Atoll\n210039\tNoomaraa\tnoomaraa\tShaviyani Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

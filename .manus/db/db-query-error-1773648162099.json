@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO map_locations (placeId, name, slug, type, latitude, longitude, published, createdAt, updatedAt) SELECT id, name, slug, type, latitude, longitude, 0, NOW(), NOW() FROM places WHERE type = 'island' AND slug NOT IN (SELECT slug FROM map_locations WHERE type = 'island') ON DUPLICATE KEY UPDATE updatedAt = NOW();",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute INSERT INTO map_locations (placeId, name, slug, type, latitude, longitude, published, createdAt, updatedAt) SELECT id, name, slug, type, latitude, longitude, 0, NOW(), NOW() FROM places WHERE type = 'island' AND slug NOT IN (SELECT slug FROM map_locations WHERE type = 'island') ON DUPLICATE KEY UPDATE updatedAt = NOW();",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1048 (23000) at line 1: Column 'latitude' cannot be null"
+  ]
+}

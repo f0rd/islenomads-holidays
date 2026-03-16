@@ -498,6 +498,22 @@ export const places = mysqlTable("places", {
   type: mysqlEnum("type", ["island", "dive_site", "surf_spot", "snorkeling_spot", "poi", "airport"]).notNull(), // Type of place
   latitude: decimal("latitude", { precision: 10, scale: 6 }), // Geographical latitude
   longitude: decimal("longitude", { precision: 10, scale: 6 }), // Geographical longitude
+  description: text("description"),
+  highlights: text("highlights"), // JSON array
+  amenities: text("amenities"), // JSON array
+  image: varchar("image", { length: 500 }),
+  icon: varchar("icon", { length: 50 }), // Icon name for map display
+  color: varchar("color", { length: 20 }), // Color for marker
+  difficulty: varchar("difficulty", { length: 50 }), // For dive/surf sites
+  depth: varchar("depth", { length: 50 }), // For dive sites
+  waveHeight: varchar("waveHeight", { length: 50 }), // For surf spots
+  rating: varchar("rating", { length: 10 }), // 0-5 rating
+  reviews: int("reviews").default(0),
+  population: int("population"), // For islands/cities
+  priceRange: varchar("priceRange", { length: 50 }), // For resorts
+  bestSeason: varchar("bestSeason", { length: 100 }),
+  guideId: int("guideId"), // Reference to island_guides
+  published: int("published").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

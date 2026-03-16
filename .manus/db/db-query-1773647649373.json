@@ -1,0 +1,124 @@
+{
+  "query": "SELECT id, name, slug, region FROM atolls ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, region FROM atolls ORDER BY name;",
+  "rows": [
+    {
+      "id": "60020",
+      "name": "Alif Alif Atoll",
+      "slug": "alif-alif-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60021",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60022",
+      "name": "Baa Atoll",
+      "slug": "baa-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60023",
+      "name": "Dhaalu Atoll",
+      "slug": "dhaalu-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60024",
+      "name": "Faafu Atoll",
+      "slug": "faafu-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60025",
+      "name": "Gaafu Alif Atoll",
+      "slug": "gaafu-alif-atoll",
+      "region": "South"
+    },
+    {
+      "id": "60026",
+      "name": "Gaafu Dhaalu Atoll",
+      "slug": "gaafu-dhaalu-atoll",
+      "region": "South"
+    },
+    {
+      "id": "60027",
+      "name": "Gnaviyani Atoll",
+      "slug": "gnaviyani-atoll",
+      "region": "South"
+    },
+    {
+      "id": "60028",
+      "name": "Haa Alif Atoll",
+      "slug": "haa-alif-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60029",
+      "name": "Haa Dhaalu Atoll",
+      "slug": "haa-dhaalu-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60030",
+      "name": "Kaafu Atoll",
+      "slug": "kaafu-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60031",
+      "name": "Laamu Atoll",
+      "slug": "laamu-atoll",
+      "region": "South"
+    },
+    {
+      "id": "60032",
+      "name": "Meemu Atoll",
+      "slug": "meemu-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60033",
+      "name": "Noonu Atoll",
+      "slug": "noonu-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60034",
+      "name": "Raa Atoll",
+      "slug": "raa-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60035",
+      "name": "Seenu Atoll",
+      "slug": "seenu-atoll",
+      "region": "South"
+    },
+    {
+      "id": "60036",
+      "name": "Shaviyani Atoll",
+      "slug": "shaviyani-atoll",
+      "region": "North"
+    },
+    {
+      "id": "60037",
+      "name": "Thaa Atoll",
+      "slug": "thaa-atoll",
+      "region": "Central"
+    },
+    {
+      "id": "60038",
+      "name": "Vaavu Atoll",
+      "slug": "vaavu-atoll",
+      "region": "North"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tregion\n60020\tAlif Alif Atoll\talif-alif-atoll\tCentral\n60021\tAlif Dhaal Atoll\talif-dhaal-atoll\tNorth\n60022\tBaa Atoll\tbaa-atoll\tNorth\n60023\tDhaalu Atoll\tdhaalu-atoll\tCentral\n60024\tFaafu Atoll\tfaafu-atoll\tCentral\n60025\tGaafu Alif Atoll\tgaafu-alif-atoll\tSouth\n60026\tGaafu Dhaalu Atoll\tgaafu-dhaalu-atoll\tSouth\n60027\tGnaviyani Atoll\tgnaviyani-atoll\tSouth\n60028\tHaa Alif Atoll\thaa-alif-atoll\tNorth\n60029\tHaa Dhaalu Atoll\thaa-dhaalu-atoll\tNorth\n60030\tKaafu Atoll\tkaafu-atoll\tCentral\n60031\tLaamu Atoll\tlaamu-atoll\tSouth\n60032\tMeemu Atoll\tmeemu-atoll\tCentral\n60033\tNoonu Atoll\tnoonu-atoll\tNorth\n60034\tRaa Atoll\traa-atoll\tNorth\n60035\tSeenu Atoll\tseenu-atoll\tSouth\n60036\tShaviyani Atoll\tshaviyani-atoll\tNorth\n60037\tThaa Atoll\tthaa-atoll\tCentral\n60038\tVaavu Atoll\tvaavu-atoll\tNorth\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

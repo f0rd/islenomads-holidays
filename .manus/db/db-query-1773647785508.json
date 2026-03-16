@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, type FROM places WHERE name LIKE '%uva%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type FROM places WHERE name LIKE '%uva%';",
+  "rows": [
+    {
+      "id": "51",
+      "name": "Kudahuvadhoo",
+      "type": "island"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "type": "island"
+    },
+    {
+      "id": "106",
+      "name": "Dhuvaafaru",
+      "type": "island"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "type": "island"
+    },
+    {
+      "id": "60092",
+      "name": "Kudahuvadhoo Airport",
+      "type": "airport"
+    },
+    {
+      "id": "60103",
+      "name": "Fuvahmulah Airport",
+      "type": "airport"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\n51\tKudahuvadhoo\tisland\n80\tFuvamulah\tisland\n106\tDhuvaafaru\tisland\n110\tFuvahmulah Tiger Shark\tisland\n60092\tKudahuvadhoo Airport\tairport\n60103\tFuvahmulah Airport\tairport\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}

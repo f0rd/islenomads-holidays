@@ -1,0 +1,18 @@
+{
+  "query": "SELECT 'places' as source, COUNT(*) as island_count FROM places WHERE type = 'island' UNION ALL SELECT 'mapLocations', COUNT(*) FROM map_locations WHERE type = 'island';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT 'places' as source, COUNT(*) as island_count FROM places WHERE type = 'island' UNION ALL SELECT 'mapLocations', COUNT(*) FROM map_locations WHERE type = 'island';",
+  "rows": [
+    {
+      "source": "places",
+      "island_count": "129"
+    },
+    {
+      "source": "mapLocations",
+      "island_count": "22"
+    }
+  ],
+  "messages": [],
+  "stdout": "source\tisland_count\nplaces\t129\nmapLocations\t22\n",
+  "stderr": "",
+  "execution_time_ms": 126
+}

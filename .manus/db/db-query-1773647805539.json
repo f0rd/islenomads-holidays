@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, type FROM places WHERE type = 'island' LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type FROM places WHERE type = 'island' LIMIT 20;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "type": "island"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "type": "island"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "type": "island"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "type": "island"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "type": "island"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "type": "island"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "type": "island"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "type": "island"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "type": "island"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "type": "island"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri",
+      "type": "island"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo",
+      "type": "island"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi",
+      "type": "island"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo",
+      "type": "island"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "type": "island"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "type": "island"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "type": "island"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "type": "island"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "type": "island"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\n1\tDhonfanu\tisland\n2\tEydhafushi\tisland\n3\tFelidhoo\tisland\n5\tHimmafushi\tisland\n6\tIhavandhoo\tisland\n7\tKaashidhoo\tisland\n8\tKolhufushi\tisland\n10\tMaduvvaree\tisland\n11\tMakunudhoo\tisland\n12\tMaradhoo\tisland\n13\tMathiveri\tisland\n14\tNaivaadhoo\tisland\n15\tOlhuvelifushi\tisland\n16\tThinadhoo\tisland\n17\tBandidhoo\tisland\n18\tBodufolhudhoo\tisland\n19\tDharanboodhoo\tisland\n20\tFelidhoo Kandu\tisland\n21\tFiney\tisland\n22\tFodhdhoo\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 61
+}

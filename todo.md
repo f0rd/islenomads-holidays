@@ -2298,3 +2298,15 @@
 - [x] All 19 atolls now have complete Overview, Activities, Stay, and Info tabs
 - [x] All atolls display unique, relevant content tailored to their characteristics
 - [x] Database contains 19 fully populated atolls with comprehensive travel information
+
+
+## IN PROGRESS - Consolidate Database: Remove mapLocations and Use places Table Only
+- [ ] Backup mapLocations data and identify all code references
+- [ ] Migrate rich data fields from mapLocations to places table schema
+- [ ] Update places table schema to include all mapLocations fields (description, highlights, amenities, icon, color, difficulty, depth, waveHeight, rating, reviews, population, priceRange, bestSeason, guideId)
+- [ ] Migrate all data from mapLocations to places table
+- [ ] Update server code to use places table instead of mapLocations
+- [ ] Update client code to use places table instead of mapLocations
+- [ ] Remove mapLocations table from database schema
+- [ ] Test all map, island, and location functionality with consolidated table
+- [ ] Verify data integrity and no data loss after consolidation
