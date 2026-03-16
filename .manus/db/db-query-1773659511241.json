@@ -1,0 +1,55 @@
+{
+  "query": "SELECT id, name, type FROM places WHERE type = 'island' AND (name LIKE '%Reef%' OR name LIKE '%House%' OR name LIKE '%Thila%' OR name LIKE '%Kandu%') ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type FROM places WHERE type = 'island' AND (name LIKE '%Reef%' OR name LIKE '%House%' OR name LIKE '%Thila%' OR name LIKE '%Kandu%') ORDER BY name;",
+  "rows": [
+    {
+      "id": "100",
+      "name": "Banana Reef",
+      "type": "island"
+    },
+    {
+      "id": "104",
+      "name": "Dhigurah House Reef",
+      "type": "island"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "type": "island"
+    },
+    {
+      "id": "107",
+      "name": "Fotteyo Kandu",
+      "type": "island"
+    },
+    {
+      "id": "42",
+      "name": "Fulidhoo Kandu",
+      "type": "island"
+    },
+    {
+      "id": "92",
+      "name": "Naifaru Kandu",
+      "type": "island"
+    },
+    {
+      "id": "66",
+      "name": "Thoddoo House Reef",
+      "type": "island"
+    },
+    {
+      "id": "69",
+      "name": "Ukulhas House Reef",
+      "type": "island"
+    },
+    {
+      "id": "70",
+      "name": "Veligandu Reef",
+      "type": "island"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\n100\tBanana Reef\tisland\n104\tDhigurah House Reef\tisland\n20\tFelidhoo Kandu\tisland\n107\tFotteyo Kandu\tisland\n42\tFulidhoo Kandu\tisland\n92\tNaifaru Kandu\tisland\n66\tThoddoo House Reef\tisland\n69\tUkulhas House Reef\tisland\n70\tVeligandu Reef\tisland\n",
+  "stderr": "",
+  "execution_time_ms": 115
+}

@@ -110,7 +110,11 @@ export default function IslandGuide() {
     if (!guide?.slug) return { previous: null, next: null };
     
     // Choose island list based on navigation mode
-    const islandList = navMode === 'featured' ? FEATURED_ISLANDS : ALL_ISLANDS;
+    let islandList = navMode === 'featured' ? FEATURED_ISLANDS : ALL_ISLANDS;
+    
+    // Filter to only include actual islands (type: 'island')
+    islandList = islandList.filter(i => i.type === 'island');
+    
     const currentIndex = islandList.findIndex(i => i.slug === guide.slug);
     if (currentIndex === -1) return { previous: null, next: null };
     
@@ -156,27 +160,39 @@ export default function IslandGuide() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation Bar with Previous/Next Island Links and Mode Toggle */}
+      {/* Navigation Bar with Back Button and Previous/Next Island Links */}
       <div className="bg-background border-b">
         <div className="container py-4">
-          {/* Navigation Mode Toggle */}
-          <div className="flex items-center justify-center gap-2 mb-4">
+          {/* Back Button and Navigation Mode Toggle */}
+          <div className="flex items-center justify-between gap-2 mb-4">
             <Button
-              variant={navMode === 'featured' ? 'default' : 'outline'}
+              variant="outline"
               size="sm"
-              onClick={() => setNavMode('featured')}
+              onClick={() => navigate('/explore-maldives')}
               className="flex items-center gap-2"
             >
-              <Star className="w-4 h-4" />
-              Featured Islands
+              <ChevronLeft className="w-4 h-4" />
+              Back to Islands
             </Button>
-            <Button
-              variant={navMode === 'all' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setNavMode('all')}
-            >
-              All Islands
-            </Button>
+            
+            <div className="flex items-center justify-center gap-2">
+              <Button
+                variant={navMode === 'featured' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setNavMode('featured')}
+                className="flex items-center gap-2"
+              >
+                <Star className="w-4 h-4" />
+                Featured Islands
+              </Button>
+              <Button
+                variant={navMode === 'all' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setNavMode('all')}
+              >
+                All Islands
+              </Button>
+            </div>
           </div>
           
           {/* Previous/Next Navigation */}

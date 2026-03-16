@@ -1,0 +1,8 @@
+{
+  "query": "UPDATE places SET type = 'attraction' WHERE name IN ('Banana Reef', 'Dhigurah House Reef', 'Felidhoo Kandu', 'Fotteyo Kandu', 'Fulidhoo Kandu', 'Kandooma Thila', 'Maaya Thila', 'Thoddoo House Reef', 'Ukulhas House Reef');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE places SET type = 'attraction' WHERE name IN ('Banana Reef', 'Dhigurah House Reef', 'Felidhoo Kandu', 'Fotteyo Kandu', 'Fulidhoo Kandu', 'Kandooma Thila', 'Maaya Thila', 'Thoddoo House Reef', 'Ukulhas House Reef');",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1265 (01000) at line 1: Data truncated for column '%s' at row %d"
+  ]
+}
