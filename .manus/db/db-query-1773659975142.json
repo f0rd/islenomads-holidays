@@ -1,0 +1,172 @@
+{
+  "query": "SELECT id, name, code, atollId, latitude, longitude, description FROM places WHERE type = 'airport' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, code, atollId, latitude, longitude, description FROM places WHERE type = 'airport' ORDER BY name;",
+  "rows": [
+    {
+      "id": "60089",
+      "name": "Dharavandhoo Airport",
+      "code": "DRV",
+      "atollId": "NULL",
+      "latitude": "5.266700",
+      "longitude": "73.416700",
+      "description": "Dharavandhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60095",
+      "name": "Funadhoo Airport",
+      "code": "FND",
+      "atollId": "NULL",
+      "latitude": "6.916700",
+      "longitude": "72.833300",
+      "description": "Funadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60103",
+      "name": "Fuvahmulah Airport",
+      "code": "FVM",
+      "atollId": "30",
+      "latitude": "-0.300000",
+      "longitude": "73.400000",
+      "description": "Fuvahmulah Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60104",
+      "name": "Gan International Airport",
+      "code": "GAN",
+      "atollId": "NULL",
+      "latitude": "-0.694200",
+      "longitude": "73.158900",
+      "description": "Gan International Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60098",
+      "name": "Hanimadhoo Airport",
+      "code": "HAQ",
+      "atollId": "NULL",
+      "latitude": "6.766700",
+      "longitude": "73.183300",
+      "description": "Hanimadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60105",
+      "name": "Hoarafushi Airport",
+      "code": "HRF",
+      "atollId": "NULL",
+      "latitude": "6.600000",
+      "longitude": "73.000000",
+      "description": "Hoarafushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60091",
+      "name": "Ifuru Airport",
+      "code": "IFU",
+      "atollId": "NULL",
+      "latitude": "6.000000",
+      "longitude": "73.000000",
+      "description": "Ifuru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60101",
+      "name": "Kaadedhoo Airport",
+      "code": "KDM",
+      "atollId": "NULL",
+      "latitude": "0.666700",
+      "longitude": "72.833300",
+      "description": "Kaadedhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60102",
+      "name": "Kadhdhoo Airport",
+      "code": "KDO",
+      "atollId": "NULL",
+      "latitude": "-0.666700",
+      "longitude": "73.500000",
+      "description": "Kadhdhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60100",
+      "name": "Koodoo Airport",
+      "code": "GKK",
+      "atollId": "NULL",
+      "latitude": "1.000000",
+      "longitude": "73.000000",
+      "description": "Koodoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60092",
+      "name": "Kudahuvadhoo Airport",
+      "code": "DDD",
+      "atollId": "NULL",
+      "latitude": "2.666700",
+      "longitude": "72.833300",
+      "description": "Kudahuvadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60097",
+      "name": "Kulhuduffushi Airport",
+      "code": "HDK",
+      "atollId": "NULL",
+      "latitude": "6.933300",
+      "longitude": "73.000000",
+      "description": "Kulhuduffushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60094",
+      "name": "Maafaru Airport",
+      "code": "NMF",
+      "atollId": "NULL",
+      "latitude": "6.583300",
+      "longitude": "73.416700",
+      "description": "Maafaru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60090",
+      "name": "Maamigili Airport",
+      "code": "VAM",
+      "atollId": "NULL",
+      "latitude": "3.833300",
+      "longitude": "72.833300",
+      "description": "Maamigili Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60099",
+      "name": "Maavarulu Airport",
+      "code": "RUL",
+      "atollId": "NULL",
+      "latitude": "0.500000",
+      "longitude": "72.500000",
+      "description": "Maavarulu Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60093",
+      "name": "Madivaru Airport",
+      "code": "LMV",
+      "atollId": "NULL",
+      "latitude": "5.500000",
+      "longitude": "72.500000",
+      "description": "Madivaru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60088",
+      "name": "Malé International Airport",
+      "code": "MLE",
+      "atollId": "NULL",
+      "latitude": "4.192400",
+      "longitude": "73.537300",
+      "description": "Malé International Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    },
+    {
+      "id": "60096",
+      "name": "Thimarafushi Airport",
+      "code": "TMF",
+      "atollId": "NULL",
+      "latitude": "4.000000",
+      "longitude": "72.500000",
+      "description": "Thimarafushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcode\tatollId\tlatitude\tlongitude\tdescription\n60089\tDharavandhoo Airport\tDRV\tNULL\t5.266700\t73.416700\tDharavandhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60095\tFunadhoo Airport\tFND\tNULL\t6.916700\t72.833300\tFunadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60103\tFuvahmulah Airport\tFVM\t30\t-0.300000\t73.400000\tFuvahmulah Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60104\tGan International Airport\tGAN\tNULL\t-0.694200\t73.158900\tGan International Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60098\tHanimadhoo Airport\tHAQ\tNULL\t6.766700\t73.183300\tHanimadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60105\tHoarafushi Airport\tHRF\tNULL\t6.600000\t73.000000\tHoarafushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60091\tIfuru Airport\tIFU\tNULL\t6.000000\t73.000000\tIfuru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60101\tKaadedhoo Airport\tKDM\tNULL\t0.666700\t72.833300\tKaadedhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60102\tKadhdhoo Airport\tKDO\tNULL\t-0.666700\t73.500000\tKadhdhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60100\tKoodoo Airport\tGKK\tNULL\t1.000000\t73.000000\tKoodoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60092\tKudahuvadhoo Airport\tDDD\tNULL\t2.666700\t72.833300\tKudahuvadhoo Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60097\tKulhuduffushi Airport\tHDK\tNULL\t6.933300\t73.000000\tKulhuduffushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60094\tMaafaru Airport\tNMF\tNULL\t6.583300\t73.416700\tMaafaru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60090\tMaamigili Airport\tVAM\tNULL\t3.833300\t72.833300\tMaamigili Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60099\tMaavarulu Airport\tRUL\tNULL\t0.500000\t72.500000\tMaavarulu Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60093\tMadivaru Airport\tLMV\tNULL\t5.500000\t72.500000\tMadivaru Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60088\tMalé International Airport\tMLE\tNULL\t4.192400\t73.537300\tMalé International Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n60096\tThimarafushi Airport\tTMF\tNULL\t4.000000\t72.500000\tThimarafushi Airport Airport is a gateway to the Maldives, providing convenient access to island destinations. Modern facilities and efficient services ensure a smooth travel experience.\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total_airports, COUNT(CASE WHEN id < 200006 THEN 1 END) as international, COUNT(CASE WHEN id >= 200006 THEN 1 END) as domestic FROM places WHERE type = 'airport';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as total_airports, COUNT(CASE WHEN id < 200006 THEN 1 END) as international, COUNT(CASE WHEN id >= 200006 THEN 1 END) as domestic FROM places WHERE type = 'airport';",
+  "rows": [
+    {
+      "total_airports": "19",
+      "international": "5",
+      "domestic": "14"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_airports\tinternational\tdomestic\n19\t5\t14\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

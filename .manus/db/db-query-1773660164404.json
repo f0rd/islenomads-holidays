@@ -1,0 +1,35 @@
+{
+  "query": "SELECT name, code, atollId FROM places WHERE type = 'airport' ORDER BY id LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, code, atollId FROM places WHERE type = 'airport' ORDER BY id LIMIT 5;",
+  "rows": [
+    {
+      "name": "Velana International Airport",
+      "code": "MLE",
+      "atollId": "1"
+    },
+    {
+      "name": "Gan International Airport",
+      "code": "GAN",
+      "atollId": "27"
+    },
+    {
+      "name": "Hanimaadhoo International Airport",
+      "code": "HAQ",
+      "atollId": "28"
+    },
+    {
+      "name": "Maafaru International Airport",
+      "code": "NMF",
+      "atollId": "18"
+    },
+    {
+      "name": "Villa International Airport Maamigili",
+      "code": "VAM",
+      "atollId": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tcode\tatollId\nVelana International Airport\tMLE\t1\nGan International Airport\tGAN\t27\nHanimaadhoo International Airport\tHAQ\t28\nMaafaru International Airport\tNMF\t18\nVilla International Airport Maamigili\tVAM\t2\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}

@@ -1,0 +1,14 @@
+{
+  "query": "SELECT COUNT(*) as airport_count, type FROM places WHERE type = 'airport' GROUP BY type;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT COUNT(*) as airport_count, type FROM places WHERE type = 'airport' GROUP BY type;",
+  "rows": [
+    {
+      "airport_count": "18",
+      "type": "airport"
+    }
+  ],
+  "messages": [],
+  "stdout": "airport_count\ttype\n18\tairport\n",
+  "stderr": "",
+  "execution_time_ms": 100
+}
