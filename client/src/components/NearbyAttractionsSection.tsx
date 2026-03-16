@@ -90,7 +90,7 @@ export function NearbyAttractionsSection({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {(typeAttractions as any[]).map((attraction: any) => (
                 <div
-                  key={attraction.id}
+                  key={`${type}-${attraction.id}`}
                   className={`p-4 rounded-lg border-2 cursor-pointer transition-all hover:shadow-md ${getAttractionTypeColor(
                     attraction.attractionType
                   )}`}

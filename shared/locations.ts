@@ -42,7 +42,7 @@ export const FEATURED_ISLANDS: IslandLocation[] = [
 export const ALL_ISLANDS: IslandLocation[] = [
   ...FEATURED_ISLANDS,
   { id: 1, name: 'Dhonfanu', slug: 'dhonfanu', type: 'island' },
-  { id: 2, name: 'Eydhafushi', slug: 'eydhafushi', type: 'island' },
+  { id: 2, name: 'Eydhafushi', slug: 'eydhafushi-baa', type: 'island' },
   { id: 3, name: 'Felidhoo', slug: 'felidhoo', type: 'island' },
 
   { id: 5, name: 'Himmafushi', slug: 'himmafushi', type: 'island' },
@@ -80,8 +80,8 @@ export const ALL_ISLANDS: IslandLocation[] = [
   { id: 37, name: 'Vaikaradhoo', slug: 'vaikaradhoo', type: 'island' },
   { id: 38, name: 'Velidhoo', slug: 'velidhoo', type: 'island' },
   { id: 39, name: 'Alifushi', slug: 'alifushi', type: 'island' },
-  { id: 40, name: 'Dharavandhoo', slug: 'dharavandhoo', type: 'island' },
-  { id: 41, name: 'Feridhoo', slug: 'feridhoo', type: 'island' },
+  { id: 40, name: 'Dharavandhoo', slug: 'dharavandhoo-baa', type: 'island' },
+  { id: 41, name: 'Feridhoo', slug: 'feridhoo-baa', type: 'island' },
 
   { id: 43, name: 'Gaafaru', slug: 'gaafaru', type: 'island' },
   { id: 44, name: 'Gan', slug: 'gan', type: 'island' },

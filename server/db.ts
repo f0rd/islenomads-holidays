@@ -1506,7 +1506,25 @@ export async function getIslandBySlug(slug: string): Promise<any | null> {
   const db = await getDb();
   if (!db) return null;
 
+  // First try to find by island_guides slug (preferred)
   const result = await db
+    .select()
+    .from(islandGuides)
+    .leftJoin(places, eq(islandGuides.name, places.name))
+    .where(eq(islandGuides.slug, slug))
+    .limit(1);
+
+  if (result && result[0]) {
+    const row = result[0];
+    return {
+      ...row.places,
+      ...row.island_guides,
+      id: row.island_guides?.id || row.places?.id,
+    };
+  }
+
+  // Fallback: try places table (for backward compatibility)
+  const placesResult = await db
     .select()
     .from(places)
     .leftJoin(islandGuides, eq(places.name, islandGuides.name))
@@ -1516,9 +1534,9 @@ export async function getIslandBySlug(slug: string): Promise<any | null> {
     ))
     .limit(1);
 
-  if (!result || !result[0]) return null;
+  if (!placesResult || !placesResult[0]) return null;
 
-  const row = result[0];
+  const row = placesResult[0];
   return {
     ...row.places,
     ...row.island_guides,

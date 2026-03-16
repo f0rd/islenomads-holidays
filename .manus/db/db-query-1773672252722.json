@@ -1,0 +1,655 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides ORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides ORDER BY name",
+  "rows": [
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "slug": "alifushi"
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "slug": "baarah"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "slug": "burunee"
+    },
+    {
+      "id": "270005",
+      "name": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "slug": "dhigurah"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi-baa"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "slug": "feeali"
+    },
+    {
+      "id": "270023",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo-baa"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "slug": "feidhoo"
+    },
+    {
+      "id": "270001",
+      "name": "Felidhoo",
+      "slug": "felidhoo"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "slug": "feydhoo"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "slug": "filladhoo"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "slug": "finey"
+    },
+    {
+      "id": "270049",
+      "name": "Fonadhoo",
+      "slug": "fonadhoo"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo-baa"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "slug": "funadhoo"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark"
+    },
+    {
+      "id": "180037",
+      "name": "Fuvamulah",
+      "slug": "fuvahmulah"
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "slug": "gaafaru"
+    },
+    {
+      "id": "270030",
+      "name": "Gan",
+      "slug": "gan"
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "slug": "gemendhoo"
+    },
+    {
+      "id": "270025",
+      "name": "Godhdhoo",
+      "slug": "godhdhoo-baa"
+    },
+    {
+      "id": "270024",
+      "name": "Goidhoo",
+      "slug": "goidhoo-baa"
+    },
+    {
+      "id": "270043",
+      "name": "Hanimaadhoo",
+      "slug": "hanimaadhoo"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo"
+    },
+    {
+      "id": "270004",
+      "name": "Himandhoo",
+      "slug": "himandhoo"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "slug": "himmafushi"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo"
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "slug": "hoarafushi"
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "slug": "hulhudheli"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "slug": "hulhumale"
+    },
+    {
+      "id": "210075",
+      "name": "Hulhumeedhoo",
+      "slug": "hulhumeedhoo"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "slug": "huraa"
+    },
+    {
+      "id": "210005",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo"
+    },
+    {
+      "id": "180023",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo"
+    },
+    {
+      "id": "210077",
+      "name": "Innamaa",
+      "slug": "innamaa"
+    },
+    {
+      "id": "210053",
+      "name": "Isdhoo",
+      "slug": "isdhoo"
+    },
+    {
+      "id": "210006",
+      "name": "Kaashidhoo",
+      "slug": "kaashidhoo"
+    },
+    {
+      "id": "270051",
+      "name": "Kadhdhoo",
+      "slug": "kadhdhoo"
+    },
+    {
+      "id": "210078",
+      "name": "Kadhoo",
+      "slug": "kadhoo"
+    },
+    {
+      "id": "210031",
+      "name": "Kalaidhoo",
+      "slug": "kalaidhoo"
+    },
+    {
+      "id": "270022",
+      "name": "Kamadhoo",
+      "slug": "kamadhoo-baa"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "slug": "kandooma"
+    },
+    {
+      "id": "210017",
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "slug": "kelaa"
+    },
+    {
+      "id": "210080",
+      "name": "Kendhoo",
+      "slug": "kendhoo"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "slug": "keyodhoo"
+    },
+    {
+      "id": "270033",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo"
+    },
+    {
+      "id": "210018",
+      "name": "Kumundhoo",
+      "slug": "kumundhoo"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "slug": "kurendhoo"
+    },
+    {
+      "id": "210081",
+      "name": "Kurinbi",
+      "slug": "kurinbi"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu"
+    },
+    {
+      "id": "210019",
+      "name": "Lhosfushi",
+      "slug": "lhosfushi"
+    },
+    {
+      "id": "210020",
+      "name": "Maaenboodhoo",
+      "slug": "maaenboodhoo"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "slug": "maafushi"
+    },
+    {
+      "id": "270002",
+      "name": "Maalhos",
+      "slug": "maalhos"
+    },
+    {
+      "id": "270021",
+      "name": "Maalhos",
+      "slug": "maalhos-baa"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili"
+    },
+    {
+      "id": "210082",
+      "name": "Maarandhoo",
+      "slug": "maarandhoo"
+    },
+    {
+      "id": "210021",
+      "name": "Maavah",
+      "slug": "maavah"
+    },
+    {
+      "id": "180022",
+      "name": "Madifushi",
+      "slug": "madifushi"
+    },
+    {
+      "id": "210007",
+      "name": "Maduvvaree",
+      "slug": "maduvvaree"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "slug": "magoodhoo"
+    },
+    {
+      "id": "270041",
+      "name": "Maguhdhuvaa",
+      "slug": "maguhdhuvaa"
+    },
+    {
+      "id": "210008",
+      "name": "Makunudhoo",
+      "slug": "makunudhoo"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "slug": "maradhoo"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "slug": "mathiveri"
+    },
+    {
+      "id": "210035",
+      "name": "Meedhoo",
+      "slug": "meedhoo"
+    },
+    {
+      "id": "210055",
+      "name": "Milandhoo",
+      "slug": "milandhoo"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "slug": "mulah"
+    },
+    {
+      "id": "210022",
+      "name": "Mulhadhoo",
+      "slug": "mulhadhoo"
+    },
+    {
+      "id": "180015",
+      "name": "Muli",
+      "slug": "muli"
+    },
+    {
+      "id": "270050",
+      "name": "Mundoo",
+      "slug": "mundoo"
+    },
+    {
+      "id": "210057",
+      "name": "Muraidhoo",
+      "slug": "muraidhoo"
+    },
+    {
+      "id": "210023",
+      "name": "Naalaafushi",
+      "slug": "naalaafushi"
+    },
+    {
+      "id": "270003",
+      "name": "Naifaru",
+      "slug": "naifaru"
+    },
+    {
+      "id": "210009",
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo"
+    },
+    {
+      "id": "210036",
+      "name": "Nellaidhoo",
+      "slug": "nellaidhoo"
+    },
+    {
+      "id": "210037",
+      "name": "Neykurendhoo",
+      "slug": "neykurendhoo"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo"
+    },
+    {
+      "id": "210059",
+      "name": "Nolhivaramu",
+      "slug": "nolhivaramu"
+    },
+    {
+      "id": "210083",
+      "name": "Nolhivaranfaru",
+      "slug": "nolhivaranfaru"
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "slug": "noomaraa"
+    },
+    {
+      "id": "210010",
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "slug": "omadhoo"
+    },
+    {
+      "id": "210024",
+      "name": "Raimmandhoo",
+      "slug": "raimmandhoo"
+    },
+    {
+      "id": "210040",
+      "name": "Rakeedhoo",
+      "slug": "rakeedhoo"
+    },
+    {
+      "id": "270027",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo"
+    },
+    {
+      "id": "210041",
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru"
+    },
+    {
+      "id": "210060",
+      "name": "Rinbudhoo",
+      "slug": "rinbudhoo"
+    },
+    {
+      "id": "210084",
+      "name": "Thakandhoo",
+      "slug": "thakandhoo"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "slug": "thinadhoo"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "slug": "thoddoo"
+    },
+    {
+      "id": "270044",
+      "name": "Thulhaadhoo",
+      "slug": "thulhaadhoo"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo"
+    },
+    {
+      "id": "210061",
+      "name": "Thuraakunu",
+      "slug": "thuraakunu"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "slug": "ukulhas"
+    },
+    {
+      "id": "210085",
+      "name": "Uligamu",
+      "slug": "uligamu"
+    },
+    {
+      "id": "270053",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "slug": "utheemu"
+    },
+    {
+      "id": "270055",
+      "name": "Vaadhoo",
+      "slug": "vaadhoo"
+    },
+    {
+      "id": "210025",
+      "name": "Vaikaradhoo",
+      "slug": "vaikaradhoo"
+    },
+    {
+      "id": "210063",
+      "name": "Vashafaru",
+      "slug": "vashafaru"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "slug": "velidhoo"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "slug": "veligandu"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "slug": "veymandoo"
+    },
+    {
+      "id": "210065",
+      "name": "Veyvah",
+      "slug": "veyvah"
+    },
+    {
+      "id": "210086",
+      "name": "Villingili",
+      "slug": "villingili"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n180024\tAlifushi\talifushi\n210045\tBaarah\tbaarah\n210012\tBandidhoo\tbandidhoo\n210046\tBileddhoo\tbileddhoo\n120055\tBodufolhudhoo\tbodufolhudhoo\n210067\tBurunee\tburunee\n270005\tDhangethi\tdhangethi\n210013\tDharanboodhoo\tdharanboodhoo\n270019\tDharavandhoo\tdharavandhoo-baa\n210068\tDhiddhoo\tdhiddhoo\n180008\tDhiffushi\tdhiffushi\n210069\tDhiggaru\tdhiggaru\n180003\tDhigurah\tdhigurah\n210071\tDhiyamigili\tdhiyamigili\n210002\tDhonfanu\tdhonfanu\n210072\tDhuvaafaru\tdhuvaafaru\n210003\tEydhafushi\teydhafushi\n270026\tEydhafushi\teydhafushi-baa\n210047\tFeeali\tfeeali\n270023\tFehendhoo\tfehendhoo-baa\n180035\tFehendhoo\tfehendhoo\n180018\tFeidhoo\tfeidhoo\n270001\tFelidhoo\tfelidhoo\n210014\tFelidhoo Kandu\tfelidhoo-kandu\n180028\tFeridhoo\tferidhoo\n210048\tFeydhoo\tfeydhoo\n210049\tFilladhoo\tfilladhoo\n210015\tFiney\tfiney\n270049\tFonadhoo\tfonadhoo\n210073\tFotteyo Kandu\tfotteyo-kandu\n270020\tFulhadhoo\tfulhadhoo-baa\n180002\tFulidhoo\tfulidhoo\n210027\tFulidhoo Kandu\tfulidhoo-kandu\n210050\tFunadhoo\tfunadhoo\n210074\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\n180037\tFuvamulah\tfuvahmulah\n210028\tGaafaru\tgaafaru\n270030\tGan\tgan\n210029\tGemendhoo\tgemendhoo\n270025\tGodhdhoo\tgodhdhoo-baa\n270024\tGoidhoo\tgoidhoo-baa\n270043\tHanimaadhoo\thanimaadhoo\n180036\tHanimadhoo\thanimadhoo\n270004\tHimandhoo\thimandhoo\n180026\tHimmafushi\thimmafushi\n210016\tHinnavaru\thinnavaru\n210030\tHirimaradhoo\thirimaradhoo\n180020\tHithadhoo\thithadhoo\n210051\tHoarafushi\thoarafushi\n210052\tHulhudheli\thulhudheli\n180010\tHulhumalé\thulhumale\n210075\tHulhumeedhoo\thulhumeedhoo\n210076\tHuraa\thuraa\n210005\tIhavandhoo\tihavandhoo\n180023\tInguraidhoo\tinguraidhoo\n210077\tInnamaa\tinnamaa\n210053\tIsdhoo\tisdhoo\n210006\tKaashidhoo\tkaashidhoo\n270051\tKadhdhoo\tkadhdhoo\n210078\tKadhoo\tkadhoo\n210031\tKalaidhoo\tkalaidhoo\n270022\tKamadhoo\tkamadhoo-baa\n150006\tKandooma\tkandooma\n210017\tKandooma Thila\tkandooma-thila\n210079\tKelaa\tkelaa\n210080\tKendhoo\tkendhoo\n210032\tKeyodhoo\tkeyodhoo\n270033\tKudahuvadhoo\tkudahuvadhoo\n210018\tKumundhoo\tkumundhoo\n210054\tKurendhoo\tkurendhoo\n210081\tKurinbi\tkurinbi\n210033\tLhaimagu\tlhaimagu\n210019\tLhosfushi\tlhosfushi\n210020\tMaaenboodhoo\tmaaenboodhoo\n180001\tMaafushi\tmaafushi\n270002\tMaalhos\tmaalhos\n270021\tMaalhos\tmaalhos-baa\n90004\tMaamigili\tmaamigili\n210082\tMaarandhoo\tmaarandhoo\n210021\tMaavah\tmaavah\n180022\tMadifushi\tmadifushi\n210007\tMaduvvaree\tmaduvvaree\n210034\tMagoodhoo\tmagoodhoo\n270041\tMaguhdhuvaa\tmaguhdhuvaa\n210008\tMakunudhoo\tmakunudhoo\n60001\tMalé\tmale\n180019\tMaradhoo\tmaradhoo\n180030\tMathiveri\tmathiveri\n210035\tMeedhoo\tmeedhoo\n210055\tMilandhoo\tmilandhoo\n210056\tMulah\tmulah\n210022\tMulhadhoo\tmulhadhoo\n180015\tMuli\tmuli\n270050\tMundoo\tmundoo\n210057\tMuraidhoo\tmuraidhoo\n210023\tNaalaafushi\tnaalaafushi\n270003\tNaifaru\tnaifaru\n210009\tNaivaadhoo\tnaivaadhoo\n210036\tNellaidhoo\tnellaidhoo\n210037\tNeykurendhoo\tneykurendhoo\n210038\tNilandhoo\tnilandhoo\n210059\tNolhivaramu\tnolhivaramu\n210083\tNolhivaranfaru\tnolhivaranfaru\n210039\tNoomaraa\tnoomaraa\n210010\tOlhuvelifushi\tolhuvelifushi\n180027\tOmadhoo\tomadhoo\n210024\tRaimmandhoo\traimmandhoo\n210040\tRakeedhoo\trakeedhoo\n270027\tRasdhoo\trasdhoo\n210041\tRasdhoo Madivaru\trasdhoo-madivaru\n210060\tRinbudhoo\trinbudhoo\n210084\tThakandhoo\tthakandhoo\n210011\tThinadhoo\tthinadhoo\n150003\tThoddoo\tthoddoo\n270044\tThulhaadhoo\tthulhaadhoo\n210001\tThulusdhoo\tthulusdhoo\n210061\tThuraakunu\tthuraakunu\n180004\tUkulhas\tukulhas\n210085\tUligamu\tuligamu\n270053\tUngoofaaru\tungoofaaru\n210062\tUtheemu\tutheemu\n270055\tVaadhoo\tvaadhoo\n210025\tVaikaradhoo\tvaikaradhoo\n210063\tVashafaru\tvashafaru\n210026\tVelidhoo\tvelidhoo\n210064\tVeligandu\tveligandu\n180021\tVeymandoo\tveymandoo\n210065\tVeyvah\tveyvah\n210086\tVillingili\tvillingili\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
