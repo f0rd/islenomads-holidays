@@ -1,0 +1,250 @@
+{
+  "query": "SELECT id, name, slug, latitude, longitude, bestTimeToVisit FROM island_guides WHERE latitude IS NULL OR bestTimeToVisit IS NULL ORDER BY name LIMIT 30",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, latitude, longitude, bestTimeToVisit FROM island_guides WHERE latitude IS NULL OR bestTimeToVisit IS NULL ORDER BY name LIMIT 30",
+  "rows": [
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "slug": "baarah",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo",
+      "latitude": "4.3333",
+      "longitude": "73.5333",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "slug": "burunee",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "270005",
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi-baa",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "slug": "feeali",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November-April (Dry Season)"
+    },
+    {
+      "id": "270023",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo-baa",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "December-April (Dry Season), March-May and September-November (Optimal House Reef)"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "slug": "feydhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "slug": "filladhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "slug": "finey",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "270049",
+      "name": "Fonadhoo",
+      "slug": "fonadhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo-baa",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to April (dry season)"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tlatitude\tlongitude\tbestTimeToVisit\n180024\tAlifushi\talifushi\tNULL\tNULL\tNULL\n210045\tBaarah\tbaarah\tNULL\tNULL\tNovember to April (dry season)\n210012\tBandidhoo\tbandidhoo\tNULL\tNULL\tNovember to April (dry season)\n210046\tBileddhoo\tbileddhoo\tNULL\tNULL\tNovember to April (dry season)\n120055\tBodufolhudhoo\tbodufolhudhoo\t4.3333\t73.5333\tNULL\n210067\tBurunee\tburunee\tNULL\tNULL\tNovember to April (dry season)\n270005\tDhangethi\tdhangethi\tNULL\tNULL\tNULL\n210013\tDharanboodhoo\tdharanboodhoo\tNULL\tNULL\tNovember to April (dry season)\n270019\tDharavandhoo\tdharavandhoo-baa\tNULL\tNULL\tNULL\n210068\tDhiddhoo\tdhiddhoo\tNULL\tNULL\tNovember to April (dry season)\n180008\tDhiffushi\tdhiffushi\tNULL\tNULL\tNULL\n210069\tDhiggaru\tdhiggaru\tNULL\tNULL\tNovember to April (dry season)\n210071\tDhiyamigili\tdhiyamigili\tNULL\tNULL\tNovember to April (dry season)\n210002\tDhonfanu\tdhonfanu\tNULL\tNULL\tNovember to April (dry season)\n210072\tDhuvaafaru\tdhuvaafaru\tNULL\tNULL\tNovember to April (dry season)\n270026\tEydhafushi\teydhafushi-baa\tNULL\tNULL\tNULL\n210047\tFeeali\tfeeali\tNULL\tNULL\tNovember to April (dry season)\n180035\tFehendhoo\tfehendhoo\tNULL\tNULL\tNovember-April (Dry Season)\n270023\tFehendhoo\tfehendhoo-baa\tNULL\tNULL\tNULL\n180018\tFeidhoo\tfeidhoo\tNULL\tNULL\tNULL\n210014\tFelidhoo Kandu\tfelidhoo-kandu\tNULL\tNULL\tNovember to April (dry season)\n180028\tFeridhoo\tferidhoo\tNULL\tNULL\tDecember-April (Dry Season), March-May and September-November (Optimal House Reef)\n210048\tFeydhoo\tfeydhoo\tNULL\tNULL\tNovember to April (dry season)\n210049\tFilladhoo\tfilladhoo\tNULL\tNULL\tNovember to April (dry season)\n210015\tFiney\tfiney\tNULL\tNULL\tNovember to April (dry season)\n270049\tFonadhoo\tfonadhoo\tNULL\tNULL\tNULL\n210073\tFotteyo Kandu\tfotteyo-kandu\tNULL\tNULL\tNovember to April (dry season)\n270020\tFulhadhoo\tfulhadhoo-baa\tNULL\tNULL\tNULL\n180002\tFulidhoo\tfulidhoo\tNULL\tNULL\tNULL\n210027\tFulidhoo Kandu\tfulidhoo-kandu\tNULL\tNULL\tNovember to April (dry season)\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

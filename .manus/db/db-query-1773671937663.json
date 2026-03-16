@@ -1,0 +1,170 @@
+{
+  "query": "SELECT id, name, slug, latitude, longitude, bestTimeToVisit FROM island_guides WHERE latitude IS NULL OR longitude IS NULL OR bestTimeToVisit IS NULL LIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, latitude, longitude, bestTimeToVisit FROM island_guides WHERE latitude IS NULL OR longitude IS NULL OR bestTimeToVisit IS NULL LIMIT 20",
+  "rows": [
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November to March"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "latitude": "3.8667",
+      "longitude": "72.7833",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo",
+      "latitude": "4.3333",
+      "longitude": "73.5333",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180015",
+      "name": "Muli",
+      "slug": "muli",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180022",
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180023",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "March to October (Surf Season), Peak Surf June to August"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "slug": "omadhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November-April (Dry Season), Bioluminescence January-March"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "December-April (Dry Season), March-May and September-November (Optimal House Reef)"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "bestTimeToVisit": "November-April (Dry Season)"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tlatitude\tlongitude\tbestTimeToVisit\n60001\tMalé\tmale\tNULL\tNULL\tNovember to March\n90004\tMaamigili\tmaamigili\t3.8667\t72.7833\tNULL\n120055\tBodufolhudhoo\tbodufolhudhoo\t4.3333\t73.5333\tNULL\n180001\tMaafushi\tmaafushi\tNULL\tNULL\tNULL\n180002\tFulidhoo\tfulidhoo\tNULL\tNULL\tNULL\n180004\tUkulhas\tukulhas\tNULL\tNULL\tNULL\n180008\tDhiffushi\tdhiffushi\tNULL\tNULL\tNULL\n180010\tHulhumalé\thulhumale\tNULL\tNULL\tNULL\n180015\tMuli\tmuli\tNULL\tNULL\tNULL\n180018\tFeidhoo\tfeidhoo\tNULL\tNULL\tNULL\n180019\tMaradhoo\tmaradhoo\tNULL\tNULL\tNULL\n180020\tHithadhoo\thithadhoo\tNULL\tNULL\tNULL\n180021\tVeymandoo\tveymandoo\tNULL\tNULL\tNULL\n180022\tMadifushi\tmadifushi\tNULL\tNULL\tNULL\n180023\tInguraidhoo\tinguraidhoo\tNULL\tNULL\tNULL\n180024\tAlifushi\talifushi\tNULL\tNULL\tNULL\n180026\tHimmafushi\thimmafushi\tNULL\tNULL\tMarch to October (Surf Season), Peak Surf June to August\n180027\tOmadhoo\tomadhoo\tNULL\tNULL\tNovember-April (Dry Season), Bioluminescence January-March\n180028\tFeridhoo\tferidhoo\tNULL\tNULL\tDecember-April (Dry Season), March-May and September-November (Optimal House Reef)\n180030\tMathiveri\tmathiveri\tNULL\tNULL\tNovember-April (Dry Season)\n",
+  "stderr": "",
+  "execution_time_ms": 111
+}

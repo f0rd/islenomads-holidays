@@ -1,0 +1,30 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE name LIKE '%Dharavandhoo%' OR name LIKE '%Fulhadhoo%' OR name LIKE '%Eydhafushi%' LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE name LIKE '%Dharavandhoo%' OR name LIKE '%Fulhadhoo%' OR name LIKE '%Eydhafushi%' LIMIT 10",
+  "rows": [
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo-baa"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi-baa"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n210003\tEydhafushi\teydhafushi\n270019\tDharavandhoo\tdharavandhoo-baa\n270020\tFulhadhoo\tfulhadhoo-baa\n270026\tEydhafushi\teydhafushi-baa\n",
+  "stderr": "",
+  "execution_time_ms": 59
+}
