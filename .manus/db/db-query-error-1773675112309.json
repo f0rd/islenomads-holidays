@@ -1,0 +1,8 @@
+{
+  "query": "SELECT ig.id, ig.name, ig.overview, ig.gettingThere, p.id as place_id, p.name as place_name FROM island_guides ig LEFT JOIN places p ON ig.placeId = p.id WHERE ig.name LIKE '%Fuvahmulah%' OR p.name LIKE '%Fuvahmulah%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.id, ig.name, ig.overview, ig.gettingThere, p.id as place_id, p.name as place_name FROM island_guides ig LEFT JOIN places p ON ig.placeId = p.id WHERE ig.name LIKE '%Fuvahmulah%' OR p.name LIKE '%Fuvahmulah%';",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'ig.gettingthere' in 'field list'"
+  ]
+}

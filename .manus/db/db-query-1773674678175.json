@@ -1,0 +1,143 @@
+{
+  "query": "SELECT id, name, code, latitude, longitude FROM places WHERE type='airport' ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, code, latitude, longitude FROM places WHERE type='airport' ORDER BY name;",
+  "rows": [
+    {
+      "id": "200013",
+      "name": "Dhaalu Airport",
+      "code": "DDD",
+      "latitude": "2.666700",
+      "longitude": "72.894400"
+    },
+    {
+      "id": "200006",
+      "name": "Dharavandhoo Airport",
+      "code": "DRV",
+      "latitude": "5.155800",
+      "longitude": "73.132800"
+    },
+    {
+      "id": "200019",
+      "name": "Faresmaathodaa Airport",
+      "code": "FMT",
+      "latitude": "0.192900",
+      "longitude": "73.195800"
+    },
+    {
+      "id": "200017",
+      "name": "Funadhoo Airport",
+      "code": "FND",
+      "latitude": "6.161100",
+      "longitude": "73.287200"
+    },
+    {
+      "id": "200007",
+      "name": "Fuvahmulah Airport",
+      "code": "FVM",
+      "latitude": "-0.309200",
+      "longitude": "73.433900"
+    },
+    {
+      "id": "200002",
+      "name": "Gan International Airport",
+      "code": "GAN",
+      "latitude": "-0.693300",
+      "longitude": "73.155600"
+    },
+    {
+      "id": "200003",
+      "name": "Hanimaadhoo International Airport",
+      "code": "HAQ",
+      "latitude": "6.744200",
+      "longitude": "73.170300"
+    },
+    {
+      "id": "200018",
+      "name": "Hoarafushi Airport",
+      "code": "HRF",
+      "latitude": "6.980600",
+      "longitude": "72.895800"
+    },
+    {
+      "id": "200009",
+      "name": "Ifuru Airport",
+      "code": "IFU",
+      "latitude": "5.708100",
+      "longitude": "73.025000"
+    },
+    {
+      "id": "200010",
+      "name": "Kaadedhdhoo Airport",
+      "code": "KDM",
+      "latitude": "0.488100",
+      "longitude": "72.996900"
+    },
+    {
+      "id": "200011",
+      "name": "Kadhdhoo Airport",
+      "code": "KDO",
+      "latitude": "1.859200",
+      "longitude": "73.521900"
+    },
+    {
+      "id": "200012",
+      "name": "Kooddoo Airport",
+      "code": "GKK",
+      "latitude": "0.734200",
+      "longitude": "73.432800"
+    },
+    {
+      "id": "200015",
+      "name": "Kulhudhuffushi Airport",
+      "code": "HDK",
+      "latitude": "6.631100",
+      "longitude": "73.066700"
+    },
+    {
+      "id": "200004",
+      "name": "Maafaru International Airport",
+      "code": "NMF",
+      "latitude": "5.822200",
+      "longitude": "73.474700"
+    },
+    {
+      "id": "200008",
+      "name": "Maavarulu Airport",
+      "code": "RUL",
+      "latitude": "0.336700",
+      "longitude": "73.511400"
+    },
+    {
+      "id": "200016",
+      "name": "Madivaru Airport",
+      "code": "LMV",
+      "latitude": "5.457500",
+      "longitude": "73.370300"
+    },
+    {
+      "id": "200014",
+      "name": "Thimarafushi Airport",
+      "code": "TMF",
+      "latitude": "2.210300",
+      "longitude": "73.151400"
+    },
+    {
+      "id": "200001",
+      "name": "Velana International Airport",
+      "code": "MLE",
+      "latitude": "4.191700",
+      "longitude": "73.529400"
+    },
+    {
+      "id": "200005",
+      "name": "Villa International Airport Maamigili",
+      "code": "VAM",
+      "latitude": "3.470800",
+      "longitude": "72.836100"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tcode\tlatitude\tlongitude\n200013\tDhaalu Airport\tDDD\t2.666700\t72.894400\n200006\tDharavandhoo Airport\tDRV\t5.155800\t73.132800\n200019\tFaresmaathodaa Airport\tFMT\t0.192900\t73.195800\n200017\tFunadhoo Airport\tFND\t6.161100\t73.287200\n200007\tFuvahmulah Airport\tFVM\t-0.309200\t73.433900\n200002\tGan International Airport\tGAN\t-0.693300\t73.155600\n200003\tHanimaadhoo International Airport\tHAQ\t6.744200\t73.170300\n200018\tHoarafushi Airport\tHRF\t6.980600\t72.895800\n200009\tIfuru Airport\tIFU\t5.708100\t73.025000\n200010\tKaadedhdhoo Airport\tKDM\t0.488100\t72.996900\n200011\tKadhdhoo Airport\tKDO\t1.859200\t73.521900\n200012\tKooddoo Airport\tGKK\t0.734200\t73.432800\n200015\tKulhudhuffushi Airport\tHDK\t6.631100\t73.066700\n200004\tMaafaru International Airport\tNMF\t5.822200\t73.474700\n200008\tMaavarulu Airport\tRUL\t0.336700\t73.511400\n200016\tMadivaru Airport\tLMV\t5.457500\t73.370300\n200014\tThimarafushi Airport\tTMF\t2.210300\t73.151400\n200001\tVelana International Airport\tMLE\t4.191700\t73.529400\n200005\tVilla International Airport Maamigili\tVAM\t3.470800\t72.836100\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

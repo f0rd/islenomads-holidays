@@ -1,0 +1,410 @@
+{
+  "query": "SELECT id, name, atollId, latitude, longitude, published FROM places WHERE type='island' ORDER BY name LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, atollId, latitude, longitude, published FROM places WHERE type='island' ORDER BY name LIMIT 50;",
+  "rows": [
+    {
+      "id": "39",
+      "name": "Alifushi",
+      "atollId": "NULL",
+      "latitude": "5.967299",
+      "longitude": "72.953446",
+      "published": "0"
+    },
+    {
+      "id": "71",
+      "name": "Baarah",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "atollId": "2",
+      "latitude": "4.185631",
+      "longitude": "72.773394",
+      "published": "0"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "atollId": "3",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "atollId": "3",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "atollId": "3",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "atollId": "3",
+      "latitude": "0.616700",
+      "longitude": "73.183300",
+      "published": "0"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "106",
+      "name": "Dhuvaafaru",
+      "atollId": "NULL",
+      "latitude": "5.628723",
+      "longitude": "73.041925",
+      "published": "0"
+    },
+    {
+      "id": "90088",
+      "name": "Eydhafushi",
+      "atollId": "3",
+      "latitude": "5.000000",
+      "longitude": "72.900000",
+      "published": "0"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "75",
+      "name": "Feeali",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo",
+      "atollId": "NULL",
+      "latitude": "4.051064",
+      "longitude": "72.725628",
+      "published": "0"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo",
+      "atollId": "NULL",
+      "latitude": "-0.683160",
+      "longitude": "73.134473",
+      "published": "0"
+    },
+    {
+      "id": "78",
+      "name": "Filladhoo",
+      "atollId": "1",
+      "latitude": "6.889368",
+      "longitude": "73.230172",
+      "published": "0"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo",
+      "atollId": "1",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "79",
+      "name": "Funadhoo",
+      "atollId": "NULL",
+      "latitude": "6.152443",
+      "longitude": "73.289687",
+      "published": "0"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "atollId": "30",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "atollId": "30",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "43",
+      "name": "Gaafaru",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "44",
+      "name": "Gan",
+      "atollId": "NULL",
+      "latitude": "-0.694050",
+      "longitude": "73.153354",
+      "published": "0"
+    },
+    {
+      "id": "45",
+      "name": "Gemendhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "90089",
+      "name": "Goidhoo",
+      "atollId": "4",
+      "latitude": "4.873034",
+      "longitude": "72.998920",
+      "published": "0"
+    },
+    {
+      "id": "23",
+      "name": "Gulhi",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "81",
+      "name": "Guraidhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "30004",
+      "name": "Hanimadhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo",
+      "atollId": "2",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "atollId": "1",
+      "latitude": "4.308036",
+      "longitude": "73.571105",
+      "published": "0"
+    },
+    {
+      "id": "24",
+      "name": "Hinnavaru",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "25",
+      "name": "Hithadhoo",
+      "atollId": "NULL",
+      "latitude": "-0.607324",
+      "longitude": "73.089735",
+      "published": "0"
+    },
+    {
+      "id": "83",
+      "name": "Hoarafushi",
+      "atollId": "1",
+      "latitude": "6.983205",
+      "longitude": "72.894813",
+      "published": "0"
+    },
+    {
+      "id": "84",
+      "name": "Hulhudheli",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    },
+    {
+      "id": "112",
+      "name": "Hulhumalé",
+      "atollId": "1",
+      "latitude": "4.223022",
+      "longitude": "73.542890",
+      "published": "0"
+    },
+    {
+      "id": "113",
+      "name": "Hulhumeedhoo",
+      "atollId": "NULL",
+      "latitude": "-0.590978",
+      "longitude": "73.225323",
+      "published": "0"
+    },
+    {
+      "id": "114",
+      "name": "Huraa",
+      "atollId": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatollId\tlatitude\tlongitude\tpublished\n39\tAlifushi\tNULL\t5.967299\t72.953446\t0\n71\tBaarah\t1\tNULL\tNULL\t0\n17\tBandidhoo\tNULL\tNULL\tNULL\t0\n72\tBileddhoo\t1\tNULL\tNULL\t0\n18\tBodufolhudhoo\t2\t4.185631\t72.773394\t0\n101\tBurunee\tNULL\tNULL\tNULL\t0\n30002\tDhangethi\t3\tNULL\tNULL\t0\n19\tDharanboodhoo\tNULL\tNULL\tNULL\t0\n40\tDharavandhoo\t1\tNULL\tNULL\t0\n102\tDhiddhoo\t3\tNULL\tNULL\t0\n73\tDhiffushi\t3\tNULL\tNULL\t0\n103\tDhiggaru\tNULL\tNULL\tNULL\t0\n74\tDhigurah\t3\t0.616700\t73.183300\t0\n105\tDhiyamigili\tNULL\tNULL\tNULL\t0\n1\tDhonfanu\tNULL\tNULL\tNULL\t0\n106\tDhuvaafaru\tNULL\t5.628723\t73.041925\t0\n90088\tEydhafushi\t3\t5.000000\t72.900000\t0\n2\tEydhafushi\t1\tNULL\tNULL\t0\n75\tFeeali\tNULL\tNULL\tNULL\t0\n30003\tFehendhoo\tNULL\tNULL\tNULL\t0\n76\tFeidhoo\tNULL\tNULL\tNULL\t0\n3\tFelidhoo\t1\tNULL\tNULL\t0\n41\tFeridhoo\tNULL\t4.051064\t72.725628\t0\n77\tFeydhoo\tNULL\t-0.683160\t73.134473\t0\n78\tFilladhoo\t1\t6.889368\t73.230172\t0\n21\tFiney\tNULL\tNULL\tNULL\t0\n22\tFodhdhoo\tNULL\tNULL\tNULL\t0\n108\tFulhadhoo\t1\tNULL\tNULL\t0\n109\tFulidhoo\tNULL\tNULL\tNULL\t0\n79\tFunadhoo\tNULL\t6.152443\t73.289687\t0\n110\tFuvahmulah Tiger Shark\t30\tNULL\tNULL\t0\n80\tFuvamulah\t30\tNULL\tNULL\t0\n43\tGaafaru\tNULL\tNULL\tNULL\t0\n44\tGan\tNULL\t-0.694050\t73.153354\t0\n45\tGemendhoo\tNULL\tNULL\tNULL\t0\n111\tGodhdhoo\tNULL\tNULL\tNULL\t0\n90089\tGoidhoo\t4\t4.873034\t72.998920\t0\n23\tGulhi\tNULL\tNULL\tNULL\t0\n81\tGuraidhoo\tNULL\tNULL\tNULL\t0\n30004\tHanimadhoo\tNULL\tNULL\tNULL\t0\n82\tHimandhoo\t2\tNULL\tNULL\t0\n5\tHimmafushi\t1\t4.308036\t73.571105\t0\n24\tHinnavaru\tNULL\tNULL\tNULL\t0\n46\tHirimaradhoo\tNULL\tNULL\tNULL\t0\n25\tHithadhoo\tNULL\t-0.607324\t73.089735\t0\n83\tHoarafushi\t1\t6.983205\t72.894813\t0\n84\tHulhudheli\tNULL\tNULL\tNULL\t0\n112\tHulhumalé\t1\t4.223022\t73.542890\t0\n113\tHulhumeedhoo\tNULL\t-0.590978\t73.225323\t0\n114\tHuraa\tNULL\tNULL\tNULL\t0\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

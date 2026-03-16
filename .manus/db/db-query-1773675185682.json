@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, name, placeId, flightInfo, nearbyAirports FROM island_guides WHERE slug = 'feidhoo' OR name = 'Feidhoo';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, placeId, flightInfo, nearbyAirports FROM island_guides WHERE slug = 'feidhoo' OR name = 'Feidhoo';",
+  "rows": [
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "placeId": "NULL",
+      "flightInfo": "NULL",
+      "nearbyAirports": "[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Feidhoo\", \"distance\": \"50-100 km\", \"duration\": \"1-2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}]"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tplaceId\tflightInfo\tnearbyAirports\n180018\tFeidhoo\tNULL\tNULL\t[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Feidhoo\", \"distance\": \"50-100 km\", \"duration\": \"1-2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}]\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}

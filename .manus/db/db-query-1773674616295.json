@@ -1,0 +1,38 @@
+{
+  "query": "SELECT 'islands' as type, COUNT(*) as count FROM places WHERE type='island' UNION ALL SELECT 'dive_sites', COUNT(*) FROM places WHERE type='dive_site' UNION ALL SELECT 'surf_spots', COUNT(*) FROM places WHERE type='surf_spot' UNION ALL SELECT 'snorkeling_spots', COUNT(*) FROM places WHERE type='snorkeling_spot' UNION ALL SELECT 'airports', COUNT(*) FROM places WHERE type='airport' UNION ALL SELECT 'atolls', COUNT(*) FROM atolls UNION ALL SELECT 'island_guides', COUNT(*) FROM island_guides;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT 'islands' as type, COUNT(*) as count FROM places WHERE type='island' UNION ALL SELECT 'dive_sites', COUNT(*) FROM places WHERE type='dive_site' UNION ALL SELECT 'surf_spots', COUNT(*) FROM places WHERE type='surf_spot' UNION ALL SELECT 'snorkeling_spots', COUNT(*) FROM places WHERE type='snorkeling_spot' UNION ALL SELECT 'airports', COUNT(*) FROM places WHERE type='airport' UNION ALL SELECT 'atolls', COUNT(*) FROM atolls UNION ALL SELECT 'island_guides', COUNT(*) FROM island_guides;",
+  "rows": [
+    {
+      "type": "islands",
+      "count": "122"
+    },
+    {
+      "type": "airports",
+      "count": "19"
+    },
+    {
+      "type": "dive_sites",
+      "count": "54"
+    },
+    {
+      "type": "surf_spots",
+      "count": "27"
+    },
+    {
+      "type": "snorkeling_spots",
+      "count": "25"
+    },
+    {
+      "type": "atolls",
+      "count": "19"
+    },
+    {
+      "type": "island_guides",
+      "count": "129"
+    }
+  ],
+  "messages": [],
+  "stdout": "type\tcount\nislands\t122\nairports\t19\ndive_sites\t54\nsurf_spots\t27\nsnorkeling_spots\t25\natolls\t19\nisland_guides\t129\n",
+  "stderr": "",
+  "execution_time_ms": 2614
+}

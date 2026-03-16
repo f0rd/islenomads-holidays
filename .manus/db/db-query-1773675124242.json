@@ -1,0 +1,9 @@
+{
+  "query": "SELECT ig.id, ig.name, ig.placeId, ig.flightInfo, p.id as place_id, p.name as place_name FROM island_guides ig LEFT JOIN places p ON ig.placeId = p.id WHERE ig.name = 'Fuvahmulah' OR p.name = 'Fuvahmulah';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT ig.id, ig.name, ig.placeId, ig.flightInfo, p.id as place_id, p.name as place_name FROM island_guides ig LEFT JOIN places p ON ig.placeId = p.id WHERE ig.name = 'Fuvahmulah' OR p.name = 'Fuvahmulah';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 58
+}

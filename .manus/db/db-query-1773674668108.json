@@ -1,0 +1,1108 @@
+{
+  "query": "SELECT p.id, p.name, a.name as atoll_name, p.latitude, p.longitude, p.published, ig.bestTimeToVisit FROM places p LEFT JOIN atolls a ON p.atollId = a.id LEFT JOIN island_guides ig ON p.id = ig.placeId WHERE p.type='island' ORDER BY a.name, p.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, a.name as atoll_name, p.latitude, p.longitude, p.published, ig.bestTimeToVisit FROM places p LEFT JOIN atolls a ON p.atollId = a.id LEFT JOIN island_guides ig ON p.id = ig.placeId WHERE p.type='island' ORDER BY a.name, p.name;",
+  "rows": [
+    {
+      "id": "39",
+      "name": "Alifushi",
+      "atoll_name": "NULL",
+      "latitude": "5.967299",
+      "longitude": "72.953446",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "71",
+      "name": "Baarah",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "18",
+      "name": "Bodufolhudhoo",
+      "atoll_name": "NULL",
+      "latitude": "4.185631",
+      "longitude": "72.773394",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "74",
+      "name": "Dhigurah",
+      "atoll_name": "NULL",
+      "latitude": "0.616700",
+      "longitude": "73.183300",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "106",
+      "name": "Dhuvaafaru",
+      "atoll_name": "NULL",
+      "latitude": "5.628723",
+      "longitude": "73.041925",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "90088",
+      "name": "Eydhafushi",
+      "atoll_name": "NULL",
+      "latitude": "5.000000",
+      "longitude": "72.900000",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "March to October"
+    },
+    {
+      "id": "75",
+      "name": "Feeali",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "41",
+      "name": "Feridhoo",
+      "atoll_name": "NULL",
+      "latitude": "4.051064",
+      "longitude": "72.725628",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "77",
+      "name": "Feydhoo",
+      "atoll_name": "NULL",
+      "latitude": "-0.683160",
+      "longitude": "73.134473",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "78",
+      "name": "Filladhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.889368",
+      "longitude": "73.230172",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "79",
+      "name": "Funadhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.152443",
+      "longitude": "73.289687",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "43",
+      "name": "Gaafaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "44",
+      "name": "Gan",
+      "atoll_name": "NULL",
+      "latitude": "-0.694050",
+      "longitude": "73.153354",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "45",
+      "name": "Gemendhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "90089",
+      "name": "Goidhoo",
+      "atoll_name": "NULL",
+      "latitude": "4.873034",
+      "longitude": "72.998920",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "23",
+      "name": "Gulhi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "81",
+      "name": "Guraidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "30004",
+      "name": "Hanimadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Himmafushi",
+      "atoll_name": "NULL",
+      "latitude": "4.308036",
+      "longitude": "73.571105",
+      "published": "0",
+      "bestTimeToVisit": "March to October for surfing; November to April for general tourism"
+    },
+    {
+      "id": "24",
+      "name": "Hinnavaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "25",
+      "name": "Hithadhoo",
+      "atoll_name": "NULL",
+      "latitude": "-0.607324",
+      "longitude": "73.089735",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "83",
+      "name": "Hoarafushi",
+      "atoll_name": "NULL",
+      "latitude": "6.983205",
+      "longitude": "72.894813",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "84",
+      "name": "Hulhudheli",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "112",
+      "name": "Hulhumalé",
+      "atoll_name": "NULL",
+      "latitude": "4.223022",
+      "longitude": "73.542890",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "113",
+      "name": "Hulhumeedhoo",
+      "atoll_name": "NULL",
+      "latitude": "-0.590978",
+      "longitude": "73.225323",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "114",
+      "name": "Huraa",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "6",
+      "name": "Ihavandhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.953139",
+      "longitude": "72.926341",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "47",
+      "name": "Inguraidhoo",
+      "atoll_name": "NULL",
+      "latitude": "5.476999",
+      "longitude": "73.036724",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "115",
+      "name": "Innamaa",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "85",
+      "name": "Isdhoo",
+      "atoll_name": "NULL",
+      "latitude": "2.118621",
+      "longitude": "73.567380",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "7",
+      "name": "Kaashidhoo",
+      "atoll_name": "NULL",
+      "latitude": "4.955715",
+      "longitude": "73.461265",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "116",
+      "name": "Kadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "48",
+      "name": "Kalaidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "90090",
+      "name": "Kamadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "49",
+      "name": "Kandooma",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "117",
+      "name": "Kelaa",
+      "atoll_name": "NULL",
+      "latitude": "6.954708",
+      "longitude": "73.216126",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "118",
+      "name": "Kendhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "50",
+      "name": "Keyodhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "51",
+      "name": "Kudahuvadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "27",
+      "name": "Kumundhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.572106",
+      "longitude": "73.052349",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "86",
+      "name": "Kurendhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "120",
+      "name": "Kurinbi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "52",
+      "name": "Lhaimagu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "28",
+      "name": "Lhosfushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "29",
+      "name": "Maaenboodhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "87",
+      "name": "Maafushi",
+      "atoll_name": "NULL",
+      "latitude": "3.940939",
+      "longitude": "73.489614",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "53",
+      "name": "Maalhos",
+      "atoll_name": "NULL",
+      "latitude": "5.134611",
+      "longitude": "73.107886",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "54",
+      "name": "Maamigili",
+      "atoll_name": "NULL",
+      "latitude": "3.474575",
+      "longitude": "72.836800",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "121",
+      "name": "Maarandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "30",
+      "name": "Maavah",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "31",
+      "name": "Madifushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "55",
+      "name": "Magoodhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "11",
+      "name": "Makunudhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.409565",
+      "longitude": "72.705156",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "56",
+      "name": "Malé",
+      "atoll_name": "NULL",
+      "latitude": "4.174222",
+      "longitude": "73.509504",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "12",
+      "name": "Maradhoo",
+      "atoll_name": "NULL",
+      "latitude": "-0.668446",
+      "longitude": "73.121408",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "13",
+      "name": "Mathiveri",
+      "atoll_name": "NULL",
+      "latitude": "4.191864",
+      "longitude": "72.746256",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "57",
+      "name": "Meedhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "89",
+      "name": "Milandhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.286135",
+      "longitude": "73.244519",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "90",
+      "name": "Mulah",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "32",
+      "name": "Mulhadhoo",
+      "atoll_name": "NULL",
+      "latitude": "7.012360",
+      "longitude": "72.998092",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "122",
+      "name": "Muli",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "91",
+      "name": "Muraidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "33",
+      "name": "Naalaafushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "58",
+      "name": "Naifaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "92",
+      "name": "Naifaru Kandu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "59",
+      "name": "Nellaidhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "60",
+      "name": "Neykurendhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.543063",
+      "longitude": "72.979672",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "61",
+      "name": "Nilandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "93",
+      "name": "Nolhivaramu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "123",
+      "name": "Nolhivaranfaru",
+      "atoll_name": "NULL",
+      "latitude": "6.697322",
+      "longitude": "73.120057",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "62",
+      "name": "Noomaraa",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "34",
+      "name": "Raimmandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "63",
+      "name": "Rakeedhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "35",
+      "name": "Rasdhoo",
+      "atoll_name": "NULL",
+      "latitude": "4.263064",
+      "longitude": "72.991850",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "64",
+      "name": "Rasdhoo Madivaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "94",
+      "name": "Rinbudhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "124",
+      "name": "Thakandhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "16",
+      "name": "Thinadhoo",
+      "atoll_name": "NULL",
+      "latitude": "0.532534",
+      "longitude": "72.997362",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    },
+    {
+      "id": "65",
+      "name": "Thoddoo",
+      "atoll_name": "NULL",
+      "latitude": "4.437135",
+      "longitude": "72.959616",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "67",
+      "name": "Thulusdhoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "95",
+      "name": "Thuraakunu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "68",
+      "name": "Ukulhas",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "126",
+      "name": "Uligamu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "36",
+      "name": "Ungoofaaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "96",
+      "name": "Utheemu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "37",
+      "name": "Vaikaradhoo",
+      "atoll_name": "NULL",
+      "latitude": "6.549777",
+      "longitude": "72.953158",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "97",
+      "name": "Vashafaru",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "38",
+      "name": "Velidhoo",
+      "atoll_name": "NULL",
+      "latitude": "5.664639",
+      "longitude": "73.273383",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "70",
+      "name": "Veligandu Reef",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "127",
+      "name": "Veymandoo",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "NULL"
+    },
+    {
+      "id": "99",
+      "name": "Veyvah",
+      "atoll_name": "NULL",
+      "latitude": "NULL",
+      "longitude": "NULL",
+      "published": "0",
+      "bestTimeToVisit": "November to April (dry season)"
+    },
+    {
+      "id": "128",
+      "name": "Villingili",
+      "atoll_name": "NULL",
+      "latitude": "0.756576",
+      "longitude": "73.435419",
+      "published": "0",
+      "bestTimeToVisit": "November to April"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll_name\tlatitude\tlongitude\tpublished\tbestTimeToVisit\n39\tAlifushi\tNULL\t5.967299\t72.953446\t0\tNULL\n71\tBaarah\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n17\tBandidhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n72\tBileddhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n18\tBodufolhudhoo\tNULL\t4.185631\t72.773394\t0\tNULL\n101\tBurunee\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n30002\tDhangethi\tNULL\tNULL\tNULL\t0\tNULL\n19\tDharanboodhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n40\tDharavandhoo\tNULL\tNULL\tNULL\t0\tNULL\n102\tDhiddhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n73\tDhiffushi\tNULL\tNULL\tNULL\t0\tNULL\n103\tDhiggaru\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n74\tDhigurah\tNULL\t0.616700\t73.183300\t0\tNULL\n105\tDhiyamigili\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n1\tDhonfanu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n106\tDhuvaafaru\tNULL\t5.628723\t73.041925\t0\tNovember to April (dry season)\n90088\tEydhafushi\tNULL\t5.000000\t72.900000\t0\tNULL\n2\tEydhafushi\tNULL\tNULL\tNULL\t0\tMarch to October\n75\tFeeali\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n30003\tFehendhoo\tNULL\tNULL\tNULL\t0\tNULL\n76\tFeidhoo\tNULL\tNULL\tNULL\t0\tNULL\n3\tFelidhoo\tNULL\tNULL\tNULL\t0\tNovember to April\n41\tFeridhoo\tNULL\t4.051064\t72.725628\t0\tNULL\n77\tFeydhoo\tNULL\t-0.683160\t73.134473\t0\tNovember to April (dry season)\n78\tFilladhoo\tNULL\t6.889368\t73.230172\t0\tNovember to April (dry season)\n21\tFiney\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n22\tFodhdhoo\tNULL\tNULL\tNULL\t0\tNULL\n108\tFulhadhoo\tNULL\tNULL\tNULL\t0\tNULL\n109\tFulidhoo\tNULL\tNULL\tNULL\t0\tNULL\n79\tFunadhoo\tNULL\t6.152443\t73.289687\t0\tNovember to April (dry season)\n110\tFuvahmulah Tiger Shark\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n80\tFuvamulah\tNULL\tNULL\tNULL\t0\tNULL\n43\tGaafaru\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n44\tGan\tNULL\t-0.694050\t73.153354\t0\tNULL\n45\tGemendhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n111\tGodhdhoo\tNULL\tNULL\tNULL\t0\tNULL\n90089\tGoidhoo\tNULL\t4.873034\t72.998920\t0\tNULL\n23\tGulhi\tNULL\tNULL\tNULL\t0\tNULL\n81\tGuraidhoo\tNULL\tNULL\tNULL\t0\tNULL\n30004\tHanimadhoo\tNULL\tNULL\tNULL\t0\tNULL\n82\tHimandhoo\tNULL\tNULL\tNULL\t0\tNULL\n5\tHimmafushi\tNULL\t4.308036\t73.571105\t0\tMarch to October for surfing; November to April for general tourism\n24\tHinnavaru\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n46\tHirimaradhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n25\tHithadhoo\tNULL\t-0.607324\t73.089735\t0\tNULL\n83\tHoarafushi\tNULL\t6.983205\t72.894813\t0\tNovember to April (dry season)\n84\tHulhudheli\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n112\tHulhumalé\tNULL\t4.223022\t73.542890\t0\tNULL\n113\tHulhumeedhoo\tNULL\t-0.590978\t73.225323\t0\tNovember to April (dry season)\n114\tHuraa\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n6\tIhavandhoo\tNULL\t6.953139\t72.926341\t0\tNovember to April (dry season)\n47\tInguraidhoo\tNULL\t5.476999\t73.036724\t0\tNULL\n115\tInnamaa\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n85\tIsdhoo\tNULL\t2.118621\t73.567380\t0\tNovember to April\n7\tKaashidhoo\tNULL\t4.955715\t73.461265\t0\tNovember to April (dry season)\n116\tKadhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n48\tKalaidhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n90090\tKamadhoo\tNULL\tNULL\tNULL\t0\tNULL\n49\tKandooma\tNULL\tNULL\tNULL\t0\tNULL\n117\tKelaa\tNULL\t6.954708\t73.216126\t0\tNovember to April (dry season)\n118\tKendhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n50\tKeyodhoo\tNULL\tNULL\tNULL\t0\tNovember to April\n8\tKolhufushi\tNULL\tNULL\tNULL\t0\tNULL\n51\tKudahuvadhoo\tNULL\tNULL\tNULL\t0\tNULL\n27\tKumundhoo\tNULL\t6.572106\t73.052349\t0\tNovember to April (dry season)\n86\tKurendhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n120\tKurinbi\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n52\tLhaimagu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n28\tLhosfushi\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n29\tMaaenboodhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n87\tMaafushi\tNULL\t3.940939\t73.489614\t0\tNULL\n53\tMaalhos\tNULL\t5.134611\t73.107886\t0\tNULL\n54\tMaamigili\tNULL\t3.474575\t72.836800\t0\tNULL\n121\tMaarandhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n30\tMaavah\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n31\tMadifushi\tNULL\tNULL\tNULL\t0\tNULL\n10\tMaduvvaree\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n55\tMagoodhoo\tNULL\tNULL\tNULL\t0\tNovember to April\n11\tMakunudhoo\tNULL\t6.409565\t72.705156\t0\tNovember to April (dry season)\n56\tMalé\tNULL\t4.174222\t73.509504\t0\tNULL\n12\tMaradhoo\tNULL\t-0.668446\t73.121408\t0\tNULL\n13\tMathiveri\tNULL\t4.191864\t72.746256\t0\tNULL\n57\tMeedhoo\tNULL\tNULL\tNULL\t0\tNovember to April\n89\tMilandhoo\tNULL\t6.286135\t73.244519\t0\tNovember to April (dry season)\n90\tMulah\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n32\tMulhadhoo\tNULL\t7.012360\t72.998092\t0\tNovember to April (dry season)\n122\tMuli\tNULL\tNULL\tNULL\t0\tNULL\n91\tMuraidhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n33\tNaalaafushi\tNULL\tNULL\tNULL\t0\tNovember to April\n58\tNaifaru\tNULL\tNULL\tNULL\t0\tNULL\n92\tNaifaru Kandu\tNULL\tNULL\tNULL\t0\tNULL\n14\tNaivaadhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n59\tNellaidhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n60\tNeykurendhoo\tNULL\t6.543063\t72.979672\t0\tNovember to April (dry season)\n61\tNilandhoo\tNULL\tNULL\tNULL\t0\tNovember to April\n93\tNolhivaramu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n123\tNolhivaranfaru\tNULL\t6.697322\t73.120057\t0\tNovember to April (dry season)\n62\tNoomaraa\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n15\tOlhuvelifushi\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n30001\tOmadhoo\tNULL\tNULL\tNULL\t0\tNULL\n34\tRaimmandhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n63\tRakeedhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n35\tRasdhoo\tNULL\t4.263064\t72.991850\t0\tNULL\n64\tRasdhoo Madivaru\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n94\tRinbudhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n124\tThakandhoo\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n16\tThinadhoo\tNULL\t0.532534\t72.997362\t0\tNovember to April\n65\tThoddoo\tNULL\t4.437135\t72.959616\t0\tNULL\n67\tThulusdhoo\tNULL\tNULL\tNULL\t0\tNULL\n95\tThuraakunu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n68\tUkulhas\tNULL\tNULL\tNULL\t0\tNULL\n126\tUligamu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n36\tUngoofaaru\tNULL\tNULL\tNULL\t0\tNULL\n96\tUtheemu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n37\tVaikaradhoo\tNULL\t6.549777\t72.953158\t0\tNovember to April (dry season)\n97\tVashafaru\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n38\tVelidhoo\tNULL\t5.664639\t73.273383\t0\tNovember to April (dry season)\n98\tVeligandu\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n70\tVeligandu Reef\tNULL\tNULL\tNULL\t0\tNULL\n127\tVeymandoo\tNULL\tNULL\tNULL\t0\tNULL\n99\tVeyvah\tNULL\tNULL\tNULL\t0\tNovember to April (dry season)\n128\tVillingili\tNULL\t0.756576\t73.435419\t0\tNovember to April\n",
+  "stderr": "",
+  "execution_time_ms": 71
+}

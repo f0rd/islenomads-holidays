@@ -1,0 +1,425 @@
+{
+  "query": "SELECT p.id, p.name, a.name as atoll_name FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.type='island' AND (p.latitude IS NULL OR p.longitude IS NULL) ORDER BY a.name, p.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT p.id, p.name, a.name as atoll_name FROM places p LEFT JOIN atolls a ON p.atollId = a.id WHERE p.type='island' AND (p.latitude IS NULL OR p.longitude IS NULL) ORDER BY a.name, p.name;",
+  "rows": [
+    {
+      "id": "71",
+      "name": "Baarah",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "17",
+      "name": "Bandidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "72",
+      "name": "Bileddhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "101",
+      "name": "Burunee",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "30002",
+      "name": "Dhangethi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "19",
+      "name": "Dharanboodhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "40",
+      "name": "Dharavandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "102",
+      "name": "Dhiddhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "73",
+      "name": "Dhiffushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "103",
+      "name": "Dhiggaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "105",
+      "name": "Dhiyamigili",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "1",
+      "name": "Dhonfanu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Eydhafushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "75",
+      "name": "Feeali",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "30003",
+      "name": "Fehendhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "76",
+      "name": "Feidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Felidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "21",
+      "name": "Finey",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "22",
+      "name": "Fodhdhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "108",
+      "name": "Fulhadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "109",
+      "name": "Fulidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "110",
+      "name": "Fuvahmulah Tiger Shark",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "80",
+      "name": "Fuvamulah",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "43",
+      "name": "Gaafaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "45",
+      "name": "Gemendhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "111",
+      "name": "Godhdhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "23",
+      "name": "Gulhi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "81",
+      "name": "Guraidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "30004",
+      "name": "Hanimadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "82",
+      "name": "Himandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "24",
+      "name": "Hinnavaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "46",
+      "name": "Hirimaradhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "84",
+      "name": "Hulhudheli",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "114",
+      "name": "Huraa",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "115",
+      "name": "Innamaa",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "116",
+      "name": "Kadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "48",
+      "name": "Kalaidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "90090",
+      "name": "Kamadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "49",
+      "name": "Kandooma",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "118",
+      "name": "Kendhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "50",
+      "name": "Keyodhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "8",
+      "name": "Kolhufushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "51",
+      "name": "Kudahuvadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "86",
+      "name": "Kurendhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "120",
+      "name": "Kurinbi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "52",
+      "name": "Lhaimagu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "28",
+      "name": "Lhosfushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "29",
+      "name": "Maaenboodhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "121",
+      "name": "Maarandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "30",
+      "name": "Maavah",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "31",
+      "name": "Madifushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "10",
+      "name": "Maduvvaree",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "55",
+      "name": "Magoodhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "57",
+      "name": "Meedhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "90",
+      "name": "Mulah",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "122",
+      "name": "Muli",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "91",
+      "name": "Muraidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "33",
+      "name": "Naalaafushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "58",
+      "name": "Naifaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "92",
+      "name": "Naifaru Kandu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "14",
+      "name": "Naivaadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "59",
+      "name": "Nellaidhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "61",
+      "name": "Nilandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "93",
+      "name": "Nolhivaramu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "62",
+      "name": "Noomaraa",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "15",
+      "name": "Olhuvelifushi",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "30001",
+      "name": "Omadhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "34",
+      "name": "Raimmandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "63",
+      "name": "Rakeedhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "64",
+      "name": "Rasdhoo Madivaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "94",
+      "name": "Rinbudhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "124",
+      "name": "Thakandhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "67",
+      "name": "Thulusdhoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "95",
+      "name": "Thuraakunu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "68",
+      "name": "Ukulhas",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "126",
+      "name": "Uligamu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "36",
+      "name": "Ungoofaaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "96",
+      "name": "Utheemu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "97",
+      "name": "Vashafaru",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "98",
+      "name": "Veligandu",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "70",
+      "name": "Veligandu Reef",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "127",
+      "name": "Veymandoo",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "99",
+      "name": "Veyvah",
+      "atoll_name": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tatoll_name\n71\tBaarah\tNULL\n17\tBandidhoo\tNULL\n72\tBileddhoo\tNULL\n101\tBurunee\tNULL\n30002\tDhangethi\tNULL\n19\tDharanboodhoo\tNULL\n40\tDharavandhoo\tNULL\n102\tDhiddhoo\tNULL\n73\tDhiffushi\tNULL\n103\tDhiggaru\tNULL\n105\tDhiyamigili\tNULL\n1\tDhonfanu\tNULL\n2\tEydhafushi\tNULL\n75\tFeeali\tNULL\n30003\tFehendhoo\tNULL\n76\tFeidhoo\tNULL\n3\tFelidhoo\tNULL\n21\tFiney\tNULL\n22\tFodhdhoo\tNULL\n108\tFulhadhoo\tNULL\n109\tFulidhoo\tNULL\n110\tFuvahmulah Tiger Shark\tNULL\n80\tFuvamulah\tNULL\n43\tGaafaru\tNULL\n45\tGemendhoo\tNULL\n111\tGodhdhoo\tNULL\n23\tGulhi\tNULL\n81\tGuraidhoo\tNULL\n30004\tHanimadhoo\tNULL\n82\tHimandhoo\tNULL\n24\tHinnavaru\tNULL\n46\tHirimaradhoo\tNULL\n84\tHulhudheli\tNULL\n114\tHuraa\tNULL\n115\tInnamaa\tNULL\n116\tKadhoo\tNULL\n48\tKalaidhoo\tNULL\n90090\tKamadhoo\tNULL\n49\tKandooma\tNULL\n118\tKendhoo\tNULL\n50\tKeyodhoo\tNULL\n8\tKolhufushi\tNULL\n51\tKudahuvadhoo\tNULL\n86\tKurendhoo\tNULL\n120\tKurinbi\tNULL\n52\tLhaimagu\tNULL\n28\tLhosfushi\tNULL\n29\tMaaenboodhoo\tNULL\n121\tMaarandhoo\tNULL\n30\tMaavah\tNULL\n31\tMadifushi\tNULL\n10\tMaduvvaree\tNULL\n55\tMagoodhoo\tNULL\n57\tMeedhoo\tNULL\n90\tMulah\tNULL\n122\tMuli\tNULL\n91\tMuraidhoo\tNULL\n33\tNaalaafushi\tNULL\n58\tNaifaru\tNULL\n92\tNaifaru Kandu\tNULL\n14\tNaivaadhoo\tNULL\n59\tNellaidhoo\tNULL\n61\tNilandhoo\tNULL\n93\tNolhivaramu\tNULL\n62\tNoomaraa\tNULL\n15\tOlhuvelifushi\tNULL\n30001\tOmadhoo\tNULL\n34\tRaimmandhoo\tNULL\n63\tRakeedhoo\tNULL\n64\tRasdhoo Madivaru\tNULL\n94\tRinbudhoo\tNULL\n124\tThakandhoo\tNULL\n67\tThulusdhoo\tNULL\n95\tThuraakunu\tNULL\n68\tUkulhas\tNULL\n126\tUligamu\tNULL\n36\tUngoofaaru\tNULL\n96\tUtheemu\tNULL\n97\tVashafaru\tNULL\n98\tVeligandu\tNULL\n70\tVeligandu Reef\tNULL\n127\tVeymandoo\tNULL\n99\tVeyvah\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 71
+}

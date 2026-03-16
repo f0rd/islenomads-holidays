@@ -1,0 +1,124 @@
+{
+  "query": "SELECT id, name, region, description FROM atolls ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, region, description FROM atolls ORDER BY name;",
+  "rows": [
+    {
+      "id": "60020",
+      "name": "Alif Alif Atoll",
+      "region": "Central",
+      "description": "Alif Alif Atoll is part of Kaafu and features spectacular coral reefs and world-class dive sites including famous shipwrecks. Home to vibrant marine life including manta rays, whale sharks, and sea turtles, this atoll is perfect for divers and snorkelers seeking pristine underwater experiences."
+    },
+    {
+      "id": "60021",
+      "name": "Alif Dhaal Atoll",
+      "region": "North",
+      "description": "Alif Dhaal Atoll offers a more tranquil experience compared to its northern neighbor. Known for world-class diving and snorkeling, this atoll features striking underwater topography and serene vibes. Guraidhoo Island is famous for traditional Maldivian handicrafts and local souvenirs."
+    },
+    {
+      "id": "60022",
+      "name": "Baa Atoll",
+      "region": "North",
+      "description": "Baa Atoll is a UNESCO Biosphere Reserve renowned for its amazingly rich marine life and stunning coral reefs. The atoll is home to Hanifaru Bay, a protected marine area that attracts hundreds of manta rays and whale sharks annually. Witness these majestic creatures at the world's largest natural manta ray feeding station."
+    },
+    {
+      "id": "60023",
+      "name": "Dhaalu Atoll",
+      "region": "Central",
+      "description": "Dhaalu Atoll remains pristine and low on the dive-tourist radar, offering uncrowded sites and a sense of discovery. Features around five channels on its western edge and ten on the eastern side, each funneling nutrient-rich currents that support vibrant, healthy reefs and major pelagic action. Home to the marine protected Fushi Kandu."
+    },
+    {
+      "id": "60024",
+      "name": "Faafu Atoll",
+      "region": "Central",
+      "description": "Faafu Atoll is a frontier diving destination with recently discovered, unspoiled sites. Its reefs offer unparalleled excitement and a genuine sense of pioneering adventure. Expect healthy reef ecosystems and major species encounters in wide channels. Perfect for experienced divers seeking frontier exploration."
+    },
+    {
+      "id": "60025",
+      "name": "Gaafu Alif Atoll",
+      "region": "South",
+      "description": "Gaafu Alif Atoll is the northern half of the world's largest natural atoll. A diver's dream destination, it features pristine reefs, diverse marine life, and world-class diving sites. Ideal for experienced divers seeking pristine underwater adventures in the southern Maldives."
+    },
+    {
+      "id": "60026",
+      "name": "Gaafu Dhaalu Atoll",
+      "region": "South",
+      "description": "Gaafu Dhaalu Atoll is the southern half of the world's largest natural atoll. Features pristine reefs and excellent diving opportunities. This remote southern atoll offers authentic Maldivian diving experiences away from crowded tourist areas."
+    },
+    {
+      "id": "60027",
+      "name": "Gnaviyani Atoll",
+      "region": "South",
+      "description": "Gnaviyani Atoll is the smallest of all Maldives atolls, offering an intimate and exclusive island experience. Despite its small size, it features beautiful beaches, turquoise lagoons, and excellent diving and snorkeling opportunities."
+    },
+    {
+      "id": "60028",
+      "name": "Haa Alif Atoll",
+      "region": "North",
+      "description": "Haa Alif Atoll (Thiladhunmathi) is the northernmost group of islands in the Maldives, opened to foreign tourism only in 2005. The lush tropical landscape is completely untouched with many uninhabited islands, reefs, and isolated white sand beaches. Home to luxury resorts and world-class diving in a remote, exclusive setting."
+    },
+    {
+      "id": "60029",
+      "name": "Haa Dhaalu Atoll",
+      "region": "North",
+      "description": "Haa Dhaalu is one of the most beautiful atolls in the Maldives, a tropical sanctuary with long beaches and turquoise lagoons. Perfect for those seeking a balance between relaxation and adventure, with excellent diving, snorkeling, and local island experiences."
+    },
+    {
+      "id": "60030",
+      "name": "Kaafu Atoll",
+      "region": "Central",
+      "description": "Kaafu Atoll is home to Malé, the Maldives' capital, making it easily accessible for visitors. Boasting spectacular reefs and shipwreck dive sites, this atoll is popular among divers. Colorful coral reefs are abundant with vibrant marine life, including manta rays, whale sharks, and turtles."
+    },
+    {
+      "id": "60031",
+      "name": "Laamu Atoll",
+      "region": "South",
+      "description": "Laamu Atoll is less developed and known for its natural beauty and pristine landscapes. It's a top spot for surfing with consistent waves and excellent conditions. Perfect for surfers, nature lovers, and those seeking an off-the-beaten-path Maldivian experience."
+    },
+    {
+      "id": "60032",
+      "name": "Meemu Atoll",
+      "region": "Central",
+      "description": "Meemu Atoll offers authentic local island experiences with traditional Maldivian culture. The atoll features beautiful beaches, excellent diving and snorkeling, and a more local, less touristy atmosphere compared to resort-heavy atolls."
+    },
+    {
+      "id": "60033",
+      "name": "Noonu Atoll",
+      "region": "North",
+      "description": "Noonu Atoll is a hot spot for the newest luxury phenomena, home to some of the most luxurious resorts in the Maldives. Features world-class diving, pristine beaches, and cutting-edge resort experiences. Perfect for luxury travelers seeking the latest in island resort innovation."
+    },
+    {
+      "id": "60034",
+      "name": "Raa Atoll",
+      "region": "North",
+      "description": "Raa Atoll is hugely popular due to its pristine beaches and sparkling turquoise waters. Home to some of the Maldives' most exclusive resorts, this atoll is famous for its thriving marine life and spectacular lagoons. Ideal for luxury travelers, divers, and marine enthusiasts."
+    },
+    {
+      "id": "60035",
+      "name": "Seenu Atoll",
+      "region": "South",
+      "description": "Seenu Atoll (Addu Atoll) is located in the southern Maldives and offers excellent snorkeling and diving opportunities. Features beautiful coral reefs, diverse marine life, and a more local, less developed atmosphere."
+    },
+    {
+      "id": "60036",
+      "name": "Shaviyani Atoll",
+      "region": "North",
+      "description": "Shaviyani Atoll is the least developed of all atolls in the Maldives, offering an exquisite personal hideaway with fine lagoons surrounding paradise islands. Perfect for privacy seekers, divers, and those wanting an authentic, untouched Maldivian experience."
+    },
+    {
+      "id": "60037",
+      "name": "Thaa Atoll",
+      "region": "Central",
+      "description": "Thaa Atoll is a central atoll offering excellent diving and snorkeling opportunities. Features beautiful coral reefs, diverse marine life, and a good balance between accessibility and pristine natural beauty."
+    },
+    {
+      "id": "60038",
+      "name": "Vaavu Atoll",
+      "region": "North",
+      "description": "Vaavu Atoll offers excellent diving and snorkeling from local islands including Keyodhoo, Fulidhoo, Thinadhoo, and Alimatha. Features pristine reefs, diverse marine life, and authentic local island experiences in the central Maldives."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tregion\tdescription\n60020\tAlif Alif Atoll\tCentral\tAlif Alif Atoll is part of Kaafu and features spectacular coral reefs and world-class dive sites including famous shipwrecks. Home to vibrant marine life including manta rays, whale sharks, and sea turtles, this atoll is perfect for divers and snorkelers seeking pristine underwater experiences.\n60021\tAlif Dhaal Atoll\tNorth\tAlif Dhaal Atoll offers a more tranquil experience compared to its northern neighbor. Known for world-class diving and snorkeling, this atoll features striking underwater topography and serene vibes. Guraidhoo Island is famous for traditional Maldivian handicrafts and local souvenirs.\n60022\tBaa Atoll\tNorth\tBaa Atoll is a UNESCO Biosphere Reserve renowned for its amazingly rich marine life and stunning coral reefs. The atoll is home to Hanifaru Bay, a protected marine area that attracts hundreds of manta rays and whale sharks annually. Witness these majestic creatures at the world's largest natural manta ray feeding station.\n60023\tDhaalu Atoll\tCentral\tDhaalu Atoll remains pristine and low on the dive-tourist radar, offering uncrowded sites and a sense of discovery. Features around five channels on its western edge and ten on the eastern side, each funneling nutrient-rich currents that support vibrant, healthy reefs and major pelagic action. Home to the marine protected Fushi Kandu.\n60024\tFaafu Atoll\tCentral\tFaafu Atoll is a frontier diving destination with recently discovered, unspoiled sites. Its reefs offer unparalleled excitement and a genuine sense of pioneering adventure. Expect healthy reef ecosystems and major species encounters in wide channels. Perfect for experienced divers seeking frontier exploration.\n60025\tGaafu Alif Atoll\tSouth\tGaafu Alif Atoll is the northern half of the world's largest natural atoll. A diver's dream destination, it features pristine reefs, diverse marine life, and world-class diving sites. Ideal for experienced divers seeking pristine underwater adventures in the southern Maldives.\n60026\tGaafu Dhaalu Atoll\tSouth\tGaafu Dhaalu Atoll is the southern half of the world's largest natural atoll. Features pristine reefs and excellent diving opportunities. This remote southern atoll offers authentic Maldivian diving experiences away from crowded tourist areas.\n60027\tGnaviyani Atoll\tSouth\tGnaviyani Atoll is the smallest of all Maldives atolls, offering an intimate and exclusive island experience. Despite its small size, it features beautiful beaches, turquoise lagoons, and excellent diving and snorkeling opportunities.\n60028\tHaa Alif Atoll\tNorth\tHaa Alif Atoll (Thiladhunmathi) is the northernmost group of islands in the Maldives, opened to foreign tourism only in 2005. The lush tropical landscape is completely untouched with many uninhabited islands, reefs, and isolated white sand beaches. Home to luxury resorts and world-class diving in a remote, exclusive setting.\n60029\tHaa Dhaalu Atoll\tNorth\tHaa Dhaalu is one of the most beautiful atolls in the Maldives, a tropical sanctuary with long beaches and turquoise lagoons. Perfect for those seeking a balance between relaxation and adventure, with excellent diving, snorkeling, and local island experiences.\n60030\tKaafu Atoll\tCentral\tKaafu Atoll is home to Malé, the Maldives' capital, making it easily accessible for visitors. Boasting spectacular reefs and shipwreck dive sites, this atoll is popular among divers. Colorful coral reefs are abundant with vibrant marine life, including manta rays, whale sharks, and turtles.\n60031\tLaamu Atoll\tSouth\tLaamu Atoll is less developed and known for its natural beauty and pristine landscapes. It's a top spot for surfing with consistent waves and excellent conditions. Perfect for surfers, nature lovers, and those seeking an off-the-beaten-path Maldivian experience.\n60032\tMeemu Atoll\tCentral\tMeemu Atoll offers authentic local island experiences with traditional Maldivian culture. The atoll features beautiful beaches, excellent diving and snorkeling, and a more local, less touristy atmosphere compared to resort-heavy atolls.\n60033\tNoonu Atoll\tNorth\tNoonu Atoll is a hot spot for the newest luxury phenomena, home to some of the most luxurious resorts in the Maldives. Features world-class diving, pristine beaches, and cutting-edge resort experiences. Perfect for luxury travelers seeking the latest in island resort innovation.\n60034\tRaa Atoll\tNorth\tRaa Atoll is hugely popular due to its pristine beaches and sparkling turquoise waters. Home to some of the Maldives' most exclusive resorts, this atoll is famous for its thriving marine life and spectacular lagoons. Ideal for luxury travelers, divers, and marine enthusiasts.\n60035\tSeenu Atoll\tSouth\tSeenu Atoll (Addu Atoll) is located in the southern Maldives and offers excellent snorkeling and diving opportunities. Features beautiful coral reefs, diverse marine life, and a more local, less developed atmosphere.\n60036\tShaviyani Atoll\tNorth\tShaviyani Atoll is the least developed of all atolls in the Maldives, offering an exquisite personal hideaway with fine lagoons surrounding paradise islands. Perfect for privacy seekers, divers, and those wanting an authentic, untouched Maldivian experience.\n60037\tThaa Atoll\tCentral\tThaa Atoll is a central atoll offering excellent diving and snorkeling opportunities. Features beautiful coral reefs, diverse marine life, and a good balance between accessibility and pristine natural beauty.\n60038\tVaavu Atoll\tNorth\tVaavu Atoll offers excellent diving and snorkeling from local islands including Keyodhoo, Fulidhoo, Thinadhoo, and Alimatha. Features pristine reefs, diverse marine life, and authentic local island experiences in the central Maldives.\n",
+  "stderr": "",
+  "execution_time_ms": 180
+}

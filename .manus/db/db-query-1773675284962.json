@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Fuvahmulah Airport\",\"code\":\"FVM\",\"transferType\":\"Domestic Flight\",\"duration\":\"Direct\",\"distance\":\"On island\",\"description\":\"Direct domestic flights available. Fastest option for reaching Fuvahmulah.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"Speedboat\",\"duration\":\"1-2 hours\",\"distance\":\"50-100 km\",\"description\":\"International flights. Then speedboat or domestic flight to Fuvahmulah.\"}]' WHERE name = 'Feidhoo';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET nearbyAirports = '[{\"name\":\"Fuvahmulah Airport\",\"code\":\"FVM\",\"transferType\":\"Domestic Flight\",\"duration\":\"Direct\",\"distance\":\"On island\",\"description\":\"Direct domestic flights available. Fastest option for reaching Fuvahmulah.\"},{\"name\":\"Malé International Airport\",\"code\":\"MLE\",\"transferType\":\"Speedboat\",\"duration\":\"1-2 hours\",\"distance\":\"50-100 km\",\"description\":\"International flights. Then speedboat or domestic flight to Fuvahmulah.\"}]' WHERE name = 'Feidhoo';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 63
+}

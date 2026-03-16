@@ -1,0 +1,260 @@
+{
+  "query": "SELECT id, name, placeId FROM island_guides ORDER BY name LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, placeId FROM island_guides ORDER BY name LIMIT 50;",
+  "rows": [
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "placeId": "71"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "placeId": "17"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "placeId": "72"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "placeId": "101"
+    },
+    {
+      "id": "270005",
+      "name": "Dhangethi",
+      "placeId": "30002"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "placeId": "19"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "placeId": "102"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "placeId": "103"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "placeId": "105"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "placeId": "1"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "placeId": "106"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "placeId": "2"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "placeId": "75"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270023",
+      "name": "Fehendhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270001",
+      "name": "Felidhoo",
+      "placeId": "3"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "placeId": "20"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "placeId": "77"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "placeId": "78"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "placeId": "21"
+    },
+    {
+      "id": "270049",
+      "name": "Fonadhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "placeId": "107"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "placeId": "42"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "placeId": "79"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "placeId": "110"
+    },
+    {
+      "id": "180037",
+      "name": "Fuvamulah",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "placeId": "43"
+    },
+    {
+      "id": "270030",
+      "name": "Gan",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "placeId": "45"
+    },
+    {
+      "id": "270025",
+      "name": "Godhdhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270024",
+      "name": "Goidhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270043",
+      "name": "Hanimaadhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "270004",
+      "name": "Himandhoo",
+      "placeId": "82"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "placeId": "24"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "placeId": "46"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "placeId": "NULL"
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "placeId": "83"
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "placeId": "84"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tplaceId\n180024\tAlifushi\tNULL\n210045\tBaarah\t71\n210012\tBandidhoo\t17\n210046\tBileddhoo\t72\n120055\tBodufolhudhoo\tNULL\n210067\tBurunee\t101\n270005\tDhangethi\t30002\n210013\tDharanboodhoo\t19\n270019\tDharavandhoo\tNULL\n210068\tDhiddhoo\t102\n180008\tDhiffushi\tNULL\n210069\tDhiggaru\t103\n180003\tDhigurah\tNULL\n210071\tDhiyamigili\t105\n210002\tDhonfanu\t1\n210072\tDhuvaafaru\t106\n270026\tEydhafushi\tNULL\n210003\tEydhafushi\t2\n210047\tFeeali\t75\n180035\tFehendhoo\tNULL\n270023\tFehendhoo\tNULL\n180018\tFeidhoo\tNULL\n270001\tFelidhoo\t3\n210014\tFelidhoo Kandu\t20\n180028\tFeridhoo\tNULL\n210048\tFeydhoo\t77\n210049\tFilladhoo\t78\n210015\tFiney\t21\n270049\tFonadhoo\tNULL\n210073\tFotteyo Kandu\t107\n270020\tFulhadhoo\tNULL\n180002\tFulidhoo\tNULL\n210027\tFulidhoo Kandu\t42\n210050\tFunadhoo\t79\n210074\tFuvahmulah Tiger Shark\t110\n180037\tFuvamulah\tNULL\n210028\tGaafaru\t43\n270030\tGan\tNULL\n210029\tGemendhoo\t45\n270025\tGodhdhoo\tNULL\n270024\tGoidhoo\tNULL\n270043\tHanimaadhoo\tNULL\n180036\tHanimadhoo\tNULL\n270004\tHimandhoo\t82\n180026\tHimmafushi\tNULL\n210016\tHinnavaru\t24\n210030\tHirimaradhoo\t46\n180020\tHithadhoo\tNULL\n210051\tHoarafushi\t83\n210052\tHulhudheli\t84\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

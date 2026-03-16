@@ -2354,3 +2354,7 @@
   - Solution: Added deduplication logic to filteredIslands useMemo using Set to track seen IDs
   - Status: Verified - no console errors, 44 islands displaying correctly without duplicates
 
+- [x] Add Fuvahmulah Airport information to Fuvahmulah island guide
+  - Include airport name, IATA code (FVM), and transport details
+  - Update "Getting There" section with airport access information
+
