@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, name, slug FROM atolls WHERE slug = 'alif-dhaal-atoll';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls WHERE slug = 'alif-dhaal-atoll';",
+  "rows": [
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n3\tAlif Dhaal Atoll\talif-dhaal-atoll\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

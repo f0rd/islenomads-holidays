@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET atoll = 'Haa Alifu Atoll' WHERE name IN ('Hanimadhoo', 'Kelaa', 'Ihavandhoo', 'Thakandhoo', 'Utheemu');\nUPDATE island_guides SET atoll = 'Haa Dhaalu Atoll' WHERE name IN ('Kulhudhuffushi', 'Nolhivarandhoo', 'Narudhoo', 'Neyveli');\nUPDATE island_guides SET atoll = 'Shaviyani Atoll' WHERE name IN ('Funadhoo', 'Lhaimagu', 'Komandoo', 'Noomaraa', 'Looma');\nUPDATE island_guides SET atoll = 'Noonu Atoll' WHERE name IN ('Landhoo', 'Velidhoo', 'Maafaru', 'Lhosfushi');\nUPDATE island_guides SET atoll = 'Raa Atoll' WHERE name IN ('Ungoofaaru', 'Alifushi', 'Innamaadhoo', 'Maduvvari', 'Rasgetheemu');\nUPDATE island_guides SET atoll = 'Lhaviyani Atoll' WHERE name IN ('Naifaru', 'Kurendhoo', 'Kandioma', 'Olhuvelidhoo');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET atoll = 'Haa Alifu Atoll' WHERE name IN ('Hanimadhoo', 'Kelaa', 'Ihavandhoo', 'Thakandhoo', 'Utheemu');\nUPDATE island_guides SET atoll = 'Haa Dhaalu Atoll' WHERE name IN ('Kulhudhuffushi', 'Nolhivarandhoo', 'Narudhoo', 'Neyveli');\nUPDATE island_guides SET atoll = 'Shaviyani Atoll' WHERE name IN ('Funadhoo', 'Lhaimagu', 'Komandoo', 'Noomaraa', 'Looma');\nUPDATE island_guides SET atoll = 'Noonu Atoll' WHERE name IN ('Landhoo', 'Velidhoo', 'Maafaru', 'Lhosfushi');\nUPDATE island_guides SET atoll = 'Raa Atoll' WHERE name IN ('Ungoofaaru', 'Alifushi', 'Innamaadhoo', 'Maduvvari', 'Rasgetheemu');\nUPDATE island_guides SET atoll = 'Lhaviyani Atoll' WHERE name IN ('Naifaru', 'Kurendhoo', 'Kandioma', 'Olhuvelidhoo');",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 112
+}

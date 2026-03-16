@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides SET atoll = 'Vaavu Atoll' WHERE name IN ('Felidhoo', 'Keyodhoo', 'Vattaru');\nUPDATE island_guides SET atoll = 'Meemu Atoll' WHERE name IN ('Mulah', 'Kolhufushi', 'Naalaafushi');\nUPDATE island_guides SET atoll = 'Faafu Atoll' WHERE name IN ('Magoodhoo', 'Nilandhoo', 'Bilehdhoo');\nUPDATE island_guides SET atoll = 'Dhaalu Atoll' WHERE name IN ('Kudahuvadhoo', 'Veligandu', 'Bandidhoo', 'Hulhudheli');\nUPDATE island_guides SET atoll = 'Thaa Atoll' WHERE name IN ('Veymandoo', 'Thimarafushi', 'Gemendhoo', 'Odis');\nUPDATE island_guides SET atoll = 'Laamu Atoll' WHERE name IN ('Fonadhoo', 'Kadhdhoo', 'Mundoo', 'Isdhoo', 'Hithadhoo');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides SET atoll = 'Vaavu Atoll' WHERE name IN ('Felidhoo', 'Keyodhoo', 'Vattaru');\nUPDATE island_guides SET atoll = 'Meemu Atoll' WHERE name IN ('Mulah', 'Kolhufushi', 'Naalaafushi');\nUPDATE island_guides SET atoll = 'Faafu Atoll' WHERE name IN ('Magoodhoo', 'Nilandhoo', 'Bilehdhoo');\nUPDATE island_guides SET atoll = 'Dhaalu Atoll' WHERE name IN ('Kudahuvadhoo', 'Veligandu', 'Bandidhoo', 'Hulhudheli');\nUPDATE island_guides SET atoll = 'Thaa Atoll' WHERE name IN ('Veymandoo', 'Thimarafushi', 'Gemendhoo', 'Odis');\nUPDATE island_guides SET atoll = 'Laamu Atoll' WHERE name IN ('Fonadhoo', 'Kadhdhoo', 'Mundoo', 'Isdhoo', 'Hithadhoo');",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 112
+}

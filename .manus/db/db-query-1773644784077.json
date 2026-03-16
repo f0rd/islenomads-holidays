@@ -1,0 +1,25 @@
+{
+  "query": "SELECT id, name, slug FROM atolls WHERE slug LIKE '%alif%' OR slug LIKE '%baa%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM atolls WHERE slug LIKE '%alif%' OR slug LIKE '%baa%';",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Alif Alif Atoll",
+      "slug": "alif-alif-atoll"
+    },
+    {
+      "id": "2",
+      "name": "Baa Atoll",
+      "slug": "baa-atoll"
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tAlif Alif Atoll\talif-alif-atoll\n2\tBaa Atoll\tbaa-atoll\n3\tAlif Dhaal Atoll\talif-dhaal-atoll\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

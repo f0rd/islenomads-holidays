@@ -1,0 +1,62 @@
+{
+  "query": "SELECT * FROM places WHERE name IN ('Thoddoo', 'Mathiveri', 'Feridhoo', 'Maalhos') LIMIT 4;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT * FROM places WHERE name IN ('Thoddoo', 'Mathiveri', 'Feridhoo', 'Maalhos') LIMIT 4;",
+  "rows": [
+    {
+      "id": "13",
+      "atollId": "NULL",
+      "name": "Mathiveri",
+      "code": "mathiveri",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:15",
+      "updatedAt": "2026-02-16 10:14:06",
+      "slug": "mathiveri",
+      "heroImage": "NULL",
+      "latitude": "4.191864",
+      "longitude": "72.746256"
+    },
+    {
+      "id": "41",
+      "atollId": "NULL",
+      "name": "Feridhoo",
+      "code": "feridhoo",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:16",
+      "updatedAt": "2026-02-16 10:14:06",
+      "slug": "feridhoo",
+      "heroImage": "NULL",
+      "latitude": "4.051064",
+      "longitude": "72.725628"
+    },
+    {
+      "id": "53",
+      "atollId": "2",
+      "name": "Maalhos",
+      "code": "maalhos",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:16",
+      "updatedAt": "2026-02-16 10:14:06",
+      "slug": "maalhos",
+      "heroImage": "NULL",
+      "latitude": "5.134611",
+      "longitude": "73.107886"
+    },
+    {
+      "id": "65",
+      "atollId": "2",
+      "name": "Thoddoo",
+      "code": "thoddoo-island",
+      "type": "island",
+      "createdAt": "2026-02-14 21:55:15",
+      "updatedAt": "2026-02-16 10:14:06",
+      "slug": "thoddoo",
+      "heroImage": "NULL",
+      "latitude": "4.437217",
+      "longitude": "72.959633"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tatollId\tname\tcode\ttype\tcreatedAt\tupdatedAt\tslug\theroImage\tlatitude\tlongitude\n13\tNULL\tMathiveri\tmathiveri\tisland\t2026-02-14 21:55:15\t2026-02-16 10:14:06\tmathiveri\tNULL\t4.191864\t72.746256\n41\tNULL\tFeridhoo\tferidhoo\tisland\t2026-02-14 21:55:16\t2026-02-16 10:14:06\tferidhoo\tNULL\t4.051064\t72.725628\n53\t2\tMaalhos\tmaalhos\tisland\t2026-02-14 21:55:16\t2026-02-16 10:14:06\tmaalhos\tNULL\t5.134611\t73.107886\n65\t2\tThoddoo\tthoddoo-island\tisland\t2026-02-14 21:55:15\t2026-02-16 10:14:06\tthoddoo\tNULL\t4.437217\t72.959633\n",
+  "stderr": "",
+  "execution_time_ms": 65
+}

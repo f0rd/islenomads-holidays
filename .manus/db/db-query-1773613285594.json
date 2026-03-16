@@ -1,0 +1,130 @@
+{
+  "query": "SELECT id, name, slug, description FROM atolls ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, description FROM atolls ORDER BY name;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Alif Alif Atoll",
+      "slug": "kaafu-atoll",
+      "description": "Kaafu Atoll is the most visited atoll in the Maldives, home to the capital Malé and numerous resort islands. It offers excellent accessibility, diverse accommodation options, and world-class diving and snorkeling."
+    },
+    {
+      "id": "3",
+      "name": "Alif Dhaal Atoll",
+      "slug": "alif-dhaal-atoll",
+      "description": "Alif Dhaal Atoll is famous for its whale shark encounters and offers a perfect blend of luxury resorts and budget-friendly local islands. The atoll is ideal for marine enthusiasts and those seeking authentic experiences."
+    },
+    {
+      "id": "2",
+      "name": "Baa Atoll",
+      "slug": "alif-alif-atoll",
+      "description": "Alif Alif Atoll is known for its pristine coral reefs, excellent diving conditions, and exclusive resort islands. This atoll offers a more secluded experience while maintaining accessibility from Malé."
+    },
+    {
+      "id": "30001",
+      "name": "Dhaalu Atoll",
+      "slug": "dhaalu-atoll",
+      "description": "Quiet atoll with growing local tourism"
+    },
+    {
+      "id": "6",
+      "name": "Faafu Atoll",
+      "slug": "lhaviyani-atoll",
+      "description": "Lhaviyani Atoll is renowned for its excellent diving and snorkeling, pristine coral reefs, and luxury resort islands. The atoll offers world-class marine experiences in an exclusive setting."
+    },
+    {
+      "id": "30002",
+      "name": "Faafu Atoll",
+      "slug": "faafu-atoll",
+      "description": "Less visited atoll with pristine reefs"
+    },
+    {
+      "id": "30003",
+      "name": "Gaafu Alif Atoll",
+      "slug": "gaafu-alif-atoll",
+      "description": "Southern atoll with deep channels"
+    },
+    {
+      "id": "30004",
+      "name": "Gaafu Dhaalu Atoll",
+      "slug": "gaafu-dhaalu-atoll",
+      "description": "Remote southern atoll with strong culture"
+    },
+    {
+      "id": "30005",
+      "name": "Gnaviyani Atoll",
+      "slug": "gnaviyani-atoll",
+      "description": "Smallest administrative atoll"
+    },
+    {
+      "id": "30007",
+      "name": "Haa Alif Atoll",
+      "slug": "haa-alif-atoll",
+      "description": "Northernmost atoll of the Maldives"
+    },
+    {
+      "id": "30006",
+      "name": "Haa Dhaalu Atoll",
+      "slug": "haa-dhaalu-atoll",
+      "description": "Northern atoll with heritage islands"
+    },
+    {
+      "id": "30008",
+      "name": "Laamu Atoll",
+      "slug": "laamu-atoll",
+      "description": "Surf and eco-focused atoll"
+    },
+    {
+      "id": "5",
+      "name": "Meemu Atoll",
+      "slug": "vaavu-atoll",
+      "description": "Vaavu Atoll is a hidden gem offering pristine diving conditions, exclusive resorts, and fewer crowds. The atoll is perfect for divers seeking world-class experiences in a more secluded setting."
+    },
+    {
+      "id": "30009",
+      "name": "Meemu Atoll",
+      "slug": "meemu-atoll",
+      "description": "Quiet islands with local charm"
+    },
+    {
+      "id": "30010",
+      "name": "Noonu Atoll",
+      "slug": "noonu-atoll",
+      "description": "Northern atoll with untouched reefs"
+    },
+    {
+      "id": "30011",
+      "name": "Raa Atoll",
+      "slug": "raa-atoll",
+      "description": "Popular for diving and resorts"
+    },
+    {
+      "id": "30012",
+      "name": "Seenu Atoll",
+      "slug": "seenu-atoll",
+      "description": "Addu City and WWII heritage"
+    },
+    {
+      "id": "30013",
+      "name": "Shaviyani Atoll",
+      "slug": "shaviyani-atoll",
+      "description": "Developing local island tourism"
+    },
+    {
+      "id": "30014",
+      "name": "Thaa Atoll",
+      "slug": "thaa-atoll",
+      "description": "Remote and culturally rich atoll"
+    },
+    {
+      "id": "4",
+      "name": "Vaavu Atoll",
+      "slug": "baa-atoll",
+      "description": "Baa Atoll is a UNESCO Biosphere Reserve famous for Hanifaru Bay, where massive gatherings of manta rays and whale sharks occur seasonally. The atoll offers pristine marine ecosystems and exclusive resort experiences."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tdescription\n1\tAlif Alif Atoll\tkaafu-atoll\tKaafu Atoll is the most visited atoll in the Maldives, home to the capital Malé and numerous resort islands. It offers excellent accessibility, diverse accommodation options, and world-class diving and snorkeling.\n3\tAlif Dhaal Atoll\talif-dhaal-atoll\tAlif Dhaal Atoll is famous for its whale shark encounters and offers a perfect blend of luxury resorts and budget-friendly local islands. The atoll is ideal for marine enthusiasts and those seeking authentic experiences.\n2\tBaa Atoll\talif-alif-atoll\tAlif Alif Atoll is known for its pristine coral reefs, excellent diving conditions, and exclusive resort islands. This atoll offers a more secluded experience while maintaining accessibility from Malé.\n30001\tDhaalu Atoll\tdhaalu-atoll\tQuiet atoll with growing local tourism\n6\tFaafu Atoll\tlhaviyani-atoll\tLhaviyani Atoll is renowned for its excellent diving and snorkeling, pristine coral reefs, and luxury resort islands. The atoll offers world-class marine experiences in an exclusive setting.\n30002\tFaafu Atoll\tfaafu-atoll\tLess visited atoll with pristine reefs\n30003\tGaafu Alif Atoll\tgaafu-alif-atoll\tSouthern atoll with deep channels\n30004\tGaafu Dhaalu Atoll\tgaafu-dhaalu-atoll\tRemote southern atoll with strong culture\n30005\tGnaviyani Atoll\tgnaviyani-atoll\tSmallest administrative atoll\n30007\tHaa Alif Atoll\thaa-alif-atoll\tNorthernmost atoll of the Maldives\n30006\tHaa Dhaalu Atoll\thaa-dhaalu-atoll\tNorthern atoll with heritage islands\n30008\tLaamu Atoll\tlaamu-atoll\tSurf and eco-focused atoll\n5\tMeemu Atoll\tvaavu-atoll\tVaavu Atoll is a hidden gem offering pristine diving conditions, exclusive resorts, and fewer crowds. The atoll is perfect for divers seeking world-class experiences in a more secluded setting.\n30009\tMeemu Atoll\tmeemu-atoll\tQuiet islands with local charm\n30010\tNoonu Atoll\tnoonu-atoll\tNorthern atoll with untouched reefs\n30011\tRaa Atoll\traa-atoll\tPopular for diving and resorts\n30012\tSeenu Atoll\tseenu-atoll\tAddu City and WWII heritage\n30013\tShaviyani Atoll\tshaviyani-atoll\tDeveloping local island tourism\n30014\tThaa Atoll\tthaa-atoll\tRemote and culturally rich atoll\n4\tVaavu Atoll\tbaa-atoll\tBaa Atoll is a UNESCO Biosphere Reserve famous for Hanifaru Bay, where massive gatherings of manta rays and whale sharks occur seasonally. The atoll offers pristine marine ecosystems and exclusive resort experiences.\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}
