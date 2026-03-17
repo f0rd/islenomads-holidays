@@ -2615,3 +2615,22 @@
   - Verify all dive sites display correctly
   - Verify all surfing spots display correctly
   - Test on mobile and desktop
+
+
+## Implement Data Fetching for Dive Sites and Surfing Spots
+- [x] Create database query functions
+  - getDiveSitesByAtoll(atollId) - Fetches dive sites for an atoll
+  - getSurfingSpotsByAtoll(atollId) - Fetches surfing spots for an atoll
+  - getSnorkelingSpotsByAtoll(atollId) - Fetches snorkeling spots for an atoll
+- [x] Implement tRPC procedures
+  - atolls.getDiveSites - Exposes dive sites data to frontend
+  - atolls.getSurfingSpots - Exposes surfing spots data to frontend
+- [x] Update AtollDetail component
+  - Component already set up to fetch and display data
+  - Displays data in cards with name, description, difficulty badges
+  - Shows placeholder messages when no data available
+- [x] Test data fetching on atoll pages
+  - Tested on Baa Atoll page
+  - Both tabs displaying correctly
+  - Placeholder messages showing when no data available
+  - Status: COMPLETE - Ready to display real data once populated in database

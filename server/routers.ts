@@ -28,7 +28,7 @@ import {
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll,  getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getRegularIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
-  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots, getActivitySpotsForIslandSelector, getActivitySpotsByType, getIslandsForMap, getFeaturedIslandsForMap,
+  getAllActivitySpots, getAllActivitySpotsAdmin, getIslandGuidesWithActivitySpots, getNearbyActivitySpots, getActivitySpotsForIslandSelector, getActivitySpotsByType, getIslandsForMap, getFeaturedIslandsForMap, getDiveSitesByAtoll, getSurfingSpotsByAtoll, getSnorkelingSpotsByAtoll,
   getAllActivityTypes, getActivityTypeByKey, getSpotsByIsland, getIslandsBySpot, getSpotsByActivityType,
   getExperiencesByIsland, getExperiencesByActivityType, getSeoMetadata,
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
@@ -1140,13 +1140,13 @@ export const appRouter = router({
     getDiveSites: publicProcedure
       .input(z.object({ atollId: z.number() }))
       .query(async ({ input }) => {
-        return [];
+        return getDiveSitesByAtoll(input.atollId);
       }),
 
     getSurfingSpots: publicProcedure
       .input(z.object({ atollId: z.number() }))
       .query(async ({ input }) => {
-        return [];
+        return getSurfingSpotsByAtoll(input.atollId);
       }),
   }),
 

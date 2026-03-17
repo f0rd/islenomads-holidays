@@ -2078,3 +2078,96 @@ export async function getFeaturedIslandsForMap(limit: number = 10): Promise<Isla
   
   return results;
 }
+
+
+/**
+ * Get dive sites for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Array of dive sites
+ */
+export async function getDiveSitesByAtoll(atollId: number): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(activitySpots)
+    .where(
+      and(
+        eq(activitySpots.atollId, atollId),
+        eq(activitySpots.spotType, 'dive_site'),
+        eq(activitySpots.published, 1)
+      )
+    )
+    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+  
+  return results;
+}
+
+/**
+ * Get surfing spots for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Array of surfing spots
+ */
+export async function getSurfingSpotsByAtoll(atollId: number): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(activitySpots)
+    .where(
+      and(
+        eq(activitySpots.atollId, atollId),
+        eq(activitySpots.spotType, 'surf_spot'),
+        eq(activitySpots.published, 1)
+      )
+    )
+    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+  
+  return results;
+}
+
+/**
+ * Get snorkeling spots for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Array of snorkeling spots
+ */
+export async function getSnorkelingSpotsByAtoll(atollId: number): Promise<ActivitySpot[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(activitySpots)
+    .where(
+      and(
+        eq(activitySpots.atollId, atollId),
+        eq(activitySpots.spotType, 'snorkeling_spot'),
+        eq(activitySpots.published, 1)
+      )
+    )
+    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+  
+  return results;
+}
+
+/**
+ * Get all activity spots for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Object with arrays of dive sites, surfing spots, and snorkeling spots
+ */
+export async function getActivitySpotsByAtoll(atollId: number) {
+  const [diveSites, surfingSpots, snorkelingSpots] = await Promise.all([
+    getDiveSitesByAtoll(atollId),
+    getSurfingSpotsByAtoll(atollId),
+    getSnorkelingSpotsByAtoll(atollId)
+  ]);
+  
+  return {
+    diveSites,
+    surfingSpots,
+    snorkelingSpots
+  };
+}
+
