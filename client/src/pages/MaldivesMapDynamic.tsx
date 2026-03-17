@@ -30,15 +30,12 @@ export default function MaldivesMapDynamic() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mapLoaded, setMapLoaded] = useState(false);
 
-  // Fetch all islands with coordinates from database
-  const { data: allIslandsData = [], isLoading: isLoadingAll } = trpc.islandGuides.mapData.useQuery();
-
-  // Fetch featured islands for carousel
+  // Fetch featured islands for carousel and map
   const { data: featuredIslandsData = [], isLoading: isLoadingFeatured } = trpc.islandGuides.mapFeatured.useQuery({ limit: 10 });
 
-  // Convert database islands to map format with index
+  // Convert database islands to map format with index - ONLY FEATURED ISLANDS
   const allIslands: Island[] = useMemo(() => {
-    return (allIslandsData || [])
+    return (featuredIslandsData || [])
       .filter((island: any) => {
         const lat = typeof island.latitude === "number" ? island.latitude : parseFloat(String(island.latitude));
         const lng = typeof island.longitude === "number" ? island.longitude : parseFloat(String(island.longitude));
@@ -69,7 +66,7 @@ export default function MaldivesMapDynamic() {
           description: island.overview?.substring(0, 100) + "..." || "Discover this beautiful island",
         };
       });
-  }, [allIslandsData]);
+  }, [featuredIslandsData]);
 
   // Convert featured islands to map format
   const featuredIslands: Island[] = useMemo(() => {
@@ -192,7 +189,7 @@ export default function MaldivesMapDynamic() {
     }
   };
 
-  const isLoading = isLoadingAll || isLoadingFeatured;
+  const isLoading = isLoadingFeatured;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">

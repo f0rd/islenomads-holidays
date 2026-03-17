@@ -1,0 +1,100 @@
+{
+  "query": "SELECT name, slug, latitude, longitude FROM island_guides WHERE published = 1 AND latitude IS NOT NULL AND longitude IS NOT NULL ORDER BY featured DESC, id ASC LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, slug, latitude, longitude FROM island_guides WHERE published = 1 AND latitude IS NOT NULL AND longitude IS NOT NULL ORDER BY featured DESC, id ASC LIMIT 15;",
+  "rows": [
+    {
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "latitude": "3.8667",
+      "longitude": "72.7833"
+    },
+    {
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo",
+      "latitude": "4.3333",
+      "longitude": "73.5333"
+    },
+    {
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "latitude": "4.1333",
+      "longitude": "73.5667"
+    },
+    {
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "latitude": "4.1167",
+      "longitude": "73.5833"
+    },
+    {
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "latitude": "0.6167",
+      "longitude": "73.1833"
+    },
+    {
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "latitude": "4.1667",
+      "longitude": "73.5333"
+    },
+    {
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "latitude": "3.1000",
+      "longitude": "72.2000"
+    },
+    {
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "latitude": "4.2000",
+      "longitude": "73.5000"
+    },
+    {
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "latitude": "5.2333",
+      "longitude": "73.4667"
+    },
+    {
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo",
+      "latitude": "4.22",
+      "longitude": "72.86"
+    },
+    {
+      "name": "Eydhafushi",
+      "slug": "eydhafushi",
+      "latitude": "5.2500",
+      "longitude": "73.4500"
+    },
+    {
+      "name": "Thinadhoo",
+      "slug": "thinadhoo",
+      "latitude": "2.5000",
+      "longitude": "71.6000"
+    },
+    {
+      "name": "Keyodhoo",
+      "slug": "keyodhoo",
+      "latitude": "3.9000",
+      "longitude": "73.0000"
+    },
+    {
+      "name": "Magoodhoo",
+      "slug": "magoodhoo",
+      "latitude": "3.4833",
+      "longitude": "72.6167"
+    },
+    {
+      "name": "Nilandhoo",
+      "slug": "nilandhoo",
+      "latitude": "3.5000",
+      "longitude": "72.6000"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tlatitude\tlongitude\nMaamigili\tmaamigili\t3.8667\t72.7833\nBodufolhudhoo\tbodufolhudhoo\t4.3333\t73.5333\nThoddoo\tthoddoo\t4.1333\t73.5667\nMaafushi\tmaafushi\t4.1167\t73.5833\nDhigurah\tdhigurah\t0.6167\t73.1833\nUkulhas\tukulhas\t4.1667\t73.5333\nVeymandoo\tveymandoo\t3.1000\t72.2000\nMathiveri\tmathiveri\t4.2000\t73.5000\nHanimadhoo\thanimadhoo\t5.2333\t73.4667\nThulusdhoo\tthulusdhoo\t4.22\t72.86\nEydhafushi\teydhafushi\t5.2500\t73.4500\nThinadhoo\tthinadhoo\t2.5000\t71.6000\nKeyodhoo\tkeyodhoo\t3.9000\t73.0000\nMagoodhoo\tmagoodhoo\t3.4833\t72.6167\nNilandhoo\tnilandhoo\t3.5000\t72.6000\n",
+  "stderr": "",
+  "execution_time_ms": 357
+}
