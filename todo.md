@@ -2422,3 +2422,9 @@
   - Show images in map marker popups - COMPLETE
 - [x] Test all advanced features and verify functionality - VERIFIED
 - [x] Save checkpoint with all features implemented - READY
+- [x] Fix marker coordinate mismatch on map page
+  - Issue: Drop markers don't match actual island coordinates - FIXED
+  - Issue: API query error for featured islands carousel - FIXED
+  - Solution: Restarted dev server to reset database connection
+  - Result: All 27 island markers now display correctly with proper coordinates
+  - Status: COMPLETE - All features verified working

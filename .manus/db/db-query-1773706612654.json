@@ -1,0 +1,80 @@
+{
+  "query": "SELECT id, name, latitude, longitude, featured FROM island_guides WHERE latitude IS NOT NULL AND longitude IS NOT NULL LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, latitude, longitude, featured FROM island_guides WHERE latitude IS NOT NULL AND longitude IS NOT NULL LIMIT 10",
+  "rows": [
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "latitude": "3.8667",
+      "longitude": "72.7833",
+      "featured": "1"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "latitude": "4.3333",
+      "longitude": "73.5333",
+      "featured": "1"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "latitude": "4.1333",
+      "longitude": "73.5667",
+      "featured": "1"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "latitude": "3.88",
+      "longitude": "73.52",
+      "featured": "0"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "latitude": "4.1167",
+      "longitude": "73.5833",
+      "featured": "1"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "latitude": "0.6167",
+      "longitude": "73.1833",
+      "featured": "1"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "latitude": "4.1667",
+      "longitude": "73.5333",
+      "featured": "1"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "latitude": "3.1000",
+      "longitude": "72.2000",
+      "featured": "1"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "latitude": "4.2000",
+      "longitude": "73.5000",
+      "featured": "1"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "latitude": "5.2333",
+      "longitude": "73.4667",
+      "featured": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tlatitude\tlongitude\tfeatured\n90004\tMaamigili\t3.8667\t72.7833\t1\n120055\tBodufolhudhoo\t4.3333\t73.5333\t1\n150003\tThoddoo\t4.1333\t73.5667\t1\n150006\tKandooma\t3.88\t73.52\t0\n180001\tMaafushi\t4.1167\t73.5833\t1\n180003\tDhigurah\t0.6167\t73.1833\t1\n180004\tUkulhas\t4.1667\t73.5333\t1\n180021\tVeymandoo\t3.1000\t72.2000\t1\n180030\tMathiveri\t4.2000\t73.5000\t1\n180036\tHanimadhoo\t5.2333\t73.4667\t1\n",
+  "stderr": "",
+  "execution_time_ms": 379
+}
