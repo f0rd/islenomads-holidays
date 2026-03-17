@@ -75,7 +75,17 @@ export default function AtollDetail() {
     { enabled: !!atollData?.id }
   );
 
-  const isLoading = atollLoading || regularLoading || featuredLoading;
+  // Fetch dive sites and surfing spots for this atoll
+  const { data: diveSitesData = [], isLoading: diveSitesLoading } = trpc.atolls.getDiveSites.useQuery(
+    { atollId: atollData?.id || 0 },
+    { enabled: !!atollData?.id }
+  );
+  const { data: surfingSpotsData = [], isLoading: surfingSpotsLoading } = trpc.atolls.getSurfingSpots.useQuery(
+    { atollId: atollData?.id || 0 },
+    { enabled: !!atollData?.id }
+  );
+
+  const isLoading = atollLoading || regularLoading || featuredLoading || diveSitesLoading || surfingSpotsLoading;
 
   // Parse JSON fields safely
   const parseJSON = (data: string | null) => {
@@ -190,10 +200,12 @@ export default function AtollDetail() {
             {/* Left Column - Main Content */}
             <div className="lg:col-span-2">
               <Tabs defaultValue="overview" className="w-full">
-                <TabsList className="grid w-full grid-cols-4 mb-8">
+                <TabsList className="grid w-full grid-cols-6 mb-8">
                   <TabsTrigger value="overview">Overview</TabsTrigger>
                   <TabsTrigger value="activities">Activities</TabsTrigger>
                   <TabsTrigger value="accommodation">Stay</TabsTrigger>
+                  <TabsTrigger value="dive">Dive Sites</TabsTrigger>
+                  <TabsTrigger value="surf">Surfing</TabsTrigger>
                   <TabsTrigger value="info">Info</TabsTrigger>
                 </TabsList>
 
@@ -290,6 +302,76 @@ export default function AtollDetail() {
                       </div>
                     ) : (
                       <p className="text-muted-foreground">No accommodation information available.</p>
+                    )}
+                  </div>
+                </TabsContent>
+
+                {/* Dive Sites Tab */}
+                <TabsContent value="dive" className="space-y-6">
+                  <div>
+                    <h2 className="text-3xl font-bold mb-4">Dive Sites</h2>
+                    {diveSitesData && diveSitesData.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {diveSitesData.map((site: any, idx: number) => (
+                          <Card key={idx} className="hover:shadow-md transition-shadow">
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4">
+                                <Fish className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                                <div className="flex-1">
+                                  <h3 className="text-lg font-bold mb-2">{site.name}</h3>
+                                  {site.description && (
+                                    <p className="text-sm text-muted-foreground mb-3">
+                                      {site.description}
+                                    </p>
+                                  )}
+                                  {site.difficulty && (
+                                    <Badge variant="outline" className="text-xs">
+                                      {site.difficulty}
+                                    </Badge>
+                                  )}
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-muted-foreground">No dive sites available in this atoll.</p>
+                    )}
+                  </div>
+                </TabsContent>
+
+                {/* Surfing Spots Tab */}
+                <TabsContent value="surf" className="space-y-6">
+                  <div>
+                    <h2 className="text-3xl font-bold mb-4">Surfing Spots</h2>
+                    {surfingSpotsData && surfingSpotsData.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {surfingSpotsData.map((spot: any, idx: number) => (
+                          <Card key={idx} className="hover:shadow-md transition-shadow">
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4">
+                                <Waves className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                                <div className="flex-1">
+                                  <h3 className="text-lg font-bold mb-2">{spot.name}</h3>
+                                  {spot.description && (
+                                    <p className="text-sm text-muted-foreground mb-3">
+                                      {spot.description}
+                                    </p>
+                                  )}
+                                  {spot.difficulty && (
+                                    <Badge variant="outline" className="text-xs">
+                                      {spot.difficulty}
+                                    </Badge>
+                                  )}
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-muted-foreground">No surfing spots available in this atoll.</p>
                     )}
                   </div>
                 </TabsContent>

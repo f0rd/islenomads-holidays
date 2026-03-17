@@ -1136,6 +1136,18 @@ export const appRouter = router({
       .query(async ({ input }) => {
         return getRegularIslandsByAtollId(input.atollId);
       }),
+
+    getDiveSites: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return [];
+      }),
+
+    getSurfingSpots: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return [];
+      }),
   }),
 
   // DEPRECATED: activitySpots router removed - use attractionGuides instead for unified attractions management
