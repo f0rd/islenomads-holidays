@@ -1,11 +1,8 @@
-'use client';
-
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { Link } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import { MapView } from "@/components/Map";
 import Footer from "@/components/Footer";
 import { trpc } from "@/lib/trpc";
@@ -31,19 +28,17 @@ const CATEGORY_COLORS: Record<string, { bg: string; text: string; marker: string
   snorkel: { bg: "bg-cyan-100", text: "text-cyan-900", marker: "#06B6D4" },
 };
 
-export default function MaldivesMapImproved() {
+export default function MaldivesMapSimple() {
   const mapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<Map<string, any>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<string>("all");
-  const [selectedMarkerId, setSelectedMarkerId] = useState<string | null>(null);
-  const [visitedLocations, setVisitedLocations] = useState<Set<string>>(new Set());
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   // Fetch island data
-  const { data: islandData } = trpc.islandGuides.listWithActivitySpots.useQuery();
+  const { data: islandData, isLoading } = trpc.islandGuides.listWithActivitySpots.useQuery();
 
   // Build markers array with index
   const allMarkers: Marker[] = (islandData || [])
@@ -75,58 +70,6 @@ export default function MaldivesMapImproved() {
   // Featured islands (first 10)
   const featuredMarkers = allMarkers.slice(0, 10);
 
-  const handleListItemClick = (markerId: string) => {
-    setSelectedMarkerId(markerId);
-    const marker = markersRef.current.get(markerId);
-    if (marker && mapRef.current) {
-      mapRef.current.panTo({
-        lat: marker.lat,
-        lng: marker.lng,
-      });
-      mapRef.current.setZoom(14);
-    }
-  };
-
-  const toggleVisited = (markerId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const newVisited = new Set(visitedLocations);
-    if (newVisited.has(markerId)) {
-      newVisited.delete(markerId);
-    } else {
-      newVisited.add(markerId);
-    }
-    setVisitedLocations(newVisited);
-  };
-
-  const getMarkerIcon = (type: string): string => {
-    const icons: Record<string, string> = {
-      island: "🏖️",
-      atoll: "🏝️",
-      dive: "🤿",
-      surf: "🏄",
-      snorkel: "🤽",
-    };
-    return icons[type] || "📍";
-  };
-
-  const getTypeLabel = (type: string): string => {
-    const labels: Record<string, string> = {
-      island: "Island",
-      atoll: "Atoll",
-      dive: "Dive Site",
-      surf: "Surf Spot",
-      snorkel: "Snorkeling Spot",
-    };
-    return labels[type] || type;
-  };
-
-  const getDetailLink = (marker: Marker): string => {
-    if (marker.type === "island" && marker.slug) {
-      return `/island/${marker.slug}`;
-    }
-    return "#";
-  };
-
   const handleMapReady = (map: google.maps.Map) => {
     mapRef.current = map;
     addMarkers();
@@ -152,10 +95,6 @@ export default function MaldivesMapImproved() {
         position: { lat: markerData.lat, lng: markerData.lng },
         title: `${markerData.index}. ${markerData.name}`,
         content: createMarkerContent(markerData),
-      });
-
-      marker.addEventListener("gmp-click", () => {
-        setSelectedMarkerId(markerData.id);
       });
 
       markersRef.current.set(markerData.id, { ...markerData, marker });
@@ -188,10 +127,6 @@ export default function MaldivesMapImproved() {
     return div;
   };
 
-  useEffect(() => {
-    addMarkers();
-  }, [deduplicatedMarkers]);
-
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
       const scrollAmount = 320; // Card width + gap
@@ -204,14 +139,20 @@ export default function MaldivesMapImproved() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {/* Map Container - Full Width */}
-      <div className="h-96 relative overflow-hidden">
-        <MapView
-          onMapReady={handleMapReady}
-          initialCenter={{ lat: 4.1694, lng: 73.5093 }}
-          initialZoom={7}
-          className="w-full h-full"
-        />
+      {/* Map Container */}
+      <div className="w-full h-96 md:h-[500px] lg:h-[600px] relative overflow-hidden">
+        {isLoading ? (
+          <div className="w-full h-full flex items-center justify-center bg-muted">
+            <p className="text-muted-foreground">Loading map...</p>
+          </div>
+        ) : (
+          <MapView
+            onMapReady={handleMapReady}
+            initialCenter={{ lat: 4.1694, lng: 73.5093 }}
+            initialZoom={7}
+            className="w-full h-full"
+          />
+        )}
       </div>
 
       {/* Featured Carousel Section */}
@@ -230,7 +171,6 @@ export default function MaldivesMapImproved() {
                 <div
                   key={marker.id}
                   className="flex-shrink-0 w-80 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
-                  onClick={() => handleListItemClick(marker.id)}
                 >
                   <div className="relative aspect-video overflow-hidden bg-muted">
                     <img
@@ -246,7 +186,7 @@ export default function MaldivesMapImproved() {
                         {marker.index}. {marker.name}
                       </p>
                       <p className="text-white/90 text-sm mt-1">{marker.description}</p>
-                      <Link href={getDetailLink(marker)} className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
+                      <Link href={`/island/${marker.slug}`} className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
                         View Guide →
                       </Link>
                     </div>
@@ -297,11 +237,10 @@ export default function MaldivesMapImproved() {
                 variant={activeFilter === type ? "default" : "outline"}
                 size="sm"
                 onClick={() => setActiveFilter(type)}
-                className={`text-sm ${
-                  activeFilter === type ? "" : `${colors.bg} ${colors.text}`
-                }`}
+                className={`text-sm ${activeFilter === type ? "" : colors.bg}`}
               >
-                {getMarkerIcon(type)} {getTypeLabel(type)}
+                {type === "island" && "🏖️"} {type === "atoll" && "🏝️"} {type === "dive" && "🤿"} {type === "surf" && "🏄"} {type === "snorkel" && "🤽"}
+                {type.charAt(0).toUpperCase() + type.slice(1)}
               </Button>
             ))}
           </div>
@@ -309,7 +248,9 @@ export default function MaldivesMapImproved() {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }

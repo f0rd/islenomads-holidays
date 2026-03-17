@@ -1,11 +1,7 @@
-'use client';
-
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { Link } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import { MapView } from "@/components/Map";
 import Footer from "@/components/Footer";
 import { trpc } from "@/lib/trpc";
@@ -31,114 +27,81 @@ const CATEGORY_COLORS: Record<string, { bg: string; text: string; marker: string
   snorkel: { bg: "bg-cyan-100", text: "text-cyan-900", marker: "#06B6D4" },
 };
 
-export default function MaldivesMapImproved() {
+export default function MaldivesMapWorking() {
   const mapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<Map<string, any>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<string>("all");
-  const [selectedMarkerId, setSelectedMarkerId] = useState<string | null>(null);
-  const [visitedLocations, setVisitedLocations] = useState<Set<string>>(new Set());
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   // Fetch island data
-  const { data: islandData } = trpc.islandGuides.listWithActivitySpots.useQuery();
+  const { data: islandData = [], isLoading } = trpc.islandGuides.listWithActivitySpots.useQuery();
 
-  // Build markers array with index
-  const allMarkers: Marker[] = (islandData || [])
-    .filter((island) => island.latitude && island.longitude)
-    .map((island, idx) => ({
-      id: `island-${island.id}`,
-      index: idx + 1,
-      name: island.name,
-      type: "island" as const,
-      lat: typeof island.latitude === "number" ? island.latitude : parseFloat(String(island.latitude)) || 0,
-      lng: typeof island.longitude === "number" ? island.longitude : parseFloat(String(island.longitude)) || 0,
-      slug: island.slug,
-      image: island.images?.[0] || "/images/default-island.jpg",
-      description: island.overview?.substring(0, 100) + "..." || "Discover this beautiful island",
-    }));
+  // Build markers array with index - only use islands with valid coordinates
+  const allMarkers: Marker[] = useMemo(() => {
+    return (islandData || [])
+      .filter((island) => {
+        const lat = typeof island.latitude === "number" ? island.latitude : parseFloat(String(island.latitude));
+        const lng = typeof island.longitude === "number" ? island.longitude : parseFloat(String(island.longitude));
+        return !isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0;
+      })
+      .map((island, idx) => {
+        const lat = typeof island.latitude === "number" ? island.latitude : parseFloat(String(island.latitude));
+        const lng = typeof island.longitude === "number" ? island.longitude : parseFloat(String(island.longitude));
+        return {
+          id: `island-${island.id}`,
+          index: idx + 1,
+          name: island.name,
+          type: "island" as const,
+          lat,
+          lng,
+          slug: island.slug,
+          image: island.images ? JSON.parse(String(island.images))[0] : "/images/default-island.jpg",
+          description: island.overview?.substring(0, 100) + "..." || "Discover this beautiful island",
+        };
+      });
+  }, [islandData]);
 
   // Filter markers based on search and active filter
-  const filteredMarkers = allMarkers.filter((marker) => {
-    const matchesSearch = marker.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = activeFilter === "all" || marker.type === activeFilter;
-    return matchesSearch && matchesFilter;
-  });
+  const filteredMarkers = useMemo(() => {
+    return allMarkers.filter((marker) => {
+      const matchesSearch = marker.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesFilter = activeFilter === "all" || marker.type === activeFilter;
+      return matchesSearch && matchesFilter;
+    });
+  }, [allMarkers, searchQuery, activeFilter]);
 
   // Deduplicate markers by ID
-  const deduplicatedMarkers = Array.from(
-    new Map(filteredMarkers.map((m) => [m.id, m])).values()
-  );
+  const deduplicatedMarkers = useMemo(() => {
+    return Array.from(new Map(filteredMarkers.map((m) => [m.id, m])).values());
+  }, [filteredMarkers]);
 
   // Featured islands (first 10)
-  const featuredMarkers = allMarkers.slice(0, 10);
-
-  const handleListItemClick = (markerId: string) => {
-    setSelectedMarkerId(markerId);
-    const marker = markersRef.current.get(markerId);
-    if (marker && mapRef.current) {
-      mapRef.current.panTo({
-        lat: marker.lat,
-        lng: marker.lng,
-      });
-      mapRef.current.setZoom(14);
-    }
-  };
-
-  const toggleVisited = (markerId: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    const newVisited = new Set(visitedLocations);
-    if (newVisited.has(markerId)) {
-      newVisited.delete(markerId);
-    } else {
-      newVisited.add(markerId);
-    }
-    setVisitedLocations(newVisited);
-  };
-
-  const getMarkerIcon = (type: string): string => {
-    const icons: Record<string, string> = {
-      island: "🏖️",
-      atoll: "🏝️",
-      dive: "🤿",
-      surf: "🏄",
-      snorkel: "🤽",
-    };
-    return icons[type] || "📍";
-  };
-
-  const getTypeLabel = (type: string): string => {
-    const labels: Record<string, string> = {
-      island: "Island",
-      atoll: "Atoll",
-      dive: "Dive Site",
-      surf: "Surf Spot",
-      snorkel: "Snorkeling Spot",
-    };
-    return labels[type] || type;
-  };
-
-  const getDetailLink = (marker: Marker): string => {
-    if (marker.type === "island" && marker.slug) {
-      return `/island/${marker.slug}`;
-    }
-    return "#";
-  };
+  const featuredMarkers = useMemo(() => {
+    return allMarkers.slice(0, 10);
+  }, [allMarkers]);
 
   const handleMapReady = (map: google.maps.Map) => {
+    console.log("Map is ready, adding markers...");
     mapRef.current = map;
+    setMapLoaded(true);
     addMarkers();
   };
 
   const addMarkers = () => {
-    if (!mapRef.current) return;
+    if (!mapRef.current) {
+      console.log("Map not ready yet");
+      return;
+    }
+
+    console.log(`Adding ${deduplicatedMarkers.length} markers to map`);
 
     // Clear existing markers
-    markersRef.current.forEach((marker) => {
-      if (marker.marker) {
-        marker.marker.map = null;
+    markersRef.current.forEach((markerData) => {
+      if (markerData.marker) {
+        markerData.marker.map = null;
       }
     });
     markersRef.current.clear();
@@ -146,7 +109,7 @@ export default function MaldivesMapImproved() {
     // Add new markers
     deduplicatedMarkers.forEach((markerData) => {
       const colors = CATEGORY_COLORS[markerData.type] || CATEGORY_COLORS.island;
-      
+
       const marker = new google.maps.marker.AdvancedMarkerElement({
         map: mapRef.current,
         position: { lat: markerData.lat, lng: markerData.lng },
@@ -154,18 +117,21 @@ export default function MaldivesMapImproved() {
         content: createMarkerContent(markerData),
       });
 
-      marker.addEventListener("gmp-click", () => {
-        setSelectedMarkerId(markerData.id);
-      });
-
       markersRef.current.set(markerData.id, { ...markerData, marker });
     });
   };
 
+  // Re-add markers when filtered markers change
+  useEffect(() => {
+    if (mapLoaded) {
+      addMarkers();
+    }
+  }, [deduplicatedMarkers, mapLoaded]);
+
   const createMarkerContent = (marker: Marker) => {
     const div = document.createElement("div");
     const colors = CATEGORY_COLORS[marker.type] || CATEGORY_COLORS.island;
-    
+
     div.innerHTML = `
       <div style="
         display: flex;
@@ -188,10 +154,6 @@ export default function MaldivesMapImproved() {
     return div;
   };
 
-  useEffect(() => {
-    addMarkers();
-  }, [deduplicatedMarkers]);
-
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
       const scrollAmount = 320; // Card width + gap
@@ -204,8 +166,16 @@ export default function MaldivesMapImproved() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {/* Map Container - Full Width */}
-      <div className="h-96 relative overflow-hidden">
+      {/* Map Container */}
+      <div className="w-full h-96 md:h-[500px] lg:h-[600px] relative overflow-hidden bg-gray-200">
+        {!mapLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
+            <div className="text-center">
+              <p className="text-gray-600 mb-2">Loading map...</p>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+            </div>
+          </div>
+        )}
         <MapView
           onMapReady={handleMapReady}
           initialCenter={{ lat: 4.1694, lng: 73.5093 }}
@@ -217,8 +187,8 @@ export default function MaldivesMapImproved() {
       {/* Featured Carousel Section */}
       <div className="bg-gradient-to-r from-primary/5 to-accent/5 border-t border-border p-4">
         <div className="max-w-7xl mx-auto">
-          <h3 className="text-lg font-semibold mb-4 text-foreground">Featured Destinations</h3>
-          
+          <h3 className="text-lg font-semibold mb-4 text-foreground">Featured Destinations ({featuredMarkers.length})</h3>
+
           <div className="relative">
             {/* Carousel Container */}
             <div
@@ -230,7 +200,6 @@ export default function MaldivesMapImproved() {
                 <div
                   key={marker.id}
                   className="flex-shrink-0 w-80 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
-                  onClick={() => handleListItemClick(marker.id)}
                 >
                   <div className="relative aspect-video overflow-hidden bg-muted">
                     <img
@@ -246,9 +215,11 @@ export default function MaldivesMapImproved() {
                         {marker.index}. {marker.name}
                       </p>
                       <p className="text-white/90 text-sm mt-1">{marker.description}</p>
-                      <Link href={getDetailLink(marker)} className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
-                        View Guide →
-                      </Link>
+                      {marker.slug && (
+                        <Link href={`/island/${marker.slug}`} className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
+                          View Guide →
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -256,18 +227,22 @@ export default function MaldivesMapImproved() {
             </div>
 
             {/* Carousel Controls */}
-            <button
-              onClick={() => scrollCarousel("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary hover:bg-primary/90 text-white p-2 rounded-full shadow-lg z-10"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={() => scrollCarousel("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary hover:bg-primary/90 text-white p-2 rounded-full shadow-lg z-10"
-            >
-              <ChevronRight size={24} />
-            </button>
+            {featuredMarkers.length > 0 && (
+              <>
+                <button
+                  onClick={() => scrollCarousel("left")}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-primary hover:bg-primary/90 text-white p-2 rounded-full shadow-lg z-10"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={() => scrollCarousel("right")}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-primary hover:bg-primary/90 text-white p-2 rounded-full shadow-lg z-10"
+                >
+                  <ChevronRight size={24} />
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -297,19 +272,30 @@ export default function MaldivesMapImproved() {
                 variant={activeFilter === type ? "default" : "outline"}
                 size="sm"
                 onClick={() => setActiveFilter(type)}
-                className={`text-sm ${
-                  activeFilter === type ? "" : `${colors.bg} ${colors.text}`
-                }`}
+                className={`text-sm ${activeFilter === type ? "" : colors.bg}`}
               >
-                {getMarkerIcon(type)} {getTypeLabel(type)}
+                {type === "island" && "🏖️"} {type === "atoll" && "🏝️"} {type === "dive" && "🤿"} {type === "surf" && "🏄"} {type === "snorkel" && "🤽"}
+                {type.charAt(0).toUpperCase() + type.slice(1)}
               </Button>
             ))}
+          </div>
+
+          <div className="text-sm text-muted-foreground pt-2">
+            {isLoading ? (
+              <p>Loading island data...</p>
+            ) : (
+              <p>
+                Showing {deduplicatedMarkers.length} of {allMarkers.length} islands with coordinates
+              </p>
+            )}
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <Footer />
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </div>
   );
 }
