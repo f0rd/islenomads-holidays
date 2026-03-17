@@ -21,6 +21,7 @@ import MaldivesMapSimple from "./pages/MaldivesMapSimple";
 import MaldivesMapTest from "./pages/MaldivesMapTest";
 import MaldivesMapWorking from "./pages/MaldivesMapWorking";
 import MaldivesMapProduction from "./pages/MaldivesMapProduction";
+import MaldivesMapDynamic from "./pages/MaldivesMapDynamic";
 import BoatRoutes from "./pages/BoatRoutes";
 import TripPlanner from "./pages/TripPlanner";
 import AdminBoatRoutes from "./pages/AdminBoatRoutes";
@@ -73,7 +74,7 @@ function Router() {
       <Route path={"/admin/pages"} component={AdminPages} />
       <Route path={"/admin/blog"} component={AdminBlog} />
       <Route path={"/admin/packages"} component={AdminPackages} />
-        <Route path="/map" component={MaldivesMapProduction} />
+        <Route path="/map" component={MaldivesMapDynamic} />
       <Route path={"/boat-routes"} component={BoatRoutes} />
       <Route path={"/trip-planner"} component={TripPlanner} />
       <Route path={"/admin/boat-routes"} component={AdminBoatRoutes} />

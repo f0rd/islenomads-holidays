@@ -1,4 +1,4 @@
-import { eq, and, desc, asc } from "drizzle-orm";
+import { eq, and, desc, asc, isNotNull, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -2017,4 +2017,64 @@ export async function reorderHeroGalleryImages(pageSlug: string, images: Array<{
   // Note: displayOrder not available in hero_settings table
   // Images are ordered by createdAt
   return getHeroGalleryByPage(pageSlug);
+}
+
+
+/**
+ * Get all published islands with coordinates for map display
+ * Optimized for performance - uses single query without N+1 problem
+ * Only returns islands that have valid latitude and longitude coordinates
+ * @returns Array of islands with coordinates, sorted by display order
+ */
+export async function getIslandsForMap(): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  // Single optimized query - fetch only published islands with coordinates
+  const results = await db
+    .select()
+    .from(islandGuides)
+    .where(
+      and(
+        eq(islandGuides.published, 1),
+        // Only include islands that have both latitude and longitude
+        isNotNull(islandGuides.latitude),
+        isNotNull(islandGuides.longitude),
+        // Exclude empty string coordinates
+        ne(islandGuides.latitude, ''),
+        ne(islandGuides.longitude, '')
+      )
+    )
+    .orderBy(asc(islandGuides.displayOrder), desc(islandGuides.featured));
+  
+  return results;
+}
+
+/**
+ * Get featured islands for map carousel
+ * Returns top featured islands with coordinates
+ * @param limit Number of featured islands to return (default 10)
+ * @returns Array of featured islands
+ */
+export async function getFeaturedIslandsForMap(limit: number = 10): Promise<IslandGuide[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(islandGuides)
+    .where(
+      and(
+        eq(islandGuides.published, 1),
+        eq(islandGuides.featured, 1),
+        isNotNull(islandGuides.latitude),
+        isNotNull(islandGuides.longitude),
+        ne(islandGuides.latitude, ''),
+        ne(islandGuides.longitude, '')
+      )
+    )
+    .orderBy(asc(islandGuides.displayOrder))
+    .limit(limit);
+  
+  return results;
 }
