@@ -246,10 +246,8 @@ export default function MaldivesMapImproved() {
                         {marker.index}. {marker.name}
                       </p>
                       <p className="text-white/90 text-sm mt-1">{marker.description}</p>
-                      <Link href={getDetailLink(marker)}>
-                        <a className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
-                          View Guide →
-                        </a>
+                      <Link href={getDetailLink(marker)} className="text-accent hover:text-accent/80 text-sm font-semibold mt-2 inline-block">
+                        View Guide →
                       </Link>
                     </div>
                   </div>
