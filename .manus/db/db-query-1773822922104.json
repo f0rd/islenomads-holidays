@@ -1,0 +1,145 @@
+{
+  "query": "SELECT id, name, type, latitude, longitude, difficulty, depth FROM places WHERE type = 'dive_site' AND latitude IS NOT NULL ORDER BY id LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, latitude, longitude, difficulty, depth FROM places WHERE type = 'dive_site' AND latitude IS NOT NULL ORDER BY id LIMIT 15;",
+  "rows": [
+    {
+      "id": "4",
+      "name": "HP Reef",
+      "type": "dive_site",
+      "latitude": "4.266700",
+      "longitude": "73.516700",
+      "difficulty": "intermediate",
+      "depth": "15-30m"
+    },
+    {
+      "id": "9",
+      "name": "Maaya Thila",
+      "type": "dive_site",
+      "latitude": "4.250000",
+      "longitude": "73.500000",
+      "difficulty": "intermediate",
+      "depth": "20-35m"
+    },
+    {
+      "id": "20",
+      "name": "Felidhoo Kandu",
+      "type": "dive_site",
+      "latitude": "3.016700",
+      "longitude": "72.916700",
+      "difficulty": "advanced",
+      "depth": "25-40m"
+    },
+    {
+      "id": "26",
+      "name": "Kandooma Thila",
+      "type": "dive_site",
+      "latitude": "3.950000",
+      "longitude": "73.483300",
+      "difficulty": "advanced",
+      "depth": "30-45m"
+    },
+    {
+      "id": "42",
+      "name": "Fulidhoo Kandu",
+      "type": "dive_site",
+      "latitude": "3.133300",
+      "longitude": "72.950000",
+      "difficulty": "intermediate",
+      "depth": "18-32m"
+    },
+    {
+      "id": "66",
+      "name": "Thoddoo House Reef",
+      "type": "dive_site",
+      "latitude": "5.250000",
+      "longitude": "73.166700",
+      "difficulty": "beginner",
+      "depth": "5-15m"
+    },
+    {
+      "id": "69",
+      "name": "Ukulhas House Reef",
+      "type": "dive_site",
+      "latitude": "5.316700",
+      "longitude": "73.183300",
+      "difficulty": "beginner",
+      "depth": "8-18m"
+    },
+    {
+      "id": "100",
+      "name": "Banana Reef",
+      "type": "dive_site",
+      "latitude": "3.866700",
+      "longitude": "73.533300",
+      "difficulty": "beginner",
+      "depth": "3-12m"
+    },
+    {
+      "id": "104",
+      "name": "Dhigurah House Reef",
+      "type": "dive_site",
+      "latitude": "0.683300",
+      "longitude": "73.166700",
+      "difficulty": "intermediate",
+      "depth": "12-25m"
+    },
+    {
+      "id": "107",
+      "name": "Fotteyo Kandu",
+      "type": "dive_site",
+      "latitude": "3.050000",
+      "longitude": "72.933300",
+      "difficulty": "advanced",
+      "depth": "28-42m"
+    },
+    {
+      "id": "30089",
+      "name": "Hanifaru Bay",
+      "type": "dive_site",
+      "latitude": "5.266700",
+      "longitude": "73.400000",
+      "difficulty": "intermediate",
+      "depth": "20-35m"
+    },
+    {
+      "id": "30090",
+      "name": "Fish Head",
+      "type": "dive_site",
+      "latitude": "5.333300",
+      "longitude": "73.416700",
+      "difficulty": "advanced",
+      "depth": "25-40m"
+    },
+    {
+      "id": "30091",
+      "name": "Kuda Rah Thila",
+      "type": "dive_site",
+      "latitude": "5.283300",
+      "longitude": "73.383300",
+      "difficulty": "intermediate",
+      "depth": "18-32m"
+    },
+    {
+      "id": "30092",
+      "name": "Bathala Thila",
+      "type": "dive_site",
+      "latitude": "5.350000",
+      "longitude": "73.350000",
+      "difficulty": "beginner",
+      "depth": "8-20m"
+    },
+    {
+      "id": "30093",
+      "name": "Maradhoo Kandu",
+      "type": "dive_site",
+      "latitude": "0.750000",
+      "longitude": "73.150000",
+      "difficulty": "advanced",
+      "depth": "30-45m"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tlatitude\tlongitude\tdifficulty\tdepth\n4\tHP Reef\tdive_site\t4.266700\t73.516700\tintermediate\t15-30m\n9\tMaaya Thila\tdive_site\t4.250000\t73.500000\tintermediate\t20-35m\n20\tFelidhoo Kandu\tdive_site\t3.016700\t72.916700\tadvanced\t25-40m\n26\tKandooma Thila\tdive_site\t3.950000\t73.483300\tadvanced\t30-45m\n42\tFulidhoo Kandu\tdive_site\t3.133300\t72.950000\tintermediate\t18-32m\n66\tThoddoo House Reef\tdive_site\t5.250000\t73.166700\tbeginner\t5-15m\n69\tUkulhas House Reef\tdive_site\t5.316700\t73.183300\tbeginner\t8-18m\n100\tBanana Reef\tdive_site\t3.866700\t73.533300\tbeginner\t3-12m\n104\tDhigurah House Reef\tdive_site\t0.683300\t73.166700\tintermediate\t12-25m\n107\tFotteyo Kandu\tdive_site\t3.050000\t72.933300\tadvanced\t28-42m\n30089\tHanifaru Bay\tdive_site\t5.266700\t73.400000\tintermediate\t20-35m\n30090\tFish Head\tdive_site\t5.333300\t73.416700\tadvanced\t25-40m\n30091\tKuda Rah Thila\tdive_site\t5.283300\t73.383300\tintermediate\t18-32m\n30092\tBathala Thila\tdive_site\t5.350000\t73.350000\tbeginner\t8-20m\n30093\tMaradhoo Kandu\tdive_site\t0.750000\t73.150000\tadvanced\t30-45m\n",
+  "stderr": "",
+  "execution_time_ms": 363
+}

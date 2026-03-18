@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, name, spotType, atoll_id, description, difficulty, latitude, longitude FROM activity_spots WHERE spotType IN ('dive_site', 'surf_spot') ORDER BY spotType, id LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, spotType, atoll_id, description, difficulty, latitude, longitude FROM activity_spots WHERE spotType IN ('dive_site', 'surf_spot') ORDER BY spotType, id LIMIT 50;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'atoll_id' in 'field list'"
+  ]
+}

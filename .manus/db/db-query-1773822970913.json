@@ -1,0 +1,9 @@
+{
+  "query": "-- Baa Atoll (60022) dive sites\nUPDATE places SET atollId = 60022 WHERE id IN (30089, 30090, 30091, 30092) AND type = 'dive_site';\n\n-- Kaafu Atoll (60030) dive sites\nUPDATE places SET atollId = 60030 WHERE id IN (4, 9, 26, 100) AND type = 'dive_site';\n\n-- Faafu Atoll (60024) dive sites\nUPDATE places SET atollId = 60024 WHERE id IN (42, 107) AND type = 'dive_site';\n\n-- Vaavu Atoll (60038) dive sites\nUPDATE places SET atollId = 60038 WHERE id IN (20, 30094) AND type = 'dive_site';\n\n-- Alif Alif Atoll (60020) dive sites\nUPDATE places SET atollId = 60020 WHERE id IN (66, 69) AND type = 'dive_site';\n\n-- Seenu Atoll (60035) dive sites\nUPDATE places SET atollId = 60035 WHERE id IN (104, 30093) AND type = 'dive_site';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute -- Baa Atoll (60022) dive sites\nUPDATE places SET atollId = 60022 WHERE id IN (30089, 30090, 30091, 30092) AND type = 'dive_site';\n\n-- Kaafu Atoll (60030) dive sites\nUPDATE places SET atollId = 60030 WHERE id IN (4, 9, 26, 100) AND type = 'dive_site';\n\n-- Faafu Atoll (60024) dive sites\nUPDATE places SET atollId = 60024 WHERE id IN (42, 107) AND type = 'dive_site';\n\n-- Vaavu Atoll (60038) dive sites\nUPDATE places SET atollId = 60038 WHERE id IN (20, 30094) AND type = 'dive_site';\n\n-- Alif Alif Atoll (60020) dive sites\nUPDATE places SET atollId = 60020 WHERE id IN (66, 69) AND type = 'dive_site';\n\n-- Seenu Atoll (60035) dive sites\nUPDATE places SET atollId = 60035 WHERE id IN (104, 30093) AND type = 'dive_site';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 631
+}

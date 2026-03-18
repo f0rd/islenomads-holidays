@@ -1,0 +1,145 @@
+{
+  "query": "SELECT id, name, type, latitude, longitude, difficulty, waveHeight FROM places WHERE type = 'surf_spot' AND latitude IS NOT NULL ORDER BY id LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type, latitude, longitude, difficulty, waveHeight FROM places WHERE type = 'surf_spot' AND latitude IS NOT NULL ORDER BY id LIMIT 15;",
+  "rows": [
+    {
+      "id": "30088",
+      "name": "Cokes",
+      "type": "surf_spot",
+      "latitude": "4.233300",
+      "longitude": "73.266700",
+      "difficulty": "beginner",
+      "waveHeight": "2-4 feet"
+    },
+    {
+      "id": "30099",
+      "name": "Pasta Point",
+      "type": "surf_spot",
+      "latitude": "4.183300",
+      "longitude": "73.483300",
+      "difficulty": "intermediate",
+      "waveHeight": "3-5 feet"
+    },
+    {
+      "id": "30100",
+      "name": "Riptide",
+      "type": "surf_spot",
+      "latitude": "4.200000",
+      "longitude": "73.500000",
+      "difficulty": "advanced",
+      "waveHeight": "4-6 feet"
+    },
+    {
+      "id": "30101",
+      "name": "Sultans",
+      "type": "surf_spot",
+      "latitude": "4.266700",
+      "longitude": "73.500000",
+      "difficulty": "intermediate",
+      "waveHeight": "3-5 feet"
+    },
+    {
+      "id": "30102",
+      "name": "Jailbreaks",
+      "type": "surf_spot",
+      "latitude": "4.150000",
+      "longitude": "73.450000",
+      "difficulty": "intermediate",
+      "waveHeight": "3-5 feet"
+    },
+    {
+      "id": "30103",
+      "name": "Foxys",
+      "type": "surf_spot",
+      "latitude": "5.266700",
+      "longitude": "73.200000",
+      "difficulty": "intermediate",
+      "waveHeight": "2-4 feet"
+    },
+    {
+      "id": "30104",
+      "name": "Yeyye",
+      "type": "surf_spot",
+      "latitude": "0.800000",
+      "longitude": "73.166700",
+      "difficulty": "advanced",
+      "waveHeight": "5-7 feet"
+    },
+    {
+      "id": "30105",
+      "name": "Two Ways",
+      "type": "surf_spot",
+      "latitude": "0.766700",
+      "longitude": "73.166700",
+      "difficulty": "advanced",
+      "waveHeight": "4-6 feet"
+    },
+    {
+      "id": "30112",
+      "name": "Cokes",
+      "type": "surf_spot",
+      "latitude": "4.235000",
+      "longitude": "73.268000",
+      "difficulty": "beginner",
+      "waveHeight": "2-4 feet"
+    },
+    {
+      "id": "30114",
+      "name": "Jails",
+      "type": "surf_spot",
+      "latitude": "4.230000",
+      "longitude": "73.265000",
+      "difficulty": "advanced",
+      "waveHeight": "4-6 feet"
+    },
+    {
+      "id": "30115",
+      "name": "Chickens",
+      "type": "surf_spot",
+      "latitude": "4.232000",
+      "longitude": "73.270000",
+      "difficulty": "beginner",
+      "waveHeight": "2-4 feet"
+    },
+    {
+      "id": "30116",
+      "name": "Artificial Beach Break",
+      "type": "surf_spot",
+      "latitude": "4.166700",
+      "longitude": "73.516700",
+      "difficulty": "beginner",
+      "waveHeight": "2-3 feet"
+    },
+    {
+      "id": "30117",
+      "name": "Madivaru Pass",
+      "type": "surf_spot",
+      "latitude": "4.266700",
+      "longitude": "73.133300",
+      "difficulty": "advanced",
+      "waveHeight": "5-7 feet"
+    },
+    {
+      "id": "30118",
+      "name": "Dhiffushi Reef",
+      "type": "surf_spot",
+      "latitude": "5.250000",
+      "longitude": "73.150000",
+      "difficulty": "intermediate",
+      "waveHeight": "3-5 feet"
+    },
+    {
+      "id": "30119",
+      "name": "Thoddoo Pass",
+      "type": "surf_spot",
+      "latitude": "5.250000",
+      "longitude": "73.166700",
+      "difficulty": "intermediate",
+      "waveHeight": "3-5 feet"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\tlatitude\tlongitude\tdifficulty\twaveHeight\n30088\tCokes\tsurf_spot\t4.233300\t73.266700\tbeginner\t2-4 feet\n30099\tPasta Point\tsurf_spot\t4.183300\t73.483300\tintermediate\t3-5 feet\n30100\tRiptide\tsurf_spot\t4.200000\t73.500000\tadvanced\t4-6 feet\n30101\tSultans\tsurf_spot\t4.266700\t73.500000\tintermediate\t3-5 feet\n30102\tJailbreaks\tsurf_spot\t4.150000\t73.450000\tintermediate\t3-5 feet\n30103\tFoxys\tsurf_spot\t5.266700\t73.200000\tintermediate\t2-4 feet\n30104\tYeyye\tsurf_spot\t0.800000\t73.166700\tadvanced\t5-7 feet\n30105\tTwo Ways\tsurf_spot\t0.766700\t73.166700\tadvanced\t4-6 feet\n30112\tCokes\tsurf_spot\t4.235000\t73.268000\tbeginner\t2-4 feet\n30114\tJails\tsurf_spot\t4.230000\t73.265000\tadvanced\t4-6 feet\n30115\tChickens\tsurf_spot\t4.232000\t73.270000\tbeginner\t2-4 feet\n30116\tArtificial Beach Break\tsurf_spot\t4.166700\t73.516700\tbeginner\t2-3 feet\n30117\tMadivaru Pass\tsurf_spot\t4.266700\t73.133300\tadvanced\t5-7 feet\n30118\tDhiffushi Reef\tsurf_spot\t5.250000\t73.150000\tintermediate\t3-5 feet\n30119\tThoddoo Pass\tsurf_spot\t5.250000\t73.166700\tintermediate\t3-5 feet\n",
+  "stderr": "",
+  "execution_time_ms": 345
+}

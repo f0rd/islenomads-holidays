@@ -2085,21 +2085,21 @@ export async function getFeaturedIslandsForMap(limit: number = 10): Promise<Isla
  * @param atollId The atoll ID
  * @returns Array of dive sites
  */
-export async function getDiveSitesByAtoll(atollId: number): Promise<ActivitySpot[]> {
+export async function getDiveSitesByAtoll(atollId: number): Promise<Place[]> {
   const db = await getDb();
   if (!db) return [];
   
   const results = await db
     .select()
-    .from(activitySpots)
+    .from(places)
     .where(
       and(
-        eq(activitySpots.atollId, atollId),
-        eq(activitySpots.spotType, 'dive_site'),
-        eq(activitySpots.published, 1)
+        eq(places.atollId, atollId),
+        eq(places.type, 'dive_site'),
+        eq(places.published, 1)
       )
     )
-    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+    .orderBy(asc(places.name));
   
   return results;
 }
@@ -2109,21 +2109,21 @@ export async function getDiveSitesByAtoll(atollId: number): Promise<ActivitySpot
  * @param atollId The atoll ID
  * @returns Array of surfing spots
  */
-export async function getSurfingSpotsByAtoll(atollId: number): Promise<ActivitySpot[]> {
+export async function getSurfingSpotsByAtoll(atollId: number): Promise<Place[]> {
   const db = await getDb();
   if (!db) return [];
   
   const results = await db
     .select()
-    .from(activitySpots)
+    .from(places)
     .where(
       and(
-        eq(activitySpots.atollId, atollId),
-        eq(activitySpots.spotType, 'surf_spot'),
-        eq(activitySpots.published, 1)
+        eq(places.atollId, atollId),
+        eq(places.type, 'surf_spot'),
+        eq(places.published, 1)
       )
     )
-    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+    .orderBy(asc(places.name));
   
   return results;
 }
@@ -2133,21 +2133,21 @@ export async function getSurfingSpotsByAtoll(atollId: number): Promise<ActivityS
  * @param atollId The atoll ID
  * @returns Array of snorkeling spots
  */
-export async function getSnorkelingSpotsByAtoll(atollId: number): Promise<ActivitySpot[]> {
+export async function getSnorkelingSpotsByAtoll(atollId: number): Promise<Place[]> {
   const db = await getDb();
   if (!db) return [];
   
   const results = await db
     .select()
-    .from(activitySpots)
+    .from(places)
     .where(
       and(
-        eq(activitySpots.atollId, atollId),
-        eq(activitySpots.spotType, 'snorkeling_spot'),
-        eq(activitySpots.published, 1)
+        eq(places.atollId, atollId),
+        eq(places.type, 'snorkeling_spot'),
+        eq(places.published, 1)
       )
     )
-    .orderBy(desc(activitySpots.featured), asc(activitySpots.displayOrder));
+    .orderBy(asc(places.name));
   
   return results;
 }

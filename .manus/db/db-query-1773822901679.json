@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, type FROM places WHERE type = 'surf_spot' ORDER BY id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, type FROM places WHERE type = 'surf_spot' ORDER BY id LIMIT 20;",
+  "rows": [
+    {
+      "id": "30088",
+      "name": "Cokes",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30099",
+      "name": "Pasta Point",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30100",
+      "name": "Riptide",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30101",
+      "name": "Sultans",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30102",
+      "name": "Jailbreaks",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30103",
+      "name": "Foxys",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30104",
+      "name": "Yeyye",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30105",
+      "name": "Two Ways",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30112",
+      "name": "Cokes",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30114",
+      "name": "Jails",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30115",
+      "name": "Chickens",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30116",
+      "name": "Artificial Beach Break",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30117",
+      "name": "Madivaru Pass",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30118",
+      "name": "Dhiffushi Reef",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30119",
+      "name": "Thoddoo Pass",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30120",
+      "name": "Ukulhas Reef",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30121",
+      "name": "Felidhoo Pass",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30122",
+      "name": "Naifaru Reef",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30123",
+      "name": "Hinnavaru Pass",
+      "type": "surf_spot"
+    },
+    {
+      "id": "30124",
+      "name": "Haa Alifu Reef",
+      "type": "surf_spot"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttype\n30088\tCokes\tsurf_spot\n30099\tPasta Point\tsurf_spot\n30100\tRiptide\tsurf_spot\n30101\tSultans\tsurf_spot\n30102\tJailbreaks\tsurf_spot\n30103\tFoxys\tsurf_spot\n30104\tYeyye\tsurf_spot\n30105\tTwo Ways\tsurf_spot\n30112\tCokes\tsurf_spot\n30114\tJails\tsurf_spot\n30115\tChickens\tsurf_spot\n30116\tArtificial Beach Break\tsurf_spot\n30117\tMadivaru Pass\tsurf_spot\n30118\tDhiffushi Reef\tsurf_spot\n30119\tThoddoo Pass\tsurf_spot\n30120\tUkulhas Reef\tsurf_spot\n30121\tFelidhoo Pass\tsurf_spot\n30122\tNaifaru Reef\tsurf_spot\n30123\tHinnavaru Pass\tsurf_spot\n30124\tHaa Alifu Reef\tsurf_spot\n",
+  "stderr": "",
+  "execution_time_ms": 356
+}
