@@ -1,6 +1,6 @@
 import { eq, and, desc, asc, isNotNull, ne } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
+import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings, diveSiteGuides, InsertDiveSiteGuide, DiveSiteGuide, surfSpotGuides, InsertSurfSpotGuide, SurfSpotGuide } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -2171,3 +2171,186 @@ export async function getActivitySpotsByAtoll(atollId: number) {
   };
 }
 
+
+
+// ============================================================================
+// DIVE SITE GUIDES - Database helpers for detailed dive site content
+// ============================================================================
+
+/**
+ * Get a dive site guide by slug
+ * @param slug The slug of the dive site guide
+ * @returns Dive site guide with place information
+ */
+export async function getDiveSiteGuideBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db
+    .select()
+    .from(diveSiteGuides)
+    .where(eq(diveSiteGuides.slug, slug))
+    .leftJoin(places, eq(diveSiteGuides.placeId, places.id))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
+}
+
+/**
+ * Get all dive site guides for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Array of dive site guides with place information
+ */
+export async function getDiveSiteGuidesByAtoll(atollId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(diveSiteGuides)
+    .innerJoin(places, and(
+      eq(diveSiteGuides.placeId, places.id),
+      eq(places.atollId, atollId),
+      eq(places.type, 'dive_site')
+    ))
+    .where(eq(diveSiteGuides.published, 1))
+    .orderBy(asc(diveSiteGuides.name));
+  
+  return results;
+}
+
+/**
+ * Get featured dive site guides
+ * @param limit Maximum number of guides to return
+ * @returns Array of featured dive site guides
+ */
+export async function getFeaturedDiveSiteGuides(limit = 10) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(diveSiteGuides)
+    .innerJoin(places, eq(diveSiteGuides.placeId, places.id))
+    .where(and(
+      eq(diveSiteGuides.featured, 1),
+      eq(diveSiteGuides.published, 1)
+    ))
+    .orderBy(desc(diveSiteGuides.viewCount))
+    .limit(limit);
+  
+  return results;
+}
+
+/**
+ * Get dive site guides by difficulty level
+ * @param difficulty The difficulty level (beginner, intermediate, advanced)
+ * @returns Array of dive site guides
+ */
+export async function getDiveSiteGuidesByDifficulty(difficulty: string) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(diveSiteGuides)
+    .innerJoin(places, eq(diveSiteGuides.placeId, places.id))
+    .where(and(
+      eq(diveSiteGuides.difficulty, difficulty as any),
+      eq(diveSiteGuides.published, 1)
+    ))
+    .orderBy(asc(diveSiteGuides.name));
+  
+  return results;
+}
+
+// ============================================================================
+// SURF SPOT GUIDES - Database helpers for detailed surf spot content
+// ============================================================================
+
+/**
+ * Get a surf spot guide by slug
+ * @param slug The slug of the surf spot guide
+ * @returns Surf spot guide with place information
+ */
+export async function getSurfSpotGuideBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db
+    .select()
+    .from(surfSpotGuides)
+    .where(eq(surfSpotGuides.slug, slug))
+    .leftJoin(places, eq(surfSpotGuides.placeId, places.id))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
+}
+
+/**
+ * Get all surf spot guides for a specific atoll
+ * @param atollId The atoll ID
+ * @returns Array of surf spot guides with place information
+ */
+export async function getSurfSpotGuidesByAtoll(atollId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(surfSpotGuides)
+    .innerJoin(places, and(
+      eq(surfSpotGuides.placeId, places.id),
+      eq(places.atollId, atollId),
+      eq(places.type, 'surf_spot')
+    ))
+    .where(eq(surfSpotGuides.published, 1))
+    .orderBy(asc(surfSpotGuides.name));
+  
+  return results;
+}
+
+/**
+ * Get featured surf spot guides
+ * @param limit Maximum number of guides to return
+ * @returns Array of featured surf spot guides
+ */
+export async function getFeaturedSurfSpotGuides(limit = 10) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(surfSpotGuides)
+    .innerJoin(places, eq(surfSpotGuides.placeId, places.id))
+    .where(and(
+      eq(surfSpotGuides.featured, 1),
+      eq(surfSpotGuides.published, 1)
+    ))
+    .orderBy(desc(surfSpotGuides.viewCount))
+    .limit(limit);
+  
+  return results;
+}
+
+/**
+ * Get surf spot guides by difficulty level
+ * @param difficulty The difficulty level (beginner, intermediate, advanced)
+ * @returns Array of surf spot guides
+ */
+export async function getSurfSpotGuidesByDifficulty(difficulty: string) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(surfSpotGuides)
+    .innerJoin(places, eq(surfSpotGuides.placeId, places.id))
+    .where(and(
+      eq(surfSpotGuides.difficulty, difficulty as any),
+      eq(surfSpotGuides.published, 1)
+    ))
+    .orderBy(asc(surfSpotGuides.name));
+  
+  return results;
+}

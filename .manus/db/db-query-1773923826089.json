@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `dive_site_guides` ADD CONSTRAINT `dive_guide_place_fk` FOREIGN KEY (`placeId`) REFERENCES `places`(`id`) ON DELETE cascade ON UPDATE no action;\nCREATE INDEX `idx_dive_place` ON `dive_site_guides` (`placeId`);\nCREATE INDEX `idx_dive_difficulty` ON `dive_site_guides` (`difficulty`);\nCREATE INDEX `idx_dive_published` ON `dive_site_guides` (`published`);\nCREATE INDEX `idx_dive_featured` ON `dive_site_guides` (`featured`)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute ALTER TABLE `dive_site_guides` ADD CONSTRAINT `dive_guide_place_fk` FOREIGN KEY (`placeId`) REFERENCES `places`(`id`) ON DELETE cascade ON UPDATE no action;\nCREATE INDEX `idx_dive_place` ON `dive_site_guides` (`placeId`);\nCREATE INDEX `idx_dive_difficulty` ON `dive_site_guides` (`difficulty`);\nCREATE INDEX `idx_dive_published` ON `dive_site_guides` (`published`);\nCREATE INDEX `idx_dive_featured` ON `dive_site_guides` (`featured`)",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1556
+}

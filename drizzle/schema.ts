@@ -1,4 +1,4 @@
-import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal, primaryKey, unique, index } from "drizzle-orm/mysql-core";
+import { mysqlTable, int, varchar, text, timestamp, mysqlEnum, decimal, primaryKey, unique, index, foreignKey } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -924,3 +924,134 @@ export const heroSettings = mysqlTable("hero_settings", {
 });
 export type HeroSettings = typeof heroSettings.$inferSelect;
 export type InsertHeroSettings = typeof heroSettings.$inferInsert;
+
+
+// ============================================================================
+// DIVE SITE GUIDES - Detailed guides for dive sites
+// ============================================================================
+export const diveSiteGuides = mysqlTable(
+  "dive_site_guides",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    placeId: int("placeId").notNull().unique(), // Reference to places table (where type='dive_site')
+    name: varchar("name", { length: 255 }).notNull(),
+    slug: varchar("slug", { length: 255 }).notNull().unique(),
+
+    // Dive Characteristics
+    difficulty: mysqlEnum("difficulty", ["beginner", "intermediate", "advanced"]).notNull(),
+    depthMin: int("depthMin").notNull(), // in meters
+    depthMax: int("depthMax").notNull(), // in meters
+    currentStrength: mysqlEnum("currentStrength", ["none", "weak", "moderate", "strong", "very_strong"]).notNull(),
+    visibilityMin: int("visibilityMin").notNull(), // in meters
+    visibilityMax: int("visibilityMax").notNull(), // in meters
+
+    // Timing & Distance
+    bestTimeStart: int("bestTimeStart"), // month (1-12)
+    bestTimeEnd: int("bestTimeEnd"), // month (1-12)
+    distanceFromIsland: int("distanceFromIsland"), // in km
+    boatTimeMinutes: int("boatTimeMinutes"), // travel time in minutes
+
+    // Detailed Description
+    description: text("description").notNull(),
+
+    // Content (JSON arrays)
+    tips: text("tips"), // JSON array of tips
+    bestFor: text("bestFor"), // JSON array of categories
+    marineLife: text("marineLife"), // JSON array of species
+    seasonalVariations: text("seasonalVariations"), // JSON array of seasonal data
+    certifications: text("certifications"), // JSON array of required certs
+    hazards: text("hazards"), // JSON array of hazards
+
+    // Media
+    images: text("images"), // JSON array of image URLs
+
+    // SEO
+    metaTitle: varchar("metaTitle", { length: 255 }),
+    metaDescription: varchar("metaDescription", { length: 500 }),
+    metaKeywords: varchar("metaKeywords", { length: 500 }),
+
+    // Metadata
+    published: int("published").default(0).notNull(),
+    featured: int("featured").default(0).notNull(),
+    viewCount: int("viewCount").default(0).notNull(),
+
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    placeIdx: index("idx_dive_place").on(table.placeId),
+    difficultyIdx: index("idx_dive_difficulty").on(table.difficulty),
+    publishedIdx: index("idx_dive_published").on(table.published),
+    featuredIdx: index("idx_dive_featured").on(table.featured),
+    placeFk: foreignKey({ columns: [table.placeId], foreignColumns: [places.id], name: "dive_guide_place_fk" }).onDelete("cascade"),
+  })
+);
+
+export type DiveSiteGuide = typeof diveSiteGuides.$inferSelect;
+export type InsertDiveSiteGuide = typeof diveSiteGuides.$inferInsert;
+
+// ============================================================================
+// SURF SPOT GUIDES - Detailed guides for surf spots
+// ============================================================================
+export const surfSpotGuides = mysqlTable(
+  "surf_spot_guides",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    placeId: int("placeId").notNull().unique(), // Reference to places table (where type='surf_spot')
+    name: varchar("name", { length: 255 }).notNull(),
+    slug: varchar("slug", { length: 255 }).notNull().unique(),
+
+    // Surf Characteristics
+    difficulty: mysqlEnum("difficulty", ["beginner", "intermediate", "advanced"]).notNull(),
+    waveHeightMin: decimal("waveHeightMin", { precision: 4, scale: 2 }), // in meters
+    waveHeightMax: decimal("waveHeightMax", { precision: 4, scale: 2 }), // in meters
+    waveType: varchar("waveType", { length: 100 }), // beach break, reef break, point break
+    currentStrength: mysqlEnum("currentStrength", ["none", "weak", "moderate", "strong", "very_strong"]).notNull(),
+    windDirection: varchar("windDirection", { length: 100 }), // e.g., "NE", "SW"
+
+    // Timing & Distance
+    bestTimeStart: int("bestTimeStart"), // month (1-12)
+    bestTimeEnd: int("bestTimeEnd"), // month (1-12)
+    bestTimeOfDay: varchar("bestTimeOfDay", { length: 100 }), // e.g., "early morning", "afternoon"
+    distanceFromIsland: int("distanceFromIsland"), // in km
+    boatTimeMinutes: int("boatTimeMinutes"), // travel time in minutes
+
+    // Detailed Description
+    description: text("description").notNull(),
+
+    // Content (JSON arrays)
+    tips: text("tips"), // JSON array of tips
+    bestFor: text("bestFor"), // JSON array of categories
+    marineLife: text("marineLife"), // JSON array of species
+    seasonalVariations: text("seasonalVariations"), // JSON array of seasonal data
+    hazards: text("hazards"), // JSON array of hazards
+
+    // Media
+    images: text("images"), // JSON array of image URLs
+
+    // SEO
+    metaTitle: varchar("metaTitle", { length: 255 }),
+    metaDescription: varchar("metaDescription", { length: 500 }),
+    metaKeywords: varchar("metaKeywords", { length: 500 }),
+
+    // Metadata
+    published: int("published").default(0).notNull(),
+    featured: int("featured").default(0).notNull(),
+    viewCount: int("viewCount").default(0).notNull(),
+
+    // Timestamps
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => ({
+    placeIdx: index("idx_surf_place").on(table.placeId),
+    difficultyIdx: index("idx_surf_difficulty").on(table.difficulty),
+    publishedIdx: index("idx_surf_published").on(table.published),
+    featuredIdx: index("idx_surf_featured").on(table.featured),
+    placeFk: foreignKey({ columns: [table.placeId], foreignColumns: [places.id], name: "surf_guide_place_fk" }).onDelete("cascade"),
+  })
+);
+
+export type SurfSpotGuide = typeof surfSpotGuides.$inferSelect;
+export type InsertSurfSpotGuide = typeof surfSpotGuides.$inferInsert;
