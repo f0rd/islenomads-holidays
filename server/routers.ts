@@ -34,7 +34,11 @@ import {
   upsertSeoMetadata, getIslandWithSpots, getAttractionGuideBySlug, getAttractionGuidesByType, getAllAttractionGuides, getFeaturedAttractionGuides, createAttractionGuide, updateAttractionGuide, deleteAttractionGuide, getAttractionGuideById,
   getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland,
   getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics,
-  getHeroSettings, getAllHeroSettings, updateHeroSettings, createHeroSettings
+  getHeroSettings, getAllHeroSettings, updateHeroSettings, createHeroSettings,
+  createDiveSiteGuide, updateDiveSiteGuide, deleteDiveSiteGuide, getAllDiveSiteGuidesAdmin, getDiveSiteGuideById,
+  getDiveSiteGuideBySlug, getDiveSiteGuidesByAtoll, getFeaturedDiveSiteGuides, getDiveSiteGuidesByDifficulty,
+  createSurfSpotGuide, updateSurfSpotGuide, deleteSurfSpotGuide, getAllSurfSpotGuidesAdmin, getSurfSpotGuideById,
+  getSurfSpotGuideBySlug, getSurfSpotGuidesByAtoll, getFeaturedSurfSpotGuides, getSurfSpotGuidesByDifficulty
 } from "./db";
 
 export const appRouter = router({
@@ -1475,8 +1479,234 @@ export const appRouter = router({
       }),
   }),
 
+  diveGuides: router({
+    list: publicProcedure.query(async () => {
+      return getDiveSiteGuideBySlug('');
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllDiveSiteGuidesAdmin();
+    }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getDiveSiteGuideById(input.id);
+      }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getDiveSiteGuideBySlug(input.slug);
+      }),
+
+    getByAtoll: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return getDiveSiteGuidesByAtoll(input.atollId);
+      }),
+
+    getByDifficulty: publicProcedure
+      .input(z.object({ difficulty: z.string() }))
+      .query(async ({ input }) => {
+        return getDiveSiteGuidesByDifficulty(input.difficulty);
+      }),
+
+    getFeatured: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getFeaturedDiveSiteGuides(input.limit || 10);
+      }),
+
+    create: protectedProcedure
+      .input(z.object({
+        placeId: z.number(),
+        name: z.string(),
+        slug: z.string(),
+        difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+        depthMin: z.number().optional(),
+        depthMax: z.number().optional(),
+        currentStrength: z.string().optional(),
+        visibilityMin: z.number().optional(),
+        visibilityMax: z.number().optional(),
+        bestTimeStart: z.number().optional(),
+        bestTimeEnd: z.number().optional(),
+        distanceFromIsland: z.number().optional(),
+        boatTimeMinutes: z.number().optional(),
+        description: z.string().optional(),
+        tips: z.string().optional(),
+        bestFor: z.string().optional(),
+        marineLife: z.string().optional(),
+        seasonalVariations: z.string().optional(),
+        certifications: z.string().optional(),
+        hazards: z.string().optional(),
+        images: z.string().optional(),
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+        metaKeywords: z.string().optional(),
+        published: z.number().optional(),
+        featured: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        return createDiveSiteGuide(input);
+      }),
+
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        name: z.string().optional(),
+        slug: z.string().optional(),
+        difficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
+        depthMin: z.number().optional(),
+        depthMax: z.number().optional(),
+        currentStrength: z.string().optional(),
+        visibilityMin: z.number().optional(),
+        visibilityMax: z.number().optional(),
+        bestTimeStart: z.number().optional(),
+        bestTimeEnd: z.number().optional(),
+        distanceFromIsland: z.number().optional(),
+        boatTimeMinutes: z.number().optional(),
+        description: z.string().optional(),
+        tips: z.string().optional(),
+        bestFor: z.string().optional(),
+        marineLife: z.string().optional(),
+        seasonalVariations: z.string().optional(),
+        certifications: z.string().optional(),
+        hazards: z.string().optional(),
+        images: z.string().optional(),
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+        metaKeywords: z.string().optional(),
+        published: z.number().optional(),
+        featured: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateDiveSiteGuide(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteDiveSiteGuide(input.id);
+      }),
+  }),
+
+  surfGuides: router({
+    list: publicProcedure.query(async () => {
+      return getSurfSpotGuideBySlug('');
+    }),
+
+    listAdmin: protectedProcedure.query(async () => {
+      return getAllSurfSpotGuidesAdmin();
+    }),
+
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return getSurfSpotGuideById(input.id);
+      }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        return getSurfSpotGuideBySlug(input.slug);
+      }),
+
+    getByAtoll: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        return getSurfSpotGuidesByAtoll(input.atollId);
+      }),
+
+    getByDifficulty: publicProcedure
+      .input(z.object({ difficulty: z.string() }))
+      .query(async ({ input }) => {
+        return getSurfSpotGuidesByDifficulty(input.difficulty);
+      }),
+
+    getFeatured: publicProcedure
+      .input(z.object({ limit: z.number().optional() }))
+      .query(async ({ input }) => {
+        return getFeaturedSurfSpotGuides(input.limit || 10);
+      }),
+
+    create: protectedProcedure
+      .input(z.object({
+        placeId: z.number(),
+        name: z.string(),
+        slug: z.string(),
+        difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
+        waveHeightMin: z.number().optional(),
+        waveHeightMax: z.number().optional(),
+        waveType: z.string().optional(),
+        currentStrength: z.string().optional(),
+        windDirection: z.string().optional(),
+        bestTimeStart: z.number().optional(),
+        bestTimeEnd: z.number().optional(),
+        bestTimeOfDay: z.string().optional(),
+        distanceFromIsland: z.number().optional(),
+        boatTimeMinutes: z.number().optional(),
+        description: z.string().optional(),
+        tips: z.string().optional(),
+        bestFor: z.string().optional(),
+        marineLife: z.string().optional(),
+        seasonalVariations: z.string().optional(),
+        hazards: z.string().optional(),
+        images: z.string().optional(),
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+        metaKeywords: z.string().optional(),
+        published: z.number().optional(),
+        featured: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        return createSurfSpotGuide(input);
+      }),
+
+    update: protectedProcedure
+      .input(z.object({
+        id: z.number(),
+        name: z.string().optional(),
+        slug: z.string().optional(),
+        difficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
+        waveHeightMin: z.number().optional(),
+        waveHeightMax: z.number().optional(),
+        waveType: z.string().optional(),
+        currentStrength: z.string().optional(),
+        windDirection: z.string().optional(),
+        bestTimeStart: z.number().optional(),
+        bestTimeEnd: z.number().optional(),
+        bestTimeOfDay: z.string().optional(),
+        distanceFromIsland: z.number().optional(),
+        boatTimeMinutes: z.number().optional(),
+        description: z.string().optional(),
+        tips: z.string().optional(),
+        bestFor: z.string().optional(),
+        marineLife: z.string().optional(),
+        seasonalVariations: z.string().optional(),
+        hazards: z.string().optional(),
+        images: z.string().optional(),
+        metaTitle: z.string().optional(),
+        metaDescription: z.string().optional(),
+        metaKeywords: z.string().optional(),
+        published: z.number().optional(),
+        featured: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        return updateSurfSpotGuide(id, data);
+      }),
+
+    delete: protectedProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        return deleteSurfSpotGuide(input.id);
+      }),
+  }),
+
   sitemap: sitemapRouter,
-});
+});;
 export type AppRouter = typeof appRouter;
 // Note: Airport routes will be added via API endpoint in Express server
 // The AirportInfo component fetches from /api/airport-routes?islandGuideId={id}

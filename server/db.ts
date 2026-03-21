@@ -2354,3 +2354,195 @@ export async function getSurfSpotGuidesByDifficulty(difficulty: string) {
   
   return results;
 }
+
+// ============================================================================
+// DIVE SITE GUIDES - CRUD Operations for CMS
+// ============================================================================
+
+/**
+ * Create a new dive site guide
+ * @param data The guide data
+ * @returns The created guide or null
+ */
+export async function createDiveSiteGuide(data: any): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    const result = await db.insert(diveSiteGuides).values(data);
+    return data;
+  } catch (error) {
+    console.error('Error creating dive site guide:', error);
+    return null;
+  }
+}
+
+/**
+ * Update an existing dive site guide
+ * @param id The guide ID
+ * @param data The updated guide data
+ * @returns The updated guide or null
+ */
+export async function updateDiveSiteGuide(id: number, data: Partial<any>): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    await db.update(diveSiteGuides).set(data).where(eq(diveSiteGuides.id, id));
+    const updated = await db.select().from(diveSiteGuides).where(eq(diveSiteGuides.id, id)).limit(1);
+    return updated.length > 0 ? updated[0] : null;
+  } catch (error) {
+    console.error('Error updating dive site guide:', error);
+    return null;
+  }
+}
+
+/**
+ * Delete a dive site guide
+ * @param id The guide ID
+ * @returns True if deleted, false otherwise
+ */
+export async function deleteDiveSiteGuide(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  
+  try {
+    await db.delete(diveSiteGuides).where(eq(diveSiteGuides.id, id));
+    return true;
+  } catch (error) {
+    console.error('Error deleting dive site guide:', error);
+    return false;
+  }
+}
+
+/**
+ * Get all dive site guides for admin
+ * @returns Array of all dive site guides
+ */
+export async function getAllDiveSiteGuidesAdmin() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(diveSiteGuides)
+    .leftJoin(places, eq(diveSiteGuides.placeId, places.id))
+    .orderBy(desc(diveSiteGuides.createdAt));
+  
+  return results;
+}
+
+/**
+ * Get dive site guide by ID
+ * @param id The guide ID
+ * @returns The guide or null
+ */
+export async function getDiveSiteGuideById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db
+    .select()
+    .from(diveSiteGuides)
+    .where(eq(diveSiteGuides.id, id))
+    .leftJoin(places, eq(diveSiteGuides.placeId, places.id))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
+}
+
+// ============================================================================
+// SURF SPOT GUIDES - CRUD Operations for CMS
+// ============================================================================
+
+/**
+ * Create a new surf spot guide
+ * @param data The guide data
+ * @returns The created guide or null
+ */
+export async function createSurfSpotGuide(data: any): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    const result = await db.insert(surfSpotGuides).values(data);
+    return data;
+  } catch (error) {
+    console.error('Error creating surf spot guide:', error);
+    return null;
+  }
+}
+
+/**
+ * Update an existing surf spot guide
+ * @param id The guide ID
+ * @param data The updated guide data
+ * @returns The updated guide or null
+ */
+export async function updateSurfSpotGuide(id: number, data: Partial<any>): Promise<any | null> {
+  const db = await getDb();
+  if (!db) return null;
+  
+  try {
+    await db.update(surfSpotGuides).set(data).where(eq(surfSpotGuides.id, id));
+    const updated = await db.select().from(surfSpotGuides).where(eq(surfSpotGuides.id, id)).limit(1);
+    return updated.length > 0 ? updated[0] : null;
+  } catch (error) {
+    console.error('Error updating surf spot guide:', error);
+    return null;
+  }
+}
+
+/**
+ * Delete a surf spot guide
+ * @param id The guide ID
+ * @returns True if deleted, false otherwise
+ */
+export async function deleteSurfSpotGuide(id: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+  
+  try {
+    await db.delete(surfSpotGuides).where(eq(surfSpotGuides.id, id));
+    return true;
+  } catch (error) {
+    console.error('Error deleting surf spot guide:', error);
+    return false;
+  }
+}
+
+/**
+ * Get all surf spot guides for admin
+ * @returns Array of all surf spot guides
+ */
+export async function getAllSurfSpotGuidesAdmin() {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(surfSpotGuides)
+    .leftJoin(places, eq(surfSpotGuides.placeId, places.id))
+    .orderBy(desc(surfSpotGuides.createdAt));
+  
+  return results;
+}
+
+/**
+ * Get surf spot guide by ID
+ * @param id The guide ID
+ * @returns The guide or null
+ */
+export async function getSurfSpotGuideById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  
+  const result = await db
+    .select()
+    .from(surfSpotGuides)
+    .where(eq(surfSpotGuides.id, id))
+    .leftJoin(places, eq(surfSpotGuides.placeId, places.id))
+    .limit(1);
+  
+  return result.length > 0 ? result[0] : null;
+}
