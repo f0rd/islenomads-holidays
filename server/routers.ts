@@ -35,6 +35,7 @@ import {
   getAttractionIslandLinks, linkAttractionToIsland, unlinkAttractionFromIsland, updateAttractionIslandLink, deleteAttractionIslandLink, getAttractionsNearIsland,
   getAnalyticsDashboardData, getPackagePerformanceMetrics, getConversionMetrics, getDestinationMetrics, getUserEngagementMetrics,
   getHeroSettings, getAllHeroSettings, updateHeroSettings, createHeroSettings,
+  getAttractionGuidesByAtoll, getAttractionGuidesByAtollGrouped,
 } from "./db";
 
 export const appRouter = router({
@@ -1232,6 +1233,20 @@ export const appRouter = router({
       .query(async ({ input }) => {
         const guides = await getAttractionGuidesByType(input.type, input.limit || 50);
         return guides || [];
+      }),
+
+    getByAtoll: publicProcedure
+      .input(z.object({ atollId: z.number(), type: z.enum(['dive_site', 'surf_spot', 'snorkeling_spot', 'poi']).optional() }))
+      .query(async ({ input }) => {
+        const guides = await getAttractionGuidesByAtoll(input.atollId, input.type);
+        return guides || [];
+      }),
+
+    getByAtollGrouped: publicProcedure
+      .input(z.object({ atollId: z.number() }))
+      .query(async ({ input }) => {
+        const guides = await getAttractionGuidesByAtollGrouped(input.atollId);
+        return guides;
       }),
 
     listAdmin: protectedProcedure.query(async ({ ctx }) => {

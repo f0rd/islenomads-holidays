@@ -2174,3 +2174,75 @@ export async function getActivitySpotsByAtoll(atollId: number) {
 
 
 
+
+/**
+ * Get attraction guides by atoll and type
+ * @param atollId The atoll ID
+ * @param attractionType The type of attraction (dive_site, surf_spot, etc.)
+ * @returns Array of attraction guides for the specified atoll and type
+ */
+export async function getAttractionGuidesByAtoll(atollId: number, attractionType?: string): Promise<any[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const conditions = [
+    eq(places.atollId, atollId),
+    eq(attractionGuides.published, 1),
+  ];
+
+  if (attractionType) {
+    conditions.push(eq(attractionGuides.attractionType, attractionType as any));
+  }
+
+  return db.select()
+    .from(attractionGuides)
+    .innerJoin(places, eq(attractionGuides.placeId, places.id))
+    .where(and(...conditions))
+    .orderBy(asc(attractionGuides.name));
+}
+
+/**
+ * Get attraction guides by atoll grouped by type
+ * @param atollId The atoll ID
+ * @returns Object with dive_site and surf_spot arrays
+ */
+export async function getAttractionGuidesByAtollGrouped(atollId: number): Promise<{
+  dives: any[];
+  surfs: any[];
+  snorkeling: any[];
+}> {
+  const db = await getDb();
+  if (!db) return { dives: [], surfs: [], snorkeling: [] };
+
+  const dives = await db.select()
+    .from(attractionGuides)
+    .innerJoin(places, eq(attractionGuides.placeId, places.id))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(attractionGuides.attractionType, 'dive_site'),
+      eq(attractionGuides.published, 1)
+    ))
+    .orderBy(asc(attractionGuides.name));
+
+  const surfs = await db.select()
+    .from(attractionGuides)
+    .innerJoin(places, eq(attractionGuides.placeId, places.id))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(attractionGuides.attractionType, 'surf_spot'),
+      eq(attractionGuides.published, 1)
+    ))
+    .orderBy(asc(attractionGuides.name));
+
+  const snorkeling = await db.select()
+    .from(attractionGuides)
+    .innerJoin(places, eq(attractionGuides.placeId, places.id))
+    .where(and(
+      eq(places.atollId, atollId),
+      eq(attractionGuides.attractionType, 'snorkeling_spot'),
+      eq(attractionGuides.published, 1)
+    ))
+    .orderBy(asc(attractionGuides.name));
+
+  return { dives, surfs, snorkeling };
+}

@@ -22,6 +22,7 @@ import { getAtollHeroImage, getAttractionImage } from '@shared/atollImages';
 import { getIslandFeaturedImage } from '@shared/islandFeaturedImages';
 import { getIslandGuideUrl } from '@shared/locations';
 import { ActivityFilter, type Activity } from '@/components/ActivityFilter';
+import { AtollAttractionGuides } from '@/components/AtollAttractionGuides';
 
 interface AtollData {
   id: number;
@@ -306,74 +307,13 @@ export default function AtollDetail() {
                   </div>
                 </TabsContent>
 
-                {/* Dive Sites Tab */}
+                {/* Dive Sites & Surfing Spots Tab */}
                 <TabsContent value="dive" className="space-y-6">
-                  <div>
-                    <h2 className="text-3xl font-bold mb-4">Dive Sites</h2>
-                    {diveSitesData && diveSitesData.length > 0 ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {diveSitesData.map((site: any, idx: number) => (
-                          <Card key={idx} className="hover:shadow-md transition-shadow">
-                            <CardContent className="p-6">
-                              <div className="flex items-start gap-4">
-                                <Fish className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                                <div className="flex-1">
-                                  <h3 className="text-lg font-bold mb-2">{site.name}</h3>
-                                  {site.description && (
-                                    <p className="text-sm text-muted-foreground mb-3">
-                                      {site.description}
-                                    </p>
-                                  )}
-                                  {site.difficulty && (
-                                    <Badge variant="outline" className="text-xs">
-                                      {site.difficulty}
-                                    </Badge>
-                                  )}
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-muted-foreground">No dive sites available in this atoll.</p>
-                    )}
-                  </div>
+                  {atollData?.id && <AtollAttractionGuides atollId={atollData.id} atollName={atollData.name} />}
                 </TabsContent>
 
-                {/* Surfing Spots Tab */}
                 <TabsContent value="surf" className="space-y-6">
-                  <div>
-                    <h2 className="text-3xl font-bold mb-4">Surfing Spots</h2>
-                    {surfingSpotsData && surfingSpotsData.length > 0 ? (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {surfingSpotsData.map((spot: any, idx: number) => (
-                          <Card key={idx} className="hover:shadow-md transition-shadow">
-                            <CardContent className="p-6">
-                              <div className="flex items-start gap-4">
-                                <Waves className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                                <div className="flex-1">
-                                  <h3 className="text-lg font-bold mb-2">{spot.name}</h3>
-                                  {spot.description && (
-                                    <p className="text-sm text-muted-foreground mb-3">
-                                      {spot.description}
-                                    </p>
-                                  )}
-                                  {spot.difficulty && (
-                                    <Badge variant="outline" className="text-xs">
-                                      {spot.difficulty}
-                                    </Badge>
-                                  )}
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-muted-foreground">No surfing spots available in this atoll.</p>
-                    )}
-                  </div>
+                  {atollData?.id && <AtollAttractionGuides atollId={atollData.id} atollName={atollData.name} />}
                 </TabsContent>
 
                 {/* Info Tab */}
