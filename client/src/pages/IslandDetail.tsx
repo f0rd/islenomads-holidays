@@ -118,10 +118,6 @@ export default function IslandDetail() {
   const topThingsToDo = parseJSON(island.topThingsToDo) || [];
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
-  
-  // Debug logging
-  console.log('Island name:', island.name);
-  console.log('Raw topThingsToDo from DB:', island.topThingsToDo);
   console.log('Parsed topThingsToDo:', topThingsToDo);
   console.log('topThingsToDo length:', topThingsToDo.length);
 
@@ -270,21 +266,21 @@ export default function IslandDetail() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       {topThingsToDo.length > 0 && (
-                        <div className="space-y-4">
-                          {topThingsToDo.map((item: any, idx: number) => (
-                            item && (
-                              <div key={idx} className="border-l-4 border-accent pl-4">
-                                {typeof item === 'string' ? (
-                                  <h4 className="font-semibold text-gray-900">{item}</h4>
-                                ) : (
-                                  <>
-                                    {item.title && <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>}
-                                    {item.description && <p className="text-gray-700 text-sm">{item.description}</p>}
-                                  </>
-                                )}
+                        <div className="space-y-3">
+                          {topThingsToDo.map((item: any, idx: number) => {
+                            const displayText = typeof item === 'string' ? item : item?.title || item?.name || '';
+                            return displayText ? (
+                              <div key={idx} className="flex items-start gap-3 pb-3 border-b last:border-b-0">
+                                <Compass className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                                <div>
+                                  <h4 className="font-semibold text-gray-900">{displayText}</h4>
+                                  {typeof item === 'object' && item?.description && (
+                                    <p className="text-gray-600 text-sm mt-1">{item.description}</p>
+                                  )}
+                                </div>
                               </div>
-                            )
-                          ))}
+                            ) : null;
+                          })}
                         </div>
                       )}
                       

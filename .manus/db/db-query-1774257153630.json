@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, topThingsToDo, LENGTH(topThingsToDo) as data_length FROM island_guides WHERE slug = 'ukulhas' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, topThingsToDo, LENGTH(topThingsToDo) as data_length FROM island_guides WHERE slug = 'ukulhas' LIMIT 1;",
+  "rows": [
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "topThingsToDo": "[\"Snorkeling\", \"Diving\", \"Island Hopping\", \"Local Cuisine\", \"Photography\"]",
+      "data_length": "74"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\ttopThingsToDo\tdata_length\n180004\tUkulhas\t[\"Snorkeling\", \"Diving\", \"Island Hopping\", \"Local Cuisine\", \"Photography\"]\t74\n",
+  "stderr": "",
+  "execution_time_ms": 412
+}
