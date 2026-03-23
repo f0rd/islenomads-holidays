@@ -116,7 +116,18 @@ export default function IslandDetail() {
 
   // Parse data from database
   const quickFacts = parseJSON(island.quickFacts) || [];
-  const topThingsToDo = parseJSON(island.topThingsToDo) || [];
+  let topThingsToDo = parseJSON(island.topThingsToDo) || [];
+  // Ensure topThingsToDo is always an array
+  if (!Array.isArray(topThingsToDo)) {
+    topThingsToDo = [];
+  }
+  
+  // Debug: Log immediately
+  if (island?.name === 'Ukulhas') {
+    console.log('UKULHAS DEBUG: Raw data:', island?.topThingsToDo);
+    console.log('UKULHAS DEBUG: Parsed:', topThingsToDo);
+    console.log('UKULHAS DEBUG: Length:', topThingsToDo?.length);
+  }
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
   
@@ -271,11 +282,23 @@ export default function IslandDetail() {
                       <CardDescription>Activities & Experiences</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      {topThingsToDo.length > 0 && (
+                      {topThingsToDo && topThingsToDo.length > 0 && (
                         <div className="space-y-3">
                           {topThingsToDo.map((item: any, idx: number) => {
-                            const displayText = typeof item === 'string' ? item : item?.title || item?.name || '';
-                            return displayText ? (
+                            // Handle both string and object formats
+                            let displayText = '';
+                            if (typeof item === 'string') {
+                              displayText = item;
+                            } else if (typeof item === 'object') {
+                              displayText = item?.title || item?.name || item?.activity || '';
+                            }
+                            
+                            // Debug log
+                            if (idx === 0) {
+                              console.log('DEBUG: First item:', item, 'displayText:', displayText, 'type:', typeof item);
+                            }
+                            
+                            return displayText && displayText.trim() ? (
                               <div key={idx} className="flex items-start gap-3 pb-3 border-b last:border-b-0">
                                 <Compass className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                                 <div>
