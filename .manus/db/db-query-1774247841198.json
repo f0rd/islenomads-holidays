@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name, slug, atollId FROM island_guides WHERE name LIKE '%Dhara%' OR slug LIKE '%dhara%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atollId FROM island_guides WHERE name LIKE '%Dhara%' OR slug LIKE '%dhara%';",
+  "rows": [
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo",
+      "atollId": "NULL"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa",
+      "atollId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatollId\n210013\tDharanboodhoo\tdharanboodhoo\tNULL\n270019\tDharavandhoo\tdharavandhoo-baa\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 344
+}

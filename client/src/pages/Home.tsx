@@ -198,16 +198,20 @@ export default function Home() {
                   Plan Your Trip
                 </Button>
               </Link>
-              <Link href="#contact" className="w-full md:w-auto">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
-                  onClick={() => trackCTA('Contact Us', 'hero')}
-                >
-                  Contact Us
-                </Button>
-              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full w-full md:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-semibold bg-white border-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
+                onClick={() => {
+                  trackCTA('Contact Us', 'hero');
+                  const contactSection = document.getElementById('contact-section');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>
@@ -546,7 +550,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-b from-cyan-50 via-teal-50 to-teal-100">
+      <section id="contact-section" className="py-20 bg-gradient-to-b from-cyan-50 via-teal-50 to-teal-100">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">

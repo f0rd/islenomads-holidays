@@ -1,0 +1,110 @@
+{
+  "query": "SELECT id, name, slug FROM island_guides WHERE atollId IS NULL ORDER BY name LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug FROM island_guides WHERE atollId IS NULL ORDER BY name LIMIT 20;",
+  "rows": [
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "slug": "baarah"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "slug": "burunee"
+    },
+    {
+      "id": "270005",
+      "name": "Dhangethi",
+      "slug": "dhangethi"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "slug": "feeali"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "slug": "feydhoo"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "slug": "filladhoo"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "slug": "finey"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark"
+    },
+    {
+      "id": "270043",
+      "name": "Hanimaadhoo",
+      "slug": "hanimaadhoo"
+    },
+    {
+      "id": "270004",
+      "name": "Himandhoo",
+      "slug": "himandhoo"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n210045\tBaarah\tbaarah\n210046\tBileddhoo\tbileddhoo\n210067\tBurunee\tburunee\n270005\tDhangethi\tdhangethi\n210013\tDharanboodhoo\tdharanboodhoo\n210068\tDhiddhoo\tdhiddhoo\n210069\tDhiggaru\tdhiggaru\n210071\tDhiyamigili\tdhiyamigili\n210047\tFeeali\tfeeali\n210014\tFelidhoo Kandu\tfelidhoo-kandu\n210048\tFeydhoo\tfeydhoo\n210049\tFilladhoo\tfilladhoo\n210015\tFiney\tfiney\n210073\tFotteyo Kandu\tfotteyo-kandu\n210027\tFulidhoo Kandu\tfulidhoo-kandu\n210074\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\n270043\tHanimaadhoo\thanimaadhoo\n270004\tHimandhoo\thimandhoo\n210016\tHinnavaru\thinnavaru\n210030\tHirimaradhoo\thirimaradhoo\n",
+  "stderr": "",
+  "execution_time_ms": 403
+}

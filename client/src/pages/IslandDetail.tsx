@@ -13,6 +13,7 @@ import WaterActivitiesSection from '@/components/WaterActivitiesSection';
 import AirportInfo from '@/components/AirportInfo';
 import BoatRoutesInfo from '@/components/BoatRoutesInfo';
 import ExcursionsInfo from '@/components/ExcursionsInfo';
+import { AtollAttractionGuides } from '@/components/AtollAttractionGuides';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
@@ -288,6 +289,13 @@ export default function IslandDetail() {
                             islandLatitude={island.latitude}
                             islandLongitude={island.longitude}
                           />
+                        </div>
+                      )}
+                      
+                      {/* Attraction Guides - Dive Sites and Surf Spots */}
+                      {island.atollId && (
+                        <div className="mt-6 pt-6 border-t">
+                          <AtollAttractionGuides atollId={island.atollId} atollName={island.atollName || 'Atoll'} />
                         </div>
                       )}
                     </CardContent>

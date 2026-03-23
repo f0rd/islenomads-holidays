@@ -1,0 +1,86 @@
+{
+  "query": "SELECT id, name FROM atolls ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name FROM atolls ORDER BY id;",
+  "rows": [
+    {
+      "id": "60020",
+      "name": "Alif Alif Atoll"
+    },
+    {
+      "id": "60021",
+      "name": "Alif Dhaal Atoll"
+    },
+    {
+      "id": "60022",
+      "name": "Baa Atoll"
+    },
+    {
+      "id": "60023",
+      "name": "Dhaalu Atoll"
+    },
+    {
+      "id": "60024",
+      "name": "Faafu Atoll"
+    },
+    {
+      "id": "60025",
+      "name": "Gaafu Alif Atoll"
+    },
+    {
+      "id": "60026",
+      "name": "Gaafu Dhaalu Atoll"
+    },
+    {
+      "id": "60027",
+      "name": "Gnaviyani Atoll"
+    },
+    {
+      "id": "60028",
+      "name": "Haa Alif Atoll"
+    },
+    {
+      "id": "60029",
+      "name": "Haa Dhaalu Atoll"
+    },
+    {
+      "id": "60030",
+      "name": "Kaafu Atoll"
+    },
+    {
+      "id": "60031",
+      "name": "Laamu Atoll"
+    },
+    {
+      "id": "60032",
+      "name": "Meemu Atoll"
+    },
+    {
+      "id": "60033",
+      "name": "Noonu Atoll"
+    },
+    {
+      "id": "60034",
+      "name": "Raa Atoll"
+    },
+    {
+      "id": "60035",
+      "name": "Seenu Atoll"
+    },
+    {
+      "id": "60036",
+      "name": "Shaviyani Atoll"
+    },
+    {
+      "id": "60037",
+      "name": "Thaa Atoll"
+    },
+    {
+      "id": "60038",
+      "name": "Vaavu Atoll"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n60020\tAlif Alif Atoll\n60021\tAlif Dhaal Atoll\n60022\tBaa Atoll\n60023\tDhaalu Atoll\n60024\tFaafu Atoll\n60025\tGaafu Alif Atoll\n60026\tGaafu Dhaalu Atoll\n60027\tGnaviyani Atoll\n60028\tHaa Alif Atoll\n60029\tHaa Dhaalu Atoll\n60030\tKaafu Atoll\n60031\tLaamu Atoll\n60032\tMeemu Atoll\n60033\tNoonu Atoll\n60034\tRaa Atoll\n60035\tSeenu Atoll\n60036\tShaviyani Atoll\n60037\tThaa Atoll\n60038\tVaavu Atoll\n",
+  "stderr": "",
+  "execution_time_ms": 362
+}

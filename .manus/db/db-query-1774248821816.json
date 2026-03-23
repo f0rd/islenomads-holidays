@@ -1,0 +1,913 @@
+{
+  "query": "SELECT DISTINCT ig.id, ig.name, ig.slug, a.id as atoll_id, a.name as atoll_name FROM island_guides ig LEFT JOIN atolls a ON ig.name LIKE CONCAT('%', a.name, '%') OR a.name LIKE CONCAT('%', ig.name, '%') ORDER BY a.name, ig.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT DISTINCT ig.id, ig.name, ig.slug, a.id as atoll_id, a.name as atoll_name FROM island_guides ig LEFT JOIN atolls a ON ig.name LIKE CONCAT('%', a.name, '%') OR a.name LIKE CONCAT('%', ig.name, '%') ORDER BY a.name, ig.name;",
+  "rows": [
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210045",
+      "name": "Baarah",
+      "slug": "baarah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210012",
+      "name": "Bandidhoo",
+      "slug": "bandidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210046",
+      "name": "Bileddhoo",
+      "slug": "bileddhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "120055",
+      "name": "Bodufolhudhoo",
+      "slug": "bodufolhudhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210067",
+      "name": "Burunee",
+      "slug": "burunee",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270005",
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210013",
+      "name": "Dharanboodhoo",
+      "slug": "dharanboodhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180008",
+      "name": "Dhiffushi",
+      "slug": "dhiffushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210069",
+      "name": "Dhiggaru",
+      "slug": "dhiggaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180003",
+      "name": "Dhigurah",
+      "slug": "dhigurah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210071",
+      "name": "Dhiyamigili",
+      "slug": "dhiyamigili",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210002",
+      "name": "Dhonfanu",
+      "slug": "dhonfanu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210072",
+      "name": "Dhuvaafaru",
+      "slug": "dhuvaafaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210003",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270026",
+      "name": "Eydhafushi",
+      "slug": "eydhafushi-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210047",
+      "name": "Feeali",
+      "slug": "feeali",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180035",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270023",
+      "name": "Fehendhoo",
+      "slug": "fehendhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180018",
+      "name": "Feidhoo",
+      "slug": "feidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270001",
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210014",
+      "name": "Felidhoo Kandu",
+      "slug": "felidhoo-kandu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180028",
+      "name": "Feridhoo",
+      "slug": "feridhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210048",
+      "name": "Feydhoo",
+      "slug": "feydhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210049",
+      "name": "Filladhoo",
+      "slug": "filladhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210015",
+      "name": "Finey",
+      "slug": "finey",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270049",
+      "name": "Fonadhoo",
+      "slug": "fonadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210073",
+      "name": "Fotteyo Kandu",
+      "slug": "fotteyo-kandu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270020",
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180002",
+      "name": "Fulidhoo",
+      "slug": "fulidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210027",
+      "name": "Fulidhoo Kandu",
+      "slug": "fulidhoo-kandu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "slug": "funadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210074",
+      "name": "Fuvahmulah Tiger Shark",
+      "slug": "fuvahmulah-tiger-shark",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180037",
+      "name": "Fuvamulah",
+      "slug": "fuvahmulah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210028",
+      "name": "Gaafaru",
+      "slug": "gaafaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270030",
+      "name": "Gan",
+      "slug": "gan",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210029",
+      "name": "Gemendhoo",
+      "slug": "gemendhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270025",
+      "name": "Godhdhoo",
+      "slug": "godhdhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270024",
+      "name": "Goidhoo",
+      "slug": "goidhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270043",
+      "name": "Hanimaadhoo",
+      "slug": "hanimaadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270004",
+      "name": "Himandhoo",
+      "slug": "himandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180026",
+      "name": "Himmafushi",
+      "slug": "himmafushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210016",
+      "name": "Hinnavaru",
+      "slug": "hinnavaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210030",
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180020",
+      "name": "Hithadhoo",
+      "slug": "hithadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210051",
+      "name": "Hoarafushi",
+      "slug": "hoarafushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210052",
+      "name": "Hulhudheli",
+      "slug": "hulhudheli",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210075",
+      "name": "Hulhumeedhoo",
+      "slug": "hulhumeedhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210076",
+      "name": "Huraa",
+      "slug": "huraa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210005",
+      "name": "Ihavandhoo",
+      "slug": "ihavandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180023",
+      "name": "Inguraidhoo",
+      "slug": "inguraidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210077",
+      "name": "Innamaa",
+      "slug": "innamaa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210053",
+      "name": "Isdhoo",
+      "slug": "isdhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210006",
+      "name": "Kaashidhoo",
+      "slug": "kaashidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270051",
+      "name": "Kadhdhoo",
+      "slug": "kadhdhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210078",
+      "name": "Kadhoo",
+      "slug": "kadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210031",
+      "name": "Kalaidhoo",
+      "slug": "kalaidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270022",
+      "name": "Kamadhoo",
+      "slug": "kamadhoo-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "150006",
+      "name": "Kandooma",
+      "slug": "kandooma",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210017",
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210079",
+      "name": "Kelaa",
+      "slug": "kelaa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210080",
+      "name": "Kendhoo",
+      "slug": "kendhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "slug": "keyodhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270033",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210018",
+      "name": "Kumundhoo",
+      "slug": "kumundhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "slug": "kurendhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210081",
+      "name": "Kurinbi",
+      "slug": "kurinbi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210019",
+      "name": "Lhosfushi",
+      "slug": "lhosfushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210020",
+      "name": "Maaenboodhoo",
+      "slug": "maaenboodhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180001",
+      "name": "Maafushi",
+      "slug": "maafushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270002",
+      "name": "Maalhos",
+      "slug": "maalhos",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270021",
+      "name": "Maalhos",
+      "slug": "maalhos-baa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "90004",
+      "name": "Maamigili",
+      "slug": "maamigili",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210082",
+      "name": "Maarandhoo",
+      "slug": "maarandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210021",
+      "name": "Maavah",
+      "slug": "maavah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180022",
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210007",
+      "name": "Maduvvaree",
+      "slug": "maduvvaree",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "slug": "magoodhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270041",
+      "name": "Maguhdhuvaa",
+      "slug": "maguhdhuvaa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210008",
+      "name": "Makunudhoo",
+      "slug": "makunudhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180030",
+      "name": "Mathiveri",
+      "slug": "mathiveri",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210035",
+      "name": "Meedhoo",
+      "slug": "meedhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210055",
+      "name": "Milandhoo",
+      "slug": "milandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "slug": "mulah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210022",
+      "name": "Mulhadhoo",
+      "slug": "mulhadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180015",
+      "name": "Muli",
+      "slug": "muli",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270050",
+      "name": "Mundoo",
+      "slug": "mundoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210057",
+      "name": "Muraidhoo",
+      "slug": "muraidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210023",
+      "name": "Naalaafushi",
+      "slug": "naalaafushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270003",
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210009",
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210036",
+      "name": "Nellaidhoo",
+      "slug": "nellaidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210037",
+      "name": "Neykurendhoo",
+      "slug": "neykurendhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210059",
+      "name": "Nolhivaramu",
+      "slug": "nolhivaramu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210083",
+      "name": "Nolhivaranfaru",
+      "slug": "nolhivaranfaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210039",
+      "name": "Noomaraa",
+      "slug": "noomaraa",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210010",
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180027",
+      "name": "Omadhoo",
+      "slug": "omadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210024",
+      "name": "Raimmandhoo",
+      "slug": "raimmandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210040",
+      "name": "Rakeedhoo",
+      "slug": "rakeedhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270027",
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210041",
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210060",
+      "name": "Rinbudhoo",
+      "slug": "rinbudhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210084",
+      "name": "Thakandhoo",
+      "slug": "thakandhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210011",
+      "name": "Thinadhoo",
+      "slug": "thinadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "150003",
+      "name": "Thoddoo",
+      "slug": "thoddoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270044",
+      "name": "Thulhaadhoo",
+      "slug": "thulhaadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210001",
+      "name": "Thulusdhoo",
+      "slug": "thulusdhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210061",
+      "name": "Thuraakunu",
+      "slug": "thuraakunu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180004",
+      "name": "Ukulhas",
+      "slug": "ukulhas",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210085",
+      "name": "Uligamu",
+      "slug": "uligamu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270053",
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210062",
+      "name": "Utheemu",
+      "slug": "utheemu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "270055",
+      "name": "Vaadhoo",
+      "slug": "vaadhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210025",
+      "name": "Vaikaradhoo",
+      "slug": "vaikaradhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210063",
+      "name": "Vashafaru",
+      "slug": "vashafaru",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "slug": "velidhoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210065",
+      "name": "Veyvah",
+      "slug": "veyvah",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    },
+    {
+      "id": "210086",
+      "name": "Villingili",
+      "slug": "villingili",
+      "atoll_id": "NULL",
+      "atoll_name": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll_id\tatoll_name\n180024\tAlifushi\talifushi\tNULL\tNULL\n210045\tBaarah\tbaarah\tNULL\tNULL\n210012\tBandidhoo\tbandidhoo\tNULL\tNULL\n210046\tBileddhoo\tbileddhoo\tNULL\tNULL\n120055\tBodufolhudhoo\tbodufolhudhoo\tNULL\tNULL\n210067\tBurunee\tburunee\tNULL\tNULL\n270005\tDhangethi\tdhangethi\tNULL\tNULL\n210013\tDharanboodhoo\tdharanboodhoo\tNULL\tNULL\n270019\tDharavandhoo\tdharavandhoo-baa\tNULL\tNULL\n210068\tDhiddhoo\tdhiddhoo\tNULL\tNULL\n180008\tDhiffushi\tdhiffushi\tNULL\tNULL\n210069\tDhiggaru\tdhiggaru\tNULL\tNULL\n180003\tDhigurah\tdhigurah\tNULL\tNULL\n210071\tDhiyamigili\tdhiyamigili\tNULL\tNULL\n210002\tDhonfanu\tdhonfanu\tNULL\tNULL\n210072\tDhuvaafaru\tdhuvaafaru\tNULL\tNULL\n210003\tEydhafushi\teydhafushi\tNULL\tNULL\n270026\tEydhafushi\teydhafushi-baa\tNULL\tNULL\n210047\tFeeali\tfeeali\tNULL\tNULL\n180035\tFehendhoo\tfehendhoo\tNULL\tNULL\n270023\tFehendhoo\tfehendhoo-baa\tNULL\tNULL\n180018\tFeidhoo\tfeidhoo\tNULL\tNULL\n270001\tFelidhoo\tfelidhoo\tNULL\tNULL\n210014\tFelidhoo Kandu\tfelidhoo-kandu\tNULL\tNULL\n180028\tFeridhoo\tferidhoo\tNULL\tNULL\n210048\tFeydhoo\tfeydhoo\tNULL\tNULL\n210049\tFilladhoo\tfilladhoo\tNULL\tNULL\n210015\tFiney\tfiney\tNULL\tNULL\n270049\tFonadhoo\tfonadhoo\tNULL\tNULL\n210073\tFotteyo Kandu\tfotteyo-kandu\tNULL\tNULL\n270020\tFulhadhoo\tfulhadhoo-baa\tNULL\tNULL\n180002\tFulidhoo\tfulidhoo\tNULL\tNULL\n210027\tFulidhoo Kandu\tfulidhoo-kandu\tNULL\tNULL\n210050\tFunadhoo\tfunadhoo\tNULL\tNULL\n210074\tFuvahmulah Tiger Shark\tfuvahmulah-tiger-shark\tNULL\tNULL\n180037\tFuvamulah\tfuvahmulah\tNULL\tNULL\n210028\tGaafaru\tgaafaru\tNULL\tNULL\n270030\tGan\tgan\tNULL\tNULL\n210029\tGemendhoo\tgemendhoo\tNULL\tNULL\n270025\tGodhdhoo\tgodhdhoo-baa\tNULL\tNULL\n270024\tGoidhoo\tgoidhoo-baa\tNULL\tNULL\n270043\tHanimaadhoo\thanimaadhoo\tNULL\tNULL\n180036\tHanimadhoo\thanimadhoo\tNULL\tNULL\n270004\tHimandhoo\thimandhoo\tNULL\tNULL\n180026\tHimmafushi\thimmafushi\tNULL\tNULL\n210016\tHinnavaru\thinnavaru\tNULL\tNULL\n210030\tHirimaradhoo\thirimaradhoo\tNULL\tNULL\n180020\tHithadhoo\thithadhoo\tNULL\tNULL\n210051\tHoarafushi\thoarafushi\tNULL\tNULL\n210052\tHulhudheli\thulhudheli\tNULL\tNULL\n180010\tHulhumalé\thulhumale\tNULL\tNULL\n210075\tHulhumeedhoo\thulhumeedhoo\tNULL\tNULL\n210076\tHuraa\thuraa\tNULL\tNULL\n210005\tIhavandhoo\tihavandhoo\tNULL\tNULL\n180023\tInguraidhoo\tinguraidhoo\tNULL\tNULL\n210077\tInnamaa\tinnamaa\tNULL\tNULL\n210053\tIsdhoo\tisdhoo\tNULL\tNULL\n210006\tKaashidhoo\tkaashidhoo\tNULL\tNULL\n270051\tKadhdhoo\tkadhdhoo\tNULL\tNULL\n210078\tKadhoo\tkadhoo\tNULL\tNULL\n210031\tKalaidhoo\tkalaidhoo\tNULL\tNULL\n270022\tKamadhoo\tkamadhoo-baa\tNULL\tNULL\n150006\tKandooma\tkandooma\tNULL\tNULL\n210017\tKandooma Thila\tkandooma-thila\tNULL\tNULL\n210079\tKelaa\tkelaa\tNULL\tNULL\n210080\tKendhoo\tkendhoo\tNULL\tNULL\n210032\tKeyodhoo\tkeyodhoo\tNULL\tNULL\n270033\tKudahuvadhoo\tkudahuvadhoo\tNULL\tNULL\n210018\tKumundhoo\tkumundhoo\tNULL\tNULL\n210054\tKurendhoo\tkurendhoo\tNULL\tNULL\n210081\tKurinbi\tkurinbi\tNULL\tNULL\n210033\tLhaimagu\tlhaimagu\tNULL\tNULL\n210019\tLhosfushi\tlhosfushi\tNULL\tNULL\n210020\tMaaenboodhoo\tmaaenboodhoo\tNULL\tNULL\n180001\tMaafushi\tmaafushi\tNULL\tNULL\n270002\tMaalhos\tmaalhos\tNULL\tNULL\n270021\tMaalhos\tmaalhos-baa\tNULL\tNULL\n90004\tMaamigili\tmaamigili\tNULL\tNULL\n210082\tMaarandhoo\tmaarandhoo\tNULL\tNULL\n210021\tMaavah\tmaavah\tNULL\tNULL\n180022\tMadifushi\tmadifushi\tNULL\tNULL\n210007\tMaduvvaree\tmaduvvaree\tNULL\tNULL\n210034\tMagoodhoo\tmagoodhoo\tNULL\tNULL\n270041\tMaguhdhuvaa\tmaguhdhuvaa\tNULL\tNULL\n210008\tMakunudhoo\tmakunudhoo\tNULL\tNULL\n60001\tMalé\tmale\tNULL\tNULL\n180019\tMaradhoo\tmaradhoo\tNULL\tNULL\n180030\tMathiveri\tmathiveri\tNULL\tNULL\n210035\tMeedhoo\tmeedhoo\tNULL\tNULL\n210055\tMilandhoo\tmilandhoo\tNULL\tNULL\n210056\tMulah\tmulah\tNULL\tNULL\n210022\tMulhadhoo\tmulhadhoo\tNULL\tNULL\n180015\tMuli\tmuli\tNULL\tNULL\n270050\tMundoo\tmundoo\tNULL\tNULL\n210057\tMuraidhoo\tmuraidhoo\tNULL\tNULL\n210023\tNaalaafushi\tnaalaafushi\tNULL\tNULL\n270003\tNaifaru\tnaifaru\tNULL\tNULL\n210009\tNaivaadhoo\tnaivaadhoo\tNULL\tNULL\n210036\tNellaidhoo\tnellaidhoo\tNULL\tNULL\n210037\tNeykurendhoo\tneykurendhoo\tNULL\tNULL\n210038\tNilandhoo\tnilandhoo\tNULL\tNULL\n210059\tNolhivaramu\tnolhivaramu\tNULL\tNULL\n210083\tNolhivaranfaru\tnolhivaranfaru\tNULL\tNULL\n210039\tNoomaraa\tnoomaraa\tNULL\tNULL\n210010\tOlhuvelifushi\tolhuvelifushi\tNULL\tNULL\n180027\tOmadhoo\tomadhoo\tNULL\tNULL\n210024\tRaimmandhoo\traimmandhoo\tNULL\tNULL\n210040\tRakeedhoo\trakeedhoo\tNULL\tNULL\n270027\tRasdhoo\trasdhoo\tNULL\tNULL\n210041\tRasdhoo Madivaru\trasdhoo-madivaru\tNULL\tNULL\n210060\tRinbudhoo\trinbudhoo\tNULL\tNULL\n210084\tThakandhoo\tthakandhoo\tNULL\tNULL\n210011\tThinadhoo\tthinadhoo\tNULL\tNULL\n150003\tThoddoo\tthoddoo\tNULL\tNULL\n270044\tThulhaadhoo\tthulhaadhoo\tNULL\tNULL\n210001\tThulusdhoo\tthulusdhoo\tNULL\tNULL\n210061\tThuraakunu\tthuraakunu\tNULL\tNULL\n180004\tUkulhas\tukulhas\tNULL\tNULL\n210085\tUligamu\tuligamu\tNULL\tNULL\n270053\tUngoofaaru\tungoofaaru\tNULL\tNULL\n210062\tUtheemu\tutheemu\tNULL\tNULL\n270055\tVaadhoo\tvaadhoo\tNULL\tNULL\n210025\tVaikaradhoo\tvaikaradhoo\tNULL\tNULL\n210063\tVashafaru\tvashafaru\tNULL\tNULL\n210026\tVelidhoo\tvelidhoo\tNULL\tNULL\n210064\tVeligandu\tveligandu\tNULL\tNULL\n180021\tVeymandoo\tveymandoo\tNULL\tNULL\n210065\tVeyvah\tveyvah\tNULL\tNULL\n210086\tVillingili\tvillingili\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 365
+}
