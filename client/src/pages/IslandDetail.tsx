@@ -259,7 +259,7 @@ export default function IslandDetail() {
                 )}
 
                 {/* Do Section - Activities */}
-                {topThingsToDo.length > 0 && (
+                {(topThingsToDo.length > 0 || island.atollId) && (
                   <Card>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
@@ -269,20 +269,28 @@ export default function IslandDetail() {
                       <CardDescription>Activities & Experiences</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="space-y-4">
-                        {topThingsToDo.map((item: any, idx: number) => (
-                          item && (item.title || item.description) && (
-                            <div key={idx} className="border-l-4 border-accent pl-4">
-                              {item.title && <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>}
-                              {item.description && <p className="text-gray-700 text-sm">{item.description}</p>}
-                            </div>
-                          )
-                        ))}
-                      </div>
+                      {topThingsToDo.length > 0 && (
+                        <div className="space-y-4">
+                          {topThingsToDo.map((item: any, idx: number) => (
+                            item && (
+                              <div key={idx} className="border-l-4 border-accent pl-4">
+                                {typeof item === 'string' ? (
+                                  <h4 className="font-semibold text-gray-900">{item}</h4>
+                                ) : (
+                                  <>
+                                    {item.title && <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>}
+                                    {item.description && <p className="text-gray-700 text-sm">{item.description}</p>}
+                                  </>
+                                )}
+                              </div>
+                            )
+                          ))}
+                        </div>
+                      )}
                       
                       {/* Water Activities - Using Enhanced Component */}
                       {(linkedActivitySpots.length > 0 || nearbyActivitySpots.length > 0) && (
-                        <div className="mt-6 pt-6 border-t">
+                        <div className={topThingsToDo.length > 0 ? "mt-6 pt-6 border-t" : ""}>
                           <WaterActivitiesSection
                             linkedSpots={linkedActivitySpots}
                             nearbySpots={nearbyActivitySpots}
@@ -294,7 +302,7 @@ export default function IslandDetail() {
                       
                       {/* Attraction Guides - Dive Sites and Surf Spots */}
                       {island.atollId && (
-                        <div className="mt-6 pt-6 border-t">
+                        <div className={(topThingsToDo.length > 0 || linkedActivitySpots.length > 0 || nearbyActivitySpots.length > 0) ? "mt-6 pt-6 border-t" : ""}>
                           <AtollAttractionGuides atollId={island.atollId} atollName={island.atollName || 'Atoll'} />
                         </div>
                       )}
