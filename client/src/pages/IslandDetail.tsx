@@ -17,6 +17,19 @@ import { AtollAttractionGuides } from '@/components/AtollAttractionGuides';
 import { useState, useEffect } from 'react';
 
 export default function IslandDetail() {
+  // Define parseJSON at the top of the component
+  const parseJSON = (data: any): any => {
+    if (!data) return null;
+    if (typeof data === 'string') {
+      try {
+        return JSON.parse(data);
+      } catch {
+        return data;
+      }
+    }
+    return data;
+  };
+
   const [, params] = useRoute('/island/:slug');
   const slug = params?.slug as string;
   
@@ -72,18 +85,6 @@ export default function IslandDetail() {
   }, [islandExperiences]);
 
   // Helper function to parse JSON strings
-  const parseJSON = (data: any): any => {
-    if (!data) return null;
-    if (typeof data === 'string') {
-      try {
-        return JSON.parse(data);
-      } catch {
-        return data;
-      }
-    }
-    return data;
-  };
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -118,8 +119,13 @@ export default function IslandDetail() {
   const topThingsToDo = parseJSON(island.topThingsToDo) || [];
   const foodCafes = parseJSON(island.foodCafes) || [];
   const faqs = parseJSON(island.faq) || [];
-  console.log('Parsed topThingsToDo:', topThingsToDo);
-  console.log('topThingsToDo length:', topThingsToDo.length);
+  
+  useEffect(() => {
+    console.log('Raw topThingsToDo from island:', island?.topThingsToDo);
+    console.log('Parsed topThingsToDo:', topThingsToDo);
+    console.log('Type of topThingsToDo:', typeof topThingsToDo);
+    console.log('Is array?', Array.isArray(topThingsToDo));
+  }, [island, topThingsToDo]);
 
   // Get all islands for navigation
   const allIslands = guides.filter((g: any) => g.published);
