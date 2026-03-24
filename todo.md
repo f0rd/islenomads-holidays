@@ -2650,3 +2650,11 @@
   - Both tabs displaying correctly
   - Placeholder messages showing when no data available
   - Status: COMPLETE - Ready to display real data once populated in database
+
+
+## Design Update - Things to Do Section (Mar 24, 2026)
+- [x] Show all activities expanded by default (no clicking required)
+- [x] Make section heading smaller to match "Getting There" page style
+- [x] Remove expand/collapse functionality from activity cards
+- [x] Test on island detail pages (Dharavandhoo - all 5 activities displaying)
+- [x] Verify heading size consistency across all sections
