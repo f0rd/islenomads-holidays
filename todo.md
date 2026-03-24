@@ -2338,6 +2338,22 @@
 - [ ] Upload surfing spot hero images to S3 and get CDN URLs
 - [ ] Test all surfing features and verify functionality with real data
 
+## Design Modernization - Things to Do Section (Mar 24, 2026)
+- [x] Update ThingsToDoSection component with modern color palette (turquoise + yellow)
+- [x] Implement modern UI patterns (subtle gradients, shadows, smooth transitions)
+- [x] Update typography with modern font sizing and weights
+- [x] Add smooth animations and hover effects
+- [x] Make layout more spacious and minimalist
+- [x] Implement modern card designs with rounded corners and borders
+- [x] Create Lonely Planet-style numbered list format with expandable sections
+- [x] Test modernized design on Dharavandhoo island page
+- [x] Verify all 5 activities display with modern styling
+- [x] Confirm smooth expand/collapse animations working
+- [x] Verify color scheme (turquoise badges, yellow borders) displaying correctly
+- [ ] Extend modern styling to other sections of island detail page (Overview, Getting There, etc.)
+- [ ] Apply modern design patterns to other components across website
+- [ ] Create design system documentation for consistency
+
 
 ## Bug Fixes (Mar 16, 2026)
 - [x] Fixed React key warning on /explore-maldives Attractions tab
