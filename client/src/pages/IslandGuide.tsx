@@ -389,33 +389,78 @@ export default function IslandGuide() {
 
             {/* Activities Tab */}
             <TabsContent value="activities" className="space-y-6 mt-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Top Things to Do</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => {
-                      // Handle both string and object formats
-                      const title = typeof activity === 'string' ? activity : (activity?.title || activity?.name || activity?.activity || '');
-                      const description = typeof activity === 'object' ? activity?.description : '';
-                      const emoji = typeof activity === 'object' ? activity?.emoji : '🎯';
-                      
-                      return (
-                        <div key={idx} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                          <div className="flex items-start gap-3">
-                            <span className="text-2xl">{emoji || '🎯'}</span>
-                            <div className="flex-1">
-                              <h4 className="font-semibold text-sm mb-1">{title}</h4>
-                              {description && <p className="text-sm text-muted-foreground">{description}</p>}
-                            </div>
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-3xl font-bold mb-2 text-foreground">Things to Do</h2>
+                  <p className="text-muted-foreground">Discover the best activities and experiences on {guide.name}</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => {
+                    // Handle both string and object formats
+                    const title = typeof activity === 'string' ? activity : (activity?.title || activity?.name || activity?.activity || '');
+                    const description = typeof activity === 'object' ? activity?.description : '';
+                    const emoji = typeof activity === 'object' ? activity?.emoji : '🎯';
+                    
+                    // Activity-specific emoji mapping
+                    const activityEmojis: { [key: string]: string } = {
+                      'snorkeling': '🤿',
+                      'diving': '🏊',
+                      'island hopping': '🏝️',
+                      'local cuisine': '🍽️',
+                      'photography': '📸',
+                      'surfing': '🏄',
+                      'fishing': '🎣',
+                      'swimming': '🏊',
+                      'beach': '🏖️',
+                      'hiking': '🥾',
+                      'water sports': '🚤',
+                      'cultural': '🎭',
+                    };
+                    
+                    const displayEmoji = emoji && emoji !== '🎯' ? emoji : (activityEmojis[title.toLowerCase()] || '✨');
+                    
+                    return (
+                      <div 
+                        key={idx} 
+                        className="group relative overflow-hidden rounded-xl border border-border bg-card hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      >
+                        {/* Gradient background on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        <div className="relative p-6 space-y-4">
+                          {/* Icon with background */}
+                          <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                            <span className="text-3xl animate-bounce group-hover:animate-pulse">{displayEmoji}</span>
+                          </div>
+                          
+                          {/* Title */}
+                          <h3 className="text-lg font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                            {title}
+                          </h3>
+                          
+                          {/* Description */}
+                          {description && (
+                            <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                              {description}
+                            </p>
+                          )}
+                          
+                          {/* Accent line */}
+                          <div className="pt-2 border-t border-border/50 group-hover:border-accent/30 transition-colors duration-300" />
+                          
+                          {/* Learn more indicator */}
+                          <div className="flex items-center gap-2 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span>Explore</span>
+                            <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </TabsContent>
 
             {/* Food Tab */}
