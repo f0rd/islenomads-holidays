@@ -1,0 +1,21 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as with_overview,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_activities,\n  SUM(CASE WHEN nearbyAirports IS NOT NULL AND nearbyAirports != '' THEN 1 ELSE 0 END) as with_airports,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as with_coordinates,\n  SUM(CASE WHEN bestTimeToVisit IS NOT NULL AND bestTimeToVisit != '' THEN 1 ELSE 0 END) as with_best_time,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as with_faq,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as with_attractions,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as with_beaches_rules\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as with_overview,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as with_activities,\n  SUM(CASE WHEN nearbyAirports IS NOT NULL AND nearbyAirports != '' THEN 1 ELSE 0 END) as with_airports,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as with_coordinates,\n  SUM(CASE WHEN bestTimeToVisit IS NOT NULL AND bestTimeToVisit != '' THEN 1 ELSE 0 END) as with_best_time,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as with_faq,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as with_attractions,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as with_beaches_rules\nFROM island_guides",
+  "rows": [
+    {
+      "total_guides": "129",
+      "with_overview": "129",
+      "with_activities": "128",
+      "with_airports": "108",
+      "with_coordinates": "108",
+      "with_best_time": "129",
+      "with_faq": "129",
+      "with_attractions": "129",
+      "with_beaches_rules": "129"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\twith_overview\twith_activities\twith_airports\twith_coordinates\twith_best_time\twith_faq\twith_attractions\twith_beaches_rules\n129\t129\t128\t108\t108\t129\t129\t129\t129\n",
+  "stderr": "",
+  "execution_time_ms": 355
+}

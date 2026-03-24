@@ -1,0 +1,150 @@
+{
+  "query": "SELECT \n  name,\n  slug,\n  CASE \n    WHEN overview IS NULL OR overview = '' THEN 'Missing'\n    WHEN LENGTH(overview) < 50 THEN 'Too Short'\n    ELSE 'OK'\n  END as overview_quality,\n  CASE \n    WHEN topThingsToDo IS NULL OR topThingsToDo = '' THEN 'Missing'\n    WHEN topThingsToDo = '[\"Snorkeling\",\"Diving\",\"Beach Relaxation\",\"Local Culture\",\"Water Sports\"]' THEN 'Generic'\n    ELSE 'OK'\n  END as activities_quality,\n  CASE \n    WHEN nearbyAirports IS NULL OR nearbyAirports = '' THEN 'Missing'\n    ELSE 'OK'\n  END as airport_quality\nFROM island_guides\nWHERE overview IS NULL OR overview = '' \n   OR topThingsToDo = '[\"Snorkeling\",\"Diving\",\"Beach Relaxation\",\"Local Culture\",\"Water Sports\"]'\n   OR nearbyAirports IS NULL OR nearbyAirports = ''\nLIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  name,\n  slug,\n  CASE \n    WHEN overview IS NULL OR overview = '' THEN 'Missing'\n    WHEN LENGTH(overview) < 50 THEN 'Too Short'\n    ELSE 'OK'\n  END as overview_quality,\n  CASE \n    WHEN topThingsToDo IS NULL OR topThingsToDo = '' THEN 'Missing'\n    WHEN topThingsToDo = '[\"Snorkeling\",\"Diving\",\"Beach Relaxation\",\"Local Culture\",\"Water Sports\"]' THEN 'Generic'\n    ELSE 'OK'\n  END as activities_quality,\n  CASE \n    WHEN nearbyAirports IS NULL OR nearbyAirports = '' THEN 'Missing'\n    ELSE 'OK'\n  END as airport_quality\nFROM island_guides\nWHERE overview IS NULL OR overview = '' \n   OR topThingsToDo = '[\"Snorkeling\",\"Diving\",\"Beach Relaxation\",\"Local Culture\",\"Water Sports\"]'\n   OR nearbyAirports IS NULL OR nearbyAirports = ''\nLIMIT 20",
+  "rows": [
+    {
+      "name": "Felidhoo",
+      "slug": "felidhoo",
+      "overview_quality": "Too Short",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Maalhos",
+      "slug": "maalhos",
+      "overview_quality": "Too Short",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Himandhoo",
+      "slug": "himandhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Dhangethi",
+      "slug": "dhangethi",
+      "overview_quality": "OK",
+      "activities_quality": "Missing",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Fulhadhoo",
+      "slug": "fulhadhoo-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Maalhos",
+      "slug": "maalhos-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Kamadhoo",
+      "slug": "kamadhoo-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Fehendhoo",
+      "slug": "fehendhoo-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Goidhoo",
+      "slug": "goidhoo-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Godhdhoo",
+      "slug": "godhdhoo-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Eydhafushi",
+      "slug": "eydhafushi-baa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Rasdhoo",
+      "slug": "rasdhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Maguhdhuvaa",
+      "slug": "maguhdhuvaa",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Hanimaadhoo",
+      "slug": "hanimaadhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Thulhaadhoo",
+      "slug": "thulhaadhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Fonadhoo",
+      "slug": "fonadhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Mundoo",
+      "slug": "mundoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Kadhdhoo",
+      "slug": "kadhdhoo",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    },
+    {
+      "name": "Ungoofaaru",
+      "slug": "ungoofaaru",
+      "overview_quality": "OK",
+      "activities_quality": "OK",
+      "airport_quality": "Missing"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\toverview_quality\tactivities_quality\tairport_quality\nFelidhoo\tfelidhoo\tToo Short\tOK\tMissing\nMaalhos\tmaalhos\tToo Short\tOK\tMissing\nHimandhoo\thimandhoo\tOK\tOK\tMissing\nDhangethi\tdhangethi\tOK\tMissing\tMissing\nFulhadhoo\tfulhadhoo-baa\tOK\tOK\tMissing\nMaalhos\tmaalhos-baa\tOK\tOK\tMissing\nKamadhoo\tkamadhoo-baa\tOK\tOK\tMissing\nFehendhoo\tfehendhoo-baa\tOK\tOK\tMissing\nGoidhoo\tgoidhoo-baa\tOK\tOK\tMissing\nGodhdhoo\tgodhdhoo-baa\tOK\tOK\tMissing\nEydhafushi\teydhafushi-baa\tOK\tOK\tMissing\nRasdhoo\trasdhoo\tOK\tOK\tMissing\nKudahuvadhoo\tkudahuvadhoo\tOK\tOK\tMissing\nMaguhdhuvaa\tmaguhdhuvaa\tOK\tOK\tMissing\nHanimaadhoo\thanimaadhoo\tOK\tOK\tMissing\nThulhaadhoo\tthulhaadhoo\tOK\tOK\tMissing\nFonadhoo\tfonadhoo\tOK\tOK\tMissing\nMundoo\tmundoo\tOK\tOK\tMissing\nKadhdhoo\tkadhdhoo\tOK\tOK\tMissing\nUngoofaaru\tungoofaaru\tOK\tOK\tMissing\n",
+  "stderr": "",
+  "execution_time_ms": 379
+}
