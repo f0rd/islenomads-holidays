@@ -323,7 +323,7 @@ export default function IslandGuide() {
               />
             </TabsContent>
 
-            {/* Getting There Tab */}
+                {/* Getting There Tab */}
             <TabsContent value="getting-there" className="space-y-6 mt-6">
               <div className="space-y-4">
                 {/* Airport Information - Primary source for transportation */}
@@ -343,38 +343,41 @@ export default function IslandGuide() {
                   </Card>
                 )}
                 
-                <TransportComparison
-                  fromLocation="Male"
-                  toLocation={guide.name}
-                  options={[
-                    {
-                      id: 1,
-                      name: "Public Ferry (MTCC)",
-                      type: "ferry",
-                      operator: "MTCC",
-                      vesselType: "Wooden Dhoni Ferry",
-                      duration: "45-120 minutes",
-                      price: 150,
-                      capacity: 50,
-                      description: "Government-operated public ferry. Most affordable option with authentic local experience.",
-                      amenities: ["Basic seating", "Toilets", "Shelter area"],
-                      schedule: "Daily except Friday (varies by route)"
-                    },
-                    {
-                      id: 2,
-                      name: "Speedboat",
-                      type: "speedboat",
-                      operator: "Private Operator",
-                      vesselType: "Modern Speedboat",
-                      duration: "35-60 minutes",
-                      price: 2000,
-                      capacity: 20,
-                      description: "Faster private speedboat service with modern amenities and comfortable seating.",
-                      amenities: ["Air conditioning", "Comfortable seating", "Life jackets"],
-                      schedule: "Daily departures"
-                    }
-                  ]}
-                />
+                {/* Only show TransportComparison if no airport info exists */}
+                {(!guide.nearbyAirports || guide.nearbyAirports.length === 0) && (
+                  <TransportComparison
+                    fromLocation="Male"
+                    toLocation={guide.name}
+                    options={[
+                      {
+                        id: 1,
+                        name: "Public Ferry (MTCC)",
+                        type: "ferry",
+                        operator: "MTCC",
+                        vesselType: "Wooden Dhoni Ferry",
+                        duration: "45-120 minutes",
+                        price: 150,
+                        capacity: 50,
+                        description: "Government-operated public ferry. Most affordable option with authentic local experience.",
+                        amenities: ["Basic seating", "Toilets", "Shelter area"],
+                        schedule: "Daily except Friday (varies by route)"
+                      },
+                      {
+                        id: 2,
+                        name: "Speedboat",
+                        type: "speedboat",
+                        operator: "Private Operator",
+                        vesselType: "Modern Speedboat",
+                        duration: "35-60 minutes",
+                        price: 2000,
+                        capacity: 20,
+                        description: "Faster private speedboat service with modern amenities and comfortable seating.",
+                        amenities: ["Air conditioning", "Comfortable seating", "Life jackets"],
+                        schedule: "Daily departures"
+                      }
+                    ]}
+                  />
+                )}
                 
                 {/* Inter-Island Routes - Island Hopping Options */}
                 {(outgoingRoutes && outgoingRoutes.length > 0) || (incomingRoutes && incomingRoutes.length > 0) ? (

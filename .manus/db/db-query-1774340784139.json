@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE island_guides \nSET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Dharavandhoo Airport',\n    'code', 'DRV',\n    'distance', 'On island',\n    'flightTime', '30-45 minutes from Male',\n    'airlines', JSON_ARRAY('Maldivian Air Taxi', 'Heli Air Maldives'),\n    'description', 'Direct flights from Male (MLE) to Dharavandhoo (DRV). Fastest way to reach the island with scenic aerial views.'\n  ),\n  JSON_OBJECT(\n    'name', 'Male International Airport',\n    'code', 'MLE',\n    'distance', 'Requires ferry/speedboat',\n    'flightTime', 'International hub',\n    'airlines', JSON_ARRAY('Multiple international carriers'),\n    'description', 'Main international airport. Fly here first, then take domestic flight or ferry to Dharavandhoo.'\n  )\n)\nWHERE slug = 'dharavandhoo-baa'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute UPDATE island_guides \nSET nearbyAirports = JSON_ARRAY(\n  JSON_OBJECT(\n    'name', 'Dharavandhoo Airport',\n    'code', 'DRV',\n    'distance', 'On island',\n    'flightTime', '30-45 minutes from Male',\n    'airlines', JSON_ARRAY('Maldivian Air Taxi', 'Heli Air Maldives'),\n    'description', 'Direct flights from Male (MLE) to Dharavandhoo (DRV). Fastest way to reach the island with scenic aerial views.'\n  ),\n  JSON_OBJECT(\n    'name', 'Male International Airport',\n    'code', 'MLE',\n    'distance', 'Requires ferry/speedboat',\n    'flightTime', 'International hub',\n    'airlines', JSON_ARRAY('Multiple international carriers'),\n    'description', 'Main international airport. Fly here first, then take domestic flight or ferry to Dharavandhoo.'\n  )\n)\nWHERE slug = 'dharavandhoo-baa'",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 370
+}
