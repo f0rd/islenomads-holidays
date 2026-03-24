@@ -395,17 +395,24 @@ export default function IslandGuide() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => (
-                      <div key={idx} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-                        <div className="flex items-start gap-3">
-                          <span className="text-2xl">{activity.emoji || '🎯'}</span>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-sm mb-1">{activity.title}</h4>
-                            <p className="text-sm text-muted-foreground">{activity.description}</p>
+                    {Array.isArray(guide.topThingsToDo) && guide.topThingsToDo.map((activity: any, idx: number) => {
+                      // Handle both string and object formats
+                      const title = typeof activity === 'string' ? activity : (activity?.title || activity?.name || activity?.activity || '');
+                      const description = typeof activity === 'object' ? activity?.description : '';
+                      const emoji = typeof activity === 'object' ? activity?.emoji : '🎯';
+                      
+                      return (
+                        <div key={idx} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                          <div className="flex items-start gap-3">
+                            <span className="text-2xl">{emoji || '🎯'}</span>
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-sm mb-1">{title}</h4>
+                              {description && <p className="text-sm text-muted-foreground">{description}</p>}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </CardContent>
               </Card>

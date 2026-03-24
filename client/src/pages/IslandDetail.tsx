@@ -284,32 +284,19 @@ export default function IslandDetail() {
                     <CardContent className="space-y-4">
                       {topThingsToDo && topThingsToDo.length > 0 && (
                         <div className="space-y-3">
-                          {topThingsToDo.map((item: any, idx: number) => {
-                            // Handle both string and object formats
-                            let displayText = '';
-                            if (typeof item === 'string') {
-                              displayText = item;
-                            } else if (typeof item === 'object') {
-                              displayText = item?.title || item?.name || item?.activity || '';
-                            }
-                            
-                            // Debug log
-                            if (idx === 0) {
-                              console.log('DEBUG: First item:', item, 'displayText:', displayText, 'type:', typeof item);
-                            }
-                            
-                            return displayText && displayText.trim() ? (
-                              <div key={idx} className="flex items-start gap-3 pb-3 border-b last:border-b-0">
-                                <Compass className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <div>
-                                  <h4 className="font-semibold text-gray-900">{displayText}</h4>
-                                  {typeof item === 'object' && item?.description && (
-                                    <p className="text-gray-600 text-sm mt-1">{item.description}</p>
-                                  )}
-                                </div>
+                          {topThingsToDo.map((item: any, idx: number) => (
+                            <div key={idx} className="flex items-start gap-3 pb-3 border-b last:border-b-0">
+                              <Compass className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                              <div>
+                                <h4 className="font-semibold text-gray-900">
+                                  {typeof item === 'string' ? item : (item?.title || item?.name || item?.activity || 'Activity')}
+                                </h4>
+                                {typeof item === 'object' && item?.description && (
+                                  <p className="text-gray-600 text-sm mt-1">{item.description}</p>
+                                )}
                               </div>
-                            ) : null;
-                          })}
+                            </div>
+                          ))}
                         </div>
                       )}
                       

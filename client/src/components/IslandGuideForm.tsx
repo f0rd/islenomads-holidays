@@ -102,7 +102,7 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
     quickFacts: ['', '', '', '', '', '', '', ''],
     attractions: [],
     transportation: { flight: '', speedboat: '', ferry: '' },
-    topThingsToDo: Array(10).fill({ title: '', description: '' }),
+    topThingsToDo: [],
     beachesLocalRules: '',
     foodCafes: '',
     practicalInfo: '',
@@ -364,31 +364,64 @@ export function IslandGuideForm({ initialData, onSubmit, isLoading = false, isla
             <CardHeader className="cursor-pointer" onClick={() => toggleSection('topThingsToDo')}>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle>Top 10 Things to Do</CardTitle>
-                  <CardDescription>Main attractions and activities</CardDescription>
+                  <CardTitle>Top Things to Do</CardTitle>
+                  <CardDescription>Main attractions and activities for this island</CardDescription>
                 </div>
                 <ChevronDown className={`w-5 h-5 transition-transform ${expandedSections.topThingsToDo ? 'rotate-180' : ''}`} />
               </div>
             </CardHeader>
             {expandedSections.topThingsToDo && (
               <CardContent className="space-y-4">
-                {(formData.topThingsToDo || []).map((item, index) => (
-                  <div key={index} className="space-y-2 pb-4 border-b last:border-b-0">
-                    <input
-                      type="text"
-                      value={item?.title || ''}
-                      onChange={(e) => updateThingToDo(index, 'title', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md font-medium"
-                      placeholder={`Activity ${index + 1} title`}
-                    />
-                    <textarea
-                      value={item?.description ?? ''}
-                      onChange={(e) => updateThingToDo(index, 'description', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-md min-h-[60px]"
-                      placeholder="Description..."
-                    />
-                  </div>
-                ))}
+                {(formData.topThingsToDo || []).length === 0 ? (
+                  <p className="text-gray-500 text-sm">No activities added yet. Click "Add Activity" to get started.</p>
+                ) : (
+                  (formData.topThingsToDo || []).map((item, index) => (
+                    <div key={index} className="space-y-2 pb-4 border-b last:border-b-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1 space-y-2">
+                          <input
+                            type="text"
+                            value={item?.title || ''}
+                            onChange={(e) => updateThingToDo(index, 'title', e.target.value)}
+                            className="w-full px-3 py-2 border rounded-md font-medium"
+                            placeholder={`Activity ${index + 1} title`}
+                          />
+                          <textarea
+                            value={item?.description ?? ''}
+                            onChange={(e) => updateThingToDo(index, 'description', e.target.value)}
+                            className="w-full px-3 py-2 border rounded-md min-h-[80px]"
+                            placeholder="Describe this activity..."
+                          />
+                        </div>
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            const updated = (formData.topThingsToDo || []).filter((_, i) => i !== index);
+                            setFormData({ ...formData, topThingsToDo: updated });
+                          }}
+                          className="text-red-600 hover:text-red-700 hover:bg-red-50 mt-2"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))
+                )}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const updated = [...(formData.topThingsToDo || []), { title: '', description: '' }];
+                    setFormData({ ...formData, topThingsToDo: updated });
+                  }}
+                  className="w-full"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Activity
+                </Button>
               </CardContent>
             )}
           </Card>
