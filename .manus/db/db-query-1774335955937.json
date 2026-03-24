@@ -1,0 +1,225 @@
+{
+  "query": "SELECT name, slug, atoll FROM island_guides \nWHERE latitude IS NULL OR longitude IS NULL \nORDER BY name ASC\nLIMIT 50",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, slug, atoll FROM island_guides \nWHERE latitude IS NULL OR longitude IS NULL \nORDER BY name ASC\nLIMIT 50",
+  "rows": [
+    {
+      "name": "Himandhoo",
+      "slug": "himandhoo",
+      "atoll": "Alif Alif Atoll"
+    },
+    {
+      "name": "Hinnavaru",
+      "slug": "hinnavaru",
+      "atoll": "Lhaviyani Atoll"
+    },
+    {
+      "name": "Hirimaradhoo",
+      "slug": "hirimaradhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Hulhudheli",
+      "slug": "hulhudheli",
+      "atoll": "Dhaalu Atoll"
+    },
+    {
+      "name": "Hulhumeedhoo",
+      "slug": "hulhumeedhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Innamaa",
+      "slug": "innamaa",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kadhoo",
+      "slug": "kadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kalaidhoo",
+      "slug": "kalaidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kandooma Thila",
+      "slug": "kandooma-thila",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kelaa",
+      "slug": "kelaa",
+      "atoll": "Haa Alifu Atoll"
+    },
+    {
+      "name": "Kendhoo",
+      "slug": "kendhoo",
+      "atoll": "Baa Atoll"
+    },
+    {
+      "name": "Kumundhoo",
+      "slug": "kumundhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Kurinbi",
+      "slug": "kurinbi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "atoll": "Shaviyani Atoll"
+    },
+    {
+      "name": "Lhosfushi",
+      "slug": "lhosfushi",
+      "atoll": "Noonu Atoll"
+    },
+    {
+      "name": "Maaenboodhoo",
+      "slug": "maaenboodhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maarandhoo",
+      "slug": "maarandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maavah",
+      "slug": "maavah",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Madifushi",
+      "slug": "madifushi",
+      "atoll": "Thaa Atoll"
+    },
+    {
+      "name": "Maduvvaree",
+      "slug": "maduvvaree",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Maguhdhuvaa",
+      "slug": "maguhdhuvaa",
+      "atoll": "Gaafu Dhaalu Atoll"
+    },
+    {
+      "name": "Makunudhoo",
+      "slug": "makunudhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Milandhoo",
+      "slug": "milandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Mulhadhoo",
+      "slug": "mulhadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Muli",
+      "slug": "muli",
+      "atoll": "Meemu Atoll"
+    },
+    {
+      "name": "Muraidhoo",
+      "slug": "muraidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Naivaadhoo",
+      "slug": "naivaadhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nellaidhoo",
+      "slug": "nellaidhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Neykurendhoo",
+      "slug": "neykurendhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nolhivaramu",
+      "slug": "nolhivaramu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Nolhivaranfaru",
+      "slug": "nolhivaranfaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Noomaraa",
+      "slug": "noomaraa",
+      "atoll": "Shaviyani Atoll"
+    },
+    {
+      "name": "Olhuvelifushi",
+      "slug": "olhuvelifushi",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Raimmandhoo",
+      "slug": "raimmandhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rakeedhoo",
+      "slug": "rakeedhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rasdhoo Madivaru",
+      "slug": "rasdhoo-madivaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Rinbudhoo",
+      "slug": "rinbudhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Thakandhoo",
+      "slug": "thakandhoo",
+      "atoll": "Haa Alifu Atoll"
+    },
+    {
+      "name": "Thuraakunu",
+      "slug": "thuraakunu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Uligamu",
+      "slug": "uligamu",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Vaikaradhoo",
+      "slug": "vaikaradhoo",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Vashafaru",
+      "slug": "vashafaru",
+      "atoll": "Maldives"
+    },
+    {
+      "name": "Veyvah",
+      "slug": "veyvah",
+      "atoll": "Maldives"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tatoll\nHimandhoo\thimandhoo\tAlif Alif Atoll\nHinnavaru\thinnavaru\tLhaviyani Atoll\nHirimaradhoo\thirimaradhoo\tMaldives\nHulhudheli\thulhudheli\tDhaalu Atoll\nHulhumeedhoo\thulhumeedhoo\tMaldives\nInnamaa\tinnamaa\tMaldives\nKadhoo\tkadhoo\tMaldives\nKalaidhoo\tkalaidhoo\tMaldives\nKandooma Thila\tkandooma-thila\tMaldives\nKelaa\tkelaa\tHaa Alifu Atoll\nKendhoo\tkendhoo\tBaa Atoll\nKumundhoo\tkumundhoo\tMaldives\nKurinbi\tkurinbi\tMaldives\nLhaimagu\tlhaimagu\tShaviyani Atoll\nLhosfushi\tlhosfushi\tNoonu Atoll\nMaaenboodhoo\tmaaenboodhoo\tMaldives\nMaarandhoo\tmaarandhoo\tMaldives\nMaavah\tmaavah\tMaldives\nMadifushi\tmadifushi\tThaa Atoll\nMaduvvaree\tmaduvvaree\tMaldives\nMaguhdhuvaa\tmaguhdhuvaa\tGaafu Dhaalu Atoll\nMakunudhoo\tmakunudhoo\tMaldives\nMilandhoo\tmilandhoo\tMaldives\nMulhadhoo\tmulhadhoo\tMaldives\nMuli\tmuli\tMeemu Atoll\nMuraidhoo\tmuraidhoo\tMaldives\nNaivaadhoo\tnaivaadhoo\tMaldives\nNellaidhoo\tnellaidhoo\tMaldives\nNeykurendhoo\tneykurendhoo\tMaldives\nNolhivaramu\tnolhivaramu\tMaldives\nNolhivaranfaru\tnolhivaranfaru\tMaldives\nNoomaraa\tnoomaraa\tShaviyani Atoll\nOlhuvelifushi\tolhuvelifushi\tMaldives\nRaimmandhoo\traimmandhoo\tMaldives\nRakeedhoo\trakeedhoo\tMaldives\nRasdhoo Madivaru\trasdhoo-madivaru\tMaldives\nRinbudhoo\trinbudhoo\tMaldives\nThakandhoo\tthakandhoo\tHaa Alifu Atoll\nThuraakunu\tthuraakunu\tMaldives\nUligamu\tuligamu\tMaldives\nVaikaradhoo\tvaikaradhoo\tMaldives\nVashafaru\tvashafaru\tMaldives\nVeyvah\tveyvah\tMaldives\n",
+  "stderr": "",
+  "execution_time_ms": 385
+}
