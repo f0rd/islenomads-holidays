@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  id,\n  name,\n  slug,\n  atoll,\n  overview,\n  published,\n  featured,\n  displayOrder,\n  bestTime,\n  currency,\n  language,\n  coordinates,\n  topThingsToDo,\n  quickFacts,\n  foodCafes,\n  beachesLocalRules,\n  practicalInfo,\n  faqs,\n  createdAt,\n  updatedAt\nFROM island_guides\nORDER BY name ASC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  id,\n  name,\n  slug,\n  atoll,\n  overview,\n  published,\n  featured,\n  displayOrder,\n  bestTime,\n  currency,\n  language,\n  coordinates,\n  topThingsToDo,\n  quickFacts,\n  foodCafes,\n  beachesLocalRules,\n  practicalInfo,\n  faqs,\n  createdAt,\n  updatedAt\nFROM island_guides\nORDER BY name ASC",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'besttime' in 'field list'"
+  ]
+}

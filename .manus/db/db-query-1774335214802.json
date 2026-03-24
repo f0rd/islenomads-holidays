@@ -1,0 +1,19 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as guides_with_coordinates,\n  SUM(CASE WHEN bestTimeToVisit IS NOT NULL THEN 1 ELSE 0 END) as guides_with_best_time,\n  SUM(CASE WHEN currency IS NOT NULL THEN 1 ELSE 0 END) as guides_with_currency,\n  SUM(CASE WHEN language IS NOT NULL THEN 1 ELSE 0 END) as guides_with_language,\n  SUM(CASE WHEN overview IS NOT NULL THEN 1 ELSE 0 END) as guides_with_overview,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL THEN 1 ELSE 0 END) as guides_with_activities\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as guides_with_coordinates,\n  SUM(CASE WHEN bestTimeToVisit IS NOT NULL THEN 1 ELSE 0 END) as guides_with_best_time,\n  SUM(CASE WHEN currency IS NOT NULL THEN 1 ELSE 0 END) as guides_with_currency,\n  SUM(CASE WHEN language IS NOT NULL THEN 1 ELSE 0 END) as guides_with_language,\n  SUM(CASE WHEN overview IS NOT NULL THEN 1 ELSE 0 END) as guides_with_overview,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL THEN 1 ELSE 0 END) as guides_with_activities\nFROM island_guides",
+  "rows": [
+    {
+      "total_guides": "129",
+      "guides_with_coordinates": "62",
+      "guides_with_best_time": "129",
+      "guides_with_currency": "129",
+      "guides_with_language": "129",
+      "guides_with_overview": "129",
+      "guides_with_activities": "128"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\tguides_with_coordinates\tguides_with_best_time\tguides_with_currency\tguides_with_language\tguides_with_overview\tguides_with_activities\n129\t62\t129\t129\t129\t129\t128\n",
+  "stderr": "",
+  "execution_time_ms": 351
+}
