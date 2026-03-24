@@ -1,0 +1,170 @@
+{
+  "query": "SELECT \n  id,\n  name,\n  slug,\n  featured,\n  displayOrder,\n  faq\nFROM island_guides\nWHERE featured = 1\nORDER BY displayOrder ASC\nLIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  id,\n  name,\n  slug,\n  featured,\n  displayOrder,\n  faq\nFROM island_guides\nWHERE featured = 1\nORDER BY displayOrder ASC\nLIMIT 20",
+  "rows": [
+    {
+      "id": "270030",
+      "name": "Gan",
+      "slug": "gan",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210068",
+      "name": "Dhiddhoo",
+      "slug": "dhiddhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210064",
+      "name": "Veligandu",
+      "slug": "veligandu",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "270019",
+      "name": "Dharavandhoo",
+      "slug": "dharavandhoo-baa",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210034",
+      "name": "Magoodhoo",
+      "slug": "magoodhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210038",
+      "name": "Nilandhoo",
+      "slug": "nilandhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210054",
+      "name": "Kurendhoo",
+      "slug": "kurendhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210056",
+      "name": "Mulah",
+      "slug": "mulah",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "270003",
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "180019",
+      "name": "Maradhoo",
+      "slug": "maradhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210026",
+      "name": "Velidhoo",
+      "slug": "velidhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "180021",
+      "name": "Veymandoo",
+      "slug": "veymandoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "180024",
+      "name": "Alifushi",
+      "slug": "alifushi",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210033",
+      "name": "Lhaimagu",
+      "slug": "lhaimagu",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "60001",
+      "name": "Malé",
+      "slug": "male",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210050",
+      "name": "Funadhoo",
+      "slug": "funadhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "210032",
+      "name": "Keyodhoo",
+      "slug": "keyodhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "[{\"answer\": \"Excellent! Pristine reefs with diverse marine life directly from beaches.\", \"question\": \"🤿 Is snorkeling good?\"}, {\"answer\": \"No, very peaceful and quiet, authentic local island experience.\", \"question\": \"🏖️ Is it crowded?\"}, {\"answer\": \"Speedboat or ferry from Male, approximately 55 minutes.\", \"question\": \"🚤 How do I get here?\"}, {\"answer\": \"Budget travelers: $45-75/day. Mid-range: $90-130/day.\", \"question\": \"💰 What is the budget?\"}, {\"answer\": \"Yes, very safe. Peaceful island with friendly locals.\", \"question\": \"🌊 Is it safe?\"}]"
+    },
+    {
+      "id": "180010",
+      "name": "Hulhumalé",
+      "slug": "hulhumale",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    },
+    {
+      "id": "270033",
+      "name": "Kudahuvadhoo",
+      "slug": "kudahuvadhoo",
+      "featured": "1",
+      "displayOrder": "0",
+      "faq": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tfeatured\tdisplayOrder\tfaq\n270030\tGan\tgan\t1\t0\tNULL\n210068\tDhiddhoo\tdhiddhoo\t1\t0\tNULL\n210064\tVeligandu\tveligandu\t1\t0\tNULL\n270019\tDharavandhoo\tdharavandhoo-baa\t1\t0\tNULL\n210034\tMagoodhoo\tmagoodhoo\t1\t0\tNULL\n210038\tNilandhoo\tnilandhoo\t1\t0\tNULL\n210054\tKurendhoo\tkurendhoo\t1\t0\tNULL\n210056\tMulah\tmulah\t1\t0\tNULL\n270003\tNaifaru\tnaifaru\t1\t0\tNULL\n180019\tMaradhoo\tmaradhoo\t1\t0\tNULL\n210026\tVelidhoo\tvelidhoo\t1\t0\tNULL\n180021\tVeymandoo\tveymandoo\t1\t0\tNULL\n180024\tAlifushi\talifushi\t1\t0\tNULL\n210033\tLhaimagu\tlhaimagu\t1\t0\tNULL\n60001\tMalé\tmale\t1\t0\tNULL\n210050\tFunadhoo\tfunadhoo\t1\t0\tNULL\n210032\tKeyodhoo\tkeyodhoo\t1\t0\tNULL\n180036\tHanimadhoo\thanimadhoo\t1\t0\t[{\"answer\": \"Excellent! Pristine reefs with diverse marine life directly from beaches.\", \"question\": \"🤿 Is snorkeling good?\"}, {\"answer\": \"No, very peaceful and quiet, authentic local island experience.\", \"question\": \"🏖️ Is it crowded?\"}, {\"answer\": \"Speedboat or ferry from Male, approximately 55 minutes.\", \"question\": \"🚤 How do I get here?\"}, {\"answer\": \"Budget travelers: $45-75/day. Mid-range: $90-130/day.\", \"question\": \"💰 What is the budget?\"}, {\"answer\": \"Yes, very safe. Peaceful island with friendly locals.\", \"question\": \"🌊 Is it safe?\"}]\n180010\tHulhumalé\thulhumale\t1\t0\tNULL\n270033\tKudahuvadhoo\tkudahuvadhoo\t1\t0\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 352
+}

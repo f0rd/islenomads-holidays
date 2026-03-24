@@ -1,0 +1,150 @@
+{
+  "query": "SELECT \n  name,\n  LENGTH(overview) as overview_length,\n  LENGTH(topThingsToDo) as activities_length,\n  LENGTH(quickFacts) as quickfacts_length,\n  LENGTH(attractions) as attractions_length\nFROM island_guides\nORDER BY overview_length ASC\nLIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  name,\n  LENGTH(overview) as overview_length,\n  LENGTH(topThingsToDo) as activities_length,\n  LENGTH(quickFacts) as quickfacts_length,\n  LENGTH(attractions) as attractions_length\nFROM island_guides\nORDER BY overview_length ASC\nLIMIT 20",
+  "rows": [
+    {
+      "name": "Felidhoo",
+      "overview_length": "46",
+      "activities_length": "81",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Maalhos",
+      "overview_length": "49",
+      "activities_length": "74",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Naifaru",
+      "overview_length": "49",
+      "activities_length": "74",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Himandhoo",
+      "overview_length": "51",
+      "activities_length": "74",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Dhangethi",
+      "overview_length": "52",
+      "activities_length": "NULL",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Dhiffushi",
+      "overview_length": "56",
+      "activities_length": "81",
+      "quickfacts_length": "515",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Ukulhas",
+      "overview_length": "59",
+      "activities_length": "1174",
+      "quickfacts_length": "515",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Fehendhoo",
+      "overview_length": "75",
+      "activities_length": "620",
+      "quickfacts_length": "166",
+      "attractions_length": "129"
+    },
+    {
+      "name": "Kandooma",
+      "overview_length": "78",
+      "activities_length": "1696",
+      "quickfacts_length": "234",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Maafushi",
+      "overview_length": "78",
+      "activities_length": "81",
+      "quickfacts_length": "515",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Hanimadhoo",
+      "overview_length": "79",
+      "activities_length": "621",
+      "quickfacts_length": "164",
+      "attractions_length": "128"
+    },
+    {
+      "name": "Fuvamulah",
+      "overview_length": "80",
+      "activities_length": "714",
+      "quickfacts_length": "307",
+      "attractions_length": "256"
+    },
+    {
+      "name": "Godhdhoo",
+      "overview_length": "84",
+      "activities_length": "77",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Himmafushi",
+      "overview_length": "90",
+      "activities_length": "81",
+      "quickfacts_length": "357",
+      "attractions_length": "363"
+    },
+    {
+      "name": "Feridhoo",
+      "overview_length": "90",
+      "activities_length": "74",
+      "quickfacts_length": "344",
+      "attractions_length": "282"
+    },
+    {
+      "name": "Omadhoo",
+      "overview_length": "91",
+      "activities_length": "657",
+      "quickfacts_length": "374",
+      "attractions_length": "366"
+    },
+    {
+      "name": "Mathiveri",
+      "overview_length": "91",
+      "activities_length": "74",
+      "quickfacts_length": "191",
+      "attractions_length": "130"
+    },
+    {
+      "name": "Eydhafushi",
+      "overview_length": "98",
+      "activities_length": "77",
+      "quickfacts_length": "NULL",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Dhonfanu",
+      "overview_length": "126",
+      "activities_length": "852",
+      "quickfacts_length": "288",
+      "attractions_length": "NULL"
+    },
+    {
+      "name": "Eydhafushi",
+      "overview_length": "126",
+      "activities_length": "852",
+      "quickfacts_length": "288",
+      "attractions_length": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\toverview_length\tactivities_length\tquickfacts_length\tattractions_length\nFelidhoo\t46\t81\tNULL\tNULL\nMaalhos\t49\t74\tNULL\tNULL\nNaifaru\t49\t74\tNULL\tNULL\nHimandhoo\t51\t74\tNULL\tNULL\nDhangethi\t52\tNULL\tNULL\tNULL\nDhiffushi\t56\t81\t515\tNULL\nUkulhas\t59\t1174\t515\tNULL\nFehendhoo\t75\t620\t166\t129\nKandooma\t78\t1696\t234\tNULL\nMaafushi\t78\t81\t515\tNULL\nHanimadhoo\t79\t621\t164\t128\nFuvamulah\t80\t714\t307\t256\nGodhdhoo\t84\t77\tNULL\tNULL\nHimmafushi\t90\t81\t357\t363\nFeridhoo\t90\t74\t344\t282\nOmadhoo\t91\t657\t374\t366\nMathiveri\t91\t74\t191\t130\nEydhafushi\t98\t77\tNULL\tNULL\nDhonfanu\t126\t852\t288\tNULL\nEydhafushi\t126\t852\t288\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 362
+}

@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN attractions IS NULL OR attractions = '' THEN 1 ELSE 0 END) as missing_attractions,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as has_attractions,\n  ROUND(SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) * 100 / COUNT(*), 1) as attractions_coverage_percent\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN attractions IS NULL OR attractions = '' THEN 1 ELSE 0 END) as missing_attractions,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as has_attractions,\n  ROUND(SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) * 100 / COUNT(*), 1) as attractions_coverage_percent\nFROM island_guides",
+  "rows": [
+    {
+      "total": "129",
+      "missing_attractions": "0",
+      "has_attractions": "129",
+      "attractions_coverage_percent": "100.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tmissing_attractions\thas_attractions\tattractions_coverage_percent\n129\t0\t129\t100.0\n",
+  "stderr": "",
+  "execution_time_ms": 355
+}

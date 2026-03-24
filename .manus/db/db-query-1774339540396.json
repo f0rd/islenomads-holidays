@@ -1,0 +1,15 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as has_faq\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as has_faq\nFROM island_guides",
+  "rows": [
+    {
+      "total": "129",
+      "missing_faq": "82",
+      "has_faq": "47"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tmissing_faq\thas_faq\n129\t82\t47\n",
+  "stderr": "",
+  "execution_time_ms": 349
+}

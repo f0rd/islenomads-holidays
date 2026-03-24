@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN beachesLocalRules IS NULL THEN 1 ELSE 0 END) as null_count,\n  SUM(CASE WHEN beachesLocalRules = '' THEN 1 ELSE 0 END) as empty_count,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as has_data\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN beachesLocalRules IS NULL THEN 1 ELSE 0 END) as null_count,\n  SUM(CASE WHEN beachesLocalRules = '' THEN 1 ELSE 0 END) as empty_count,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as has_data\nFROM island_guides",
+  "rows": [
+    {
+      "total": "129",
+      "null_count": "0",
+      "empty_count": "0",
+      "has_data": "129"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tnull_count\tempty_count\thas_data\n129\t0\t0\t129\n",
+  "stderr": "",
+  "execution_time_ms": 1403
+}

@@ -1,0 +1,25 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NULL OR overview = '' THEN 1 ELSE 0 END) as missing_overview,\n  SUM(CASE WHEN topThingsToDo IS NULL OR topThingsToDo = '' THEN 1 ELSE 0 END) as missing_activities,\n  SUM(CASE WHEN quickFacts IS NULL OR quickFacts = '' THEN 1 ELSE 0 END) as missing_quickfacts,\n  SUM(CASE WHEN attractions IS NULL OR attractions = '' THEN 1 ELSE 0 END) as missing_attractions,\n  SUM(CASE WHEN beachesLocalRules IS NULL OR beachesLocalRules = '' THEN 1 ELSE 0 END) as missing_beaches,\n  SUM(CASE WHEN foodCafes IS NULL OR foodCafes = '' THEN 1 ELSE 0 END) as missing_food,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN latitude IS NULL OR latitude = '' THEN 1 ELSE 0 END) as missing_latitude,\n  SUM(CASE WHEN longitude IS NULL OR longitude = '' THEN 1 ELSE 0 END) as missing_longitude,\n  SUM(CASE WHEN bestTimeToVisit IS NULL OR bestTimeToVisit = '' THEN 1 ELSE 0 END) as missing_best_time,\n  SUM(CASE WHEN currency IS NULL OR currency = '' THEN 1 ELSE 0 END) as missing_currency,\n  SUM(CASE WHEN language IS NULL OR language = '' THEN 1 ELSE 0 END) as missing_language\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NULL OR overview = '' THEN 1 ELSE 0 END) as missing_overview,\n  SUM(CASE WHEN topThingsToDo IS NULL OR topThingsToDo = '' THEN 1 ELSE 0 END) as missing_activities,\n  SUM(CASE WHEN quickFacts IS NULL OR quickFacts = '' THEN 1 ELSE 0 END) as missing_quickfacts,\n  SUM(CASE WHEN attractions IS NULL OR attractions = '' THEN 1 ELSE 0 END) as missing_attractions,\n  SUM(CASE WHEN beachesLocalRules IS NULL OR beachesLocalRules = '' THEN 1 ELSE 0 END) as missing_beaches,\n  SUM(CASE WHEN foodCafes IS NULL OR foodCafes = '' THEN 1 ELSE 0 END) as missing_food,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN latitude IS NULL OR latitude = '' THEN 1 ELSE 0 END) as missing_latitude,\n  SUM(CASE WHEN longitude IS NULL OR longitude = '' THEN 1 ELSE 0 END) as missing_longitude,\n  SUM(CASE WHEN bestTimeToVisit IS NULL OR bestTimeToVisit = '' THEN 1 ELSE 0 END) as missing_best_time,\n  SUM(CASE WHEN currency IS NULL OR currency = '' THEN 1 ELSE 0 END) as missing_currency,\n  SUM(CASE WHEN language IS NULL OR language = '' THEN 1 ELSE 0 END) as missing_language\nFROM island_guides",
+  "rows": [
+    {
+      "total_guides": "129",
+      "missing_overview": "0",
+      "missing_activities": "1",
+      "missing_quickfacts": "24",
+      "missing_attractions": "109",
+      "missing_beaches": "127",
+      "missing_food": "24",
+      "missing_faq": "115",
+      "missing_latitude": "21",
+      "missing_longitude": "21",
+      "missing_best_time": "0",
+      "missing_currency": "0",
+      "missing_language": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\tmissing_overview\tmissing_activities\tmissing_quickfacts\tmissing_attractions\tmissing_beaches\tmissing_food\tmissing_faq\tmissing_latitude\tmissing_longitude\tmissing_best_time\tmissing_currency\tmissing_language\n129\t0\t1\t24\t109\t127\t24\t115\t21\t21\t0\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 380
+}

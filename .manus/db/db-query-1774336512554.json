@@ -1,0 +1,22 @@
+{
+  "query": "SELECT name, COUNT(*) as count FROM island_guides GROUP BY name HAVING COUNT(*) > 1",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT name, COUNT(*) as count FROM island_guides GROUP BY name HAVING COUNT(*) > 1",
+  "rows": [
+    {
+      "name": "Eydhafushi",
+      "count": "2"
+    },
+    {
+      "name": "Maalhos",
+      "count": "2"
+    },
+    {
+      "name": "Fehendhoo",
+      "count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tcount\nEydhafushi\t2\nMaalhos\t2\nFehendhoo\t2\n",
+  "stderr": "",
+  "execution_time_ms": 372
+}

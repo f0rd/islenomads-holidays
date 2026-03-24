@@ -1,0 +1,21 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as overview_count,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as activities_count,\n  SUM(CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 1 ELSE 0 END) as quickfacts_count,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as attractions_count,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as beaches_count,\n  SUM(CASE WHEN foodCafes IS NOT NULL AND foodCafes != '' THEN 1 ELSE 0 END) as food_count,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as faq_count,\n  SUM(CASE WHEN latitude IS NOT NULL AND latitude != '' THEN 1 ELSE 0 END) as coordinates_count\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN overview IS NOT NULL AND overview != '' THEN 1 ELSE 0 END) as overview_count,\n  SUM(CASE WHEN topThingsToDo IS NOT NULL AND topThingsToDo != '' THEN 1 ELSE 0 END) as activities_count,\n  SUM(CASE WHEN quickFacts IS NOT NULL AND quickFacts != '' THEN 1 ELSE 0 END) as quickfacts_count,\n  SUM(CASE WHEN attractions IS NOT NULL AND attractions != '' THEN 1 ELSE 0 END) as attractions_count,\n  SUM(CASE WHEN beachesLocalRules IS NOT NULL AND beachesLocalRules != '' THEN 1 ELSE 0 END) as beaches_count,\n  SUM(CASE WHEN foodCafes IS NOT NULL AND foodCafes != '' THEN 1 ELSE 0 END) as food_count,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as faq_count,\n  SUM(CASE WHEN latitude IS NOT NULL AND latitude != '' THEN 1 ELSE 0 END) as coordinates_count\nFROM island_guides",
+  "rows": [
+    {
+      "total_guides": "129",
+      "overview_count": "129",
+      "activities_count": "128",
+      "quickfacts_count": "105",
+      "attractions_count": "129",
+      "beaches_count": "129",
+      "food_count": "105",
+      "faq_count": "129",
+      "coordinates_count": "108"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\toverview_count\tactivities_count\tquickfacts_count\tattractions_count\tbeaches_count\tfood_count\tfaq_count\tcoordinates_count\n129\t129\t128\t105\t129\t129\t105\t129\t108\n",
+  "stderr": "",
+  "execution_time_ms": 364
+}

@@ -1,0 +1,30 @@
+{
+  "query": "SELECT \n  'Duplicate island names' as issue_type,\n  COUNT(*) - COUNT(DISTINCT name) as count\nFROM island_guides\nUNION ALL\nSELECT \n  'Empty/NULL slug',\n  COUNT(*)\nFROM island_guides \nWHERE slug IS NULL OR slug = ''\nUNION ALL\nSELECT \n  'Empty/NULL atoll',\n  COUNT(*)\nFROM island_guides \nWHERE atoll IS NULL OR atoll = ''\nUNION ALL\nSELECT \n  'Empty Things to Do',\n  COUNT(*)\nFROM island_guides \nWHERE topThingsToDo IS NULL OR topThingsToDo = '' OR topThingsToDo = '[]'\nUNION ALL\nSELECT \n  'Missing coordinates',\n  COUNT(*)\nFROM island_guides \nWHERE latitude IS NULL OR longitude IS NULL",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  'Duplicate island names' as issue_type,\n  COUNT(*) - COUNT(DISTINCT name) as count\nFROM island_guides\nUNION ALL\nSELECT \n  'Empty/NULL slug',\n  COUNT(*)\nFROM island_guides \nWHERE slug IS NULL OR slug = ''\nUNION ALL\nSELECT \n  'Empty/NULL atoll',\n  COUNT(*)\nFROM island_guides \nWHERE atoll IS NULL OR atoll = ''\nUNION ALL\nSELECT \n  'Empty Things to Do',\n  COUNT(*)\nFROM island_guides \nWHERE topThingsToDo IS NULL OR topThingsToDo = '' OR topThingsToDo = '[]'\nUNION ALL\nSELECT \n  'Missing coordinates',\n  COUNT(*)\nFROM island_guides \nWHERE latitude IS NULL OR longitude IS NULL",
+  "rows": [
+    {
+      "issue_type": "Empty Things to Do",
+      "count": "1"
+    },
+    {
+      "issue_type": "Empty/NULL slug",
+      "count": "0"
+    },
+    {
+      "issue_type": "Missing coordinates",
+      "count": "21"
+    },
+    {
+      "issue_type": "Empty/NULL atoll",
+      "count": "0"
+    },
+    {
+      "issue_type": "Duplicate island names",
+      "count": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "issue_type\tcount\nEmpty Things to Do\t1\nEmpty/NULL slug\t0\nMissing coordinates\t21\nEmpty/NULL atoll\t0\nDuplicate island names\t3\n",
+  "stderr": "",
+  "execution_time_ms": 362
+}

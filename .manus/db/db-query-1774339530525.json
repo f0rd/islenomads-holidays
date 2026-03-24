@@ -1,0 +1,186 @@
+{
+  "query": "SELECT \n  name,\n  CASE WHEN faq IS NULL THEN 'NULL' WHEN faq = '' THEN 'EMPTY' ELSE 'HAS_DATA' END as faq_status\nFROM island_guides\nWHERE featured = 1\nORDER BY name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  name,\n  CASE WHEN faq IS NULL THEN 'NULL' WHEN faq = '' THEN 'EMPTY' ELSE 'HAS_DATA' END as faq_status\nFROM island_guides\nWHERE featured = 1\nORDER BY name",
+  "rows": [
+    {
+      "name": "Alifushi",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Bodufolhudhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Dharanboodhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Dharavandhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Dhiddhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Dhiffushi",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Dhigurah",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Eydhafushi",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Feridhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Fonadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Fulhadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Fulidhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Funadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Gan",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Hanimadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Himmafushi",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Hithadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Hulhumalé",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Huraa",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Kadhdhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Kelaa",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Keyodhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Kudahuvadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Kurendhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Lhaimagu",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Maafushi",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Maamigili",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Magoodhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Malé",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Maradhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Mathiveri",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Mulah",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Naifaru",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Nilandhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Omadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Thinadhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Thoddoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Thulusdhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Ukulhas",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Ungoofaaru",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Utheemu",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Velidhoo",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Veligandu",
+      "faq_status": "HAS_DATA"
+    },
+    {
+      "name": "Veymandoo",
+      "faq_status": "HAS_DATA"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tfaq_status\nAlifushi\tHAS_DATA\nBodufolhudhoo\tHAS_DATA\nDharanboodhoo\tHAS_DATA\nDharavandhoo\tHAS_DATA\nDhiddhoo\tHAS_DATA\nDhiffushi\tHAS_DATA\nDhigurah\tHAS_DATA\nEydhafushi\tHAS_DATA\nFeridhoo\tHAS_DATA\nFonadhoo\tHAS_DATA\nFulhadhoo\tHAS_DATA\nFulidhoo\tHAS_DATA\nFunadhoo\tHAS_DATA\nGan\tHAS_DATA\nHanimadhoo\tHAS_DATA\nHimmafushi\tHAS_DATA\nHithadhoo\tHAS_DATA\nHulhumalé\tHAS_DATA\nHuraa\tHAS_DATA\nKadhdhoo\tHAS_DATA\nKelaa\tHAS_DATA\nKeyodhoo\tHAS_DATA\nKudahuvadhoo\tHAS_DATA\nKurendhoo\tHAS_DATA\nLhaimagu\tHAS_DATA\nMaafushi\tHAS_DATA\nMaamigili\tHAS_DATA\nMagoodhoo\tHAS_DATA\nMalé\tHAS_DATA\nMaradhoo\tHAS_DATA\nMathiveri\tHAS_DATA\nMulah\tHAS_DATA\nNaifaru\tHAS_DATA\nNilandhoo\tHAS_DATA\nOmadhoo\tHAS_DATA\nThinadhoo\tHAS_DATA\nThoddoo\tHAS_DATA\nThulusdhoo\tHAS_DATA\nUkulhas\tHAS_DATA\nUngoofaaru\tHAS_DATA\nUtheemu\tHAS_DATA\nVelidhoo\tHAS_DATA\nVeligandu\tHAS_DATA\nVeymandoo\tHAS_DATA\n",
+  "stderr": "",
+  "execution_time_ms": 372
+}

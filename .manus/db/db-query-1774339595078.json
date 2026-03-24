@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as has_faq,\n  ROUND(SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) * 100 / COUNT(*), 1) as faq_coverage_percent\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN faq IS NULL OR faq = '' THEN 1 ELSE 0 END) as missing_faq,\n  SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) as has_faq,\n  ROUND(SUM(CASE WHEN faq IS NOT NULL AND faq != '' THEN 1 ELSE 0 END) * 100 / COUNT(*), 1) as faq_coverage_percent\nFROM island_guides",
+  "rows": [
+    {
+      "total": "129",
+      "missing_faq": "0",
+      "has_faq": "129",
+      "faq_coverage_percent": "100.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tmissing_faq\thas_faq\tfaq_coverage_percent\n129\t0\t129\t100.0\n",
+  "stderr": "",
+  "execution_time_ms": 350
+}
