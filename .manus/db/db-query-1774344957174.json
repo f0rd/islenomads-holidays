@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, name, slug, atoll, nearbyAirports FROM island_guides WHERE featured = 1 AND (name LIKE '%Hanimadhoo%' OR name LIKE '%Gan%' OR name LIKE '%Naifaru%')",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT id, name, slug, atoll, nearbyAirports FROM island_guides WHERE featured = 1 AND (name LIKE '%Hanimadhoo%' OR name LIKE '%Gan%' OR name LIKE '%Naifaru%')",
+  "rows": [
+    {
+      "id": "180036",
+      "name": "Hanimadhoo",
+      "slug": "hanimadhoo",
+      "atoll": "Haa Alifu Atoll",
+      "nearbyAirports": "[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Hanimadhoo\", \"distance\": \"50-100 km\", \"duration\": \"1-2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}]"
+    },
+    {
+      "id": "270003",
+      "name": "Naifaru",
+      "slug": "naifaru",
+      "atoll": "Lhaviyani Atoll",
+      "nearbyAirports": "NULL"
+    },
+    {
+      "id": "270030",
+      "name": "Gan",
+      "slug": "gan",
+      "atoll": "Addu Atoll",
+      "nearbyAirports": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tatoll\tnearbyAirports\n180036\tHanimadhoo\thanimadhoo\tHaa Alifu Atoll\t[{\"code\": \"MLE\", \"description\": \"International flights to Malé, then speedboat to Hanimadhoo\", \"distance\": \"50-100 km\", \"duration\": \"1-2 hours\", \"name\": \"Malé International Airport\", \"transferType\": \"Speedboat\"}]\n270003\tNaifaru\tnaifaru\tLhaviyani Atoll\tNULL\n270030\tGan\tgan\tAddu Atoll\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 346
+}
