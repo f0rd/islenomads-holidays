@@ -1,0 +1,15 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as guides_with_coordinates,\n  ROUND(SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as coverage_percentage\nFROM island_guides",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3FFv3TtDUeNbYDM.root --database JUCCYykxYWxAcNny3wop55 --execute SELECT \n  COUNT(*) as total_guides,\n  SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) as guides_with_coordinates,\n  ROUND(SUM(CASE WHEN latitude IS NOT NULL AND longitude IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) as coverage_percentage\nFROM island_guides",
+  "rows": [
+    {
+      "total_guides": "129",
+      "guides_with_coordinates": "108",
+      "coverage_percentage": "83.72"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_guides\tguides_with_coordinates\tcoverage_percentage\n129\t108\t83.72\n",
+  "stderr": "",
+  "execution_time_ms": 374
+}
