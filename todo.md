@@ -2658,3 +2658,15 @@
 - [x] Remove expand/collapse functionality from activity cards
 - [x] Test on island detail pages (Dharavandhoo - all 5 activities displaying)
 - [x] Verify heading size consistency across all sections
+
+
+## Things to Do - Accordion with Preview Pattern (Mar 24, 2026)
+- [x] Implement accordion component showing activity title + preview (1-2 lines)
+- [x] Add expand/collapse functionality with smooth animations
+- [x] Show full description, tips, images, and metadata when expanded
+- [x] Optimize for mobile - single column, easy to scroll
+- [x] Optimize for desktop - proper spacing and readability
+- [x] Test accordion on mobile viewport (390px width - iPhone 12)
+- [x] Test accordion on desktop viewport (1920px width)
+- [x] Verify smooth expand/collapse animations (chevron rotates 180°)
+- [x] Verify preview text truncation works correctly (120 char limit)
