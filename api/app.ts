@@ -1,12 +1,43 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { createApp } from "../server/_core/app";
 
-const app = createApp();
+let createApp: (() => any) | null = null;
+let importError: unknown = null;
+
+try {
+  const mod = await import("../server/_core/app");
+  createApp = mod.createApp;
+} catch (err) {
+  importError = err;
+}
+
+let app: any = null;
+let appInitError: unknown = null;
+if (createApp) {
+  try {
+    app = createApp();
+  } catch (err) {
+    appInitError = err;
+  }
+}
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
-  // Vercel rewrites strip the original URL and route everything to this
-  // file. We pass the original path through as `_p` in the rewrite
-  // destination, then restore req.url so the Express app's routes match.
+  if (importError || appInitError) {
+    const err = (importError ?? appInitError) as Error | unknown;
+    res.status(500).json({
+      stage: importError ? "import" : "createApp",
+      error:
+        err instanceof Error
+          ? { name: err.name, message: err.message, stack: err.stack?.split("\n").slice(0, 10) }
+          : String(err),
+    });
+    return;
+  }
+
+  if (!app) {
+    res.status(500).json({ stage: "no-app", error: "app is null" });
+    return;
+  }
+
   const raw = req.query._p;
   if (raw) {
     const path = Array.isArray(raw) ? raw.join("/") : raw;
@@ -15,8 +46,5 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
     const search = original.search || "";
     (req as any).url = `/api/${path}${search}`;
   }
-  return (app as unknown as (req: VercelRequest, res: VercelResponse) => void)(
-    req,
-    res
-  );
+  return app(req, res);
 }
