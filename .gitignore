@@ -106,5 +106,3 @@ temp/
 *.sqlite
 *.sqlite3
 
-# Generated Vercel function bundle
-api/app.js
