@@ -1,40 +1,24 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-
-let createApp: (() => any) | null = null;
-let importError: unknown = null;
-
-try {
-  const mod = await import("../server/_core/app");
-  createApp = mod.createApp;
-} catch (err) {
-  importError = err;
-}
+import { createApp } from "../server/_core/app.js";
 
 let app: any = null;
-let appInitError: unknown = null;
-if (createApp) {
-  try {
-    app = createApp();
-  } catch (err) {
-    appInitError = err;
-  }
+let initError: unknown = null;
+try {
+  app = createApp();
+} catch (err) {
+  initError = err;
 }
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
-  if (importError || appInitError) {
-    const err = (importError ?? appInitError) as Error | unknown;
+  if (initError || !app) {
+    const err = initError as Error | unknown;
     res.status(500).json({
-      stage: importError ? "import" : "createApp",
+      stage: "createApp",
       error:
         err instanceof Error
-          ? { name: err.name, message: err.message, stack: err.stack?.split("\n").slice(0, 10) }
-          : String(err),
+          ? { name: err.name, message: err.message, stack: err.stack?.split("\n").slice(0, 12) }
+          : String(err ?? "app is null"),
     });
-    return;
-  }
-
-  if (!app) {
-    res.status(500).json({ stage: "no-app", error: "app is null" });
     return;
   }
 
