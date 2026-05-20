@@ -85,9 +85,27 @@ export const appRouter = router({
           });
         }
 
-        const data = (await response.json()) as {
+        const responseText = await response.text();
+        if (!responseText) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Supabase auth returned an empty response body",
+          });
+        }
+
+        let data: {
           user?: { id?: string; email?: string; user_metadata?: { name?: string } };
         };
+
+        try {
+          data = JSON.parse(responseText);
+        } catch (error) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to parse Supabase auth response",
+          });
+        }
+
         const supabaseUser = data.user;
         if (!supabaseUser?.id) {
           throw new TRPCError({
@@ -127,6 +145,156 @@ export const appRouter = router({
         });
 
         return { user };
+      }),
+
+    registerWithPassword: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email(),
+          password: z.string().min(6),
+          name: z.string().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Supabase auth is not configured on the server",
+          });
+        }
+
+        const response = await fetch(`${ENV.supabaseUrl}/auth/v1/signup`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: ENV.supabaseAnonKey,
+          },
+          body: JSON.stringify({
+            email: input.email,
+            password: input.password,
+            data: { name: input.name },
+          }),
+        });
+
+        const responseText = await response.text();
+        let data: any = {};
+
+        try {
+          data = responseText ? JSON.parse(responseText) : {};
+        } catch (error) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to parse Supabase sign-up response",
+          });
+        }
+
+        if (!response.ok) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message:
+              data?.error_description || data?.error?.message || data?.message || "Registration failed",
+          });
+        }
+
+        const supabaseUser = data.user;
+        if (supabaseUser?.id) {
+          const displayName = input.name ?? supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
+
+          await authDb.upsertUser({
+            openId: supabaseUser.id,
+            email: supabaseUser.email ?? null,
+            name: displayName || null,
+            loginMethod: "password",
+            lastSignedIn: new Date(),
+          });
+
+          const user = await authDb.getUserByOpenId(supabaseUser.id);
+          if (!user) {
+            throw new TRPCError({
+              code: "INTERNAL_SERVER_ERROR",
+              message: "Failed to create local user record",
+            });
+          }
+
+          const sessionToken = await sdk.createSessionToken(supabaseUser.id, {
+            name: displayName,
+            expiresInMs: ONE_YEAR_MS,
+          });
+
+          const cookieOptions = getSessionCookieOptions(ctx.req);
+          ctx.res.cookie(COOKIE_NAME, sessionToken, {
+            ...cookieOptions,
+            maxAge: ONE_YEAR_MS,
+          });
+
+          return {
+            user,
+            message: "Registration completed. You are now signed in.",
+          };
+        }
+
+        return {
+          success: true,
+          message: "Registration successful. Check your email to confirm your account if required.",
+        };
+      }),
+
+    sendPasswordResetEmail: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Supabase auth is not configured on the server",
+          });
+        }
+
+        const host = ctx.req.headers.host;
+        const forwardedProto = ctx.req.headers["x-forwarded-proto"];
+        const protocol = typeof forwardedProto === "string"
+          ? forwardedProto.split(",")[0].trim()
+          : ctx.req.protocol || "http";
+        const redirectTo = host ? `${protocol}://${host}/staff-login` : undefined;
+
+        const body: Record<string, unknown> = { email: input.email };
+        if (redirectTo) {
+          body.redirect_to = redirectTo;
+        }
+
+        const response = await fetch(`${ENV.supabaseUrl}/auth/v1/recover`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: ENV.supabaseAnonKey,
+          },
+          body: JSON.stringify(body),
+        });
+
+        const responseText = await response.text();
+        let data: any = {};
+
+        try {
+          data = responseText ? JSON.parse(responseText) : {};
+        } catch (error) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to parse Supabase password reset response",
+          });
+        }
+
+        if (!response.ok) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: data?.error_description || data?.error?.message || data?.message || "Password reset request failed",
+          });
+        }
+
+        return {
+          success: true,
+          message: "Password reset instructions have been sent if that email exists.",
+        };
       }),
   }),
 

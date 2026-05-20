@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "islandGuideId": 3,
+    "name": "Cokes",
+    "slug": "cokes",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 60001,
+    "islandGuideId": 60003,
+    "name": "Pasta Point",
+    "slug": "pasta-point",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 60010,
+    "islandGuideId": 60003,
+    "name": "Thulusdhoo Reef",
+    "slug": "thulusdhoo-reef",
+    "spotType": "snorkeling_spot"
+  },
+  {
+    "id": 90001,
+    "islandGuideId": 1,
+    "name": "Cokes",
+    "slug": "cokes-thulusdhoo",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 90002,
+    "islandGuideId": 1,
+    "name": "Pasta Point",
+    "slug": "pasta-point-thulusdhoo",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 90004,
+    "islandGuideId": 1,
+    "name": "Chickens",
+    "slug": "chickens-thulusdhoo",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 90054,
+    "islandGuideId": 1,
+    "name": "Thulusdhoo House Reef",
+    "slug": "thulusdhoo-house-reef",
+    "spotType": "snorkeling_spot"
+  },
+  {
+    "id": 120010,
+    "islandGuideId": 8,
+    "name": "Pasta Point",
+    "slug": "pasta-point",
+    "spotType": "surf_spot"
+  },
+  {
+    "id": 120011,
+    "islandGuideId": 9,
+    "name": "Chickens",
+    "slug": "chickens-surf-spot",
+    "spotType": "surf_spot"
+  }
+]

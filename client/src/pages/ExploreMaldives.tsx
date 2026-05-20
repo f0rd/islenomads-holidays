@@ -57,6 +57,17 @@ interface ActivitySpotData {
   islandGuideId: number;
 }
 
+interface AttractionGuideData {
+  id: number;
+  name: string;
+  slug: string;
+  attractionType: 'surf_spot' | 'dive_site' | 'snorkeling_spot' | 'poi';
+  description: string | null;
+  difficulty?: string | null;
+  bestSeason?: string | null;
+  heroImage?: string | null;
+}
+
 interface IslandWithSpots extends IslandGuideData {
   activitySpots: ActivitySpotData[];
 }
@@ -78,7 +89,7 @@ export default function ExploreMaldives() {
   const { data: islandsWithSpots = [] } = trpc.islandGuides.listWithActivitySpots.useQuery();
 
   // Fetch attraction guides (consolidated attractions management)
-  const { data: activitySpots = [] } = trpc.attractionGuides.list.useQuery();
+  const { data: attractionGuides = [] } = trpc.attractionGuides.list.useQuery();
 
   // Get unique regions from atolls
   const regions = useMemo(() => {
@@ -133,7 +144,7 @@ export default function ExploreMaldives() {
                            (island.overview?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       const isPublished = island.published === 1;
       const isActualIsland = island.contentType !== 'point_of_interest';
-      const isFeatured = island.featured === 1; // Only show featured islands
+      // Do not require islands to be featured; show all published islands by default
       
       // Activity filtering
       let matchesActivities = true;
@@ -151,7 +162,7 @@ export default function ExploreMaldives() {
         );
       }
       
-      return matchesSearch && isPublished && isActualIsland && isFeatured && matchesActivities;
+      return matchesSearch && isPublished && isActualIsland && matchesActivities;
     });
     
     // Deduplicate by ID to prevent duplicate key errors
@@ -174,13 +185,13 @@ export default function ExploreMaldives() {
       const isPOI = island.contentType === 'point_of_interest';
       return matchesSearch && isPublished && isPOI;
     });
-    const spots = activitySpots.filter((spot: ActivitySpotData) => {
+    const spots = (attractionGuides as AttractionGuideData[]).filter((spot) => {
       const matchesSearch = spot.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                            (spot.description?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
       return matchesSearch;
     });
     return { pois, spots };
-  }, [islands, activitySpots, searchQuery]);
+  }, [islands, attractionGuides, searchQuery]);
 
   const toggleActivity = (activity: string) => {
     const newActivities = new Set(selectedActivities);
@@ -528,16 +539,18 @@ export default function ExploreMaldives() {
                     );
                   })}
                   {/* Render Activity Spots */}
-                  {filteredPointsOfInterest.spots.map((spot: ActivitySpotData) => (
+                  {filteredPointsOfInterest.spots.map((spot: AttractionGuideData) => {
+                    const type = spot.attractionType;
+                    return (
                     <Link key={`spot-${spot.id}`} href={getAttractionGuideUrl(spot.slug || String(spot.id))}>
                       <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer h-full flex flex-col group">
                         {/* Hero Image */}
                         <div className="h-48 bg-gradient-to-br from-accent/40 to-primary/40 overflow-hidden relative flex items-center justify-center">
                           <div className="text-center">
-                            {spot.spotType === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                            {spot.spotType === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                            {spot.spotType === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
-                            <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{spot.spotType ? spot.spotType.replace(/_/g, ' ') : 'Activity Spot'}</p>
+                            {type === 'dive_site' && <Fish className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            {type === 'snorkeling_spot' && <Zap className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            {type === 'surf_spot' && <Wind className="w-12 h-12 text-accent mx-auto mb-2 group-hover:scale-110 transition-transform" />}
+                            <p className="text-sm text-primary-foreground/80 font-semibold capitalize">{type ? type.replace(/_/g, ' ') : 'Activity Spot'}</p>
                           </div>
                           {spot.difficulty && (
                             <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground capitalize">
@@ -568,7 +581,8 @@ export default function ExploreMaldives() {
                         </CardContent>
                       </Card>
                     </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               ) : (
                 <div className="text-center py-12">

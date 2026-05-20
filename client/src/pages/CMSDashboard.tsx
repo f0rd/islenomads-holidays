@@ -101,7 +101,7 @@ const menuItems = [
 ];
 
 export default function CMSDashboard() {
-  const { user, logout } = useAuth();
+  const { user, logout, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -115,6 +115,14 @@ export default function CMSDashboard() {
     await logout();
     navigate("/");
   };
+
+  // Redirect unauthenticated users to staff login
+  useEffect(() => {
+    if (authLoading) return;
+    if (!isAuthenticated) {
+      navigate("/staff-login");
+    }
+  }, [isAuthenticated, authLoading, navigate]);
 
   const stats = [
     { label: "Total Blog Posts", value: String(blogPosts.length), icon: FileText, color: "bg-blue-50" },
