@@ -30,11 +30,14 @@ import AdminAttractionGuides from "./pages/AdminAttractionGuides";
 import AdminActivityTypes from "./pages/AdminActivityTypes";
 import IslandGuide from "./pages/IslandGuide";
 import StaffLogin from "./pages/StaffLogin";
+import StaffRegister from "./pages/StaffRegister";
+import StaffResetPassword from "./pages/StaffResetPassword";
 import CMSDashboard from "./pages/CMSDashboard";
 import AdminSEOOptimizer from "./pages/AdminSEOOptimizer";
 import StaffDashboard from "./pages/StaffDashboard";
 import AdminStaff from "./pages/AdminStaff";
 import AdminActivity from "./pages/AdminActivity";
+import AdminActivitySpots from "./pages/AdminActivitySpots";
 import AdminRoles from "./pages/AdminRoles";
 import AdminCRM from "./pages/AdminCRM";
 import AdminCRMDetail from "./pages/AdminCRMDetail";
@@ -83,7 +86,7 @@ function Router() {
       <Route path={"/admin/island-guides"} component={AdminIslandGuides} />
       <Route path={"/admin/attractions"} component={AdminAttractionGuides} />
       <Route path={"/admin/attraction-guides"} component={AdminAttractionGuides} />
-      <Route path={"/admin/activity-spots"} component={AdminAttractionGuides} />
+      <Route path={"/admin/activity-spots"} component={AdminActivitySpots} />
       <Route path={"/admin/activity-types"} component={AdminActivityTypes} />
       {/* Island Guide Routes - UPDATED to use slugs for SEO-friendly URLs */}
       {/* Primary route: /island/:slug (e.g., /island/dhigurah, /island/malé) */}
@@ -100,6 +103,8 @@ function Router() {
       <Route path={"/atoll/:slug"} component={AtollDetail} />
 
       <Route path={"/staff-login"} component={StaffLogin} />
+      <Route path={"/staff-register"} component={StaffRegister} />
+      <Route path={"/staff-reset-password"} component={StaffResetPassword} />
       <Route path={"/staff/profile"} component={StaffProfile} />
       <Route path={"/cms/dashboard"} component={CMSDashboard} />
       <Route path={"/admin/seo-optimizer"} component={AdminSEOOptimizer} />
