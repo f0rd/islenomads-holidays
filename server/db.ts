@@ -1,5 +1,6 @@
 import { eq, and, desc, asc, isNotNull, ne } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
 import { InsertUser, User, users, blogPosts, InsertBlogPost, BlogPost, blogComments, InsertBlogComment, BlogComment, packages, InsertPackage, Package, boatRoutes, InsertBoatRoute, BoatRoute, islandGuides, InsertIslandGuide, IslandGuide, staff, InsertStaff, Staff, staffRoles, InsertStaffRole, StaffRole, activityLog, InsertActivityLog, ActivityLog, seoMetaTags, InsertSeoMetaTags, SeoMetaTags, crmQueries, InsertCrmQuery, CrmQuery, crmInteractions, InsertCrmInteraction, CrmInteraction, crmCustomers, InsertCrmCustomer, CrmCustomer, transports, InsertTransport, Transport, atolls, InsertAtoll, Atoll, activitySpots, InsertActivitySpot, ActivitySpot, activityTypes, ActivityType, islandSpotAccess, IslandSpotAccess, experiences, Experience, islandExperiences, InsertIslandExperience, media, Media, seoMetadata, SeoMetadata, places, Place, InsertPlace, attractionGuides, AttractionGuide, InsertAttractionGuide, attractionIslandLinks, AttractionIslandLink, InsertAttractionIslandLink, heroSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -28,8 +29,7 @@ export async function getTransportById(id: number): Promise<Transport | undefine
 export async function createTransport(data: InsertTransport): Promise<Transport | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(transports).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(transports).values(data).returning({ id: transports.id });
   const transport = await getTransportById(id);
   return transport || null;
 }
@@ -53,7 +53,8 @@ export async function deleteTransport(id: number): Promise<boolean> {
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      const client = postgres(process.env.DATABASE_URL, { prepare: false });
+      _db = drizzle(client);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -94,8 +95,7 @@ export async function createSeoMetaTags(data: InsertSeoMetaTags): Promise<SeoMet
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(seoMetaTags).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(seoMetaTags).values(data).returning({ id: seoMetaTags.id });
   const tags = await getSeoMetaTagsById(id);
   return tags || null;
 }
@@ -202,8 +202,7 @@ export async function createBoatRoute(data: InsertBoatRoute): Promise<BoatRoute 
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(boatRoutes).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(boatRoutes).values(data).returning({ id: boatRoutes.id });
   const route = await getBoatRouteById(id);
   return route || null;
 }
@@ -337,8 +336,7 @@ export async function createPlace(data: InsertPlace): Promise<Place | null> {
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(places).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(places).values(data).returning({ id: places.id });
   const place = await getPlaceById(id);
   return place || null;
 }
@@ -496,8 +494,7 @@ export async function createIslandGuide(data: InsertIslandGuide): Promise<Island
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(islandGuides).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(islandGuides).values(data).returning({ id: islandGuides.id });
   const guide = await getIslandGuideById(id);
   return guide || null;
 }
@@ -566,8 +563,7 @@ export async function createBlogPost(data: InsertBlogPost): Promise<BlogPost | n
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(blogPosts).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(blogPosts).values(data).returning({ id: blogPosts.id });
   const post = await getBlogPostById(id);
   return post || null;
 }
@@ -621,8 +617,7 @@ export async function createPackage(data: InsertPackage): Promise<Package | null
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(packages).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(packages).values(data).returning({ id: packages.id });
   const pkg = await getPackageById(id);
   return pkg || null;
 }
@@ -672,8 +667,7 @@ export async function createStaff(data: InsertStaff): Promise<Staff | null> {
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(staff).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(staff).values(data).returning({ id: staff.id });
   const staffMember = await getStaffById(id);
   return staffMember || null;
 }
@@ -700,8 +694,7 @@ export async function createActivityLog(data: InsertActivityLog): Promise<Activi
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(activityLog).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(activityLog).values(data).returning({ id: activityLog.id });
   const log = await getActivityLogById(id);
   return log || null;
 }
@@ -776,8 +769,7 @@ export async function getBlogComments(postId: number): Promise<BlogComment[]> {
 export async function createBlogComment(data: InsertBlogComment): Promise<BlogComment | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(blogComments).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(blogComments).values(data).returning({ id: blogComments.id });
   const comment = await db.select().from(blogComments).where(eq(blogComments.id, id)).limit(1);
   return comment[0] || null;
 }
@@ -805,8 +797,7 @@ export async function upsertUser(data: Partial<InsertUser> & { openId: string })
     const updated = await getUserByOpenId(data.openId);
     return updated || null;
   } else {
-    const result = await db.insert(users).values(data as InsertUser);
-    const id = (result as any).insertId;
+    const [{ id }] = await db.insert(users).values(data as InsertUser).returning({ id: users.id });
     const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
     return user[0] || null;
   }
@@ -854,8 +845,7 @@ export async function createCrmQuery(data: InsertCrmQuery): Promise<CrmQuery | n
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(crmQueries).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(crmQueries).values(data).returning({ id: crmQueries.id });
   const query = await getCrmQueryById(id);
   return query || null;
 }
@@ -889,8 +879,7 @@ export async function createCrmInteraction(data: InsertCrmInteraction): Promise<
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(crmInteractions).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(crmInteractions).values(data).returning({ id: crmInteractions.id });
   const interaction = await db.select().from(crmInteractions).where(eq(crmInteractions.id, id)).limit(1);
   return interaction[0] || null;
 }
@@ -908,8 +897,7 @@ export async function createCrmCustomer(data: InsertCrmCustomer): Promise<CrmCus
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(crmCustomers).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(crmCustomers).values(data).returning({ id: crmCustomers.id });
   const customer = await db.select().from(crmCustomers).where(eq(crmCustomers.id, id)).limit(1);
   return customer[0] || null;
 }
@@ -964,8 +952,7 @@ export async function createStaffRole(data: InsertStaffRole): Promise<StaffRole 
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(staffRoles).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(staffRoles).values(data).returning({ id: staffRoles.id });
   const role = await db.select().from(staffRoles).where(eq(staffRoles.id, id)).limit(1);
   return role[0] || null;
 }
@@ -989,8 +976,7 @@ export async function logActivity(data: InsertActivityLog): Promise<ActivityLog 
   const db = await getDb();
   if (!db) return null;
 
-  const result = await db.insert(activityLog).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(activityLog).values(data).returning({ id: activityLog.id });
   const log = await db.select().from(activityLog).where(eq(activityLog.id, id)).limit(1);
   return log[0] || null;
 }
@@ -1026,8 +1012,7 @@ export async function getAtollById(id: number): Promise<Atoll | undefined> {
 export async function createAtoll(data: InsertAtoll): Promise<Atoll | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(atolls).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(atolls).values(data).returning({ id: atolls.id });
   const atoll = await getAtollById(id);
   return atoll || null;
 }
@@ -1136,8 +1121,7 @@ export async function getActivitySpotById(id: number): Promise<ActivitySpot | un
 export async function createActivitySpot(data: InsertActivitySpot): Promise<ActivitySpot | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(activitySpots).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(activitySpots).values(data).returning({ id: activitySpots.id });
   const spot = await getActivitySpotById(id);
   return spot || null;
 }
@@ -1431,8 +1415,7 @@ export async function upsertSeoMetadata(data: {
     return existing;
   } else {
     // Insert
-    const result = await db.insert(seoMetadata).values(data as any);
-    const id = (result as any).insertId;
+    await db.insert(seoMetadata).values(data as any);
     return getSeoMetadata(data.entityType, data.entityId);
   }
 }
@@ -1592,8 +1575,7 @@ export async function getFeaturedAttractionGuides(limit: number = 6): Promise<an
 export async function createAttractionGuide(data: any): Promise<any | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(attractionGuides).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(attractionGuides).values(data).returning({ id: attractionGuides.id });
   return getAttractionGuideById(id);
 }
 
@@ -1644,8 +1626,7 @@ export async function getAttractionIslandLinks(attractionGuideId: number): Promi
 export async function linkAttractionToIsland(data: InsertAttractionIslandLink): Promise<AttractionIslandLink | null> {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(attractionIslandLinks).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(attractionIslandLinks).values(data).returning({ id: attractionIslandLinks.id });
   const link = await db.select().from(attractionIslandLinks).where(eq(attractionIslandLinks.id, id)).limit(1);
   return link[0] || null;
 }
@@ -1969,8 +1950,7 @@ export async function updateHeroSettings(pageSlug: string, data: any) {
 export async function createHeroSettings(data: any) {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(heroSettings).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(heroSettings).values(data).returning({ id: heroSettings.id });
   const created = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
   return created[0];
 }
@@ -1986,8 +1966,7 @@ export async function getHeroGalleryByPage(pageSlug: string) {
 export async function addHeroGalleryImage(data: any) {
   const db = await getDb();
   if (!db) return null;
-  const result = await db.insert(heroSettings).values(data);
-  const id = (result as any).insertId;
+  const [{ id }] = await db.insert(heroSettings).values(data).returning({ id: heroSettings.id });
   const created = await db.select().from(heroSettings).where(eq(heroSettings.id, id)).limit(1);
   return created[0];
 }
