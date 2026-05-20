@@ -1,14 +1,7 @@
-import express from "express";
 import { createServer } from "http";
 import net from "net";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerOAuthRoutes } from "./oauth";
-import { appRouter } from "../routers";
-import { createContext } from "./context";
+import { createApp } from "./app";
 import { serveStatic, setupVite } from "./vite";
-import { getDb } from "../db";
-import { boatRoutes, places } from "../../drizzle/schema";
-import { eq } from "drizzle-orm";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -30,67 +23,9 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 }
 
 async function startServer() {
-  const app = express();
+  const app = createApp();
   const server = createServer(app);
-  // Configure body parser with larger size limit for file uploads
-  app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // OAuth callback under /api/oauth/callback
-  registerOAuthRoutes(app);
-  
-  // Airport routes API endpoint - fetch airports from places table
-  app.get('/api/airport-routes', async (req, res) => {
-    try {
-      const db = await getDb();
-      if (!db) {
-        return res.status(500).json({ error: 'Database connection failed' });
-      }
-      
-      // Fetch all airports from places table
-      const airports = await db.select().from(places).where(
-        eq(places.type, 'airport')
-      );
-      
-      res.json(airports);
-    } catch (error) {
-      console.error('Error fetching airports:', error);
-      res.status(500).json({ error: 'Failed to fetch airports' });
-    }
-  });
-  
-  // Boat routes API endpoint - supports both islandGuideId and slug
-  app.get('/api/boat-routes', async (req, res) => {
-    try {
-      const { islandGuideId } = req.query;
-      if (!islandGuideId) {
-        return res.status(400).json({ error: 'islandGuideId is required' });
-      }
-      
-      const db = await getDb();
-      if (!db) {
-        return res.status(500).json({ error: 'Database connection failed' });
-      }
-      
-      const routes = await db.select().from(boatRoutes).where(
-        eq(boatRoutes.toIslandGuideId, parseInt(islandGuideId as string))
-      );
-      
-      res.json(routes);
-    } catch (error) {
-      console.error('Error fetching boat routes:', error);
-      res.status(500).json({ error: 'Failed to fetch boat routes' });
-    }
-  });
-  
-  // tRPC API
-  app.use(
-    "/api/trpc",
-    createExpressMiddleware({
-      router: appRouter,
-      createContext,
-    })
-  );
-  // development mode uses Vite, production mode uses static files
+
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
