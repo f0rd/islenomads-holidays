@@ -1,8 +1,11 @@
 import { getSessionCookieOptions } from "./_core/cookies";
-import { COOKIE_NAME } from "../shared/const";
+import { COOKIE_NAME, ONE_YEAR_MS } from "../shared/const";
 import { systemRouter } from "./_core/systemRouter";
 import { sitemapRouter } from "./sitemapRouter";
 import { publicProcedure, router, protectedProcedure, adminProcedure } from "./_core/trpc";
+import { ENV } from "./_core/env";
+import { sdk } from "./_core/sdk";
+import * as authDb from "./db";
 import { z } from 'zod';
 import { TRPCError } from '@trpc/server';
 import { and, eq, like, or } from 'drizzle-orm';
@@ -50,6 +53,81 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+    loginWithPassword: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        password: z.string().min(1),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Supabase auth is not configured on the server",
+          });
+        }
+
+        const response = await fetch(
+          `${ENV.supabaseUrl}/auth/v1/token?grant_type=password`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: ENV.supabaseAnonKey,
+            },
+            body: JSON.stringify({ email: input.email, password: input.password }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+            message: "Invalid email or password",
+          });
+        }
+
+        const data = (await response.json()) as {
+          user?: { id?: string; email?: string; user_metadata?: { name?: string } };
+        };
+        const supabaseUser = data.user;
+        if (!supabaseUser?.id) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+            message: "Supabase did not return a user",
+          });
+        }
+
+        const signedInAt = new Date();
+        const displayName = supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
+
+        await authDb.upsertUser({
+          openId: supabaseUser.id,
+          email: supabaseUser.email ?? null,
+          name: displayName || null,
+          loginMethod: "password",
+          lastSignedIn: signedInAt,
+        });
+
+        const user = await authDb.getUserByOpenId(supabaseUser.id);
+        if (!user) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to create local user record",
+          });
+        }
+
+        const sessionToken = await sdk.createSessionToken(supabaseUser.id, {
+          name: displayName,
+          expiresInMs: ONE_YEAR_MS,
+        });
+
+        const cookieOptions = getSessionCookieOptions(ctx.req);
+        ctx.res.cookie(COOKIE_NAME, sessionToken, {
+          ...cookieOptions,
+          maxAge: ONE_YEAR_MS,
+        });
+
+        return { user };
+      }),
   }),
 
   users: router({
