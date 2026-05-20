@@ -256,7 +256,7 @@ export const appRouter = router({
         const protocol = typeof forwardedProto === "string"
           ? forwardedProto.split(",")[0].trim()
           : ctx.req.protocol || "http";
-        const redirectTo = host ? `${protocol}://${host}/staff-login` : undefined;
+        const redirectTo = host ? `${protocol}://${host}/staff-reset-password` : undefined;
 
         const body: Record<string, unknown> = { email: input.email };
         if (redirectTo) {
@@ -294,6 +294,55 @@ export const appRouter = router({
         return {
           success: true,
           message: "Password reset instructions have been sent if that email exists.",
+        };
+      }),
+
+    updatePasswordWithRecoveryToken: publicProcedure
+      .input(z.object({
+        accessToken: z.string().min(1),
+        password: z.string().min(6),
+      }))
+      .mutation(async ({ input }) => {
+        if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Supabase auth is not configured on the server",
+          });
+        }
+
+        const response = await fetch(`${ENV.supabaseUrl}/auth/v1/user`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: ENV.supabaseAnonKey,
+            Authorization: `Bearer ${input.accessToken}`,
+          },
+          body: JSON.stringify({ password: input.password }),
+        });
+
+        const responseText = await response.text();
+        let data: any = {};
+        try {
+          data = responseText ? JSON.parse(responseText) : {};
+        } catch {
+          /* ignore parse errors and fall through to status check */
+        }
+
+        if (!response.ok) {
+          throw new TRPCError({
+            code: response.status === 401 ? "UNAUTHORIZED" : "BAD_REQUEST",
+            message:
+              data?.error_description ||
+              data?.error?.message ||
+              data?.msg ||
+              data?.message ||
+              "Failed to update password. The reset link may have expired — request a new one.",
+          });
+        }
+
+        return {
+          success: true,
+          message: "Password updated. You can now sign in with your new password.",
         };
       }),
   }),
