@@ -1,11 +1,10 @@
 {
-  "buildCommand": "vite build",
+  "buildCommand": "pnpm build:vercel",
   "outputDirectory": "dist/public",
   "functions": {
-    "api/**/*.ts": {
+    "api/**/*.{ts,mjs}": {
       "memory": 1024,
-      "maxDuration": 30,
-      "includeFiles": "{server,shared,drizzle}/**"
+      "maxDuration": 30
     }
   },
   "rewrites": [
