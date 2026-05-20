@@ -3060,9 +3060,15 @@ var appRouter = router({
         });
       }
       if (!response.ok) {
+        console.error("[sendPasswordResetEmail] Supabase error", {
+          status: response.status,
+          body: responseText,
+          redirectTo
+        });
+        const detail = data?.error_description || data?.error?.message || data?.msg || data?.message || responseText || `Supabase returned ${response.status}`;
         throw new TRPCError5({
           code: "BAD_REQUEST",
-          message: data?.error_description || data?.error?.message || data?.message || "Password reset request failed"
+          message: `Password reset request failed: ${detail}`
         });
       }
       return {
