@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { createApp } from "../server/_core/app.js";
+import { createApp } from "../server/_core/app";
 
 let app: any = null;
 let initError: unknown = null;
