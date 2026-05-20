@@ -8,6 +8,10 @@
     }
   },
   "rewrites": [
+    { "source": "/api/trpc/:path*", "destination": "/api/_app?_p=trpc/:path*" },
+    { "source": "/api/oauth/:path*", "destination": "/api/_app?_p=oauth/:path*" },
+    { "source": "/api/airport-routes", "destination": "/api/_app?_p=airport-routes" },
+    { "source": "/api/boat-routes", "destination": "/api/_app?_p=boat-routes" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
