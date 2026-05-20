@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { trpc } from "@/lib/trpc";
 import { Lock, LogIn } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function StaffLogin() {
   const { user, isAuthenticated, refresh } = useAuth();
@@ -102,8 +102,26 @@ export default function StaffLogin() {
               {loginMutation.isPending ? "Signing in..." : "Sign In"}
             </Button>
 
+            <Button
+              type="button"
+              variant="secondary"
+              size="lg"
+              onClick={() => navigate("/staff-reset-password")}
+              className="w-full mt-3"
+            >
+              Forgot password?
+            </Button>
+
             <div className="pt-4 border-t border-gray-200">
-              <p className="text-xs text-gray-500 text-center">
+              <div className="flex flex-col sm:flex-row justify-between gap-2 text-sm text-gray-500">
+                <Link href="/staff-register" className="text-accent hover:underline">
+                  Register
+                </Link>
+                <Link href="/staff-reset-password" className="text-accent hover:underline text-right">
+                  Forgot password?
+                </Link>
+              </div>
+              <p className="text-xs text-gray-500 text-center mt-2">
                 Don't have staff access? Contact your administrator.
               </p>
             </div>
