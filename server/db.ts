@@ -952,19 +952,37 @@ export async function createStaffRole(data: InsertStaffRole): Promise<StaffRole 
   return role[0] || null;
 }
 
-export async function getAllStaff(): Promise<(Staff & { role: StaffRole })[]> {
+export async function getAllStaff(): Promise<(Staff & { role: StaffRole; user: User })[]> {
   const db = await getDb();
   if (!db) return [];
 
   const results = await db
     .select()
     .from(staff)
-    .innerJoin(staffRoles, eq(staff.roleId, staffRoles.id));
-  
+    .innerJoin(staffRoles, eq(staff.roleId, staffRoles.id))
+    .innerJoin(users, eq(staff.userId, users.id));
+
   return results.map(r => ({
     ...r.staff,
     role: r.staff_roles,
+    user: r.users,
   })) as any;
+}
+
+export async function getAllStaffRoles(): Promise<StaffRole[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(staffRoles).orderBy(staffRoles.name);
+}
+
+export async function getAllStaffCandidates(): Promise<User[]> {
+  const db = await getDb();
+  if (!db) return [];
+  // Users that aren't yet linked to a staff row.
+  const allUsers = await db.select().from(users);
+  const linked = await db.select({ userId: staff.userId }).from(staff);
+  const linkedIds = new Set(linked.map(s => s.userId));
+  return allUsers.filter(u => !linkedIds.has(u.id));
 }
 
 export async function logActivity(data: InsertActivityLog): Promise<ActivityLog | null> {

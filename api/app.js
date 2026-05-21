@@ -1235,6 +1235,12 @@ async function updateStaff(id, data) {
   const staffMember = await getStaffById(id);
   return staffMember || null;
 }
+async function deleteStaff(id) {
+  const db = await getDb();
+  if (!db) return false;
+  await db.delete(staff).where(eq(staff.id, id));
+  return true;
+}
 async function getAllBlogPosts(limit) {
   const db = await getDb();
   if (!db) return [];
@@ -1308,6 +1314,19 @@ async function upsertUser(data) {
     const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
     return user[0] || null;
   }
+}
+async function getUserById(id) {
+  const db = await getDb();
+  if (!db) return void 0;
+  const result = await db.select().from(users).where(eq(users.id, id)).limit(1);
+  return result[0];
+}
+async function updateUser(id, data) {
+  const db = await getDb();
+  if (!db) return null;
+  await db.update(users).set(data).where(eq(users.id, id));
+  const user = await getUserById(id);
+  return user || null;
 }
 async function getCrmQueries(status) {
   const db = await getDb();
@@ -1402,11 +1421,25 @@ async function createStaffRole(data) {
 async function getAllStaff() {
   const db = await getDb();
   if (!db) return [];
-  const results = await db.select().from(staff).innerJoin(staffRoles, eq(staff.roleId, staffRoles.id));
+  const results = await db.select().from(staff).innerJoin(staffRoles, eq(staff.roleId, staffRoles.id)).innerJoin(users, eq(staff.userId, users.id));
   return results.map((r) => ({
     ...r.staff,
-    role: r.staff_roles
+    role: r.staff_roles,
+    user: r.users
   }));
+}
+async function getAllStaffRoles() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(staffRoles).orderBy(staffRoles.name);
+}
+async function getAllStaffCandidates() {
+  const db = await getDb();
+  if (!db) return [];
+  const allUsers = await db.select().from(users);
+  const linked = await db.select({ userId: staff.userId }).from(staff);
+  const linkedIds = new Set(linked.map((s) => s.userId));
+  return allUsers.filter((u) => !linkedIds.has(u.id));
 }
 async function logActivity(data) {
   const db = await getDb();
@@ -2540,7 +2573,7 @@ var sitemapRouter = router({
 
 // server/routers.ts
 import { z as z3 } from "zod";
-import { TRPCError as TRPCError5 } from "@trpc/server";
+import { TRPCError as TRPCError4 } from "@trpc/server";
 import { and as and3, eq as eq4, like, or } from "drizzle-orm";
 
 // server/routing.ts
@@ -2720,15 +2753,13 @@ async function getRouteSuggestions(fromLocation, toLocation, optimization = "bal
 
 // server/staffManagement.ts
 import { z as z2 } from "zod";
-import { TRPCError as TRPCError3 } from "@trpc/server";
 var staffManagementRouter = router({
   create: adminProcedure.input(z2.object({
     userId: z2.number(),
     roleId: z2.number(),
     department: z2.string().optional(),
     position: z2.string().optional()
-  })).mutation(async ({ input, ctx }) => {
-    if (!ctx.user) throw new TRPCError3({ code: "UNAUTHORIZED" });
+  })).mutation(async ({ input }) => {
     const newStaff = await createStaff({
       userId: input.userId,
       roleId: input.roleId,
@@ -2745,8 +2776,12 @@ var staffManagementRouter = router({
     department: z2.string().optional(),
     position: z2.string().optional(),
     isActive: z2.number().optional()
-  })).mutation(async ({ input, ctx }) => {
-    if (input.name && input.id) {
+  })).mutation(async ({ input }) => {
+    if (input.name) {
+      const existing = await getStaffById(input.id);
+      if (existing) {
+        await updateUser(existing.userId, { name: input.name });
+      }
     }
     const updated = await updateStaff(input.id, {
       roleId: input.roleId,
@@ -2756,14 +2791,15 @@ var staffManagementRouter = router({
     });
     return updated;
   }),
-  delete: adminProcedure.input(z2.object({ id: z2.number() })).mutation(async ({ input, ctx }) => {
-    return { success: true };
+  delete: adminProcedure.input(z2.object({ id: z2.number() })).mutation(async ({ input }) => {
+    const ok = await deleteStaff(input.id);
+    return { success: ok };
   })
 });
 
 // server/userManagement.ts
 import { eq as eq3 } from "drizzle-orm";
-import { TRPCError as TRPCError4 } from "@trpc/server";
+import { TRPCError as TRPCError3 } from "@trpc/server";
 async function getAllUsers() {
   const db = await getDb();
   if (!db) return [];
@@ -2778,7 +2814,7 @@ async function getAllUsers() {
     lastSignedIn: users.lastSignedIn
   }).from(users);
 }
-async function getUserById(id) {
+async function getUserById2(id) {
   const db = await getDb();
   if (!db) return null;
   const result = await db.select().from(users).where(eq3(users.id, id));
@@ -2797,47 +2833,47 @@ async function getAllAdminUsers() {
   }).from(users).where(eq3(users.role, "admin"));
 }
 async function assignAdminRole(userId) {
-  const user = await getUserById(userId);
+  const user = await getUserById2(userId);
   if (!user) {
-    throw new TRPCError4({
+    throw new TRPCError3({
       code: "NOT_FOUND",
       message: "User not found"
     });
   }
   const db = await getDb();
-  if (!db) throw new TRPCError4({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
+  if (!db) throw new TRPCError3({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
   const result = await db.update(users).set({ role: "admin" }).where(eq3(users.id, userId));
   return result;
 }
 async function removeAdminRole(userId) {
-  const user = await getUserById(userId);
+  const user = await getUserById2(userId);
   if (!user) {
-    throw new TRPCError4({
+    throw new TRPCError3({
       code: "NOT_FOUND",
       message: "User not found"
     });
   }
   if (user.role !== "admin") {
-    throw new TRPCError4({
+    throw new TRPCError3({
       code: "BAD_REQUEST",
       message: "User is not an admin"
     });
   }
   const db = await getDb();
-  if (!db) throw new TRPCError4({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
+  if (!db) throw new TRPCError3({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
   const result = await db.update(users).set({ role: "user" }).where(eq3(users.id, userId));
   return result;
 }
 async function updateUserRole(userId, role) {
-  const user = await getUserById(userId);
+  const user = await getUserById2(userId);
   if (!user) {
-    throw new TRPCError4({
+    throw new TRPCError3({
       code: "NOT_FOUND",
       message: "User not found"
     });
   }
   const db = await getDb();
-  if (!db) throw new TRPCError4({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
+  if (!db) throw new TRPCError3({ code: "INTERNAL_SERVER_ERROR", message: "Database connection failed" });
   const result = await db.update(users).set({ role }).where(eq3(users.id, userId));
   return result;
 }
@@ -2870,7 +2906,7 @@ var appRouter = router({
       password: z3.string().min(1)
     })).mutation(async ({ ctx, input }) => {
       if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Supabase auth is not configured on the server"
         });
@@ -2887,14 +2923,14 @@ var appRouter = router({
         }
       );
       if (!response.ok) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "UNAUTHORIZED",
           message: "Invalid email or password"
         });
       }
       const responseText = await response.text();
       if (!responseText) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Supabase auth returned an empty response body"
         });
@@ -2903,14 +2939,14 @@ var appRouter = router({
       try {
         data = JSON.parse(responseText);
       } catch (error) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to parse Supabase auth response"
         });
       }
       const supabaseUser = data.user;
       if (!supabaseUser?.id) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "UNAUTHORIZED",
           message: "Supabase did not return a user"
         });
@@ -2929,7 +2965,7 @@ var appRouter = router({
       } catch (err) {
         console.error("[signin] upsertUser threw:", err);
         const cause = err?.cause ?? err;
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: `DB upsert failed: ${cause?.message ?? String(cause)} | code=${cause?.code ?? "?"} | severity=${cause?.severity ?? "?"} | errno=${cause?.errno ?? "?"} | address=${cause?.address ?? "?"}`
         });
@@ -2940,14 +2976,14 @@ var appRouter = router({
       } catch (err) {
         console.error("[signin] getUserByOpenId threw:", err);
         const cause = err?.cause ?? err;
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: `DB lookup failed: ${cause?.message ?? String(cause)} | code=${cause?.code ?? "?"} | severity=${cause?.severity ?? "?"} | errno=${cause?.errno ?? "?"} | address=${cause?.address ?? "?"}`
         });
       }
       if (!user) {
         const dbConfigured = Boolean(process.env.DATABASE_URL);
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: dbConfigured ? "Failed to create local user record (DB query returned no row)" : "Database is not configured on the server (DATABASE_URL missing)"
         });
@@ -2971,7 +3007,7 @@ var appRouter = router({
       })
     ).mutation(async ({ ctx, input }) => {
       if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Supabase auth is not configured on the server"
         });
@@ -2993,13 +3029,13 @@ var appRouter = router({
       try {
         data = responseText ? JSON.parse(responseText) : {};
       } catch (error) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to parse Supabase sign-up response"
         });
       }
       if (!response.ok) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "BAD_REQUEST",
           message: data?.error_description || data?.error?.message || data?.message || "Registration failed"
         });
@@ -3017,7 +3053,7 @@ var appRouter = router({
         const user = upserted ?? await getUserByOpenId(supabaseUser.id);
         if (!user) {
           const dbConfigured = Boolean(process.env.DATABASE_URL);
-          throw new TRPCError5({
+          throw new TRPCError4({
             code: "INTERNAL_SERVER_ERROR",
             message: dbConfigured ? "Failed to create local user record (DB query returned no row)" : "Database is not configured on the server (DATABASE_URL missing)"
           });
@@ -3045,7 +3081,7 @@ var appRouter = router({
       email: z3.string().email()
     })).mutation(async ({ ctx, input }) => {
       if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Supabase auth is not configured on the server"
         });
@@ -3071,7 +3107,7 @@ var appRouter = router({
       try {
         data = responseText ? JSON.parse(responseText) : {};
       } catch (error) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Failed to parse Supabase password reset response"
         });
@@ -3083,7 +3119,7 @@ var appRouter = router({
           redirectTo
         });
         const detail = data?.error_description || data?.error?.message || data?.msg || data?.message || responseText || `Supabase returned ${response.status}`;
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "BAD_REQUEST",
           message: `Password reset request failed: ${detail}`
         });
@@ -3098,7 +3134,7 @@ var appRouter = router({
       password: z3.string().min(6)
     })).mutation(async ({ input }) => {
       if (!ENV.supabaseUrl || !ENV.supabaseAnonKey) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "INTERNAL_SERVER_ERROR",
           message: "Supabase auth is not configured on the server"
         });
@@ -3119,7 +3155,7 @@ var appRouter = router({
       } catch {
       }
       if (!response.ok) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: response.status === 401 ? "UNAUTHORIZED" : "BAD_REQUEST",
           message: data?.error_description || data?.error?.message || data?.msg || data?.message || "Failed to update password. The reset link may have expired \u2014 request a new one."
         });
@@ -3135,7 +3171,7 @@ var appRouter = router({
       return getAllUsers();
     }),
     getById: adminProcedure.input(z3.object({ id: z3.number() })).query(async ({ input }) => {
-      return getUserById(input.id);
+      return getUserById2(input.id);
     }),
     listAdmins: adminProcedure.query(async () => {
       return getAllAdminUsers();
@@ -3208,7 +3244,7 @@ ${input.message}`
     }),
     listAdmin: protectedProcedure.query(async (opts) => {
       if (opts.ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can access this" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can access this" });
       }
       return getAllTransportsAdmin();
     }),
@@ -3234,7 +3270,7 @@ ${input.message}`
       })
     ).mutation(async ({ input, ctx }) => {
       if (ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can create transports" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can create transports" });
       }
       return createTransport(input);
     }),
@@ -3258,14 +3294,14 @@ ${input.message}`
       })
     ).mutation(async ({ input, ctx }) => {
       if (ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can update transports" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can update transports" });
       }
       const { id, ...data } = input;
       return updateTransport(id, data);
     }),
     delete: protectedProcedure.input(z3.object({ id: z3.number() })).mutation(async ({ input, ctx }) => {
       if (ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can delete transports" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can delete transports" });
       }
       return deleteTransport(input.id);
     })
@@ -3829,9 +3865,9 @@ ${input.message}`
       department: z3.string().optional(),
       position: z3.string().optional()
     })).mutation(async ({ input, ctx }) => {
-      if (!ctx.user) throw new TRPCError5({ code: "UNAUTHORIZED" });
+      if (!ctx.user) throw new TRPCError4({ code: "UNAUTHORIZED" });
       const staffMember = await getStaffByUserId(ctx.user.id);
-      if (!staffMember) throw new TRPCError5({ code: "NOT_FOUND" });
+      if (!staffMember) throw new TRPCError4({ code: "NOT_FOUND" });
       await updateStaff(staffMember.id, input);
       await logActivity({
         staffId: staffMember.id,
@@ -3846,9 +3882,15 @@ ${input.message}`
     create: staffManagementRouter._def.procedures.create,
     update: staffManagementRouter._def.procedures.update,
     delete: staffManagementRouter._def.procedures.delete,
+    candidates: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user?.role !== "admin") {
+        throw new TRPCError4({ code: "FORBIDDEN" });
+      }
+      return getAllStaffCandidates();
+    }),
     roles: router({
       list: protectedProcedure.query(async () => {
-        return [];
+        return getAllStaffRoles();
       }),
       getByName: protectedProcedure.input(z3.object({ name: z3.string() })).query(async ({ input }) => {
         return getStaffRoleByName(input.name);
@@ -3858,10 +3900,10 @@ ${input.message}`
         description: z3.string().optional(),
         permissions: z3.array(z3.string())
       })).mutation(async ({ input, ctx }) => {
-        if (!ctx.user) throw new TRPCError5({ code: "UNAUTHORIZED" });
+        if (!ctx.user) throw new TRPCError4({ code: "UNAUTHORIZED" });
         const staffMember = await getStaffByUserId(ctx.user.id);
         if (!staffMember || staffMember.role.name !== "admin") {
-          throw new TRPCError5({ code: "FORBIDDEN" });
+          throw new TRPCError4({ code: "FORBIDDEN" });
         }
         const role = await createStaffRole({
           name: input.name,
@@ -3991,7 +4033,7 @@ ${input.message}`
     getBySlug: publicProcedure.input(z3.object({ slug: z3.string() })).query(async ({ input }) => {
       const guide = await getAttractionGuideBySlug(input.slug);
       if (!guide) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "NOT_FOUND",
           message: `Attraction guide with slug "${input.slug}" not found`
         });
@@ -4001,7 +4043,7 @@ ${input.message}`
     getById: publicProcedure.input(z3.object({ id: z3.number() })).query(async ({ input }) => {
       const guide = await getAttractionGuideById(input.id);
       if (!guide) {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "NOT_FOUND",
           message: `Attraction guide with ID ${input.id} not found`
         });
@@ -4022,7 +4064,7 @@ ${input.message}`
     }),
     listAdmin: protectedProcedure.query(async ({ ctx }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can access this"
         });
@@ -4052,7 +4094,7 @@ ${input.message}`
       featured: z3.number().default(0)
     })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can create attractions"
         });
@@ -4082,7 +4124,7 @@ ${input.message}`
       featured: z3.number().optional()
     })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can update attractions"
         });
@@ -4092,7 +4134,7 @@ ${input.message}`
     }),
     delete: protectedProcedure.input(z3.object({ id: z3.number() })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can delete attractions"
         });
@@ -4101,7 +4143,7 @@ ${input.message}`
     }),
     togglePublish: protectedProcedure.input(z3.object({ id: z3.number(), published: z3.number() })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can publish attractions"
         });
@@ -4110,7 +4152,7 @@ ${input.message}`
     }),
     toggleFeature: protectedProcedure.input(z3.object({ id: z3.number(), featured: z3.number() })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can feature attractions"
         });
@@ -4129,7 +4171,7 @@ ${input.message}`
       notes: z3.string().optional()
     })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can link attractions to islands"
         });
@@ -4141,7 +4183,7 @@ ${input.message}`
       islandGuideId: z3.number()
     })).mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") {
-        throw new TRPCError5({
+        throw new TRPCError4({
           code: "FORBIDDEN",
           message: "Only admins can unlink attractions from islands"
         });
@@ -4192,7 +4234,7 @@ ${input.message}`
       published: z3.number().optional()
     })).mutation(async ({ input, ctx }) => {
       if (ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can update hero settings" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can update hero settings" });
       }
       const { pageSlug, ...data } = input;
       return updateHeroSettings(pageSlug, data);
@@ -4212,7 +4254,7 @@ ${input.message}`
       minHeight: z3.string().default("min-h-96")
     })).mutation(async ({ input, ctx }) => {
       if (ctx.user?.role !== "admin") {
-        throw new TRPCError5({ code: "FORBIDDEN", message: "Only admins can create hero settings" });
+        throw new TRPCError4({ code: "FORBIDDEN", message: "Only admins can create hero settings" });
       }
       return createHeroSettings(input);
     })

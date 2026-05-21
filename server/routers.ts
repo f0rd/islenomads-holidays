@@ -27,7 +27,7 @@ import {
   updateSeoMetaTags, approveSeoMetaTags, rejectSeoMetaTags, getPendingSeoMetaTags, getSeoMetaTagsByContentType,
   deleteSeoMetaTags, getCrmQueries, getCrmQueryById, createCrmQuery, updateCrmQuery, deleteCrmQuery,
   getCrmInteractions, createCrmInteraction, getCrmCustomerByEmail, createCrmCustomer, updateCrmCustomer,
-  getStaffByUserId, getStaffById, getAllStaff, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff,
+  getStaffByUserId, getStaffById, getAllStaff, getAllStaffRoles, getAllStaffCandidates, getStaffRole, getStaffRoleByName, createStaffRole, updateStaff, deleteStaff, updateUser as updateUserRow,
   logActivity, getAllTransports, getAllTransportsAdmin, getTransportById, createTransport, updateTransport,
   deleteTransport, getAllAtolls, getAllAtollsAdmin, getAtollBySlug, getAtollById, createAtoll, updateAtoll,
   deleteAtoll,  getAtollsByRegion, getIslandsByAtollId, getFeaturedIslandsByAtollId, getRegularIslandsByAtollId, getActivitySpotsByIslandId, getActivitySpotsByIslandIdAndType,  getActivitySpotBySlug, getActivitySpotById, createActivitySpot, updateActivitySpot, deleteActivitySpot,
@@ -1341,10 +1341,16 @@ export const appRouter = router({
     update: staffManagementRouter._def.procedures.update,
     delete: staffManagementRouter._def.procedures.delete,
     
+    candidates: protectedProcedure.query(async ({ ctx }) => {
+      if (ctx.user?.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN" });
+      }
+      return getAllStaffCandidates();
+    }),
+
     roles: router({
       list: protectedProcedure.query(async () => {
-        // This would need a getAllStaffRoles function
-        return [];
+        return getAllStaffRoles();
       }),
       
       getByName: protectedProcedure

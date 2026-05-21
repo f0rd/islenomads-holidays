@@ -65,6 +65,16 @@ function AdminStaffContent() {
 
   // Fetch staff list
   const { data: staffList = [], isLoading, refetch } = trpc.staff.list.useQuery();
+  const { data: rolesList = [] } = trpc.staff.roles.list.useQuery();
+  const { data: candidates = [], refetch: refetchCandidates } = trpc.staff.candidates.useQuery();
+
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [createFormData, setCreateFormData] = useState<{
+    userId: string;
+    roleId: string;
+    department: string;
+    position: string;
+  }>({ userId: "", roleId: "", department: "", position: "" });
 
   // Staff mutations
   const updateMutation = trpc.staff.update.useMutation({
@@ -78,10 +88,30 @@ function AdminStaffContent() {
   const deleteMutation = trpc.staff.delete.useMutation({
     onSuccess: () => {
       refetch();
+      refetchCandidates();
       setIsDeleteModalOpen(false);
       setSelectedStaff(null);
     },
   });
+
+  const createMutation = trpc.staff.create.useMutation({
+    onSuccess: () => {
+      refetch();
+      refetchCandidates();
+      setIsCreateModalOpen(false);
+      setCreateFormData({ userId: "", roleId: "", department: "", position: "" });
+    },
+  });
+
+  const handleCreate = async () => {
+    if (!createFormData.userId || !createFormData.roleId) return;
+    await createMutation.mutateAsync({
+      userId: Number(createFormData.userId),
+      roleId: Number(createFormData.roleId),
+      department: createFormData.department || undefined,
+      position: createFormData.position || undefined,
+    });
+  };
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
@@ -165,7 +195,10 @@ function AdminStaffContent() {
             className="pl-10"
           />
         </div>
-        <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold">
+        <Button
+          className="bg-accent hover:bg-accent/90 text-primary font-semibold"
+          onClick={() => setIsCreateModalOpen(true)}
+        >
           <Plus className="w-4 h-4 mr-2" />
           Add Staff Member
         </Button>
@@ -318,6 +351,106 @@ function AdminStaffContent() {
               </div>
             </div>
           )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Create Staff Modal */}
+      <Dialog open={isCreateModalOpen} onOpenChange={setIsCreateModalOpen}>
+        <DialogContent className="sm:max-w-[480px]">
+          <DialogHeader>
+            <DialogTitle>Add Staff Member</DialogTitle>
+            <DialogDescription>
+              Link an existing user to a staff role. Users register via the staff signup or password sign-in.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label>User</Label>
+              <select
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                value={createFormData.userId}
+                onChange={(e) =>
+                  setCreateFormData({ ...createFormData, userId: e.target.value })
+                }
+              >
+                <option value="">Select a user…</option>
+                {candidates.map((u: any) => (
+                  <option key={u.id} value={u.id}>
+                    {u.name || u.email || `User #${u.id}`}{" "}
+                    {u.email ? `(${u.email})` : ""}
+                  </option>
+                ))}
+              </select>
+              {candidates.length === 0 && (
+                <p className="text-xs text-gray-500 mt-1">
+                  No unlinked users — every existing user already has a staff record.
+                </p>
+              )}
+            </div>
+            <div>
+              <Label>Role</Label>
+              <select
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                value={createFormData.roleId}
+                onChange={(e) =>
+                  setCreateFormData({ ...createFormData, roleId: e.target.value })
+                }
+              >
+                <option value="">Select a role…</option>
+                {rolesList.map((r: any) => (
+                  <option key={r.id} value={r.id}>
+                    {r.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <Label>Department</Label>
+              <Input
+                value={createFormData.department}
+                onChange={(e) =>
+                  setCreateFormData({ ...createFormData, department: e.target.value })
+                }
+                placeholder="e.g., Content, Operations"
+                className="mt-1"
+              />
+            </div>
+            <div>
+              <Label>Position</Label>
+              <Input
+                value={createFormData.position}
+                onChange={(e) =>
+                  setCreateFormData({ ...createFormData, position: e.target.value })
+                }
+                placeholder="e.g., Senior Editor"
+                className="mt-1"
+              />
+            </div>
+            {createMutation.error && (
+              <p className="text-sm text-red-600">
+                {createMutation.error.message}
+              </p>
+            )}
+            <div className="flex gap-2 justify-end pt-4">
+              <Button
+                variant="outline"
+                onClick={() => setIsCreateModalOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleCreate}
+                disabled={
+                  createMutation.isPending ||
+                  !createFormData.userId ||
+                  !createFormData.roleId
+                }
+                className="bg-accent hover:bg-accent/90"
+              >
+                {createMutation.isPending ? "Adding…" : "Add Staff Member"}
+              </Button>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
 
