@@ -50,7 +50,7 @@ interface StaffMember {
 }
 
 function AdminStaffContent() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStaff, setSelectedStaff] = useState<StaffMember | null>(null);
@@ -84,10 +84,10 @@ function AdminStaffContent() {
   });
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!authLoading && !isAuthenticated) {
       navigate("/staff-login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [authLoading, isAuthenticated, navigate]);
 
   const filteredStaff = (staffList || []).filter(
     (member: any) =>

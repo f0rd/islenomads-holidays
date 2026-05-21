@@ -28,14 +28,14 @@ interface Role {
 }
 
 export default function AdminRoles() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading } = useAuth();
   const [, navigate] = useLocation();
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       navigate("/staff-login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [loading, isAuthenticated, navigate]);
 
   const roles: Role[] = [
     {

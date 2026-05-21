@@ -36,16 +36,16 @@ interface ActivityLogEntry {
 }
 
 export default function AdminActivity() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState<string>("all");
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       navigate("/staff-login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [loading, isAuthenticated, navigate]);
 
   const activityLogs: ActivityLogEntry[] = [
     {

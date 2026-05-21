@@ -35,15 +35,15 @@ interface Interaction {
 }
 
 export default function AdminCRMDetail() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading } = useAuth();
   const [, navigate] = useLocation();
   const [noteContent, setNoteContent] = useState("");
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       navigate("/staff-login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [loading, isAuthenticated, navigate]);
 
   // Mock query data
   const query = {

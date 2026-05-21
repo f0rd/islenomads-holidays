@@ -36,16 +36,16 @@ interface Query {
 }
 
 export default function AdminCRM() {
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, loading } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!loading && !isAuthenticated) {
       navigate("/staff-login");
     }
-  }, [isAuthenticated, navigate]);
+  }, [loading, isAuthenticated, navigate]);
 
   const queries: Query[] = [
     {
