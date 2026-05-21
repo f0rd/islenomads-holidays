@@ -3168,6 +3168,20 @@ var appRouter = router({
       })
     ).mutation(async ({ input }) => {
       try {
+        await createCrmQuery({
+          customerName: input.name,
+          customerEmail: input.email,
+          customerPhone: input.phone,
+          subject: input.subject,
+          message: input.packageType ? `Package: ${input.packageType}
+
+${input.message}` : input.message,
+          queryType: input.packageType ? "booking" : "general"
+        });
+      } catch (error) {
+        console.error("[Contact Form] Failed to save CRM query:", error);
+      }
+      try {
         await notifyOwner({
           title: `New Inquiry from ${input.name}`,
           content: `Email: ${input.email}
@@ -3179,14 +3193,13 @@ Subject: ${input.subject}
 Message:
 ${input.message}`
         });
-        return {
-          success: true,
-          message: "Thank you for your inquiry. We will respond within 24 hours."
-        };
       } catch (error) {
-        console.error("[Contact Form] Error:", error);
-        throw new Error("Failed to submit contact form. Please try again.");
+        console.error("[Contact Form] Notification failed:", error);
       }
+      return {
+        success: true,
+        message: "Thank you for your inquiry. We will respond within 24 hours."
+      };
     })
   }),
   transports: router({
