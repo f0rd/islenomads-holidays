@@ -2922,18 +2922,19 @@ var appRouter = router({
       }
       const signedInAt = /* @__PURE__ */ new Date();
       const displayName = supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
-      await upsertUser({
+      const upserted = await upsertUser({
         openId: supabaseUser.id,
         email: supabaseUser.email ?? null,
         name: displayName || null,
         loginMethod: "password",
         lastSignedIn: signedInAt
       });
-      const user = await getUserByOpenId(supabaseUser.id);
+      const user = upserted ?? await getUserByOpenId(supabaseUser.id);
       if (!user) {
+        const dbConfigured = Boolean(process.env.DATABASE_URL);
         throw new TRPCError5({
           code: "INTERNAL_SERVER_ERROR",
-          message: "Failed to create local user record"
+          message: dbConfigured ? "Failed to create local user record (DB query returned no row)" : "Database is not configured on the server (DATABASE_URL missing)"
         });
       }
       const sessionToken = await sdk.createSessionToken(supabaseUser.id, {
@@ -2991,18 +2992,19 @@ var appRouter = router({
       const supabaseUser = data.user;
       if (supabaseUser?.id) {
         const displayName = input.name ?? supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
-        await upsertUser({
+        const upserted = await upsertUser({
           openId: supabaseUser.id,
           email: supabaseUser.email ?? null,
           name: displayName || null,
           loginMethod: "password",
           lastSignedIn: /* @__PURE__ */ new Date()
         });
-        const user = await getUserByOpenId(supabaseUser.id);
+        const user = upserted ?? await getUserByOpenId(supabaseUser.id);
         if (!user) {
+          const dbConfigured = Boolean(process.env.DATABASE_URL);
           throw new TRPCError5({
             code: "INTERNAL_SERVER_ERROR",
-            message: "Failed to create local user record"
+            message: dbConfigured ? "Failed to create local user record (DB query returned no row)" : "Database is not configured on the server (DATABASE_URL missing)"
           });
         }
         const sessionToken = await sdk.createSessionToken(supabaseUser.id, {

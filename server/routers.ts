@@ -117,7 +117,7 @@ export const appRouter = router({
         const signedInAt = new Date();
         const displayName = supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
 
-        await authDb.upsertUser({
+        const upserted = await authDb.upsertUser({
           openId: supabaseUser.id,
           email: supabaseUser.email ?? null,
           name: displayName || null,
@@ -125,11 +125,14 @@ export const appRouter = router({
           lastSignedIn: signedInAt,
         });
 
-        const user = await authDb.getUserByOpenId(supabaseUser.id);
+        const user = upserted ?? (await authDb.getUserByOpenId(supabaseUser.id));
         if (!user) {
+          const dbConfigured = Boolean(process.env.DATABASE_URL);
           throw new TRPCError({
             code: "INTERNAL_SERVER_ERROR",
-            message: "Failed to create local user record",
+            message: dbConfigured
+              ? "Failed to create local user record (DB query returned no row)"
+              : "Database is not configured on the server (DATABASE_URL missing)",
           });
         }
 
@@ -200,7 +203,7 @@ export const appRouter = router({
         if (supabaseUser?.id) {
           const displayName = input.name ?? supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
 
-          await authDb.upsertUser({
+          const upserted = await authDb.upsertUser({
             openId: supabaseUser.id,
             email: supabaseUser.email ?? null,
             name: displayName || null,
@@ -208,11 +211,14 @@ export const appRouter = router({
             lastSignedIn: new Date(),
           });
 
-          const user = await authDb.getUserByOpenId(supabaseUser.id);
+          const user = upserted ?? (await authDb.getUserByOpenId(supabaseUser.id));
           if (!user) {
+            const dbConfigured = Boolean(process.env.DATABASE_URL);
             throw new TRPCError({
               code: "INTERNAL_SERVER_ERROR",
-              message: "Failed to create local user record",
+              message: dbConfigured
+                ? "Failed to create local user record (DB query returned no row)"
+                : "Database is not configured on the server (DATABASE_URL missing)",
             });
           }
 
