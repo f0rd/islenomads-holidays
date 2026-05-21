@@ -50,6 +50,12 @@ export default function AdminCRM() {
 
   const queriesQuery = trpc.crm.queries.list.useQuery({});
   const queries = queriesQuery.data ?? [];
+  const staffQuery = trpc.staff.list.useQuery();
+  const staffById = useMemo(() => {
+    const map = new Map<number, any>();
+    for (const s of staffQuery.data ?? []) map.set(s.id, s);
+    return map;
+  }, [staffQuery.data]);
 
   const stats = useMemo(() => {
     const acc = { total: queries.length, new: 0, inProgress: 0, resolved: 0, closed: 0 };
@@ -264,7 +270,11 @@ export default function AdminCRM() {
                         </span>
                       </td>
                       <td className="py-4 px-4 text-sm text-gray-600">
-                        {query.assignedTo ? `Staff #${query.assignedTo}` : <span className="text-gray-400">Unassigned</span>}
+                        {query.assignedTo
+                          ? staffById.get(query.assignedTo)?.user?.name
+                            || staffById.get(query.assignedTo)?.user?.email
+                            || `Staff #${query.assignedTo}`
+                          : <span className="text-gray-400">Unassigned</span>}
                       </td>
                       <td className="py-4 px-4 text-sm text-gray-600">{formatRelative(query.createdAt)}</td>
                       <td className="py-4 px-4">
