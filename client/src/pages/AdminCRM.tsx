@@ -5,7 +5,8 @@
 
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLocation } from "wouter";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,33 +14,33 @@ import {
   MessageSquare,
   Plus,
   Search,
-  ChevronLeft,
   AlertCircle,
   CheckCircle2,
   Clock,
-  Inbox,
-  TrendingUp,
-  Filter,
   ArrowLeft,
 } from "lucide-react";
 import { Link } from "wouter";
 
-interface Query {
-  id: number;
-  customerName: string;
-  customerEmail: string;
-  subject: string;
-  status: "new" | "in_progress" | "waiting_customer" | "resolved" | "closed";
-  priority: "low" | "medium" | "high" | "urgent";
-  createdAt: string;
-  assignedTo?: string;
+type QueryStatus = "new" | "in_progress" | "waiting_customer" | "resolved" | "closed";
+
+function formatRelative(date: Date | string) {
+  const d = typeof date === "string" ? new Date(date) : date;
+  const diffMs = Date.now() - d.getTime();
+  const min = Math.floor(diffMs / 60000);
+  if (min < 1) return "just now";
+  if (min < 60) return `${min} min ago`;
+  const hrs = Math.floor(min / 60);
+  if (hrs < 24) return `${hrs} hour${hrs === 1 ? "" : "s"} ago`;
+  const days = Math.floor(hrs / 24);
+  if (days < 30) return `${days} day${days === 1 ? "" : "s"} ago`;
+  return d.toLocaleDateString();
 }
 
 export default function AdminCRM() {
-  const { user, isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const [, navigate] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterStatus, setFilterStatus] = useState("all");
+  const [filterStatus, setFilterStatus] = useState<"all" | QueryStatus>("all");
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
@@ -47,55 +48,32 @@ export default function AdminCRM() {
     }
   }, [loading, isAuthenticated, navigate]);
 
-  const queries: Query[] = [
-    {
-      id: 1,
-      customerName: "John Smith",
-      customerEmail: "john@example.com",
-      subject: "Booking inquiry for Maldives package",
-      status: "new",
-      priority: "high",
-      createdAt: "2 hours ago",
-    },
-    {
-      id: 2,
-      customerName: "Sarah Johnson",
-      customerEmail: "sarah@example.com",
-      subject: "Question about island guide",
-      status: "in_progress",
-      priority: "medium",
-      createdAt: "1 day ago",
-      assignedTo: "Mike Chen",
-    },
-    {
-      id: 3,
-      customerName: "Emma Davis",
-      customerEmail: "emma@example.com",
-      subject: "Complaint about booking",
-      status: "resolved",
-      priority: "urgent",
-      createdAt: "2 days ago",
-      assignedTo: "Sarah Johnson",
-    },
-    {
-      id: 4,
-      customerName: "Alex Rodriguez",
-      customerEmail: "alex@example.com",
-      subject: "Feedback on service",
-      status: "closed",
-      priority: "low",
-      createdAt: "3 days ago",
-      assignedTo: "Emma Davis",
-    },
-  ];
+  const queriesQuery = trpc.crm.queries.list.useQuery({});
+  const queries = queriesQuery.data ?? [];
 
-  const stats = {
-    total: 24,
-    new: 5,
-    inProgress: 8,
-    resolved: 9,
-    closed: 2,
-  };
+  const stats = useMemo(() => {
+    const acc = { total: queries.length, new: 0, inProgress: 0, resolved: 0, closed: 0 };
+    for (const q of queries) {
+      if (q.status === "new") acc.new++;
+      else if (q.status === "in_progress") acc.inProgress++;
+      else if (q.status === "resolved") acc.resolved++;
+      else if (q.status === "closed") acc.closed++;
+    }
+    return acc;
+  }, [queries]);
+
+  const filteredQueries = useMemo(() => {
+    const term = searchTerm.toLowerCase();
+    return queries.filter((q) => {
+      const matchesSearch =
+        !term ||
+        q.customerName.toLowerCase().includes(term) ||
+        q.customerEmail.toLowerCase().includes(term) ||
+        q.subject.toLowerCase().includes(term);
+      const matchesFilter = filterStatus === "all" || q.status === filterStatus;
+      return matchesSearch && matchesFilter;
+    });
+  }, [queries, searchTerm, filterStatus]);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -142,15 +120,6 @@ export default function AdminCRM() {
         return <MessageSquare className="w-4 h-4 text-gray-600" />;
     }
   };
-
-  const filteredQueries = queries.filter((q) => {
-    const matchesSearch =
-      q.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      q.customerEmail.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      q.subject.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = filterStatus === "all" || q.status === filterStatus;
-    return matchesSearch && matchesFilter;
-  });
 
   return (
     <div className="min-h-screen bg-gray-50 p-8">
@@ -225,7 +194,7 @@ export default function AdminCRM() {
         <div className="flex gap-2">
           <select
             value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
+            onChange={(e) => setFilterStatus(e.target.value as "all" | QueryStatus)}
             className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
           >
             <option value="all">All Status</option>
@@ -235,7 +204,7 @@ export default function AdminCRM() {
             <option value="resolved">Resolved</option>
             <option value="closed">Closed</option>
           </select>
-          <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold">
+          <Button className="bg-accent hover:bg-accent/90 text-primary font-semibold" disabled>
             <Plus className="w-4 h-4 mr-2" />
             New Query
           </Button>
@@ -249,65 +218,77 @@ export default function AdminCRM() {
           <CardDescription>All customer inquiries and support requests</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Customer</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Subject</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Priority</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Assigned To</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Created</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredQueries.map((query) => (
-                  <tr key={query.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                    <td className="py-4 px-4">
-                      <div>
-                        <p className="font-medium text-gray-900">{query.customerName}</p>
-                        <p className="text-xs text-gray-500">{query.customerEmail}</p>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <p className="text-sm text-gray-900 max-w-xs truncate">{query.subject}</p>
-                    </td>
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-2">
-                        {getStatusIcon(query.status)}
-                        <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(query.status)}`}>
-                          {query.status.replace(/_/g, " ")}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <span className={`text-sm font-medium ${getPriorityColor(query.priority)}`}>
-                        {query.priority.charAt(0).toUpperCase() + query.priority.slice(1)}
-                      </span>
-                    </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">
-                      {query.assignedTo || <span className="text-gray-400">Unassigned</span>}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">{query.createdAt}</td>
-                    <td className="py-4 px-4">
-                      <Link href={`/admin/crm/${query.id}`}>
-                        <a className="text-accent hover:text-accent/80 font-semibold text-sm">
-                          View
-                        </a>
-                      </Link>
-                    </td>
+          {queriesQuery.isLoading ? (
+            <div className="text-center py-12 text-gray-500">Loading…</div>
+          ) : queriesQuery.error ? (
+            <div className="text-center py-12 text-red-600">
+              Failed to load queries: {queriesQuery.error.message}
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Customer</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Subject</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Status</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Priority</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Assigned To</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Created</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-700 text-sm">Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {filteredQueries.map((query) => (
+                    <tr key={query.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                      <td className="py-4 px-4">
+                        <div>
+                          <p className="font-medium text-gray-900">{query.customerName}</p>
+                          <p className="text-xs text-gray-500">{query.customerEmail}</p>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <p className="text-sm text-gray-900 max-w-xs truncate">{query.subject}</p>
+                      </td>
+                      <td className="py-4 px-4">
+                        <div className="flex items-center gap-2">
+                          {getStatusIcon(query.status)}
+                          <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(query.status)}`}>
+                            {query.status.replace(/_/g, " ")}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <span className={`text-sm font-medium ${getPriorityColor(query.priority)}`}>
+                          {query.priority.charAt(0).toUpperCase() + query.priority.slice(1)}
+                        </span>
+                      </td>
+                      <td className="py-4 px-4 text-sm text-gray-600">
+                        {query.assignedTo ? `Staff #${query.assignedTo}` : <span className="text-gray-400">Unassigned</span>}
+                      </td>
+                      <td className="py-4 px-4 text-sm text-gray-600">{formatRelative(query.createdAt)}</td>
+                      <td className="py-4 px-4">
+                        <Link href={`/admin/crm/${query.id}`}>
+                          <a className="text-accent hover:text-accent/80 font-semibold text-sm">
+                            View
+                          </a>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
 
-          {filteredQueries.length === 0 && (
-            <div className="text-center py-12">
-              <MessageSquare className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500">No queries found matching your filters</p>
+              {filteredQueries.length === 0 && (
+                <div className="text-center py-12">
+                  <MessageSquare className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                  <p className="text-gray-500">
+                    {queries.length === 0
+                      ? "No customer queries yet"
+                      : "No queries match your filters"}
+                  </p>
+                </div>
+              )}
             </div>
           )}
         </CardContent>
