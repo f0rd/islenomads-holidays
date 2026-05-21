@@ -128,9 +128,10 @@ export const appRouter = router({
           });
         } catch (err: any) {
           console.error("[signin] upsertUser threw:", err);
+          const cause: any = err?.cause ?? err;
           throw new TRPCError({
             code: "INTERNAL_SERVER_ERROR",
-            message: `DB upsert failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`,
+            message: `DB upsert failed: ${cause?.message ?? String(cause)} | code=${cause?.code ?? "?"} | severity=${cause?.severity ?? "?"} | errno=${cause?.errno ?? "?"} | address=${cause?.address ?? "?"}`,
           });
         }
 
@@ -139,9 +140,10 @@ export const appRouter = router({
           user = upserted ?? (await authDb.getUserByOpenId(supabaseUser.id));
         } catch (err: any) {
           console.error("[signin] getUserByOpenId threw:", err);
+          const cause: any = err?.cause ?? err;
           throw new TRPCError({
             code: "INTERNAL_SERVER_ERROR",
-            message: `DB lookup failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`,
+            message: `DB lookup failed: ${cause?.message ?? String(cause)} | code=${cause?.code ?? "?"} | severity=${cause?.severity ?? "?"} | errno=${cause?.errno ?? "?"} | address=${cause?.address ?? "?"}`,
           });
         }
         if (!user) {
