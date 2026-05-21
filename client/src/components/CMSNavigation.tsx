@@ -128,7 +128,7 @@ const menuGroups: MenuGroup[] = [
       },
       {
         label: "Pricing Requests",
-        path: "/admin/pricing-requests",
+        path: "/admin/crm",
         icon: DollarSign,
       },
     ],
