@@ -2922,14 +2922,32 @@ var appRouter = router({
       }
       const signedInAt = /* @__PURE__ */ new Date();
       const displayName = supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
-      const upserted = await upsertUser({
-        openId: supabaseUser.id,
-        email: supabaseUser.email ?? null,
-        name: displayName || null,
-        loginMethod: "password",
-        lastSignedIn: signedInAt
-      });
-      const user = upserted ?? await getUserByOpenId(supabaseUser.id);
+      let upserted;
+      try {
+        upserted = await upsertUser({
+          openId: supabaseUser.id,
+          email: supabaseUser.email ?? null,
+          name: displayName || null,
+          loginMethod: "password",
+          lastSignedIn: signedInAt
+        });
+      } catch (err) {
+        console.error("[signin] upsertUser threw:", err);
+        throw new TRPCError5({
+          code: "INTERNAL_SERVER_ERROR",
+          message: `DB upsert failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`
+        });
+      }
+      let user;
+      try {
+        user = upserted ?? await getUserByOpenId(supabaseUser.id);
+      } catch (err) {
+        console.error("[signin] getUserByOpenId threw:", err);
+        throw new TRPCError5({
+          code: "INTERNAL_SERVER_ERROR",
+          message: `DB lookup failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`
+        });
+      }
       if (!user) {
         const dbConfigured = Boolean(process.env.DATABASE_URL);
         throw new TRPCError5({

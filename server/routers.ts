@@ -117,15 +117,33 @@ export const appRouter = router({
         const signedInAt = new Date();
         const displayName = supabaseUser.user_metadata?.name ?? supabaseUser.email ?? "";
 
-        const upserted = await authDb.upsertUser({
-          openId: supabaseUser.id,
-          email: supabaseUser.email ?? null,
-          name: displayName || null,
-          loginMethod: "password",
-          lastSignedIn: signedInAt,
-        });
+        let upserted;
+        try {
+          upserted = await authDb.upsertUser({
+            openId: supabaseUser.id,
+            email: supabaseUser.email ?? null,
+            name: displayName || null,
+            loginMethod: "password",
+            lastSignedIn: signedInAt,
+          });
+        } catch (err: any) {
+          console.error("[signin] upsertUser threw:", err);
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: `DB upsert failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`,
+          });
+        }
 
-        const user = upserted ?? (await authDb.getUserByOpenId(supabaseUser.id));
+        let user;
+        try {
+          user = upserted ?? (await authDb.getUserByOpenId(supabaseUser.id));
+        } catch (err: any) {
+          console.error("[signin] getUserByOpenId threw:", err);
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: `DB lookup failed: ${err?.message ?? String(err)} | code=${err?.code ?? "?"} | severity=${err?.severity ?? "?"}`,
+          });
+        }
         if (!user) {
           const dbConfigured = Boolean(process.env.DATABASE_URL);
           throw new TRPCError({
